@@ -220,10 +220,10 @@ Logged_0x01DF:
 	ld a,[$FF00+$FE]
 	and a
 	jr nz,Logged_0x021A
-	ld a,$0B
+	ld a,GAME_STATE_GBC_ONLY
 	ld [wGameState],a
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	jr Logged_0x021D
 
 Logged_0x021A:
@@ -772,7 +772,7 @@ Logged_0x052D:
 	ld [$CED7],a
 	ld [$C187],a
 	ld [$C186],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -987,7 +987,7 @@ Logged_0x06DB:
 	ld [$CED7],a
 	ld [$C187],a
 	ld [$C186],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -1152,7 +1152,7 @@ Logged_0x0788:
 	ld [$CED7],a
 	ld [$C187],a
 	ld [$C186],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -1324,7 +1324,7 @@ Logged_0x096D:
 	ld [$FF00+$B5],a
 	ld a,$00
 	ld [$FF00+$B6],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	jr Logged_0x095A
 
@@ -2664,7 +2664,7 @@ Logged_0x11F6:
 	ld a,[$C0D7]
 	bit 7,a
 	ret nz
-	ld hl,$C09C
+	ld hl,wGameSubState
 	ld a,[$C0D7]
 	bit 5,a
 	jr z,Logged_0x1246
@@ -2930,9 +2930,9 @@ Logged_0x13D5:
 
 Logged_0x141A:
 	ld hl,wGameState
-	ld [hl],$02
+	ld [hl],GAME_STATE_LEVEL
 	ld a,[$CED5]
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1426:
@@ -3244,19 +3244,19 @@ Logged_0x15DC:
 	jr z,Logged_0x1610
 
 Logged_0x15FF:
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	ld [$CED5],a
-	ld a,$04
+	ld a,GAME_STATE_PAUSE
 	ld [wGameState],a
 	ld a,$18
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1610:
 	ld hl,wGameState
-	ld [hl],$0D
+	ld [hl],GAME_STATE_PERFECT
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x161A:
@@ -3333,7 +3333,7 @@ INCBIN "baserom.gbc", $168A, $1690 - $168A
 Logged_0x1690:
 	xor a
 	ld [wGameState],a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Unknown_0x1698:
@@ -3362,7 +3362,7 @@ Unknown_0x1698:
 
 Logged_0x16D0:
 	ld hl,wGameState
-	ld a,$07
+	ld a,GAME_STATE_TUTORIAL
 	ld [hli],a
 	ld [hl],$00
 	ret
@@ -6048,7 +6048,7 @@ Logged_0x4000:
 	dw Logged_0x47FD
 	dw Logged_0x4817
 	dw Logged_0x4831
-	dw Unknown_0x4028
+	dw Unknown_0x4028;these all reset the game
 	dw Unknown_0x4028
 	dw Unknown_0x4028
 
@@ -6066,7 +6066,7 @@ Logged_0x402B:
 	ret
 
 Logged_0x4039:
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x047B
 	dw Logged_0x405F
@@ -6316,7 +6316,7 @@ Logged_0x41A8:
 	xor a
 	ld [$CEE5],a
 	ld [$C08F],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -6473,7 +6473,7 @@ Logged_0x42AA:
 	ld [$D522],a
 	ld a,$1C
 	ld [$CEE5],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 
 Logged_0x42CC:
@@ -6586,7 +6586,7 @@ Logged_0x436C:
 	ld [$D522],a
 	ld a,$30
 	ld [$CEE5],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 
 Logged_0x4394:
@@ -6738,7 +6738,7 @@ Logged_0x4466:
 	ld [$FF00+$B1],a
 	ld a,$33
 	ld [$FF00+$B2],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	jr Logged_0x449C
 
@@ -6783,7 +6783,7 @@ Logged_0x44E2:
 	ld a,[$C08F]
 	and $03
 	call z,Logged_0x06FA
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	cp $07
 	ret nz
 
@@ -6796,7 +6796,7 @@ Logged_0x44F0:
 	ld [$CEE6],a
 	ld a,$44
 	ld [$CEE5],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	ld [hl],$07
 	ret
 
@@ -6914,10 +6914,10 @@ Unknown_0x45C5:
 	ret
 
 Logged_0x45D6:
-	ld a,$0E
+	ld a,GAME_STATE_LANGUAGE
 	ld [wGameState],a
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Unknown_0x45E0:
@@ -6933,10 +6933,10 @@ Logged_0x45ED:
 	jr Logged_0x461E
 
 Logged_0x45FD:
-	ld a,$02
+	ld a,GAME_STATE_LEVEL
 	ld [wGameState],a
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x4607:
@@ -6945,7 +6945,7 @@ Logged_0x4607:
 	call Logged_0x1AD1
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -6954,10 +6954,10 @@ Logged_0x4619:
 	ld [$CEE3],a
 
 Logged_0x461E:
-	ld a,$01
+	ld a,GAME_STATE_MAP
 	ld [wGameState],a
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 	xor a
@@ -6989,7 +6989,7 @@ Logged_0x4640:
 	ld [rLCDC],a
 	xor a
 	ld [$CEE5],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -7020,7 +7020,7 @@ Logged_0x4686:
 	ld [rSVBK],a
 	ld hl,wGameState
 	ld a,[hl]
-	cp $02
+	cp GAME_STATE_LEVEL
 	ret nz
 	ld a,$01
 	ld [$FF00+$B5],a
@@ -7035,7 +7035,7 @@ Logged_0x4686:
 	ret
 
 Logged_0x46BD:
-	ld a,$0A
+	ld a,GAME_STATE_GOLF_MENU
 	ld [wGameState],a
 	ret
 
@@ -7105,7 +7105,7 @@ Logged_0x4710:
 	ret
 
 Logged_0x472A:
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x4732
 	dw Logged_0x473C
@@ -7150,7 +7150,7 @@ Logged_0x4766:
 	cp $64
 	ret c
 	ld [hl],$00
-	ld a,$02
+	ld a,GAME_STATE_LEVEL
 	ld [wGameState],a
 	ret
 
@@ -7187,7 +7187,7 @@ Logged_0x4790:
 	ret
 
 Unknown_0x47AA:
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x047B
 	dw Unknown_0x47BE
@@ -7224,7 +7224,7 @@ Unknown_0x47BE:
 	ld [rSCY],a
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -7274,7 +7274,7 @@ Logged_0x4831:
 	ret
 
 Logged_0x483F:
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x047B
 	dw Logged_0x4857
@@ -7340,7 +7340,7 @@ Logged_0x4857:
 	call Logged_0x03B9
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -8072,7 +8072,7 @@ Logged_0x4D45:
 	ld a,[hl]
 	cp $B0
 	jr c,Logged_0x4D65
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	cp $05
 	jr nc,Logged_0x4D66
 	cp $04
@@ -8089,7 +8089,7 @@ Logged_0x4D66:
 	ld a,[hl]
 	cp $B0
 	jr c,Logged_0x4D7D
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	cp $05
 	ret nc
 	cp $04
@@ -8522,7 +8522,7 @@ Unknown_0x76D7:
 INCBIN "baserom.gbc", $76D7, $8000 - $76D7
 
 SECTION "Bank02", ROMX, BANK[$02]
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x047B
 	dw Logged_0x8024
@@ -8583,7 +8583,7 @@ Logged_0x8024:
 	pop af
 	ld [$C08E],a
 	ld [rRAMB+$100],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ld a,[$CA06]
 	cp $C8
@@ -8821,7 +8821,7 @@ Logged_0x8229:
 
 Logged_0x8247:
 	ld a,[wGameState]
-	cp $02
+	cp GAME_STATE_LEVEL
 	ret nz
 	ld hl,$CED4
 	ld a,[hl]
@@ -8851,12 +8851,12 @@ Logged_0x8247:
 	ld hl,wGameState
 	inc [hl]
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ld a,[$CA3D]
 	bit 1,a
 	ret z
 	ld a,$04
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x829D:
@@ -8883,19 +8883,19 @@ Logged_0x82B8:
 Logged_0x82BA:
 	set 2,[hl]
 	ld hl,wGameState
-	ld [hl],$06
+	ld [hl],GAME_STATE_MAP_RELOAD
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x82C6:
 	ld a,[$CEDA]
 	and a
 	jr z,Logged_0x82D8
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	ld [$CED5],a
 	ld a,$07
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x82D8:
@@ -8939,12 +8939,12 @@ Logged_0x8308:
 	ld [$CED9],a
 	ld a,$01
 	ld [$CED6],a
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	ld [$CED5],a
-	ld a,$04
+	ld a,GAME_STATE_PAUSE
 	ld [wGameState],a
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x8331:
@@ -9113,12 +9113,12 @@ Logged_0x846E:
 	ld [$D510],a
 	pop af
 	ld [rSVBK],a
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	ld [$CED5],a
 	ld hl,wGameState
-	ld [hl],$05
+	ld [hl],GAME_STATE_GOLF
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x849D:
@@ -9294,7 +9294,7 @@ Logged_0x85A7:
 	xor a
 	ld [$CA8A],a
 	ld a,$02
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ld a,$87
 	ld [rLCDC],a
 	ret
@@ -9455,7 +9455,7 @@ Logged_0x8739:
 	ld [$CEDA],a
 	ld [$CA73],a
 	ld a,[$CED5]
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x8747:
@@ -36985,7 +36985,7 @@ Logged_0x21007:
 	ld a,$32
 	ld [$FF00+$B6],a
 	call Logged_0x20A63
-	ld a,$08
+	ld a,GAME_STATE_LEVEL_SLOW
 	ld [wGameState],a
 	xor a
 	ld [$CEE5],a
@@ -109017,7 +109017,7 @@ Logged_0x8038A:
 	ld [hl],a
 	ret
 
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x047B
 	dw Logged_0x803F9
@@ -109154,20 +109154,20 @@ Logged_0x8048A:
 	xor a
 	ld [$D025],a
 	ld a,$09
-	ld [$C09C],a
+	ld [wGameSubState],a
 	call Logged_0x803E6
 	ret
 
 Logged_0x80497:
 	call Logged_0x804D4
 	ld a,$05
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x804A0:
 	call Logged_0x804D4
 	ld a,$11
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x804A9:
@@ -109186,7 +109186,7 @@ Logged_0x804B9:
 	ld [$D012],a
 	ld [$D01D],a
 	ld a,$20
-	ld [$C09C],a
+	ld [wGameSubState],a
 	call Logged_0x803E6
 	ret
 
@@ -109217,7 +109217,7 @@ Unknown_0x804EC:
 	ld a,[$C094]
 	bit 0,a
 	ret z
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -109614,7 +109614,7 @@ Logged_0x80821:
 	ld [$D013],a
 	ld a,$E7
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -109707,7 +109707,7 @@ Logged_0x80915:
 
 Logged_0x80917:
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -110354,7 +110354,7 @@ Logged_0x80D92:
 	bit 1,a
 	ret z
 	pop hl
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ld a,$FF
 	ld [$FF00+$B5],a
@@ -110406,7 +110406,7 @@ Logged_0x80DE0:
 	bit 3,a
 	ret z
 	ld a,$16
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Unknown_0x80DF3:
@@ -110453,13 +110453,13 @@ Logged_0x80E33:
 	ld a,[$C093]
 	bit 1,a
 	jr nz,Unknown_0x80E3F
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
 Unknown_0x80E3F:
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x80E45:
@@ -111050,12 +111050,12 @@ Logged_0x81215:
 
 Logged_0x81234:
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x8123A:
 	ld a,$1E
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x81240:
@@ -111073,7 +111073,7 @@ Logged_0x81240:
 	and a
 	jr z,Logged_0x81269
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ld hl,wGameState
 	inc [hl]
 	scf
@@ -111089,7 +111089,7 @@ Logged_0x81269:
 	ld a,$E3
 	ld [$FF00+$B6],a
 	ld a,$1A
-	ld [$C09C],a
+	ld [wGameSubState],a
 	scf
 	ret
 
@@ -112064,7 +112064,7 @@ Logged_0x81923:
 	ld a,$00
 	ld [$FF00+$B6],a
 	ld a,$04
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x81931:
@@ -112082,14 +112082,14 @@ Logged_0x81931:
 	ld a,$5A
 	cp b
 	jr z,Logged_0x81957
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	call Logged_0x803E6
 	ret
 
 Logged_0x81957:
 	ld a,$23
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x8195D:
@@ -113113,7 +113113,7 @@ Logged_0x82369:
 	ld a,[$D00D]
 	ld [$CEE3],a
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	xor a
 	ld hl,$D051
 	ld [hld],a
@@ -113139,7 +113139,7 @@ Logged_0x8238D:
 	ld a,$04
 	ld [hl],a
 	ld a,$0C
-	ld [$C09C],a
+	ld [wGameSubState],a
 
 Logged_0x8239A:
 	call Logged_0x824EA
@@ -113182,7 +113182,7 @@ Unknown_0x823BF:
 	ld [$D013],a
 	ld [$D014],a
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 
 Unknown_0x823E2:
 	call Logged_0x824EA
@@ -114595,7 +114595,7 @@ Unknown_0x84A8E:
 INCBIN "baserom.gbc", $84A8E, $84A97 - $84A8E
 
 Logged_0x84A97:
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	cp $0B
 	jr nz,Logged_0x84AAE
 	ld a,[$C094]
@@ -116587,7 +116587,7 @@ Logged_0x9A42B:
 	ld [hl],b
 	ld a,$8F
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -116764,7 +116764,7 @@ Logged_0x9A625:
 	ld a,$00
 	ld [$FF00+$B6],a
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x9A646:
@@ -116827,7 +116827,7 @@ Unknown_0x9A68F:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ld a,$0C
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x9A6A9:
@@ -116942,7 +116942,7 @@ Logged_0x9A75C:
 	ld a,$EB
 	ld [$FF00+$B6],a
 	ld a,$0C
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x9A76A:
@@ -117630,7 +117630,7 @@ Logged_0x9C067:
 	ld [rLCDC],a
 	xor a
 	ld [$D800],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -119225,7 +119225,7 @@ Logged_0x9CD11:
 	jp Logged_0x9CD0A
 
 Logged_0x9CD16:
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ld a,$FF
 	ld [$FF00+$B5],a
@@ -128314,7 +128314,7 @@ Logged_0xACC8F:
 	ld [rLCDC],a
 	xor a
 	ld [$D800],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -128583,7 +128583,7 @@ Logged_0xACE2B:
 	ld a,$01
 	ld [$D14C],a
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	scf
 	ret
 
@@ -128904,7 +128904,7 @@ Logged_0xAD01D:
 	ld a,$00
 	ld [$FF00+$B6],a
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ld hl,wGameState
 	inc [hl]
 	scf
@@ -130337,7 +130337,7 @@ INCBIN "baserom.gbc", $AD939, $AD9B2 - $AD939
 	call Logged_0xAC528
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -130602,7 +130602,7 @@ Logged_0xADC1B:
 	ld a,$01
 	ld [$D14C],a
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	scf
 	ret
 
@@ -130847,7 +130847,7 @@ Logged_0xADD93:
 	ld a,$1A
 	ld [$D00F],a
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ld hl,wGameState
 	inc [hl]
 	ret
@@ -131044,7 +131044,7 @@ Logged_0xADF97:
 	ret
 
 Logged_0xADF9E:
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -133402,7 +133402,7 @@ Logged_0xAF014:
 	ld [rLCDC],a
 	xor a
 	ld [$D800],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -133702,7 +133702,7 @@ Logged_0xAF353:
 	ld a,[$D014]
 	cp $3C
 	ret c
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -148482,7 +148482,7 @@ Unknown_0xD2871:
 INCBIN "baserom.gbc", $D2871, $D4000 - $D2871
 
 SECTION "Bank35", ROMX, BANK[$35]
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x047B
 	dw Logged_0xD402A
@@ -148722,7 +148722,7 @@ Logged_0xD41A6:
 Logged_0xD41B2:
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -148820,7 +148820,7 @@ Logged_0xD4252:
 
 Logged_0xD425B:
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0xD4261:
@@ -148925,7 +148925,7 @@ Logged_0xD4330:
 Logged_0xD4343:
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -149075,7 +149075,7 @@ Logged_0xD43E6:
 	ld [$C0E8],a
 	ld a,$3C
 	ld [$CEE5],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -149161,7 +149161,7 @@ Logged_0xD44DC:
 	ld a,$F0
 	ld [hl],a
 	call Logged_0x145A
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -149196,7 +149196,7 @@ Unknown_0xD4507:
 	ld [$FF00+$B5],a
 	ld a,$3A
 	ld [$FF00+$B6],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -149292,7 +149292,7 @@ Logged_0xD45E1:
 	ld [$CEE5],a
 	ld a,$02
 	ld [$CEE6],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	ld [hl],$0E
 	ret
 
@@ -149971,7 +149971,7 @@ SECTION "Bank36", ROMX, BANK[$36]
 
 LoggedData_0xD8000:
 INCBIN "baserom.gbc", $D8000, $DB277 - $D8000
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x047B
 	dw Logged_0xDB29B
@@ -150050,7 +150050,7 @@ Logged_0xDB29B:
 	ld [rLCDC],a
 	ld a,$40
 	ld [$CEE5],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -150138,7 +150138,7 @@ Logged_0xDB38A:
 	ld [hli],a
 	ld a,$E2
 	ld [hl],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 
 Logged_0xDB3A9:
@@ -150191,7 +150191,7 @@ Logged_0xDB3E4:
 	ld a,[$D520]
 	and a
 	ret z
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -150318,7 +150318,7 @@ Unknown_0xDBBF8:
 INCBIN "baserom.gbc", $DBBF8, $DC000 - $DBBF8
 
 SECTION "Bank37", ROMX, BANK[$37]
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x0474
 	dw Logged_0xDC01E
@@ -150373,7 +150373,7 @@ Logged_0xDC01E:
 	xor a
 	ld [$CEE5],a
 	ld [$D51D],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -150395,11 +150395,11 @@ Logged_0xDC08C:
 	and $07
 	jr nz,Logged_0xDC0CF
 	call Logged_0x06FA
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	cp $03
 	jr z,Logged_0xDC0CF
 	ld a,$03
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ld hl,$D51D
 	inc [hl]
 	ld a,[hl]
@@ -150445,10 +150445,10 @@ Logged_0xDC0CF:
 	ld [$C186],a
 	ld hl,$CA3D
 	set 1,[hl]
-	ld a,$04
+	ld a,GAME_STATE_PAUSE
 	ld [wGameState],a
 	ld a,$28
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0xDC0F4:
@@ -152407,7 +152407,7 @@ Unknown_0x15EE8D:
 INCBIN "baserom.gbc", $15EE8D, $160000 - $15EE8D
 
 SECTION "Bank58", ROMX, BANK[$58]
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x047B
 	dw Logged_0x160028
@@ -152510,7 +152510,7 @@ Logged_0x160028:
 	ld [$CEE5],a
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -152622,7 +152622,7 @@ Logged_0x16015F:
 Logged_0x160187:
 	xor a
 	ld [$D51D],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -152746,7 +152746,7 @@ Logged_0x160226:
 	ld [hl],a
 	ld a,$10
 	ld [$CEE5],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	jp Logged_0x1601E3
 
@@ -152803,7 +152803,7 @@ Logged_0x16029C:
 	call Logged_0x1603BE
 	ld a,$82
 	ld [$CEE4],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 
 Logged_0x1602CB:
@@ -152839,7 +152839,7 @@ Logged_0x1602EE:
 	call Logged_0x17EC
 	call Logged_0x03B9
 	call Logged_0x1603CB
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -154864,7 +154864,7 @@ Unknown_0x1C5E07:
 INCBIN "baserom.gbc", $1C5E07, $1C8000 - $1C5E07
 
 SECTION "Bank72", ROMX, BANK[$72]
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x047B
 	dw Logged_0x1C8020
@@ -154963,7 +154963,7 @@ Logged_0x1C80A5:
 	ld [$C085],a
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -155393,7 +155393,7 @@ Logged_0x1C83ED:
 
 Logged_0x1C83F7:
 	ld a,$04
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Unknown_0x1C83FD:
@@ -155430,7 +155430,7 @@ Unknown_0x1C8420:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1C8439:
@@ -155492,7 +155492,7 @@ Logged_0x1C8478:
 	ld [$C085],a
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -155578,7 +155578,7 @@ Logged_0x1C8530:
 
 Logged_0x1C8538:
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1C853E:
@@ -155605,7 +155605,7 @@ Logged_0x1C8556:
 	ld hl,$DC58
 	call Logged_0x2CA7
 	jp Logged_0x03B9
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x047B
 	dw Logged_0x1C8586
@@ -155672,7 +155672,7 @@ Logged_0x1C85B9:
 	ld [$C085],a
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -155823,7 +155823,7 @@ Logged_0x1C86DD:
 	call Logged_0x1C882B
 	call Logged_0x1C86F8
 	call Logged_0x03B9
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	cp $08
 	jp nz,Logged_0x1C9FAE
 	xor a
@@ -156020,7 +156020,7 @@ Unknown_0x1C8861:
 
 Logged_0x1C8878:
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1C887E:
@@ -156146,7 +156146,7 @@ Unknown_0x1C8933:
 	ld [$FF00+$B6],a
 	call Unknown_0x1C8944
 	ld a,$04
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Unknown_0x1C8944:
@@ -156226,7 +156226,7 @@ Logged_0x1C8976:
 	ld [$FF00+$B2],a
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -158614,12 +158614,12 @@ Logged_0x1C9A92:
 	ld a,$01
 	ld [$CAC1],a
 	ld a,$0A
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Unknown_0x1C9ABC:
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Unknown_0x1C9AC2:
@@ -158656,7 +158656,7 @@ Unknown_0x1C9ADC:
 	ld hl,$D802
 	inc [hl]
 	ld a,$04
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Unknown_0x1C9B00:
@@ -158790,7 +158790,7 @@ Logged_0x1C9BE5:
 
 Logged_0x1C9BF7:
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1C9BFC:
@@ -158825,7 +158825,7 @@ Logged_0x1C9C33:
 	ld a,$E3
 	ld [$FF00+$B6],a
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1C9C40:
@@ -158876,7 +158876,7 @@ Unknown_0x1C9C82:
 
 Unknown_0x1C9C99:
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Unknown_0x1C9C9E:
@@ -166909,7 +166909,7 @@ Unknown_0x1EE04D:
 INCBIN "baserom.gbc", $1EE04D, $1F0000 - $1EE04D
 
 SECTION "Bank7C", ROMX, BANK[$7C]
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x0474
 	dw Logged_0x1F0087
@@ -166972,7 +166972,7 @@ SECTION "Bank7C", ROMX, BANK[$7C]
 	dw Unknown_0x028D
 	call Logged_0x08E6
 	ld hl,wGameState
-	ld a,$04
+	ld a,GAME_STATE_PAUSE
 	ld [hli],a
 	ld [hl],$01
 	jr Logged_0x1F0099
@@ -167292,7 +167292,7 @@ Logged_0x1F0290:
 	call Logged_0x1F0940
 	ld a,$8F
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -167357,7 +167357,7 @@ Logged_0x1F02E5:
 	jr z,Logged_0x1F0331
 	cp $02
 	jp z,Logged_0x16D0
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -167368,7 +167368,7 @@ Logged_0x1F0331:
 	ld a,$01
 	ld [$C09A],a
 	ld a,$08
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1F033C:
@@ -167390,7 +167390,7 @@ Logged_0x1F033C:
 	call Logged_0x161A
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -167436,7 +167436,7 @@ Logged_0x1F0370:
 	ld [hl],$64
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -167461,7 +167461,7 @@ Logged_0x1F03D1:
 Logged_0x1F03F1:
 	xor a
 	ld [$CEE4],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -167800,7 +167800,7 @@ Logged_0x1F03FA:
 	ld [$CEE5],a
 	ld a,$02
 	ld [$CEE6],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -167819,7 +167819,7 @@ Logged_0x1F06F2:
 	xor a
 	ld [$CEE5],a
 	ld [$CEE6],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -167870,7 +167870,7 @@ Logged_0x1F0701:
 	ld [hl],$64
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -168021,7 +168021,7 @@ Logged_0x1F0768:
 	ld [$CEE6],a
 	ld a,$87
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -168039,28 +168039,28 @@ Logged_0x1F08AF:
 	ld [$C09A],a
 	ld a,$E7
 	ld [rLCDC],a
-	ld a,$01
+	ld a,GAME_STATE_MAP
 	ld [wGameState],a
 	ld a,[$CED5]
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1F08D8:
 	xor a
 	ld [$C09A],a
 	ld hl,wGameState
-	ld [hl],$09
+	ld [hl],GAME_STATE_CREDITS
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1F08E6:
 	xor a
 	ld [$C09A],a
 	ld hl,wGameState
-	ld [hl],$0C
+	ld [hl],GAME_STATE_GAMEOVER
 	xor a
-	ld [$C09C],a
+	ld [wGameSubState],a
 	ret
 
 Logged_0x1F08F4:
@@ -170236,7 +170236,7 @@ Unknown_0x1F6AF3:
 INCBIN "baserom.gbc", $1F6AF3, $1F8000 - $1F6AF3
 
 SECTION "Bank7E", ROMX, BANK[$7E]
-	ld a,[$C09C]
+	ld a,[wGameSubState]
 	rst JumpList
 	dw Logged_0x0474
 	dw Logged_0x1F8022
@@ -170461,7 +170461,7 @@ Logged_0x1F8185:
 	call Logged_0x03B9
 	ld a,$8F
 	ld [rLCDC],a
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 
@@ -170568,7 +170568,7 @@ Logged_0x1F824C:
 	xor a
 	ld [$D50D],a
 	call Logged_0x1795
-	ld hl,$C09C
+	ld hl,wGameSubState
 	inc [hl]
 	ret
 

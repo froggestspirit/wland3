@@ -1,1 +1,19 @@
-wGameState EQU $C09B;1 = map, 2 = level, 4 = pause
+
+wGameState              EQU $C09B
+GAME_STATE_TITLE        EQU 0
+GAME_STATE_MAP          EQU 1
+GAME_STATE_LEVEL        EQU 2
+GAME_STATE_CLEAR        EQU 3
+GAME_STATE_PAUSE        EQU 4
+GAME_STATE_GOLF         EQU 5
+GAME_STATE_MAP_RELOAD   EQU 6;slower fade and changes day/night
+GAME_STATE_TUTORIAL     EQU 7
+GAME_STATE_LEVEL_SLOW   EQU 8
+GAME_STATE_CREDITS      EQU 9
+GAME_STATE_GOLF_MENU    EQU 10;minigame menu (course select)
+GAME_STATE_GBC_ONLY     EQU 11
+GAME_STATE_GAMEOVER     EQU 12
+GAME_STATE_PERFECT      EQU 13
+GAME_STATE_LANGUAGE     EQU 14
+
+wGameSubState           EQU $C09C
