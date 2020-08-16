@@ -4,19 +4,19 @@ SECTION "bank00", ROM0
 
 SECTION "rst00", ROM0[$00]
 	jp Logged_0x015E
-	db 0,0,0,0,0
+	ds $0008 - @, $00
 
 SECTION "rst08", ROM0[$08]
-	db 0,0,0,0,0,0,0,0
+	ds $0010 - @, $00
 
 SECTION "rst10", ROM0[$10]
-	db 0,0,0,0,0,0,0,0
+	ds $0018 - @, $00
 
 SECTION "rst18", ROM0[$18]
-	db 0,0,0,0,0,0,0,0
+	ds $0020 - @, $00
 
 SECTION "rst20", ROM0[$20]
-	db 0,0,0,0,0,0,0,0
+	ds $0028 - @, $00
 
 SECTION "rst28", ROM0[$28]
 JumpList::
@@ -31,26 +31,26 @@ JumpList::
 SECTION "rst30", ROM0[$30]
 	ld l,a
 	jp hl
-	db 0,0,0,0,0,0
+	ds $0038 - @, $00
 
 SECTION "rst38", ROM0[$38]
-	db 0,0,0,0,0,0,0,0
+	ds $0040 - @, $00
 
 SECTION "vblankInt", ROM0[$40]
 	jp Logged_0x0061
-	db 0,0,0,0,0
+	ds $0048 - @, $00
 
 SECTION "lcdstatInt", ROM0[$48]
 	jp $C400
-	db 0,0,0,0,0
+	ds $0050 - @, $00
 
 SECTION "timerInt", ROM0[$50]
 	reti
-	db 0,0,0,0,0,0,0
+	ds $0058 - @, $00
 
 SECTION "serialInt", ROM0[$58]
 	reti
-	db 0,0,0,0,0,0,0
+	ds $0060 - @, $00
 
 SECTION "joypadInt", ROM0[$60]
 	reti
@@ -91,13 +91,7 @@ Logged_0x0095:
 	pop bc
 	pop af
 	reti
-	db 0,0,0,0,0,0
-	db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-	db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-	db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-	db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-	db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-	db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+	ds $0100 - @, $00
 
 SECTION "start", ROM0[$100]
 	nop
@@ -6032,8 +6026,7 @@ Logged_0x3FB5:
 	ld b,a
 	jp Logged_0x3F54
 
-UnknownData_0x3FC3:
-INCBIN "baserom.gbc", $3FC3, $4000 - $3FC3
+	ds $4000 - @, $00
 
 SECTION "Bank01", ROMX, BANK[$01]
 
