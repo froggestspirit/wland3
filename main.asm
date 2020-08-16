@@ -417,11 +417,11 @@ Logged_0x0354:
 
 RAMCode_0x0360:
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$CC
-	call $FFE8 ;Unknown bank
+	call $FFE8
 	ret
 
 Logged_0x0370:
@@ -1523,11 +1523,11 @@ RAMCode_0x0A9E:
 	push af
 	ld a,$00
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	call $4000
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x0AB5:
@@ -4544,15 +4544,15 @@ Logged_0x2C18:
 
 Logged_0x2C30:
 	ld a,h
-	ld [$FF00+$51],a
+	ld [rHDMA1],a
 	ld a,l
-	ld [$FF00+$52],a
+	ld [rHDMA2],a
 	ld a,[$DC11]
-	ld [$FF00+$53],a
+	ld [rHDMA3],a
 	ld a,[$DC12]
-	ld [$FF00+$54],a
+	ld [rHDMA4],a
 	ld a,[$DC13]
-	ld [$FF00+$55],a
+	ld [rHDMA5],a
 	ret
 
 Logged_0x2C46:
@@ -7509,7 +7509,7 @@ RAMCode_0x49E7:
 	push af
 	ld a,$01
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$CEE4]
 	bit 7,a
 	jr z,.done
@@ -7534,7 +7534,7 @@ RAMCode_0x49E7:
 .done
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$C083]
 	ld [rSCY],a
 	ld a,[$C085]
@@ -8184,7 +8184,7 @@ RAMCode_0x4DEB:
 	dec a
 	jr z,Unknown_0x4E11
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$98E5
 	ld b,$0D
 	ld a,$07
@@ -8197,7 +8197,7 @@ RAMCode_0x4DEB:
 
 Unknown_0x4E11:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$98E5
 	ld b,$0D
 	ld a,$06
@@ -8213,11 +8213,11 @@ Unknown_0x4E29:
 
 Unknown_0x4E2E:
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$CC
-	call $FFE8 ;Unknown bank
+	call $FFE8
 	ret
 
 Logged_0x4E3E:
@@ -110103,28 +110103,28 @@ Logged_0x80BF9:
 
 RAMCode_0x80C05:
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$D094]
-	ld [$FF00+$4A],a
+	ld [rWY],a
 	ld a,[$D095]
 	add a,$07
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld b,$76
 	ld a,[$C5FF]
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 
 Unknown_0x80C2C:
 	call Unknown_0x80C2C
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld hl,$D0D0
 	ld a,[hl]
 	and a
@@ -110168,7 +110168,7 @@ Unknown_0x80C5B:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld hl,$D0B0
 	ld a,[hl]
 	and a
@@ -110199,7 +110199,7 @@ Unknown_0x80C84:
 	jr z,Unknown_0x80CA2
 	ld b,a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	xor a
 	ld [hli],a
 	ld a,b
@@ -110221,11 +110221,11 @@ Unknown_0x80C84:
 Unknown_0x80CA2:
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x80CB1:
 	ld hl,RAMCode_0x80CBD
@@ -110236,11 +110236,11 @@ Logged_0x80CB1:
 
 RAMCode_0x80CBD:
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$D060]
 	and a
 	jr z,Unknown_0x80CFF
@@ -110260,7 +110260,7 @@ RAMCode_0x80CBD:
 	ld a,$1D
 	ld [$FF00+c],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld c,$51
 	ld a,$D2
 	ld [$FF00+c],a
@@ -110288,31 +110288,31 @@ Unknown_0x80CFF:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	call Logged_0x3C03
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 
 Unknown_0x80D1B:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld b,$76
 	ld a,[$C5FF]
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	call Logged_0x1D8C2C
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld b,$21
 	ld a,[$C5FF]
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$D0D0]
 	and a
 	call nz,Logged_0x854CC
@@ -110321,9 +110321,9 @@ Unknown_0x80D1B:
 	call nz,Logged_0x854C7
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 UnknownData_0x80D5C:
 INCBIN "baserom.gbc", $80D5C, $80D6C - $80D5C
@@ -115095,26 +115095,26 @@ Logged_0x84D76:
 
 RAMCode_0x84D82:
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$D094]
-	ld [$FF00+$4A],a
+	ld [rWY],a
 	ld a,[$D095]
 	add a,$07
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld b,$76
 	ld a,[$C5FF]
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	call Logged_0x1D8C2C
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld hl,$C100
 	ld c,$68
 	ld a,$80
@@ -115142,9 +115142,9 @@ Unknown_0x84DBE:
 	dec b
 	jr nz,Unknown_0x84DBE
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 LoggedData_0x84DD9:
 INCBIN "baserom.gbc", $84DD9, $84E43 - $84DD9
@@ -116640,15 +116640,15 @@ Logged_0x9A564:
 
 RAMCode_0x9A570:
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$CC
-	jp $FFE8 ;Unknown ban
+	jp $FFE8
 
 Logged_0x9A586:
 	xor a
@@ -119166,15 +119166,15 @@ Logged_0x9CC9C:
 
 RAMCode_0x9CCA8:
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$D022]
-	ld [$FF00+$4A],a
+	ld [rWY],a
 	ld a,[$D023]
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld a,[$D800]
 	and a
 	jr z,Unknown_0x9CCCF
@@ -119190,7 +119190,7 @@ Unknown_0x9CCCF:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$D0D0]
 	and a
 	call nz,Logged_0x854CC
@@ -119199,11 +119199,11 @@ Unknown_0x9CCCF:
 	call nz,Logged_0x854C7
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x9CCF9:
 	ld [hl],d
@@ -128348,11 +128348,11 @@ Logged_0xACCB0:
 
 RAMCode_0xACCBC:
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$D079]
 	and a
 	jr z,Unknown_0xACCFF
@@ -128363,9 +128363,9 @@ RAMCode_0xACCBC:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$D158]
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$D0B0
 	ld a,[hli]
 	ld c,$51
@@ -128384,7 +128384,7 @@ RAMCode_0xACCBC:
 	ld [$FF00+c],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 
 Unknown_0xACCFF:
 	ld hl,$DA88
@@ -128399,13 +128399,13 @@ Unknown_0xACCFF:
 	ld a,[hli]
 	ld [de],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[hl]
 	ld [de],a
 
 Unknown_0xACD13:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$D0D0
 	ld a,[hl]
 	and a
@@ -128425,7 +128425,7 @@ Unknown_0xACD13:
 
 Unknown_0xACD35:
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0xACD3A:
 	call Logged_0xACD51
@@ -130422,11 +130422,11 @@ Logged_0xADAA0:
 
 RAMCode_0xADAAC:
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$D079]
 	and a
 	jr z,Unknown_0xADAEA
@@ -130437,7 +130437,7 @@ RAMCode_0xADAAC:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld hl,$D0B0
 	ld a,[hli]
 	ld c,$51
@@ -130456,13 +130456,13 @@ RAMCode_0xADAAC:
 	ld [$FF00+c],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 
 Unknown_0xADAEA:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0xADAF2:
 	ld hl,$5DC9
@@ -149540,11 +149540,11 @@ Logged_0xD4764:
 
 RAMCode_0xD4770:
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$971E
 	ld c,[hl]
 	ld b,$0F
@@ -149574,7 +149574,7 @@ Unknown_0xD4798:
 	jr nz,Unknown_0xD4798
 	ld [hl],c
 	ld a,$CC
-	call $FFE8 ;Unknown bank
+	call $FFE8
 	ret
 
 Logged_0xD47A7:
@@ -149586,9 +149586,9 @@ Logged_0xD47A7:
 
 RAMCode_0xD47B3:
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$CEE4]
 	bit 7,a
 	jr z,Unknown_0xD47EB
@@ -149611,7 +149611,7 @@ RAMCode_0xD47B3:
 
 Unknown_0xD47D9:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$CE01
 	ld a,[hli]
 	ld d,a
@@ -149626,7 +149626,7 @@ Unknown_0xD47E6:
 
 Unknown_0xD47EB:
 	ld a,$CC
-	call $FFE8 ;Unknown bank
+	call $FFE8
 	ret
 
 Logged_0xD47F1:
@@ -152997,9 +152997,9 @@ Logged_0x160439:
 
 RAMCode_0x160445:
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$CEE4]
 	bit 7,a
 	jr z,Unknown_0x1604AB
@@ -153009,7 +153009,7 @@ RAMCode_0x160445:
 	dec a
 	jr z,Unknown_0x160499
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$CCF0
 	ld a,[hli]
 	ld e,[hl]
@@ -153018,7 +153018,7 @@ RAMCode_0x160445:
 	ld b,$0D
 	call MemCopy_DE_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$CCF0
 	ld a,[hli]
 	ld l,[hl]
@@ -153059,7 +153059,7 @@ Unknown_0x1604A6:
 
 Unknown_0x1604AB:
 	ld a,$CC
-	call $FFE8 ;Unknown bank
+	call $FFE8
 	ret
 
 Logged_0x1604B1:
@@ -155536,11 +155536,11 @@ Logged_0x1C84E0:
 
 RAMCode_0x1C84EB:
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x1C84F9:
 	ld hl,$DC0A
@@ -159000,14 +159000,14 @@ Logged_0x1C9D1D:
 
 RAMCode_0x1C9D2B:
 	ld a,$01
-	ld [$FF00+$70],a
-	ld [$FF00+$4F],a
+	ld [rSVBK],a
+	ld [rVBK],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$DC25]
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld a,[$DC0C]
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$FF51
 	ld a,$D9
 	ld [hli],a
@@ -159020,9 +159020,9 @@ RAMCode_0x1C9D2B:
 	ld a,$03
 	ld [hl],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x1C9D5A:
 	ld hl,$DC0B
@@ -159069,17 +159069,17 @@ Logged_0x1C9E8D:
 
 RAMCode_0x1C9E98:
 	ld a,$01
-	ld [$FF00+$70],a
-	ld [$FF00+$4F],a
+	ld [rSVBK],a
+	ld [rVBK],a
 	ld a,$03
 	ld [$9945],a
 	ld a,[$DC0C]
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld [$DC02],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x1C9EB3:
 	ld hl,RAMCode_0x1C9EBE
@@ -159089,17 +159089,17 @@ Logged_0x1C9EB3:
 
 RAMCode_0x1C9EBE:
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
 	ld [$DC02],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$DC25]
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld a,[$DC0C]
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld a,[$DC0D]
-	ld [$2000],a
+	ld [rROMB0],a
 	ld hl,$FF51
 	ld a,[$DC11]
 	ld [hli],a
@@ -159111,7 +159111,7 @@ RAMCode_0x1C9EBE:
 	ld a,$7F
 	ld [hl],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x1C9EF1:
 	ld hl,RAMCode_0x1C9EFC
@@ -159121,16 +159121,16 @@ Logged_0x1C9EF1:
 
 RAMCode_0x1C9EFC:
 	ld a,$01
-	ld [$FF00+$70],a
-	ld [$FF00+$4F],a
+	ld [rSVBK],a
+	ld [rVBK],a
 	xor a
 	ld [$DC02],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$DC25]
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld a,[$DC0C]
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$FF51
 	ld a,$DB
 	ld [hli],a
@@ -159143,9 +159143,9 @@ RAMCode_0x1C9EFC:
 	ld a,$03
 	ld [hl],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x1C9F2E:
 	ld a,[$DC02]
@@ -159161,9 +159161,9 @@ Logged_0x1C9F36:
 
 RAMCode_0x1C9F41:
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$DC19]
 	add a,a
 	add a,$E0
@@ -159186,7 +159186,7 @@ RAMCode_0x1C9F41:
 	inc a
 	ld [$9928],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x1C9F7A:
 	ld hl,RAMCode_0x1C9F85
@@ -159196,13 +159196,13 @@ Logged_0x1C9F7A:
 
 RAMCode_0x1C9F85:
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
 	ld [$DC02],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$DC0D]
-	ld [$2000],a
+	ld [rROMB0],a
 	ld hl,$FF51
 	ld a,[$DC11]
 	ld [hli],a
@@ -159214,7 +159214,7 @@ RAMCode_0x1C9F85:
 	ld a,$7F
 	ld [hl],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x1C9FAE:
 	call Logged_0x1C9FBD
@@ -159255,11 +159255,11 @@ Logged_0x1C9FE1:
 
 RAMCode_0x1C9FEC:
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x1C9FFA:
 	ld a,$18
@@ -159275,19 +159275,19 @@ Logged_0x1C9FFA:
 
 RAMCode_0x1CA014:
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
 	ld [$DC02],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$DA00
 	call Logged_0x2C30
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x1CA033:
 	ld hl,RAMCode_0x1CA03E
@@ -159297,15 +159297,15 @@ Logged_0x1CA033:
 
 RAMCode_0x1CA03E:
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
 	ld [$DC02],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld hl,$DB00
 	call Logged_0x2C46
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 Logged_0x1CA056:
 	ld a,$18
@@ -159321,19 +159321,19 @@ Logged_0x1CA056:
 
 RAMCode_0x1CA070:
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
 	ld [$DC02],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$D900
 	call Logged_0x2C30
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$CC
-	jp $FFE8 ;Unknown bank
+	jp $FFE8
 
 LoggedData_0x1CA08F:
 INCBIN "baserom.gbc", $1CA08F, $1CA0CF - $1CA08F
@@ -168610,7 +168610,7 @@ Logged_0x1F0C6C:
 
 RAMCode_0x1F0C78:
 	ld a,$CC
-	call $FFE8 ;Unknown bank
+	call $FFE8
 	ret
 
 Logged_0x1F0C7E:
@@ -168629,17 +168629,17 @@ RAMCode_0x1F0C8A:
 	ld l,[hl]
 	ld h,a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld [hl],$05
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld [hl],$02
 	ld hl,$CEE4
 	res 7,[hl]
 
 .done
 	ld a,$CC
-	call $FFE8 ;Unknown bank
+	call $FFE8
 	ret
 
 	
@@ -178406,7 +178406,7 @@ RAMCode_0x1FB6C3:
 	jr z,.done
 	ld hl,$C1A1
 	ld a,[hli]
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld c,$51
 	ld a,[hli]
 	ld [$FF00+c],a
@@ -178414,7 +178414,7 @@ RAMCode_0x1FB6C3:
 	ld a,[hli]
 	ld [$FF00+c],a
 	ld a,[hli]
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	inc c
 	ld a,[hli]
 	ld [$FF00+c],a
@@ -178429,11 +178429,11 @@ RAMCode_0x1FB6C3:
 
 .done
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$CC
-	call $FFE8 ;Unknown bank
+	call $FFE8
 	ret
 
 Logged_0x1FB6F7:
