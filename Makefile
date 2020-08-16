@@ -1,10 +1,18 @@
-.PHONY: all compare
+rom := wl3.gbc
 
 objects := main.o
 
-all: wl3.gbc compare
-compare: baserom.gbc wl3.gbc
-	cmp $^
+### Build targets
+
+.PHONY: all clean compare
+
+all: $(rom) compare
+
+clean:
+	rm -f $(rom) $(objects)
+
+compare: $(rom)
+	md5sum -c rom.md5
 
 %.o: %.asm
 	rgbasm -o $@ $<
