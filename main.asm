@@ -1,4 +1,4 @@
-INCLUDE "macros.asm"
+INCLUDE "constants.asm"
 
 SECTION "bank00", ROM0
 
@@ -67,21 +67,21 @@ Logged_0x0061:
 	push af
 	ld a,[$C08E]
 	push af
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
-	ld a,[$FF00+$4F]
+	ld a,[rVBK]
 	push af
 	call $C200
 	pop af
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,$01
 	ld [$C091],a
 
@@ -105,12 +105,12 @@ SECTION "start", ROM0[$100]
 
 SECTION "Header", ROM0[$134]
 	db "WARIOLAND3",0,"AW8A";Title
-	db $C0;CGB only
+	db CART_COMPATIBLE_GBC;CGB only
 	db $30,$31;0x144 New Licensee Code
 	db $00;SGB Flag
-	db $1B;Cart Type
-	db $06;ROM Size
-	db $03;RAM Size
+	db CART_ROM_MBC5_RAM_BAT;Cart Type
+	db CART_ROM_16M;ROM Size
+	db CART_RAM_256K;RAM Size
 	db $01;Destination Code
 	db $33;Old Licensee Code
 	db $00;Version
@@ -145,38 +145,38 @@ Logged_0x016A:
 	dec c
 	jr nz,Logged_0x016A
 	xor a
-	ld [$FF00+$4F],a
-	ld [$FF00+$70],a
-	ld [$FF00+$56],a
+	ld [rVBK],a
+	ld [rSVBK],a
+	ld [rRP],a
 	ld a,$80
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 
 Logged_0x0179:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $94
 	jr nz,Logged_0x0179
 	ld a,$03
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	call Logged_0x1A64
 	call Logged_0x1A40
 	ld a,[$FF00+$FE]
 	and a
 	jr z,Logged_0x0195
 	xor a
-	ld [$FF00+$4F],a
-	ld [$FF00+$70],a
-	ld [$FF00+$56],a
+	ld [rVBK],a
+	ld [rSVBK],a
+	ld [rRP],a
 
 Logged_0x0195:
 	xor a
 	ld hl,$C000
 	ld bc,$0F00
-	call Logged_0x0425
+	call Fill_HL_A
 	call Logged_0x1A82
 	xor a
 	ld hl,$FE00
 	ld bc,$0100
-	call Logged_0x0425
+	call Fill_HL_A
 	ld hl,$FF80
 	ld b,$7C
 	call Logged_0x0420
@@ -184,18 +184,18 @@ Logged_0x0195:
 	call Logged_0x03AD
 	ld a,$01
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	xor a
-	ld [$3100],a
+	ld [rROMB1+$100],a
 	xor a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	xor a
-	ld [$FF00+$0F],a
-	ld [$FF00+$FF],a
-	ld [$FF00+$42],a
-	ld [$FF00+$43],a
-	ld [$FF00+$41],a
+	ld [rIF],a
+	ld [rIE],a
+	ld [rSCY],a
+	ld [rSCX],a
+	ld [rSTAT],a
 	ld c,$E8
 	ld b,$0E
 	ld hl,$0418
@@ -209,12 +209,12 @@ Logged_0x01DF:
 	call Logged_0x0334
 	call Logged_0x0A92
 	xor a
-	ld [$FF00+$0F],a
+	ld [rIF],a
 	ld a,$01
-	ld [$FF00+$FF],a
+	ld [rIE],a
 	call Logged_0x0341
 	ld a,$0A
-	ld [$0000],a
+	ld [rRAMG],a
 	ld a,$7C
 	ld [$FF00+$85],a
 	ld a,$AD
@@ -240,7 +240,7 @@ Logged_0x021D:
 	ld [$C094],a
 	call Logged_0x1AC0
 	ld a,$80
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	di
 	call Logged_0x0FAE
 	ei
@@ -353,10 +353,10 @@ UnknownData_0x02CF:
 INCBIN "baserom.gbc", $02CF, $0302 - $02CF
 
 Logged_0x0302:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D502
 	ld a,[hl]
 	and a
@@ -384,24 +384,24 @@ Logged_0x032F:
 
 Logged_0x0330:
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x0334:
-	ld hl,$0340
+	ld hl,RAMCode_0x0340
 	ld de,$C200
-	ld b,$01
-	call Logged_0x0466
+	ld b,Logged_0x0341 - RAMCode_0x0340
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x0340:
-INCBIN "baserom.gbc", $0340, $0341 - $0340
+RAMCode_0x0340:
+	ret
 
 Logged_0x0341:
 	ld a,$D9
 	ld [$C400],a
 	xor a
-	ld [$FF00+$0F],a
+	ld [rIF],a
 	ld hl,$FFFF
 	res 1,[hl]
 	ld hl,$FF41
@@ -409,22 +409,28 @@ Logged_0x0341:
 	ret
 
 Logged_0x0354:
-	ld hl,$0360
+	ld hl,RAMCode_0x0360
 	ld de,$C200
-	ld b,$10
-	call Logged_0x0466
+	ld b,Logged_0x0370 - RAMCode_0x0360
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x0360:
-INCBIN "baserom.gbc", $0360, $0370 - $0360
+RAMCode_0x0360:
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,$CC
+	call $FFE8 ;Unknown bank
+	ret
 
 Logged_0x0370:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x0370
 
 Logged_0x0376:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x0376
 	ret
@@ -448,23 +454,23 @@ Logged_0x038F:
 Logged_0x0391:
 	ld d,a
 	ld a,$01
-	ld [$FF00+$4F],a
-	ld hl,$9800
+	ld [rVBK],a
+	ld hl,_SCRN0
 	ld bc,$0400
 	xor a
-	call Logged_0x0425
-	ld [$FF00+$4F],a
+	call Fill_HL_A
+	ld [rVBK],a
 	ld a,d
-	ld hl,$9800
+	ld hl,_SCRN0
 	ld bc,$0400
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0x03AD:
 	ld a,$FF
-	ld hl,$9C00
+	ld hl,_SCRN1
 	ld bc,$0400
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0x03B9:
@@ -495,27 +501,27 @@ Logged_0x03D3:
 
 Logged_0x03D8:
 	ld a,$20
-	ld [$FF00+$00],a
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
+	ld [rP1],a
+	ld a,[rP1]
+	ld a,[rP1]
+	ld a,[rP1]
+	ld a,[rP1]
 	cpl
 	and $0F
 	swap a
 	ld b,a
 	ld a,$10
-	ld [$FF00+$00],a
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
-	ld a,[$FF00+$00]
+	ld [rP1],a
+	ld a,[rP1]
+	ld a,[rP1]
+	ld a,[rP1]
+	ld a,[rP1]
+	ld a,[rP1]
+	ld a,[rP1]
+	ld a,[rP1]
+	ld a,[rP1]
+	ld a,[rP1]
+	ld a,[rP1]
 	cpl
 	and $0F
 	or b
@@ -527,7 +533,7 @@ Logged_0x03D8:
 	ld a,c
 	ld [$C093],a
 	ld a,$30
-	ld [$FF00+$00],a
+	ld [rP1],a
 	ret
 
 LoggedData_0x0418:
@@ -539,22 +545,22 @@ Logged_0x0420:
 	jr nz,Logged_0x0420
 	ret
 
-Logged_0x0425:
+Fill_HL_A:;write a to [hl] bc times
 	push af
 	ld a,c
 	and a
-	jr z,Logged_0x042B
+	jr z,.skip
 	inc b
 
-Logged_0x042B:
+.skip
 	pop af
 
-Logged_0x042C:
+.fill
 	ld [hli],a
 	dec c
-	jr nz,Logged_0x042C
+	jr nz,.fill
 	dec b
-	jr nz,Logged_0x042C
+	jr nz,.fill
 	ret
 
 Logged_0x0434:
@@ -578,7 +584,7 @@ Logged_0x0443:
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,c
 	and a
 	jr z,Logged_0x0455
@@ -594,15 +600,15 @@ Logged_0x0455:
 	jr nz,Logged_0x0455
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
-Logged_0x0466:
+MemCopy_DE_HL:;len = b
 	ld a,[hli]
 	ld [de],a
 	inc de
 	dec b
-	jr nz,Logged_0x0466
+	jr nz,MemCopy_DE_HL
 	ret
 
 Logged_0x046D:
@@ -766,7 +772,7 @@ Logged_0x052D:
 	ld b,$07
 	ld de,$C200
 	ld b,$03
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ei
 	xor a
 	ld [$CED7],a
@@ -981,7 +987,7 @@ Logged_0x06DB:
 	ld hl,$C080
 	ld de,$C200
 	ld b,$03
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ei
 	xor a
 	ld [$CED7],a
@@ -1146,7 +1152,7 @@ Logged_0x0788:
 	ld hl,$C080
 	ld de,$C200
 	ld b,$03
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ei
 	xor a
 	ld [$CED7],a
@@ -1164,20 +1170,22 @@ Logged_0x088D:
 	ld hl,$C200
 	ld de,$C080
 	ld b,$03
-	call Logged_0x0466
-	ld hl,$08A6
+	call MemCopy_DE_HL
+	ld hl,RAMCode_0x08A6
 	ld de,$C200
-	ld b,$03
-	call Logged_0x0466
+	ld b,Logged_0x08A9 - RAMCode_0x08A6
+	call MemCopy_DE_HL
 	ei
 	ret
 
-LoggedData_0x08A6:
-INCBIN "baserom.gbc", $08A6, $08A9 - $08A6
+RAMCode_0x08A6:
+	jp Logged_0x08A9
+
+Logged_0x08A9:
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	call Logged_0x1A9A
 	call Logged_0x1AAD
 	ld a,$CC
@@ -1186,19 +1194,21 @@ INCBIN "baserom.gbc", $08A6, $08A9 - $08A6
 
 Logged_0x08BF:
 	di
-	ld hl,$08CD
+	ld hl,RAMCode_0x08CD
 	ld de,$C200
-	ld b,$03
-	call Logged_0x0466
+	ld b,Logged_0x08D0 - RAMCode_0x08CD
+	call MemCopy_DE_HL
 	ei
 	ret
 
-LoggedData_0x08CD:
-INCBIN "baserom.gbc", $08CD, $08D0 - $08CD
+RAMCode_0x08CD:
+	jp Logged_0x08D0
+
+Logged_0x08D0:
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	call Logged_0x19F3
 	call Logged_0x1A04
 	ld a,$CC
@@ -1206,65 +1216,65 @@ INCBIN "baserom.gbc", $08CD, $08D0 - $08CD
 	ret
 
 Logged_0x08E6:
-	ld a,[$FF00+$40]
+	ld a,[rLCDC]
 	bit 7,a
 	ret z
-	ld a,[$FF00+$FF]
+	ld a,[rIE]
 	ld [$C09E],a
 	res 0,a
-	ld [$FF00+$FF],a
+	ld [rIE],a
 
 Logged_0x08F4:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $91
 	jr nz,Logged_0x08F4
-	ld a,[$FF00+$40]
+	ld a,[rLCDC]
 	and $7F
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	xor a
-	ld [$FF00+$0F],a
+	ld [rIF],a
 	ld a,[$C09E]
-	ld [$FF00+$FF],a
+	ld [rIE],a
 	ret
 
-Logged_0x0909:
+Decompress_BC_HL:
 	ld a,[hli]
 	and a
-	jr z,Logged_0x0927
+	jr z,.done
 	bit 7,a
-	jr nz,Logged_0x091C
+	jr nz,.clearFlag;copy a sequence of bytes (len = a & $7F)
 	ld d,a
-	ld a,[hli]
+	ld a,[hli];copy this byte (number of times = d)
 	ld e,a
 
-Logged_0x0914:
+.sameByte
 	ld a,e
 	ld [bc],a
 	inc bc
 	dec d
-	jr nz,Logged_0x0914
-	jr Logged_0x0909
+	jr nz,.sameByte
+	jr Decompress_BC_HL
 
-Logged_0x091C:
+.clearFlag
 	and $7F
 	ld d,a
 
-Logged_0x091F:
+.sequentialBytes
 	ld a,[hli]
 	ld [bc],a
 	inc bc
 	dec d
-	jr nz,Logged_0x091F
-	jr Logged_0x0909
+	jr nz,.sequentialBytes
+	jr Decompress_BC_HL
 
-Logged_0x0927:
+.done
 	ret
 
 Logged_0x0928:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$D506]
 	ld c,a
 	ld a,[$C187]
@@ -1285,7 +1295,7 @@ Logged_0x0928:
 
 Logged_0x095A:
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x095E:
@@ -1306,7 +1316,7 @@ Logged_0x096D:
 	ld hl,$C080
 	ld de,$C200
 	ld b,$03
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ei
 	xor a
 	ld [$C187],a
@@ -1359,24 +1369,26 @@ Logged_0x09CB:
 	ld hl,$C200
 	ld de,$C080
 	ld b,$03
-	call Logged_0x0466
-	ld hl,$09E4
+	call MemCopy_DE_HL
+	ld hl,RAMCode_0x09E4
 	ld de,$C200
-	ld b,$03
-	call Logged_0x0466
+	ld b,Logged_0x09E7 - RAMCode_0x09E4
+	call MemCopy_DE_HL
 	ei
 	ret
 
-LoggedData_0x09E4:
-INCBIN "baserom.gbc", $09E4, $09E7 - $09E4
+RAMCode_0x09E4:
+	jp Logged_0x09E7
+
+Logged_0x09E7:
 	ld a,[$C083]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
-	ld a,[$FF00+$70]
+	ld [rSCX],a
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld de,$FFE0
 	ld a,[$D506]
 	and a
@@ -1391,13 +1403,13 @@ INCBIN "baserom.gbc", $09E4, $09E7 - $09E4
 
 Logged_0x0A0A:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[hl]
 	and $7F
 	or $0F
 	ld [hl],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld [hl],$7F
 	add hl,de
 	ld a,h
@@ -1414,13 +1426,13 @@ Logged_0x0A22:
 
 Logged_0x0A27:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[hl]
 	and $7F
 	or $0F
 	ld [hl],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$7F
 	ld [hli],a
 	ld a,l
@@ -1449,13 +1461,13 @@ Logged_0x0A49:
 
 Logged_0x0A52:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[hl]
 	and $7F
 	or $0F
 	ld [hl],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$7F
 	ld [hli],a
 	ld a,l
@@ -1475,13 +1487,13 @@ Logged_0x0A6F:
 
 Logged_0x0A73:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[hl]
 	and $7F
 	or $0F
 	ld [hl],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld [hl],$7F
 	add hl,de
 	ld a,h
@@ -1496,18 +1508,27 @@ Logged_0x0A8B:
 
 Logged_0x0A8E:
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x0A92:
-	ld hl,$0A9E
+	ld hl,RAMCode_0x0A9E
 	ld de,$FF80
-	ld b,$17
-	call Logged_0x0466
+	ld b,Logged_0x0AB5 - RAMCode_0x0A9E
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x0A9E:
-INCBIN "baserom.gbc", $0A9E, $0AB5 - $0A9E
+RAMCode_0x0A9E:
+	ld a,[$C5FF]
+	push af
+	ld a,$00
+	ld [$C5FF],a
+	ld [$2100],a
+	call $4000
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+	ret
 
 Logged_0x0AB5:
 	ld a,[$CEEF]
@@ -1517,12 +1538,12 @@ Logged_0x0AB5:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C5FF]
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$C0AD]
 	ld h,a
 	ld a,[$C0AE]
@@ -1530,10 +1551,10 @@ Logged_0x0AB5:
 	call Logged_0x0AEE
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ret
 
 Logged_0x0AEE:
@@ -1573,7 +1594,7 @@ Logged_0x0B0D:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x0B21:
 	jr Logged_0x0B08
@@ -1605,7 +1626,7 @@ Logged_0x0B32:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	jr Logged_0x0B2D
 
 Logged_0x0B48:
@@ -1613,12 +1634,12 @@ Logged_0x0B48:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C5FF]
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$C0AD]
 	ld h,a
 	ld a,[$C0AE]
@@ -1626,10 +1647,10 @@ Logged_0x0B48:
 	call Logged_0x0B7B
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ret
 
 Logged_0x0B7B:
@@ -1673,7 +1694,7 @@ Logged_0x0BA0:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x0BB4:
 	jr Logged_0x0B9B
@@ -1705,7 +1726,7 @@ Logged_0x0BC5:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	jr Logged_0x0BC0
 
 Logged_0x0BDB:
@@ -1781,17 +1802,19 @@ Logged_0x0C19:
 	ld a,l
 	ld [$CCF1],a
 	ret
+
+Logged_0x0C4C:
 	ld a,[$C1A0]
 	and a
 	jr nz,Logged_0x0C72
 	xor a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$C0BC
 	ld a,[$C083]
 	add a,[hl]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$CC
 	call $FFE8
 	ld hl,$CE6A
@@ -1801,7 +1824,7 @@ Logged_0x0C19:
 Logged_0x0C72:
 	ld hl,$C1A1
 	ld a,[hli]
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld c,$51
 	ld a,[hli]
 	ld [$FF00+c],a
@@ -1809,7 +1832,7 @@ Logged_0x0C72:
 	ld a,[hli]
 	ld [$FF00+c],a
 	ld a,[hli]
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	inc c
 	ld a,[hli]
 	ld [$FF00+c],a
@@ -1824,17 +1847,18 @@ Logged_0x0C72:
 	ld hl,$C0BC
 	ld a,[$C083]
 	add a,[hl]
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$CC
 	call $FFE8
 	xor a
 	ld [$CE00],a
 	ld [$CE69],a
 	ret
+
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$CE6A
 	ld bc,$CE35
 	jp $C800
@@ -2018,7 +2042,7 @@ Logged_0x0DB6:
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$CA7F]
 	ld h,a
 	ld a,[$CA80]
@@ -2034,7 +2058,7 @@ Logged_0x0DB6:
 	call Logged_0x0DF4
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x0DF4:
@@ -2112,6 +2136,7 @@ Logged_0x0E31:
 	and $0F
 	ld [$C19E],a
 	ret
+
 	ld a,[$CA81]
 	ld d,a
 	ld a,[$CA82]
@@ -2164,7 +2189,7 @@ Logged_0x0E8A:
 	push af
 	ld a,$30
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[hli]
 	ld h,[hl]
 	ld l,a
@@ -2188,7 +2213,7 @@ Logged_0x0E8A:
 	ld [$C0AD],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	push hl
 	ld a,[$CEEF]
 	and $3C
@@ -2211,7 +2236,7 @@ Logged_0x0EDB:
 	push af
 	ld a,$30
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[hli]
 	ld h,[hl]
 	ld l,a
@@ -2226,7 +2251,7 @@ Logged_0x0EDB:
 	ld [$C0AC],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	call Logged_0x0F13
 	ret
 
@@ -2238,12 +2263,12 @@ Logged_0x0F13:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C5FF]
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$C0AD]
 	ld d,a
 	ld a,[$C0AE]
@@ -2251,10 +2276,10 @@ Logged_0x0F13:
 	call Logged_0x0F4C
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ret
 
 Logged_0x0F4C:
@@ -2297,7 +2322,7 @@ Logged_0x0F6F:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x0F83:
 	jr Logged_0x0F6A
@@ -2332,70 +2357,70 @@ Logged_0x0F98:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	jr Logged_0x0F93
 
 Logged_0x0FAE:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x3F00
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x0FBC:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x3F06
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x0FCA:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x3F0C
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 UnknownData_0x0FD8:
 INCBIN "baserom.gbc", $0FD8, $0FE6 - $0FD8
 
 Logged_0x0FE6:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x3F18
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x0FF4:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x3F1E
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1002:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x3F24
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 UnknownData_0x1010:
@@ -2403,27 +2428,27 @@ INCBIN "baserom.gbc", $1010, $102C - $1010
 
 Logged_0x102C:
 	ld [$FF00+$AC],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$FF00+$AC]
 	call Logged_0x3F36
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 UnknownData_0x103E:
 INCBIN "baserom.gbc", $103E, $1062 - $103E
 
 Logged_0x1062:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x3F48
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1070:
@@ -2455,17 +2480,17 @@ Logged_0x1079:
 Logged_0x10A7:
 	ld hl,$C000
 	ld a,$80
-	ld [$FF00+$68],a
+	ld [rBCPS],a
 	ld b,$08
 	ld c,$69
 
 Logged_0x10B2:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x10B2
 
 Logged_0x10B8:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x10B8
 	ld a,[hli]
@@ -2488,17 +2513,17 @@ Logged_0x10B8:
 	jr nz,Logged_0x10B2
 	ld hl,$C058
 	ld a,$98
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld b,$04
 	ld c,$6B
 
 Logged_0x10DC:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x10DC
 
 Logged_0x10E2:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x10E2
 	ld a,[hli]
@@ -2657,16 +2682,16 @@ Logged_0x11F6:
 	ld a,$4E
 	ld [$FF00+$8E],a
 	call $FF80
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,h
 	ld [$D508],a
 	ld a,l
 	ld [$D507],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1246:
@@ -2752,10 +2777,10 @@ Logged_0x12C3:
 	ret
 
 Logged_0x12CD:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C083]
 	ld [$D500],a
 	ld a,[$C085]
@@ -2763,62 +2788,62 @@ Logged_0x12CD:
 	ld hl,$C000
 	ld de,$D280
 	ld b,$80
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
-	ld [$FF00+$4F],a
-	ld a,[$FF00+$70]
+	ld [rVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$04
-	ld [$FF00+$70],a
-	ld hl,$8000
+	ld [rSVBK],a
+	ld hl,_VRAM
 	ld de,$D000
 	ld bc,$1000
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$05
-	ld [$FF00+$70],a
-	ld hl,$9000
+	ld [rSVBK],a
+	ld hl,_VRAM+$1000
 	ld de,$D000
 	ld bc,$1000
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
-	ld a,[$FF00+$70]
+	ld [rVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$06
-	ld [$FF00+$70],a
-	ld hl,$8000
+	ld [rSVBK],a
+	ld hl,_VRAM
 	ld de,$D000
 	ld bc,$1000
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$07
-	ld [$FF00+$70],a
-	ld hl,$9000
+	ld [rSVBK],a
+	ld hl,_VRAM+$1000
 	ld de,$D000
 	ld bc,$1000
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x1351:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$D500]
 	ld [$C083],a
 	ld a,[$D501]
@@ -2826,69 +2851,69 @@ Logged_0x1351:
 	ld hl,$D280
 	ld de,$C000
 	ld b,$80
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
-	ld [$FF00+$4F],a
-	ld a,[$FF00+$70]
+	ld [rVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$04
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
-	ld de,$8000
+	ld de,_VRAM
 	ld bc,$1000
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$05
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
-	ld de,$9000
+	ld de,_VRAM+$1000
 	ld bc,$1000
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
-	ld a,[$FF00+$70]
+	ld [rVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$06
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
-	ld de,$8000
+	ld de,_VRAM
 	ld bc,$1000
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$07
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
-	ld de,$9000
+	ld de,_VRAM+$1000
 	ld bc,$1000
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x13D5:
 	call Logged_0x08E6
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$D50F]
 	ld [$C1AC],a
 	ld a,[$D510]
 	ld [$C1AD],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
 	ld [$C1AF],a
 	ld [$C1AE],a
@@ -2907,7 +2932,7 @@ Logged_0x13D5:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 
 Logged_0x141A:
 	ld hl,$C09B
@@ -2933,10 +2958,10 @@ Logged_0x142B:
 	ret
 
 Logged_0x1440:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$7C
 	ld [$FF00+$85],a
 	ld a,$7A
@@ -2945,7 +2970,7 @@ Logged_0x1440:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x145A:
@@ -3251,7 +3276,7 @@ Logged_0x161A:
 	push af
 	ld a,$0F
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 
 Logged_0x1632:
 	ld a,[$CA06]
@@ -3267,7 +3292,7 @@ Logged_0x1632:
 	ld [$FF00+$B1],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x164D:
@@ -3294,7 +3319,7 @@ Logged_0x165D:
 	push af
 	ld a,$0F
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld hl,$7E00
 	add hl,de
 	ld a,[hli]
@@ -3305,7 +3330,7 @@ Logged_0x165D:
 	ld [$FF00+$B1],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 LoggedData_0x168A:
@@ -3520,12 +3545,12 @@ Logged_0x17BE:
 	push af
 	ld a,$2A
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld hl,$6B5C
 	call Logged_0x0DF4
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x17EC:
@@ -3545,7 +3570,7 @@ Logged_0x17EC:
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$D51E]
 	ld h,a
 	ld a,[$D51F]
@@ -3553,7 +3578,7 @@ Logged_0x17EC:
 	call Logged_0x0DF4
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 UnknownData_0x1826:
@@ -3577,7 +3602,7 @@ INCBIN "baserom.gbc", $198B, $19F3 - $198B
 Logged_0x19F3:
 	ld hl,$C100
 	ld a,$80
-	ld [$FF00+$68],a
+	ld [rBCPS],a
 	ld b,$40
 	ld c,$69
 
@@ -3591,7 +3616,7 @@ Logged_0x19FE:
 Logged_0x1A04:
 	ld hl,$C140
 	ld a,$80
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld b,$40
 	ld c,$6B
 
@@ -3647,28 +3672,28 @@ Logged_0x1A39:
 	ret
 
 Logged_0x1A40:
-	ld a,[$FF00+$4D]
+	ld a,[rKEY1]
 	bit 7,a
 	ret nz
 	ld a,$01
-	ld [$FF00+$4D],a
-	ld a,[$FF00+$FF]
+	ld [rKEY1],a
+	ld a,[rIE]
 	push af
 	xor a
-	ld [$FF00+$FF],a
+	ld [rIE],a
 	ld a,$30
-	ld [$FF00+$00],a
+	ld [rP1],a
 	stop
 
 Logged_0x1A55:
-	ld a,[$FF00+$4D]
+	ld a,[rKEY1]
 	bit 7,a
 	jr z,Logged_0x1A55
 	xor a
-	ld [$FF00+$00],a
-	ld [$FF00+$0F],a
+	ld [rP1],a
+	ld [rIF],a
 	pop af
-	ld [$FF00+$FF],a
+	ld [rIE],a
 	ret
 
 Logged_0x1A64:
@@ -3676,32 +3701,32 @@ Logged_0x1A64:
 	and a
 	ret z
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	xor a
-	ld hl,$8000
+	ld hl,_VRAM
 	ld bc,$2000
-	call Logged_0x0425
+	call Fill_HL_A
 	xor a
-	ld [$FF00+$4F],a
-	ld hl,$8000
+	ld [rVBK],a
+	ld hl,_VRAM
 	ld bc,$2000
-	jp Logged_0x0425
+	jp Fill_HL_A
 
 Logged_0x1A82:
 	ld e,$01
 
 Logged_0x1A84:
 	ld a,e
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
 	ld hl,$D000
 	ld bc,$1000
-	call Logged_0x0425
+	call Fill_HL_A
 	inc e
 	bit 3,e
 	jr z,Logged_0x1A84
 	xor a
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1A9A:
@@ -3713,7 +3738,7 @@ Logged_0x1A9A:
 
 Logged_0x1AA3:
 	ld a,e
-	ld [$FF00+$68],a
+	ld [rBCPS],a
 	ld a,[$FF00+c]
 	ld [hli],a
 	inc e
@@ -3730,7 +3755,7 @@ Logged_0x1AAD:
 
 Logged_0x1AB6:
 	ld a,e
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld a,[$FF00+c]
 	ld [hli],a
 	inc e
@@ -3741,7 +3766,7 @@ Logged_0x1AB6:
 Logged_0x1AC0:
 	ld hl,$1827
 	ld a,$80
-	ld [$FF00+$68],a
+	ld [rBCPS],a
 	ld b,$40
 	ld c,$69
 
@@ -3755,7 +3780,7 @@ Logged_0x1ACB:
 Logged_0x1AD1:
 	ld hl,$1827
 	ld a,$80
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld b,$40
 	ld c,$6B
 
@@ -3778,7 +3803,7 @@ Logged_0x1AF6:
 	push af
 	ld a,$03
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	push hl
 	ld de,$C040
 	ld b,$10
@@ -3791,17 +3816,17 @@ Logged_0x1AF6:
 	call $FF80
 	pop hl
 	ld a,$80
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld b,$02
 	ld c,$6B
 
 Logged_0x1B28:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x1B28
 
 Logged_0x1B2E:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x1B2E
 	ld a,[hli]
@@ -3824,14 +3849,14 @@ Logged_0x1B2E:
 	jr nz,Logged_0x1B28
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x1B4F:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$CED4
 	ld a,[hl]
 	and $7F
@@ -3853,7 +3878,7 @@ Logged_0x1B4F:
 	push af
 	ld a,$26
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	push hl
 	ld de,$C060
 	ld a,c
@@ -3874,16 +3899,16 @@ Logged_0x1B4F:
 	pop hl
 	ld a,$A0
 	or c
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld c,$6B
 
 Logged_0x1BA0:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x1BA0
 
 Logged_0x1BA6:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x1BA6
 	ld a,[hli]
@@ -3904,16 +3929,16 @@ Logged_0x1BA6:
 	ld [$FF00+c],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1BC7:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$CED4
 	ld a,[hl]
 	and $7F
@@ -3935,7 +3960,7 @@ Logged_0x1BC7:
 	push af
 	ld a,$26
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld de,$C078
 	ld b,$08
 	ld a,$26
@@ -3947,9 +3972,9 @@ Logged_0x1BC7:
 	call $FF80
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1C13:
@@ -3966,16 +3991,16 @@ Logged_0x1C13:
 	add a,a
 	add a,a
 	or $80
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld c,$6B
 
 Logged_0x1C2A:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x1C2A
 
 Logged_0x1C30:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x1C30
 	ld a,[hli]
@@ -4001,7 +4026,7 @@ Logged_0x1C30:
 Logged_0x1C4A:
 	ld hl,$C000
 	ld a,$80
-	ld [$FF00+$68],a
+	ld [rBCPS],a
 	ld b,$40
 	ld c,$69
 
@@ -4011,9 +4036,11 @@ Logged_0x1C55:
 	dec b
 	jr nz,Logged_0x1C55
 	ret
+
+Logged_0x1C5B:
 	ld hl,$C040
 	ld a,$80
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld b,$40
 	ld c,$6B
 
@@ -4038,7 +4065,7 @@ Logged_0x2800:
 	push af
 	ld a,$32
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[hli]
 	ld h,[hl]
 	ld l,a
@@ -4050,10 +4077,10 @@ Logged_0x2800:
 	jr nc,Logged_0x2836
 	ld de,$CD00
 	ld b,$00
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x2836:
@@ -4061,16 +4088,16 @@ Logged_0x2836:
 	push af
 	ld a,$50
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld de,$CD00
 	ld b,$00
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Unknown_0x2859:
@@ -4090,7 +4117,7 @@ Logged_0x285C:
 	push af
 	ld a,$30
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$CA06]
 	add a,a
 	ld e,a
@@ -4109,7 +4136,7 @@ Logged_0x285C:
 Logged_0x2893:
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$CA06]
 	cp $64
 	jr nc,Logged_0x28AF
@@ -4117,7 +4144,7 @@ Logged_0x2893:
 	push af
 	ld a,$30
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	jr Logged_0x28BB
 
 Logged_0x28AF:
@@ -4125,7 +4152,7 @@ Logged_0x28AF:
 	push af
 	ld a,$31
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 
 Logged_0x28BB:
 	ld a,[$C0A0]
@@ -4164,10 +4191,10 @@ Logged_0x28CF:
 	ld a,[hli]
 	ld [$C0C8],a
 	push hl
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$19
 	ld [$FF00+$85],a
 	ld a,$00
@@ -4176,7 +4203,7 @@ Logged_0x28CF:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	pop hl
 	ld a,[hli]
 	ld [$C1AB],a
@@ -4211,7 +4238,7 @@ Logged_0x28CF:
 	call $FF80
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$C0B6]
 	add a,a
 	add a,a
@@ -4264,13 +4291,13 @@ Logged_0x298D:
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld de,$C600
 	ld bc,$0200
 	call Logged_0x0434
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x29BF:
@@ -4311,18 +4338,18 @@ Logged_0x29E7:
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
-	ld de,$9000
+	ld [rROMB0+$100],a
+	ld de,_VRAM+$1000
 	ld bc,$0800
 	call Logged_0x0434
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x2A19:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$C0CD]
 	add a,a
 	ld e,a
@@ -4338,15 +4365,15 @@ Logged_0x2A19:
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
-	ld de,$9000
+	ld [rROMB0+$100],a
+	ld de,_VRAM+$1000
 	ld bc,$0800
 	call Logged_0x0434
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x2A52:
@@ -4371,7 +4398,7 @@ Logged_0x2A52:
 	ret
 
 Logged_0x2A77:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $88
 	jp nc,Logged_0x2B24
 	ld a,[$C1B1]
@@ -4404,7 +4431,7 @@ Logged_0x2AA6:
 	push af
 	ld a,$30
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld d,$00
 	ld a,[hl]
 	add a,a
@@ -4417,24 +4444,24 @@ Logged_0x2AA6:
 	ld l,a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$C5FF]
 	push af
 	ld a,$33
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,$80
-	ld [$FF00+$68],a
+	ld [rBCPS],a
 	ld b,$05
 	ld c,$69
 
 Logged_0x2AE2:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x2AE2
 
 Logged_0x2AE8:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x2AE8
 	ld a,[hli]
@@ -4465,12 +4492,12 @@ Logged_0x2AE8:
 	jr nz,Logged_0x2AE2
 
 Logged_0x2B09:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x2B09
 
 Logged_0x2B0F:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x2B0F
 	ld a,[hli]
@@ -4483,7 +4510,7 @@ Logged_0x2B0F:
 	ld [$FF00+c],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 
 Logged_0x2B24:
 	ret
@@ -4496,11 +4523,11 @@ Logged_0x2C00:
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	call Logged_0x0434
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x2C18:
@@ -4508,12 +4535,14 @@ Logged_0x2C18:
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
-	call Logged_0x0909
+	ld [rROMB0+$100],a
+	call Decompress_BC_HL
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
+
+Logged_0x2C30:
 	ld a,h
 	ld [$FF00+$51],a
 	ld a,l
@@ -4525,6 +4554,8 @@ Logged_0x2C18:
 	ld a,[$DC13]
 	ld [$FF00+$55],a
 	ret
+
+Logged_0x2C46:
 	ld de,$FF68
 	ld c,$04
 	jr Logged_0x2C52
@@ -4661,14 +4692,14 @@ Logged_0x2CDB:
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld hl,$DC85
 	call Logged_0x2C7A
 	ld a,c
 	ld [$DC2A],a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[$DC2A]
 	and a
 	call nz,Logged_0x1C8F37
@@ -4678,12 +4709,12 @@ Logged_0x2CDB:
 	push af
 	ld a,[$C0AC]
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld hl,$DC88
 	call Logged_0x2CA7
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 LoggedData_0x2D38:
@@ -4748,7 +4779,7 @@ Logged_0x3000:
 	and $07
 	or $60
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld l,e
 	ld a,[hli]
 	ld [$C096],a
@@ -4803,7 +4834,7 @@ Logged_0x3036:
 Logged_0x3054:
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x305C:
@@ -4969,7 +5000,7 @@ Logged_0x3104:
 	push af
 	ld a,$1A
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	dec l
 	ld a,[hli]
 	ld e,a
@@ -5001,7 +5032,7 @@ Logged_0x312F:
 	push af
 	ld a,$1A
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	dec l
 	ld a,[hli]
 	ld e,a
@@ -5038,7 +5069,7 @@ Logged_0x3161:
 Logged_0x316B:
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x3173:
@@ -5261,16 +5292,16 @@ Logged_0x35BB:
 	add a,a
 	add a,a
 	or $80
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld c,$6B
 
 Logged_0x35C5:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x35C5
 
 Logged_0x35CB:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x35CB
 	ld a,[hli]
@@ -5299,16 +5330,16 @@ Logged_0x35E5:
 	add a,a
 	add a,a
 	or $80
-	ld [$FF00+$68],a
+	ld [rBCPS],a
 	ld c,$69
 
 Logged_0x35EF:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x35EF
 
 Logged_0x35F5:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x35F5
 	ld a,[hli]
@@ -5337,16 +5368,16 @@ Logged_0x360F:
 	add a,a
 	add a,a
 	or $80
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld c,$6B
 
 Logged_0x3619:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x3619
 
 Logged_0x361F:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x361F
 	xor a
@@ -5368,16 +5399,16 @@ Logged_0x3632:
 	add a,a
 	add a,a
 	or $80
-	ld [$FF00+$68],a
+	ld [rBCPS],a
 	ld c,$69
 
 Logged_0x363C:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x363C
 
 Logged_0x3642:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x3642
 	xor a
@@ -5441,11 +5472,11 @@ Logged_0x3A22:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	call Logged_0x0DF4
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x3A38:
@@ -5467,11 +5498,11 @@ Logged_0x3A38:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	call Logged_0x0DF4
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x3A66:
@@ -5481,7 +5512,7 @@ Logged_0x3A66:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld a,[hl]
 	sub $01
 	ld [hli],a
@@ -5517,7 +5548,7 @@ Logged_0x3A92:
 	ld c,a
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x3AA2:
@@ -5622,12 +5653,12 @@ Logged_0x3B2B:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld b,c
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x3B42:
@@ -5635,13 +5666,13 @@ Logged_0x3B42:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld b,c
 	ld c,$00
 	call Logged_0x0434
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x3B5B:
@@ -5649,13 +5680,13 @@ Logged_0x3B5B:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld bc,$0800
-	ld de,$9000
+	ld de,_VRAM+$1000
 	call Logged_0x0434
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x3B77:
@@ -5663,13 +5694,13 @@ Logged_0x3B77:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ld bc,$0240
-	ld de,$9800
+	ld de,_SCRN0
 	call Logged_0x0434
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x3B93:
@@ -5705,11 +5736,11 @@ Logged_0x3BB8:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	call Logged_0x1A15
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
 
 Logged_0x3BCE:
@@ -5717,12 +5748,14 @@ Logged_0x3BCE:
 	push af
 	ld a,b
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	call Logged_0x1A21
 	pop af
 	ld [$C5FF],a
-	ld [$2100],a
+	ld [rROMB0+$100],a
 	ret
+
+Logged_0x3BE4:
 	ld c,[hl]
 	xor a
 	ld [hli],a
@@ -5755,8 +5788,10 @@ Logged_0x3BEF:
 	dec b
 	jr nz,Logged_0x3BEF
 	ret
+
+Logged_0x3C03:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$D0B5
 	ld a,[hli]
 	ld c,$51
@@ -5866,7 +5901,7 @@ Logged_0x3C76:
 	xor a
 	ld hl,$D0C0
 	ld bc,$0010
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 UnknownData_0x3C81:
@@ -5922,7 +5957,7 @@ Logged_0x3F54:
 
 Logged_0x3F56:
 	ld [$C5FF],a
-	ld [$2000],a
+	ld [rROMB0],a
 	ret
 
 Logged_0x3F5D:
@@ -6028,13 +6063,13 @@ Unknown_0x4028:
 	jp Logged_0x015E
 
 Logged_0x402B:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x4039
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x4039:
@@ -6068,10 +6103,10 @@ Logged_0x405F:
 	call Logged_0x49DB
 	ld a,$04
 	ld [$C083],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	xor a
 	ld [$C085],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,[$CEEF]
 	and a
 	jr nz,Logged_0x40FC
@@ -6165,7 +6200,7 @@ Logged_0x40FC:
 	ld [hld],a
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$9984
 	ld de,$0020
 	ld c,$02
@@ -6198,12 +6233,12 @@ Logged_0x4130:
 	dec c
 	jr nz,Logged_0x4121
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$6B47
 	ld de,$99C4
 	push de
 	ld b,$0C
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop de
 	ld a,e
 	add a,$20
@@ -6212,7 +6247,7 @@ Logged_0x4130:
 	adc a,$00
 	ld d,a
 	ld b,$0C
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D523
 	ld a,$82
 	ld [hli],a
@@ -6284,7 +6319,7 @@ Logged_0x41A8:
 	ld [hl],a
 	call Logged_0x145A
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	xor a
 	ld [$CEE5],a
 	ld [$C08F],a
@@ -6916,7 +6951,7 @@ Logged_0x4607:
 	call Logged_0x1AC0
 	call Logged_0x1AD1
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -6931,6 +6966,7 @@ Logged_0x461E:
 	xor a
 	ld [$C09C],a
 	ret
+
 	xor a
 	ld [$C1AC],a
 	ld [$C1AD],a
@@ -6953,11 +6989,11 @@ Logged_0x4640:
 	call Logged_0x0354
 	xor a
 	ld [$C083],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C085],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	xor a
 	ld [$CEE5],a
 	ld hl,$C09C
@@ -6972,14 +7008,14 @@ Logged_0x4670:
 	call Logged_0x08E6
 	call Logged_0x1AC0
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	jp Logged_0x461E
 
 Logged_0x4686:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$20
 	ld [$FF00+$85],a
 	ld a,$92
@@ -6988,7 +7024,7 @@ Logged_0x4686:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$C09B
 	ld a,[hl]
 	cp $02
@@ -7028,10 +7064,10 @@ Logged_0x46CC:
 	ret
 
 Logged_0x46DC:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$35
 	ld [$FF00+$85],a
 	ld a,$00
@@ -7040,14 +7076,14 @@ Logged_0x46DC:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x46F6:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$7C
 	ld [$FF00+$85],a
 	ld a,$00
@@ -7056,14 +7092,14 @@ Logged_0x46F6:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x4710:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$72
 	ld [$FF00+$85],a
 	ld a,$00
@@ -7072,7 +7108,7 @@ Logged_0x4710:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x472A:
@@ -7099,10 +7135,10 @@ Logged_0x473C:
 	ret
 
 Logged_0x474C:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$7E
 	ld [$FF00+$85],a
 	ld a,$00
@@ -7111,7 +7147,7 @@ Logged_0x474C:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x4766:
@@ -7126,10 +7162,10 @@ Logged_0x4766:
 	ret
 
 Logged_0x4776:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$58
 	ld [$FF00+$85],a
 	ld a,$00
@@ -7138,14 +7174,14 @@ Logged_0x4776:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x4790:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$72
 	ld [$FF00+$85],a
 	ld a,$70
@@ -7154,7 +7190,7 @@ Logged_0x4790:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Unknown_0x47AA:
@@ -7190,11 +7226,11 @@ Unknown_0x47BE:
 	call Logged_0x0354
 	xor a
 	ld [$C085],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C083],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -7203,10 +7239,10 @@ Unknown_0x47FC:
 	ret
 
 Logged_0x47FD:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$36
 	ld [$FF00+$85],a
 	ld a,$77
@@ -7215,14 +7251,14 @@ Logged_0x47FD:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x4817:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$37
 	ld [$FF00+$85],a
 	ld a,$00
@@ -7231,17 +7267,17 @@ Logged_0x4817:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x4831:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x483F
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x483F:
@@ -7286,9 +7322,9 @@ Logged_0x4857:
 	call Logged_0x4DDF
 	xor a
 	ld [$C083],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C085],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$01
 	ld [$CA46],a
 	ld hl,$D523
@@ -7310,7 +7346,7 @@ Logged_0x4857:
 	call Logged_0x4E3E
 	call Logged_0x03B9
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -7379,28 +7415,28 @@ Logged_0x492A:
 
 Logged_0x4937:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$635C
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5082
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	ret
 
 Logged_0x4951:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$6AE7
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$697A
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ret
 
 Logged_0x496B:
@@ -7410,7 +7446,7 @@ Logged_0x496B:
 
 Logged_0x4972:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$7C
 	ld [$FF00+$85],a
 	ld a,$F7
@@ -7419,9 +7455,9 @@ Logged_0x4972:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4F80
-	ld de,$9000
+	ld de,_VRAM+$1000
 	ld bc,$0800
 	ld a,$2C
 	ld [$FF00+$85],a
@@ -7437,39 +7473,77 @@ Logged_0x49A1:
 	and a
 	jr nz,Logged_0x49C1
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$7316
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$71F0
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ret
 
 Logged_0x49C1:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$74E8
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$73E6
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ret
 
 Logged_0x49DB:
-	ld hl,$49E7
+	ld hl,RAMCode_0x49E7
 	ld de,$C200
-	ld b,$4C
-	call Logged_0x0466
+	ld b,Logged_0x4A33 - RAMCode_0x49E7
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x49E7:
-INCBIN "baserom.gbc", $49E7, $4A33 - $49E7
+RAMCode_0x49E7:
+	ld a,[$C5FF]
+	push af
+	ld a,$01
+	ld [$C5FF],a
+	ld [$2100],a
+	ld a,[$CEE4]
+	bit 7,a
+	jr z,.done
+	ld hl,$6B47
+	xor a
+	ld [rVBK],a
+	ld de,$99C4
+	push de
+	ld b,$0C
+	call MemCopy_DE_HL
+	pop de
+	ld a,e
+	add a,$20
+	ld e,a
+	ld a,d
+	adc a,$00
+	ld d,a
+	ld b,$0C
+	call MemCopy_DE_HL
+	ld hl,$CEE4
+	res 7,[hl]
+.done
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+	ld a,[$C083]
+	ld [rSCY],a
+	ld a,[$C085]
+	ld [rSCX],a
+	ld a,$CC
+	call $FFE8
+	ret
+
+Logged_0x4A33:
 	ld bc,$FFE0
 	ld de,$0020
 	ld a,[$CA04]
@@ -7501,17 +7575,18 @@ INCBIN "baserom.gbc", $49E7, $4A33 - $49E7
 	ld [hli],a
 	add hl,bc
 	ret
+
 	xor a
 	ld [$CA5B],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$D00F]
 	dec a
 	call Logged_0x4A79
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x4A79:
@@ -7558,6 +7633,7 @@ Logged_0x4AA8:
 Logged_0x4AB5:
 	pop hl
 	ret
+
 	ld bc,$FFE0
 	ld de,$0020
 	ld a,[$CA39]
@@ -7591,10 +7667,10 @@ Logged_0x4AB5:
 	ret
 
 Logged_0x4AE7:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$D00F]
 	and a
 	jr z,Logged_0x4B66
@@ -7653,7 +7729,7 @@ Logged_0x4B36:
 	or b
 	ld [$CA06],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x4B49:
@@ -7684,7 +7760,7 @@ Logged_0x4B6A:
 Logged_0x4B6C:
 	ld [$CA06],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x4B73:
@@ -7963,36 +8039,36 @@ Logged_0x4D07:
 	ret nz
 
 Logged_0x4D0C:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $5B
 	jr c,Logged_0x4D0C
 	call Logged_0x0370
 	ld a,[$C086]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 
 Logged_0x4D1A:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $63
 	jr c,Logged_0x4D1A
 	call Logged_0x0370
 	ld a,[$C087]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 
 Logged_0x4D28:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $73
 	jr c,Logged_0x4D28
 	call Logged_0x0370
 	ld a,[$C088]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 
 Logged_0x4D36:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $83
 	jr c,Logged_0x4D36
 	call Logged_0x0370
 	ld a,[$C085]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ret
 
 Logged_0x4D45:
@@ -8039,69 +8115,110 @@ Logged_0x4D7F:
 	ret nz
 
 Unknown_0x4D84:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $2F
 	jr c,Unknown_0x4D84
 	call Logged_0x0370
-	ld a,[$FF00+$42]
+	ld a,[rSCY]
 	add a,$07
-	ld [$FF00+$42],a
+	ld [rSCY],a
 
 Unknown_0x4D93:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $38
 	jr c,Unknown_0x4D93
 	call Logged_0x0370
-	ld a,[$FF00+$42]
+	ld a,[rSCY]
 	add a,$07
-	ld [$FF00+$42],a
+	ld [rSCY],a
 
 Unknown_0x4DA2:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $41
 	jr c,Unknown_0x4DA2
 	call Logged_0x0370
-	ld a,[$FF00+$42]
+	ld a,[rSCY]
 	add a,$07
-	ld [$FF00+$42],a
+	ld [rSCY],a
 
 Unknown_0x4DB1:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $5A
 	jr c,Unknown_0x4DB1
 	call Logged_0x0370
-	ld a,[$FF00+$42]
+	ld a,[rSCY]
 	add a,$07
-	ld [$FF00+$42],a
+	ld [rSCY],a
 
 Unknown_0x4DC0:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $63
 	jr c,Unknown_0x4DC0
 	call Logged_0x0370
-	ld a,[$FF00+$42]
+	ld a,[rSCY]
 	add a,$07
-	ld [$FF00+$42],a
+	ld [rSCY],a
 
 Unknown_0x4DCF:
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $6C
 	jr c,Unknown_0x4DCF
 	call Logged_0x0370
-	ld a,[$FF00+$42]
+	ld a,[rSCY]
 	add a,$07
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ret
 
 Logged_0x4DDF:
-	ld hl,$4DEB
+	ld hl,RAMCode_0x4DEB
 	ld de,$C200
-	ld b,$53
-	call Logged_0x0466
+	ld b,Logged_0x4E3E - RAMCode_0x4DEB
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x4DEB:
-INCBIN "baserom.gbc", $4DEB, $4E3E - $4DEB
+RAMCode_0x4DEB:
+	ld a,[$CEE4]
+	bit 7,a
+	jr z,Unknown_0x4E2E
+	and $7F
+	dec a
+	jr z,Unknown_0x4E11
+	ld a,$01
+	ld [$FF00+$4F],a
+	ld hl,$98E5
+	ld b,$0D
+	ld a,$07
+	call Logged_0x0420
+	ld hl,$9925
+	ld b,$0D
+	ld a,$06
+	call Logged_0x0420
+	jr Unknown_0x4E29
+
+Unknown_0x4E11:
+	ld a,$01
+	ld [$FF00+$4F],a
+	ld hl,$98E5
+	ld b,$0D
+	ld a,$06
+	call Logged_0x0420
+	ld hl,$9925
+	ld b,$0D
+	ld a,$07
+	call Logged_0x0420
+
+Unknown_0x4E29:
+	ld hl,$CEE4
+	res 7,[hl]
+
+Unknown_0x4E2E:
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,$CC
+	call $FFE8 ;Unknown bank
+	ret
 
 Logged_0x4E3E:
 	ld a,[$C083]
@@ -8437,9 +8554,9 @@ Logged_0x8024:
 	call Logged_0x037D
 	call Logged_0x12C3
 	xor a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	ld a,$03
 	ld [$FF00+$85],a
@@ -8458,7 +8575,7 @@ Logged_0x8024:
 	push af
 	ld a,$00
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	xor a
 	ld hl,$A000
 	ld [hli],a
@@ -8472,14 +8589,14 @@ Logged_0x8024:
 	ld [hl],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$C09C
 	inc [hl]
 	ld a,[$CA06]
 	cp $C8
 	jr z,Logged_0x808B
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ret
 
 Logged_0x808B:
@@ -8492,11 +8609,11 @@ Logged_0x808B:
 	call $FF80
 	ld a,$88
 	ld [$C08D],a
-	ld [$FF00+$4A],a
+	ld [rWY],a
 	ld a,$07
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld a,$E7
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ret
 
 Logged_0x80AA:
@@ -8547,15 +8664,15 @@ Logged_0x80FC:
 	ld [$C085],a
 	ld a,[$C08D]
 	add a,[hl]
-	ld [$FF00+$4A],a
+	ld [rWY],a
 
 Logged_0x8112:
 	xor a
 	ld [$C0DA],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$48
@@ -8564,7 +8681,7 @@ Logged_0x8112:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0xB8D3
 	ld a,[$CA06]
 	cp $C8
@@ -8581,10 +8698,10 @@ Logged_0x8112:
 	call $FF80
 
 Logged_0x814F:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$01
 	ld [$C0DA],a
 	ld a,$08
@@ -8597,11 +8714,11 @@ Logged_0x814F:
 	xor a
 	ld [$C0DA],a
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$4E
@@ -8610,12 +8727,12 @@ Logged_0x814F:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x0D9E
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$D7
@@ -8624,7 +8741,7 @@ Logged_0x814F:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x03B9
 	ld a,[$C1AA]
 	and $0C
@@ -8699,7 +8816,7 @@ Logged_0x8229:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0x8ED9
 	call Logged_0xBB85
 	di
@@ -8707,7 +8824,7 @@ Logged_0x8229:
 	ei
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x8247:
 	ld a,[$C09B]
@@ -8853,10 +8970,10 @@ Logged_0x8331:
 	ld [$C085],a
 	xor a
 	ld [$C0DA],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$48
@@ -8865,7 +8982,7 @@ Logged_0x8331:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0xB8D3
 	ld a,$01
 	ld [$C0DA],a
@@ -8878,10 +8995,10 @@ Logged_0x8331:
 	call $FF80
 	xor a
 	ld [$C0DA],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$4E
@@ -8890,12 +9007,12 @@ Logged_0x8331:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x0D9E
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$D7
@@ -8904,7 +9021,7 @@ Logged_0x8331:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x03B9
 	xor a
 	ld [$C0BE],a
@@ -8929,10 +9046,10 @@ Logged_0x83D1:
 	ld [$C085],a
 	xor a
 	ld [$C0DA],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$48
@@ -8941,7 +9058,7 @@ Logged_0x83D1:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0xB8D3
 	ld a,$01
 	ld [$C0DA],a
@@ -8954,10 +9071,10 @@ Logged_0x83D1:
 	call $FF80
 	xor a
 	ld [$C0DA],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$4E
@@ -8966,12 +9083,12 @@ Logged_0x83D1:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x0D9E
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$D7
@@ -8980,7 +9097,7 @@ Logged_0x83D1:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x03B9
 	xor a
 	ld [$C0BE],a
@@ -8993,16 +9110,16 @@ Logged_0x846E:
 	and $0F
 	cp $03
 	jr nz,Logged_0x849D
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C1AC]
 	ld [$D50F],a
 	ld a,[$C1AD]
 	ld [$D510],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C09C]
 	ld [$CED5],a
 	ld hl,$C09B
@@ -9020,10 +9137,10 @@ Logged_0x849D:
 	ld a,$41
 	ld [$FF00+$8E],a
 	call $FF80
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$2A
@@ -9032,10 +9149,10 @@ Logged_0x849D:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$00
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C0D7]
 	and $0F
 	cp $07
@@ -9070,13 +9187,13 @@ Logged_0x84E2:
 	ld [$C0BC],a
 	ld a,[$C0A0]
 	ld [$CA5D],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x285C
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x038F
 	call Logged_0x037D
 	call Logged_0x12C3
@@ -9096,20 +9213,20 @@ Logged_0x854A:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0x8CD7
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C08E]
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0x896F
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0xB8D3
 	ld a,[$CA83]
 	cp $2C
@@ -9134,10 +9251,10 @@ Logged_0x85A7:
 	xor a
 	ld [$C0DA],a
 	ld [$CA73],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$48
@@ -9153,11 +9270,11 @@ Logged_0x85A7:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$4E
@@ -9166,12 +9283,12 @@ Logged_0x85A7:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x0D9E
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$D7
@@ -9180,13 +9297,13 @@ Logged_0x85A7:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
 	ld [$CA8A],a
 	ld a,$02
 	ld [$C09C],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ret
 
 Logged_0x861C:
@@ -9198,10 +9315,10 @@ Logged_0x861C:
 	ld a,$4A
 	ld [$FF00+$8E],a
 	call $FF80
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$4E
@@ -9210,12 +9327,12 @@ Logged_0x861C:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x0D9E
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$D7
@@ -9224,19 +9341,19 @@ Logged_0x861C:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x03B9
 	ld a,[$C08E]
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	di
 	call Logged_0xB681
 	ei
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ret
 
 Logged_0x867F:
@@ -9394,10 +9511,10 @@ Logged_0x8747:
 	ld [$CEE0],a
 	ld [$CEE1],a
 	ld [$CEE2],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$10
@@ -9406,7 +9523,7 @@ Logged_0x8747:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	jr Logged_0x87EB
 
 Logged_0x87E2:
@@ -9416,13 +9533,13 @@ Logged_0x87E2:
 
 Logged_0x87EB:
 	call Logged_0x0E8A
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x285C
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$CEEF]
 	and $3C
 	jr nz,Logged_0x883A
@@ -9469,7 +9586,7 @@ Logged_0x883A:
 	ld hl,$CAA1
 	ld de,$C060
 	ld b,$20
-	call Logged_0x0466
+	call MemCopy_DE_HL
 
 Logged_0x8861:
 	ld hl,$51FE
@@ -9490,11 +9607,11 @@ Logged_0x8861:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0x8CD7
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$CEEF]
 	and $3C
 	jr nz,Logged_0x88B7
@@ -9502,11 +9619,11 @@ Logged_0x8861:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0x896F
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x88B7:
 	ld a,[$CA06]
@@ -9517,12 +9634,12 @@ Logged_0x88B7:
 	ld [$C08A],a
 	ld [$C089],a
 	ld [$C083],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,[$CAC7]
 	ld [$C08C],a
 	ld [$C08B],a
 	ld [$C085],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 
 Logged_0x88DB:
 	call Logged_0xB8D3
@@ -9533,10 +9650,10 @@ Logged_0x88DB:
 	jr nz,Logged_0x8917
 	xor a
 	ld [$CA73],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$48
@@ -9552,16 +9669,16 @@ Logged_0x88DB:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	jr Logged_0x8935
 
 Logged_0x8917:
 	ld a,$01
 	ld [$CA73],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$48
@@ -9570,15 +9687,15 @@ Logged_0x8917:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 
 Logged_0x8935:
 	xor a
 	ld [$CA73],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$4E
@@ -9587,12 +9704,12 @@ Logged_0x8935:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x0D9E
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$D7
@@ -9601,7 +9718,7 @@ Logged_0x8935:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x896F:
@@ -9635,7 +9752,7 @@ Logged_0x8996:
 	ld a,c
 	ld [$CCEC],a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,$01
 	ld [$CCEF],a
 	ld b,a
@@ -9673,7 +9790,7 @@ Logged_0x89AB:
 	inc a
 	ld [$CCEC],a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x89DE:
 	dec d
@@ -9727,10 +9844,10 @@ Logged_0x8A19:
 	call Logged_0x0D81
 	ld d,h
 	ld e,l
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$19
 	ld [$FF00+$85],a
 	ld a,$E5
@@ -9739,7 +9856,7 @@ Logged_0x8A19:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	pop hl
 	pop bc
 	pop de
@@ -9775,7 +9892,7 @@ Logged_0x8A6C:
 	ld a,c
 	ld [$CCEC],a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x8A77:
 	ld e,$08
@@ -9811,7 +9928,7 @@ Logged_0x8A79:
 	inc a
 	ld [$CCEC],a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	jr Logged_0x8A77
 
 Logged_0x8AB0:
@@ -10047,7 +10164,7 @@ Logged_0x8C12:
 	cp $FF
 	jr z,Logged_0x8C54
 	ld a,l
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	sub $18
 	ld [$C0A4],a
@@ -10065,7 +10182,7 @@ Logged_0x8C38:
 
 Logged_0x8C43:
 	ld [$CAC5],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	ld [$C0A4],a
 	ld a,h
@@ -10081,7 +10198,7 @@ Logged_0x8C54:
 
 Logged_0x8C5F:
 	ld [$CAC5],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	sub $20
 	ld [$C0A4],a
@@ -10099,7 +10216,7 @@ Logged_0x8C70:
 	cp $FF
 	jr z,Logged_0x8CBA
 	ld a,l
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	sub $10
 	ld [$C0A6],a
@@ -10122,7 +10239,7 @@ Logged_0x8C9F:
 
 Logged_0x8CAA:
 	ld [$CAC7],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	ld [$C0A6],a
 	ld a,h
@@ -10138,7 +10255,7 @@ Logged_0x8CBA:
 
 Logged_0x8CC5:
 	ld [$CAC7],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	sub $28
 	ld [$C0A6],a
@@ -10189,7 +10306,7 @@ Logged_0x8D0D:
 	dec b
 	jr nz,Logged_0x8CFD
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$CCF0]
 	ld d,a
 	ld a,[$CCF1]
@@ -10214,7 +10331,7 @@ Logged_0x8D31:
 	dec b
 	jr nz,Logged_0x8D21
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	xor a
 	ld [$CE69],a
 	ld [$CE00],a
@@ -10276,7 +10393,7 @@ Logged_0x8D78:
 	call Logged_0x0BDB
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C0A6]
 	and $08
 	jr z,Logged_0x8DD4
@@ -10291,7 +10408,7 @@ Logged_0x8D78:
 	pop hl
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,$08
 	ld [$FF00+$85],a
 	ld a,$12
@@ -10313,7 +10430,7 @@ Logged_0x8DD4:
 	pop hl
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,$08
 	ld [$FF00+$85],a
 	ld a,$BB
@@ -10327,6 +10444,7 @@ Logged_0x8DFD:
 	add a,$20
 	ld [$CE00],a
 	ret
+
 	ld a,[$CA62]
 	sub $18
 	ld l,a
@@ -11053,7 +11171,7 @@ Logged_0x9085:
 	call Logged_0x0BDB
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C0A4]
 	and $08
 	jr z,Logged_0x923A
@@ -11062,7 +11180,7 @@ Logged_0x9085:
 	pop hl
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0x9605
 	jr Logged_0x924B
 
@@ -11072,7 +11190,7 @@ Logged_0x923A:
 	pop hl
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0x9D4C
 
 Logged_0x924B:
@@ -11697,10 +11815,10 @@ Logged_0x9605:
 	ld a,[$C0A6]
 	and $08
 	jp nz,Logged_0x97F3
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[hli]
 	ld d,$00
 	ld e,a
@@ -11996,14 +12114,14 @@ Logged_0x9605:
 	ld [de],a
 	pop hl
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x97F3:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[hli]
 	ld d,$00
 	ld e,a
@@ -12300,7 +12418,7 @@ Logged_0x97F3:
 	ld [de],a
 	pop hl
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x99CA:
@@ -12869,10 +12987,10 @@ Logged_0x9D4C:
 	ld a,[$C0A6]
 	and $08
 	jp nz,Logged_0x9F20
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[hli]
 	ld d,$00
 	ld e,a
@@ -13142,14 +13260,14 @@ Logged_0x9D4C:
 	ld [de],a
 	pop hl
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x9F20:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[hli]
 	ld d,$00
 	ld e,a
@@ -13422,7 +13540,7 @@ Logged_0x9F20:
 	ld [de],a
 	pop hl
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0xA0E2:
@@ -13739,7 +13857,7 @@ Logged_0xA0E2:
 	call Logged_0x0BDB
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C0A6]
 	and $08
 	jr z,Logged_0xA290
@@ -13748,7 +13866,7 @@ Logged_0xA0E2:
 	pop hl
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0xA79E
 	jr Logged_0xA2A1
 
@@ -13758,7 +13876,7 @@ Logged_0xA290:
 	pop hl
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0xB182
 
 Logged_0xA2A1:
@@ -13809,7 +13927,7 @@ Logged_0xA2AA:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA2F7:
 	ld a,[hl]
@@ -13843,7 +13961,7 @@ Logged_0xA2F7:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA32D:
 	ld a,[hl]
@@ -13877,7 +13995,7 @@ Logged_0xA32D:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA363:
 	ld a,[hl]
@@ -13911,7 +14029,7 @@ Logged_0xA363:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA399:
 	ld a,[hl]
@@ -13945,7 +14063,7 @@ Logged_0xA399:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA3CF:
 	ld a,[hl]
@@ -13979,7 +14097,7 @@ Logged_0xA3CF:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA405:
 	ld a,[hl]
@@ -14013,7 +14131,7 @@ Logged_0xA405:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA43B:
 	ld a,[hl]
@@ -14047,7 +14165,7 @@ Logged_0xA43B:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA471:
 	ld a,[hl]
@@ -14081,7 +14199,7 @@ Logged_0xA471:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA4A7:
 	ld a,[hl]
@@ -14115,7 +14233,7 @@ Logged_0xA4A7:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA4DD:
 	ld a,[hl]
@@ -14149,7 +14267,7 @@ Logged_0xA4DD:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA513:
 	ld a,[hl]
@@ -14201,7 +14319,7 @@ Logged_0xA52F:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA562:
 	ld a,[hl]
@@ -14235,7 +14353,7 @@ Logged_0xA562:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA598:
 	ld a,[hl]
@@ -14269,7 +14387,7 @@ Logged_0xA598:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA5CE:
 	ld a,[hl]
@@ -14303,7 +14421,7 @@ Logged_0xA5CE:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA604:
 	ld a,[hl]
@@ -14337,7 +14455,7 @@ Logged_0xA604:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA63A:
 	ld a,[hl]
@@ -14371,7 +14489,7 @@ Logged_0xA63A:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA670:
 	ld a,[hl]
@@ -14405,7 +14523,7 @@ Logged_0xA670:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA6A6:
 	ld a,[hl]
@@ -14439,7 +14557,7 @@ Logged_0xA6A6:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA6DC:
 	ld a,[hl]
@@ -14473,7 +14591,7 @@ Logged_0xA6DC:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA712:
 	ld a,[hl]
@@ -14507,7 +14625,7 @@ Logged_0xA712:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA748:
 	ld a,[hl]
@@ -14541,7 +14659,7 @@ Logged_0xA748:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA77E:
 	ld a,[hl]
@@ -14578,10 +14696,10 @@ Logged_0xA79E:
 	ld a,[$C0A4]
 	and $08
 	jp nz,Logged_0xAA2D
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[hl]
 	ld d,$00
 	ld e,a
@@ -14613,7 +14731,7 @@ Logged_0xA79E:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA7F2:
 	ld a,[hl]
@@ -14647,7 +14765,7 @@ Logged_0xA7F2:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA828:
 	ld a,[hl]
@@ -14681,7 +14799,7 @@ Logged_0xA828:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA85E:
 	ld a,[hl]
@@ -14715,7 +14833,7 @@ Logged_0xA85E:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA894:
 	ld a,[hl]
@@ -14749,7 +14867,7 @@ Logged_0xA894:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA8CA:
 	ld a,[hl]
@@ -14783,7 +14901,7 @@ Logged_0xA8CA:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA900:
 	ld a,[hl]
@@ -14817,7 +14935,7 @@ Logged_0xA900:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA936:
 	ld a,[hl]
@@ -14851,7 +14969,7 @@ Logged_0xA936:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA96C:
 	ld a,[hl]
@@ -14885,7 +15003,7 @@ Logged_0xA96C:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA9A2:
 	ld a,[hl]
@@ -14919,7 +15037,7 @@ Logged_0xA9A2:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xA9D8:
 	ld a,[hl]
@@ -14953,7 +15071,7 @@ Logged_0xA9D8:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAA0E:
 	ld a,[hl]
@@ -14974,14 +15092,14 @@ Logged_0xAA0E:
 	ld [de],a
 	pop hl
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0xAA2D:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[hl]
 	ld d,$00
 	ld e,a
@@ -15011,7 +15129,7 @@ Logged_0xAA2D:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAA67:
 	ld a,[hl]
@@ -15045,7 +15163,7 @@ Logged_0xAA67:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAA9D:
 	ld a,[hl]
@@ -15079,7 +15197,7 @@ Logged_0xAA9D:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAAD3:
 	ld a,[hl]
@@ -15113,7 +15231,7 @@ Logged_0xAAD3:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAB09:
 	ld a,[hl]
@@ -15147,7 +15265,7 @@ Logged_0xAB09:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAB3F:
 	ld a,[hl]
@@ -15181,7 +15299,7 @@ Logged_0xAB3F:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAB75:
 	ld a,[hl]
@@ -15215,7 +15333,7 @@ Logged_0xAB75:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xABAB:
 	ld a,[hl]
@@ -15249,7 +15367,7 @@ Logged_0xABAB:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xABE1:
 	ld a,[hl]
@@ -15283,7 +15401,7 @@ Logged_0xABE1:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAC17:
 	ld a,[hl]
@@ -15317,7 +15435,7 @@ Logged_0xAC17:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAC4D:
 	ld a,[hl]
@@ -15351,7 +15469,7 @@ Logged_0xAC4D:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAC83:
 	ld a,[hl]
@@ -15376,7 +15494,7 @@ Logged_0xAC83:
 	ld [de],a
 	pop hl
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0xACA6:
@@ -15420,7 +15538,7 @@ Logged_0xACA6:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xACF2:
 	ld a,[hl]
@@ -15453,7 +15571,7 @@ Logged_0xACF2:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAD27:
 	ld a,[hl]
@@ -15486,7 +15604,7 @@ Logged_0xAD27:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAD5C:
 	ld a,[hl]
@@ -15519,7 +15637,7 @@ Logged_0xAD5C:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAD91:
 	ld a,[hl]
@@ -15552,7 +15670,7 @@ Logged_0xAD91:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xADC6:
 	ld a,[hl]
@@ -15585,7 +15703,7 @@ Logged_0xADC6:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xADFB:
 	ld a,[hl]
@@ -15618,7 +15736,7 @@ Logged_0xADFB:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAE30:
 	ld a,[hl]
@@ -15651,7 +15769,7 @@ Logged_0xAE30:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAE65:
 	ld a,[hl]
@@ -15684,7 +15802,7 @@ Logged_0xAE65:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAE9A:
 	ld a,[hl]
@@ -15717,7 +15835,7 @@ Logged_0xAE9A:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAECF:
 	ld a,[hl]
@@ -15750,7 +15868,7 @@ Logged_0xAECF:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAF04:
 	ld a,[hl]
@@ -15800,7 +15918,7 @@ Logged_0xAF1F:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAF51:
 	ld a,[hl]
@@ -15833,7 +15951,7 @@ Logged_0xAF51:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAF86:
 	ld a,[hl]
@@ -15866,7 +15984,7 @@ Logged_0xAF86:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAFBB:
 	ld a,[hl]
@@ -15899,7 +16017,7 @@ Logged_0xAFBB:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xAFF0:
 	ld a,[hl]
@@ -15932,7 +16050,7 @@ Logged_0xAFF0:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB025:
 	ld a,[hl]
@@ -15965,7 +16083,7 @@ Logged_0xB025:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB05A:
 	ld a,[hl]
@@ -15998,7 +16116,7 @@ Logged_0xB05A:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB08F:
 	ld a,[hl]
@@ -16031,7 +16149,7 @@ Logged_0xB08F:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB0C4:
 	ld a,[hl]
@@ -16064,7 +16182,7 @@ Logged_0xB0C4:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB0F9:
 	ld a,[hl]
@@ -16097,7 +16215,7 @@ Logged_0xB0F9:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB12E:
 	ld a,[hl]
@@ -16130,7 +16248,7 @@ Logged_0xB12E:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB163:
 	ld a,[hl]
@@ -16166,10 +16284,10 @@ Logged_0xB182:
 	ld a,[$C0A4]
 	and $08
 	jp nz,Logged_0xB405
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[hl]
 	ld d,$00
 	ld e,a
@@ -16200,7 +16318,7 @@ Logged_0xB182:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB1D5:
 	ld a,[hl]
@@ -16233,7 +16351,7 @@ Logged_0xB1D5:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB20A:
 	ld a,[hl]
@@ -16266,7 +16384,7 @@ Logged_0xB20A:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB23F:
 	ld a,[hl]
@@ -16299,7 +16417,7 @@ Logged_0xB23F:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB274:
 	ld a,[hl]
@@ -16332,7 +16450,7 @@ Logged_0xB274:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB2A9:
 	ld a,[hl]
@@ -16365,7 +16483,7 @@ Logged_0xB2A9:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB2DE:
 	ld a,[hl]
@@ -16398,7 +16516,7 @@ Logged_0xB2DE:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB313:
 	ld a,[hl]
@@ -16431,7 +16549,7 @@ Logged_0xB313:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB348:
 	ld a,[hl]
@@ -16464,7 +16582,7 @@ Logged_0xB348:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB37D:
 	ld a,[hl]
@@ -16497,7 +16615,7 @@ Logged_0xB37D:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB3B2:
 	ld a,[hl]
@@ -16530,7 +16648,7 @@ Logged_0xB3B2:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB3E7:
 	ld a,[hl]
@@ -16550,14 +16668,14 @@ Logged_0xB3E7:
 	ld [de],a
 	pop hl
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0xB405:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[hl]
 	ld d,$00
 	ld e,a
@@ -16586,7 +16704,7 @@ Logged_0xB405:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB43E:
 	ld a,[hl]
@@ -16619,7 +16737,7 @@ Logged_0xB43E:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB473:
 	ld a,[hl]
@@ -16652,7 +16770,7 @@ Logged_0xB473:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB4A8:
 	ld a,[hl]
@@ -16685,7 +16803,7 @@ Logged_0xB4A8:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB4DD:
 	ld a,[hl]
@@ -16718,7 +16836,7 @@ Logged_0xB4DD:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB512:
 	ld a,[hl]
@@ -16751,7 +16869,7 @@ Logged_0xB512:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB547:
 	ld a,[hl]
@@ -16784,7 +16902,7 @@ Logged_0xB547:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB57C:
 	ld a,[hl]
@@ -16817,7 +16935,7 @@ Logged_0xB57C:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB5B1:
 	ld a,[hl]
@@ -16850,7 +16968,7 @@ Logged_0xB5B1:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB5E6:
 	ld a,[hl]
@@ -16883,7 +17001,7 @@ Logged_0xB5E6:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB61B:
 	ld a,[hl]
@@ -16916,7 +17034,7 @@ Logged_0xB61B:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xB650:
 	ld a,[hl]
@@ -16940,18 +17058,18 @@ Logged_0xB650:
 	ld [de],a
 	pop hl
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0xB672:
-	ld hl,$767E
+	ld hl,RAMCode_0xB67E
 	ld de,$C200
-	ld b,$03
-	call Logged_0x0466
+	ld b,Logged_0xB681 - RAMCode_0xB67E
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0xB67E:
-INCBIN "baserom.gbc", $B67E, $B681 - $B67E
+RAMCode_0xB67E:
+	jp Logged_0x0C4C
 
 Logged_0xB681:
 	ld hl,$C210
@@ -17566,15 +17684,15 @@ Logged_0xBA3B:
 	jr c,Logged_0xB9CF
 	ret z
 	jp Logged_0xBA00
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C08E]
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	push de
 	push hl
 	ld c,$01
@@ -17596,7 +17714,7 @@ Logged_0xBA68:
 	call Logged_0x0D8C
 	ld a,[$CCEC]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	bit 0,b
 	jr z,Logged_0xBA85
 	swap e
@@ -17612,15 +17730,15 @@ Logged_0xBA88:
 	or e
 	ld [hl],a
 	pop hl
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C08E]
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld c,$01
 	ld a,[hld]
 	cp $C0
@@ -17638,15 +17756,15 @@ Logged_0xBAAF:
 	ld e,a
 	ld a,c
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[de]
 	or $80
 	ld [de],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,c
 	ld [$CCE9],a
 	ld h,d
@@ -17665,19 +17783,20 @@ Logged_0xBAAF:
 	call $FF80
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
-	ld a,[$FF00+$70]
+
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C08E]
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld c,$01
 	ld a,[hld]
 	cp $C0
@@ -17697,25 +17816,26 @@ Logged_0xBB12:
 	ld [hl],a
 	ld a,c
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[de]
 	or $80
 	ld [de],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
-	ld a,[$FF00+$70]
+
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C08E]
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld c,$01
 	ld a,[hld]
 	cp $C0
@@ -17735,7 +17855,7 @@ Logged_0xBB51:
 	call Logged_0x0D8C
 	ld a,[$CCEC]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	bit 0,b
 	jr z,Logged_0xBB76
 	ld a,[hl]
@@ -17743,9 +17863,9 @@ Logged_0xBB51:
 	ld [hl],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0xBB76:
@@ -17754,9 +17874,9 @@ Logged_0xBB76:
 	ld [hl],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0xBB85:
@@ -17787,7 +17907,7 @@ Logged_0xBBA8:
 	ld a,b
 	ld [$CCE9],a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	push hl
 	call Logged_0x0C19
 	ld a,[$CE69]
@@ -17845,10 +17965,10 @@ Logged_0xBBA8:
 	sla e
 	sla e
 	rl d
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	push de
 	ld hl,$C600
 	add hl,de
@@ -17905,7 +18025,7 @@ Logged_0xBBA8:
 	and $0F
 	ld [$C19F],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0xBC5E:
@@ -17921,7 +18041,7 @@ Logged_0xBC5E:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A000
 
 Logged_0xBC7D:
@@ -17947,12 +18067,12 @@ Logged_0xBC8D:
 	jr nz,Logged_0xBC7D
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C08E]
 	push af
 	ld a,$02
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A000
 
 Logged_0xBCB0:
@@ -17978,7 +18098,7 @@ Logged_0xBCC0:
 	jr nz,Logged_0xBCB0
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ret
 
 Logged_0xBCD5:
@@ -17986,7 +18106,7 @@ Logged_0xBCD5:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A000
 
 Logged_0xBCE4:
@@ -18012,12 +18132,12 @@ Logged_0xBCF4:
 	jr nz,Logged_0xBCE4
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C08E]
 	push af
 	ld a,$02
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A000
 
 Logged_0xBD17:
@@ -18043,7 +18163,7 @@ Logged_0xBD27:
 	jr nz,Logged_0xBD17
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ret
 
 Logged_0xBD3C:
@@ -18140,6 +18260,7 @@ Logged_0xCA15:
 	ld a,[$FF00+$AB]
 	ld [hli],a
 	ret
+
 	ld a,[$CCE0]
 	and a
 	ret z
@@ -19492,6 +19613,7 @@ Logged_0xD10F:
 	ld a,$01
 	ld [$CCE6],a
 	ret
+
 	ld a,[$CED4]
 	and a
 	ret nz
@@ -19499,7 +19621,7 @@ Logged_0xD10F:
 	call Logged_0x0BDB
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0xD132
 	ret
 
@@ -19527,10 +19649,10 @@ Logged_0xD143:
 	ld d,h
 	ld e,l
 	push hl
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$19
 	ld [$FF00+$85],a
 	ld a,$E5
@@ -19539,7 +19661,7 @@ Logged_0xD143:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	pop hl
 	pop bc
 	pop de
@@ -19554,12 +19676,13 @@ Logged_0xD16D:
 	inc a
 	ld [$CCE9],a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0xD182:
 	dec e
 	jr nz,Logged_0xD134
 	ret
+
 	ld a,[$CED4]
 	and a
 	ret nz
@@ -19567,7 +19690,7 @@ Logged_0xD182:
 	call Logged_0x0BDB
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0xD19E
 	ret
 
@@ -19595,10 +19718,10 @@ Logged_0xD1AF:
 	ld d,h
 	ld e,l
 	push hl
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$19
 	ld [$FF00+$85],a
 	ld a,$E5
@@ -19607,7 +19730,7 @@ Logged_0xD1AF:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	pop hl
 	pop bc
 	pop de
@@ -19620,6 +19743,7 @@ Logged_0xD1D9:
 	dec e
 	jr nz,Logged_0xD1A0
 	ret
+
 	ld hl,$4000
 	ld de,$8800
 	ld bc,$0800
@@ -19992,7 +20116,7 @@ Logged_0x18000:
 	ld [$C0DD],a
 	ld a,[$CCE9]
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$CCEA
 	ld a,[hli]
 	ld l,[hl]
@@ -20011,7 +20135,7 @@ Logged_0x18000:
 Logged_0x18020:
 	xor a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	xor a
 	ld [$C0D8],a
 	ld [$C0D9],a
@@ -20021,7 +20145,7 @@ Logged_0x18020:
 Logged_0x18032:
 	xor a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	xor a
 	ld [$C0D8],a
 	ld [$C0D9],a
@@ -20049,7 +20173,7 @@ Logged_0x18058:
 Logged_0x18064:
 	xor a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	xor a
 	ld [$C0D8],a
 	ld [$C0D9],a
@@ -20063,13 +20187,14 @@ INCBIN "baserom.gbc", $18078, $1808C - $18078
 Logged_0x1808C:
 	xor a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	xor a
 	ld [$C0D8],a
 	ld [$C0D9],a
 	xor a
 	ld [$C18D],a
 	ret
+
 	ld a,[$C0D6]
 	bit 0,a
 	jp z,Logged_0x18020
@@ -21006,6 +21131,7 @@ Unknown_0x1889E:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld a,[$C0DA]
 	and a
 	jp z,Logged_0x18020
@@ -22645,22 +22771,22 @@ Logged_0x19609:
 	ld a,$49
 	ld [$FF00+$8E],a
 	call $FF80
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and $03
 	jr nz,Logged_0x1967F
 	ld a,[$CAC2]
 	and a
 	jr nz,Logged_0x1967F
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$64
 	ld [$CAC2],a
 	ld hl,$D101
 	ld de,$FFA0
 	ld b,$06
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D101
 	xor a
 	ld [hli],a
@@ -22684,9 +22810,9 @@ Logged_0x19609:
 	ld hl,$FFA0
 	ld de,$D101
 	ld b,$06
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 
 Logged_0x1967F:
 	ld a,[$FF00+$AD]
@@ -22716,14 +22842,14 @@ Logged_0x19690:
 	ld a,$49
 	ld [$FF00+$8E],a
 	call $FF80
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D101
 	ld de,$FFA0
 	ld b,$06
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D101
 	xor a
 	ld [hli],a
@@ -22747,9 +22873,9 @@ Logged_0x19690:
 	ld hl,$FFA0
 	ld de,$D101
 	ld b,$06
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$FF00+$AD]
 	ld [$FF00+$A8],a
 	ld a,[$FF00+$AE]
@@ -22759,18 +22885,21 @@ Logged_0x19690:
 	ld a,[$FF00+$B0]
 	ld [$FF00+$AB],a
 	ret
+
 	ld a,$01
 	ld [$C0DA],a
 	call Logged_0x19741
 	xor a
 	ld [$C0DA],a
 	ret
+
 	ld a,$01
 	ld [$C0DA],a
 	call Logged_0x197B1
 	xor a
 	ld [$C0DA],a
 	ret
+
 	ld a,$01
 	ld [$C0DA],a
 	call Logged_0x199E9
@@ -23050,6 +23179,7 @@ Logged_0x198C7:
 	ld [de],a
 	call Logged_0x19B51
 	ret
+
 	ld a,$01
 	ld [$CED3],a
 	call Logged_0x198C7
@@ -23145,6 +23275,7 @@ Logged_0x1994E:
 	ld [de],a
 	call Logged_0x19BEB
 	ret
+
 	ld a,$01
 	ld [$CED2],a
 	call Logged_0x19942
@@ -23324,6 +23455,7 @@ Logged_0x19A62:
 	ld [de],a
 	call Logged_0x19B7B
 	ret
+
 	xor a
 	ld [$C1CA],a
 	ld a,[$CA71]
@@ -23383,6 +23515,7 @@ Logged_0x19AC7:
 	ld a,$01
 	ld [$C1CA],a
 	ret
+
 	ld hl,$CA64
 	ld de,$FFAB
 	ld a,[hld]
@@ -23592,6 +23725,7 @@ Logged_0x19C0B:
 	call Logged_0x18000
 	ld b,a
 	ret
+
 	ld a,[$CA83]
 	sub $30
 	rst JumpList
@@ -23911,6 +24045,7 @@ Logged_0x19E67:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	xor a
 	ld [$CA84],a
 	ld a,[$CA69]
@@ -24082,6 +24217,7 @@ Logged_0x19F9E:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld a,$32
 	ld [$CA83],a
 	xor a
@@ -25092,6 +25228,7 @@ Logged_0x1A763:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld a,$3F
 	ld [$CA83],a
 	xor a
@@ -38328,17 +38465,17 @@ Logged_0x21B89:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$80
-	ld [$FF00+$68],a
+	ld [rBCPS],a
 	ld b,$04
 	ld c,$69
 
 Logged_0x21BCE:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x21BCE
 
 Logged_0x21BD4:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x21BD4
 	xor a
@@ -38361,17 +38498,17 @@ Logged_0x21BD4:
 	dec b
 	jr nz,Logged_0x21BCE
 	ld a,$98
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld b,$02
 	ld c,$6B
 
 Logged_0x21BF6:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x21BF6
 
 Logged_0x21BFC:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x21BFC
 	xor a
@@ -38884,7 +39021,7 @@ Logged_0x21F69:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x21F9F:
 	dec b
@@ -38921,7 +39058,7 @@ Logged_0x21FA3:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x21FD6:
 	ld b,$10
@@ -38958,16 +39095,17 @@ Logged_0x21FD8:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x2200E:
 	dec b
 	jr nz,Logged_0x21FD8
 	ret
-	ld a,[$FF00+$70]
+
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$CE00]
 	ld b,a
 	ld a,$CE
@@ -39012,7 +39150,7 @@ Logged_0x22032:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x22068:
 	dec b
@@ -39035,7 +39173,7 @@ Logged_0x22068:
 	ld [de],a
 	pop hl
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x2208A:
@@ -39068,7 +39206,7 @@ Logged_0x2208A:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x220BD:
 	ld b,$10
@@ -39105,14 +39243,15 @@ Logged_0x220BF:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x220F5:
 	dec b
 	jr nz,Logged_0x220BF
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
+
 	ld a,[$CE00]
 	ld b,a
 	ld a,$CE
@@ -39156,7 +39295,7 @@ Logged_0x22115:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x2214A:
 	dec b
@@ -39192,7 +39331,7 @@ Logged_0x2214E:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x22180:
 	ld b,$10
@@ -39228,16 +39367,17 @@ Logged_0x22182:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x221B7:
 	dec b
 	jr nz,Logged_0x22182
 	ret
-	ld a,[$FF00+$70]
+
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$CE00]
 	ld b,a
 	ld a,$CE
@@ -39281,13 +39421,13 @@ Logged_0x221DB:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x22210:
 	dec b
 	jr nz,Logged_0x221DB
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x22217:
@@ -39319,7 +39459,7 @@ Logged_0x22217:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x22249:
 	ld b,$10
@@ -39355,13 +39495,13 @@ Logged_0x2224B:
 	ld a,[$C08E]
 	inc a
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 
 Logged_0x22280:
 	dec b
 	jr nz,Logged_0x2224B
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 UnknownData_0x22287:
@@ -39942,10 +40082,10 @@ Logged_0x2841E:
 	ld a,[$CA8E]
 	cp $0E
 	call z,Logged_0x16D9
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$C1B6]
 	ld h,a
 	ld a,[$C1B7]
@@ -39973,7 +40113,7 @@ Logged_0x2846D:
 	sbc a,$00
 	ld [$CA63],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$42
 	ld [$CA8E],a
 	ld a,$01
@@ -40736,6 +40876,7 @@ Logged_0x28A50:
 
 Logged_0x28A5A:
 	ret
+
 	ld a,$01
 	ld [$CA8A],a
 	ld a,$6F
@@ -42485,6 +42626,7 @@ Logged_0x2972E:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld a,$07
 	ld [$CA8E],a
 	ld a,$01
@@ -43405,6 +43547,7 @@ Logged_0x29E52:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld a,$8D
 	ld [$CA83],a
 	xor a
@@ -43540,6 +43683,7 @@ Unknown_0x29F42:
 	and a
 	jp nz,Logged_0x299D0
 	ret
+
 	ld a,$90
 	ld [$CA83],a
 	ld a,$18
@@ -46742,23 +46886,23 @@ Logged_0x30049:
 	dec b
 	jr nz,Logged_0x30049
 	ld a,$80
-	ld [$FF00+$26],a
+	ld [rAUDENA],a
 	ld a,$00
-	ld [$FF00+$25],a
+	ld [rAUDTERM],a
 	ld a,$08
-	ld [$FF00+$12],a
-	ld [$FF00+$17],a
-	ld [$FF00+$21],a
-	ld a,$80
-	ld [$FF00+$14],a
-	ld [$FF00+$19],a
-	ld [$FF00+$23],a
+	ld [rAUD1ENV],a
+	ld [rAUD2ENV],a
+	ld [rAUD4ENV],a
+	ld a,AUDHIGH_RESTART
+	ld [rAUD1HIGH],a
+	ld [rAUD2HIGH],a
+	ld [rAUD4GO],a
 	ld a,$00
-	ld [$FF00+$1A],a
+	ld [rAUD3ENA],a
 	ld a,$FF
-	ld [$FF00+$25],a
+	ld [rAUDTERM],a
 	ld a,$77
-	ld [$FF00+$24],a
+	ld [rAUDVOL],a
 	ld a,$00
 	ld [$D000],a
 	jp Logged_0x3F5D
@@ -47995,6 +48139,7 @@ Logged_0x30872:
 	ld bc,$51C4
 	add hl,bc
 	ret
+
 	ld a,[$D010]
 	ld l,a
 	ld a,[$D011]
@@ -48880,12 +49025,12 @@ Logged_0x30E32:
 	jr z,Logged_0x30E5F
 	cpl
 	inc a
-	ld [$FF00+$20],a
+	ld [rAUD4LEN],a
 	ld a,$40
 
 Logged_0x30E5F:
 	or $80
-	ld [$FF00+$23],a
+	ld [rAUD4GO],a
 	ret
 
 Logged_0x30E64:
@@ -48927,11 +49072,11 @@ Logged_0x30E82:
 	jr z,Logged_0x30E90
 	cpl
 	inc a
-	ld [$FF00+$1B],a
+	ld [rAUD3LEN],a
 	ld a,$40
 
 Logged_0x30E90:
-	ld [$FF00+$1E],a
+	ld [rAUD3HIGH],a
 	ld a,[$D01D]
 	cp b
 	ret z
@@ -49126,9 +49271,9 @@ Logged_0x30F7E:
 	jr z,Logged_0x30FA7
 	ld a,b
 	ld [$FF00+c],a
-	ld a,[$FF00+$23]
+	ld a,[rAUD4GO]
 	or $80
-	ld [$FF00+$23],a
+	ld [rAUD4GO],a
 	ret
 
 Logged_0x30F9F:
@@ -49147,14 +49292,14 @@ Logged_0x30FA7:
 	xor $C0
 	rrca
 	ld [$FF00+c],a
-	ld a,[$FF00+$1A]
+	ld a,[rAUD3ENA]
 	rla
 	ret c
 	ld a,$80
-	ld [$FF00+$1A],a
+	ld [rAUD3ENA],a
 	inc hl
 	ld a,[hl]
-	ld [$FF00+$1E],a
+	ld [rAUD3HIGH],a
 	ret
 
 Logged_0x30FBB:
@@ -49172,7 +49317,7 @@ Logged_0x30FBB:
 
 Logged_0x30FCC:
 	ld a,$00
-	ld [$FF00+$1A],a
+	ld [rAUD3ENA],a
 	ret
 
 Logged_0x30FD1:
@@ -56733,6 +56878,7 @@ INCBIN "baserom.gbc", $40000, $40040 - $40000
 	xor a
 	ld [$D117],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -56939,7 +57085,7 @@ Logged_0x401BF:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x401D0
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -57099,7 +57245,7 @@ Logged_0x402AA:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x402BB
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -57170,7 +57316,7 @@ Logged_0x4030F:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x40320
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -57508,7 +57654,7 @@ Logged_0x4050A:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x4051B
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -57802,6 +57948,7 @@ Logged_0x406AF:
 	or $00
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -57880,6 +58027,7 @@ Logged_0x40734:
 	xor a
 	ld [$D11B],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -58095,6 +58243,7 @@ Unknown_0x4087C:
 	ld a,$30
 	ld [hli],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -58466,6 +58615,7 @@ Logged_0x40AF2:
 	ld a,$18
 	ld [hli],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -58474,6 +58624,7 @@ Logged_0x40AF2:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -58511,6 +58662,7 @@ Logged_0x40AF2:
 	ld a,$FA
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,[$D143]
 	cp $03
 	ret z
@@ -58547,6 +58699,7 @@ Logged_0x40B6F:
 	ld hl,$D143
 	dec [hl]
 	ret
+
 	ld hl,$D11F
 	ld a,$4B
 	ld [hld],a
@@ -58562,6 +58715,7 @@ Logged_0x40B6F:
 	ld [hld],a
 	jr Logged_0x40BB2
 	ret
+
 	ld hl,$D11F
 	ld a,$4B
 	ld [hld],a
@@ -58588,6 +58742,7 @@ Logged_0x40BB8:
 	ld a,$FD
 	ld [hl],a
 	ret
+
 	ld a,[$D116]
 	and a
 	jr z,Logged_0x40BE5
@@ -58679,6 +58834,7 @@ Logged_0x40C7F:
 	ld a,$18
 	ld [hli],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -59496,12 +59652,14 @@ Unknown_0x41342:
 	or $00
 	ld [hld],a
 	ret
+
 	ld hl,$D11F
 	ld a,$53
 	ld [hld],a
 	ld a,$61
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -59761,7 +59919,7 @@ Unknown_0x41517:
 	ld a,[$CA97]
 	cp $10
 	jr c,Unknown_0x41528
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -59778,7 +59936,7 @@ Logged_0x4152F:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x41540
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -59856,7 +60014,7 @@ Logged_0x41598:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x415A9
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -60339,7 +60497,7 @@ Logged_0x4186F:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x41880
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -60398,7 +60556,7 @@ Logged_0x418C4:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x418D5
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -60696,12 +60854,14 @@ Logged_0x41A64:
 	ld a,$F4
 	ld [hl],a
 	ret
+
 	ld hl,$D11F
 	ld a,$5A
 	ld [hld],a
 	ld a,$86
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -61775,6 +61935,7 @@ Unknown_0x420E3:
 	or $00
 	ld [hld],a
 	ret
+
 	call Logged_0x3090
 	jr Logged_0x42100
 	call Logged_0x309A
@@ -61834,6 +61995,7 @@ Logged_0x42152:
 	xor a
 	ld [$D119],a
 	ret
+
 	call Logged_0x30CA
 	jr Logged_0x42165
 	call Logged_0x30BD
@@ -62871,6 +63033,7 @@ Logged_0x4277F:
 	inc l
 	dec [hl]
 	ret
+
 	ld hl,$D100
 	set 3,[hl]
 	ld l,$1F
@@ -63272,6 +63435,7 @@ Logged_0x429BE:
 	ld a,$10
 	ld [$D11A],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -63296,6 +63460,7 @@ Logged_0x429BE:
 	ld a,$FD
 	ld [hl],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -63583,6 +63748,7 @@ Logged_0x42B71:
 	ld a,$FC
 	ld [hl],a
 	ret
+
 	ld hl,$D11F
 	ld a,$6B
 	ld [hld],a
@@ -63595,6 +63761,7 @@ Logged_0x42B71:
 	ld l,$00
 	set 3,[hl]
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -63673,6 +63840,7 @@ Logged_0x42BE9:
 	ld de,$4732
 	call Logged_0x30F0
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D100
@@ -63693,6 +63861,7 @@ Unknown_0x42C69:
 	xor a
 	ld [$D100],a
 	ret
+
 	call Logged_0x3655
 	ld hl,$D11B
 	ld a,[hl]
@@ -63789,6 +63958,7 @@ Logged_0x42CCD:
 	ld a,$8F
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -63797,12 +63967,14 @@ Logged_0x42CCD:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld hl,$D11F
 	ld a,$6D
 	ld [hld],a
 	ld a,$27
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -64013,7 +64185,7 @@ Logged_0x42E95:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x42EAE
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -64119,7 +64291,7 @@ Logged_0x42F44:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x42F55
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -64410,7 +64582,7 @@ Logged_0x430F6:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x43107
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -64674,12 +64846,14 @@ Logged_0x43263:
 	or $00
 	ld [hld],a
 	ret
+
 	ld hl,$D11F
 	ld a,$72
 	ld [hld],a
 	ld a,$82
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -64811,6 +64985,7 @@ Logged_0x43342:
 	ld a,$70
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 
@@ -64946,6 +65121,7 @@ Logged_0x43405:
 	ld a,$27
 	ld [hld],a
 	ret
+
 	ld hl,$D11C
 	ld a,$81
 	ld [hld],a
@@ -64971,6 +65147,7 @@ Logged_0x43448:
 	ld de,$47C9
 	call Logged_0x30F0
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -64993,6 +65170,7 @@ Logged_0x43448:
 	ld a,$F7
 	ld [hl],a
 	ret
+
 	ld hl,$D100
 	bit 5,[hl]
 	jr z,Logged_0x4349C
@@ -65017,6 +65195,7 @@ Logged_0x4349C:
 	ld a,$0A
 	ld [$D116],a
 	ret
+
 	ld hl,$D116
 	ld a,[hl]
 	and a
@@ -65053,6 +65232,7 @@ Logged_0x434B4:
 	ld a,$31
 	ld [$D11B],a
 	ret
+
 	ld a,[$D11B]
 	rst JumpList
 	dw Logged_0x435A6
@@ -65352,6 +65532,7 @@ Logged_0x436DB:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -65437,6 +65618,7 @@ Logged_0x437A8:
 	ld [$D118],a
 	jp Logged_0x3076
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -65471,6 +65653,7 @@ Logged_0x437F7:
 	xor a
 	ld [hl],a
 	ret
+
 	ld a,[$D117]
 	rst JumpList
 	dw Logged_0x4382E
@@ -66019,6 +66202,7 @@ Logged_0x44185:
 	or $0B
 	ld [hli],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -66087,6 +66271,7 @@ Logged_0x4420A:
 	xor a
 	ld [$D119],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld bc,$4040
@@ -66104,6 +66289,7 @@ Logged_0x4420A:
 	ld a,$45
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -67165,12 +67351,14 @@ Logged_0x448C2:
 	or $00
 	ld [hld],a
 	ret
+
 	ld hl,$D11F
 	ld a,$48
 	ld [hld],a
 	ld a,$E1
 	ld [hld],a
 	ret
+
 	ld a,[$CA8E]
 	cp $53
 	jr z,Logged_0x448ED
@@ -67857,12 +68045,14 @@ Unknown_0x44D27:
 	or $00
 	ld [hld],a
 	ret
+
 	ld hl,$D11F
 	ld a,$4D
 	ld [hld],a
 	ld a,$46
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -69000,6 +69190,7 @@ Unknown_0x45425:
 	or $00
 	ld [hld],a
 	ret
+
 	call Logged_0x3090
 	jr Logged_0x45442
 	call Logged_0x309A
@@ -69041,6 +69232,7 @@ Logged_0x45470:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld hl,$D11F
 	ld a,$54
 	ld [hld],a
@@ -69148,6 +69340,7 @@ Logged_0x45531:
 	ld a,$40
 	ld [hld],a
 	ret
+
 	ld hl,$D116
 	dec [hl]
 	ret nz
@@ -69878,6 +70071,7 @@ Unknown_0x4599F:
 	ld de,$4CC4
 	call Logged_0x30F0
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$C08F]
@@ -69893,6 +70087,7 @@ Unknown_0x4599F:
 	ld a,$DF
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -69971,6 +70166,7 @@ Logged_0x45A5E:
 	ld a,$6C
 	ld [$FF00+$B6],a
 	ret
+
 	ld hl,$D105
 	ld a,[hl]
 	sub $02
@@ -70016,6 +70212,7 @@ Logged_0x45AAF:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D11F
@@ -70033,6 +70230,7 @@ Logged_0x45AAF:
 	xor a
 	ld [$D116],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D11F
@@ -70059,6 +70257,7 @@ Logged_0x45AFB:
 	ld a,$18
 	ld [$D10F],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -70194,6 +70393,7 @@ Logged_0x45BCC:
 	ld a,$14
 	ld [$D116],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -70234,6 +70434,7 @@ Logged_0x45C06:
 	ld a,$74
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,[$CA8E]
 	cp $48
 	jr nz,Logged_0x45C2F
@@ -70270,6 +70471,7 @@ Logged_0x45C57:
 	ld a,$EE
 	ld [$D109],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -70597,6 +70799,7 @@ Logged_0x45E3D:
 	ld a,$03
 	ld [hld],a
 	ret
+
 	ld hl,$D116
 	ld a,[hl]
 	and a
@@ -70674,6 +70877,7 @@ Logged_0x45EB9:
 	ld a,$C8
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -70692,12 +70896,14 @@ Logged_0x45EE0:
 	xor a
 	ld [hl],a
 	ret
+
 	ld hl,$D11F
 	ld a,$5E
 	ld [hld],a
 	ld a,$ED
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -70913,7 +71119,7 @@ Logged_0x4605F:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x46070
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -70962,7 +71168,7 @@ Logged_0x460A6:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x460B7
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -71090,7 +71296,7 @@ Logged_0x46170:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x46181
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -71109,7 +71315,7 @@ Logged_0x4618C:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x4619D
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -71184,7 +71390,7 @@ Logged_0x461FB:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x4620C
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -71556,7 +71762,7 @@ Logged_0x46421:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x46432
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -71836,12 +72042,14 @@ Logged_0x465A0:
 	or $00
 	ld [hld],a
 	ret
+
 	ld hl,$D11F
 	ld a,$65
 	ld [hld],a
 	ld a,$BF
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -72008,7 +72216,7 @@ Logged_0x466E7:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x466F8
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -72055,7 +72263,7 @@ Logged_0x4672C:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x4673D
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -72098,7 +72306,7 @@ Logged_0x46769:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x4677A
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -72487,7 +72695,7 @@ Logged_0x469B2:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x469C3
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -72718,6 +72926,7 @@ Logged_0x46AEB:
 	or $00
 	ld [hld],a
 	ret
+
 	ld hl,$D11F
 	ld a,$6B
 	ld [hld],a
@@ -72784,6 +72993,7 @@ Logged_0x46B63:
 	ld a,$70
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -73001,7 +73211,7 @@ Logged_0x46CE4:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x46CF5
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -73057,7 +73267,7 @@ Logged_0x46D38:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x46D49
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -73185,7 +73395,7 @@ Logged_0x46E02:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x46E13
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -73204,7 +73414,7 @@ Logged_0x46E1E:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x46E2F
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -73279,7 +73489,7 @@ Logged_0x46E8D:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x46E9E
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -73654,7 +73864,7 @@ Logged_0x470BA:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x470CB
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -73934,6 +74144,7 @@ Logged_0x47239:
 	or $00
 	ld [hld],a
 	ret
+
 	ld de,$4F6B
 	call Logged_0x30F0
 	ld l,$1F
@@ -73954,6 +74165,7 @@ Logged_0x47239:
 	ld l,$00
 	set 3,[hl]
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -73986,6 +74198,7 @@ Logged_0x4729B:
 	inc a
 	ld [hl],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D117]
@@ -74430,6 +74643,7 @@ Logged_0x47540:
 	ld a,$0E
 	ld [hli],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -74468,9 +74682,11 @@ INCBIN "baserom.gbc", $4756F, $47718 - $4756F
 	ld a,$4E
 	ld [hli],a
 	ret
+
 	ld de,$4EC9
 	call Logged_0x3472
 	ret
+
 	ld hl,$D100
 	set 3,[hl]
 	ld l,$1F
@@ -74493,6 +74709,7 @@ INCBIN "baserom.gbc", $4756F, $47718 - $4756F
 	xor a
 	ld [hl],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -74829,6 +75046,7 @@ Logged_0x479A2:
 	ld a,[hl]
 	ld [$CA63],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -74870,6 +75088,7 @@ Logged_0x479E0:
 	ld l,$00
 	res 3,[hl]
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -75048,6 +75267,7 @@ Logged_0x47AF6:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld a,$7B
 	ld b,$2B
 	jr Logged_0x47B19
@@ -75065,6 +75285,7 @@ Logged_0x47B19:
 	ld a,$67
 	ld [$FF00+$B6],a
 	ret
+
 	ld hl,$D11F
 	ld a,$7B
 	ld [hld],a
@@ -75085,6 +75306,7 @@ Logged_0x47B19:
 	ld a,$02
 	ld [hl],a
 	ret
+
 	ld hl,$D11F
 	ld a,$7B
 	ld [hld],a
@@ -75105,6 +75327,7 @@ Logged_0x47B19:
 	ld a,$02
 	ld [hl],a
 	ret
+
 	ld hl,$D117
 	ld a,[hli]
 	jr nz,Logged_0x47B7B
@@ -75174,6 +75397,7 @@ Logged_0x47BC8:
 	xor a
 	ld [$D119],a
 	ret
+
 	call Logged_0x30CA
 	jr Logged_0x47BDB
 	call Logged_0x30BD
@@ -75229,6 +75453,7 @@ Logged_0x47C30:
 	ld a,$01
 	ld [$D116],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D100
@@ -75244,6 +75469,7 @@ Logged_0x47C30:
 	ld a,$55
 	ld [hld],a
 	ret
+
 	ld a,[$D11B]
 	and a
 	jr nz,Logged_0x47C83
@@ -75265,6 +75491,7 @@ Logged_0x47C5F:
 	ld a,$72
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -75489,6 +75716,7 @@ SECTION "Bank12", ROMX, BANK[$12]
 	ld a,$0A
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -75685,7 +75913,7 @@ Logged_0x4816F:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x48180
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -75743,7 +75971,7 @@ Logged_0x481CA:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x481DB
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -76078,7 +76306,7 @@ Logged_0x483C5:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x483D6
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -76286,6 +76514,7 @@ Logged_0x484F3:
 	or $00
 	ld [hld],a
 	ret
+
 	call Logged_0x3090
 	jr Logged_0x48510
 	call Logged_0x309A
@@ -76306,6 +76535,7 @@ Logged_0x48510:
 	ld a,$2C
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -76314,6 +76544,7 @@ Logged_0x48510:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -76334,6 +76565,7 @@ Logged_0x48510:
 	ld a,$F4
 	ld [hl],a
 	ret
+
 	call Logged_0x3655
 	ld hl,$D100
 	bit 5,[hl]
@@ -76347,6 +76579,7 @@ Logged_0x48510:
 	ld de,$519E
 	call Logged_0x30F0
 	ret
+
 	call Logged_0x3655
 	ld a,[$C08F]
 	ld b,a
@@ -76441,11 +76674,12 @@ Logged_0x48613:
 	ld a,$22
 	ld [hld],a
 	ret
+
 	jp Logged_0x3655
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$3D
 	call Logged_0x3AAC
 	jr nz,Logged_0x4863B
@@ -76459,7 +76693,7 @@ Logged_0x4863B:
 
 Logged_0x48641:
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -76590,6 +76824,7 @@ Logged_0x48721:
 	ld a,$22
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -76680,6 +76915,7 @@ Logged_0x487B8:
 	ld a,$19
 	ld [hli],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -76704,6 +76940,7 @@ Logged_0x487DF:
 	ld a,$5D
 	ld [hli],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -76752,6 +76989,7 @@ Logged_0x48820:
 	ld a,$2F
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -76863,6 +77101,7 @@ INCBIN "baserom.gbc", $488CD, $488DC - $488CD
 	ld a,$FC
 	ld [hl],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -77588,6 +77827,7 @@ Logged_0x48D9B:
 	or $05
 	ld [hld],a
 	ret
+
 	ld a,[$CA97]
 	cp $10
 	jr nc,Logged_0x48DE3
@@ -77634,6 +77874,7 @@ Logged_0x48DE3:
 	xor a
 	ld [$D119],a
 	ret
+
 	ld bc,$4760
 	call Logged_0x34B7
 	ld hl,$D116
@@ -77667,6 +77908,7 @@ Logged_0x48E2B:
 	ld a,$10
 	ld [hli],a
 	ret
+
 	ld hl,$D116
 	dec [hl]
 	ret nz
@@ -77760,12 +78002,14 @@ Logged_0x48EB3:
 	ld de,$5263
 	call Logged_0x30F0
 	ret
+
 	ld hl,$D11F
 	ld a,$4E
 	ld [hld],a
 	ld a,$EC
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -78080,6 +78324,7 @@ Logged_0x490D5:
 	xor a
 	ld [$D11B],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -78223,6 +78468,7 @@ Logged_0x491B6:
 	call Logged_0x3513
 	and $0F
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -78282,6 +78528,7 @@ Logged_0x491FD:
 	ld a,$77
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,[$D10F]
 	cp $0C
 	jr nz,Logged_0x4924E
@@ -78309,6 +78556,7 @@ Logged_0x49253:
 	ld a,$36
 	ld [hli],a
 	ret
+
 	ld a,[$D10F]
 	cp $0C
 	jr nz,Logged_0x4927A
@@ -78419,6 +78667,7 @@ Logged_0x4930F:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld hl,$D11A
 	ld a,[$D107]
 	cp $27
@@ -78461,6 +78710,7 @@ Logged_0x49356:
 	xor a
 	ld [$D11B],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	call Logged_0x49418
@@ -78524,6 +78774,7 @@ Logged_0x493CD:
 	ld a,$12
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	call Logged_0x49418
@@ -78543,6 +78794,7 @@ Logged_0x493CD:
 	ld a,$02
 	ld [$D117],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -78710,6 +78962,7 @@ Logged_0x49518:
 	ld a,$8C
 	ld [$FF00+$B6],a
 	ret
+
 	ld hl,$D11F
 	ld a,$55
 	ld [hld],a
@@ -78722,6 +78975,7 @@ Logged_0x49518:
 	ld a,$1E
 	ld [$D116],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -78761,7 +79015,7 @@ Logged_0x49518:
 	call Logged_0x30F0
 	ld a,$1D
 	ld [hli],a
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ret nc
 	ld a,$01
@@ -78789,6 +79043,7 @@ Logged_0x495B1:
 	ld a,$44
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D100
@@ -78813,6 +79068,7 @@ Logged_0x495B1:
 	ld a,$80
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -78832,6 +79088,7 @@ Logged_0x495B1:
 	ret nc
 	inc [hl]
 	ret
+
 	ld a,[$D11B]
 	and a
 	jr z,Logged_0x49625
@@ -78920,6 +79177,7 @@ Logged_0x49666:
 	ld a,$AE
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -78928,6 +79186,7 @@ Logged_0x49666:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld a,[$D140]
 	and a
 	jr z,Logged_0x496C8
@@ -78956,6 +79215,7 @@ Logged_0x496C8:
 	ld a,$FF
 	ld [hl],a
 	ret
+
 	ld a,[$D143]
 	cp $03
 	ret nz
@@ -78970,6 +79230,7 @@ Logged_0x496C8:
 	ld a,$08
 	ld [hld],a
 	ret
+
 	ld hl,$D116
 	ld a,[hl]
 	cp $19
@@ -78983,6 +79244,7 @@ Logged_0x49715:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -79210,6 +79472,7 @@ Logged_0x49853:
 	inc a
 	ld [$D117],a
 	ret
+
 	ld hl,$D11F
 	ld a,$58
 	ld [hld],a
@@ -79221,6 +79484,7 @@ Logged_0x49853:
 	ld a,[$D104]
 	ld [hl],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -79259,6 +79523,7 @@ Logged_0x498DD:
 	ld a,$0F
 	ld [hl],a
 	ret
+
 	call Logged_0x3655
 	ld a,$0F
 	ld [$D10A],a
@@ -79705,6 +79970,7 @@ Logged_0x49B8A:
 	ld a,$48
 	ld [$D11B],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D100
@@ -79715,6 +79981,7 @@ Logged_0x49B8A:
 	ld a,$A3
 	ld [hld],a
 	ret
+
 	ld hl,$D101
 	ld a,[hli]
 	ld c,a
@@ -79865,6 +80132,7 @@ Logged_0x49C6B:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld b,$02
 	ld hl,$D103
 	ld a,[hl]
@@ -79931,6 +80199,7 @@ Logged_0x49CD8:
 	ld a,$E5
 	ld [hld],a
 	ret
+
 	call Logged_0x3655
 	ld hl,$D11B
 	ld a,[hl]
@@ -80167,6 +80436,7 @@ Logged_0x49E26:
 	ld l,$00
 	set 3,[hl]
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -80209,6 +80479,7 @@ Logged_0x49E26:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D11F
@@ -80219,6 +80490,7 @@ Logged_0x49E26:
 	ld l,$00
 	set 4,[hl]
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D100
@@ -80381,12 +80653,14 @@ Logged_0x49FA7:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld hl,$D11F
 	ld a,$5F
 	ld [hld],a
 	ld a,$CE
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1A
@@ -80739,7 +81013,7 @@ Logged_0x4A224:
 	ld a,[$CA97]
 	cp $10
 	jr c,Logged_0x4A235
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	ld a,$04
 	rla
@@ -80993,6 +81267,7 @@ Logged_0x4A3AF:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld hl,$D100
 	set 3,[hl]
 	ld l,$16
@@ -81032,6 +81307,7 @@ Logged_0x4A3F7:
 	ld a,$0F
 	ld [hld],a
 	ret
+
 	ld a,[$D11A]
 	rlca
 	jr c,Logged_0x4A40C
@@ -81078,6 +81354,7 @@ Logged_0x4A43B:
 	ld a,$18
 	ld [hli],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -81086,6 +81363,7 @@ Logged_0x4A43B:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -81106,6 +81384,7 @@ Logged_0x4A43B:
 	ld a,$FD
 	ld [hl],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -81122,6 +81401,7 @@ Logged_0x4A43B:
 	ld a,$64
 	ld [hli],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -81152,6 +81432,7 @@ Logged_0x4A43B:
 	ld a,$00
 	ld [hl],a
 	ret
+
 	ld a,[$CA88]
 	add a,$2A
 	ld b,a
@@ -81182,7 +81463,7 @@ Logged_0x4A4F7:
 	ld [hli],a
 	xor a
 	ld [hl],a
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	jr nc,Logged_0x4A50C
 	ld l,$00
@@ -81329,6 +81610,7 @@ INCBIN "baserom.gbc", $4A697, $4A69A - $4A697
 	ld a,$08
 	ld [hl],a
 	ret
+
 	ld a,[$CA88]
 	add a,$2A
 	ld b,a
@@ -81408,6 +81690,7 @@ Logged_0x4A71F:
 	ld a,$03
 	ld [hl],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -81668,6 +81951,7 @@ Logged_0x4A89D:
 	ret nc
 	inc [hl]
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -81692,6 +81976,7 @@ Logged_0x4A89D:
 	ld a,$FB
 	ld [hl],a
 	ret
+
 	ld a,[$C08F]
 	rra
 	ret c
@@ -81727,6 +82012,7 @@ Logged_0x4A8FB:
 	ld a,$01
 	ld [hl],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -81748,6 +82034,7 @@ Logged_0x4A8FB:
 	ld a,$31
 	ld [$D11B],a
 	ret
+
 	ld a,[$D11B]
 	rst JumpList
 	dw Logged_0x4A9EE
@@ -82027,6 +82314,7 @@ Unknown_0x4AAE9:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -82144,6 +82432,7 @@ INCBIN "baserom.gbc", $4C85F, $4C860 - $4C85F
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld hl,$D103
 	ld a,[$CA62]
 	add a,$04
@@ -82176,6 +82465,7 @@ Logged_0x4C8B1:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld a,[$CA5B]
 	and $10
 	jr z,Logged_0x4C8DA
@@ -82213,6 +82503,7 @@ Logged_0x4C8DA:
 	ld a,$F2
 	ld [hld],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	cp $18
@@ -82230,6 +82521,7 @@ Logged_0x4C8DA:
 	ld a,$1D
 	ld [hld],a
 	ret
+
 	ld hl,$D116
 	ld a,[hl]
 	cp $49
@@ -82317,6 +82609,7 @@ Logged_0x4C982:
 	ld a,$FC
 	ld [hl],a
 	ret
+
 	ld a,[$D11B]
 	cp $18
 	ret nz
@@ -82331,6 +82624,7 @@ Logged_0x4C982:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -82351,6 +82645,7 @@ Logged_0x4C982:
 	ld a,$F9
 	ld [hl],a
 	ret
+
 	ld a,[$D11B]
 	cp $18
 	ret nz
@@ -82365,6 +82660,7 @@ Logged_0x4C982:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld hl,$D100
 	set 4,[hl]
 	set 3,[hl]
@@ -82376,6 +82672,7 @@ Logged_0x4C982:
 	ld a,$2A
 	ld [hld],a
 	ret
+
 	ld a,$02
 	ld [$D114],a
 	ld a,[$D11B]
@@ -82538,6 +82835,7 @@ Logged_0x4CB35:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld a,$01
 	ld [$C0E6],a
 	xor a
@@ -82601,6 +82899,7 @@ Logged_0x4CB35:
 	ld [$CAC3],a
 	call Logged_0x161A
 	ret
+
 	ld a,$02
 	ld [$D114],a
 	ld a,$81
@@ -82721,7 +83020,7 @@ Logged_0x4CC3C:
 	jr Logged_0x4CC82
 
 Logged_0x4CC7B:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	jr c,Logged_0x4CC82
 	ld b,$07
@@ -82928,6 +83227,7 @@ Logged_0x4CDA8:
 	ld a,$06
 	ld [$D14B],a
 	ret
+
 	ld a,$02
 	ld [$D114],a
 	ld a,$81
@@ -82968,6 +83268,7 @@ Logged_0x4CDF4:
 	ld a,$CE
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$02
 	ld [$D114],a
 	ld a,$81
@@ -83011,6 +83312,7 @@ Logged_0x4CE39:
 	ld a,$55
 	ld [hld],a
 	ret
+
 	ld hl,$D14E
 	ld a,[hl]
 	cp $80
@@ -83129,6 +83431,7 @@ Logged_0x4CF03:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ret
+
 	ld hl,$D116
 	dec [hl]
 	jr z,Logged_0x4CF29
@@ -83168,6 +83471,7 @@ Logged_0x4CF29:
 	ld a,$CE
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -83349,6 +83653,7 @@ INCBIN "baserom.gbc", $4D01B, $4D0AB - $4D01B
 	ld a,[hli]
 	ld [$D155],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D100
@@ -83757,6 +84062,7 @@ Logged_0x4D34C:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D15F]
@@ -83772,6 +84078,7 @@ Logged_0x4D34C:
 	ld a,$9B
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -83782,6 +84089,7 @@ Logged_0x4D34C:
 	rra
 	jp nc,Logged_0x30E6
 	ret
+
 	ld hl,$D11F
 	ld a,$53
 	ld [hld],a
@@ -83797,6 +84105,7 @@ Logged_0x4D34C:
 	ld a,[hli]
 	ld [$D159],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D100
@@ -84152,6 +84461,7 @@ Logged_0x4D5F5:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D15F]
@@ -84167,6 +84477,7 @@ Logged_0x4D5F5:
 	ld a,$44
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -84177,6 +84488,7 @@ Logged_0x4D5F5:
 	rra
 	jp c,Logged_0x30D9
 	ret
+
 	ld hl,$C0BC
 	ld a,[$C08A]
 	add a,[hl]
@@ -84664,6 +84976,7 @@ Logged_0x5003F:
 	ld [hld],a
 	res 7,[hl]
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -84685,6 +84998,7 @@ Logged_0x5003F:
 	dec l
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D11B
@@ -84831,6 +85145,7 @@ Logged_0x50162:
 	xor $80
 	ld [hl],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D119]
@@ -84891,6 +85206,7 @@ Logged_0x501BE:
 	xor a
 	ld [hl],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -85044,6 +85360,7 @@ Logged_0x502AE:
 Logged_0x502CE:
 	set 7,[hl]
 	ret
+
 	ld a,[$CA88]
 	and $FE
 	ld b,a
@@ -85164,6 +85481,7 @@ Logged_0x50388:
 	ld a,$0F
 	ld [hli],a
 	ret
+
 	ld hl,$D116
 	dec [hl]
 	ld a,[hl]
@@ -85519,6 +85837,7 @@ Logged_0x505A0:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -85567,6 +85886,7 @@ Logged_0x505E3:
 	ld a,$10
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -85586,6 +85906,7 @@ Logged_0x505E3:
 	ld a,$B2
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D10D]
@@ -85599,6 +85920,7 @@ Logged_0x50647:
 	cp $C3
 	jp nz,Logged_0x50031
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -85614,6 +85936,7 @@ Logged_0x50647:
 	ld a,$6C
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -85629,6 +85952,7 @@ Logged_0x50647:
 	ld a,$35
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -85753,6 +86077,7 @@ Logged_0x50746:
 	ld a,$02
 	ld [$D114],a
 	ret
+
 	call Logged_0x3655
 	ld hl,$D116
 	ld a,[hl]
@@ -85881,7 +86206,7 @@ Logged_0x5083C:
 	jr nz,Logged_0x50855
 
 Logged_0x50849:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	jr c,Logged_0x50855
 
@@ -85952,6 +86277,7 @@ Logged_0x50898:
 	ld a,$A1
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -85962,6 +86288,7 @@ Logged_0x508C8:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld a,[$D10D]
@@ -86224,6 +86551,7 @@ Logged_0x50A79:
 	xor a
 	ld [hld],a
 	ret
+
 	call Logged_0x3090
 	jr Logged_0x50A8E
 	call Logged_0x309A
@@ -86284,6 +86612,7 @@ INCBIN "baserom.gbc", $50AB4, $50AC4 - $50AB4
 	ld a,$28
 	ld [hli],a
 	ret
+
 	ld a,[$D100]
 	rra
 	rra
@@ -86308,6 +86637,7 @@ INCBIN "baserom.gbc", $50AB4, $50AC4 - $50AB4
 	ld [$CAC3],a
 	call Logged_0x161A
 	ret
+
 	ld a,[$D117]
 	and a
 	jp z,Logged_0x50C21
@@ -86485,7 +86815,7 @@ Logged_0x50C36:
 	ld a,[$D117]
 	cp $08
 	ret z
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	cp $FA
 	ret c
 	ld de,$563B
@@ -86510,6 +86840,7 @@ Logged_0x50C58:
 	ld a,$50
 	ld [$D116],a
 	ret
+
 	ld hl,$D116
 	dec [hl]
 	ret nz
@@ -86679,6 +87010,7 @@ Unknown_0x50D7C:
 	ld [$D117],a
 	ld [$D119],a
 	ret
+
 	ld hl,$D108
 	ld a,[hl]
 	and $80
@@ -86956,6 +87288,7 @@ INCBIN "baserom.gbc", $50F49, $50FAD - $50F49
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D10D]
@@ -87029,6 +87362,7 @@ Logged_0x51010:
 	xor a
 	ld [$D117],a
 	ret
+
 	ld a,$02
 	ld [$D114],a
 	ld a,[$D141]
@@ -87040,6 +87374,7 @@ Logged_0x51010:
 	ld a,$50
 	ld [hld],a
 	ret
+
 	ld a,[$D117]
 	and a
 	jr z,Logged_0x510B1
@@ -87140,7 +87475,7 @@ Logged_0x510B1:
 Logged_0x510ED:
 	xor a
 	ld [$D141],a
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and $03
 	ld b,a
 	ld a,$46
@@ -87280,6 +87615,7 @@ Logged_0x511A5:
 	ld hl,$D11A
 	dec [hl]
 	ret
+
 	ld hl,$D11F
 	ld a,$51
 	ld [hld],a
@@ -87288,6 +87624,7 @@ Logged_0x511A5:
 	ld l,$00
 	set 3,[hl]
 	ret
+
 	ld hl,$D11F
 	ld a,$51
 	ld [hld],a
@@ -87305,6 +87642,7 @@ Logged_0x511A5:
 	ld l,$17
 	inc [hl]
 	ret
+
 	ld a,[$D11B]
 	and a
 	jr nz,Logged_0x5122B
@@ -87399,6 +87737,7 @@ Logged_0x51296:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld hl,$D11F
 	ld a,$52
 	ld [hld],a
@@ -87489,6 +87828,7 @@ INCBIN "baserom.gbc", $51336, $51356 - $51336
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -87556,13 +87896,14 @@ Logged_0x513F1:
 	ld [$CAC3],a
 	call Logged_0x161A
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
 	dec [hl]
 	jp nz,Logged_0x30E1
 	ld b,$03
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and $01
 	add a,b
 	ld [hli],a
@@ -87666,7 +88007,7 @@ Logged_0x514EB:
 	set 7,[hl]
 	ld l,$16
 	ld b,$03
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and $01
 	add a,b
 	ld [hli],a
@@ -88131,6 +88472,7 @@ Logged_0x517BD:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -88194,6 +88536,7 @@ Logged_0x51844:
 	ld [hli],a
 	ld [hl],d
 	ret
+
 	ld hl,$D116
 	ld a,[hl]
 	and a
@@ -88357,6 +88700,7 @@ Logged_0x51927:
 	ld l,$00
 	res 7,[hl]
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	cp $31
@@ -88664,6 +89008,7 @@ Logged_0x51C13:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -88685,6 +89030,7 @@ Logged_0x51C13:
 	ld a,$F6
 	ld [hl],a
 	ret
+
 	ld a,[$D11B]
 	cp $2F
 	ret nz
@@ -88714,6 +89060,7 @@ Logged_0x51C62:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld hl,$D116
 	dec [hl]
 	ret nz
@@ -88749,6 +89096,7 @@ INCBIN "baserom.gbc", $51C81, $51CF9 - $51C81
 	ld [$D118],a
 	jp Logged_0x305C
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -88892,6 +89240,7 @@ Unknown_0x51E0E:
 	ld a,$01
 	ld [$CA95],a
 	ret
+
 	ld hl,$D100
 	res 2,[hl]
 	ld l,$1B
@@ -89496,6 +89845,7 @@ Logged_0x521CC:
 	ld d,$D0
 	ld e,d
 	ret
+
 	ld hl,$D117
 	ld a,[hl]
 	and a
@@ -89588,6 +89938,7 @@ Logged_0x52265:
 	ld a,$02
 	ld [$D117],a
 	ret
+
 	ld hl,$D11F
 	ld a,$62
 	ld [hld],a
@@ -89600,6 +89951,7 @@ Logged_0x52265:
 	ld a,$3C
 	ld [$D116],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -89613,6 +89965,7 @@ Logged_0x52265:
 	ld a,$9A
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -89657,6 +90010,7 @@ Logged_0x522CF:
 	ld a,$D9
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -89685,12 +90039,14 @@ Logged_0x522CF:
 	ld a,$60
 	ld [$CA6B],a
 	ret
+
 	ld hl,$D11F
 	ld a,$63
 	ld [hld],a
 	ld a,$21
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -89706,6 +90062,7 @@ Logged_0x522CF:
 	ld a,$3B
 	ld [hld],a
 	ret
+
 	call Logged_0x3655
 	ld hl,$D117
 	ld a,[hl]
@@ -89777,6 +90134,7 @@ Logged_0x523A3:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D11A]
@@ -89825,6 +90183,7 @@ Logged_0x523A3:
 	ld hl,$D100
 	res 4,[hl]
 	ret
+
 	call Logged_0x3655
 	ld a,[$C08F]
 	rra
@@ -89876,6 +90235,7 @@ Logged_0x52458:
 	xor a
 	ld [hl],a
 	ret
+
 	ld hl,$D11F
 	ld a,$64
 	ld [hld],a
@@ -89888,6 +90248,7 @@ Logged_0x52458:
 	ld a,$C8
 	ld [$D116],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -89906,6 +90267,7 @@ Logged_0x52458:
 	xor a
 	ld [$D146],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -89964,6 +90326,7 @@ Unknown_0x524E6:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -89983,6 +90346,7 @@ Unknown_0x524E6:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld hl,$D11F
 	ld a,$65
 	ld [hld],a
@@ -90084,6 +90448,7 @@ Logged_0x525A9:
 	ld a,$02
 	ld [hl],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D11B]
@@ -90455,6 +90820,7 @@ Logged_0x541AB:
 	ld a,$2B
 	ld [$D116],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -90695,6 +91061,7 @@ Logged_0x5430B:
 	ld a,$A7
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D10D]
@@ -90742,6 +91109,7 @@ Logged_0x54378:
 	ld a,$87
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -90887,6 +91255,7 @@ Logged_0x54497:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld hl,$D11F
 	ld a,$44
 	ld [hld],a
@@ -90958,6 +91327,7 @@ INCBIN "baserom.gbc", $544DD, $544E5 - $544DD
 	ld [$D146],a
 	ld [$D147],a
 	ret
+
 	ld a,$01
 	ld [$C0E6],a
 	ld a,$02
@@ -91000,6 +91370,7 @@ Unknown_0x54572:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ret
+
 	call Logged_0x54C07
 	ld hl,$D11B
 	ld a,[hl]
@@ -91205,6 +91576,7 @@ Logged_0x546BD:
 	ld hl,$D11A
 	set 6,[hl]
 	ret
+
 	call Logged_0x54C07
 	ld hl,$D103
 	ld a,[hli]
@@ -91385,6 +91757,7 @@ Logged_0x547E9:
 	ld a,$7D
 	ld [hld],a
 	ret
+
 	call Logged_0x54C07
 	ld hl,$D116
 	dec [hl]
@@ -91431,6 +91804,7 @@ Logged_0x5482A:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ret
+
 	call Logged_0x54C07
 	ld hl,$D116
 	dec [hl]
@@ -91531,6 +91905,7 @@ Logged_0x548BD:
 	ld a,$AC
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	call Logged_0x54C07
@@ -91550,6 +91925,7 @@ Logged_0x548BD:
 	ld a,$31
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	call Logged_0x54C07
@@ -91616,6 +91992,7 @@ Logged_0x549AB:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D11F
@@ -91645,6 +92022,7 @@ Logged_0x549AB:
 	ld a,[hl]
 	ld [$D119],a
 	ret
+
 	call Logged_0x3655
 	ld hl,$D100
 	bit 5,[hl]
@@ -91656,6 +92034,7 @@ Logged_0x549AB:
 	ld a,$02
 	ld [hld],a
 	ret
+
 	call Logged_0x3655
 	ld a,[$C08F]
 	rra
@@ -91679,6 +92058,7 @@ Logged_0x54A24:
 	ld a,$2D
 	ld [hld],a
 	ret
+
 	call Logged_0x3655
 	ld hl,$D118
 	ld b,[hl]
@@ -91717,6 +92097,7 @@ Logged_0x54A5B:
 	ld a,$3C
 	ld [$D116],a
 	ret
+
 	ld hl,$D100
 	set 4,[hl]
 	ld hl,$D11F
@@ -91740,6 +92121,7 @@ Unknown_0x54A7F:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	cp $2A
@@ -91980,6 +92362,7 @@ Logged_0x54BE6:
 	ld a,$F8
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -92132,6 +92515,7 @@ Logged_0x54D96:
 	ld a,$AA
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -92189,6 +92573,7 @@ Logged_0x54DFE:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld hl,$D100
 	ld a,[$C08F]
 	rra
@@ -92438,6 +92823,7 @@ Logged_0x54F8E:
 	ld a,$BC
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -92580,6 +92966,7 @@ Logged_0x5504D:
 	ld a,$28
 	ld [hli],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -92595,6 +92982,7 @@ Logged_0x5504D:
 	ld a,$28
 	ld [hli],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -92637,6 +93025,7 @@ Logged_0x5504D:
 	ld a,$A3
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld bc,$4D20
@@ -92656,6 +93045,7 @@ Logged_0x5504D:
 	ld a,$25
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D100
@@ -92681,6 +93071,7 @@ Logged_0x5504D:
 	xor a
 	ld [$C0E6],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1A
@@ -92757,6 +93148,7 @@ Unknown_0x551E0:
 	ld a,$01
 	ld [hl],a
 	ret
+
 	ld hl,$D11F
 	ld a,$52
 	ld [hld],a
@@ -92786,6 +93178,7 @@ Unknown_0x551E0:
 	ld a,$01
 	ld [$D149],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,$02
@@ -92848,6 +93241,7 @@ Logged_0x55285:
 	ld a,$9F
 	ld [hld],a
 	ret
+
 	call Logged_0x553E8
 	ld a,$81
 	ld [$D11C],a
@@ -92862,6 +93256,7 @@ Logged_0x55285:
 	ld a,$BA
 	ld [hld],a
 	ret
+
 	call Logged_0x553E8
 	ld a,$81
 	ld [$D11C],a
@@ -92876,6 +93271,7 @@ Logged_0x55285:
 	ld l,$00
 	set 7,[hl]
 	ret
+
 	call Logged_0x553E8
 	ld a,$81
 	ld [$D11C],a
@@ -92918,6 +93314,7 @@ Logged_0x55309:
 	ld hl,$D147
 	inc [hl]
 	ret
+
 	call Logged_0x553E8
 	ld a,$81
 	ld [$D11C],a
@@ -92990,6 +93387,7 @@ Logged_0x55370:
 	ld hl,$D147
 	dec [hl]
 	ret
+
 	ld hl,$D100
 	bit 1,[hl]
 	jp nz,Logged_0x3317
@@ -93326,6 +93724,7 @@ INCBIN "baserom.gbc", $55511, $55611 - $55511
 	xor a
 	ld [$D119],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	call Logged_0x55C3A
@@ -93388,6 +93787,7 @@ Logged_0x55702:
 	ld a,$01
 	ld [$D117],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D11A
@@ -94104,6 +94504,7 @@ Logged_0x55B9A:
 	ld a,$28
 	ld [$D116],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D117
@@ -94222,6 +94623,7 @@ Logged_0x55C3A:
 Logged_0x55C47:
 	set 4,[hl]
 	ret
+
 	xor a
 	ld [$D146],a
 	ld hl,$D100
@@ -94259,6 +94661,7 @@ Logged_0x55C47:
 	ld a,$91
 	ld [hld],a
 	ret
+
 	call Logged_0x3655
 	call Logged_0x55E33
 	ld a,[$C08F]
@@ -94300,6 +94703,7 @@ Logged_0x55CC3:
 	ld a,$CA
 	ld [$FF00+$B6],a
 	ret
+
 	call Logged_0x3655
 	ld hl,$D116
 	dec [hl]
@@ -94316,6 +94720,7 @@ Logged_0x55CC3:
 	ld a,$01
 	ld [$D146],a
 	ret
+
 	call Logged_0x3655
 	ld hl,$D116
 	ld a,[hl]
@@ -94336,6 +94741,7 @@ Logged_0x55D05:
 	ld a,$18
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D146]
@@ -94362,6 +94768,7 @@ Logged_0x55D05:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	call Logged_0x3655
 	ld a,[$C08F]
 	rra
@@ -94391,6 +94798,7 @@ Logged_0x55D6A:
 	ld l,$00
 	res 5,[hl]
 	ret
+
 	call Logged_0x3655
 	ld hl,$D100
 	bit 5,[hl]
@@ -94402,6 +94810,7 @@ Logged_0x55D6A:
 	ld a,$90
 	ld [hld],a
 	ret
+
 	call Logged_0x3655
 	call Logged_0x55E33
 	ld a,[$C08F]
@@ -94446,8 +94855,10 @@ Logged_0x55DD6:
 	ld a,$E0
 	ld [hld],a
 	ret
+
 	call Logged_0x3655
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -94550,6 +94961,7 @@ INCBIN "baserom.gbc", $55E46, $55E4E - $55E46
 	ld a,$02
 	ld [$D149],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D100
@@ -94577,6 +94989,7 @@ INCBIN "baserom.gbc", $55E46, $55E4E - $55E46
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -94596,6 +95009,7 @@ INCBIN "baserom.gbc", $55E46, $55E4E - $55E46
 	ld a,$AA
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -94629,6 +95043,7 @@ INCBIN "baserom.gbc", $55E46, $55E4E - $55E46
 	ld [$CAC3],a
 	call Logged_0x161A
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$D10F]
@@ -94647,6 +95062,7 @@ INCBIN "baserom.gbc", $55E46, $55E4E - $55E46
 	ld a,$41
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -94665,6 +95081,7 @@ INCBIN "baserom.gbc", $55E46, $55E4E - $55E46
 	ld de,$5DEC
 	call Logged_0x30F0
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -94673,6 +95090,7 @@ INCBIN "baserom.gbc", $55E46, $55E4E - $55E46
 	xor a
 	ld [$D100],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -94715,6 +95133,7 @@ Logged_0x55FA0:
 	xor a
 	ld [$CAC3],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld a,[$CA8E]
@@ -95098,6 +95517,7 @@ Logged_0x561F9:
 	ld a,$2F
 	ld [hl],a
 	ret
+
 	ld hl,$D100
 	set 3,[hl]
 	ld l,$1F
@@ -95135,6 +95555,7 @@ Logged_0x56235:
 	ld a,$41
 	ld [hld],a
 	ret
+
 	ld hl,$D116
 	ld a,[hl]
 	and a
@@ -95212,6 +95633,7 @@ Logged_0x562A2:
 	ld a,$81
 	ld [$D11C],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -95222,6 +95644,7 @@ Logged_0x562C3:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	set 3,[hl]
@@ -95243,6 +95666,7 @@ Logged_0x562C3:
 	ld a,$08
 	ld [hl],a
 	ret
+
 	ld a,$02
 	ld [$D114],a
 	ld a,[$D11B]
@@ -95256,6 +95680,7 @@ Logged_0x562C3:
 	ld a,$50
 	ld [$D116],a
 	ret
+
 	ld hl,$D116
 	dec [hl]
 	ret nz
@@ -95270,6 +95695,7 @@ Logged_0x562C3:
 	ld a,$1E
 	ld [hld],a
 	ret
+
 	ld hl,$D100
 	bit 1,[hl]
 	jp nz,Logged_0x3326
@@ -95287,6 +95713,7 @@ Logged_0x56326:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld a,[$C08F]
 	and $07
 	jr nz,Logged_0x5634E
@@ -95347,6 +95774,7 @@ Logged_0x5639E:
 	xor a
 	ld [hl],a
 	ret
+
 	ld a,[$CA8E]
 	and a
 	jr z,Logged_0x563AD
@@ -95433,6 +95861,7 @@ Logged_0x56428:
 	jp c,Logged_0x3069
 	res 7,[hl]
 	ret
+
 	ld a,[$CA8E]
 	and a
 	jr z,Logged_0x5643B
@@ -95551,6 +95980,7 @@ Logged_0x564E5:
 	xor a
 	ld [$D100],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld bc,$4D60
@@ -95738,6 +96168,7 @@ Logged_0x56602:
 	ld a,$1A
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$01
 	ld [$C0E6],a
 	ld a,$FF
@@ -95789,6 +96220,7 @@ Logged_0x56602:
 	ld a,$75
 	ld [hld],a
 	ret
+
 	ld a,[$C08F]
 	and $0F
 	jr nz,Logged_0x56684
@@ -95892,6 +96324,7 @@ Logged_0x566D5:
 Logged_0x56714:
 	set 6,[hl]
 	ret
+
 	ld hl,$D11B
 	ld a,[hl]
 	and a
@@ -96907,6 +97340,7 @@ Logged_0x56D4B:
 	ld a,$A9
 	ld [$FF00+$B6],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -96928,6 +97362,7 @@ Logged_0x56D99:
 	ld a,$AF
 	ld [hld],a
 	ret
+
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -96995,6 +97430,7 @@ Logged_0x56E14:
 	ld a,$24
 	ld [hld],a
 	ret
+
 	call Logged_0x3655
 	ld hl,$D117
 	ld a,[hld]
@@ -97036,6 +97472,7 @@ Logged_0x56E65:
 	ld a,$01
 	ld [hl],a
 	ret
+
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -97072,6 +97509,7 @@ Logged_0x56E9C:
 	ld a,$F6
 	ld [$D109],a
 	ret
+
 	ld a,[$CA8E]
 	and a
 	jr z,Logged_0x56EB7
@@ -97749,6 +98187,7 @@ Unknown_0x572AA:
 	xor a
 	ld [$CAC3],a
 	ret
+
 	ld hl,$D11F
 	ld a,$72
 	ld [hld],a
@@ -98201,6 +98640,7 @@ Logged_0x6130B:
 	rra
 	call c,Logged_0x611CB
 	ret
+
 	ld a,[$CA3C]
 	ld e,a
 	ld a,[$CA8E]
@@ -98606,6 +99046,7 @@ Logged_0x615B4:
 	ld a,[$D11F]
 	ld [hl],a
 	ret
+
 	ld hl,$D000
 	ld a,[hl]
 	and $93
@@ -98687,6 +99128,7 @@ Logged_0x616C5:
 
 Logged_0x616D6:
 	ret
+
 	ld hl,$D000
 	ld a,[hl]
 	and $93
@@ -100082,6 +100524,7 @@ Unknown_0x61F00:
 	ld a,$16
 	ld [$FF00+$B6],a
 	ret
+
 	xor a
 	call Logged_0x61F41
 	call Logged_0x61F4A
@@ -100092,6 +100535,7 @@ Unknown_0x61F00:
 	ld [$D144],a
 	ld [$D145],a
 	ret
+
 	xor a
 	call Logged_0x61F41
 	call Logged_0x61F4A
@@ -102882,7 +103326,7 @@ Logged_0x63050:
 	jp Logged_0x316B
 
 Logged_0x6305F:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	rra
 	jr c,Logged_0x63068
 	ld a,$39
@@ -103576,9 +104020,11 @@ Logged_0x63375:
 
 Logged_0x6337D:
 	ret
+
 	xor a
 	ld [$D100],a
 	ret
+
 	ld a,[$C08F]
 	dec a
 	and $3F
@@ -104667,7 +105113,7 @@ Logged_0x64008:
 	ld h,[hl]
 	ld l,c
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[hli]
 	ld [$FF00+$A0],a
 	ld a,[hli]
@@ -104676,7 +105122,7 @@ Logged_0x64008:
 	push hl
 	ld h,a
 	ld l,c
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$FF00+$A0]
 	ld e,$68
 	add a,e
@@ -104739,7 +105185,7 @@ Logged_0x64008:
 	call $FF80
 	pop hl
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$0D
 	ld [$FF00+$A0],a
 	ld de,$D126
@@ -104890,6 +105336,7 @@ Logged_0x6411D:
 	or $11
 	ld [de],a
 	ret
+
 	ld h,$D0
 	ld l,$00
 	ld a,[hl]
@@ -108576,6 +109023,7 @@ Logged_0x8038A:
 	xor [hl]
 	ld [hl],a
 	ret
+
 	ld a,[$C09C]
 	rst JumpList
 	dw Logged_0x047B
@@ -108633,7 +109081,7 @@ Logged_0x803E6:
 
 Logged_0x803F9:
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$FF
 	ld [$FF00+$B3],a
 	ld [$FF00+$B1],a
@@ -108836,7 +109284,7 @@ Logged_0x8055F:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x037D
 	call Logged_0x80BF9
 	call Logged_0x80B29
@@ -108973,7 +109421,7 @@ Logged_0x80669:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$21
 	ld [$C0AC],a
 	ld hl,$5BC4
@@ -108986,7 +109434,7 @@ Logged_0x80669:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$D050]
 	and a
 	ld a,$EC
@@ -108994,10 +109442,10 @@ Logged_0x80669:
 	ld a,$04
 
 Logged_0x806B6:
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	xor a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	xor a
 	ld [$C095],a
@@ -109036,7 +109484,7 @@ Logged_0x806B6:
 	ld a,$21
 	ld [$C0AC],a
 	ld hl,$6868
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -109045,11 +109493,11 @@ Logged_0x806B6:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$21
 	ld [$C0AC],a
 	ld hl,$68B2
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -109058,14 +109506,14 @@ Logged_0x806B6:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	jr Logged_0x80790
 
 Logged_0x80753:
 	ld a,$21
 	ld [$C0AC],a
 	ld hl,$68F5
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -109074,11 +109522,11 @@ Logged_0x80753:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$21
 	ld [$C0AC],a
 	ld hl,$6929
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -109087,15 +109535,15 @@ Logged_0x80753:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 
 Logged_0x80790:
 	xor a
 	ld [$D095],a
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld a,$90
 	ld [$D094],a
-	ld [$FF00+$4A],a
+	ld [rWY],a
 	xor a
 	ld [$D091],a
 	ld a,$59
@@ -109112,15 +109560,15 @@ Logged_0x80790:
 	ld hl,$9BC0
 	ld de,$D4A0
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$9BC0
 	ld de,$D460
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$D050]
 	cp $04
 	jr nz,Logged_0x80809
@@ -109128,15 +109576,15 @@ Logged_0x80790:
 	ld hl,$D4A0
 	ld de,$9BC0
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$D460
 	ld de,$9BC0
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$D02C]
 	ld [$CEE3],a
 	call Logged_0x3B98
@@ -109150,7 +109598,7 @@ Logged_0x80809:
 	xor a
 	ld hl,$C03A
 	ld bc,$0006
-	call Logged_0x0425
+	call Fill_HL_A
 	ld b,$00
 
 Logged_0x80821:
@@ -109172,7 +109620,7 @@ Logged_0x80821:
 	ld [$D055],a
 	ld [$D013],a
 	ld a,$E7
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -109196,10 +109644,10 @@ Logged_0x8086F:
 	call Logged_0x81DCE
 	call Logged_0x80B34
 	ld a,$04
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	xor a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	ld a,[$D018]
 	ld [$D015],a
@@ -109224,9 +109672,9 @@ Logged_0x8086F:
 	xor a
 	ld hl,$C03A
 	ld bc,$0006
-	call Logged_0x0425
+	call Fill_HL_A
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld b,$24
 	ld a,[$CA46]
 	add a,b
@@ -109244,7 +109692,7 @@ Logged_0x8086F:
 	ld de,$9600
 	call Logged_0x3B2B
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	xor a
 	ld [$D0E0],a
 	call Logged_0x82012
@@ -109265,7 +109713,7 @@ Logged_0x80915:
 	ld a,$87
 
 Logged_0x80917:
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -109316,7 +109764,7 @@ Logged_0x80973:
 	ld a,d
 	ld [$DFFF],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,e
 	ld [$C0AC],a
 	ld bc,$D200
@@ -109328,7 +109776,7 @@ Logged_0x80973:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	pop hl
 	ld a,[$DFFF]
 	ld [$C0AC],a
@@ -109344,11 +109792,11 @@ Logged_0x80973:
 
 Logged_0x809B1:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$22
 	ld [$C0AC],a
 	ld hl,$615C
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -109357,9 +109805,9 @@ Logged_0x809B1:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$22
 	ld [$C0AC],a
 	ld hl,$77F2
@@ -109372,14 +109820,14 @@ Logged_0x809B1:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x809F6:
 	ld a,$22
 	ld [$C0AC],a
 	ld hl,$4000
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -109393,7 +109841,7 @@ Logged_0x80A12:
 	ld a,$22
 	ld [$C0AC],a
 	ld hl,$4D13
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -109407,7 +109855,7 @@ Logged_0x80A2E:
 	ld a,$23
 	ld [$C0AC],a
 	ld hl,$4000
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -109421,7 +109869,7 @@ Logged_0x80A4A:
 	ld a,$23
 	ld [$C0AC],a
 	ld hl,$5363
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -109447,7 +109895,7 @@ Logged_0x80A66:
 
 Logged_0x80A82:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$22
 	ld [$C0AC],a
 	ld hl,$7748
@@ -109460,7 +109908,7 @@ Logged_0x80A82:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x80AA5:
@@ -109541,22 +109989,22 @@ Logged_0x80B29:
 	ld hl,$D060
 	ld bc,$07A0
 	xor a
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0x80B34:
 	ld hl,$D500
-	ld de,$9800
+	ld de,_SCRN0
 	ld bc,$0260
 	call Logged_0x0434
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$D200
-	ld de,$9800
+	ld de,_SCRN0
 	ld bc,$0260
 	call Logged_0x0434
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x80B54:
@@ -109647,24 +110095,235 @@ Logged_0x80BE9:
 	jr Logged_0x80BE3
 
 Logged_0x80BF9:
-	ld hl,$4C05
+	ld hl,RAMCode_0x80C05
 	ld de,$C200
-	ld b,$AC
-	call Logged_0x0466
+	ld b,Logged_0x80CB1 - RAMCode_0x80C05
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x80C05:
-INCBIN "baserom.gbc", $80C05, $80CB1 - $80C05
+RAMCode_0x80C05:
+	ld a,$02
+	ld [$FF00+$70],a
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$D094]
+	ld [$FF00+$4A],a
+	ld a,[$D095]
+	add a,$07
+	ld [$FF00+$4B],a
+	ld b,$76
+	ld a,[$C5FF]
+	push af
+	ld a,b
+	ld [$C5FF],a
+	ld [$2100],a
+
+Unknown_0x80C2C:
+	call Unknown_0x80C2C
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+	ld hl,$D0D0
+	ld a,[hl]
+	and a
+	jr z,Unknown_0x80C5B
+	ld c,a
+	xor a
+	ld [hli],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	inc c
+	ld a,[hli]
+	ld b,a
+	ld a,[hli]
+	ld l,[hl]
+	ld h,a
+
+Unknown_0x80C48:
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	dec b
+	jr nz,Unknown_0x80C48
+
+Unknown_0x80C5B:
+	ld a,[$D079]
+	ld b,a
+	ld a,[$C5FF]
+	push af
+	ld a,b
+	ld [$C5FF],a
+	ld [$2100],a
+	ld hl,$D0B0
+	ld a,[hl]
+	and a
+	jr z,Unknown_0x80C84
+	ld b,[hl]
+	xor a
+	ld [hli],a
+	ld a,b
+	ld c,$51
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+
+Unknown_0x80C84:
+	ld hl,$D0B5
+	ld a,[hl]
+	and a
+	jr z,Unknown_0x80CA2
+	ld b,a
+	ld a,$01
+	ld [$FF00+$4F],a
+	xor a
+	ld [hli],a
+	ld a,b
+	ld c,$51
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+
+Unknown_0x80CA2:
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+	xor a
+	ld [$FF00+$4F],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x80CB1:
-	ld hl,$4CBD
+	ld hl,RAMCode_0x80CBD
 	ld de,$C200
-	ld b,$9F
-	call Logged_0x0466
+	ld b,UnknownData_0x80D5C - RAMCode_0x80CBD
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x80CBD:
-INCBIN "baserom.gbc", $80CBD, $80D5C - $80CBD
+RAMCode_0x80CBD:
+	ld a,$02
+	ld [$FF00+$70],a
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$D060]
+	and a
+	jr z,Unknown_0x80CFF
+	ld c,$51
+	ld a,$D5
+	ld [$FF00+c],a
+	inc c
+	xor a
+	ld [$FF00+c],a
+	inc c
+	ld a,$18
+	ld [$FF00+c],a
+	inc c
+	xor a
+	ld [$FF00+c],a
+	inc c
+	ld a,$1D
+	ld [$FF00+c],a
+	ld a,$01
+	ld [$FF00+$4F],a
+	ld c,$51
+	ld a,$D2
+	ld [$FF00+c],a
+	inc c
+	xor a
+	ld [$FF00+c],a
+	inc c
+	ld a,$18
+	ld [$FF00+c],a
+	inc c
+	xor a
+	ld [$FF00+c],a
+	inc c
+	ld a,$1D
+	ld [$FF00+c],a
+	xor a
+	ld [$D060],a
+
+Unknown_0x80CFF:
+	ld a,[$D079]
+	and a
+	jr z,Unknown_0x80D1B
+	ld b,a
+	ld a,[$C5FF]
+	push af
+	ld a,b
+	ld [$C5FF],a
+	ld [$2100],a
+	call Logged_0x3C03
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+
+Unknown_0x80D1B:
+	xor a
+	ld [$FF00+$4F],a
+	ld b,$76
+	ld a,[$C5FF]
+	push af
+	ld a,b
+	ld [$C5FF],a
+	ld [$2100],a
+	call Logged_0x1D8C2C
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+	ld b,$21
+	ld a,[$C5FF]
+	push af
+	ld a,b
+	ld [$C5FF],a
+	ld [$2100],a
+	ld a,[$D0D0]
+	and a
+	call nz,Logged_0x854CC
+	ld a,[$D0D6]
+	and a
+	call nz,Logged_0x854C7
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 UnknownData_0x80D5C:
 INCBIN "baserom.gbc", $80D5C, $80D6C - $80D5C
@@ -110782,10 +111441,10 @@ Logged_0x814EC:
 	xor a
 	ld hl,$D800
 	ld bc,$008E
-	call Logged_0x0425
+	call Fill_HL_A
 	ld hl,$D140
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	call Logged_0x82111
 	ld a,l
 	ld [$D889],a
@@ -110845,13 +111504,13 @@ Logged_0x81576:
 	call Logged_0x815B6
 	ld de,$D880
 	ld b,$09
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld de,$D0A0
 	ld b,$07
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld de,$D06B
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0x81595:
@@ -110861,13 +111520,13 @@ Logged_0x81595:
 	ld d,h
 	ld hl,$D880
 	ld b,$09
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D0A0
 	ld b,$07
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D06B
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0x815B6:
@@ -110883,32 +111542,32 @@ Logged_0x815C1:
 	ld hl,$D800
 	ld de,$D140
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D820
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D840
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D860
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0x815E5:
 	ld hl,$D800
 	ld de,$D160
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D820
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D840
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D860
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0x81609:
@@ -111939,7 +112598,7 @@ Logged_0x82012:
 	ld hl,$6024
 	ld de,$D110
 	ld b,$02
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,c
 	ld [de],a
 	ret
@@ -113188,7 +113847,7 @@ Logged_0x82837:
 	ld hl,$D0FA
 
 Logged_0x82844:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and $0F
 	inc a
 	ld c,$00
@@ -113533,7 +114192,7 @@ Logged_0x82A79:
 	xor a
 	ld hl,$D180
 	ld bc,$0008
-	call Logged_0x0425
+	call Fill_HL_A
 
 Logged_0x82A8D:
 	xor a
@@ -113928,7 +114587,7 @@ Logged_0x84A6E:
 	ld l,a
 	ld de,$C000
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
 	call Logged_0x84C4B
 
@@ -114103,6 +114762,7 @@ Logged_0x84B89:
 	xor a
 	ld [$D809],a
 	ret
+
 	ld hl,$D056
 	inc [hl]
 	ld a,[$D055]
@@ -114173,6 +114833,7 @@ Logged_0x84BFF:
 	ld [$D055],a
 	ld [$D056],a
 	ret
+
 	ld hl,$D056
 	inc [hl]
 	ld a,[$D055]
@@ -114232,7 +114893,7 @@ Logged_0x84C4B:
 	pop hl
 	ld de,$C100
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$20
 	ld [$D806],a
 	xor a
@@ -114410,7 +115071,7 @@ Logged_0x84D55:
 	ld hl,$C000
 	ld de,$C100
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
 	ld [$D806],a
 	ld [$D056],a
@@ -114426,14 +115087,69 @@ Logged_0x84D71:
 	ret
 
 Logged_0x84D76:
-	ld hl,$4D82
+	ld hl,RAMCode_0x84D82
 	ld de,$C200
-	ld b,$57
-	call Logged_0x0466
+	ld b,LoggedData_0x84DD9 - RAMCode_0x84D82
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x84D82:
-INCBIN "baserom.gbc", $84D82, $84E43 - $84D82
+RAMCode_0x84D82:
+	ld a,$02
+	ld [$FF00+$70],a
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$D094]
+	ld [$FF00+$4A],a
+	ld a,[$D095]
+	add a,$07
+	ld [$FF00+$4B],a
+	ld b,$76
+	ld a,[$C5FF]
+	push af
+	ld a,b
+	ld [$C5FF],a
+	ld [$2100],a
+	call Logged_0x1D8C2C
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+	ld hl,$C100
+	ld c,$68
+	ld a,$80
+	ld [$FF00+c],a
+	inc c
+	ld b,$08
+
+Unknown_0x84DBE:
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+c],a
+	dec b
+	jr nz,Unknown_0x84DBE
+	xor a
+	ld [$FF00+$4F],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
+
+LoggedData_0x84DD9:
+INCBIN "baserom.gbc", $84DD9, $84E43 - $84DD9
+
+Logged_0x84E43:
 	ld a,[$D0D5]
 	cp $01
 	jr nc,Logged_0x84E77
@@ -114465,6 +115181,7 @@ Logged_0x84E77:
 	ld [$D0D5],a
 	ld [$D0DB],a
 	ret
+
 	ld a,[$D0D5]
 	cp $01
 	jp nc,Logged_0x84ED8
@@ -114527,11 +115244,11 @@ Logged_0x84EF4:
 	ld hl,$69CD
 	ld de,$C000
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$6A8D
 	ld de,$C040
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	jr Logged_0x84EAB
 
 Logged_0x84F0F:
@@ -114539,15 +115256,15 @@ Logged_0x84F0F:
 	ld hl,$69CD
 	ld de,$C000
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$6A8D
 	ld de,$C040
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$6ACD
 	ld de,$C040
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	jp Logged_0x84EAB
 
 Logged_0x84F36:
@@ -114555,15 +115272,15 @@ Logged_0x84F36:
 	ld hl,$6A4D
 	ld de,$C000
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$6A8D
 	ld de,$C040
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$6AD5
 	ld de,$C040
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	jp Logged_0x84EAB
 
 Logged_0x84F5D:
@@ -114571,11 +115288,11 @@ Logged_0x84F5D:
 	xor a
 	ld hl,$C000
 	ld bc,$0030
-	call Logged_0x0425
+	call Fill_HL_A
 	xor a
 	ld hl,$C048
 	ld bc,$0038
-	call Logged_0x0425
+	call Fill_HL_A
 	jp Logged_0x84EAB
 
 Logged_0x84F77:
@@ -114597,26 +115314,26 @@ Logged_0x84F97:
 	ld hl,$6A7D
 	ld de,$C030
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$6A8D
 	ld de,$C040
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$6AD5
 	ld de,$C040
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	jp Logged_0x84EAB
 
 Logged_0x84FBE:
 	ld hl,$C000
 	ld de,$C100
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$C040
 	ld de,$C140
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 UnknownData_0x84FD5:
@@ -114626,12 +115343,13 @@ Logged_0x84FEA:
 	xor a
 	ld hl,$C000
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	xor a
 	ld hl,$C040
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
+
 	ld a,[$D0D5]
 	cp $01
 	jr nc,Logged_0x85033
@@ -114665,25 +115383,26 @@ Logged_0x85033:
 	ld hl,$D013
 	inc [hl]
 	ret
+
 	ld a,[$D0D5]
 	cp $01
 	jr nc,Logged_0x850A6
 	ld hl,$C008
 	ld de,$C108
 	ld b,$38
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$FF
 	ld hl,$C008
 	ld bc,$0038
-	call Logged_0x0425
+	call Fill_HL_A
 	ld hl,$C040
 	ld de,$C140
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$FF
 	ld hl,$C040
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	ld hl,$D0D5
 	inc [hl]
 	ld a,$C1
@@ -114714,17 +115433,18 @@ Logged_0x850A6:
 	ld hl,$D013
 	inc [hl]
 	ret
+
 	ld a,[$D0DB]
 	cp $01
 	jr nc,Logged_0x850EF
 	ld hl,$C040
 	ld de,$C140
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$FF
 	ld hl,$C040
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	ld hl,$D0DB
 	inc [hl]
 	ld a,$C1
@@ -114746,17 +115466,18 @@ Logged_0x850EF:
 	ld hl,$D013
 	inc [hl]
 	ret
+
 	ld a,[$D0D5]
 	cp $01
 	jr nc,Logged_0x85135
 	ld hl,$C008
 	ld de,$C108
 	ld b,$38
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$FF
 	ld hl,$C008
 	ld bc,$0038
-	call Logged_0x0425
+	call Fill_HL_A
 	ld hl,$D0D5
 	inc [hl]
 	ld a,$C1
@@ -114778,6 +115499,7 @@ Logged_0x85135:
 	ld hl,$D013
 	inc [hl]
 	ret
+
 	ld a,[$D0D5]
 	cp $01
 	jr nc,Logged_0x85179
@@ -114811,6 +115533,7 @@ Logged_0x85179:
 	ld hl,$D062
 	inc [hl]
 	ret
+
 	ld a,[$D0D5]
 	cp $01
 	jr nc,Logged_0x851AC
@@ -114857,6 +115580,7 @@ Logged_0x851D1:
 	ld hl,$D0DB
 	call Logged_0x8534F
 	ret
+
 	ld hl,$D056
 	inc [hl]
 	ld a,[$D055]
@@ -114872,7 +115596,7 @@ Logged_0x851F5:
 	ld hl,$C000
 	ld de,$C100
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	call Logged_0x85234
 	ld hl,$D811
 	ld de,$C000
@@ -114910,11 +115634,11 @@ Logged_0x85234:
 	ld l,a
 	ld de,$C000
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
 	ld hl,$C03A
 	ld bc,$0006
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0x8525C:
@@ -114933,6 +115657,7 @@ Logged_0x8526D:
 	inc hl
 	inc hl
 	ret
+
 	ld a,[$D0D5]
 	cp $01
 	jr nc,Logged_0x852CA
@@ -114941,14 +115666,14 @@ Logged_0x8526D:
 	ld hl,$C038
 	ld de,$C138
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,[$D0E4]
 	and a
 	jr z,Logged_0x8529B
 	ld hl,$52DF
 	ld de,$C03A
 	ld b,$06
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	jr Logged_0x852AF
 
 Logged_0x8529B:
@@ -114961,7 +115686,7 @@ Logged_0x8529B:
 Logged_0x852A7:
 	ld de,$C038
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 
 Logged_0x852AF:
 	ld a,$C1
@@ -115007,11 +115732,11 @@ INCBIN "baserom.gbc", $852DF, $852E5 - $852DF
 	ld hl,$C03A
 	ld de,$C13A
 	ld b,$06
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
 	ld hl,$C03A
 	ld bc,$0006
-	call Logged_0x0425
+	call Fill_HL_A
 	ld hl,$D0D5
 	inc [hl]
 	ld a,$C1
@@ -115205,6 +115930,7 @@ Logged_0x853D2:
 	ld [hl],a
 	cp $20
 	ret
+
 	call Logged_0x854A9
 	call Logged_0x8542C
 	ld a,[$D011]
@@ -115249,10 +115975,11 @@ Logged_0x85448:
 Logged_0x8544C:
 	ld hl,$4640
 	ret
+
 	ld hl,$48E0
 	ld de,$C060
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$C0
 	ld [$D0D3],a
 	ld a,$60
@@ -115264,6 +115991,7 @@ Logged_0x8544C:
 	ld a,$6A
 	ld [$D0D0],a
 	ret
+
 	call Logged_0x854A9
 	call Logged_0x8548F
 	ld a,[$D011]
@@ -115321,8 +116049,12 @@ Logged_0x854C2:
 	ret z
 	add hl,de
 	jr Logged_0x854C2
+
+Logged_0x854C7:
 	ld hl,$D0D6
 	jr Logged_0x854CF
+
+Logged_0x854CC:
 	ld hl,$D0D0
 
 Logged_0x854CF:
@@ -115701,8 +116433,9 @@ Logged_0x9A3C3:
 
 Logged_0x9A3C9:
 	ld b,$20
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
+
 	call Logged_0x08E6
 	call Logged_0x038F
 	call Logged_0x037D
@@ -115713,12 +116446,12 @@ Logged_0x9A3C9:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	xor a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x9A564
 	call Logged_0x9A54E
 	call Logged_0x9A559
@@ -115763,7 +116496,7 @@ Logged_0x9A42B:
 	ld a,$26
 	ld [$C0AC],a
 	ld hl,$605C
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -115774,7 +116507,7 @@ Logged_0x9A42B:
 	ld a,$26
 	ld [$C0AC],a
 	ld hl,$5AE0
-	ld bc,$9000
+	ld bc,_VRAM+$1000
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -115784,13 +116517,13 @@ Logged_0x9A42B:
 	call $FF80
 	call Logged_0x9A52B
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5980
 	ld de,$8A00
 	ld bc,$0140
 	call Logged_0x0434
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$26
 	ld [$C0AC],a
 	ld hl,$62AC
@@ -115828,17 +116561,17 @@ Logged_0x9A42B:
 	add a,$20
 	ld [$D530],a
 	ld hl,$D500
-	ld de,$9C00
+	ld de,_SCRN1
 	ld bc,$0240
 	call Logged_0x0434
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$D200
-	ld de,$9C00
+	ld de,_SCRN1
 	ld bc,$0240
 	call Logged_0x0434
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$9C22
 	ld a,$01
 	ld [$FF00+$85],a
@@ -115860,7 +116593,7 @@ Logged_0x9A42B:
 	ld [hld],a
 	ld [hl],b
 	ld a,$8F
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -115881,32 +116614,41 @@ Logged_0x9A535:
 	ld hl,$5940
 	ld de,$8FC0
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0x9A54E:
 	ld hl,$D800
 	ld bc,$0800
 	xor a
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0x9A559:
 	ld hl,$D180
 	ld bc,$0200
 	xor a
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0x9A564:
-	ld hl,$6570
+	ld hl,RAMCode_0x9A570
 	ld de,$C200
-	ld b,$16
-	call Logged_0x0466
+	ld b,Logged_0x9A586 - RAMCode_0x9A570
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x9A570:
-INCBIN "baserom.gbc", $9A570, $9A586 - $9A570
+RAMCode_0x9A570:
+	ld a,$02
+	ld [$FF00+$70],a
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	xor a
+	ld [$FF00+$4F],a
+	ld a,$CC
+	jp $FFE8 ;Unknown ban
 
 Logged_0x9A586:
 	xor a
@@ -116313,7 +117055,7 @@ Logged_0x9A7E3:
 	jr z,Logged_0x9A7D6
 	ld b,$07
 	ld de,$D810
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	call Logged_0x9A7D6
 	jp Logged_0x9A7D6
 
@@ -116574,23 +117316,25 @@ Logged_0x9AA86:
 	srl b
 	srl b
 	ret
-	ld a,[$FF00+$70]
+
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x9AB07
 	call Logged_0x9AB85
 	call Logged_0x9ABA1
 	call Logged_0x9AB34
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$DC00
 	ld de,$8900
 	ld b,$00
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
+
 	ld a,[$D01D]
 	cp $0E
 	ret nc
@@ -116633,11 +117377,11 @@ Logged_0x9AB07:
 	xor a
 	ld hl,$DC00
 	ld bc,$0100
-	call Logged_0x0425
+	call Fill_HL_A
 	xor a
 	ld hl,$D0F0
 	ld bc,$0010
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0x9AB1C:
@@ -116684,7 +117428,7 @@ Logged_0x9AB4F:
 	ld hl,$4000
 	add hl,bc
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0x9AB6D:
@@ -116782,7 +117526,7 @@ Logged_0x9ABEB:
 	ld de,$D0FC
 	ld hl,$D0F0
 	ld b,$04
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 LoggedData_0x9ABF7:
@@ -116839,6 +117583,7 @@ Unknown_0x9C000:
 	xor a
 	ld [$D01E],a
 	ret
+
 	xor a
 	ld [$D01E],a
 	ld a,[$D025]
@@ -116856,6 +117601,7 @@ Logged_0x9C01C:
 	ld a,b
 	ld [$D01E],a
 	ret
+
 	call Logged_0x08E6
 	call Logged_0x037D
 	ld a,$FF
@@ -116867,13 +117613,13 @@ Logged_0x9C01C:
 	xor a
 	ld hl,$D800
 	ld bc,$0030
-	call Logged_0x0425
+	call Fill_HL_A
 	call Logged_0x9CC9C
 	call Logged_0x9C072
 	xor a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	ld [$D801],a
 	ld [$D013],a
@@ -116888,7 +117634,7 @@ Logged_0x9C01C:
 	xor b
 
 Logged_0x9C067:
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	xor a
 	ld [$D800],a
 	ld hl,$C09C
@@ -116903,11 +117649,11 @@ Logged_0x9C072:
 	dec a
 	jr z,Logged_0x9C0A1
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$29
 	ld [$C0AC],a
 	ld hl,$4000
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -116916,7 +117662,7 @@ Logged_0x9C072:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 
 Logged_0x9C0A1:
 	ld a,[$D025]
@@ -117059,11 +117805,11 @@ Logged_0x9C19D:
 Logged_0x9C1B6:
 	call Logged_0x9C891
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$556D
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117072,11 +117818,11 @@ Logged_0x9C1B6:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$551F
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117095,11 +117841,11 @@ Logged_0x9C1B6:
 Logged_0x9C209:
 	call Logged_0x9C832
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$5424
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117108,11 +117854,11 @@ Logged_0x9C209:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$53C8
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117260,10 +118006,10 @@ Logged_0x9C367:
 	ld a,$20
 	ld [$D800],a
 	ld a,$28
-	ld [$FF00+$4A],a
+	ld [rWY],a
 	ld [$D022],a
 	ld a,$57
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld [$D023],a
 	call Logged_0x9C873
 	call Logged_0x9CBC9
@@ -117283,11 +118029,11 @@ Logged_0x9C386:
 Logged_0x9C39C:
 	call Logged_0x9C8AF
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$68
 	ld [$C0AC],a
 	ld hl,$650E
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117296,21 +118042,21 @@ Logged_0x9C39C:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld b,$54
 	ld hl,$6000
 	call Logged_0x3B5B
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	call Logged_0x9CA77
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$664E
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117319,11 +118065,11 @@ Logged_0x9C39C:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$65FD
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117348,11 +118094,11 @@ Logged_0x9C423:
 	call Logged_0x3BCE
 	call Logged_0x9C891
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$5691
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117361,11 +118107,11 @@ Logged_0x9C423:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$5635
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117378,11 +118124,11 @@ Logged_0x9C423:
 Logged_0x9C476:
 	call Logged_0x9C891
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$57C4
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117391,11 +118137,11 @@ Logged_0x9C476:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$5768
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117415,12 +118161,12 @@ Logged_0x9C4B9:
 	call Logged_0x9C959
 	call Logged_0x9CB2D
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld b,$4E
 	ld hl,$4000
 	call Logged_0x3B5B
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	jp Logged_0x9DB85
 
 Logged_0x9C4E1:
@@ -117428,18 +118174,18 @@ Logged_0x9C4E1:
 	ld hl,$7000
 	call Logged_0x3B5B
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld b,$4E
 	ld hl,$4800
 	call Logged_0x3B5B
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$5859
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117448,11 +118194,11 @@ Logged_0x9C4E1:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2E
 	ld [$C0AC],a
 	ld hl,$5816
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117466,7 +118212,7 @@ Logged_0x9C4E1:
 	ld b,$33
 	call Logged_0x3B2B
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$6A
 	ld [$C0AC],a
 	ld hl,$5B78
@@ -117479,11 +118225,11 @@ Logged_0x9C4E1:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4572
 	ld de,$C070
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	jp Logged_0x9D64B
 
 LoggedData_0x9C572:
@@ -117627,7 +118373,7 @@ Logged_0x9C69D:
 	call Logged_0x3BCE
 	call Logged_0x9C9CB
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$69
 	ld [$C0AC],a
 	ld hl,$4637
@@ -117640,14 +118386,14 @@ Logged_0x9C69D:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld b,$54
 	ld hl,$7000
 	call Logged_0x3B5B
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	call Logged_0x9CB6E
 	jp Logged_0x9CBFD
 
@@ -117666,7 +118412,7 @@ Logged_0x9C700:
 	call Logged_0x9CC72
 	call Logged_0x9C959
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$6A
 	ld [$C0AC],a
 	ld hl,$65AC
@@ -117679,7 +118425,7 @@ Logged_0x9C700:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	call Logged_0x9CA28
 	call Logged_0x9CB61
 	jp Logged_0x9E4AE
@@ -117739,7 +118485,7 @@ Logged_0x9C7A5:
 	call Logged_0x9CC72
 	call Logged_0x9C9CB
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$6A
 	ld [$C0AC],a
 	ld hl,$695F
@@ -117752,7 +118498,7 @@ Logged_0x9C7A5:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	call Logged_0x9CA28
 	call Logged_0x9CB95
 	call Logged_0x9CC17
@@ -117776,7 +118522,7 @@ Logged_0x9C7E8:
 	call Logged_0x3BCE
 	call Logged_0x9C931
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$6B
 	ld [$C0AC],a
 	ld hl,$6041
@@ -117789,7 +118535,7 @@ Logged_0x9C7E8:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	call Logged_0x9CA6A
 	call Logged_0x9CBAF
 	call Logged_0x9CC3C
@@ -117801,7 +118547,7 @@ Logged_0x9C832:
 	ld a,$28
 	ld [$C0AC],a
 	ld hl,$4000
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117813,11 +118559,11 @@ Logged_0x9C832:
 
 Logged_0x9C84F:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$28
 	ld [$C0AC],a
 	ld hl,$4000
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117826,14 +118572,14 @@ Logged_0x9C84F:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	jr Logged_0x9C8E9
 
 Logged_0x9C873:
 	ld a,$28
 	ld [$C0AC],a
 	ld hl,$4B44
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117847,7 +118593,7 @@ Logged_0x9C891:
 	ld a,$28
 	ld [$C0AC],a
 	ld hl,$56CB
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117861,7 +118607,7 @@ Logged_0x9C8AF:
 	ld a,$28
 	ld [$C0AC],a
 	ld hl,$6379
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117875,7 +118621,7 @@ Logged_0x9C8CD:
 	ld a,$28
 	ld [$C0AC],a
 	ld hl,$6FFB
-	ld bc,$9000
+	ld bc,_VRAM+$1000
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117887,11 +118633,11 @@ Logged_0x9C8CD:
 
 Logged_0x9C8E9:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$28
 	ld [$C0AC],a
 	ld hl,$6FFB
-	ld bc,$9000
+	ld bc,_VRAM+$1000
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117900,16 +118646,16 @@ Logged_0x9C8E9:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x9C90C:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$29
 	ld [$C0AC],a
 	ld hl,$53EC
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117918,7 +118664,7 @@ Logged_0x9C90C:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	jp Logged_0x9C8E9
 
 Logged_0x9C931:
@@ -117933,7 +118679,7 @@ Logged_0x9C93D:
 	ld a,$29
 	ld [$C0AC],a
 	ld hl,$53EC
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117947,7 +118693,7 @@ Logged_0x9C959:
 	ld a,$29
 	ld [$C0AC],a
 	ld hl,$5EBD
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117967,11 +118713,11 @@ Logged_0x9C97D:
 
 Logged_0x9C983:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$29
 	ld [$C0AC],a
 	ld hl,$5EBD
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117980,16 +118726,16 @@ Logged_0x9C983:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x9C9A6:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$29
 	ld [$C0AC],a
 	ld hl,$6B24
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -117998,14 +118744,14 @@ Logged_0x9C9A6:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	jp Logged_0x9C9E9
 
 Logged_0x9C9CB:
 	ld a,$29
 	ld [$C0AC],a
 	ld hl,$6B24
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -118017,11 +118763,11 @@ Logged_0x9C9CB:
 
 Logged_0x9C9E9:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$29
 	ld [$C0AC],a
 	ld hl,$723A
-	ld bc,$9000
+	ld bc,_VRAM+$1000
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -118030,14 +118776,14 @@ Logged_0x9C9E9:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x9CA0C:
 	ld a,$29
 	ld [$C0AC],a
 	ld hl,$723A
-	ld bc,$9000
+	ld bc,_VRAM+$1000
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -118049,12 +118795,12 @@ Logged_0x9CA0C:
 
 Logged_0x9CA28:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld b,$54
 	ld hl,$6800
 	call Logged_0x3B5B
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x9CA38:
@@ -118065,10 +118811,10 @@ Logged_0x9CA38:
 
 Logged_0x9CA41:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 
 Logged_0x9CA45:
-	ld bc,$9800
+	ld bc,_SCRN0
 
 Logged_0x9CA48:
 	ld a,$2E
@@ -118081,15 +118827,15 @@ Logged_0x9CA48:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x9CA61:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 
 Logged_0x9CA65:
-	ld bc,$9C00
+	ld bc,_SCRN1
 	jr Logged_0x9CA48
 
 Logged_0x9CA6A:
@@ -118339,29 +119085,29 @@ Logged_0x9CC28:
 
 Logged_0x9CC2A:
 	ld a,$01
-	ld [$FF00+$4F],a
-	ld hl,$9800
+	ld [rVBK],a
+	ld hl,_SCRN0
 	ld bc,$00A0
 	ld a,d
-	call Logged_0x0425
+	call Fill_HL_A
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x9CC3C:
 	ld a,$01
-	ld [$FF00+$4F],a
-	ld hl,$9C00
+	ld [rVBK],a
+	ld hl,_SCRN1
 	ld bc,$00A0
 	ld a,$80
-	call Logged_0x0425
+	call Fill_HL_A
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x9CC4F:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld d,$80
 	ld hl,$98A0
 	ld e,$07
@@ -118386,40 +119132,78 @@ Logged_0x9CC5D:
 
 Logged_0x9CC6E:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x9CC72:
 	xor a
 	ld hl,$C000
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	xor a
 	ld hl,$C040
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0x9CC87:
 	xor a
 	ld hl,$C100
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	xor a
 	ld hl,$C140
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0x9CC9C:
-	ld hl,$4CA8
+	ld hl,RAMCode_0x9CCA8
 	ld de,$C200
-	ld b,$51
-	call Logged_0x0466
+	ld b,Logged_0x9CCF9 - RAMCode_0x9CCA8
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x9CCA8:
-INCBIN "baserom.gbc", $9CCA8, $9CCF9 - $9CCA8
+RAMCode_0x9CCA8:
+	ld a,$02
+	ld [$FF00+$70],a
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$D022]
+	ld [$FF00+$4A],a
+	ld a,[$D023]
+	ld [$FF00+$4B],a
+	ld a,[$D800]
+	and a
+	jr z,Unknown_0x9CCCF
+	ld hl,$FF40
+	xor [hl]
+	ld [hl],a
+	xor a
+	ld [$D800],a
+
+Unknown_0x9CCCF:
+	ld b,$21
+	ld a,[$C5FF]
+	push af
+	ld a,b
+	ld [$C5FF],a
+	ld [$2100],a
+	ld a,[$D0D0]
+	and a
+	call nz,Logged_0x854CC
+	ld a,[$D0D6]
+	and a
+	call nz,Logged_0x854C7
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+	xor a
+	ld [$FF00+$4F],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x9CCF9:
 	ld [hl],d
@@ -118516,11 +119300,11 @@ Logged_0x9CD74:
 	ld hl,$C040
 	ld de,$C140
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$C000
 	ld de,$C100
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop hl
 	ret
 
@@ -118626,6 +119410,7 @@ Logged_0x9CE1F:
 	ld a,$12
 	ld [$FF00+$B6],a
 	ret
+
 	call Logged_0x0302
 	ld hl,$D014
 	inc [hl]
@@ -119365,7 +120150,7 @@ Logged_0x9D2FF:
 Logged_0x9D302:
 	ld de,$C010
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$C0
 	ld [$D0D3],a
 	ld a,$10
@@ -127192,11 +127977,11 @@ Logged_0xACA09:
 	ld hl,$C040
 	ld de,$C140
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$C000
 	ld de,$C100
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 UnknownData_0xACA20:
@@ -127270,11 +128055,11 @@ Logged_0xACA74:
 	ld de,$DB00
 	ld hl,$DC00
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
 	ld hl,$DA80
 	ld bc,$0010
-	call Logged_0x0425
+	call Fill_HL_A
 	ld hl,$D188
 	ld a,$8E
 	ld [hli],a
@@ -127307,7 +128092,7 @@ Logged_0xACAAD:
 	add hl,bc
 	ld de,$DB10
 	ld b,$30
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
 	ld [$DA81],a
 	jr Logged_0xACA6D
@@ -127366,6 +128151,7 @@ Logged_0xACB20:
 	call Logged_0xACA6D
 	scf
 	ret
+
 	call Logged_0x08E6
 	call Logged_0x038F
 	call Logged_0x037D
@@ -127376,11 +128162,11 @@ Logged_0xACB20:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	call Logged_0xACCB0
 	call Logged_0xACC9A
@@ -127389,11 +128175,11 @@ Logged_0xACB20:
 	ld b,$21
 	call Logged_0x3BB8
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$7C
 	ld [$C0AC],a
 	ld hl,$5D5D
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -127402,7 +128188,7 @@ Logged_0xACB20:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4780
 	ld b,$2C
 	call Logged_0x3B5B
@@ -127410,12 +128196,12 @@ Logged_0xACB20:
 	ld b,$2C
 	call Logged_0x3B77
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4540
 	ld b,$2C
 	call Logged_0x3B77
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	call Logged_0xACE90
 	ld a,$05
 	call Logged_0x3AAC
@@ -127431,11 +128217,11 @@ Logged_0xACBB4:
 	ld a,$03
 	ld [$DA00],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$5D0B
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -127444,11 +128230,11 @@ Logged_0xACBB4:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$7AAA
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -127457,11 +128243,11 @@ Logged_0xACBB4:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$7BA5
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -127470,7 +128256,7 @@ Logged_0xACBB4:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$CA46]
 	and a
 	ld hl,$632F
@@ -127532,7 +128318,7 @@ Logged_0xACC68:
 	xor b
 
 Logged_0xACC8F:
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	xor a
 	ld [$D800],a
 	ld hl,$C09C
@@ -127543,25 +128329,105 @@ Logged_0xACC9A:
 	ld hl,$D800
 	ld bc,$0800
 	xor a
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0xACCA5:
 	ld hl,$D140
 	ld bc,$00C0
 	xor a
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0xACCB0:
-	ld hl,$4CBC
+	ld hl,RAMCode_0xACCBC
 	ld de,$C200
-	ld b,$7E
-	call Logged_0x0466
+	ld b,Logged_0xACD3A - RAMCode_0xACCBC
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0xACCBC:
-INCBIN "baserom.gbc", $ACCBC, $ACD3A - $ACCBC
+RAMCode_0xACCBC:
+	ld a,$02
+	ld [$FF00+$70],a
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$D079]
+	and a
+	jr z,Unknown_0xACCFF
+	ld b,a
+	xor a
+	ld [$D079],a
+	ld a,[$C5FF]
+	push af
+	ld a,b
+	ld [$C5FF],a
+	ld [$2100],a
+	ld a,[$D158]
+	ld [$FF00+$4F],a
+	ld hl,$D0B0
+	ld a,[hli]
+	ld c,$51
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+
+Unknown_0xACCFF:
+	ld hl,$DA88
+	ld a,[hl]
+	and a
+	jr z,Unknown_0xACD13
+	ld e,a
+	xor a
+	ld [hli],a
+	ld a,[hli]
+	ld d,a
+	ld a,[hli]
+	ld [de],a
+	ld a,$01
+	ld [$FF00+$4F],a
+	ld a,[hl]
+	ld [de],a
+
+Unknown_0xACD13:
+	xor a
+	ld [$FF00+$4F],a
+	ld hl,$D0D0
+	ld a,[hl]
+	and a
+	call nz,Logged_0x3BE4
+	ld hl,$D0D6
+	ld a,[hl]
+	and a
+	call nz,Logged_0x3BE4
+	ld a,[$D800]
+	and a
+	jr z,Unknown_0xACD35
+	ld hl,$FF40
+	xor [hl]
+	ld [hl],a
+	xor a
+	ld [$D800],a
+
+Unknown_0xACD35:
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
+
+Logged_0xACD3A:
 	call Logged_0xACD51
 	call Logged_0xAC2B2
 	call Logged_0xAC528
@@ -127788,14 +128654,14 @@ Logged_0xACE90:
 	ld hl,$DB80
 	ld a,$7F
 	ld bc,$0080
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0xACE9C:
 	ld a,$7F
 	ld hl,$DB00
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0xACEA8:
@@ -127951,7 +128817,7 @@ Logged_0xACF89:
 	ld de,$DB00
 	ld hl,$DC00
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
 	ld [$DAB0],a
 	ld a,$20
@@ -128000,25 +128866,25 @@ Logged_0xACFCC:
 	jr nz,Logged_0xACFFD
 	ld de,$DB10
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld de,$DB20
 	ld hl,$DC10
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$7F
 	ld hl,$DB30
 	ld bc,$0010
-	call Logged_0x0425
+	call Fill_HL_A
 	ret
 
 Logged_0xACFFD:
 	ld de,$DB20
 	ld b,$20
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld de,$DB10
 	ld hl,$DC10
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0xAD011:
@@ -129430,11 +130296,11 @@ INCBIN "baserom.gbc", $AD939, $AD9B2 - $AD939
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	call Logged_0xADAA0
 	call Logged_0xACC9A
@@ -129449,11 +130315,11 @@ INCBIN "baserom.gbc", $AD939, $AD9B2 - $AD939
 	ld b,$2C
 	call Logged_0x3B5B
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$6616
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -129462,11 +130328,11 @@ INCBIN "baserom.gbc", $AD939, $AD9B2 - $AD939
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$6546
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -129477,7 +130343,7 @@ INCBIN "baserom.gbc", $AD939, $AD9B2 - $AD939
 	call Logged_0xADA43
 	call Logged_0xAC528
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -129548,14 +130414,55 @@ Logged_0xADA97:
 	ret
 
 Logged_0xADAA0:
-	ld hl,$5AAC
+	ld hl,RAMCode_0xADAAC
 	ld de,$C200
-	ld b,$46
-	call Logged_0x0466
+	ld b,Logged_0xADAF2 - RAMCode_0xADAAC
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0xADAAC:
-INCBIN "baserom.gbc", $ADAAC, $ADAF2 - $ADAAC
+RAMCode_0xADAAC:
+	ld a,$02
+	ld [$FF00+$70],a
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$D079]
+	and a
+	jr z,Unknown_0xADAEA
+	ld b,a
+	xor a
+	ld [$D079],a
+	ld a,[$C5FF]
+	push af
+	ld a,b
+	ld [$C5FF],a
+	ld [$2100],a
+	ld hl,$D0B0
+	ld a,[hli]
+	ld c,$51
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	ld a,[hli]
+	inc c
+	ld [$FF00+c],a
+	pop af
+	ld [$C5FF],a
+	ld [$2100],a
+
+Unknown_0xADAEA:
+	xor a
+	ld [$FF00+$4F],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0xADAF2:
 	ld hl,$5DC9
@@ -129563,7 +130470,7 @@ Logged_0xADAF2:
 	ld hl,$C000
 	ld de,$C100
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,[$D057]
 	bit 0,a
 	call nz,Logged_0xADB47
@@ -129588,93 +130495,94 @@ Logged_0xADAF2:
 	ld hl,$C100
 	ld de,$C000
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0xADB47:
 	ld hl,$5E41
 	ld de,$C138
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0xADB53:
 	ld hl,$5E0B
 	ld de,$C102
 	ld b,$02
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$5E11
 	ld de,$C108
 	ld b,$02
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$5E19
 	ld de,$C110
 	ld b,$06
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$5E23
 	ld de,$C11A
 	ld b,$02
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0xADB80:
 	ld hl,$5E2B
 	ld de,$C122
 	ld b,$06
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0xADB8C:
 	ld hl,$5E13
 	ld de,$C10A
 	ld b,$06
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$5E33
 	ld de,$C12A
 	ld b,$06
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0xADBA3:
 	ld hl,$5E0D
 	ld de,$C104
 	ld b,$02
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$5E21
 	ld de,$C118
 	ld b,$02
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$5E29
 	ld de,$C120
 	ld b,$02
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$5E31
 	ld de,$C128
 	ld b,$02
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0xADBD0:
 	ld hl,$5E0F
 	ld de,$C106
 	ld b,$02
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$5E1F
 	ld de,$C116
 	ld b,$02
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$5E25
 	ld de,$C11C
 	ld b,$04
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0xADBF2:
 	ld hl,$5E39
 	ld de,$C130
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
+
 	call Logged_0xADC0B
 	call nc,Logged_0xADC2F
 	call Logged_0xAC528
@@ -129989,11 +130897,11 @@ INCBIN "baserom.gbc", $ADE0B, $ADE49 - $ADE0B
 	call Logged_0xACCA5
 	call Logged_0xACCB0
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$74C3
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -130002,11 +130910,11 @@ INCBIN "baserom.gbc", $ADE0B, $ADE49 - $ADE0B
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$730C
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -130018,11 +130926,11 @@ INCBIN "baserom.gbc", $ADE0B, $ADE49 - $ADE0B
 	ld b,$2C
 	call Logged_0x3B5B
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$7C
 	ld [$C0AC],a
 	ld hl,$5D5D
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -130031,13 +130939,13 @@ INCBIN "baserom.gbc", $ADE0B, $ADE49 - $ADE0B
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$5780
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -130046,13 +130954,13 @@ INCBIN "baserom.gbc", $ADE0B, $ADE49 - $ADE0B
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$7A5B
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -130061,11 +130969,11 @@ INCBIN "baserom.gbc", $ADE0B, $ADE49 - $ADE0B
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$7A03
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -130112,11 +131020,11 @@ Logged_0xADF63:
 	xor a
 	ld hl,$C000
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	xor a
 	ld hl,$C040
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	ld hl,$D140
 	ld a,$60
 	ld [hli],a
@@ -130146,6 +131054,7 @@ Logged_0xADF9E:
 	ld hl,$C09C
 	inc [hl]
 	ret
+
 	call Logged_0xADFB0
 	call Logged_0xAC3D9
 	call Logged_0xAC528
@@ -130318,7 +131227,7 @@ Logged_0xAE0C4:
 	ld hl,$C040
 	ld de,$C140
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$69CD
 	jr Logged_0xAE0AB
 
@@ -132313,11 +133222,11 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	call Logged_0xACCB0
 	call Logged_0xACC9A
@@ -132325,15 +133234,15 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	xor a
 	ld hl,$C000
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	xor a
 	ld hl,$C040
 	ld bc,$0040
-	call Logged_0x0425
+	call Fill_HL_A
 	ld a,$57
 	ld [$C0AC],a
 	ld hl,$5180
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -132342,11 +133251,11 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$7C
 	ld [$C0AC],a
 	ld hl,$5D5D
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -132355,9 +133264,9 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$8800
 	ld de,$D200
 	ld bc,$0500
@@ -132368,13 +133277,13 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	ld b,$57
 	call Logged_0x3B2B
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$68
 	ld [$C0AC],a
 	ld hl,$4000
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -132383,9 +133292,9 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$69
 	ld [$C0AC],a
 	ld hl,$514C
@@ -132398,9 +133307,9 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$6A
 	ld [$C0AC],a
 	ld hl,$45B3
@@ -132413,13 +133322,13 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$57
 	ld [$C0AC],a
 	ld hl,$5FF8
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -132428,11 +133337,11 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$57
 	ld [$C0AC],a
 	ld hl,$5F9B
-	ld bc,$9800
+	ld bc,_SCRN0
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -132441,11 +133350,11 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$74C3
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -132454,11 +133363,11 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$2C
 	ld [$C0AC],a
 	ld hl,$730C
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -132497,7 +133406,7 @@ Logged_0xAEFE5:
 	xor b
 
 Logged_0xAF014:
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	xor a
 	ld [$D800],a
 	ld hl,$C09C
@@ -132518,6 +133427,7 @@ Logged_0xAF135:
 	ld [hld],a
 	inc [hl]
 	ret
+
 	call Logged_0xAF14C
 	call Logged_0xAC074
 	call Logged_0xAC528
@@ -132602,7 +133512,7 @@ Logged_0xAF1DB:
 	ld hl,$735E
 	ld de,$C060
 	ld b,$18
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ret
 
 Logged_0xAF1E7:
@@ -132664,10 +133574,10 @@ Logged_0xAF230:
 
 Logged_0xAF23E:
 	ld a,$A0
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	xor a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	ld hl,$D140
 	ld a,$60
@@ -134039,7 +134949,7 @@ Logged_0xB417A:
 	ld a,$21
 	ld [$C0AC],a
 	ld hl,$6868
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -134048,11 +134958,11 @@ Logged_0xB417A:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$21
 	ld [$C0AC],a
 	ld hl,$68B2
-	ld bc,$9C00
+	ld bc,_SCRN1
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -134061,13 +134971,13 @@ Logged_0xB417A:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	xor a
 	ld [$D095],a
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld a,$90
 	ld [$D094],a
-	ld [$FF00+$4A],a
+	ld [rWY],a
 	xor a
 	ld [$D091],a
 	ld hl,$4000
@@ -134084,7 +134994,7 @@ Logged_0xB4247:
 	cp c
 	ret nz
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$21
 	ld [$C0AC],a
 	ld hl,$5EDA
@@ -134097,7 +135007,7 @@ Logged_0xB4247:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$21
 	ld [$C0AC],a
 	ld hl,$5EA7
@@ -134112,15 +135022,15 @@ Logged_0xB4247:
 	ld hl,$9BC0
 	ld de,$D4A0
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$9BC0
 	ld de,$D460
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4A20
 	ld de,$C060
 	ld c,$20
@@ -134164,7 +135074,7 @@ Logged_0xB42F3:
 	xor a
 	ld hl,$D188
 	ld bc,$0078
-	call Logged_0x0425
+	call Fill_HL_A
 	ld hl,$D188
 	ld de,$4306
 	jp Logged_0xB4887
@@ -134323,7 +135233,7 @@ Logged_0xB43E9:
 	ld hl,$4440
 	ld de,$C050
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	jp Logged_0xB48E6
 
 LoggedData_0xB442D:
@@ -134911,7 +135821,7 @@ Logged_0xB4874:
 	ld hl,$487F
 	ld de,$C020
 	ld b,$08
-	jp Logged_0x0466
+	jp MemCopy_DE_HL
 
 LoggedData_0xB487F:
 INCBIN "baserom.gbc", $B487F, $B4887 - $B487F
@@ -134946,7 +135856,7 @@ Logged_0xB48AE:
 	ld a,$22
 	ld [$C0AC],a
 	ld hl,$5D33
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -134960,7 +135870,7 @@ Logged_0xB48CA:
 	ld a,$22
 	ld [$C0AC],a
 	ld hl,$5F20
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -135016,7 +135926,7 @@ Logged_0xB493A:
 	ld a,$23
 	ld [$C0AC],a
 	ld hl,$51BD
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -135030,7 +135940,7 @@ Logged_0xB4956:
 	ld a,$23
 	ld [$C0AC],a
 	ld hl,$4E06
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -135044,7 +135954,7 @@ Logged_0xB4972:
 	ld a,$23
 	ld [$C0AC],a
 	ld hl,$62FB
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -135072,7 +135982,7 @@ Logged_0xB49AA:
 	ld a,$23
 	ld [$C0AC],a
 	ld hl,$6482
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -135086,7 +135996,7 @@ Logged_0xB49C6:
 	ld a,$23
 	ld [$C0AC],a
 	ld hl,$67C1
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,[$C0AC]
 	ld [$FF00+$85],a
 	ld a,$09
@@ -135944,7 +136854,7 @@ Logged_0xB4F58:
 Logged_0xB4F6B:
 	ld de,$C128
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D0D0
 	ld a,$68
 	ld [hl],a
@@ -137002,7 +137912,7 @@ Logged_0xB561C:
 	ld hl,$C000
 	ld de,$C100
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$4500
 	ld de,$C000
 	ld c,$40
@@ -138195,7 +139105,7 @@ Logged_0xB5E10:
 	ld hl,$C030
 	ld de,$C130
 	ld b,$08
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$C138
 	ld b,$04
 	call Logged_0xB69A6
@@ -139273,11 +140183,11 @@ Logged_0xB6971:
 	ld hl,$C000
 	ld de,$C100
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$C040
 	ld de,$C140
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$C000
 	ld b,$18
 	call Logged_0xB69A6
@@ -141751,6 +142661,7 @@ Logged_0xB78F5:
 
 Logged_0xB791D:
 	ret
+
 	ld a,[$D01A]
 	rst JumpList
 	dw Logged_0xB792A
@@ -142451,6 +143362,7 @@ Logged_0xC0038:
 	ld [$C0D3],a
 	call Logged_0x2A52
 	ret
+
 	ld hl,$4CE5
 	ld d,$00
 	ld a,[$C1AB]
@@ -142466,6 +143378,7 @@ Logged_0xC0038:
 	ld [$C1AE],a
 	ld [$C1AF],a
 	ret
+
 	ld hl,$4C51
 	ld d,$00
 	ld a,[$C1B0]
@@ -147485,7 +148398,7 @@ UnknownData_0xCE480:
 INCBIN "baserom.gbc", $CE480, $D0000 - $CE480
 
 SECTION "Bank34", ROMX, BANK[$34]
-	ld a,[$FF00+$44]
+	ld a,[rLY]
 	cp $7C
 	jr nc,Logged_0xD0070
 	jr Logged_0xD0008
@@ -147526,15 +148439,15 @@ Logged_0xD002F:
 	ld de,$9700
 	ld b,$10
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 
 Logged_0xD0046:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0xD0046
 
 Logged_0xD004C:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0xD004C
 	ld a,[hli]
@@ -147564,7 +148477,7 @@ Logged_0xD004C:
 	dec b
 	jr nz,Logged_0xD0046
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 
 Logged_0xD0070:
 	ret
@@ -147605,10 +148518,10 @@ Logged_0xD402A:
 	call Logged_0x038B
 	call Logged_0x037D
 	call Logged_0xD46C2
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$CEE3]
 	cp $F0
 	jr z,Logged_0xD404F
@@ -147656,7 +148569,7 @@ Logged_0xD4076:
 Logged_0xD4078:
 	ld [$CEF2],a
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$78
 	ld [$FF00+$85],a
 	ld a,$00
@@ -147736,10 +148649,10 @@ Logged_0xD4103:
 	call Logged_0xD4764
 	xor a
 	ld [$C085],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$04
 	ld [$C083],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,$78
 	ld [$FF00+$85],a
 	ld a,$5B
@@ -147815,7 +148728,7 @@ Logged_0xD41A6:
 
 Logged_0xD41B2:
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -147949,10 +148862,10 @@ Logged_0xD4261:
 	call Logged_0xD4764
 	xor a
 	ld [$C085],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld a,$04
 	ld [$C083],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld a,$78
 	ld [$FF00+$85],a
 	ld a,$8A
@@ -148018,7 +148931,7 @@ Logged_0xD4330:
 
 Logged_0xD4343:
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -148122,9 +149035,9 @@ Logged_0xD43E6:
 	call Logged_0xD47A7
 	xor a
 	ld [$C085],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C083],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld hl,$D533
 	ld a,$38
 	ld [hli],a
@@ -148164,7 +149077,7 @@ Logged_0xD43E6:
 	inc a
 	ld [$CED8],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	xor a
 	ld [$C0E8],a
 	ld a,$3C
@@ -148448,23 +149361,23 @@ Logged_0xD464E:
 
 Logged_0xD465B:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5124
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	ret
 
 Logged_0xD4668:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$6502
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$63FD
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ret
 
 Logged_0xD4682:
@@ -148587,10 +149500,10 @@ Logged_0xD472F:
 	ret
 
 Logged_0xD4733:
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	xor a
 	ld [$CA3A],a
 	ld [$CA39],a
@@ -148615,32 +149528,110 @@ Logged_0xD475C:
 	dec a
 	jr nz,Logged_0xD4743
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0xD4764:
-	ld hl,$4770
+	ld hl,RAMCode_0xD4770
 	ld de,$C200
-	ld b,$37
-	call Logged_0x0466
+	ld b,Logged_0xD47A7 - RAMCode_0xD4770
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0xD4770:
-INCBIN "baserom.gbc", $D4770, $D47A7 - $D4770
+RAMCode_0xD4770:
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	xor a
+	ld [$FF00+$4F],a
+	ld hl,$971E
+	ld c,[hl]
+	ld b,$0F
+	ld de,$971C
+
+Unknown_0xD4786:
+	ld a,[de]
+	ld [hld],a
+	dec l
+	dec e
+	dec e
+	dec b
+	jr nz,Unknown_0xD4786
+	ld [hl],c
+	ld hl,$971F
+	ld c,[hl]
+	ld b,$0F
+	ld de,$971D
+
+Unknown_0xD4798:
+	ld a,[de]
+	ld [hld],a
+	dec l
+	dec e
+	dec e
+	dec b
+	jr nz,Unknown_0xD4798
+	ld [hl],c
+	ld a,$CC
+	call $FFE8 ;Unknown bank
+	ret
 
 Logged_0xD47A7:
-	ld hl,$47B3
+	ld hl,RAMCode_0xD47B3
 	ld de,$C200
-	ld b,$3E
-	call Logged_0x0466
+	ld b,Logged_0xD47F1 - RAMCode_0xD47B3
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0xD47B3:
-INCBIN "baserom.gbc", $D47B3, $D47F1 - $D47B3
+RAMCode_0xD47B3:
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$CEE4]
+	bit 7,a
+	jr z,Unknown_0xD47EB
+	and $7F
+	jr nz,Unknown_0xD47D9
+	ld hl,$CE01
+	ld a,[hli]
+	ld d,a
+	ld a,[hli]
+	ld e,a
+	ld a,[hli]
+	ld [de],a
+	ld a,[hli]
+	ld d,a
+	ld a,[hli]
+	ld e,a
+	ld a,[hli]
+	ld [de],a
+	jr Unknown_0xD47E6
+
+Unknown_0xD47D9:
+	ld a,$01
+	ld [$FF00+$4F],a
+	ld hl,$CE01
+	ld a,[hli]
+	ld d,a
+	ld a,[hli]
+	ld e,a
+	ld a,[hl]
+	ld [de],a
+
+Unknown_0xD47E6:
+	ld hl,$CEE4
+	res 7,[hl]
+
+Unknown_0xD47EB:
+	ld a,$CC
+	call $FFE8 ;Unknown bank
+	ret
 
 Logged_0xD47F1:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$CA3E
 	ld bc,$0308
 	ld de,$9928
@@ -148672,7 +149663,7 @@ Logged_0xD4818:
 	bit 0,[hl]
 	call nz,Unknown_0xD482A
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Unknown_0xD482A:
@@ -148734,6 +149725,7 @@ Unknown_0xD4870:
 	dec a
 	jr nz,Unknown_0xD4870
 	ret
+
 	ld hl,$CA3E
 	ld a,[$D00F]
 	dec a
@@ -149014,10 +150006,10 @@ Logged_0xDB29B:
 	call Logged_0xDB4CF
 	call Logged_0x0354
 	xor a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	ld a,$60
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	ld hl,$D515
 	ld a,$80
@@ -149062,7 +150054,7 @@ Logged_0xDB29B:
 	ld hl,$D523
 	call Logged_0xDB4E9
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld a,$40
 	ld [$CEE5],a
 	ld hl,$C09C
@@ -149228,36 +150220,36 @@ Logged_0xDB428:
 
 Logged_0xDB43A:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5800
-	ld de,$8000
+	ld de,_VRAM
 	ld bc,$1800
 	call Logged_0x0434
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4000
-	ld de,$8000
+	ld de,_VRAM
 	ld bc,$1800
 	call Logged_0x0434
 	ret
 
 Logged_0xDB45A:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$7193
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ld hl,$7268
-	ld bc,$9C00
-	call Logged_0x0909
+	ld bc,_SCRN1
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$7068
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ld hl,$723B
-	ld bc,$9C00
-	call Logged_0x0909
+	ld bc,_SCRN1
+	call Decompress_BC_HL
 	ret
 
 Logged_0xDB486:
@@ -149279,12 +150271,12 @@ Logged_0xDB486:
 
 Logged_0xDB4AA:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$7589
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	ld hl,$6800
-	ld de,$8000
+	ld de,_VRAM
 	ld bc,$0800
 	ld a,$76
 	ld [$FF00+$85],a
@@ -149297,15 +150289,15 @@ Logged_0xDB4AA:
 
 Logged_0xDB4CF:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$7B8F
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$7AEE
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ret
 
 Logged_0xDB4E9:
@@ -149358,9 +150350,9 @@ Logged_0xDC01E:
 	call Logged_0xDC13E
 	call Logged_0x0354
 	xor a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	ld hl,$D523
 	ld a,$23
@@ -149384,7 +150376,7 @@ Logged_0xDC01E:
 	ld a,$36
 	ld [$FF00+$B2],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	xor a
 	ld [$CEE5],a
 	ld [$D51D],a
@@ -149503,23 +150495,23 @@ Logged_0xDC125:
 
 Logged_0xDC131:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$423B
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	ret
 
 Logged_0xDC13E:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$55B5
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5417
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ret
 
 Logged_0xDC158:
@@ -149994,7 +150986,7 @@ Logged_0x158111:
 	dw Logged_0x158162
 
 Logged_0x158121:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 	ld hl,$D1E0
 	ld de,$2030
@@ -150026,7 +151018,7 @@ Logged_0x15813D:
 	ld c,$1F
 
 Logged_0x158157:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and c
 	ld [$D8B3],a
 	call Logged_0x158108
@@ -150049,7 +151041,7 @@ Logged_0x158168:
 	dw Logged_0x1581B9
 
 Logged_0x158178:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 	ld hl,$D1F0
 	ld de,$2838
@@ -150081,7 +151073,7 @@ Logged_0x158194:
 	ld c,$1F
 
 Logged_0x1581AE:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and c
 	ld [$D8BB],a
 	call Logged_0x158108
@@ -150104,7 +151096,7 @@ Logged_0x1581BF:
 	dw Logged_0x158210
 
 Logged_0x1581CF:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 	ld hl,$D188
 	ld de,$1040
@@ -150136,7 +151128,7 @@ Logged_0x1581EB:
 	ld c,$1F
 
 Logged_0x158205:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and c
 	ld [$D8C3],a
 	call Logged_0x158108
@@ -150159,7 +151151,7 @@ Logged_0x158216:
 	dw Logged_0x158267
 
 Logged_0x158226:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 	ld hl,$D1E8
 	ld de,$7080
@@ -150191,7 +151183,7 @@ Logged_0x158242:
 	ld c,$1F
 
 Logged_0x15825C:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and c
 	ld [$D8B7],a
 	call Logged_0x158108
@@ -150214,7 +151206,7 @@ Logged_0x15826D:
 	dw Logged_0x1582BE
 
 Logged_0x15827D:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 	ld hl,$D1F8
 	ld de,$6878
@@ -150246,7 +151238,7 @@ Logged_0x158299:
 	ld c,$1F
 
 Logged_0x1582B3:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and c
 	ld [$D8BF],a
 	call Logged_0x158108
@@ -150269,7 +151261,7 @@ Logged_0x1582C4:
 	dw Logged_0x158315
 
 Logged_0x1582D4:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 	ld hl,$D190
 	ld de,$6090
@@ -150301,7 +151293,7 @@ Logged_0x1582F0:
 	ld c,$1F
 
 Logged_0x15830A:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and c
 	ld [$D8C7],a
 	call Logged_0x158108
@@ -150341,7 +151333,7 @@ Logged_0x158358:
 	dw Logged_0x15838F
 
 Logged_0x158364:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 	ld hl,$D1C0
 	ld de,$2028
@@ -150386,7 +151378,7 @@ Logged_0x15839F:
 	dw Logged_0x1583D6
 
 Logged_0x1583AB:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 	ld hl,$D1C8
 	ld de,$7880
@@ -150431,7 +151423,7 @@ Logged_0x1583E6:
 	dw Logged_0x158422
 
 Logged_0x1583F2:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 	ld hl,$D1D0
 	ld de,$1820
@@ -150478,7 +151470,7 @@ Logged_0x158432:
 	dw Logged_0x15846E
 
 Logged_0x15843E:
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 	ld hl,$D1D8
 	ld de,$8088
@@ -151224,7 +152216,7 @@ Logged_0x158869:
 Logged_0x15886E:
 	ld [hli],a
 	set 2,l
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	and $01
 	ld b,$29
 	add a,b
@@ -151452,16 +152444,16 @@ Logged_0x160028:
 	call Logged_0x16041F
 	call Logged_0x160439
 	ld a,$04
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	xor a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	ld [$C084],a
-	ld [$FF00+$4A],a
+	ld [rWY],a
 	ld [$CEE4],a
 	ld a,$07
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld a,$9A
 	ld [$CCF0],a
 	ld a,$E7
@@ -151524,7 +152516,7 @@ Logged_0x160028:
 	ld a,$78
 	ld [$CEE5],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -151953,9 +152945,9 @@ Logged_0x1603CB:
 
 Logged_0x1603D8:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5780
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,$2C
 	ld [$FF00+$85],a
 	ld a,$09
@@ -151974,37 +152966,101 @@ Logged_0x1603D8:
 	ld [$FF00+$8E],a
 	call $FF80
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$464C
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	ld hl,$4AF9
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	ret
 
 Logged_0x16041F:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$579C
-	ld bc,$9C00
-	call Logged_0x0909
+	ld bc,_SCRN1
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5744
-	ld bc,$9C00
-	call Logged_0x0909
+	ld bc,_SCRN1
+	call Decompress_BC_HL
 	ret
 
 Logged_0x160439:
-	ld hl,$4445
+	ld hl,RAMCode_0x160445
 	ld de,$C200
-	ld b,$6C
-	call Logged_0x0466
+	ld b,Logged_0x1604B1 - RAMCode_0x160445
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x160445:
-INCBIN "baserom.gbc", $160445, $1604B1 - $160445
+RAMCode_0x160445:
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$CEE4]
+	bit 7,a
+	jr z,Unknown_0x1604AB
+	and $7F
+	dec a
+	jr z,Unknown_0x160487
+	dec a
+	jr z,Unknown_0x160499
+	ld a,$01
+	ld [$FF00+$4F],a
+	ld hl,$CCF0
+	ld a,[hli]
+	ld e,[hl]
+	ld d,a
+	ld hl,$CE35
+	ld b,$0D
+	call MemCopy_DE_HL
+	xor a
+	ld [$FF00+$4F],a
+	ld hl,$CCF0
+	ld a,[hli]
+	ld l,[hl]
+	ld h,a
+	ld a,$7E
+	ld b,$0D
+	call Logged_0x0420
+	ld a,$81
+	ld [$CEE4],a
+	jr Unknown_0x1604AB
+
+Unknown_0x160487:
+	ld hl,$CCF0
+	ld a,[hli]
+	ld e,[hl]
+	ld d,a
+	ld hl,$CE01
+
+Unknown_0x160490:
+	ld a,[hli]
+	cp $7F
+	jr z,Unknown_0x1604A6
+	ld [de],a
+	inc e
+	jr Unknown_0x160490
+
+Unknown_0x160499:
+	call Logged_0x1C4A
+	call Logged_0x1C5B
+	ld hl,$FF40
+	ld a,[hl]
+	or $60
+	ld [hl],a
+
+Unknown_0x1604A6:
+	ld hl,$CEE4
+	res 7,[hl]
+
+Unknown_0x1604AB:
+	ld a,$CC
+	call $FFE8 ;Unknown bank
+	ret
 
 Logged_0x1604B1:
 	ld a,[hli]
@@ -153908,12 +154964,12 @@ Logged_0x1C80A5:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	xor a
-	ld [$FF00+$42],a
-	ld [$FF00+$43],a
+	ld [rSCY],a
+	ld [rSCX],a
 	ld [$C083],a
 	ld [$C085],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -153928,19 +154984,19 @@ Logged_0x1C80CD:
 	ld hl,$4F0D
 	ld bc,$8800
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	call Logged_0x2C18
 	ld a,$71
 	ld [$C0AC],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	pop hl
-	ld bc,$9800
+	ld bc,_SCRN0
 	call Logged_0x2C18
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	pop hl
-	ld bc,$9800
+	ld bc,_SCRN0
 	call Logged_0x2C18
 	ld a,[$CA39]
 	and a
@@ -154437,12 +155493,12 @@ Logged_0x1C8478:
 	call Logged_0x1C853E
 	call Logged_0x1C84E0
 	xor a
-	ld [$FF00+$42],a
-	ld [$FF00+$43],a
+	ld [rSCY],a
+	ld [rSCX],a
 	ld [$C083],a
 	ld [$C085],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -154455,31 +155511,36 @@ Logged_0x1C84AD:
 	ld hl,$5DC6
 	push hl
 	ld hl,$5124
-	ld bc,$8000
+	ld bc,_VRAM
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	call Logged_0x2C18
 	ld a,$71
 	ld [$C0AC],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	pop hl
-	ld bc,$9800
+	ld bc,_SCRN0
 	call Logged_0x2C18
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	pop hl
-	ld bc,$9800
+	ld bc,_SCRN0
 	jp Logged_0x2C18
 
 Logged_0x1C84E0:
-	ld hl,$44EB
+	ld hl,RAMCode_0x1C84EB
 	ld de,$C200
-	ld b,$0E
-	jp Logged_0x0466
+	ld b,Logged_0x1C84F9 - RAMCode_0x1C84EB
+	jp MemCopy_DE_HL
 
-LoggedData_0x1C84EB:
-INCBIN "baserom.gbc", $1C84EB, $1C84F9 - $1C84EB
+RAMCode_0x1C84EB:
+	ld a,$01
+	ld [$FF00+$70],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x1C84F9:
 	ld hl,$DC0A
@@ -154611,13 +155672,13 @@ Logged_0x1C85B9:
 	ld bc,$002F
 	call Logged_0x0FE6
 	xor a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	ld a,[$DC2E]
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -154626,16 +155687,16 @@ Logged_0x1C8604:
 	ld a,$35
 	ld [$C0AC],a
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5124
-	ld bc,$8000
+	ld bc,_VRAM
 	call Logged_0x2C18
 	ld a,$71
 	ld [$C0AC],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4EA8
-	ld bc,$9800
+	ld bc,_SCRN0
 	call Logged_0x2C18
 	ld a,[$D801]
 	ld [$D804],a
@@ -154644,9 +155705,9 @@ Logged_0x1C8604:
 	ld hl,$D900
 	ld de,$98C0
 	ld b,$E0
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$DC03]
 	and a
 	jr nz,Unknown_0x1C864C
@@ -154657,7 +155718,7 @@ Unknown_0x1C864C:
 	ld hl,$4D83
 
 Logged_0x1C864F:
-	ld bc,$9800
+	ld bc,_SCRN0
 	call Logged_0x2C18
 	ld hl,$CA42
 	ld de,$99A2
@@ -154895,7 +155956,7 @@ Logged_0x1C87DB:
 	ld l,a
 	ld de,$DB00
 	ld b,$40
-	jp Logged_0x0466
+	jp MemCopy_DE_HL
 
 LoggedData_0x1C8808:
 INCBIN "baserom.gbc", $1C8808, $1C8814 - $1C8808
@@ -155138,29 +156199,29 @@ Logged_0x1C8976:
 	ld a,$70
 	ld [$C0AC],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4C5F
-	ld bc,$8000
+	ld bc,_VRAM
 	call Logged_0x2C18
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4000
 	ld bc,$8800
 	call Logged_0x2C18
 	ld a,$04
 	ld [$C0AC],a
 	ld hl,$4000
-	ld de,$8000
+	ld de,_VRAM
 	ld bc,$0800
 	call Logged_0x2C00
 	xor a
-	ld [$FF00+$42],a
-	ld [$FF00+$43],a
+	ld [rSCY],a
+	ld [rSCX],a
 	ld [$C083],a
 	ld [$C085],a
-	ld [$FF00+$4A],a
+	ld [rWY],a
 	ld a,$A6
-	ld [$FF00+$4B],a
+	ld [rWX],a
 	ld [$DC25],a
 	call Logged_0x1C89FA
 	call Logged_0x1C9CF9
@@ -155171,7 +156232,7 @@ Logged_0x1C8976:
 	ld [$FF00+$B4],a
 	ld [$FF00+$B2],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -155219,7 +156280,7 @@ Logged_0x1C8A2F:
 Logged_0x1C8A34:
 	ld a,[$DC0E]
 	ld b,a
-	ld a,[$FF00+$04]
+	ld a,[rDIV]
 	ld c,a
 
 Logged_0x1C8A3B:
@@ -155265,31 +156326,31 @@ Logged_0x1C8A4F:
 	ld h,[hl]
 	ld l,a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld bc,$98E0
 	call Logged_0x2C18
 	ld hl,$5651
-	ld bc,$9800
+	ld bc,_SCRN0
 	call Logged_0x2C18
 	pop hl
 	ld bc,$9CE0
 	call Logged_0x2C18
 	ld hl,$5716
-	ld bc,$9C00
+	ld bc,_SCRN1
 	call Logged_0x2C18
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	pop hl
 	ld bc,$98E0
 	call Logged_0x2C18
 	ld hl,$55C5
-	ld bc,$9800
+	ld bc,_SCRN0
 	call Logged_0x2C18
 	pop hl
 	ld bc,$9CE0
 	call Logged_0x2C18
 	ld hl,$568A
-	ld bc,$9C00
+	ld bc,_SCRN1
 	call Logged_0x2C18
 	pop hl
 	ld de,$DB40
@@ -155330,7 +156391,7 @@ INCBIN "baserom.gbc", $1C8B59, $1C8B8B - $1C8B59
 
 Logged_0x1C8B8B:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$D800]
 	cp $02
 	jr z,Logged_0x1C8BA3
@@ -155354,7 +156415,7 @@ Logged_0x1C8BAD:
 	add hl,bc
 	ld de,$8010
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$63DF
 	ld a,[$DB81]
 	dec a
@@ -155364,47 +156425,47 @@ Logged_0x1C8BAD:
 	add hl,bc
 	ld de,$82B0
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$63DF
 	add hl,bc
 	ld de,$84B0
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$63DF
 	add hl,bc
 	ld de,$86B0
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$63DF
 	add hl,bc
 	ld de,$88B0
 	ld b,$10
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld a,[$D800]
 	cp $02
 	jr z,Logged_0x1C8C21
 	ld hl,$654F
 	ld de,$8200
 	ld b,$60
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld de,$8400
 	ld b,$60
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld de,$8600
 	ld b,$60
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld de,$8800
 	ld b,$60
-	call Logged_0x0466
+	call MemCopy_DE_HL
 
 Logged_0x1C8C21:
 	call Logged_0x1C8C66
 	ld hl,$DB90
 	ld de,$8F00
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 Logged_0x1C8C33:
@@ -155465,7 +156526,7 @@ Unknown_0x1C8C81:
 Logged_0x1C8C85:
 	ld de,$DB90
 	ld b,$20
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop de
 	ld hl,$640F
 	ld a,e
@@ -155481,7 +156542,7 @@ Logged_0x1C8C98:
 Logged_0x1C8C9C:
 	ld de,$DBB0
 	ld b,$20
-	jp Logged_0x0466
+	jp MemCopy_DE_HL
 
 Logged_0x1C8CA4:
 	ld a,$66
@@ -155982,7 +157043,7 @@ Logged_0x1C9015:
 	ld hl,$DC34
 	ld de,$DC3A
 	ld b,$04
-	jp Logged_0x0466
+	jp MemCopy_DE_HL
 
 Logged_0x1C9039:
 	ld a,d
@@ -157932,13 +158993,36 @@ Logged_0x1C9D0E:
 
 Logged_0x1C9D1D:
 	call Logged_0x1C9D5A
-	ld hl,$5D2B
+	ld hl,RAMCode_0x1C9D2B
 	ld de,$C200
-	ld b,$2F
-	jp Logged_0x0466
+	ld b,Logged_0x1C9D5A - RAMCode_0x1C9D2B
+	jp MemCopy_DE_HL
 
-LoggedData_0x1C9D2B:
-INCBIN "baserom.gbc", $1C9D2B, $1C9D5A - $1C9D2B
+RAMCode_0x1C9D2B:
+	ld a,$01
+	ld [$FF00+$70],a
+	ld [$FF00+$4F],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$DC25]
+	ld [$FF00+$4B],a
+	ld a,[$DC0C]
+	ld [$FF00+$40],a
+	ld hl,$FF51
+	ld a,$D9
+	ld [hli],a
+	ld a,$00
+	ld [hli],a
+	ld a,$17
+	ld [hli],a
+	ld a,$40
+	ld [hli],a
+	ld a,$03
+	ld [hl],a
+	xor a
+	ld [$FF00+$4F],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x1C9D5A:
 	ld hl,$DC0B
@@ -157966,7 +159050,7 @@ Logged_0x1C9D79:
 Logged_0x1C9D7C:
 	ld de,$D900
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$DC0B
 	ld a,[hl]
 	inc a
@@ -157978,31 +159062,90 @@ LoggedData_0x1C9D8D:
 INCBIN "baserom.gbc", $1C9D8D, $1C9E8D - $1C9D8D
 
 Logged_0x1C9E8D:
-	ld hl,$5E98
+	ld hl,RAMCode_0x1C9E98
 	ld de,$C200
-	ld b,$1B
-	jp Logged_0x0466
+	ld b,Logged_0x1C9EB3 - RAMCode_0x1C9E98
+	jp MemCopy_DE_HL
 
-LoggedData_0x1C9E98:
-INCBIN "baserom.gbc", $1C9E98, $1C9EB3 - $1C9E98
+RAMCode_0x1C9E98:
+	ld a,$01
+	ld [$FF00+$70],a
+	ld [$FF00+$4F],a
+	ld a,$03
+	ld [$9945],a
+	ld a,[$DC0C]
+	ld [$FF00+$40],a
+	xor a
+	ld [$FF00+$4F],a
+	ld [$DC02],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x1C9EB3:
-	ld hl,$5EBE
+	ld hl,RAMCode_0x1C9EBE
 	ld de,$C200
-	ld b,$33
-	jp Logged_0x0466
+	ld b,Logged_0x1C9EF1 - RAMCode_0x1C9EBE
+	jp MemCopy_DE_HL
 
-LoggedData_0x1C9EBE:
-INCBIN "baserom.gbc", $1C9EBE, $1C9EF1 - $1C9EBE
+RAMCode_0x1C9EBE:
+	ld a,$01
+	ld [$FF00+$70],a
+	xor a
+	ld [$DC02],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$DC25]
+	ld [$FF00+$4B],a
+	ld a,[$DC0C]
+	ld [$FF00+$40],a
+	ld a,[$DC0D]
+	ld [$2000],a
+	ld hl,$FF51
+	ld a,[$DC11]
+	ld [hli],a
+	ld a,[$DC12]
+	ld [hli],a
+	xor a
+	ld [hli],a
+	ld [hli],a
+	ld a,$7F
+	ld [hl],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x1C9EF1:
-	ld hl,$5EFC
+	ld hl,RAMCode_0x1C9EFC
 	ld de,$C200
-	ld b,$32
-	jp Logged_0x0466
+	ld b,Logged_0x1C9F2E - RAMCode_0x1C9EFC
+	jp MemCopy_DE_HL
 
-LoggedData_0x1C9EFC:
-INCBIN "baserom.gbc", $1C9EFC, $1C9F2E - $1C9EFC
+RAMCode_0x1C9EFC:
+	ld a,$01
+	ld [$FF00+$70],a
+	ld [$FF00+$4F],a
+	xor a
+	ld [$DC02],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$DC25]
+	ld [$FF00+$4B],a
+	ld a,[$DC0C]
+	ld [$FF00+$40],a
+	ld hl,$FF51
+	ld a,$DB
+	ld [hli],a
+	ld a,$90
+	ld [hli],a
+	ld a,$0F
+	ld [hli],a
+	xor a
+	ld [hli],a
+	ld a,$03
+	ld [hl],a
+	xor a
+	ld [$FF00+$4F],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x1C9F2E:
 	ld a,[$DC02]
@@ -158011,22 +159154,67 @@ Logged_0x1C9F2E:
 	dw Logged_0x1C9F7A
 
 Logged_0x1C9F36:
-	ld hl,$5F41
+	ld hl,RAMCode_0x1C9F41
 	ld de,$C200
-	ld b,$39
-	jp Logged_0x0466
+	ld b,Logged_0x1C9F7A - RAMCode_0x1C9F41
+	jp MemCopy_DE_HL
 
-LoggedData_0x1C9F41:
-INCBIN "baserom.gbc", $1C9F41, $1C9F7A - $1C9F41
+RAMCode_0x1C9F41:
+	ld a,$01
+	ld [$FF00+$70],a
+	xor a
+	ld [$FF00+$4F],a
+	ld a,[$DC19]
+	add a,a
+	add a,$E0
+	ld [$9906],a
+	inc a
+	ld [$9926],a
+	ld a,[$DC1A]
+	and $F0
+	swap a
+	add a,a
+	add a,$E0
+	ld [$9907],a
+	inc a
+	ld [$9927],a
+	ld a,[$DC1A]
+	and $0F
+	add a,a
+	add a,$E0
+	ld [$9908],a
+	inc a
+	ld [$9928],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x1C9F7A:
-	ld hl,$5F85
+	ld hl,RAMCode_0x1C9F85
 	ld de,$C200
-	ld b,$29
-	jp Logged_0x0466
+	ld b,Logged_0x1C9FAE - RAMCode_0x1C9F85
+	jp MemCopy_DE_HL
 
-LoggedData_0x1C9F85:
-INCBIN "baserom.gbc", $1C9F85, $1C9FAE - $1C9F85
+RAMCode_0x1C9F85:
+	ld a,$01
+	ld [$FF00+$70],a
+	xor a
+	ld [$DC02],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,[$DC0D]
+	ld [$2000],a
+	ld hl,$FF51
+	ld a,[$DC11]
+	ld [hli],a
+	ld a,[$DC12]
+	ld [hli],a
+	xor a
+	ld [hli],a
+	ld [hli],a
+	ld a,$7F
+	ld [hl],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x1C9FAE:
 	call Logged_0x1C9FBD
@@ -158060,13 +159248,18 @@ Logged_0x1C9FBD:
 	ret
 
 Logged_0x1C9FE1:
-	ld hl,$5FEC
+	ld hl,RAMCode_0x1C9FEC
 	ld de,$C200
-	ld b,$0E
-	jp Logged_0x0466
+	ld b,Logged_0x1C9FFA - RAMCode_0x1C9FEC
+	jp MemCopy_DE_HL
 
-LoggedData_0x1C9FEC:
-INCBIN "baserom.gbc", $1C9FEC, $1C9FFA - $1C9FEC
+RAMCode_0x1C9FEC:
+	ld a,$01
+	ld [$FF00+$70],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x1C9FFA:
 	ld a,$18
@@ -158075,22 +159268,44 @@ Logged_0x1C9FFA:
 	ld [$DC12],a
 	ld a,$0D
 	ld [$DC13],a
-	ld hl,$6014
+	ld hl,RAMCode_0x1CA014
 	ld de,$C200
-	ld b,$1F
-	jp Logged_0x0466
+	ld b,Logged_0x1CA033 - RAMCode_0x1CA014
+	jp MemCopy_DE_HL
 
-LoggedData_0x1CA014:
-INCBIN "baserom.gbc", $1CA014, $1CA033 - $1CA014
+RAMCode_0x1CA014:
+	ld a,$01
+	ld [$FF00+$70],a
+	xor a
+	ld [$DC02],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,$01
+	ld [$FF00+$4F],a
+	ld hl,$DA00
+	call Logged_0x2C30
+	xor a
+	ld [$FF00+$4F],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x1CA033:
-	ld hl,$603E
+	ld hl,RAMCode_0x1CA03E
 	ld de,$C200
-	ld b,$18
-	jp Logged_0x0466
+	ld b,Logged_0x1CA056 - RAMCode_0x1CA03E
+	jp MemCopy_DE_HL
 
-LoggedData_0x1CA03E:
-INCBIN "baserom.gbc", $1CA03E, $1CA056 - $1CA03E
+RAMCode_0x1CA03E:
+	ld a,$01
+	ld [$FF00+$70],a
+	xor a
+	ld [$DC02],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld hl,$DB00
+	call Logged_0x2C46
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
 
 Logged_0x1CA056:
 	ld a,$18
@@ -158099,13 +159314,29 @@ Logged_0x1CA056:
 	ld [$DC12],a
 	ld a,$0D
 	ld [$DC13],a
-	ld hl,$6070
+	ld hl,RAMCode_0x1CA070
 	ld de,$C200
-	ld b,$1F
-	jp Logged_0x0466
+	ld b,LoggedData_0x1CA08F - RAMCode_0x1CA070
+	jp MemCopy_DE_HL
 
-LoggedData_0x1CA070:
-INCBIN "baserom.gbc", $1CA070, $1CA0CF - $1CA070
+RAMCode_0x1CA070:
+	ld a,$01
+	ld [$FF00+$70],a
+	xor a
+	ld [$DC02],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,$01
+	ld [$FF00+$4F],a
+	ld hl,$D900
+	call Logged_0x2C30
+	xor a
+	ld [$FF00+$4F],a
+	ld a,$CC
+	jp $FFE8 ;Unknown bank
+
+LoggedData_0x1CA08F:
+INCBIN "baserom.gbc", $1CA08F, $1CA0CF - $1CA08F
 
 UnknownData_0x1CA0CF:
 INCBIN "baserom.gbc", $1CA0CF, $1CA18F - $1CA0CF
@@ -158374,7 +159605,7 @@ Logged_0x1D8B59:
 	add a,c
 	ld e,a
 	ld b,$20
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D031
 	set 0,[hl]
 	ret
@@ -158408,7 +159639,7 @@ Logged_0x1D8B8C:
 	add a,c
 	ld e,a
 	ld b,$20
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D031
 	set 1,[hl]
 	ret
@@ -158455,12 +159686,13 @@ Logged_0x1D8BD6:
 	add a,c
 	ld e,a
 	ld b,$20
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D031
 	set 1,[hl]
 	ret
+
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$D030]
 	add a,a
 	ld d,a
@@ -158470,22 +159702,24 @@ Logged_0x1D8BD6:
 	push hl
 	ld de,$9700
 	ld b,$80
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$4400
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop hl
 	ld de,$D740
 	ld b,$80
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$4400
 	ld b,$40
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
+
+Logged_0x1D8C2C:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld c,$51
 	ld a,$D7
 	ld [$FF00+c],a
@@ -158521,7 +159755,7 @@ Logged_0x1D8BD6:
 
 Logged_0x1D8C5E:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ret
 
 UnknownData_0x1D8C62:
@@ -158661,49 +159895,53 @@ SECTION "Bank78", ROMX, BANK[$78]
 	ld hl,$43B8
 	call Logged_0x1A21
 	ret
+
 	ld hl,$43F8
 	call Logged_0x1A15
 	ld hl,$4438
 	call Logged_0x1A21
 	ret
+
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$51E8
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4478
 	ld bc,$8800
-	call Logged_0x0909
+	call Decompress_BC_HL
 	ld hl,$7000
-	ld de,$8000
+	ld de,_VRAM
 	ld bc,$0800
 	ld a,$0B
 	ld [$C0AC],a
 	call Logged_0x0443
 	ret
+
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5962
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$57FA
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ret
+
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5C5B
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5AE5
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	call Logged_0x1E011D
 	ld a,[$CA06]
 	srl a
@@ -158842,6 +160080,7 @@ Logged_0x1E014D:
 	ld a,$02
 	ld [$C0E5],a
 	ret
+
 	ld a,[$CA3C]
 	and $80
 	jr z,Logged_0x1E0176
@@ -160499,16 +161738,19 @@ Logged_0x1E48AE:
 	call Logged_0x1E49BB
 	call Logged_0x1E49ED
 	ret
+
 	ld a,$01
 	ld [$D509],a
 	ld hl,$4EEF
 	call Logged_0x1E49BB
 	ret
+
 	ld a,$01
 	ld [$D509],a
 	ld hl,$4EEF
 	call Logged_0x1A15
 	ret
+
 	ld a,[$D50B]
 	and $3F
 	cp $0A
@@ -160535,8 +161777,9 @@ Logged_0x1E48F5:
 	ld b,$10
 	call Logged_0x1A2D
 	ret
+
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5871
 	ld a,[$D50B]
 	and $3F
@@ -160545,24 +161788,25 @@ Logged_0x1E48F5:
 	ld hl,$626B
 
 Logged_0x1E4920:
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$4FCF
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	ret
+
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$68BD
-	ld bc,$9C00
-	call Logged_0x0909
+	ld bc,_SCRN1
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$6796
-	ld bc,$9C00
-	call Logged_0x0909
+	ld bc,_SCRN1
+	call Decompress_BC_HL
 	ld a,[$D50B]
 	and $3F
 	cp $0A
@@ -160572,7 +161816,7 @@ Logged_0x1E4920:
 	jr z,Logged_0x1E4979
 	ld c,a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$9E00
 	ld de,$0020
 	ld b,$00
@@ -160595,7 +161839,7 @@ Logged_0x1E4969:
 
 Logged_0x1E4979:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$CA3C]
 	and $3F
 	ld b,a
@@ -160624,7 +161868,7 @@ Logged_0x1E499C:
 	ld de,$0020
 	push hl
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$07
 	ld [hli],a
 	ld [hld],a
@@ -160633,7 +161877,7 @@ Logged_0x1E499C:
 	ld [hl],a
 	pop hl
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$64
 	ld [hli],a
 	inc a
@@ -160652,17 +161896,17 @@ Logged_0x1E49BB:
 	call Logged_0x1A2D
 	pop hl
 	ld a,$80
-	ld [$FF00+$68],a
+	ld [rBCPS],a
 	ld b,$08
 	ld c,$69
 
 Logged_0x1E49CD:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x1E49CD
 
 Logged_0x1E49D3:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x1E49D3
 	ld a,[hli]
@@ -160714,17 +161958,17 @@ Logged_0x1E4A15:
 
 Logged_0x1E4A1F:
 	ld a,$80
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld b,$08
 	ld c,$6B
 
 Logged_0x1E4A27:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x1E4A27
 
 Logged_0x1E4A2D:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x1E4A2D
 	ld a,[hli]
@@ -160746,6 +161990,7 @@ Logged_0x1E4A2D:
 	dec b
 	jr nz,Logged_0x1E4A27
 	ret
+
 	ld hl,$4F4F
 	ld a,[$D50B]
 	cp $0A
@@ -160778,17 +162023,17 @@ Logged_0x1E4A6F:
 
 Logged_0x1E4A84:
 	ld a,$A0
-	ld [$FF00+$6A],a
+	ld [rOCPS],a
 	ld c,$6B
 	ld b,$04
 
 Logged_0x1E4A8C:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr z,Logged_0x1E4A8C
 
 Logged_0x1E4A92:
-	ld a,[$FF00+$41]
+	ld a,[rSTAT]
 	and $03
 	jr nz,Logged_0x1E4A92
 	ld a,[hli]
@@ -160810,6 +162055,7 @@ Logged_0x1E4A92:
 	dec b
 	jr nz,Logged_0x1E4A8C
 	ret
+
 	ld a,[$C083]
 	ld b,a
 	ld a,[hli]
@@ -160899,6 +162145,7 @@ Logged_0x1E4B15:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld a,[$C083]
 	ld b,a
 	ld a,[hli]
@@ -162480,6 +163727,7 @@ Logged_0x1EC725:
 	and a
 	jp z,Logged_0x1EDE69
 	ret
+
 	ld a,$01
 	ld [$FF00+$B5],a
 	ld a,$47
@@ -164642,6 +165890,7 @@ Logged_0x1ED886:
 	ld [$FF00+$8E],a
 	call $FF80
 	ret
+
 	ld hl,$CA61
 	ld de,$FFA8
 	ld a,[hli]
@@ -165218,15 +166467,15 @@ Logged_0x1EDCEF:
 	ld [$CA8A],a
 	ld [$CA75],a
 	ld [$CA74],a
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,[$D144]
 	cp $03
 	jr z,Unknown_0x1EDD3C
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$08
 	ld [$FF00+$85],a
 	ld a,$EB
@@ -165238,7 +166487,7 @@ Logged_0x1EDCEF:
 
 Unknown_0x1EDD3C:
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$ED
 	ld [$CA83],a
 	ld a,$01
@@ -165790,8 +167039,8 @@ Logged_0x1F0099:
 	call $FF80
 	call Logged_0x0354
 	xor a
-	ld [$FF00+$42],a
-	ld [$FF00+$43],a
+	ld [rSCY],a
+	ld [rSCX],a
 	ld [$C083],a
 	ld [$C085],a
 	ld hl,$D52B
@@ -166049,7 +167298,7 @@ Logged_0x1F0290:
 	ld hl,$D582
 	call Logged_0x1F0940
 	ld a,$8F
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -166147,7 +167396,7 @@ Logged_0x1F033C:
 	ld [$CED8],a
 	call Logged_0x161A
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -166181,9 +167430,9 @@ Logged_0x1F0370:
 	call Logged_0x1F0C7E
 	xor a
 	ld [$C083],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C085],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	xor a
 	ld [$C187],a
 	ld [$CEE4],a
@@ -166193,7 +167442,7 @@ Logged_0x1F0370:
 	ld [hli],a
 	ld [hl],$64
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -166225,22 +167474,22 @@ Logged_0x1F03F1:
 
 Logged_0x1F03FA:
 	call Logged_0x08E6
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$03
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D2E0
 	ld de,$CAA1
 	ld b,$20
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x1F0B3A
 	ld a,[$C08E]
 	push af
 	ld a,$00
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,$30
 	ld [$A790],a
 	ld [$A7E0],a
@@ -166260,25 +167509,25 @@ Logged_0x1F03FA:
 	inc e
 	ld hl,$CA00
 	ld b,$CA
-	call Logged_0x0466
-	ld a,[$FF00+$70]
+	call MemCopy_DE_HL
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld b,$11
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld bc,$014A
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$31
 	ld [$A790],a
 	ld [$A7E0],a
@@ -166352,25 +167601,25 @@ Logged_0x1F03FA:
 	inc e
 	ld hl,$CA00
 	ld b,$CA
-	call Logged_0x0466
-	ld a,[$FF00+$70]
+	call MemCopy_DE_HL
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld b,$11
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld bc,$014A
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$51
 	ld [$A790],a
 	ld [$A7E0],a
@@ -166417,25 +167666,25 @@ Logged_0x1F03FA:
 	inc e
 	ld hl,$CA00
 	ld b,$CA
-	call Logged_0x0466
-	ld a,[$FF00+$70]
+	call MemCopy_DE_HL
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld b,$11
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld bc,$014A
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$61
 	ld [$A790],a
 	ld [$A7E0],a
@@ -166483,25 +167732,25 @@ Logged_0x1F03FA:
 	inc e
 	ld hl,$CA00
 	ld b,$CA
-	call Logged_0x0466
-	ld a,[$FF00+$70]
+	call MemCopy_DE_HL
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld b,$11
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld bc,$014A
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$81
 	ld [$A790],a
 	ld [$A7E0],a
@@ -166536,7 +167785,7 @@ Logged_0x1F03FA:
 	ld [$C09A],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0x1F0C6C
 	ld a,$7D
 	ld [$FF00+$85],a
@@ -166553,7 +167802,7 @@ Logged_0x1F03FA:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	xor a
 	ld [$CEE5],a
 	ld a,$02
@@ -166615,9 +167864,9 @@ Logged_0x1F0701:
 	call Logged_0x1F0C7E
 	xor a
 	ld [$C083],a
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C085],a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	xor a
 	ld [$C187],a
 	ld [$CEE5],a
@@ -166627,7 +167876,7 @@ Logged_0x1F0701:
 	ld [hli],a
 	ld [hl],$64
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -166639,7 +167888,7 @@ Logged_0x1F0768:
 	push af
 	ld a,$00
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,$10
 	ld [$A790],a
 	ld [$A7E0],a
@@ -166659,16 +167908,16 @@ Logged_0x1F0768:
 	inc e
 	ld hl,$CA00
 	ld b,$5B
-	call Logged_0x0466
-	ld a,[$FF00+$70]
+	call MemCopy_DE_HL
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld b,$11
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$11
 	ld [$A790],a
 	ld [$A7E0],a
@@ -166715,16 +167964,16 @@ Logged_0x1F0768:
 	inc e
 	ld hl,$CA00
 	ld b,$5B
-	call Logged_0x0466
-	ld a,[$FF00+$70]
+	call MemCopy_DE_HL
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld b,$11
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$21
 	ld [$A790],a
 	ld [$A7E0],a
@@ -166757,7 +168006,7 @@ Logged_0x1F0768:
 	ld [$AFA0],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	call Logged_0x1F0C6C
 	ld a,$7D
 	ld [$FF00+$85],a
@@ -166778,7 +168027,7 @@ Logged_0x1F0768:
 	ld a,$02
 	ld [$CEE6],a
 	ld a,$87
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -166796,7 +168045,7 @@ Logged_0x1F08AF:
 	xor a
 	ld [$C09A],a
 	ld a,$E7
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld a,$01
 	ld [$C09B],a
 	ld a,[$CED5]
@@ -166824,8 +168073,8 @@ Logged_0x1F08E6:
 Logged_0x1F08F4:
 	jp Logged_0x015E
 	ld hl,$5D5D
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	ret
 
 UnknownData_0x1F0901:
@@ -166835,16 +168084,17 @@ INCBIN "baserom.gbc", $1F0901, $1F0919 - $1F0901
 	ld hl,$7610
 	call Logged_0x1A21
 	ret
+
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$767F
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$7650
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ret
 
 Logged_0x1F0940:
@@ -166886,10 +168136,10 @@ Logged_0x1F0969:
 	ld a,$76
 	ld [$FF00+$8E],a
 	call $FF80
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$4E
@@ -166898,12 +168148,12 @@ Logged_0x1F0969:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	call Logged_0x0D9E
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld a,$18
 	ld [$FF00+$85],a
 	ld a,$D7
@@ -166912,7 +168162,7 @@ Logged_0x1F0969:
 	ld [$FF00+$8E],a
 	call $FF80
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1F09BD:
@@ -167188,22 +168438,22 @@ Logged_0x1F0B5B:
 	ld de,$0000
 	ld b,$CA
 	call Logged_0x1F0B83
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld b,$11
 	call Logged_0x1F0B83
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld bc,$014A
 	call Logged_0x1F0B8E
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1F0B83:
@@ -167235,24 +168485,24 @@ Logged_0x1F0B9B:
 	ld hl,$CA00
 	ld b,$CA
 	call Logged_0x1F0B83
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld b,$11
 	call Logged_0x1F0B83
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld bc,$014A
 	call Logged_0x1F0B8E
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1F0BCC:
@@ -167260,7 +168510,7 @@ Logged_0x1F0BCC:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A000
 	ld de,$0000
 	ld bc,$2000
@@ -167278,12 +168528,12 @@ Logged_0x1F0BE1:
 	jr nz,Logged_0x1F0BE1
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C08E]
 	push af
 	ld a,$02
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A000
 	ld bc,$1000
 
@@ -167300,7 +168550,7 @@ Logged_0x1F0C07:
 	jr nz,Logged_0x1F0C07
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ret
 
 Logged_0x1F0C1C:
@@ -167308,7 +168558,7 @@ Logged_0x1F0C1C:
 	push af
 	ld a,$03
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A000
 	ld de,$0000
 	ld bc,$2000
@@ -167326,12 +168576,12 @@ Logged_0x1F0C31:
 	jr nz,Logged_0x1F0C31
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,[$C08E]
 	push af
 	ld a,$02
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$B000
 	ld bc,$1000
 
@@ -167348,33 +168598,57 @@ Logged_0x1F0C57:
 	jr nz,Logged_0x1F0C57
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ret
 
 Logged_0x1F0C6C:
-	ld hl,$4C78
+	ld hl,RAMCode_0x1F0C78
 	ld de,$C200
-	ld b,$06
-	call Logged_0x0466
+	ld b,Logged_0x1F0C7E - RAMCode_0x1F0C78
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x1F0C78:
-INCBIN "baserom.gbc", $1F0C78, $1F0C7E - $1F0C78
+RAMCode_0x1F0C78:
+	ld a,$CC
+	call $FFE8 ;Unknown bank
+	ret
 
 Logged_0x1F0C7E:
-	ld hl,$4C8A
+	ld hl,RAMCode_0x1F0C8A
 	ld de,$C200
-	ld b,$23
-	call Logged_0x0466
+	ld b,Unknown_0x1F0CAD - RAMCode_0x1F0C8A
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x1F0C8A:
-INCBIN "baserom.gbc", $1F0C8A, $1F0CAD - $1F0C8A
+RAMCode_0x1F0C8A:
+	ld a,[$CEE4]
+	bit 7,a
+	jr z,.done
+	ld hl,$CE01
+	ld a,[hli]
+	ld l,[hl]
+	ld h,a
+	ld a,$01
+	ld [$FF00+$4F],a
+	ld [hl],$05
+	xor a
+	ld [$FF00+$4F],a
+	ld [hl],$02
+	ld hl,$CEE4
+	res 7,[hl]
+
+.done
+	ld a,$CC
+	call $FFE8 ;Unknown bank
+	ret
+
+	
+Unknown_0x1F0CAD:
 	ld a,[$C08E]
 	push af
 	ld a,$00
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A380
 	call Logged_0x1F0D2E
 	jr nc,Logged_0x1F0CEC
@@ -167438,7 +168712,7 @@ Logged_0x1F0D20:
 	call Logged_0x1F1246
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ret
 
 Logged_0x1F0D2E:
@@ -168157,14 +169431,14 @@ Logged_0x1F1210:
 	ld de,$0000
 	ld b,$5B
 	call Logged_0x1F0B83
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld b,$11
 	call Logged_0x1F0B83
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1F1228:
@@ -168172,15 +169446,15 @@ Logged_0x1F1228:
 	ld hl,$CA00
 	ld b,$5B
 	call Logged_0x1F0B83
-	ld a,[$FF00+$70]
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld hl,$D000
 	ld b,$11
 	call Logged_0x1F0B83
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1F1246:
@@ -168222,27 +169496,27 @@ Logged_0x1F1274:
 	ld hl,$A384
 	ld de,$AFE0
 	ld b,$04
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$AB84
 	ld de,$AFE4
 	ld b,$04
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$A004
 	ld de,$AFE8
 	ld b,$04
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$A804
 	ld de,$AFEC
 	ld b,$04
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$A404
 	ld de,$AFF0
 	ld b,$04
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$AC04
 	ld de,$AFF4
 	ld b,$04
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld e,$21
 
 Logged_0x1F12C0:
@@ -168415,40 +169689,40 @@ Unknown_0x1F13CD:
 Logged_0x1F13D7:
 	ld de,$CA00
 	ld b,$5B
-	call Logged_0x0466
-	ld a,[$FF00+$70]
+	call MemCopy_DE_HL
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld de,$D000
 	ld b,$11
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Logged_0x1F13F2:
 	ld de,$CA00
 	ld b,$CA
-	call Logged_0x0466
-	ld a,[$FF00+$70]
+	call MemCopy_DE_HL
+	ld a,[rSVBK]
 	push af
 	ld a,$02
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld de,$D000
 	ld b,$11
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	pop af
-	ld [$FF00+$70],a
-	ld a,[$FF00+$70]
+	ld [rSVBK],a
+	ld a,[rSVBK]
 	push af
 	ld a,$01
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ld de,$D000
 	ld bc,$014A
 	call Logged_0x0434
 	pop af
-	ld [$FF00+$70],a
+	ld [rSVBK],a
 	ret
 
 Unknown_0x1F1420:
@@ -168460,14 +169734,14 @@ Unknown_0x1F1420:
 	push af
 	ld a,$02
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$B000
 	ld de,$A000
 	ld bc,$1000
 	call Logged_0x0434
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A000
 	ld bc,$2000
 
@@ -168476,21 +169750,21 @@ Unknown_0x1F1450:
 	push af
 	ld a,$03
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld d,[hl]
 	ld a,[$C08E]
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,d
 	ld [hli],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	dec c
 	jr nz,Unknown_0x1F1450
 	dec b
@@ -168535,14 +169809,14 @@ Logged_0x1F14C6:
 	push af
 	ld a,$02
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A000
 	ld de,$B000
 	ld bc,$1000
 	call Logged_0x0434
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld hl,$A000
 	ld bc,$2000
 
@@ -168551,21 +169825,21 @@ Logged_0x1F14F6:
 	push af
 	ld a,$01
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld d,[hl]
 	ld a,[$C08E]
 	push af
 	ld a,$03
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	ld a,d
 	ld [hli],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	pop af
 	ld [$C08E],a
-	ld [$4100],a
+	ld [rRAMB+$100],a
 	dec c
 	jr nz,Logged_0x1F14F6
 	dec b
@@ -168751,9 +170025,10 @@ SECTION "Bank7D", ROMX, BANK[$7D]
 	ld hl,$41C2
 	call Logged_0x1A21
 	ret
+
 	ld hl,$4202
-	ld bc,$8000
-	call Logged_0x0909
+	ld bc,_VRAM
+	call Decompress_BC_HL
 	ld a,[$CA8E]
 	cp $0E
 	jr z,Logged_0x1F4026
@@ -168776,36 +170051,37 @@ Logged_0x1F4030:
 	jr Logged_0x1F4035
 
 Logged_0x1F4035:
-	ld de,$8000
+	ld de,_VRAM
 	ld bc,$0200
 	call Logged_0x0434
 	ret
+
 	ld a,[$CA3D]
 	bit 1,a
 	jr nz,Unknown_0x1F4060
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5F49
-	ld bc,$9C00
-	call Logged_0x0909
+	ld bc,_SCRN1
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$5DE1
-	ld bc,$9C00
-	call Logged_0x0909
+	ld bc,_SCRN1
+	call Decompress_BC_HL
 	ret
 
 Unknown_0x1F4060:
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$6194
-	ld bc,$9C00
-	call Logged_0x0909
+	ld bc,_SCRN1
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$603A
-	ld bc,$9C00
-	call Logged_0x0909
+	ld bc,_SCRN1
+	call Decompress_BC_HL
 	ld a,[$CA06]
 	srl a
 	srl a
@@ -168904,15 +170180,17 @@ Unknown_0x1F4060:
 	ld [hli],a
 	add hl,bc
 	ret
+
 	ld hl,$628C
 	call Logged_0x1A15
 	ld hl,$628C
 	call Logged_0x1A21
 	ret
+
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$62CC
-	ld bc,$8000
+	ld bc,_VRAM
 	ld a,$7D
 	ld [$FF00+$85],a
 	ld a,$09
@@ -168921,33 +170199,35 @@ Unknown_0x1F4060:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld hl,$6800
-	ld de,$8000
+	ld de,_VRAM
 	ld bc,$0800
 	ld a,$76
 	ld [$C0AC],a
 	call Logged_0x0443
 	ret
+
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$69F9
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$6949
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ret
+
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$6AC2
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld hl,$6A2E
-	ld bc,$9800
-	call Logged_0x0909
+	ld bc,_SCRN0
+	call Decompress_BC_HL
 	ret
 
 LoggedData_0x1F4182:
@@ -169074,10 +170354,10 @@ Logged_0x1F8072:
 	call $FF80
 	call Logged_0x1FB6B7
 	xor a
-	ld [$FF00+$43],a
+	ld [rSCX],a
 	ld [$C085],a
 	ld a,$04
-	ld [$FF00+$42],a
+	ld [rSCY],a
 	ld [$C083],a
 	ld hl,$D523
 	ld a,$90
@@ -169146,7 +170426,7 @@ Logged_0x1F8072:
 	cp $0A
 	jr nc,Logged_0x1F8185
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$CA3C]
 	and $3F
 	ld e,a
@@ -169184,10 +170464,10 @@ Logged_0x1F8072:
 
 Logged_0x1F8185:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	call Logged_0x03B9
 	ld a,$8F
-	ld [$FF00+$40],a
+	ld [rLCDC],a
 	ld hl,$C09C
 	inc [hl]
 	ret
@@ -174134,7 +175414,7 @@ Logged_0x1FA2B7:
 	ld hl,$D553
 	ld de,$D53B
 	ld b,$0B
-	call Logged_0x0466
+	call MemCopy_DE_HL
 	ld hl,$D553
 	call Logged_0x1FB802
 	ld hl,$D50C
@@ -177114,14 +178394,47 @@ Logged_0x1FB671:
 	ret
 
 Logged_0x1FB6B7:
-	ld hl,$76C3
+	ld hl,RAMCode_0x1FB6C3
 	ld de,$C200
-	ld b,$34
-	call Logged_0x0466
+	ld b,Logged_0x1FB6F7 - RAMCode_0x1FB6C3
+	call MemCopy_DE_HL
 	ret
 
-LoggedData_0x1FB6C3:
-INCBIN "baserom.gbc", $1FB6C3, $1FB6F7 - $1FB6C3
+RAMCode_0x1FB6C3:
+	ld a,[$C1A0]
+	and a
+	jr z,.done
+	ld hl,$C1A1
+	ld a,[hli]
+	ld [$2100],a
+	ld c,$51
+	ld a,[hli]
+	ld [$FF00+c],a
+	inc c
+	ld a,[hli]
+	ld [$FF00+c],a
+	ld a,[hli]
+	ld [$FF00+$4F],a
+	inc c
+	ld a,[hli]
+	ld [$FF00+c],a
+	inc c
+	ld a,[hli]
+	ld [$FF00+c],a
+	inc c
+	ld a,[hl]
+	ld [$FF00+c],a
+	xor a
+	ld [$C1A0],a
+
+.done
+	ld a,[$C083]
+	ld [$FF00+$42],a
+	ld a,[$C085]
+	ld [$FF00+$43],a
+	ld a,$CC
+	call $FFE8 ;Unknown bank
+	ret
 
 Logged_0x1FB6F7:
 	ld hl,$D50B
@@ -177161,7 +178474,7 @@ Unknown_0x1FB72B:
 	ld a,$01
 	ld [$D509],a
 	ld a,$01
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,[$CA3C]
 	and $3F
 	cp e
@@ -177204,7 +178517,7 @@ Unknown_0x1FB750:
 
 Unknown_0x1FB774:
 	xor a
-	ld [$FF00+$4F],a
+	ld [rVBK],a
 	ld a,$01
 	ld [$FF00+$B5],a
 	ld a,$E2
