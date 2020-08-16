@@ -221,7 +221,7 @@ Logged_0x01DF:
 	and a
 	jr nz,Logged_0x021A
 	ld a,$0B
-	ld [$C09B],a
+	ld [wGameState],a
 	xor a
 	ld [$C09C],a
 	jr Logged_0x021D
@@ -343,7 +343,7 @@ Logged_0x02CB:
 	call Logged_0x0FBC
 	ret
 
-UnknownData_0x02CF:
+Unknown_0x02CF:
 INCBIN "baserom.gbc", $02CF, $0302 - $02CF
 
 Logged_0x0302:
@@ -776,7 +776,7 @@ Logged_0x052D:
 	inc [hl]
 	ret
 
-UnknownData_0x054E:
+Unknown_0x054E:
 INCBIN "baserom.gbc", $054E, $05DF - $054E
 
 Logged_0x05DF:
@@ -1156,7 +1156,7 @@ Logged_0x0788:
 	inc [hl]
 	ret
 
-UnknownData_0x07CF:
+Unknown_0x07CF:
 INCBIN "baserom.gbc", $07CF, $088D - $07CF
 
 Logged_0x088D:
@@ -2384,7 +2384,7 @@ Logged_0x0FCA:
 	ld [rSVBK],a
 	ret
 
-UnknownData_0x0FD8:
+Unknown_0x0FD8:
 INCBIN "baserom.gbc", $0FD8, $0FE6 - $0FD8
 
 Logged_0x0FE6:
@@ -2417,7 +2417,7 @@ Logged_0x1002:
 	ld [rSVBK],a
 	ret
 
-UnknownData_0x1010:
+Unknown_0x1010:
 INCBIN "baserom.gbc", $1010, $102C - $1010
 
 Logged_0x102C:
@@ -2432,7 +2432,7 @@ Logged_0x102C:
 	ld [rSVBK],a
 	ret
 
-UnknownData_0x103E:
+Unknown_0x103E:
 INCBIN "baserom.gbc", $103E, $1062 - $103E
 
 Logged_0x1062:
@@ -2540,7 +2540,7 @@ Logged_0x10E2:
 	jr nz,Logged_0x10DC
 	ret
 
-UnknownData_0x10FC:
+Unknown_0x10FC:
 INCBIN "baserom.gbc", $10FC, $1146 - $10FC
 
 Logged_0x1146:
@@ -2587,7 +2587,7 @@ Logged_0x1169:
 Logged_0x117F:
 	ret
 
-UnknownData_0x1180:
+Unknown_0x1180:
 INCBIN "baserom.gbc", $1180, $1197 - $1180
 
 Logged_0x1197:
@@ -2929,7 +2929,7 @@ Logged_0x13D5:
 	ld [rLCDC],a
 
 Logged_0x141A:
-	ld hl,$C09B
+	ld hl,wGameState
 	ld [hl],$02
 	ld a,[$CED5]
 	ld [$C09C],a
@@ -3247,13 +3247,13 @@ Logged_0x15FF:
 	ld a,[$C09C]
 	ld [$CED5],a
 	ld a,$04
-	ld [$C09B],a
+	ld [wGameState],a
 	ld a,$18
 	ld [$C09C],a
 	ret
 
 Logged_0x1610:
-	ld hl,$C09B
+	ld hl,wGameState
 	ld [hl],$0D
 	xor a
 	ld [$C09C],a
@@ -3332,7 +3332,7 @@ INCBIN "baserom.gbc", $168A, $1690 - $168A
 
 Logged_0x1690:
 	xor a
-	ld [$C09B],a
+	ld [wGameState],a
 	ld [$C09C],a
 	ret
 
@@ -3361,7 +3361,7 @@ Unknown_0x1698:
 	jp Logged_0x015E
 
 Logged_0x16D0:
-	ld hl,$C09B
+	ld hl,wGameState
 	ld a,$07
 	ld [hli],a
 	ld [hl],$00
@@ -3575,19 +3575,19 @@ Logged_0x17EC:
 	ld [rROMB0+$100],a
 	ret
 
-UnknownData_0x1826:
+Unknown_0x1826:
 INCBIN "baserom.gbc", $1826, $1827 - $1826
 
 LoggedData_0x1827:
 INCBIN "baserom.gbc", $1827, $1867 - $1827
 
-UnknownData_0x1867:
+Unknown_0x1867:
 INCBIN "baserom.gbc", $1867, $18A7 - $1867
 
 LoggedData_0x18A7:
 INCBIN "baserom.gbc", $18A7, $1987 - $18A7
 
-UnknownData_0x1987:
+Unknown_0x1987:
 INCBIN "baserom.gbc", $1987, $198B - $1987
 
 LoggedData_0x198B:
@@ -3785,7 +3785,7 @@ Logged_0x1ADC:
 	jr nz,Logged_0x1ADC
 	ret
 
-UnknownData_0x1AE2:
+Unknown_0x1AE2:
 INCBIN "baserom.gbc", $1AE2, $1AF6 - $1AE2
 
 Logged_0x1AF6:
@@ -4045,7 +4045,7 @@ Logged_0x1C66:
 	jr nz,Logged_0x1C66
 	ret
 
-UnknownData_0x1C6C:
+Unknown_0x1C6C:
 INCBIN "baserom.gbc", $1C6C, $2800 - $1C6C
 
 Logged_0x2800:
@@ -4509,7 +4509,7 @@ Logged_0x2B0F:
 Logged_0x2B24:
 	ret
 
-UnknownData_0x2B25:
+Unknown_0x2B25:
 INCBIN "baserom.gbc", $2B25, $2C00 - $2B25
 
 Logged_0x2C00:
@@ -4554,7 +4554,7 @@ Logged_0x2C46:
 	ld c,$04
 	jr Logged_0x2C52
 
-UnknownData_0x2C4D:
+Unknown_0x2C4D:
 INCBIN "baserom.gbc", $2C4D, $2C52 - $2C4D
 
 Logged_0x2C52:
@@ -4714,55 +4714,55 @@ Logged_0x2CDB:
 LoggedData_0x2D38:
 INCBIN "baserom.gbc", $2D38, $2D41 - $2D38
 
-UnknownData_0x2D41:
+Unknown_0x2D41:
 INCBIN "baserom.gbc", $2D41, $2D42 - $2D41
 
 LoggedData_0x2D42:
 INCBIN "baserom.gbc", $2D42, $2D56 - $2D42
 
-UnknownData_0x2D56:
+Unknown_0x2D56:
 INCBIN "baserom.gbc", $2D56, $2D58 - $2D56
 
 LoggedData_0x2D58:
 INCBIN "baserom.gbc", $2D58, $2D5E - $2D58
 
-UnknownData_0x2D5E:
+Unknown_0x2D5E:
 INCBIN "baserom.gbc", $2D5E, $2D6A - $2D5E
 
 LoggedData_0x2D6A:
 INCBIN "baserom.gbc", $2D6A, $2D6C - $2D6A
 
-UnknownData_0x2D6C:
+Unknown_0x2D6C:
 INCBIN "baserom.gbc", $2D6C, $2D74 - $2D6C
 
 LoggedData_0x2D74:
 INCBIN "baserom.gbc", $2D74, $2D86 - $2D74
 
-UnknownData_0x2D86:
+Unknown_0x2D86:
 INCBIN "baserom.gbc", $2D86, $2D88 - $2D86
 
 LoggedData_0x2D88:
 INCBIN "baserom.gbc", $2D88, $2D8E - $2D88
 
-UnknownData_0x2D8E:
+Unknown_0x2D8E:
 INCBIN "baserom.gbc", $2D8E, $2D9A - $2D8E
 
 LoggedData_0x2D9A:
 INCBIN "baserom.gbc", $2D9A, $2D9C - $2D9A
 
-UnknownData_0x2D9C:
+Unknown_0x2D9C:
 INCBIN "baserom.gbc", $2D9C, $2DA4 - $2D9C
 
 LoggedData_0x2DA4:
 INCBIN "baserom.gbc", $2DA4, $2DAA - $2DA4
 
-UnknownData_0x2DAA:
+Unknown_0x2DAA:
 INCBIN "baserom.gbc", $2DAA, $2DB0 - $2DAA
 
 LoggedData_0x2DB0:
 INCBIN "baserom.gbc", $2DB0, $2DB5 - $2DB0
 
-UnknownData_0x2DB5:
+Unknown_0x2DB5:
 INCBIN "baserom.gbc", $2DB5, $3000 - $2DB5
 
 Logged_0x3000:
@@ -5436,7 +5436,7 @@ Logged_0x3655:
 	ld [$D11C],a
 	ret
 
-UnknownData_0x3673:
+Unknown_0x3673:
 INCBIN "baserom.gbc", $3673, $3A00 - $3673
 
 Logged_0x3A00:
@@ -5898,7 +5898,7 @@ Logged_0x3C76:
 	call Fill_HL_A
 	ret
 
-UnknownData_0x3C81:
+Unknown_0x3C81:
 INCBIN "baserom.gbc", $3C81, $3F00 - $3C81
 
 Logged_0x3F00:
@@ -5913,7 +5913,7 @@ Logged_0x3F0C:
 	call Logged_0x3F62
 	jp Logged_0x301B8
 
-UnknownData_0x3F12:
+Unknown_0x3F12:
 INCBIN "baserom.gbc", $3F12, $3F18 - $3F12
 
 Logged_0x3F18:
@@ -5928,14 +5928,14 @@ Logged_0x3F24:
 	call Logged_0x3F62
 	jp Logged_0x30416
 
-UnknownData_0x3F2A:
+Unknown_0x3F2A:
 INCBIN "baserom.gbc", $3F2A, $3F36 - $3F2A
 
 Logged_0x3F36:
 	call Logged_0x3F62
 	jp Logged_0x3049E
 
-UnknownData_0x3F3C:
+Unknown_0x3F3C:
 INCBIN "baserom.gbc", $3F3C, $3F48 - $3F3C
 
 Logged_0x3F48:
@@ -6031,7 +6031,7 @@ Logged_0x3FB5:
 SECTION "Bank01", ROMX, BANK[$01]
 
 Logged_0x4000:
-	ld a,[$C09B]
+	ld a,[wGameState]
 	rst JumpList
 	dw Logged_0x402B
 	dw Logged_0x4686
@@ -6915,12 +6915,12 @@ Unknown_0x45C5:
 
 Logged_0x45D6:
 	ld a,$0E
-	ld [$C09B],a
+	ld [wGameState],a
 	xor a
 	ld [$C09C],a
 	ret
 
-UnknownData_0x45E0:
+Unknown_0x45E0:
 INCBIN "baserom.gbc", $45E0, $45ED - $45E0
 
 Logged_0x45ED:
@@ -6934,7 +6934,7 @@ Logged_0x45ED:
 
 Logged_0x45FD:
 	ld a,$02
-	ld [$C09B],a
+	ld [wGameState],a
 	xor a
 	ld [$C09C],a
 	ret
@@ -6955,7 +6955,7 @@ Logged_0x4619:
 
 Logged_0x461E:
 	ld a,$01
-	ld [$C09B],a
+	ld [wGameState],a
 	xor a
 	ld [$C09C],a
 	ret
@@ -7018,7 +7018,7 @@ Logged_0x4686:
 	call $FF80
 	pop af
 	ld [rSVBK],a
-	ld hl,$C09B
+	ld hl,wGameState
 	ld a,[hl]
 	cp $02
 	ret nz
@@ -7036,7 +7036,7 @@ Logged_0x4686:
 
 Logged_0x46BD:
 	ld a,$0A
-	ld [$C09B],a
+	ld [wGameState],a
 	ret
 
 Logged_0x46C3:
@@ -7151,7 +7151,7 @@ Logged_0x4766:
 	ret c
 	ld [hl],$00
 	ld a,$02
-	ld [$C09B],a
+	ld [wGameState],a
 	ret
 
 Logged_0x4776:
@@ -8290,235 +8290,235 @@ Logged_0x4EB1:
 LoggedData_0x4EBA:
 INCBIN "baserom.gbc", $4EBA, $4EC0 - $4EBA
 
-UnknownData_0x4EC0:
+Unknown_0x4EC0:
 INCBIN "baserom.gbc", $4EC0, $4EC2 - $4EC0
 
 LoggedData_0x4EC2:
 INCBIN "baserom.gbc", $4EC2, $4EC8 - $4EC2
 
-UnknownData_0x4EC8:
+Unknown_0x4EC8:
 INCBIN "baserom.gbc", $4EC8, $4ECA - $4EC8
 
 LoggedData_0x4ECA:
 INCBIN "baserom.gbc", $4ECA, $4ED0 - $4ECA
 
-UnknownData_0x4ED0:
+Unknown_0x4ED0:
 INCBIN "baserom.gbc", $4ED0, $4ED2 - $4ED0
 
 LoggedData_0x4ED2:
 INCBIN "baserom.gbc", $4ED2, $4ED8 - $4ED2
 
-UnknownData_0x4ED8:
+Unknown_0x4ED8:
 INCBIN "baserom.gbc", $4ED8, $4EDA - $4ED8
 
 LoggedData_0x4EDA:
 INCBIN "baserom.gbc", $4EDA, $4EE0 - $4EDA
 
-UnknownData_0x4EE0:
+Unknown_0x4EE0:
 INCBIN "baserom.gbc", $4EE0, $4EE2 - $4EE0
 
 LoggedData_0x4EE2:
 INCBIN "baserom.gbc", $4EE2, $4EE8 - $4EE2
 
-UnknownData_0x4EE8:
+Unknown_0x4EE8:
 INCBIN "baserom.gbc", $4EE8, $4EEA - $4EE8
 
 LoggedData_0x4EEA:
 INCBIN "baserom.gbc", $4EEA, $4EF0 - $4EEA
 
-UnknownData_0x4EF0:
+Unknown_0x4EF0:
 INCBIN "baserom.gbc", $4EF0, $4EF2 - $4EF0
 
 LoggedData_0x4EF2:
 INCBIN "baserom.gbc", $4EF2, $4EF8 - $4EF2
 
-UnknownData_0x4EF8:
+Unknown_0x4EF8:
 INCBIN "baserom.gbc", $4EF8, $4EFA - $4EF8
 
 LoggedData_0x4EFA:
 INCBIN "baserom.gbc", $4EFA, $4F00 - $4EFA
 
-UnknownData_0x4F00:
+Unknown_0x4F00:
 INCBIN "baserom.gbc", $4F00, $4F02 - $4F00
 
 LoggedData_0x4F02:
 INCBIN "baserom.gbc", $4F02, $4F08 - $4F02
 
-UnknownData_0x4F08:
+Unknown_0x4F08:
 INCBIN "baserom.gbc", $4F08, $4F0A - $4F08
 
 LoggedData_0x4F0A:
 INCBIN "baserom.gbc", $4F0A, $4F10 - $4F0A
 
-UnknownData_0x4F10:
+Unknown_0x4F10:
 INCBIN "baserom.gbc", $4F10, $4F12 - $4F10
 
 LoggedData_0x4F12:
 INCBIN "baserom.gbc", $4F12, $4F18 - $4F12
 
-UnknownData_0x4F18:
+Unknown_0x4F18:
 INCBIN "baserom.gbc", $4F18, $4F1A - $4F18
 
 LoggedData_0x4F1A:
 INCBIN "baserom.gbc", $4F1A, $4F20 - $4F1A
 
-UnknownData_0x4F20:
+Unknown_0x4F20:
 INCBIN "baserom.gbc", $4F20, $4F22 - $4F20
 
 LoggedData_0x4F22:
 INCBIN "baserom.gbc", $4F22, $4F28 - $4F22
 
-UnknownData_0x4F28:
+Unknown_0x4F28:
 INCBIN "baserom.gbc", $4F28, $4F2A - $4F28
 
 LoggedData_0x4F2A:
 INCBIN "baserom.gbc", $4F2A, $4F30 - $4F2A
 
-UnknownData_0x4F30:
+Unknown_0x4F30:
 INCBIN "baserom.gbc", $4F30, $4F32 - $4F30
 
 LoggedData_0x4F32:
 INCBIN "baserom.gbc", $4F32, $4F38 - $4F32
 
-UnknownData_0x4F38:
+Unknown_0x4F38:
 INCBIN "baserom.gbc", $4F38, $4F3A - $4F38
 
 LoggedData_0x4F3A:
 INCBIN "baserom.gbc", $4F3A, $4F40 - $4F3A
 
-UnknownData_0x4F40:
+Unknown_0x4F40:
 INCBIN "baserom.gbc", $4F40, $4F42 - $4F40
 
 LoggedData_0x4F42:
 INCBIN "baserom.gbc", $4F42, $4F48 - $4F42
 
-UnknownData_0x4F48:
+Unknown_0x4F48:
 INCBIN "baserom.gbc", $4F48, $4F4A - $4F48
 
 LoggedData_0x4F4A:
 INCBIN "baserom.gbc", $4F4A, $4F50 - $4F4A
 
-UnknownData_0x4F50:
+Unknown_0x4F50:
 INCBIN "baserom.gbc", $4F50, $4F52 - $4F50
 
 LoggedData_0x4F52:
 INCBIN "baserom.gbc", $4F52, $4F58 - $4F52
 
-UnknownData_0x4F58:
+Unknown_0x4F58:
 INCBIN "baserom.gbc", $4F58, $4F5A - $4F58
 
 LoggedData_0x4F5A:
 INCBIN "baserom.gbc", $4F5A, $4F60 - $4F5A
 
-UnknownData_0x4F60:
+Unknown_0x4F60:
 INCBIN "baserom.gbc", $4F60, $4F62 - $4F60
 
 LoggedData_0x4F62:
 INCBIN "baserom.gbc", $4F62, $4F68 - $4F62
 
-UnknownData_0x4F68:
+Unknown_0x4F68:
 INCBIN "baserom.gbc", $4F68, $4F6A - $4F68
 
 LoggedData_0x4F6A:
 INCBIN "baserom.gbc", $4F6A, $4F70 - $4F6A
 
-UnknownData_0x4F70:
+Unknown_0x4F70:
 INCBIN "baserom.gbc", $4F70, $4F72 - $4F70
 
 LoggedData_0x4F72:
 INCBIN "baserom.gbc", $4F72, $4F78 - $4F72
 
-UnknownData_0x4F78:
+Unknown_0x4F78:
 INCBIN "baserom.gbc", $4F78, $4F7A - $4F78
 
 LoggedData_0x4F7A:
 INCBIN "baserom.gbc", $4F7A, $4F80 - $4F7A
 
-UnknownData_0x4F80:
+Unknown_0x4F80:
 INCBIN "baserom.gbc", $4F80, $4F82 - $4F80
 
 LoggedData_0x4F82:
 INCBIN "baserom.gbc", $4F82, $6B63 - $4F82
 
-UnknownData_0x6B63:
+Unknown_0x6B63:
 INCBIN "baserom.gbc", $6B63, $6B6B - $6B63
 
 LoggedData_0x6B6B:
 INCBIN "baserom.gbc", $6B6B, $6BBF - $6B6B
 
-UnknownData_0x6BBF:
+Unknown_0x6BBF:
 INCBIN "baserom.gbc", $6BBF, $6C93 - $6BBF
 
 LoggedData_0x6C93:
 INCBIN "baserom.gbc", $6C93, $6CE8 - $6C93
 
-UnknownData_0x6CE8:
+Unknown_0x6CE8:
 INCBIN "baserom.gbc", $6CE8, $6CE9 - $6CE8
 
 LoggedData_0x6CE9:
 INCBIN "baserom.gbc", $6CE9, $6CEB - $6CE9
 
-UnknownData_0x6CEB:
+Unknown_0x6CEB:
 INCBIN "baserom.gbc", $6CEB, $6D18 - $6CEB
 
 LoggedData_0x6D18:
 INCBIN "baserom.gbc", $6D18, $6D1A - $6D18
 
-UnknownData_0x6D1A:
+Unknown_0x6D1A:
 INCBIN "baserom.gbc", $6D1A, $6D1B - $6D1A
 
 LoggedData_0x6D1B:
 INCBIN "baserom.gbc", $6D1B, $6D1D - $6D1B
 
-UnknownData_0x6D1D:
+Unknown_0x6D1D:
 INCBIN "baserom.gbc", $6D1D, $6D1E - $6D1D
 
 LoggedData_0x6D1E:
 INCBIN "baserom.gbc", $6D1E, $6D20 - $6D1E
 
-UnknownData_0x6D20:
+Unknown_0x6D20:
 INCBIN "baserom.gbc", $6D20, $6D21 - $6D20
 
 LoggedData_0x6D21:
 INCBIN "baserom.gbc", $6D21, $6D45 - $6D21
 
-UnknownData_0x6D45:
+Unknown_0x6D45:
 INCBIN "baserom.gbc", $6D45, $6D4B - $6D45
 
 LoggedData_0x6D4B:
 INCBIN "baserom.gbc", $6D4B, $6F9D - $6D4B
 
-UnknownData_0x6F9D:
+Unknown_0x6F9D:
 INCBIN "baserom.gbc", $6F9D, $6FDC - $6F9D
 
 LoggedData_0x6FDC:
 INCBIN "baserom.gbc", $6FDC, $7174 - $6FDC
 
-UnknownData_0x7174:
+Unknown_0x7174:
 INCBIN "baserom.gbc", $7174, $717B - $7174
 
 LoggedData_0x717B:
 INCBIN "baserom.gbc", $717B, $71A3 - $717B
 
-UnknownData_0x71A3:
+Unknown_0x71A3:
 INCBIN "baserom.gbc", $71A3, $71A4 - $71A3
 
 LoggedData_0x71A4:
 INCBIN "baserom.gbc", $71A4, $71A6 - $71A4
 
-UnknownData_0x71A6:
+Unknown_0x71A6:
 INCBIN "baserom.gbc", $71A6, $71A7 - $71A6
 
 LoggedData_0x71A7:
 INCBIN "baserom.gbc", $71A7, $71F0 - $71A7
 
-UnknownData_0x71F0:
+Unknown_0x71F0:
 INCBIN "baserom.gbc", $71F0, $73E6 - $71F0
 
 LoggedData_0x73E6:
 INCBIN "baserom.gbc", $73E6, $76D7 - $73E6
 
-UnknownData_0x76D7:
+Unknown_0x76D7:
 INCBIN "baserom.gbc", $76D7, $8000 - $76D7
 
 SECTION "Bank02", ROMX, BANK[$02]
@@ -8820,7 +8820,7 @@ Logged_0x8229:
 	ld [rRAMB+$100],a
 
 Logged_0x8247:
-	ld a,[$C09B]
+	ld a,[wGameState]
 	cp $02
 	ret nz
 	ld hl,$CED4
@@ -8848,7 +8848,7 @@ Logged_0x8247:
 	jr z,Logged_0x829D
 	cp $07
 	jr z,Logged_0x82A4
-	ld hl,$C09B
+	ld hl,wGameState
 	inc [hl]
 	xor a
 	ld [$C09C],a
@@ -8882,7 +8882,7 @@ Logged_0x82B8:
 
 Logged_0x82BA:
 	set 2,[hl]
-	ld hl,$C09B
+	ld hl,wGameState
 	ld [hl],$06
 	xor a
 	ld [$C09C],a
@@ -8942,7 +8942,7 @@ Logged_0x8308:
 	ld a,[$C09C]
 	ld [$CED5],a
 	ld a,$04
-	ld [$C09B],a
+	ld [wGameState],a
 	xor a
 	ld [$C09C],a
 	ret
@@ -9115,7 +9115,7 @@ Logged_0x846E:
 	ld [rSVBK],a
 	ld a,[$C09C]
 	ld [$CED5],a
-	ld hl,$C09B
+	ld hl,wGameState
 	ld [hl],$05
 	xor a
 	ld [$C09C],a
@@ -10531,7 +10531,7 @@ Logged_0x8E5B:
 	ld [$CCF1],a
 	ret
 
-UnknownData_0x8EAC:
+Unknown_0x8EAC:
 INCBIN "baserom.gbc", $8EAC, $8EC2 - $8EAC
 
 Logged_0x8EC2:
@@ -18193,7 +18193,7 @@ Logged_0xBD3C:
 	ld [$C0E3],a
 	ret
 
-UnknownData_0xBD7C:
+Unknown_0xBD7C:
 INCBIN "baserom.gbc", $BD7C, $C000 - $BD7C
 
 SECTION "Bank03", ROMX, BANK[$03]
@@ -18201,19 +18201,19 @@ SECTION "Bank03", ROMX, BANK[$03]
 LoggedData_0xC000:
 INCBIN "baserom.gbc", $C000, $C880 - $C000
 
-UnknownData_0xC880:
+Unknown_0xC880:
 INCBIN "baserom.gbc", $C880, $C890 - $C880
 
 LoggedData_0xC890:
 INCBIN "baserom.gbc", $C890, $C930 - $C890
 
-UnknownData_0xC930:
+Unknown_0xC930:
 INCBIN "baserom.gbc", $C930, $C950 - $C930
 
 LoggedData_0xC950:
 INCBIN "baserom.gbc", $C950, $C960 - $C950
 
-UnknownData_0xC960:
+Unknown_0xC960:
 INCBIN "baserom.gbc", $C960, $C980 - $C960
 
 LoggedData_0xC980:
@@ -19753,49 +19753,49 @@ Logged_0xD1D9:
 LoggedData_0xD1FE:
 INCBIN "baserom.gbc", $D1FE, $D206 - $D1FE
 
-UnknownData_0xD206:
+Unknown_0xD206:
 INCBIN "baserom.gbc", $D206, $D20E - $D206
 
 LoggedData_0xD20E:
 INCBIN "baserom.gbc", $D20E, $D236 - $D20E
 
-UnknownData_0xD236:
+Unknown_0xD236:
 INCBIN "baserom.gbc", $D236, $D24E - $D236
 
 LoggedData_0xD24E:
 INCBIN "baserom.gbc", $D24E, $D26C - $D24E
 
-UnknownData_0xD26C:
+Unknown_0xD26C:
 INCBIN "baserom.gbc", $D26C, $D278 - $D26C
 
 LoggedData_0xD278:
 INCBIN "baserom.gbc", $D278, $D34A - $D278
 
-UnknownData_0xD34A:
+Unknown_0xD34A:
 INCBIN "baserom.gbc", $D34A, $D386 - $D34A
 
 LoggedData_0xD386:
 INCBIN "baserom.gbc", $D386, $D3F1 - $D386
 
-UnknownData_0xD3F1:
+Unknown_0xD3F1:
 INCBIN "baserom.gbc", $D3F1, $D437 - $D3F1
 
 LoggedData_0xD437:
 INCBIN "baserom.gbc", $D437, $D4CE - $D437
 
-UnknownData_0xD4CE:
+Unknown_0xD4CE:
 INCBIN "baserom.gbc", $D4CE, $D4EA - $D4CE
 
 LoggedData_0xD4EA:
 INCBIN "baserom.gbc", $D4EA, $D514 - $D4EA
 
-UnknownData_0xD514:
+Unknown_0xD514:
 INCBIN "baserom.gbc", $D514, $D525 - $D514
 
 LoggedData_0xD525:
 INCBIN "baserom.gbc", $D525, $D912 - $D525
 
-UnknownData_0xD912:
+Unknown_0xD912:
 INCBIN "baserom.gbc", $D912, $10000 - $D912
 
 SECTION "Bank04", ROMX, BANK[$04]
@@ -19803,7 +19803,7 @@ SECTION "Bank04", ROMX, BANK[$04]
 LoggedData_0x10000:
 INCBIN "baserom.gbc", $10000, $10800 - $10000
 
-UnknownData_0x10800:
+Unknown_0x10800:
 INCBIN "baserom.gbc", $10800, $14000 - $10800
 
 SECTION "Bank05", ROMX, BANK[$05]
@@ -19811,295 +19811,295 @@ SECTION "Bank05", ROMX, BANK[$05]
 LoggedData_0x14000:
 INCBIN "baserom.gbc", $14000, $14002 - $14000
 
-UnknownData_0x14002:
+Unknown_0x14002:
 INCBIN "baserom.gbc", $14002, $14008 - $14002
 
 LoggedData_0x14008:
 INCBIN "baserom.gbc", $14008, $1400A - $14008
 
-UnknownData_0x1400A:
+Unknown_0x1400A:
 INCBIN "baserom.gbc", $1400A, $1401C - $1400A
 
 LoggedData_0x1401C:
 INCBIN "baserom.gbc", $1401C, $14024 - $1401C
 
-UnknownData_0x14024:
+Unknown_0x14024:
 INCBIN "baserom.gbc", $14024, $14028 - $14024
 
 LoggedData_0x14028:
 INCBIN "baserom.gbc", $14028, $14041 - $14028
 
-UnknownData_0x14041:
+Unknown_0x14041:
 INCBIN "baserom.gbc", $14041, $1408C - $14041
 
 LoggedData_0x1408C:
 INCBIN "baserom.gbc", $1408C, $140A5 - $1408C
 
-UnknownData_0x140A5:
+Unknown_0x140A5:
 INCBIN "baserom.gbc", $140A5, $14186 - $140A5
 
 LoggedData_0x14186:
 INCBIN "baserom.gbc", $14186, $141EA - $14186
 
-UnknownData_0x141EA:
+Unknown_0x141EA:
 INCBIN "baserom.gbc", $141EA, $14252 - $141EA
 
 LoggedData_0x14252:
 INCBIN "baserom.gbc", $14252, $1427C - $14252
 
-UnknownData_0x1427C:
+Unknown_0x1427C:
 INCBIN "baserom.gbc", $1427C, $1429C - $1427C
 
 LoggedData_0x1429C:
 INCBIN "baserom.gbc", $1429C, $142BC - $1429C
 
-UnknownData_0x142BC:
+Unknown_0x142BC:
 INCBIN "baserom.gbc", $142BC, $142DC - $142BC
 
 LoggedData_0x142DC:
 INCBIN "baserom.gbc", $142DC, $142E4 - $142DC
 
-UnknownData_0x142E4:
+Unknown_0x142E4:
 INCBIN "baserom.gbc", $142E4, $142E8 - $142E4
 
 LoggedData_0x142E8:
 INCBIN "baserom.gbc", $142E8, $143B4 - $142E8
 
-UnknownData_0x143B4:
+Unknown_0x143B4:
 INCBIN "baserom.gbc", $143B4, $14584 - $143B4
 
 LoggedData_0x14584:
 INCBIN "baserom.gbc", $14584, $14714 - $14584
 
-UnknownData_0x14714:
+Unknown_0x14714:
 INCBIN "baserom.gbc", $14714, $148E4 - $14714
 
 LoggedData_0x148E4:
 INCBIN "baserom.gbc", $148E4, $14948 - $148E4
 
-UnknownData_0x14948:
+Unknown_0x14948:
 INCBIN "baserom.gbc", $14948, $14982 - $14948
 
 LoggedData_0x14982:
 INCBIN "baserom.gbc", $14982, $149D6 - $14982
 
-UnknownData_0x149D6:
+Unknown_0x149D6:
 INCBIN "baserom.gbc", $149D6, $149FE - $149D6
 
 LoggedData_0x149FE:
 INCBIN "baserom.gbc", $149FE, $14A3E - $149FE
 
-UnknownData_0x14A3E:
+Unknown_0x14A3E:
 INCBIN "baserom.gbc", $14A3E, $14A6C - $14A3E
 
 LoggedData_0x14A6C:
 INCBIN "baserom.gbc", $14A6C, $14A78 - $14A6C
 
-UnknownData_0x14A78:
+Unknown_0x14A78:
 INCBIN "baserom.gbc", $14A78, $14A79 - $14A78
 
 LoggedData_0x14A79:
 INCBIN "baserom.gbc", $14A79, $14A7B - $14A79
 
-UnknownData_0x14A7B:
+Unknown_0x14A7B:
 INCBIN "baserom.gbc", $14A7B, $14A82 - $14A7B
 
 LoggedData_0x14A82:
 INCBIN "baserom.gbc", $14A82, $14CE1 - $14A82
 
-UnknownData_0x14CE1:
+Unknown_0x14CE1:
 INCBIN "baserom.gbc", $14CE1, $14CF6 - $14CE1
 
 LoggedData_0x14CF6:
 INCBIN "baserom.gbc", $14CF6, $15278 - $14CF6
 
-UnknownData_0x15278:
+Unknown_0x15278:
 INCBIN "baserom.gbc", $15278, $1527A - $15278
 
 LoggedData_0x1527A:
 INCBIN "baserom.gbc", $1527A, $15496 - $1527A
 
-UnknownData_0x15496:
+Unknown_0x15496:
 INCBIN "baserom.gbc", $15496, $154BB - $15496
 
 LoggedData_0x154BB:
 INCBIN "baserom.gbc", $154BB, $15568 - $154BB
 
-UnknownData_0x15568:
+Unknown_0x15568:
 INCBIN "baserom.gbc", $15568, $15569 - $15568
 
 LoggedData_0x15569:
 INCBIN "baserom.gbc", $15569, $155A8 - $15569
 
-UnknownData_0x155A8:
+Unknown_0x155A8:
 INCBIN "baserom.gbc", $155A8, $155AB - $155A8
 
 LoggedData_0x155AB:
 INCBIN "baserom.gbc", $155AB, $155B0 - $155AB
 
-UnknownData_0x155B0:
+Unknown_0x155B0:
 INCBIN "baserom.gbc", $155B0, $155BE - $155B0
 
 LoggedData_0x155BE:
 INCBIN "baserom.gbc", $155BE, $155E0 - $155BE
 
-UnknownData_0x155E0:
+Unknown_0x155E0:
 INCBIN "baserom.gbc", $155E0, $155EC - $155E0
 
 LoggedData_0x155EC:
 INCBIN "baserom.gbc", $155EC, $1571A - $155EC
 
-UnknownData_0x1571A:
+Unknown_0x1571A:
 INCBIN "baserom.gbc", $1571A, $157B8 - $1571A
 
 LoggedData_0x157B8:
 INCBIN "baserom.gbc", $157B8, $15903 - $157B8
 
-UnknownData_0x15903:
+Unknown_0x15903:
 INCBIN "baserom.gbc", $15903, $15924 - $15903
 
 LoggedData_0x15924:
 INCBIN "baserom.gbc", $15924, $15985 - $15924
 
-UnknownData_0x15985:
+Unknown_0x15985:
 INCBIN "baserom.gbc", $15985, $15987 - $15985
 
 LoggedData_0x15987:
 INCBIN "baserom.gbc", $15987, $1599F - $15987
 
-UnknownData_0x1599F:
+Unknown_0x1599F:
 INCBIN "baserom.gbc", $1599F, $159AB - $1599F
 
 LoggedData_0x159AB:
 INCBIN "baserom.gbc", $159AB, $159B3 - $159AB
 
-UnknownData_0x159B3:
+Unknown_0x159B3:
 INCBIN "baserom.gbc", $159B3, $159B7 - $159B3
 
 LoggedData_0x159B7:
 INCBIN "baserom.gbc", $159B7, $159C1 - $159B7
 
-UnknownData_0x159C1:
+Unknown_0x159C1:
 INCBIN "baserom.gbc", $159C1, $159C3 - $159C1
 
 LoggedData_0x159C3:
 INCBIN "baserom.gbc", $159C3, $15C27 - $159C3
 
-UnknownData_0x15C27:
+Unknown_0x15C27:
 INCBIN "baserom.gbc", $15C27, $15C40 - $15C27
 
 LoggedData_0x15C40:
 INCBIN "baserom.gbc", $15C40, $15D6C - $15C40
 
-UnknownData_0x15D6C:
+Unknown_0x15D6C:
 INCBIN "baserom.gbc", $15D6C, $15E02 - $15D6C
 
 LoggedData_0x15E02:
 INCBIN "baserom.gbc", $15E02, $15E66 - $15E02
 
-UnknownData_0x15E66:
+Unknown_0x15E66:
 INCBIN "baserom.gbc", $15E66, $15E98 - $15E66
 
 LoggedData_0x15E98:
 INCBIN "baserom.gbc", $15E98, $15F21 - $15E98
 
-UnknownData_0x15F21:
+Unknown_0x15F21:
 INCBIN "baserom.gbc", $15F21, $15F3A - $15F21
 
 LoggedData_0x15F3A:
 INCBIN "baserom.gbc", $15F3A, $15FDF - $15F3A
 
-UnknownData_0x15FDF:
+Unknown_0x15FDF:
 INCBIN "baserom.gbc", $15FDF, $15FF2 - $15FDF
 
 LoggedData_0x15FF2:
 INCBIN "baserom.gbc", $15FF2, $16002 - $15FF2
 
-UnknownData_0x16002:
+Unknown_0x16002:
 INCBIN "baserom.gbc", $16002, $16009 - $16002
 
 LoggedData_0x16009:
 INCBIN "baserom.gbc", $16009, $16019 - $16009
 
-UnknownData_0x16019:
+Unknown_0x16019:
 INCBIN "baserom.gbc", $16019, $1604E - $16019
 
 LoggedData_0x1604E:
 INCBIN "baserom.gbc", $1604E, $16060 - $1604E
 
-UnknownData_0x16060:
+Unknown_0x16060:
 INCBIN "baserom.gbc", $16060, $16063 - $16060
 
 LoggedData_0x16063:
 INCBIN "baserom.gbc", $16063, $1642E - $16063
 
-UnknownData_0x1642E:
+Unknown_0x1642E:
 INCBIN "baserom.gbc", $1642E, $1642F - $1642E
 
 LoggedData_0x1642F:
 INCBIN "baserom.gbc", $1642F, $16462 - $1642F
 
-UnknownData_0x16462:
+Unknown_0x16462:
 INCBIN "baserom.gbc", $16462, $16472 - $16462
 
 LoggedData_0x16472:
 INCBIN "baserom.gbc", $16472, $1656E - $16472
 
-UnknownData_0x1656E:
+Unknown_0x1656E:
 INCBIN "baserom.gbc", $1656E, $1665E - $1656E
 
 LoggedData_0x1665E:
 INCBIN "baserom.gbc", $1665E, $16732 - $1665E
 
-UnknownData_0x16732:
+Unknown_0x16732:
 INCBIN "baserom.gbc", $16732, $1673C - $16732
 
 LoggedData_0x1673C:
 INCBIN "baserom.gbc", $1673C, $16EBB - $1673C
 
-UnknownData_0x16EBB:
+Unknown_0x16EBB:
 INCBIN "baserom.gbc", $16EBB, $16EBD - $16EBB
 
 LoggedData_0x16EBD:
 INCBIN "baserom.gbc", $16EBD, $1701C - $16EBD
 
-UnknownData_0x1701C:
+Unknown_0x1701C:
 INCBIN "baserom.gbc", $1701C, $17031 - $1701C
 
 LoggedData_0x17031:
 INCBIN "baserom.gbc", $17031, $17192 - $17031
 
-UnknownData_0x17192:
+Unknown_0x17192:
 INCBIN "baserom.gbc", $17192, $17193 - $17192
 
 LoggedData_0x17193:
 INCBIN "baserom.gbc", $17193, $171BF - $17193
 
-UnknownData_0x171BF:
+Unknown_0x171BF:
 INCBIN "baserom.gbc", $171BF, $171C0 - $171BF
 
 LoggedData_0x171C0:
 INCBIN "baserom.gbc", $171C0, $1781E - $171C0
 
-UnknownData_0x1781E:
+Unknown_0x1781E:
 INCBIN "baserom.gbc", $1781E, $1781F - $1781E
 
 LoggedData_0x1781F:
 INCBIN "baserom.gbc", $1781F, $17821 - $1781F
 
-UnknownData_0x17821:
+Unknown_0x17821:
 INCBIN "baserom.gbc", $17821, $17822 - $17821
 
 LoggedData_0x17822:
 INCBIN "baserom.gbc", $17822, $17884 - $17822
 
-UnknownData_0x17884:
+Unknown_0x17884:
 INCBIN "baserom.gbc", $17884, $17887 - $17884
 
 LoggedData_0x17887:
 INCBIN "baserom.gbc", $17887, $17E59 - $17887
 
-UnknownData_0x17E59:
+Unknown_0x17E59:
 INCBIN "baserom.gbc", $17E59, $18000 - $17E59
 
 SECTION "Bank06", ROMX, BANK[$06]
@@ -20174,7 +20174,7 @@ Logged_0x18064:
 	ld [$C18D],a
 	ret
 
-UnknownData_0x18078:
+Unknown_0x18078:
 INCBIN "baserom.gbc", $18078, $1808C - $18078
 
 Logged_0x1808C:
@@ -20497,7 +20497,7 @@ Logged_0x182F6:
 	ld [$C0D7],a
 	jp Logged_0x18020
 
-UnknownData_0x1831A:
+Unknown_0x1831A:
 INCBIN "baserom.gbc", $1831A, $18336 - $1831A
 	ld a,[$C0DA]
 	and a
@@ -20840,7 +20840,7 @@ Logged_0x1861D:
 	ld [$C0D7],a
 	jr Logged_0x18676
 
-UnknownData_0x18624:
+Unknown_0x18624:
 INCBIN "baserom.gbc", $18624, $18676 - $18624
 
 Logged_0x18676:
@@ -20949,7 +20949,7 @@ Logged_0x18739:
 Logged_0x18752:
 	jp Logged_0x18020
 
-UnknownData_0x18755:
+Unknown_0x18755:
 INCBIN "baserom.gbc", $18755, $1877E - $18755
 	ld a,[$C0DA]
 	and a
@@ -20984,7 +20984,7 @@ Logged_0x187A4:
 	ld [$C0D7],a
 	jp Logged_0x18020
 
-UnknownData_0x187C7:
+Unknown_0x187C7:
 INCBIN "baserom.gbc", $187C7, $187DE - $187C7
 	ld a,[$C0DA]
 	and a
@@ -20996,7 +20996,7 @@ INCBIN "baserom.gbc", $187C7, $187DE - $187C7
 	ld [$C0D7],a
 	jp Logged_0x181AC
 
-UnknownData_0x187F5:
+Unknown_0x187F5:
 INCBIN "baserom.gbc", $187F5, $1880C - $187F5
 	ld a,[$C0DA]
 	and a
@@ -21222,7 +21222,7 @@ Logged_0x189D1:
 	ld b,$7C
 	jr Logged_0x18A19
 
-UnknownData_0x18A0F:
+Unknown_0x18A0F:
 INCBIN "baserom.gbc", $18A0F, $18A19 - $18A0F
 
 Logged_0x18A19:
@@ -21294,7 +21294,7 @@ Unknown_0x18A8F:
 	jp c,Logged_0x18032
 	jp Logged_0x18020
 
-UnknownData_0x18A9A:
+Unknown_0x18A9A:
 INCBIN "baserom.gbc", $18A9A, $18AA6 - $18A9A
 	ld b,$78
 	ld a,[$CEDA]
@@ -21321,7 +21321,7 @@ Logged_0x18AD6:
 	ld [$CEDA],a
 	jp Logged_0x18F32
 
-UnknownData_0x18ADE:
+Unknown_0x18ADE:
 INCBIN "baserom.gbc", $18ADE, $18AEA - $18ADE
 	ld b,$78
 	ld a,[$CEDA]
@@ -21347,12 +21347,12 @@ Logged_0x18B17:
 	ld [$CEDA],a
 	jp Logged_0x18F32
 
-UnknownData_0x18B1F:
+Unknown_0x18B1F:
 INCBIN "baserom.gbc", $18B1F, $18B23 - $18B1F
 	ld b,$7A
 	jr Logged_0x18B2D
 
-UnknownData_0x18B27:
+Unknown_0x18B27:
 INCBIN "baserom.gbc", $18B27, $18B2B - $18B27
 	ld b,$78
 
@@ -21381,12 +21381,12 @@ Logged_0x18B5B:
 	ld [$CEDA],a
 	jp Logged_0x18F32
 
-UnknownData_0x18B63:
+Unknown_0x18B63:
 INCBIN "baserom.gbc", $18B63, $18B67 - $18B63
 	ld b,$7A
 	jr Logged_0x18B71
 
-UnknownData_0x18B6B:
+Unknown_0x18B6B:
 INCBIN "baserom.gbc", $18B6B, $18B6F - $18B6B
 	ld b,$78
 
@@ -21415,7 +21415,7 @@ Logged_0x18B9F:
 	ld [$CEDA],a
 	jp Logged_0x18F32
 
-UnknownData_0x18BA7:
+Unknown_0x18BA7:
 INCBIN "baserom.gbc", $18BA7, $18BB3 - $18BA7
 	ld b,$78
 	ld a,[$CEDA]
@@ -21442,7 +21442,7 @@ Logged_0x18BE3:
 	ld [$CEDA],a
 	jp Logged_0x18F32
 
-UnknownData_0x18BEB:
+Unknown_0x18BEB:
 INCBIN "baserom.gbc", $18BEB, $18BF7 - $18BEB
 	ld b,$78
 	ld a,[$CEDA]
@@ -21468,12 +21468,12 @@ Logged_0x18C24:
 	ld [$CEDA],a
 	jp Logged_0x18F32
 
-UnknownData_0x18C2C:
+Unknown_0x18C2C:
 INCBIN "baserom.gbc", $18C2C, $18C30 - $18C2C
 	ld b,$7A
 	jr Logged_0x18C3A
 
-UnknownData_0x18C34:
+Unknown_0x18C34:
 INCBIN "baserom.gbc", $18C34, $18C38 - $18C34
 	ld b,$78
 
@@ -21502,12 +21502,12 @@ Logged_0x18C68:
 	ld [$CEDA],a
 	jp Logged_0x18F32
 
-UnknownData_0x18C70:
+Unknown_0x18C70:
 INCBIN "baserom.gbc", $18C70, $18C74 - $18C70
 	ld b,$7A
 	jr Logged_0x18C7E
 
-UnknownData_0x18C78:
+Unknown_0x18C78:
 INCBIN "baserom.gbc", $18C78, $18C7C - $18C78
 	ld b,$78
 
@@ -21719,12 +21719,12 @@ Logged_0x18DF1:
 	ld b,$79
 	jr Logged_0x18E2C
 
-UnknownData_0x18E12:
+Unknown_0x18E12:
 INCBIN "baserom.gbc", $18E12, $18E1A - $18E12
 	ld b,$7C
 	jr Logged_0x18E2C
 
-UnknownData_0x18E1E:
+Unknown_0x18E1E:
 INCBIN "baserom.gbc", $18E1E, $18E26 - $18E1E
 	ld b,$7F
 	jr Logged_0x18E2C
@@ -21794,12 +21794,12 @@ Unknown_0x18E9A:
 	ld b,$79
 	jr Logged_0x18EC0
 
-UnknownData_0x18EA6:
+Unknown_0x18EA6:
 INCBIN "baserom.gbc", $18EA6, $18EAE - $18EA6
 	ld b,$7C
 	jr Logged_0x18EC0
 
-UnknownData_0x18EB2:
+Unknown_0x18EB2:
 INCBIN "baserom.gbc", $18EB2, $18EBE - $18EB2
 	ld b,$78
 
@@ -21892,12 +21892,12 @@ Logged_0x18F32:
 	ld b,$79
 	jr Logged_0x18F7D
 
-UnknownData_0x18F63:
+Unknown_0x18F63:
 INCBIN "baserom.gbc", $18F63, $18F6B - $18F63
 	ld b,$7C
 	jr Logged_0x18F7D
 
-UnknownData_0x18F6F:
+Unknown_0x18F6F:
 INCBIN "baserom.gbc", $18F6F, $18F7B - $18F6F
 	ld b,$78
 
@@ -21965,17 +21965,17 @@ Unknown_0x18FEB:
 	ld b,$79
 	jr Logged_0x19011
 
-UnknownData_0x18FF7:
+Unknown_0x18FF7:
 INCBIN "baserom.gbc", $18FF7, $18FFF - $18FF7
 	ld b,$7C
 	jr Logged_0x19011
 
-UnknownData_0x19003:
+Unknown_0x19003:
 INCBIN "baserom.gbc", $19003, $19007 - $19003
 	ld b,$7E
 	jr Logged_0x19011
 
-UnknownData_0x1900B:
+Unknown_0x1900B:
 INCBIN "baserom.gbc", $1900B, $1900F - $1900B
 	ld b,$78
 
@@ -22087,14 +22087,14 @@ Logged_0x190D5:
 	jp c,Logged_0x18032
 	jp Logged_0x18020
 
-UnknownData_0x190E0:
+Unknown_0x190E0:
 INCBIN "baserom.gbc", $190E0, $190E4 - $190E0
 	ld b,$7A
 	jr Logged_0x190FE
 	ld b,$7B
 	jr Logged_0x190FE
 
-UnknownData_0x190EC:
+Unknown_0x190EC:
 INCBIN "baserom.gbc", $190EC, $190FC - $190EC
 	ld b,$78
 
@@ -22177,14 +22177,14 @@ Unknown_0x1918D:
 	ld [$CEDA],a
 	jp Logged_0x19246
 
-UnknownData_0x19195:
+Unknown_0x19195:
 INCBIN "baserom.gbc", $19195, $19199 - $19195
 	ld b,$7A
 	jr Logged_0x191B3
 	ld b,$7B
 	jr Logged_0x191B3
 
-UnknownData_0x191A1:
+Unknown_0x191A1:
 INCBIN "baserom.gbc", $191A1, $191B1 - $191A1
 	ld b,$78
 
@@ -22292,14 +22292,14 @@ Logged_0x19246:
 	call Logged_0x19609
 	jp Logged_0x18020
 
-UnknownData_0x19273:
+Unknown_0x19273:
 INCBIN "baserom.gbc", $19273, $19277 - $19273
 	ld b,$7A
 	jr Logged_0x19291
 	ld b,$7B
 	jr Logged_0x19291
 
-UnknownData_0x1927F:
+Unknown_0x1927F:
 INCBIN "baserom.gbc", $1927F, $1928F - $1927F
 	ld b,$78
 
@@ -22382,14 +22382,14 @@ Unknown_0x19320:
 	ld [$CEDA],a
 	jp Logged_0x19246
 
-UnknownData_0x19328:
+Unknown_0x19328:
 INCBIN "baserom.gbc", $19328, $1932C - $19328
 	ld b,$7A
 	jr Logged_0x19346
 	ld b,$7B
 	jr Logged_0x19346
 
-UnknownData_0x19334:
+Unknown_0x19334:
 INCBIN "baserom.gbc", $19334, $19344 - $19334
 	ld b,$78
 
@@ -22500,7 +22500,7 @@ Logged_0x193DC:
 	ld b,$7D
 	jr Logged_0x19419
 
-UnknownData_0x19413:
+Unknown_0x19413:
 INCBIN "baserom.gbc", $19413, $19419 - $19413
 
 Logged_0x19419:
@@ -22542,14 +22542,14 @@ Logged_0x19440:
 	ld b,$7B
 	jr Logged_0x19469
 
-UnknownData_0x1945B:
+Unknown_0x1945B:
 INCBIN "baserom.gbc", $1945B, $1945F - $1945B
 	ld b,$7D
 	jr Logged_0x19469
 	ld b,$7E
 	jr Logged_0x19469
 
-UnknownData_0x19467:
+Unknown_0x19467:
 INCBIN "baserom.gbc", $19467, $19469 - $19467
 
 Logged_0x19469:
@@ -22589,7 +22589,7 @@ Logged_0x19481:
 	ld b,$7B
 	jr Logged_0x194B5
 
-UnknownData_0x194A7:
+Unknown_0x194A7:
 INCBIN "baserom.gbc", $194A7, $194B5 - $194A7
 
 Logged_0x194B5:
@@ -22619,12 +22619,12 @@ Logged_0x194CE:
 	call Logged_0x19609
 	jp Logged_0x18032
 
-UnknownData_0x194E4:
+Unknown_0x194E4:
 INCBIN "baserom.gbc", $194E4, $19518 - $194E4
 	ld b,$7A
 	jr Logged_0x19522
 
-UnknownData_0x1951C:
+Unknown_0x1951C:
 INCBIN "baserom.gbc", $1951C, $19520 - $1951C
 	ld b,$78
 
@@ -22657,7 +22657,7 @@ Logged_0x1954A:
 	ld b,$7A
 	jr Logged_0x19560
 
-UnknownData_0x1955A:
+Unknown_0x1955A:
 INCBIN "baserom.gbc", $1955A, $1955E - $1955A
 	ld b,$78
 
@@ -22687,7 +22687,7 @@ Logged_0x19585:
 	ld b,$79
 	jr Logged_0x1959B
 
-UnknownData_0x19591:
+Unknown_0x19591:
 INCBIN "baserom.gbc", $19591, $19599 - $19591
 	ld b,$78
 
@@ -22718,7 +22718,7 @@ Logged_0x195C3:
 	ld b,$79
 	jr Logged_0x195D9
 
-UnknownData_0x195CF:
+Unknown_0x195CF:
 INCBIN "baserom.gbc", $195CF, $195D7 - $195CF
 	ld b,$78
 
@@ -23660,7 +23660,7 @@ Logged_0x19B9B:
 	ld b,a
 	ret
 
-UnknownData_0x19BAB:
+Unknown_0x19BAB:
 INCBIN "baserom.gbc", $19BAB, $19BC3 - $19BAB
 
 Logged_0x19BC3:
@@ -25833,7 +25833,7 @@ Logged_0x1AC03:
 	res 7,[hl]
 	ret
 
-UnknownData_0x1AC10:
+Unknown_0x1AC10:
 INCBIN "baserom.gbc", $1AC10, $1AC73 - $1AC10
 
 Unknown_0x1AC73:
@@ -27007,7 +27007,7 @@ Logged_0x1B4EB:
 	ld [$CA72],a
 	ret
 
-UnknownData_0x1B4F6:
+Unknown_0x1B4F6:
 INCBIN "baserom.gbc", $1B4F6, $1C000 - $1B4F6
 
 SECTION "Bank07", ROMX, BANK[$07]
@@ -34552,7 +34552,7 @@ Logged_0x1F6DC:
 	jr z,Logged_0x1F72B
 	jr Logged_0x1F73C
 
-UnknownData_0x1F725:
+Unknown_0x1F725:
 INCBIN "baserom.gbc", $1F725, $1F726 - $1F725
 
 Logged_0x1F726:
@@ -34729,13 +34729,13 @@ Logged_0x1F85C:
 LoggedData_0x1F86C:
 INCBIN "baserom.gbc", $1F86C, $1F8B2 - $1F86C
 
-UnknownData_0x1F8B2:
+Unknown_0x1F8B2:
 INCBIN "baserom.gbc", $1F8B2, $1F8BC - $1F8B2
 
 LoggedData_0x1F8BC:
 INCBIN "baserom.gbc", $1F8BC, $1F8DA - $1F8BC
 
-UnknownData_0x1F8DA:
+Unknown_0x1F8DA:
 INCBIN "baserom.gbc", $1F8DA, $20000 - $1F8DA
 
 SECTION "Bank08", ROMX, BANK[$08]
@@ -36494,7 +36494,7 @@ Logged_0x20C31:
 Logged_0x20C41:
 	jp Logged_0x20447
 
-UnknownData_0x20C44:
+Unknown_0x20C44:
 INCBIN "baserom.gbc", $20C44, $20C5E - $20C44
 
 Logged_0x20C5E:
@@ -36957,7 +36957,7 @@ Unknown_0x20FDB:
 	ld [$CA72],a
 	jp Logged_0x20447
 
-UnknownData_0x20FE8:
+Unknown_0x20FE8:
 INCBIN "baserom.gbc", $20FE8, $20FED - $20FE8
 
 Logged_0x20FED:
@@ -36986,7 +36986,7 @@ Logged_0x21007:
 	ld [$FF00+$B6],a
 	call Logged_0x20A63
 	ld a,$08
-	ld [$C09B],a
+	ld [wGameState],a
 	xor a
 	ld [$CEE5],a
 	ret
@@ -38584,7 +38584,7 @@ Unknown_0x21C7A:
 	jp nz,Logged_0x21B0B
 	jp Logged_0x20E6A
 
-UnknownData_0x21C85:
+Unknown_0x21C85:
 INCBIN "baserom.gbc", $21C85, $21C86 - $21C85
 
 Logged_0x21C86:
@@ -39497,12 +39497,12 @@ Logged_0x22280:
 	ld [rSVBK],a
 	ret
 
-UnknownData_0x22287:
+Unknown_0x22287:
 INCBIN "baserom.gbc", $22287, $24000 - $22287
 
 SECTION "Bank09", ROMX, BANK[$09]
 
-UnknownData_0x24000:
+Unknown_0x24000:
 INCBIN "baserom.gbc", $24000, $28000 - $24000
 
 SECTION "Bank0A", ROMX, BANK[$0A]
@@ -44161,7 +44161,7 @@ Logged_0x2A318:
 	ld [$CA68],a
 	jr Logged_0x2A344
 
-UnknownData_0x2A321:
+Unknown_0x2A321:
 INCBIN "baserom.gbc", $2A321, $2A344 - $2A321
 
 Logged_0x2A344:
@@ -46360,7 +46360,7 @@ Logged_0x2B34E:
 	ret c
 	jp Unknown_0x29F0A
 
-UnknownData_0x2B380:
+Unknown_0x2B380:
 INCBIN "baserom.gbc", $2B380, $2B381 - $2B380
 
 Logged_0x2B381:
@@ -46793,7 +46793,7 @@ Logged_0x2B63B:
 	jr c,Logged_0x2B651
 	jp Logged_0x2ABF4
 
-UnknownData_0x2B64F:
+Unknown_0x2B64F:
 INCBIN "baserom.gbc", $2B64F, $2B651 - $2B64F
 
 Logged_0x2B651:
@@ -46811,24 +46811,24 @@ Logged_0x2B651:
 LoggedData_0x2B664:
 INCBIN "baserom.gbc", $2B664, $2B68B - $2B664
 
-UnknownData_0x2B68B:
+Unknown_0x2B68B:
 INCBIN "baserom.gbc", $2B68B, $2B68C - $2B68B
 
 LoggedData_0x2B68C:
 INCBIN "baserom.gbc", $2B68C, $2B6E3 - $2B68C
 
-UnknownData_0x2B6E3:
+Unknown_0x2B6E3:
 INCBIN "baserom.gbc", $2B6E3, $2C000 - $2B6E3
 
 SECTION "Bank0B", ROMX, BANK[$0B]
 
-UnknownData_0x2C000:
+Unknown_0x2C000:
 INCBIN "baserom.gbc", $2C000, $2F000 - $2C000
 
 LoggedData_0x2F000:
 INCBIN "baserom.gbc", $2F000, $2F800 - $2F000
 
-UnknownData_0x2F800:
+Unknown_0x2F800:
 INCBIN "baserom.gbc", $2F800, $30000 - $2F800
 
 SECTION "Bank0C", ROMX, BANK[$0C]
@@ -47041,7 +47041,7 @@ Logged_0x3014B:
 	ld a,$04
 	jr Logged_0x30157
 
-UnknownData_0x30152:
+Unknown_0x30152:
 INCBIN "baserom.gbc", $30152, $30157 - $30152
 
 Logged_0x30157:
@@ -47547,13 +47547,13 @@ Logged_0x30428:
 	jr nz,Logged_0x30428
 	ret
 
-UnknownData_0x30438:
+Unknown_0x30438:
 INCBIN "baserom.gbc", $30438, $30494 - $30438
 
 LoggedData_0x30494:
 INCBIN "baserom.gbc", $30494, $30496 - $30494
 
-UnknownData_0x30496:
+Unknown_0x30496:
 INCBIN "baserom.gbc", $30496, $3049E - $30496
 
 Logged_0x3049E:
@@ -47601,7 +47601,7 @@ Logged_0x304D3:
 	jr nz,Logged_0x304BF
 	ret
 
-UnknownData_0x304D9:
+Unknown_0x304D9:
 INCBIN "baserom.gbc", $304D9, $304FA - $304D9
 
 Logged_0x304FA:
@@ -47627,7 +47627,7 @@ Logged_0x3050F:
 	dec e
 	ret
 
-UnknownData_0x30519:
+Unknown_0x30519:
 INCBIN "baserom.gbc", $30519, $30527 - $30519
 
 Logged_0x30527:
@@ -47943,25 +47943,25 @@ Logged_0x306CF:
 LoggedData_0x306D1:
 INCBIN "baserom.gbc", $306D1, $306D9 - $306D1
 
-UnknownData_0x306D9:
+Unknown_0x306D9:
 INCBIN "baserom.gbc", $306D9, $306E7 - $306D9
 
 LoggedData_0x306E7:
 INCBIN "baserom.gbc", $306E7, $306EF - $306E7
 
-UnknownData_0x306EF:
+Unknown_0x306EF:
 INCBIN "baserom.gbc", $306EF, $306F1 - $306EF
 
 LoggedData_0x306F1:
 INCBIN "baserom.gbc", $306F1, $306FD - $306F1
 
-UnknownData_0x306FD:
+Unknown_0x306FD:
 INCBIN "baserom.gbc", $306FD, $3070B - $306FD
 
 LoggedData_0x3070B:
 INCBIN "baserom.gbc", $3070B, $3070F - $3070B
 
-UnknownData_0x3070F:
+Unknown_0x3070F:
 INCBIN "baserom.gbc", $3070F, $3073F - $3070F
 
 Logged_0x3073F:
@@ -48036,7 +48036,7 @@ Logged_0x3073F:
 	ld d,[hl]
 	jp Logged_0x30584
 
-UnknownData_0x307AE:
+Unknown_0x307AE:
 INCBIN "baserom.gbc", $307AE, $307CC - $307AE
 	ld hl,$D000
 	bit 5,[hl]
@@ -48078,12 +48078,12 @@ Logged_0x307FF:
 	ld [hl],a
 	ret
 
-UnknownData_0x30802:
+Unknown_0x30802:
 INCBIN "baserom.gbc", $30802, $30823 - $30802
 	ld bc,$0012
 	jp Logged_0x3095C
 
-UnknownData_0x30829:
+Unknown_0x30829:
 INCBIN "baserom.gbc", $30829, $30837 - $30829
 	ld a,[$D01F]
 	inc de
@@ -48212,7 +48212,7 @@ Logged_0x308AF:
 Logged_0x308EE:
 	jp Logged_0x30584
 
-UnknownData_0x308F1:
+Unknown_0x308F1:
 INCBIN "baserom.gbc", $308F1, $3090E - $308F1
 	ld bc,$002A
 	jr Logged_0x3095C
@@ -48236,7 +48236,7 @@ INCBIN "baserom.gbc", $308F1, $3090E - $308F1
 	ld bc,$0016
 	jp Logged_0x304BC
 
-UnknownData_0x3093E:
+Unknown_0x3093E:
 INCBIN "baserom.gbc", $3093E, $30959 - $3093E
 	ld bc,$0021
 
@@ -48256,7 +48256,7 @@ Logged_0x3095C:
 	ld bc,$0023
 	jr Logged_0x3095C
 
-UnknownData_0x3097A:
+Unknown_0x3097A:
 INCBIN "baserom.gbc", $3097A, $30A10 - $3097A
 	ld b,$00
 	jr Logged_0x30A1F
@@ -48826,7 +48826,7 @@ Logged_0x30D22:
 	ld [hl],a
 	jr Logged_0x30D84
 
-UnknownData_0x30D3A:
+Unknown_0x30D3A:
 INCBIN "baserom.gbc", $30D3A, $30D3B - $30D3A
 
 Logged_0x30D3B:
@@ -49410,4369 +49410,4369 @@ Logged_0x31027:
 	add a,c
 	ret
 
-UnknownData_0x3102B:
+Unknown_0x3102B:
 INCBIN "baserom.gbc", $3102B, $3102C - $3102B
 
 LoggedData_0x3102C:
 INCBIN "baserom.gbc", $3102C, $3103C - $3102C
 
-UnknownData_0x3103C:
+Unknown_0x3103C:
 INCBIN "baserom.gbc", $3103C, $3103D - $3103C
 
 LoggedData_0x3103D:
 INCBIN "baserom.gbc", $3103D, $31042 - $3103D
 
-UnknownData_0x31042:
+Unknown_0x31042:
 INCBIN "baserom.gbc", $31042, $31043 - $31042
 
 LoggedData_0x31043:
 INCBIN "baserom.gbc", $31043, $31055 - $31043
 
-UnknownData_0x31055:
+Unknown_0x31055:
 INCBIN "baserom.gbc", $31055, $31056 - $31055
 
 LoggedData_0x31056:
 INCBIN "baserom.gbc", $31056, $31143 - $31056
 
-UnknownData_0x31143:
+Unknown_0x31143:
 INCBIN "baserom.gbc", $31143, $31155 - $31143
 
 LoggedData_0x31155:
 INCBIN "baserom.gbc", $31155, $31158 - $31155
 
-UnknownData_0x31158:
+Unknown_0x31158:
 INCBIN "baserom.gbc", $31158, $31200 - $31158
 
 LoggedData_0x31200:
 INCBIN "baserom.gbc", $31200, $31205 - $31200
 
-UnknownData_0x31205:
+Unknown_0x31205:
 INCBIN "baserom.gbc", $31205, $31206 - $31205
 
 LoggedData_0x31206:
 INCBIN "baserom.gbc", $31206, $3120B - $31206
 
-UnknownData_0x3120B:
+Unknown_0x3120B:
 INCBIN "baserom.gbc", $3120B, $31212 - $3120B
 
 LoggedData_0x31212:
 INCBIN "baserom.gbc", $31212, $31217 - $31212
 
-UnknownData_0x31217:
+Unknown_0x31217:
 INCBIN "baserom.gbc", $31217, $3121E - $31217
 
 LoggedData_0x3121E:
 INCBIN "baserom.gbc", $3121E, $31223 - $3121E
 
-UnknownData_0x31223:
+Unknown_0x31223:
 INCBIN "baserom.gbc", $31223, $31224 - $31223
 
 LoggedData_0x31224:
 INCBIN "baserom.gbc", $31224, $31229 - $31224
 
-UnknownData_0x31229:
+Unknown_0x31229:
 INCBIN "baserom.gbc", $31229, $3122A - $31229
 
 LoggedData_0x3122A:
 INCBIN "baserom.gbc", $3122A, $3122F - $3122A
 
-UnknownData_0x3122F:
+Unknown_0x3122F:
 INCBIN "baserom.gbc", $3122F, $31230 - $3122F
 
 LoggedData_0x31230:
 INCBIN "baserom.gbc", $31230, $31235 - $31230
 
-UnknownData_0x31235:
+Unknown_0x31235:
 INCBIN "baserom.gbc", $31235, $3123C - $31235
 
 LoggedData_0x3123C:
 INCBIN "baserom.gbc", $3123C, $31241 - $3123C
 
-UnknownData_0x31241:
+Unknown_0x31241:
 INCBIN "baserom.gbc", $31241, $31242 - $31241
 
 LoggedData_0x31242:
 INCBIN "baserom.gbc", $31242, $31247 - $31242
 
-UnknownData_0x31247:
+Unknown_0x31247:
 INCBIN "baserom.gbc", $31247, $31248 - $31247
 
 LoggedData_0x31248:
 INCBIN "baserom.gbc", $31248, $3124D - $31248
 
-UnknownData_0x3124D:
+Unknown_0x3124D:
 INCBIN "baserom.gbc", $3124D, $3124E - $3124D
 
 LoggedData_0x3124E:
 INCBIN "baserom.gbc", $3124E, $31253 - $3124E
 
-UnknownData_0x31253:
+Unknown_0x31253:
 INCBIN "baserom.gbc", $31253, $31254 - $31253
 
 LoggedData_0x31254:
 INCBIN "baserom.gbc", $31254, $31259 - $31254
 
-UnknownData_0x31259:
+Unknown_0x31259:
 INCBIN "baserom.gbc", $31259, $3125A - $31259
 
 LoggedData_0x3125A:
 INCBIN "baserom.gbc", $3125A, $3125F - $3125A
 
-UnknownData_0x3125F:
+Unknown_0x3125F:
 INCBIN "baserom.gbc", $3125F, $31260 - $3125F
 
 LoggedData_0x31260:
 INCBIN "baserom.gbc", $31260, $31265 - $31260
 
-UnknownData_0x31265:
+Unknown_0x31265:
 INCBIN "baserom.gbc", $31265, $31266 - $31265
 
 LoggedData_0x31266:
 INCBIN "baserom.gbc", $31266, $3126B - $31266
 
-UnknownData_0x3126B:
+Unknown_0x3126B:
 INCBIN "baserom.gbc", $3126B, $3126C - $3126B
 
 LoggedData_0x3126C:
 INCBIN "baserom.gbc", $3126C, $31271 - $3126C
 
-UnknownData_0x31271:
+Unknown_0x31271:
 INCBIN "baserom.gbc", $31271, $31296 - $31271
 
 LoggedData_0x31296:
 INCBIN "baserom.gbc", $31296, $3129B - $31296
 
-UnknownData_0x3129B:
+Unknown_0x3129B:
 INCBIN "baserom.gbc", $3129B, $312A2 - $3129B
 
 LoggedData_0x312A2:
 INCBIN "baserom.gbc", $312A2, $312A7 - $312A2
 
-UnknownData_0x312A7:
+Unknown_0x312A7:
 INCBIN "baserom.gbc", $312A7, $312B4 - $312A7
 
 LoggedData_0x312B4:
 INCBIN "baserom.gbc", $312B4, $312D2 - $312B4
 
-UnknownData_0x312D2:
+Unknown_0x312D2:
 INCBIN "baserom.gbc", $312D2, $312D8 - $312D2
 
 LoggedData_0x312D8:
 INCBIN "baserom.gbc", $312D8, $312DE - $312D8
 
-UnknownData_0x312DE:
+Unknown_0x312DE:
 INCBIN "baserom.gbc", $312DE, $312E4 - $312DE
 
 LoggedData_0x312E4:
 INCBIN "baserom.gbc", $312E4, $312EA - $312E4
 
-UnknownData_0x312EA:
+Unknown_0x312EA:
 INCBIN "baserom.gbc", $312EA, $312F0 - $312EA
 
 LoggedData_0x312F0:
 INCBIN "baserom.gbc", $312F0, $312F5 - $312F0
 
-UnknownData_0x312F5:
+Unknown_0x312F5:
 INCBIN "baserom.gbc", $312F5, $312F6 - $312F5
 
 LoggedData_0x312F6:
 INCBIN "baserom.gbc", $312F6, $312FB - $312F6
 
-UnknownData_0x312FB:
+Unknown_0x312FB:
 INCBIN "baserom.gbc", $312FB, $312FC - $312FB
 
 LoggedData_0x312FC:
 INCBIN "baserom.gbc", $312FC, $31301 - $312FC
 
-UnknownData_0x31301:
+Unknown_0x31301:
 INCBIN "baserom.gbc", $31301, $31302 - $31301
 
 LoggedData_0x31302:
 INCBIN "baserom.gbc", $31302, $31307 - $31302
 
-UnknownData_0x31307:
+Unknown_0x31307:
 INCBIN "baserom.gbc", $31307, $31308 - $31307
 
 LoggedData_0x31308:
 INCBIN "baserom.gbc", $31308, $3130D - $31308
 
-UnknownData_0x3130D:
+Unknown_0x3130D:
 INCBIN "baserom.gbc", $3130D, $3130E - $3130D
 
 LoggedData_0x3130E:
 INCBIN "baserom.gbc", $3130E, $31313 - $3130E
 
-UnknownData_0x31313:
+Unknown_0x31313:
 INCBIN "baserom.gbc", $31313, $31314 - $31313
 
 LoggedData_0x31314:
 INCBIN "baserom.gbc", $31314, $31319 - $31314
 
-UnknownData_0x31319:
+Unknown_0x31319:
 INCBIN "baserom.gbc", $31319, $3131A - $31319
 
 LoggedData_0x3131A:
 INCBIN "baserom.gbc", $3131A, $3131F - $3131A
 
-UnknownData_0x3131F:
+Unknown_0x3131F:
 INCBIN "baserom.gbc", $3131F, $31320 - $3131F
 
 LoggedData_0x31320:
 INCBIN "baserom.gbc", $31320, $31325 - $31320
 
-UnknownData_0x31325:
+Unknown_0x31325:
 INCBIN "baserom.gbc", $31325, $31326 - $31325
 
 LoggedData_0x31326:
 INCBIN "baserom.gbc", $31326, $3132B - $31326
 
-UnknownData_0x3132B:
+Unknown_0x3132B:
 INCBIN "baserom.gbc", $3132B, $3132C - $3132B
 
 LoggedData_0x3132C:
 INCBIN "baserom.gbc", $3132C, $31331 - $3132C
 
-UnknownData_0x31331:
+Unknown_0x31331:
 INCBIN "baserom.gbc", $31331, $31332 - $31331
 
 LoggedData_0x31332:
 INCBIN "baserom.gbc", $31332, $31337 - $31332
 
-UnknownData_0x31337:
+Unknown_0x31337:
 INCBIN "baserom.gbc", $31337, $31338 - $31337
 
 LoggedData_0x31338:
 INCBIN "baserom.gbc", $31338, $3133D - $31338
 
-UnknownData_0x3133D:
+Unknown_0x3133D:
 INCBIN "baserom.gbc", $3133D, $3133E - $3133D
 
 LoggedData_0x3133E:
 INCBIN "baserom.gbc", $3133E, $31343 - $3133E
 
-UnknownData_0x31343:
+Unknown_0x31343:
 INCBIN "baserom.gbc", $31343, $31344 - $31343
 
 LoggedData_0x31344:
 INCBIN "baserom.gbc", $31344, $31349 - $31344
 
-UnknownData_0x31349:
+Unknown_0x31349:
 INCBIN "baserom.gbc", $31349, $3134A - $31349
 
 LoggedData_0x3134A:
 INCBIN "baserom.gbc", $3134A, $3134F - $3134A
 
-UnknownData_0x3134F:
+Unknown_0x3134F:
 INCBIN "baserom.gbc", $3134F, $31350 - $3134F
 
 LoggedData_0x31350:
 INCBIN "baserom.gbc", $31350, $31355 - $31350
 
-UnknownData_0x31355:
+Unknown_0x31355:
 INCBIN "baserom.gbc", $31355, $31356 - $31355
 
 LoggedData_0x31356:
 INCBIN "baserom.gbc", $31356, $3135B - $31356
 
-UnknownData_0x3135B:
+Unknown_0x3135B:
 INCBIN "baserom.gbc", $3135B, $3135C - $3135B
 
 LoggedData_0x3135C:
 INCBIN "baserom.gbc", $3135C, $31361 - $3135C
 
-UnknownData_0x31361:
+Unknown_0x31361:
 INCBIN "baserom.gbc", $31361, $31362 - $31361
 
 LoggedData_0x31362:
 INCBIN "baserom.gbc", $31362, $31367 - $31362
 
-UnknownData_0x31367:
+Unknown_0x31367:
 INCBIN "baserom.gbc", $31367, $31368 - $31367
 
 LoggedData_0x31368:
 INCBIN "baserom.gbc", $31368, $3136D - $31368
 
-UnknownData_0x3136D:
+Unknown_0x3136D:
 INCBIN "baserom.gbc", $3136D, $3136E - $3136D
 
 LoggedData_0x3136E:
 INCBIN "baserom.gbc", $3136E, $31373 - $3136E
 
-UnknownData_0x31373:
+Unknown_0x31373:
 INCBIN "baserom.gbc", $31373, $31374 - $31373
 
 LoggedData_0x31374:
 INCBIN "baserom.gbc", $31374, $31379 - $31374
 
-UnknownData_0x31379:
+Unknown_0x31379:
 INCBIN "baserom.gbc", $31379, $3137A - $31379
 
 LoggedData_0x3137A:
 INCBIN "baserom.gbc", $3137A, $3137F - $3137A
 
-UnknownData_0x3137F:
+Unknown_0x3137F:
 INCBIN "baserom.gbc", $3137F, $31380 - $3137F
 
 LoggedData_0x31380:
 INCBIN "baserom.gbc", $31380, $31385 - $31380
 
-UnknownData_0x31385:
+Unknown_0x31385:
 INCBIN "baserom.gbc", $31385, $31386 - $31385
 
 LoggedData_0x31386:
 INCBIN "baserom.gbc", $31386, $3138B - $31386
 
-UnknownData_0x3138B:
+Unknown_0x3138B:
 INCBIN "baserom.gbc", $3138B, $313A4 - $3138B
 
 LoggedData_0x313A4:
 INCBIN "baserom.gbc", $313A4, $313A9 - $313A4
 
-UnknownData_0x313A9:
+Unknown_0x313A9:
 INCBIN "baserom.gbc", $313A9, $313AA - $313A9
 
 LoggedData_0x313AA:
 INCBIN "baserom.gbc", $313AA, $313AF - $313AA
 
-UnknownData_0x313AF:
+Unknown_0x313AF:
 INCBIN "baserom.gbc", $313AF, $313B0 - $313AF
 
 LoggedData_0x313B0:
 INCBIN "baserom.gbc", $313B0, $313B5 - $313B0
 
-UnknownData_0x313B5:
+Unknown_0x313B5:
 INCBIN "baserom.gbc", $313B5, $313B6 - $313B5
 
 LoggedData_0x313B6:
 INCBIN "baserom.gbc", $313B6, $313BB - $313B6
 
-UnknownData_0x313BB:
+Unknown_0x313BB:
 INCBIN "baserom.gbc", $313BB, $313C2 - $313BB
 
 LoggedData_0x313C2:
 INCBIN "baserom.gbc", $313C2, $313C7 - $313C2
 
-UnknownData_0x313C7:
+Unknown_0x313C7:
 INCBIN "baserom.gbc", $313C7, $313D4 - $313C7
 
 LoggedData_0x313D4:
 INCBIN "baserom.gbc", $313D4, $313D9 - $313D4
 
-UnknownData_0x313D9:
+Unknown_0x313D9:
 INCBIN "baserom.gbc", $313D9, $313E0 - $313D9
 
 LoggedData_0x313E0:
 INCBIN "baserom.gbc", $313E0, $313E5 - $313E0
 
-UnknownData_0x313E5:
+Unknown_0x313E5:
 INCBIN "baserom.gbc", $313E5, $313EC - $313E5
 
 LoggedData_0x313EC:
 INCBIN "baserom.gbc", $313EC, $313F1 - $313EC
 
-UnknownData_0x313F1:
+Unknown_0x313F1:
 INCBIN "baserom.gbc", $313F1, $313F2 - $313F1
 
 LoggedData_0x313F2:
 INCBIN "baserom.gbc", $313F2, $313F7 - $313F2
 
-UnknownData_0x313F7:
+Unknown_0x313F7:
 INCBIN "baserom.gbc", $313F7, $313F8 - $313F7
 
 LoggedData_0x313F8:
 INCBIN "baserom.gbc", $313F8, $313FD - $313F8
 
-UnknownData_0x313FD:
+Unknown_0x313FD:
 INCBIN "baserom.gbc", $313FD, $31404 - $313FD
 
 LoggedData_0x31404:
 INCBIN "baserom.gbc", $31404, $31409 - $31404
 
-UnknownData_0x31409:
+Unknown_0x31409:
 INCBIN "baserom.gbc", $31409, $3140A - $31409
 
 LoggedData_0x3140A:
 INCBIN "baserom.gbc", $3140A, $3140F - $3140A
 
-UnknownData_0x3140F:
+Unknown_0x3140F:
 INCBIN "baserom.gbc", $3140F, $31410 - $3140F
 
 LoggedData_0x31410:
 INCBIN "baserom.gbc", $31410, $31415 - $31410
 
-UnknownData_0x31415:
+Unknown_0x31415:
 INCBIN "baserom.gbc", $31415, $31416 - $31415
 
 LoggedData_0x31416:
 INCBIN "baserom.gbc", $31416, $3141B - $31416
 
-UnknownData_0x3141B:
+Unknown_0x3141B:
 INCBIN "baserom.gbc", $3141B, $3141C - $3141B
 
 LoggedData_0x3141C:
 INCBIN "baserom.gbc", $3141C, $31421 - $3141C
 
-UnknownData_0x31421:
+Unknown_0x31421:
 INCBIN "baserom.gbc", $31421, $31422 - $31421
 
 LoggedData_0x31422:
 INCBIN "baserom.gbc", $31422, $31427 - $31422
 
-UnknownData_0x31427:
+Unknown_0x31427:
 INCBIN "baserom.gbc", $31427, $31428 - $31427
 
 LoggedData_0x31428:
 INCBIN "baserom.gbc", $31428, $3142D - $31428
 
-UnknownData_0x3142D:
+Unknown_0x3142D:
 INCBIN "baserom.gbc", $3142D, $31434 - $3142D
 
 LoggedData_0x31434:
 INCBIN "baserom.gbc", $31434, $31439 - $31434
 
-UnknownData_0x31439:
+Unknown_0x31439:
 INCBIN "baserom.gbc", $31439, $3143A - $31439
 
 LoggedData_0x3143A:
 INCBIN "baserom.gbc", $3143A, $3143F - $3143A
 
-UnknownData_0x3143F:
+Unknown_0x3143F:
 INCBIN "baserom.gbc", $3143F, $31440 - $3143F
 
 LoggedData_0x31440:
 INCBIN "baserom.gbc", $31440, $31445 - $31440
 
-UnknownData_0x31445:
+Unknown_0x31445:
 INCBIN "baserom.gbc", $31445, $31446 - $31445
 
 LoggedData_0x31446:
 INCBIN "baserom.gbc", $31446, $3144B - $31446
 
-UnknownData_0x3144B:
+Unknown_0x3144B:
 INCBIN "baserom.gbc", $3144B, $3144C - $3144B
 
 LoggedData_0x3144C:
 INCBIN "baserom.gbc", $3144C, $31451 - $3144C
 
-UnknownData_0x31451:
+Unknown_0x31451:
 INCBIN "baserom.gbc", $31451, $31452 - $31451
 
 LoggedData_0x31452:
 INCBIN "baserom.gbc", $31452, $31457 - $31452
 
-UnknownData_0x31457:
+Unknown_0x31457:
 INCBIN "baserom.gbc", $31457, $31458 - $31457
 
 LoggedData_0x31458:
 INCBIN "baserom.gbc", $31458, $3145D - $31458
 
-UnknownData_0x3145D:
+Unknown_0x3145D:
 INCBIN "baserom.gbc", $3145D, $3145E - $3145D
 
 LoggedData_0x3145E:
 INCBIN "baserom.gbc", $3145E, $31463 - $3145E
 
-UnknownData_0x31463:
+Unknown_0x31463:
 INCBIN "baserom.gbc", $31463, $3146A - $31463
 
 LoggedData_0x3146A:
 INCBIN "baserom.gbc", $3146A, $3146F - $3146A
 
-UnknownData_0x3146F:
+Unknown_0x3146F:
 INCBIN "baserom.gbc", $3146F, $3147C - $3146F
 
 LoggedData_0x3147C:
 INCBIN "baserom.gbc", $3147C, $31481 - $3147C
 
-UnknownData_0x31481:
+Unknown_0x31481:
 INCBIN "baserom.gbc", $31481, $3148E - $31481
 
 LoggedData_0x3148E:
 INCBIN "baserom.gbc", $3148E, $31493 - $3148E
 
-UnknownData_0x31493:
+Unknown_0x31493:
 INCBIN "baserom.gbc", $31493, $314A0 - $31493
 
 LoggedData_0x314A0:
 INCBIN "baserom.gbc", $314A0, $314A5 - $314A0
 
-UnknownData_0x314A5:
+Unknown_0x314A5:
 INCBIN "baserom.gbc", $314A5, $314B6 - $314A5
 
 LoggedData_0x314B6:
 INCBIN "baserom.gbc", $314B6, $314D6 - $314B6
 
-UnknownData_0x314D6:
+Unknown_0x314D6:
 INCBIN "baserom.gbc", $314D6, $314E6 - $314D6
 
 LoggedData_0x314E6:
 INCBIN "baserom.gbc", $314E6, $31506 - $314E6
 
-UnknownData_0x31506:
+Unknown_0x31506:
 INCBIN "baserom.gbc", $31506, $31516 - $31506
 
 LoggedData_0x31516:
 INCBIN "baserom.gbc", $31516, $31526 - $31516
 
-UnknownData_0x31526:
+Unknown_0x31526:
 INCBIN "baserom.gbc", $31526, $31546 - $31526
 
 LoggedData_0x31546:
 INCBIN "baserom.gbc", $31546, $31569 - $31546
 
-UnknownData_0x31569:
+Unknown_0x31569:
 INCBIN "baserom.gbc", $31569, $3156A - $31569
 
 LoggedData_0x3156A:
 INCBIN "baserom.gbc", $3156A, $3156D - $3156A
 
-UnknownData_0x3156D:
+Unknown_0x3156D:
 INCBIN "baserom.gbc", $3156D, $3156E - $3156D
 
 LoggedData_0x3156E:
 INCBIN "baserom.gbc", $3156E, $31571 - $3156E
 
-UnknownData_0x31571:
+Unknown_0x31571:
 INCBIN "baserom.gbc", $31571, $31572 - $31571
 
 LoggedData_0x31572:
 INCBIN "baserom.gbc", $31572, $31575 - $31572
 
-UnknownData_0x31575:
+Unknown_0x31575:
 INCBIN "baserom.gbc", $31575, $31576 - $31575
 
 LoggedData_0x31576:
 INCBIN "baserom.gbc", $31576, $31579 - $31576
 
-UnknownData_0x31579:
+Unknown_0x31579:
 INCBIN "baserom.gbc", $31579, $3157A - $31579
 
 LoggedData_0x3157A:
 INCBIN "baserom.gbc", $3157A, $3157D - $3157A
 
-UnknownData_0x3157D:
+Unknown_0x3157D:
 INCBIN "baserom.gbc", $3157D, $3157E - $3157D
 
 LoggedData_0x3157E:
 INCBIN "baserom.gbc", $3157E, $31581 - $3157E
 
-UnknownData_0x31581:
+Unknown_0x31581:
 INCBIN "baserom.gbc", $31581, $31582 - $31581
 
 LoggedData_0x31582:
 INCBIN "baserom.gbc", $31582, $31585 - $31582
 
-UnknownData_0x31585:
+Unknown_0x31585:
 INCBIN "baserom.gbc", $31585, $31586 - $31585
 
 LoggedData_0x31586:
 INCBIN "baserom.gbc", $31586, $31589 - $31586
 
-UnknownData_0x31589:
+Unknown_0x31589:
 INCBIN "baserom.gbc", $31589, $3158A - $31589
 
 LoggedData_0x3158A:
 INCBIN "baserom.gbc", $3158A, $3158D - $3158A
 
-UnknownData_0x3158D:
+Unknown_0x3158D:
 INCBIN "baserom.gbc", $3158D, $3158E - $3158D
 
 LoggedData_0x3158E:
 INCBIN "baserom.gbc", $3158E, $31591 - $3158E
 
-UnknownData_0x31591:
+Unknown_0x31591:
 INCBIN "baserom.gbc", $31591, $31592 - $31591
 
 LoggedData_0x31592:
 INCBIN "baserom.gbc", $31592, $31595 - $31592
 
-UnknownData_0x31595:
+Unknown_0x31595:
 INCBIN "baserom.gbc", $31595, $31596 - $31595
 
 LoggedData_0x31596:
 INCBIN "baserom.gbc", $31596, $31599 - $31596
 
-UnknownData_0x31599:
+Unknown_0x31599:
 INCBIN "baserom.gbc", $31599, $3159A - $31599
 
 LoggedData_0x3159A:
 INCBIN "baserom.gbc", $3159A, $3159D - $3159A
 
-UnknownData_0x3159D:
+Unknown_0x3159D:
 INCBIN "baserom.gbc", $3159D, $3159E - $3159D
 
 LoggedData_0x3159E:
 INCBIN "baserom.gbc", $3159E, $315A1 - $3159E
 
-UnknownData_0x315A1:
+Unknown_0x315A1:
 INCBIN "baserom.gbc", $315A1, $315A2 - $315A1
 
 LoggedData_0x315A2:
 INCBIN "baserom.gbc", $315A2, $315A5 - $315A2
 
-UnknownData_0x315A5:
+Unknown_0x315A5:
 INCBIN "baserom.gbc", $315A5, $315A6 - $315A5
 
 LoggedData_0x315A6:
 INCBIN "baserom.gbc", $315A6, $315A9 - $315A6
 
-UnknownData_0x315A9:
+Unknown_0x315A9:
 INCBIN "baserom.gbc", $315A9, $315AA - $315A9
 
 LoggedData_0x315AA:
 INCBIN "baserom.gbc", $315AA, $315AD - $315AA
 
-UnknownData_0x315AD:
+Unknown_0x315AD:
 INCBIN "baserom.gbc", $315AD, $315AE - $315AD
 
 LoggedData_0x315AE:
 INCBIN "baserom.gbc", $315AE, $315B1 - $315AE
 
-UnknownData_0x315B1:
+Unknown_0x315B1:
 INCBIN "baserom.gbc", $315B1, $315B2 - $315B1
 
 LoggedData_0x315B2:
 INCBIN "baserom.gbc", $315B2, $315B5 - $315B2
 
-UnknownData_0x315B5:
+Unknown_0x315B5:
 INCBIN "baserom.gbc", $315B5, $315B6 - $315B5
 
 LoggedData_0x315B6:
 INCBIN "baserom.gbc", $315B6, $315B9 - $315B6
 
-UnknownData_0x315B9:
+Unknown_0x315B9:
 INCBIN "baserom.gbc", $315B9, $315BA - $315B9
 
 LoggedData_0x315BA:
 INCBIN "baserom.gbc", $315BA, $315BD - $315BA
 
-UnknownData_0x315BD:
+Unknown_0x315BD:
 INCBIN "baserom.gbc", $315BD, $315BE - $315BD
 
 LoggedData_0x315BE:
 INCBIN "baserom.gbc", $315BE, $315C1 - $315BE
 
-UnknownData_0x315C1:
+Unknown_0x315C1:
 INCBIN "baserom.gbc", $315C1, $315C2 - $315C1
 
 LoggedData_0x315C2:
 INCBIN "baserom.gbc", $315C2, $315C5 - $315C2
 
-UnknownData_0x315C5:
+Unknown_0x315C5:
 INCBIN "baserom.gbc", $315C5, $315C6 - $315C5
 
 LoggedData_0x315C6:
 INCBIN "baserom.gbc", $315C6, $315C9 - $315C6
 
-UnknownData_0x315C9:
+Unknown_0x315C9:
 INCBIN "baserom.gbc", $315C9, $315CA - $315C9
 
 LoggedData_0x315CA:
 INCBIN "baserom.gbc", $315CA, $315CD - $315CA
 
-UnknownData_0x315CD:
+Unknown_0x315CD:
 INCBIN "baserom.gbc", $315CD, $315CE - $315CD
 
 LoggedData_0x315CE:
 INCBIN "baserom.gbc", $315CE, $315D1 - $315CE
 
-UnknownData_0x315D1:
+Unknown_0x315D1:
 INCBIN "baserom.gbc", $315D1, $315D2 - $315D1
 
 LoggedData_0x315D2:
 INCBIN "baserom.gbc", $315D2, $315D5 - $315D2
 
-UnknownData_0x315D5:
+Unknown_0x315D5:
 INCBIN "baserom.gbc", $315D5, $315D6 - $315D5
 
 LoggedData_0x315D6:
 INCBIN "baserom.gbc", $315D6, $315D9 - $315D6
 
-UnknownData_0x315D9:
+Unknown_0x315D9:
 INCBIN "baserom.gbc", $315D9, $315DA - $315D9
 
 LoggedData_0x315DA:
 INCBIN "baserom.gbc", $315DA, $315DD - $315DA
 
-UnknownData_0x315DD:
+Unknown_0x315DD:
 INCBIN "baserom.gbc", $315DD, $315DE - $315DD
 
 LoggedData_0x315DE:
 INCBIN "baserom.gbc", $315DE, $315E1 - $315DE
 
-UnknownData_0x315E1:
+Unknown_0x315E1:
 INCBIN "baserom.gbc", $315E1, $315E2 - $315E1
 
 LoggedData_0x315E2:
 INCBIN "baserom.gbc", $315E2, $315E5 - $315E2
 
-UnknownData_0x315E5:
+Unknown_0x315E5:
 INCBIN "baserom.gbc", $315E5, $315E6 - $315E5
 
 LoggedData_0x315E6:
 INCBIN "baserom.gbc", $315E6, $315E9 - $315E6
 
-UnknownData_0x315E9:
+Unknown_0x315E9:
 INCBIN "baserom.gbc", $315E9, $315EA - $315E9
 
 LoggedData_0x315EA:
 INCBIN "baserom.gbc", $315EA, $315ED - $315EA
 
-UnknownData_0x315ED:
+Unknown_0x315ED:
 INCBIN "baserom.gbc", $315ED, $315EE - $315ED
 
 LoggedData_0x315EE:
 INCBIN "baserom.gbc", $315EE, $315F1 - $315EE
 
-UnknownData_0x315F1:
+Unknown_0x315F1:
 INCBIN "baserom.gbc", $315F1, $315F2 - $315F1
 
 LoggedData_0x315F2:
 INCBIN "baserom.gbc", $315F2, $315F5 - $315F2
 
-UnknownData_0x315F5:
+Unknown_0x315F5:
 INCBIN "baserom.gbc", $315F5, $315F6 - $315F5
 
 LoggedData_0x315F6:
 INCBIN "baserom.gbc", $315F6, $315F9 - $315F6
 
-UnknownData_0x315F9:
+Unknown_0x315F9:
 INCBIN "baserom.gbc", $315F9, $315FA - $315F9
 
 LoggedData_0x315FA:
 INCBIN "baserom.gbc", $315FA, $315FD - $315FA
 
-UnknownData_0x315FD:
+Unknown_0x315FD:
 INCBIN "baserom.gbc", $315FD, $315FE - $315FD
 
 LoggedData_0x315FE:
 INCBIN "baserom.gbc", $315FE, $31601 - $315FE
 
-UnknownData_0x31601:
+Unknown_0x31601:
 INCBIN "baserom.gbc", $31601, $31602 - $31601
 
 LoggedData_0x31602:
 INCBIN "baserom.gbc", $31602, $31605 - $31602
 
-UnknownData_0x31605:
+Unknown_0x31605:
 INCBIN "baserom.gbc", $31605, $31606 - $31605
 
 LoggedData_0x31606:
 INCBIN "baserom.gbc", $31606, $31609 - $31606
 
-UnknownData_0x31609:
+Unknown_0x31609:
 INCBIN "baserom.gbc", $31609, $3160A - $31609
 
 LoggedData_0x3160A:
 INCBIN "baserom.gbc", $3160A, $3160D - $3160A
 
-UnknownData_0x3160D:
+Unknown_0x3160D:
 INCBIN "baserom.gbc", $3160D, $3160E - $3160D
 
 LoggedData_0x3160E:
 INCBIN "baserom.gbc", $3160E, $31611 - $3160E
 
-UnknownData_0x31611:
+Unknown_0x31611:
 INCBIN "baserom.gbc", $31611, $31612 - $31611
 
 LoggedData_0x31612:
 INCBIN "baserom.gbc", $31612, $31615 - $31612
 
-UnknownData_0x31615:
+Unknown_0x31615:
 INCBIN "baserom.gbc", $31615, $31616 - $31615
 
 LoggedData_0x31616:
 INCBIN "baserom.gbc", $31616, $31619 - $31616
 
-UnknownData_0x31619:
+Unknown_0x31619:
 INCBIN "baserom.gbc", $31619, $3161A - $31619
 
 LoggedData_0x3161A:
 INCBIN "baserom.gbc", $3161A, $3161D - $3161A
 
-UnknownData_0x3161D:
+Unknown_0x3161D:
 INCBIN "baserom.gbc", $3161D, $3161E - $3161D
 
 LoggedData_0x3161E:
 INCBIN "baserom.gbc", $3161E, $31621 - $3161E
 
-UnknownData_0x31621:
+Unknown_0x31621:
 INCBIN "baserom.gbc", $31621, $31622 - $31621
 
 LoggedData_0x31622:
 INCBIN "baserom.gbc", $31622, $31625 - $31622
 
-UnknownData_0x31625:
+Unknown_0x31625:
 INCBIN "baserom.gbc", $31625, $31626 - $31625
 
 LoggedData_0x31626:
 INCBIN "baserom.gbc", $31626, $31629 - $31626
 
-UnknownData_0x31629:
+Unknown_0x31629:
 INCBIN "baserom.gbc", $31629, $3162A - $31629
 
 LoggedData_0x3162A:
 INCBIN "baserom.gbc", $3162A, $3162D - $3162A
 
-UnknownData_0x3162D:
+Unknown_0x3162D:
 INCBIN "baserom.gbc", $3162D, $3162E - $3162D
 
 LoggedData_0x3162E:
 INCBIN "baserom.gbc", $3162E, $31631 - $3162E
 
-UnknownData_0x31631:
+Unknown_0x31631:
 INCBIN "baserom.gbc", $31631, $31632 - $31631
 
 LoggedData_0x31632:
 INCBIN "baserom.gbc", $31632, $31635 - $31632
 
-UnknownData_0x31635:
+Unknown_0x31635:
 INCBIN "baserom.gbc", $31635, $31636 - $31635
 
 LoggedData_0x31636:
 INCBIN "baserom.gbc", $31636, $31639 - $31636
 
-UnknownData_0x31639:
+Unknown_0x31639:
 INCBIN "baserom.gbc", $31639, $3163A - $31639
 
 LoggedData_0x3163A:
 INCBIN "baserom.gbc", $3163A, $3163D - $3163A
 
-UnknownData_0x3163D:
+Unknown_0x3163D:
 INCBIN "baserom.gbc", $3163D, $3163E - $3163D
 
 LoggedData_0x3163E:
 INCBIN "baserom.gbc", $3163E, $31641 - $3163E
 
-UnknownData_0x31641:
+Unknown_0x31641:
 INCBIN "baserom.gbc", $31641, $31642 - $31641
 
 LoggedData_0x31642:
 INCBIN "baserom.gbc", $31642, $31645 - $31642
 
-UnknownData_0x31645:
+Unknown_0x31645:
 INCBIN "baserom.gbc", $31645, $31646 - $31645
 
 LoggedData_0x31646:
 INCBIN "baserom.gbc", $31646, $31649 - $31646
 
-UnknownData_0x31649:
+Unknown_0x31649:
 INCBIN "baserom.gbc", $31649, $3164A - $31649
 
 LoggedData_0x3164A:
 INCBIN "baserom.gbc", $3164A, $3164D - $3164A
 
-UnknownData_0x3164D:
+Unknown_0x3164D:
 INCBIN "baserom.gbc", $3164D, $3164E - $3164D
 
 LoggedData_0x3164E:
 INCBIN "baserom.gbc", $3164E, $31651 - $3164E
 
-UnknownData_0x31651:
+Unknown_0x31651:
 INCBIN "baserom.gbc", $31651, $31652 - $31651
 
 LoggedData_0x31652:
 INCBIN "baserom.gbc", $31652, $31655 - $31652
 
-UnknownData_0x31655:
+Unknown_0x31655:
 INCBIN "baserom.gbc", $31655, $31656 - $31655
 
 LoggedData_0x31656:
 INCBIN "baserom.gbc", $31656, $31659 - $31656
 
-UnknownData_0x31659:
+Unknown_0x31659:
 INCBIN "baserom.gbc", $31659, $3165A - $31659
 
 LoggedData_0x3165A:
 INCBIN "baserom.gbc", $3165A, $3165D - $3165A
 
-UnknownData_0x3165D:
+Unknown_0x3165D:
 INCBIN "baserom.gbc", $3165D, $3165E - $3165D
 
 LoggedData_0x3165E:
 INCBIN "baserom.gbc", $3165E, $31661 - $3165E
 
-UnknownData_0x31661:
+Unknown_0x31661:
 INCBIN "baserom.gbc", $31661, $31662 - $31661
 
 LoggedData_0x31662:
 INCBIN "baserom.gbc", $31662, $31665 - $31662
 
-UnknownData_0x31665:
+Unknown_0x31665:
 INCBIN "baserom.gbc", $31665, $31666 - $31665
 
 LoggedData_0x31666:
 INCBIN "baserom.gbc", $31666, $31669 - $31666
 
-UnknownData_0x31669:
+Unknown_0x31669:
 INCBIN "baserom.gbc", $31669, $3166A - $31669
 
 LoggedData_0x3166A:
 INCBIN "baserom.gbc", $3166A, $3166D - $3166A
 
-UnknownData_0x3166D:
+Unknown_0x3166D:
 INCBIN "baserom.gbc", $3166D, $3166E - $3166D
 
 LoggedData_0x3166E:
 INCBIN "baserom.gbc", $3166E, $31671 - $3166E
 
-UnknownData_0x31671:
+Unknown_0x31671:
 INCBIN "baserom.gbc", $31671, $31672 - $31671
 
 LoggedData_0x31672:
 INCBIN "baserom.gbc", $31672, $31675 - $31672
 
-UnknownData_0x31675:
+Unknown_0x31675:
 INCBIN "baserom.gbc", $31675, $31676 - $31675
 
 LoggedData_0x31676:
 INCBIN "baserom.gbc", $31676, $31679 - $31676
 
-UnknownData_0x31679:
+Unknown_0x31679:
 INCBIN "baserom.gbc", $31679, $3167A - $31679
 
 LoggedData_0x3167A:
 INCBIN "baserom.gbc", $3167A, $3167D - $3167A
 
-UnknownData_0x3167D:
+Unknown_0x3167D:
 INCBIN "baserom.gbc", $3167D, $3167E - $3167D
 
 LoggedData_0x3167E:
 INCBIN "baserom.gbc", $3167E, $31681 - $3167E
 
-UnknownData_0x31681:
+Unknown_0x31681:
 INCBIN "baserom.gbc", $31681, $31682 - $31681
 
 LoggedData_0x31682:
 INCBIN "baserom.gbc", $31682, $31685 - $31682
 
-UnknownData_0x31685:
+Unknown_0x31685:
 INCBIN "baserom.gbc", $31685, $31686 - $31685
 
 LoggedData_0x31686:
 INCBIN "baserom.gbc", $31686, $31689 - $31686
 
-UnknownData_0x31689:
+Unknown_0x31689:
 INCBIN "baserom.gbc", $31689, $3168A - $31689
 
 LoggedData_0x3168A:
 INCBIN "baserom.gbc", $3168A, $3168D - $3168A
 
-UnknownData_0x3168D:
+Unknown_0x3168D:
 INCBIN "baserom.gbc", $3168D, $3168E - $3168D
 
 LoggedData_0x3168E:
 INCBIN "baserom.gbc", $3168E, $31691 - $3168E
 
-UnknownData_0x31691:
+Unknown_0x31691:
 INCBIN "baserom.gbc", $31691, $31692 - $31691
 
 LoggedData_0x31692:
 INCBIN "baserom.gbc", $31692, $31695 - $31692
 
-UnknownData_0x31695:
+Unknown_0x31695:
 INCBIN "baserom.gbc", $31695, $31696 - $31695
 
 LoggedData_0x31696:
 INCBIN "baserom.gbc", $31696, $31699 - $31696
 
-UnknownData_0x31699:
+Unknown_0x31699:
 INCBIN "baserom.gbc", $31699, $3169A - $31699
 
 LoggedData_0x3169A:
 INCBIN "baserom.gbc", $3169A, $3169D - $3169A
 
-UnknownData_0x3169D:
+Unknown_0x3169D:
 INCBIN "baserom.gbc", $3169D, $3169E - $3169D
 
 LoggedData_0x3169E:
 INCBIN "baserom.gbc", $3169E, $316A1 - $3169E
 
-UnknownData_0x316A1:
+Unknown_0x316A1:
 INCBIN "baserom.gbc", $316A1, $316A2 - $316A1
 
 LoggedData_0x316A2:
 INCBIN "baserom.gbc", $316A2, $316A5 - $316A2
 
-UnknownData_0x316A5:
+Unknown_0x316A5:
 INCBIN "baserom.gbc", $316A5, $316A6 - $316A5
 
 LoggedData_0x316A6:
 INCBIN "baserom.gbc", $316A6, $316A9 - $316A6
 
-UnknownData_0x316A9:
+Unknown_0x316A9:
 INCBIN "baserom.gbc", $316A9, $316AA - $316A9
 
 LoggedData_0x316AA:
 INCBIN "baserom.gbc", $316AA, $316AD - $316AA
 
-UnknownData_0x316AD:
+Unknown_0x316AD:
 INCBIN "baserom.gbc", $316AD, $316AE - $316AD
 
 LoggedData_0x316AE:
 INCBIN "baserom.gbc", $316AE, $316B1 - $316AE
 
-UnknownData_0x316B1:
+Unknown_0x316B1:
 INCBIN "baserom.gbc", $316B1, $316B2 - $316B1
 
 LoggedData_0x316B2:
 INCBIN "baserom.gbc", $316B2, $316B5 - $316B2
 
-UnknownData_0x316B5:
+Unknown_0x316B5:
 INCBIN "baserom.gbc", $316B5, $316B6 - $316B5
 
 LoggedData_0x316B6:
 INCBIN "baserom.gbc", $316B6, $316B9 - $316B6
 
-UnknownData_0x316B9:
+Unknown_0x316B9:
 INCBIN "baserom.gbc", $316B9, $316BA - $316B9
 
 LoggedData_0x316BA:
 INCBIN "baserom.gbc", $316BA, $316BD - $316BA
 
-UnknownData_0x316BD:
+Unknown_0x316BD:
 INCBIN "baserom.gbc", $316BD, $316BE - $316BD
 
 LoggedData_0x316BE:
 INCBIN "baserom.gbc", $316BE, $316C1 - $316BE
 
-UnknownData_0x316C1:
+Unknown_0x316C1:
 INCBIN "baserom.gbc", $316C1, $316C2 - $316C1
 
 LoggedData_0x316C2:
 INCBIN "baserom.gbc", $316C2, $316C5 - $316C2
 
-UnknownData_0x316C5:
+Unknown_0x316C5:
 INCBIN "baserom.gbc", $316C5, $316C6 - $316C5
 
 LoggedData_0x316C6:
 INCBIN "baserom.gbc", $316C6, $316C9 - $316C6
 
-UnknownData_0x316C9:
+Unknown_0x316C9:
 INCBIN "baserom.gbc", $316C9, $316CA - $316C9
 
 LoggedData_0x316CA:
 INCBIN "baserom.gbc", $316CA, $316CD - $316CA
 
-UnknownData_0x316CD:
+Unknown_0x316CD:
 INCBIN "baserom.gbc", $316CD, $316CE - $316CD
 
 LoggedData_0x316CE:
 INCBIN "baserom.gbc", $316CE, $316D1 - $316CE
 
-UnknownData_0x316D1:
+Unknown_0x316D1:
 INCBIN "baserom.gbc", $316D1, $316D2 - $316D1
 
 LoggedData_0x316D2:
 INCBIN "baserom.gbc", $316D2, $316D5 - $316D2
 
-UnknownData_0x316D5:
+Unknown_0x316D5:
 INCBIN "baserom.gbc", $316D5, $316D6 - $316D5
 
 LoggedData_0x316D6:
 INCBIN "baserom.gbc", $316D6, $316D9 - $316D6
 
-UnknownData_0x316D9:
+Unknown_0x316D9:
 INCBIN "baserom.gbc", $316D9, $316DA - $316D9
 
 LoggedData_0x316DA:
 INCBIN "baserom.gbc", $316DA, $316DD - $316DA
 
-UnknownData_0x316DD:
+Unknown_0x316DD:
 INCBIN "baserom.gbc", $316DD, $316DE - $316DD
 
 LoggedData_0x316DE:
 INCBIN "baserom.gbc", $316DE, $316E1 - $316DE
 
-UnknownData_0x316E1:
+Unknown_0x316E1:
 INCBIN "baserom.gbc", $316E1, $316E2 - $316E1
 
 LoggedData_0x316E2:
 INCBIN "baserom.gbc", $316E2, $316E5 - $316E2
 
-UnknownData_0x316E5:
+Unknown_0x316E5:
 INCBIN "baserom.gbc", $316E5, $316E6 - $316E5
 
 LoggedData_0x316E6:
 INCBIN "baserom.gbc", $316E6, $316E9 - $316E6
 
-UnknownData_0x316E9:
+Unknown_0x316E9:
 INCBIN "baserom.gbc", $316E9, $316EA - $316E9
 
 LoggedData_0x316EA:
 INCBIN "baserom.gbc", $316EA, $316ED - $316EA
 
-UnknownData_0x316ED:
+Unknown_0x316ED:
 INCBIN "baserom.gbc", $316ED, $316EE - $316ED
 
 LoggedData_0x316EE:
 INCBIN "baserom.gbc", $316EE, $316F1 - $316EE
 
-UnknownData_0x316F1:
+Unknown_0x316F1:
 INCBIN "baserom.gbc", $316F1, $316F2 - $316F1
 
 LoggedData_0x316F2:
 INCBIN "baserom.gbc", $316F2, $316F5 - $316F2
 
-UnknownData_0x316F5:
+Unknown_0x316F5:
 INCBIN "baserom.gbc", $316F5, $316F6 - $316F5
 
 LoggedData_0x316F6:
 INCBIN "baserom.gbc", $316F6, $316F9 - $316F6
 
-UnknownData_0x316F9:
+Unknown_0x316F9:
 INCBIN "baserom.gbc", $316F9, $316FA - $316F9
 
 LoggedData_0x316FA:
 INCBIN "baserom.gbc", $316FA, $316FD - $316FA
 
-UnknownData_0x316FD:
+Unknown_0x316FD:
 INCBIN "baserom.gbc", $316FD, $316FE - $316FD
 
 LoggedData_0x316FE:
 INCBIN "baserom.gbc", $316FE, $31701 - $316FE
 
-UnknownData_0x31701:
+Unknown_0x31701:
 INCBIN "baserom.gbc", $31701, $31702 - $31701
 
 LoggedData_0x31702:
 INCBIN "baserom.gbc", $31702, $31705 - $31702
 
-UnknownData_0x31705:
+Unknown_0x31705:
 INCBIN "baserom.gbc", $31705, $31706 - $31705
 
 LoggedData_0x31706:
 INCBIN "baserom.gbc", $31706, $31709 - $31706
 
-UnknownData_0x31709:
+Unknown_0x31709:
 INCBIN "baserom.gbc", $31709, $3170A - $31709
 
 LoggedData_0x3170A:
 INCBIN "baserom.gbc", $3170A, $3170D - $3170A
 
-UnknownData_0x3170D:
+Unknown_0x3170D:
 INCBIN "baserom.gbc", $3170D, $3170E - $3170D
 
 LoggedData_0x3170E:
 INCBIN "baserom.gbc", $3170E, $31711 - $3170E
 
-UnknownData_0x31711:
+Unknown_0x31711:
 INCBIN "baserom.gbc", $31711, $31712 - $31711
 
 LoggedData_0x31712:
 INCBIN "baserom.gbc", $31712, $31715 - $31712
 
-UnknownData_0x31715:
+Unknown_0x31715:
 INCBIN "baserom.gbc", $31715, $31716 - $31715
 
 LoggedData_0x31716:
 INCBIN "baserom.gbc", $31716, $31719 - $31716
 
-UnknownData_0x31719:
+Unknown_0x31719:
 INCBIN "baserom.gbc", $31719, $3171A - $31719
 
 LoggedData_0x3171A:
 INCBIN "baserom.gbc", $3171A, $3171D - $3171A
 
-UnknownData_0x3171D:
+Unknown_0x3171D:
 INCBIN "baserom.gbc", $3171D, $3171E - $3171D
 
 LoggedData_0x3171E:
 INCBIN "baserom.gbc", $3171E, $31721 - $3171E
 
-UnknownData_0x31721:
+Unknown_0x31721:
 INCBIN "baserom.gbc", $31721, $31722 - $31721
 
 LoggedData_0x31722:
 INCBIN "baserom.gbc", $31722, $31725 - $31722
 
-UnknownData_0x31725:
+Unknown_0x31725:
 INCBIN "baserom.gbc", $31725, $31726 - $31725
 
 LoggedData_0x31726:
 INCBIN "baserom.gbc", $31726, $31729 - $31726
 
-UnknownData_0x31729:
+Unknown_0x31729:
 INCBIN "baserom.gbc", $31729, $3172A - $31729
 
 LoggedData_0x3172A:
 INCBIN "baserom.gbc", $3172A, $3172D - $3172A
 
-UnknownData_0x3172D:
+Unknown_0x3172D:
 INCBIN "baserom.gbc", $3172D, $3172E - $3172D
 
 LoggedData_0x3172E:
 INCBIN "baserom.gbc", $3172E, $31731 - $3172E
 
-UnknownData_0x31731:
+Unknown_0x31731:
 INCBIN "baserom.gbc", $31731, $31732 - $31731
 
 LoggedData_0x31732:
 INCBIN "baserom.gbc", $31732, $31735 - $31732
 
-UnknownData_0x31735:
+Unknown_0x31735:
 INCBIN "baserom.gbc", $31735, $31D66 - $31735
 
 LoggedData_0x31D66:
 INCBIN "baserom.gbc", $31D66, $31D69 - $31D66
 
-UnknownData_0x31D69:
+Unknown_0x31D69:
 INCBIN "baserom.gbc", $31D69, $31D6A - $31D69
 
 LoggedData_0x31D6A:
 INCBIN "baserom.gbc", $31D6A, $31D6D - $31D6A
 
-UnknownData_0x31D6D:
+Unknown_0x31D6D:
 INCBIN "baserom.gbc", $31D6D, $31D6E - $31D6D
 
 LoggedData_0x31D6E:
 INCBIN "baserom.gbc", $31D6E, $31D71 - $31D6E
 
-UnknownData_0x31D71:
+Unknown_0x31D71:
 INCBIN "baserom.gbc", $31D71, $31D72 - $31D71
 
 LoggedData_0x31D72:
 INCBIN "baserom.gbc", $31D72, $31D75 - $31D72
 
-UnknownData_0x31D75:
+Unknown_0x31D75:
 INCBIN "baserom.gbc", $31D75, $31D76 - $31D75
 
 LoggedData_0x31D76:
 INCBIN "baserom.gbc", $31D76, $31D79 - $31D76
 
-UnknownData_0x31D79:
+Unknown_0x31D79:
 INCBIN "baserom.gbc", $31D79, $31D7A - $31D79
 
 LoggedData_0x31D7A:
 INCBIN "baserom.gbc", $31D7A, $31D7D - $31D7A
 
-UnknownData_0x31D7D:
+Unknown_0x31D7D:
 INCBIN "baserom.gbc", $31D7D, $31D7E - $31D7D
 
 LoggedData_0x31D7E:
 INCBIN "baserom.gbc", $31D7E, $31D81 - $31D7E
 
-UnknownData_0x31D81:
+Unknown_0x31D81:
 INCBIN "baserom.gbc", $31D81, $31D82 - $31D81
 
 LoggedData_0x31D82:
 INCBIN "baserom.gbc", $31D82, $31D85 - $31D82
 
-UnknownData_0x31D85:
+Unknown_0x31D85:
 INCBIN "baserom.gbc", $31D85, $31D86 - $31D85
 
 LoggedData_0x31D86:
 INCBIN "baserom.gbc", $31D86, $31D89 - $31D86
 
-UnknownData_0x31D89:
+Unknown_0x31D89:
 INCBIN "baserom.gbc", $31D89, $31D8A - $31D89
 
 LoggedData_0x31D8A:
 INCBIN "baserom.gbc", $31D8A, $31D8D - $31D8A
 
-UnknownData_0x31D8D:
+Unknown_0x31D8D:
 INCBIN "baserom.gbc", $31D8D, $31D8E - $31D8D
 
 LoggedData_0x31D8E:
 INCBIN "baserom.gbc", $31D8E, $31D91 - $31D8E
 
-UnknownData_0x31D91:
+Unknown_0x31D91:
 INCBIN "baserom.gbc", $31D91, $31D92 - $31D91
 
 LoggedData_0x31D92:
 INCBIN "baserom.gbc", $31D92, $31D95 - $31D92
 
-UnknownData_0x31D95:
+Unknown_0x31D95:
 INCBIN "baserom.gbc", $31D95, $31D96 - $31D95
 
 LoggedData_0x31D96:
 INCBIN "baserom.gbc", $31D96, $31D99 - $31D96
 
-UnknownData_0x31D99:
+Unknown_0x31D99:
 INCBIN "baserom.gbc", $31D99, $31D9A - $31D99
 
 LoggedData_0x31D9A:
 INCBIN "baserom.gbc", $31D9A, $31D9D - $31D9A
 
-UnknownData_0x31D9D:
+Unknown_0x31D9D:
 INCBIN "baserom.gbc", $31D9D, $31D9E - $31D9D
 
 LoggedData_0x31D9E:
 INCBIN "baserom.gbc", $31D9E, $31DA1 - $31D9E
 
-UnknownData_0x31DA1:
+Unknown_0x31DA1:
 INCBIN "baserom.gbc", $31DA1, $31DA2 - $31DA1
 
 LoggedData_0x31DA2:
 INCBIN "baserom.gbc", $31DA2, $31DA5 - $31DA2
 
-UnknownData_0x31DA5:
+Unknown_0x31DA5:
 INCBIN "baserom.gbc", $31DA5, $31DA6 - $31DA5
 
 LoggedData_0x31DA6:
 INCBIN "baserom.gbc", $31DA6, $31DA9 - $31DA6
 
-UnknownData_0x31DA9:
+Unknown_0x31DA9:
 INCBIN "baserom.gbc", $31DA9, $31DAA - $31DA9
 
 LoggedData_0x31DAA:
 INCBIN "baserom.gbc", $31DAA, $31DAD - $31DAA
 
-UnknownData_0x31DAD:
+Unknown_0x31DAD:
 INCBIN "baserom.gbc", $31DAD, $31DAE - $31DAD
 
 LoggedData_0x31DAE:
 INCBIN "baserom.gbc", $31DAE, $31DB1 - $31DAE
 
-UnknownData_0x31DB1:
+Unknown_0x31DB1:
 INCBIN "baserom.gbc", $31DB1, $31DB2 - $31DB1
 
 LoggedData_0x31DB2:
 INCBIN "baserom.gbc", $31DB2, $31DB5 - $31DB2
 
-UnknownData_0x31DB5:
+Unknown_0x31DB5:
 INCBIN "baserom.gbc", $31DB5, $31DB6 - $31DB5
 
 LoggedData_0x31DB6:
 INCBIN "baserom.gbc", $31DB6, $31DB9 - $31DB6
 
-UnknownData_0x31DB9:
+Unknown_0x31DB9:
 INCBIN "baserom.gbc", $31DB9, $31DBA - $31DB9
 
 LoggedData_0x31DBA:
 INCBIN "baserom.gbc", $31DBA, $31DBD - $31DBA
 
-UnknownData_0x31DBD:
+Unknown_0x31DBD:
 INCBIN "baserom.gbc", $31DBD, $31DBE - $31DBD
 
 LoggedData_0x31DBE:
 INCBIN "baserom.gbc", $31DBE, $31DC1 - $31DBE
 
-UnknownData_0x31DC1:
+Unknown_0x31DC1:
 INCBIN "baserom.gbc", $31DC1, $31DC2 - $31DC1
 
 LoggedData_0x31DC2:
 INCBIN "baserom.gbc", $31DC2, $31DC5 - $31DC2
 
-UnknownData_0x31DC5:
+Unknown_0x31DC5:
 INCBIN "baserom.gbc", $31DC5, $31DC6 - $31DC5
 
 LoggedData_0x31DC6:
 INCBIN "baserom.gbc", $31DC6, $31DC9 - $31DC6
 
-UnknownData_0x31DC9:
+Unknown_0x31DC9:
 INCBIN "baserom.gbc", $31DC9, $31DCA - $31DC9
 
 LoggedData_0x31DCA:
 INCBIN "baserom.gbc", $31DCA, $31DCD - $31DCA
 
-UnknownData_0x31DCD:
+Unknown_0x31DCD:
 INCBIN "baserom.gbc", $31DCD, $31DCE - $31DCD
 
 LoggedData_0x31DCE:
 INCBIN "baserom.gbc", $31DCE, $31DD1 - $31DCE
 
-UnknownData_0x31DD1:
+Unknown_0x31DD1:
 INCBIN "baserom.gbc", $31DD1, $31DD2 - $31DD1
 
 LoggedData_0x31DD2:
 INCBIN "baserom.gbc", $31DD2, $31DD5 - $31DD2
 
-UnknownData_0x31DD5:
+Unknown_0x31DD5:
 INCBIN "baserom.gbc", $31DD5, $31DD6 - $31DD5
 
 LoggedData_0x31DD6:
 INCBIN "baserom.gbc", $31DD6, $31DD9 - $31DD6
 
-UnknownData_0x31DD9:
+Unknown_0x31DD9:
 INCBIN "baserom.gbc", $31DD9, $31DDA - $31DD9
 
 LoggedData_0x31DDA:
 INCBIN "baserom.gbc", $31DDA, $31DDD - $31DDA
 
-UnknownData_0x31DDD:
+Unknown_0x31DDD:
 INCBIN "baserom.gbc", $31DDD, $31DDE - $31DDD
 
 LoggedData_0x31DDE:
 INCBIN "baserom.gbc", $31DDE, $31DE1 - $31DDE
 
-UnknownData_0x31DE1:
+Unknown_0x31DE1:
 INCBIN "baserom.gbc", $31DE1, $31DE2 - $31DE1
 
 LoggedData_0x31DE2:
 INCBIN "baserom.gbc", $31DE2, $31DE5 - $31DE2
 
-UnknownData_0x31DE5:
+Unknown_0x31DE5:
 INCBIN "baserom.gbc", $31DE5, $31DE6 - $31DE5
 
 LoggedData_0x31DE6:
 INCBIN "baserom.gbc", $31DE6, $31DE9 - $31DE6
 
-UnknownData_0x31DE9:
+Unknown_0x31DE9:
 INCBIN "baserom.gbc", $31DE9, $31DEA - $31DE9
 
 LoggedData_0x31DEA:
 INCBIN "baserom.gbc", $31DEA, $31DED - $31DEA
 
-UnknownData_0x31DED:
+Unknown_0x31DED:
 INCBIN "baserom.gbc", $31DED, $31DEE - $31DED
 
 LoggedData_0x31DEE:
 INCBIN "baserom.gbc", $31DEE, $31DF1 - $31DEE
 
-UnknownData_0x31DF1:
+Unknown_0x31DF1:
 INCBIN "baserom.gbc", $31DF1, $31DF2 - $31DF1
 
 LoggedData_0x31DF2:
 INCBIN "baserom.gbc", $31DF2, $31DF5 - $31DF2
 
-UnknownData_0x31DF5:
+Unknown_0x31DF5:
 INCBIN "baserom.gbc", $31DF5, $31DF6 - $31DF5
 
 LoggedData_0x31DF6:
 INCBIN "baserom.gbc", $31DF6, $31DF9 - $31DF6
 
-UnknownData_0x31DF9:
+Unknown_0x31DF9:
 INCBIN "baserom.gbc", $31DF9, $31DFA - $31DF9
 
 LoggedData_0x31DFA:
 INCBIN "baserom.gbc", $31DFA, $31DFD - $31DFA
 
-UnknownData_0x31DFD:
+Unknown_0x31DFD:
 INCBIN "baserom.gbc", $31DFD, $31DFE - $31DFD
 
 LoggedData_0x31DFE:
 INCBIN "baserom.gbc", $31DFE, $31E01 - $31DFE
 
-UnknownData_0x31E01:
+Unknown_0x31E01:
 INCBIN "baserom.gbc", $31E01, $31E02 - $31E01
 
 LoggedData_0x31E02:
 INCBIN "baserom.gbc", $31E02, $31E05 - $31E02
 
-UnknownData_0x31E05:
+Unknown_0x31E05:
 INCBIN "baserom.gbc", $31E05, $31E06 - $31E05
 
 LoggedData_0x31E06:
 INCBIN "baserom.gbc", $31E06, $31E09 - $31E06
 
-UnknownData_0x31E09:
+Unknown_0x31E09:
 INCBIN "baserom.gbc", $31E09, $31E0A - $31E09
 
 LoggedData_0x31E0A:
 INCBIN "baserom.gbc", $31E0A, $31E0D - $31E0A
 
-UnknownData_0x31E0D:
+Unknown_0x31E0D:
 INCBIN "baserom.gbc", $31E0D, $31E0E - $31E0D
 
 LoggedData_0x31E0E:
 INCBIN "baserom.gbc", $31E0E, $31E11 - $31E0E
 
-UnknownData_0x31E11:
+Unknown_0x31E11:
 INCBIN "baserom.gbc", $31E11, $31E12 - $31E11
 
 LoggedData_0x31E12:
 INCBIN "baserom.gbc", $31E12, $31E15 - $31E12
 
-UnknownData_0x31E15:
+Unknown_0x31E15:
 INCBIN "baserom.gbc", $31E15, $31E16 - $31E15
 
 LoggedData_0x31E16:
 INCBIN "baserom.gbc", $31E16, $31E19 - $31E16
 
-UnknownData_0x31E19:
+Unknown_0x31E19:
 INCBIN "baserom.gbc", $31E19, $31E1A - $31E19
 
 LoggedData_0x31E1A:
 INCBIN "baserom.gbc", $31E1A, $31E1D - $31E1A
 
-UnknownData_0x31E1D:
+Unknown_0x31E1D:
 INCBIN "baserom.gbc", $31E1D, $31E1E - $31E1D
 
 LoggedData_0x31E1E:
 INCBIN "baserom.gbc", $31E1E, $31E21 - $31E1E
 
-UnknownData_0x31E21:
+Unknown_0x31E21:
 INCBIN "baserom.gbc", $31E21, $31E22 - $31E21
 
 LoggedData_0x31E22:
 INCBIN "baserom.gbc", $31E22, $31E25 - $31E22
 
-UnknownData_0x31E25:
+Unknown_0x31E25:
 INCBIN "baserom.gbc", $31E25, $31E26 - $31E25
 
 LoggedData_0x31E26:
 INCBIN "baserom.gbc", $31E26, $31E29 - $31E26
 
-UnknownData_0x31E29:
+Unknown_0x31E29:
 INCBIN "baserom.gbc", $31E29, $31E2A - $31E29
 
 LoggedData_0x31E2A:
 INCBIN "baserom.gbc", $31E2A, $31E2D - $31E2A
 
-UnknownData_0x31E2D:
+Unknown_0x31E2D:
 INCBIN "baserom.gbc", $31E2D, $31E2E - $31E2D
 
 LoggedData_0x31E2E:
 INCBIN "baserom.gbc", $31E2E, $31E31 - $31E2E
 
-UnknownData_0x31E31:
+Unknown_0x31E31:
 INCBIN "baserom.gbc", $31E31, $31E32 - $31E31
 
 LoggedData_0x31E32:
 INCBIN "baserom.gbc", $31E32, $31E35 - $31E32
 
-UnknownData_0x31E35:
+Unknown_0x31E35:
 INCBIN "baserom.gbc", $31E35, $31E36 - $31E35
 
 LoggedData_0x31E36:
 INCBIN "baserom.gbc", $31E36, $31E39 - $31E36
 
-UnknownData_0x31E39:
+Unknown_0x31E39:
 INCBIN "baserom.gbc", $31E39, $31E3A - $31E39
 
 LoggedData_0x31E3A:
 INCBIN "baserom.gbc", $31E3A, $31E3D - $31E3A
 
-UnknownData_0x31E3D:
+Unknown_0x31E3D:
 INCBIN "baserom.gbc", $31E3D, $31E3E - $31E3D
 
 LoggedData_0x31E3E:
 INCBIN "baserom.gbc", $31E3E, $31E41 - $31E3E
 
-UnknownData_0x31E41:
+Unknown_0x31E41:
 INCBIN "baserom.gbc", $31E41, $31E42 - $31E41
 
 LoggedData_0x31E42:
 INCBIN "baserom.gbc", $31E42, $31E45 - $31E42
 
-UnknownData_0x31E45:
+Unknown_0x31E45:
 INCBIN "baserom.gbc", $31E45, $31E46 - $31E45
 
 LoggedData_0x31E46:
 INCBIN "baserom.gbc", $31E46, $31E49 - $31E46
 
-UnknownData_0x31E49:
+Unknown_0x31E49:
 INCBIN "baserom.gbc", $31E49, $31E4A - $31E49
 
 LoggedData_0x31E4A:
 INCBIN "baserom.gbc", $31E4A, $31E4D - $31E4A
 
-UnknownData_0x31E4D:
+Unknown_0x31E4D:
 INCBIN "baserom.gbc", $31E4D, $31E4E - $31E4D
 
 LoggedData_0x31E4E:
 INCBIN "baserom.gbc", $31E4E, $31E51 - $31E4E
 
-UnknownData_0x31E51:
+Unknown_0x31E51:
 INCBIN "baserom.gbc", $31E51, $31E52 - $31E51
 
 LoggedData_0x31E52:
 INCBIN "baserom.gbc", $31E52, $31E55 - $31E52
 
-UnknownData_0x31E55:
+Unknown_0x31E55:
 INCBIN "baserom.gbc", $31E55, $31E56 - $31E55
 
 LoggedData_0x31E56:
 INCBIN "baserom.gbc", $31E56, $31E59 - $31E56
 
-UnknownData_0x31E59:
+Unknown_0x31E59:
 INCBIN "baserom.gbc", $31E59, $31E5A - $31E59
 
 LoggedData_0x31E5A:
 INCBIN "baserom.gbc", $31E5A, $31E5D - $31E5A
 
-UnknownData_0x31E5D:
+Unknown_0x31E5D:
 INCBIN "baserom.gbc", $31E5D, $31E5E - $31E5D
 
 LoggedData_0x31E5E:
 INCBIN "baserom.gbc", $31E5E, $31E61 - $31E5E
 
-UnknownData_0x31E61:
+Unknown_0x31E61:
 INCBIN "baserom.gbc", $31E61, $31E62 - $31E61
 
 LoggedData_0x31E62:
 INCBIN "baserom.gbc", $31E62, $31E65 - $31E62
 
-UnknownData_0x31E65:
+Unknown_0x31E65:
 INCBIN "baserom.gbc", $31E65, $31E66 - $31E65
 
 LoggedData_0x31E66:
 INCBIN "baserom.gbc", $31E66, $31E69 - $31E66
 
-UnknownData_0x31E69:
+Unknown_0x31E69:
 INCBIN "baserom.gbc", $31E69, $31E6A - $31E69
 
 LoggedData_0x31E6A:
 INCBIN "baserom.gbc", $31E6A, $31E6D - $31E6A
 
-UnknownData_0x31E6D:
+Unknown_0x31E6D:
 INCBIN "baserom.gbc", $31E6D, $31E6E - $31E6D
 
 LoggedData_0x31E6E:
 INCBIN "baserom.gbc", $31E6E, $31E71 - $31E6E
 
-UnknownData_0x31E71:
+Unknown_0x31E71:
 INCBIN "baserom.gbc", $31E71, $31E72 - $31E71
 
 LoggedData_0x31E72:
 INCBIN "baserom.gbc", $31E72, $31E75 - $31E72
 
-UnknownData_0x31E75:
+Unknown_0x31E75:
 INCBIN "baserom.gbc", $31E75, $31E76 - $31E75
 
 LoggedData_0x31E76:
 INCBIN "baserom.gbc", $31E76, $31E79 - $31E76
 
-UnknownData_0x31E79:
+Unknown_0x31E79:
 INCBIN "baserom.gbc", $31E79, $31E7A - $31E79
 
 LoggedData_0x31E7A:
 INCBIN "baserom.gbc", $31E7A, $31E7D - $31E7A
 
-UnknownData_0x31E7D:
+Unknown_0x31E7D:
 INCBIN "baserom.gbc", $31E7D, $31E7E - $31E7D
 
 LoggedData_0x31E7E:
 INCBIN "baserom.gbc", $31E7E, $31E81 - $31E7E
 
-UnknownData_0x31E81:
+Unknown_0x31E81:
 INCBIN "baserom.gbc", $31E81, $31E82 - $31E81
 
 LoggedData_0x31E82:
 INCBIN "baserom.gbc", $31E82, $31E85 - $31E82
 
-UnknownData_0x31E85:
+Unknown_0x31E85:
 INCBIN "baserom.gbc", $31E85, $31E86 - $31E85
 
 LoggedData_0x31E86:
 INCBIN "baserom.gbc", $31E86, $31E89 - $31E86
 
-UnknownData_0x31E89:
+Unknown_0x31E89:
 INCBIN "baserom.gbc", $31E89, $31E8A - $31E89
 
 LoggedData_0x31E8A:
 INCBIN "baserom.gbc", $31E8A, $31E8D - $31E8A
 
-UnknownData_0x31E8D:
+Unknown_0x31E8D:
 INCBIN "baserom.gbc", $31E8D, $31E8E - $31E8D
 
 LoggedData_0x31E8E:
 INCBIN "baserom.gbc", $31E8E, $31E91 - $31E8E
 
-UnknownData_0x31E91:
+Unknown_0x31E91:
 INCBIN "baserom.gbc", $31E91, $31E92 - $31E91
 
 LoggedData_0x31E92:
 INCBIN "baserom.gbc", $31E92, $31E95 - $31E92
 
-UnknownData_0x31E95:
+Unknown_0x31E95:
 INCBIN "baserom.gbc", $31E95, $31E96 - $31E95
 
 LoggedData_0x31E96:
 INCBIN "baserom.gbc", $31E96, $31E99 - $31E96
 
-UnknownData_0x31E99:
+Unknown_0x31E99:
 INCBIN "baserom.gbc", $31E99, $31E9A - $31E99
 
 LoggedData_0x31E9A:
 INCBIN "baserom.gbc", $31E9A, $31E9D - $31E9A
 
-UnknownData_0x31E9D:
+Unknown_0x31E9D:
 INCBIN "baserom.gbc", $31E9D, $31E9E - $31E9D
 
 LoggedData_0x31E9E:
 INCBIN "baserom.gbc", $31E9E, $31EA1 - $31E9E
 
-UnknownData_0x31EA1:
+Unknown_0x31EA1:
 INCBIN "baserom.gbc", $31EA1, $31EA2 - $31EA1
 
 LoggedData_0x31EA2:
 INCBIN "baserom.gbc", $31EA2, $31EA5 - $31EA2
 
-UnknownData_0x31EA5:
+Unknown_0x31EA5:
 INCBIN "baserom.gbc", $31EA5, $31EA6 - $31EA5
 
 LoggedData_0x31EA6:
 INCBIN "baserom.gbc", $31EA6, $31EA9 - $31EA6
 
-UnknownData_0x31EA9:
+Unknown_0x31EA9:
 INCBIN "baserom.gbc", $31EA9, $31EAA - $31EA9
 
 LoggedData_0x31EAA:
 INCBIN "baserom.gbc", $31EAA, $31EAD - $31EAA
 
-UnknownData_0x31EAD:
+Unknown_0x31EAD:
 INCBIN "baserom.gbc", $31EAD, $31EAE - $31EAD
 
 LoggedData_0x31EAE:
 INCBIN "baserom.gbc", $31EAE, $31EB1 - $31EAE
 
-UnknownData_0x31EB1:
+Unknown_0x31EB1:
 INCBIN "baserom.gbc", $31EB1, $31EB2 - $31EB1
 
 LoggedData_0x31EB2:
 INCBIN "baserom.gbc", $31EB2, $31EB5 - $31EB2
 
-UnknownData_0x31EB5:
+Unknown_0x31EB5:
 INCBIN "baserom.gbc", $31EB5, $31EB6 - $31EB5
 
 LoggedData_0x31EB6:
 INCBIN "baserom.gbc", $31EB6, $31EB9 - $31EB6
 
-UnknownData_0x31EB9:
+Unknown_0x31EB9:
 INCBIN "baserom.gbc", $31EB9, $31EBA - $31EB9
 
 LoggedData_0x31EBA:
 INCBIN "baserom.gbc", $31EBA, $31EBD - $31EBA
 
-UnknownData_0x31EBD:
+Unknown_0x31EBD:
 INCBIN "baserom.gbc", $31EBD, $31EBE - $31EBD
 
 LoggedData_0x31EBE:
 INCBIN "baserom.gbc", $31EBE, $31EC1 - $31EBE
 
-UnknownData_0x31EC1:
+Unknown_0x31EC1:
 INCBIN "baserom.gbc", $31EC1, $31EC2 - $31EC1
 
 LoggedData_0x31EC2:
 INCBIN "baserom.gbc", $31EC2, $31EC5 - $31EC2
 
-UnknownData_0x31EC5:
+Unknown_0x31EC5:
 INCBIN "baserom.gbc", $31EC5, $31EC6 - $31EC5
 
 LoggedData_0x31EC6:
 INCBIN "baserom.gbc", $31EC6, $31EC9 - $31EC6
 
-UnknownData_0x31EC9:
+Unknown_0x31EC9:
 INCBIN "baserom.gbc", $31EC9, $31ECA - $31EC9
 
 LoggedData_0x31ECA:
 INCBIN "baserom.gbc", $31ECA, $31ECD - $31ECA
 
-UnknownData_0x31ECD:
+Unknown_0x31ECD:
 INCBIN "baserom.gbc", $31ECD, $31ECE - $31ECD
 
 LoggedData_0x31ECE:
 INCBIN "baserom.gbc", $31ECE, $31ED1 - $31ECE
 
-UnknownData_0x31ED1:
+Unknown_0x31ED1:
 INCBIN "baserom.gbc", $31ED1, $31ED2 - $31ED1
 
 LoggedData_0x31ED2:
 INCBIN "baserom.gbc", $31ED2, $31ED5 - $31ED2
 
-UnknownData_0x31ED5:
+Unknown_0x31ED5:
 INCBIN "baserom.gbc", $31ED5, $31ED6 - $31ED5
 
 LoggedData_0x31ED6:
 INCBIN "baserom.gbc", $31ED6, $31ED9 - $31ED6
 
-UnknownData_0x31ED9:
+Unknown_0x31ED9:
 INCBIN "baserom.gbc", $31ED9, $31EDA - $31ED9
 
 LoggedData_0x31EDA:
 INCBIN "baserom.gbc", $31EDA, $31EDD - $31EDA
 
-UnknownData_0x31EDD:
+Unknown_0x31EDD:
 INCBIN "baserom.gbc", $31EDD, $31EDE - $31EDD
 
 LoggedData_0x31EDE:
 INCBIN "baserom.gbc", $31EDE, $31EE1 - $31EDE
 
-UnknownData_0x31EE1:
+Unknown_0x31EE1:
 INCBIN "baserom.gbc", $31EE1, $31EE2 - $31EE1
 
 LoggedData_0x31EE2:
 INCBIN "baserom.gbc", $31EE2, $31EE5 - $31EE2
 
-UnknownData_0x31EE5:
+Unknown_0x31EE5:
 INCBIN "baserom.gbc", $31EE5, $31EE6 - $31EE5
 
 LoggedData_0x31EE6:
 INCBIN "baserom.gbc", $31EE6, $31EE9 - $31EE6
 
-UnknownData_0x31EE9:
+Unknown_0x31EE9:
 INCBIN "baserom.gbc", $31EE9, $31EEA - $31EE9
 
 LoggedData_0x31EEA:
 INCBIN "baserom.gbc", $31EEA, $31EED - $31EEA
 
-UnknownData_0x31EED:
+Unknown_0x31EED:
 INCBIN "baserom.gbc", $31EED, $31EEE - $31EED
 
 LoggedData_0x31EEE:
 INCBIN "baserom.gbc", $31EEE, $31EF1 - $31EEE
 
-UnknownData_0x31EF1:
+Unknown_0x31EF1:
 INCBIN "baserom.gbc", $31EF1, $31EF2 - $31EF1
 
 LoggedData_0x31EF2:
 INCBIN "baserom.gbc", $31EF2, $31EF5 - $31EF2
 
-UnknownData_0x31EF5:
+Unknown_0x31EF5:
 INCBIN "baserom.gbc", $31EF5, $31EF6 - $31EF5
 
 LoggedData_0x31EF6:
 INCBIN "baserom.gbc", $31EF6, $31EF9 - $31EF6
 
-UnknownData_0x31EF9:
+Unknown_0x31EF9:
 INCBIN "baserom.gbc", $31EF9, $31EFA - $31EF9
 
 LoggedData_0x31EFA:
 INCBIN "baserom.gbc", $31EFA, $31EFD - $31EFA
 
-UnknownData_0x31EFD:
+Unknown_0x31EFD:
 INCBIN "baserom.gbc", $31EFD, $31EFE - $31EFD
 
 LoggedData_0x31EFE:
 INCBIN "baserom.gbc", $31EFE, $31F01 - $31EFE
 
-UnknownData_0x31F01:
+Unknown_0x31F01:
 INCBIN "baserom.gbc", $31F01, $31F02 - $31F01
 
 LoggedData_0x31F02:
 INCBIN "baserom.gbc", $31F02, $31F05 - $31F02
 
-UnknownData_0x31F05:
+Unknown_0x31F05:
 INCBIN "baserom.gbc", $31F05, $31F06 - $31F05
 
 LoggedData_0x31F06:
 INCBIN "baserom.gbc", $31F06, $31F09 - $31F06
 
-UnknownData_0x31F09:
+Unknown_0x31F09:
 INCBIN "baserom.gbc", $31F09, $31F0A - $31F09
 
 LoggedData_0x31F0A:
 INCBIN "baserom.gbc", $31F0A, $31F0D - $31F0A
 
-UnknownData_0x31F0D:
+Unknown_0x31F0D:
 INCBIN "baserom.gbc", $31F0D, $31F16 - $31F0D
 
 LoggedData_0x31F16:
 INCBIN "baserom.gbc", $31F16, $31F19 - $31F16
 
-UnknownData_0x31F19:
+Unknown_0x31F19:
 INCBIN "baserom.gbc", $31F19, $31F1A - $31F19
 
 LoggedData_0x31F1A:
 INCBIN "baserom.gbc", $31F1A, $31F1D - $31F1A
 
-UnknownData_0x31F1D:
+Unknown_0x31F1D:
 INCBIN "baserom.gbc", $31F1D, $31F1E - $31F1D
 
 LoggedData_0x31F1E:
 INCBIN "baserom.gbc", $31F1E, $31F21 - $31F1E
 
-UnknownData_0x31F21:
+Unknown_0x31F21:
 INCBIN "baserom.gbc", $31F21, $31F22 - $31F21
 
 LoggedData_0x31F22:
 INCBIN "baserom.gbc", $31F22, $31F25 - $31F22
 
-UnknownData_0x31F25:
+Unknown_0x31F25:
 INCBIN "baserom.gbc", $31F25, $31F26 - $31F25
 
 LoggedData_0x31F26:
 INCBIN "baserom.gbc", $31F26, $31F29 - $31F26
 
-UnknownData_0x31F29:
+Unknown_0x31F29:
 INCBIN "baserom.gbc", $31F29, $31F2A - $31F29
 
 LoggedData_0x31F2A:
 INCBIN "baserom.gbc", $31F2A, $31F2D - $31F2A
 
-UnknownData_0x31F2D:
+Unknown_0x31F2D:
 INCBIN "baserom.gbc", $31F2D, $31F2E - $31F2D
 
 LoggedData_0x31F2E:
 INCBIN "baserom.gbc", $31F2E, $31F31 - $31F2E
 
-UnknownData_0x31F31:
+Unknown_0x31F31:
 INCBIN "baserom.gbc", $31F31, $31F32 - $31F31
 
 LoggedData_0x31F32:
 INCBIN "baserom.gbc", $31F32, $31F35 - $31F32
 
-UnknownData_0x31F35:
+Unknown_0x31F35:
 INCBIN "baserom.gbc", $31F35, $31F36 - $31F35
 
 LoggedData_0x31F36:
 INCBIN "baserom.gbc", $31F36, $31F39 - $31F36
 
-UnknownData_0x31F39:
+Unknown_0x31F39:
 INCBIN "baserom.gbc", $31F39, $31F3A - $31F39
 
 LoggedData_0x31F3A:
 INCBIN "baserom.gbc", $31F3A, $31F3D - $31F3A
 
-UnknownData_0x31F3D:
+Unknown_0x31F3D:
 INCBIN "baserom.gbc", $31F3D, $31F3E - $31F3D
 
 LoggedData_0x31F3E:
 INCBIN "baserom.gbc", $31F3E, $31F41 - $31F3E
 
-UnknownData_0x31F41:
+Unknown_0x31F41:
 INCBIN "baserom.gbc", $31F41, $31F42 - $31F41
 
 LoggedData_0x31F42:
 INCBIN "baserom.gbc", $31F42, $31F45 - $31F42
 
-UnknownData_0x31F45:
+Unknown_0x31F45:
 INCBIN "baserom.gbc", $31F45, $31F46 - $31F45
 
 LoggedData_0x31F46:
 INCBIN "baserom.gbc", $31F46, $31F49 - $31F46
 
-UnknownData_0x31F49:
+Unknown_0x31F49:
 INCBIN "baserom.gbc", $31F49, $31F4A - $31F49
 
 LoggedData_0x31F4A:
 INCBIN "baserom.gbc", $31F4A, $31F4D - $31F4A
 
-UnknownData_0x31F4D:
+Unknown_0x31F4D:
 INCBIN "baserom.gbc", $31F4D, $31F4E - $31F4D
 
 LoggedData_0x31F4E:
 INCBIN "baserom.gbc", $31F4E, $31F51 - $31F4E
 
-UnknownData_0x31F51:
+Unknown_0x31F51:
 INCBIN "baserom.gbc", $31F51, $31F52 - $31F51
 
 LoggedData_0x31F52:
 INCBIN "baserom.gbc", $31F52, $31F55 - $31F52
 
-UnknownData_0x31F55:
+Unknown_0x31F55:
 INCBIN "baserom.gbc", $31F55, $31F56 - $31F55
 
 LoggedData_0x31F56:
 INCBIN "baserom.gbc", $31F56, $31F59 - $31F56
 
-UnknownData_0x31F59:
+Unknown_0x31F59:
 INCBIN "baserom.gbc", $31F59, $31F5A - $31F59
 
 LoggedData_0x31F5A:
 INCBIN "baserom.gbc", $31F5A, $31F5D - $31F5A
 
-UnknownData_0x31F5D:
+Unknown_0x31F5D:
 INCBIN "baserom.gbc", $31F5D, $31F5E - $31F5D
 
 LoggedData_0x31F5E:
 INCBIN "baserom.gbc", $31F5E, $31F61 - $31F5E
 
-UnknownData_0x31F61:
+Unknown_0x31F61:
 INCBIN "baserom.gbc", $31F61, $31F62 - $31F61
 
 LoggedData_0x31F62:
 INCBIN "baserom.gbc", $31F62, $31F65 - $31F62
 
-UnknownData_0x31F65:
+Unknown_0x31F65:
 INCBIN "baserom.gbc", $31F65, $31F66 - $31F65
 
 LoggedData_0x31F66:
 INCBIN "baserom.gbc", $31F66, $31F69 - $31F66
 
-UnknownData_0x31F69:
+Unknown_0x31F69:
 INCBIN "baserom.gbc", $31F69, $31F6A - $31F69
 
 LoggedData_0x31F6A:
 INCBIN "baserom.gbc", $31F6A, $31F6D - $31F6A
 
-UnknownData_0x31F6D:
+Unknown_0x31F6D:
 INCBIN "baserom.gbc", $31F6D, $31F6E - $31F6D
 
 LoggedData_0x31F6E:
 INCBIN "baserom.gbc", $31F6E, $31F71 - $31F6E
 
-UnknownData_0x31F71:
+Unknown_0x31F71:
 INCBIN "baserom.gbc", $31F71, $31F72 - $31F71
 
 LoggedData_0x31F72:
 INCBIN "baserom.gbc", $31F72, $31F75 - $31F72
 
-UnknownData_0x31F75:
+Unknown_0x31F75:
 INCBIN "baserom.gbc", $31F75, $31F76 - $31F75
 
 LoggedData_0x31F76:
 INCBIN "baserom.gbc", $31F76, $31F79 - $31F76
 
-UnknownData_0x31F79:
+Unknown_0x31F79:
 INCBIN "baserom.gbc", $31F79, $31F7A - $31F79
 
 LoggedData_0x31F7A:
 INCBIN "baserom.gbc", $31F7A, $31F7D - $31F7A
 
-UnknownData_0x31F7D:
+Unknown_0x31F7D:
 INCBIN "baserom.gbc", $31F7D, $31F7E - $31F7D
 
 LoggedData_0x31F7E:
 INCBIN "baserom.gbc", $31F7E, $31F81 - $31F7E
 
-UnknownData_0x31F81:
+Unknown_0x31F81:
 INCBIN "baserom.gbc", $31F81, $31F82 - $31F81
 
 LoggedData_0x31F82:
 INCBIN "baserom.gbc", $31F82, $31F85 - $31F82
 
-UnknownData_0x31F85:
+Unknown_0x31F85:
 INCBIN "baserom.gbc", $31F85, $31F86 - $31F85
 
 LoggedData_0x31F86:
 INCBIN "baserom.gbc", $31F86, $31F89 - $31F86
 
-UnknownData_0x31F89:
+Unknown_0x31F89:
 INCBIN "baserom.gbc", $31F89, $31F8A - $31F89
 
 LoggedData_0x31F8A:
 INCBIN "baserom.gbc", $31F8A, $31F8D - $31F8A
 
-UnknownData_0x31F8D:
+Unknown_0x31F8D:
 INCBIN "baserom.gbc", $31F8D, $31F8E - $31F8D
 
 LoggedData_0x31F8E:
 INCBIN "baserom.gbc", $31F8E, $31F91 - $31F8E
 
-UnknownData_0x31F91:
+Unknown_0x31F91:
 INCBIN "baserom.gbc", $31F91, $31F92 - $31F91
 
 LoggedData_0x31F92:
 INCBIN "baserom.gbc", $31F92, $31F95 - $31F92
 
-UnknownData_0x31F95:
+Unknown_0x31F95:
 INCBIN "baserom.gbc", $31F95, $31F96 - $31F95
 
 LoggedData_0x31F96:
 INCBIN "baserom.gbc", $31F96, $31F99 - $31F96
 
-UnknownData_0x31F99:
+Unknown_0x31F99:
 INCBIN "baserom.gbc", $31F99, $31F9A - $31F99
 
 LoggedData_0x31F9A:
 INCBIN "baserom.gbc", $31F9A, $31F9D - $31F9A
 
-UnknownData_0x31F9D:
+Unknown_0x31F9D:
 INCBIN "baserom.gbc", $31F9D, $31F9E - $31F9D
 
 LoggedData_0x31F9E:
 INCBIN "baserom.gbc", $31F9E, $31FA1 - $31F9E
 
-UnknownData_0x31FA1:
+Unknown_0x31FA1:
 INCBIN "baserom.gbc", $31FA1, $31FA2 - $31FA1
 
 LoggedData_0x31FA2:
 INCBIN "baserom.gbc", $31FA2, $31FA5 - $31FA2
 
-UnknownData_0x31FA5:
+Unknown_0x31FA5:
 INCBIN "baserom.gbc", $31FA5, $31FA6 - $31FA5
 
 LoggedData_0x31FA6:
 INCBIN "baserom.gbc", $31FA6, $31FA9 - $31FA6
 
-UnknownData_0x31FA9:
+Unknown_0x31FA9:
 INCBIN "baserom.gbc", $31FA9, $31FAA - $31FA9
 
 LoggedData_0x31FAA:
 INCBIN "baserom.gbc", $31FAA, $31FAD - $31FAA
 
-UnknownData_0x31FAD:
+Unknown_0x31FAD:
 INCBIN "baserom.gbc", $31FAD, $31FAE - $31FAD
 
 LoggedData_0x31FAE:
 INCBIN "baserom.gbc", $31FAE, $31FB1 - $31FAE
 
-UnknownData_0x31FB1:
+Unknown_0x31FB1:
 INCBIN "baserom.gbc", $31FB1, $31FB2 - $31FB1
 
 LoggedData_0x31FB2:
 INCBIN "baserom.gbc", $31FB2, $31FB5 - $31FB2
 
-UnknownData_0x31FB5:
+Unknown_0x31FB5:
 INCBIN "baserom.gbc", $31FB5, $31FB6 - $31FB5
 
 LoggedData_0x31FB6:
 INCBIN "baserom.gbc", $31FB6, $31FB9 - $31FB6
 
-UnknownData_0x31FB9:
+Unknown_0x31FB9:
 INCBIN "baserom.gbc", $31FB9, $31FBA - $31FB9
 
 LoggedData_0x31FBA:
 INCBIN "baserom.gbc", $31FBA, $31FBD - $31FBA
 
-UnknownData_0x31FBD:
+Unknown_0x31FBD:
 INCBIN "baserom.gbc", $31FBD, $31FBE - $31FBD
 
 LoggedData_0x31FBE:
 INCBIN "baserom.gbc", $31FBE, $31FC1 - $31FBE
 
-UnknownData_0x31FC1:
+Unknown_0x31FC1:
 INCBIN "baserom.gbc", $31FC1, $31FC2 - $31FC1
 
 LoggedData_0x31FC2:
 INCBIN "baserom.gbc", $31FC2, $31FC5 - $31FC2
 
-UnknownData_0x31FC5:
+Unknown_0x31FC5:
 INCBIN "baserom.gbc", $31FC5, $32066 - $31FC5
 
 LoggedData_0x32066:
 INCBIN "baserom.gbc", $32066, $32069 - $32066
 
-UnknownData_0x32069:
+Unknown_0x32069:
 INCBIN "baserom.gbc", $32069, $3206A - $32069
 
 LoggedData_0x3206A:
 INCBIN "baserom.gbc", $3206A, $3206D - $3206A
 
-UnknownData_0x3206D:
+Unknown_0x3206D:
 INCBIN "baserom.gbc", $3206D, $3206E - $3206D
 
 LoggedData_0x3206E:
 INCBIN "baserom.gbc", $3206E, $32071 - $3206E
 
-UnknownData_0x32071:
+Unknown_0x32071:
 INCBIN "baserom.gbc", $32071, $32072 - $32071
 
 LoggedData_0x32072:
 INCBIN "baserom.gbc", $32072, $32075 - $32072
 
-UnknownData_0x32075:
+Unknown_0x32075:
 INCBIN "baserom.gbc", $32075, $32076 - $32075
 
 LoggedData_0x32076:
 INCBIN "baserom.gbc", $32076, $32079 - $32076
 
-UnknownData_0x32079:
+Unknown_0x32079:
 INCBIN "baserom.gbc", $32079, $3207A - $32079
 
 LoggedData_0x3207A:
 INCBIN "baserom.gbc", $3207A, $3207D - $3207A
 
-UnknownData_0x3207D:
+Unknown_0x3207D:
 INCBIN "baserom.gbc", $3207D, $3207E - $3207D
 
 LoggedData_0x3207E:
 INCBIN "baserom.gbc", $3207E, $32081 - $3207E
 
-UnknownData_0x32081:
+Unknown_0x32081:
 INCBIN "baserom.gbc", $32081, $32082 - $32081
 
 LoggedData_0x32082:
 INCBIN "baserom.gbc", $32082, $32085 - $32082
 
-UnknownData_0x32085:
+Unknown_0x32085:
 INCBIN "baserom.gbc", $32085, $32086 - $32085
 
 LoggedData_0x32086:
 INCBIN "baserom.gbc", $32086, $32089 - $32086
 
-UnknownData_0x32089:
+Unknown_0x32089:
 INCBIN "baserom.gbc", $32089, $3208A - $32089
 
 LoggedData_0x3208A:
 INCBIN "baserom.gbc", $3208A, $3208D - $3208A
 
-UnknownData_0x3208D:
+Unknown_0x3208D:
 INCBIN "baserom.gbc", $3208D, $3208E - $3208D
 
 LoggedData_0x3208E:
 INCBIN "baserom.gbc", $3208E, $32091 - $3208E
 
-UnknownData_0x32091:
+Unknown_0x32091:
 INCBIN "baserom.gbc", $32091, $32092 - $32091
 
 LoggedData_0x32092:
 INCBIN "baserom.gbc", $32092, $32095 - $32092
 
-UnknownData_0x32095:
+Unknown_0x32095:
 INCBIN "baserom.gbc", $32095, $32096 - $32095
 
 LoggedData_0x32096:
 INCBIN "baserom.gbc", $32096, $32099 - $32096
 
-UnknownData_0x32099:
+Unknown_0x32099:
 INCBIN "baserom.gbc", $32099, $3209A - $32099
 
 LoggedData_0x3209A:
 INCBIN "baserom.gbc", $3209A, $3209D - $3209A
 
-UnknownData_0x3209D:
+Unknown_0x3209D:
 INCBIN "baserom.gbc", $3209D, $3209E - $3209D
 
 LoggedData_0x3209E:
 INCBIN "baserom.gbc", $3209E, $320A1 - $3209E
 
-UnknownData_0x320A1:
+Unknown_0x320A1:
 INCBIN "baserom.gbc", $320A1, $320A2 - $320A1
 
 LoggedData_0x320A2:
 INCBIN "baserom.gbc", $320A2, $320A5 - $320A2
 
-UnknownData_0x320A5:
+Unknown_0x320A5:
 INCBIN "baserom.gbc", $320A5, $320A6 - $320A5
 
 LoggedData_0x320A6:
 INCBIN "baserom.gbc", $320A6, $320A9 - $320A6
 
-UnknownData_0x320A9:
+Unknown_0x320A9:
 INCBIN "baserom.gbc", $320A9, $320AA - $320A9
 
 LoggedData_0x320AA:
 INCBIN "baserom.gbc", $320AA, $320AD - $320AA
 
-UnknownData_0x320AD:
+Unknown_0x320AD:
 INCBIN "baserom.gbc", $320AD, $320AE - $320AD
 
 LoggedData_0x320AE:
 INCBIN "baserom.gbc", $320AE, $320B1 - $320AE
 
-UnknownData_0x320B1:
+Unknown_0x320B1:
 INCBIN "baserom.gbc", $320B1, $320B2 - $320B1
 
 LoggedData_0x320B2:
 INCBIN "baserom.gbc", $320B2, $320B5 - $320B2
 
-UnknownData_0x320B5:
+Unknown_0x320B5:
 INCBIN "baserom.gbc", $320B5, $320B6 - $320B5
 
 LoggedData_0x320B6:
 INCBIN "baserom.gbc", $320B6, $320B9 - $320B6
 
-UnknownData_0x320B9:
+Unknown_0x320B9:
 INCBIN "baserom.gbc", $320B9, $320BA - $320B9
 
 LoggedData_0x320BA:
 INCBIN "baserom.gbc", $320BA, $320BD - $320BA
 
-UnknownData_0x320BD:
+Unknown_0x320BD:
 INCBIN "baserom.gbc", $320BD, $320BE - $320BD
 
 LoggedData_0x320BE:
 INCBIN "baserom.gbc", $320BE, $320C1 - $320BE
 
-UnknownData_0x320C1:
+Unknown_0x320C1:
 INCBIN "baserom.gbc", $320C1, $320C2 - $320C1
 
 LoggedData_0x320C2:
 INCBIN "baserom.gbc", $320C2, $320C5 - $320C2
 
-UnknownData_0x320C5:
+Unknown_0x320C5:
 INCBIN "baserom.gbc", $320C5, $320C6 - $320C5
 
 LoggedData_0x320C6:
 INCBIN "baserom.gbc", $320C6, $320C9 - $320C6
 
-UnknownData_0x320C9:
+Unknown_0x320C9:
 INCBIN "baserom.gbc", $320C9, $320CA - $320C9
 
 LoggedData_0x320CA:
 INCBIN "baserom.gbc", $320CA, $320CD - $320CA
 
-UnknownData_0x320CD:
+Unknown_0x320CD:
 INCBIN "baserom.gbc", $320CD, $320D6 - $320CD
 
 LoggedData_0x320D6:
 INCBIN "baserom.gbc", $320D6, $320D9 - $320D6
 
-UnknownData_0x320D9:
+Unknown_0x320D9:
 INCBIN "baserom.gbc", $320D9, $320DA - $320D9
 
 LoggedData_0x320DA:
 INCBIN "baserom.gbc", $320DA, $320DD - $320DA
 
-UnknownData_0x320DD:
+Unknown_0x320DD:
 INCBIN "baserom.gbc", $320DD, $320DE - $320DD
 
 LoggedData_0x320DE:
 INCBIN "baserom.gbc", $320DE, $320E1 - $320DE
 
-UnknownData_0x320E1:
+Unknown_0x320E1:
 INCBIN "baserom.gbc", $320E1, $320E2 - $320E1
 
 LoggedData_0x320E2:
 INCBIN "baserom.gbc", $320E2, $320E5 - $320E2
 
-UnknownData_0x320E5:
+Unknown_0x320E5:
 INCBIN "baserom.gbc", $320E5, $320E6 - $320E5
 
 LoggedData_0x320E6:
 INCBIN "baserom.gbc", $320E6, $320E9 - $320E6
 
-UnknownData_0x320E9:
+Unknown_0x320E9:
 INCBIN "baserom.gbc", $320E9, $320EA - $320E9
 
 LoggedData_0x320EA:
 INCBIN "baserom.gbc", $320EA, $320ED - $320EA
 
-UnknownData_0x320ED:
+Unknown_0x320ED:
 INCBIN "baserom.gbc", $320ED, $320EE - $320ED
 
 LoggedData_0x320EE:
 INCBIN "baserom.gbc", $320EE, $320F1 - $320EE
 
-UnknownData_0x320F1:
+Unknown_0x320F1:
 INCBIN "baserom.gbc", $320F1, $320F2 - $320F1
 
 LoggedData_0x320F2:
 INCBIN "baserom.gbc", $320F2, $320F5 - $320F2
 
-UnknownData_0x320F5:
+Unknown_0x320F5:
 INCBIN "baserom.gbc", $320F5, $320F6 - $320F5
 
 LoggedData_0x320F6:
 INCBIN "baserom.gbc", $320F6, $320F9 - $320F6
 
-UnknownData_0x320F9:
+Unknown_0x320F9:
 INCBIN "baserom.gbc", $320F9, $320FA - $320F9
 
 LoggedData_0x320FA:
 INCBIN "baserom.gbc", $320FA, $320FD - $320FA
 
-UnknownData_0x320FD:
+Unknown_0x320FD:
 INCBIN "baserom.gbc", $320FD, $320FE - $320FD
 
 LoggedData_0x320FE:
 INCBIN "baserom.gbc", $320FE, $32101 - $320FE
 
-UnknownData_0x32101:
+Unknown_0x32101:
 INCBIN "baserom.gbc", $32101, $32102 - $32101
 
 LoggedData_0x32102:
 INCBIN "baserom.gbc", $32102, $32105 - $32102
 
-UnknownData_0x32105:
+Unknown_0x32105:
 INCBIN "baserom.gbc", $32105, $32106 - $32105
 
 LoggedData_0x32106:
 INCBIN "baserom.gbc", $32106, $32109 - $32106
 
-UnknownData_0x32109:
+Unknown_0x32109:
 INCBIN "baserom.gbc", $32109, $3210A - $32109
 
 LoggedData_0x3210A:
 INCBIN "baserom.gbc", $3210A, $3210D - $3210A
 
-UnknownData_0x3210D:
+Unknown_0x3210D:
 INCBIN "baserom.gbc", $3210D, $3210E - $3210D
 
 LoggedData_0x3210E:
 INCBIN "baserom.gbc", $3210E, $32111 - $3210E
 
-UnknownData_0x32111:
+Unknown_0x32111:
 INCBIN "baserom.gbc", $32111, $32112 - $32111
 
 LoggedData_0x32112:
 INCBIN "baserom.gbc", $32112, $32115 - $32112
 
-UnknownData_0x32115:
+Unknown_0x32115:
 INCBIN "baserom.gbc", $32115, $32116 - $32115
 
 LoggedData_0x32116:
 INCBIN "baserom.gbc", $32116, $32119 - $32116
 
-UnknownData_0x32119:
+Unknown_0x32119:
 INCBIN "baserom.gbc", $32119, $3211A - $32119
 
 LoggedData_0x3211A:
 INCBIN "baserom.gbc", $3211A, $3211D - $3211A
 
-UnknownData_0x3211D:
+Unknown_0x3211D:
 INCBIN "baserom.gbc", $3211D, $3211E - $3211D
 
 LoggedData_0x3211E:
 INCBIN "baserom.gbc", $3211E, $32121 - $3211E
 
-UnknownData_0x32121:
+Unknown_0x32121:
 INCBIN "baserom.gbc", $32121, $32122 - $32121
 
 LoggedData_0x32122:
 INCBIN "baserom.gbc", $32122, $32125 - $32122
 
-UnknownData_0x32125:
+Unknown_0x32125:
 INCBIN "baserom.gbc", $32125, $32126 - $32125
 
 LoggedData_0x32126:
 INCBIN "baserom.gbc", $32126, $32129 - $32126
 
-UnknownData_0x32129:
+Unknown_0x32129:
 INCBIN "baserom.gbc", $32129, $3212A - $32129
 
 LoggedData_0x3212A:
 INCBIN "baserom.gbc", $3212A, $3212D - $3212A
 
-UnknownData_0x3212D:
+Unknown_0x3212D:
 INCBIN "baserom.gbc", $3212D, $3212E - $3212D
 
 LoggedData_0x3212E:
 INCBIN "baserom.gbc", $3212E, $32131 - $3212E
 
-UnknownData_0x32131:
+Unknown_0x32131:
 INCBIN "baserom.gbc", $32131, $32132 - $32131
 
 LoggedData_0x32132:
 INCBIN "baserom.gbc", $32132, $32135 - $32132
 
-UnknownData_0x32135:
+Unknown_0x32135:
 INCBIN "baserom.gbc", $32135, $32136 - $32135
 
 LoggedData_0x32136:
 INCBIN "baserom.gbc", $32136, $32139 - $32136
 
-UnknownData_0x32139:
+Unknown_0x32139:
 INCBIN "baserom.gbc", $32139, $3213A - $32139
 
 LoggedData_0x3213A:
 INCBIN "baserom.gbc", $3213A, $3213D - $3213A
 
-UnknownData_0x3213D:
+Unknown_0x3213D:
 INCBIN "baserom.gbc", $3213D, $3213E - $3213D
 
 LoggedData_0x3213E:
 INCBIN "baserom.gbc", $3213E, $32141 - $3213E
 
-UnknownData_0x32141:
+Unknown_0x32141:
 INCBIN "baserom.gbc", $32141, $32142 - $32141
 
 LoggedData_0x32142:
 INCBIN "baserom.gbc", $32142, $32145 - $32142
 
-UnknownData_0x32145:
+Unknown_0x32145:
 INCBIN "baserom.gbc", $32145, $32146 - $32145
 
 LoggedData_0x32146:
 INCBIN "baserom.gbc", $32146, $32149 - $32146
 
-UnknownData_0x32149:
+Unknown_0x32149:
 INCBIN "baserom.gbc", $32149, $3214A - $32149
 
 LoggedData_0x3214A:
 INCBIN "baserom.gbc", $3214A, $3214D - $3214A
 
-UnknownData_0x3214D:
+Unknown_0x3214D:
 INCBIN "baserom.gbc", $3214D, $3214E - $3214D
 
 LoggedData_0x3214E:
 INCBIN "baserom.gbc", $3214E, $32151 - $3214E
 
-UnknownData_0x32151:
+Unknown_0x32151:
 INCBIN "baserom.gbc", $32151, $32152 - $32151
 
 LoggedData_0x32152:
 INCBIN "baserom.gbc", $32152, $32155 - $32152
 
-UnknownData_0x32155:
+Unknown_0x32155:
 INCBIN "baserom.gbc", $32155, $32156 - $32155
 
 LoggedData_0x32156:
 INCBIN "baserom.gbc", $32156, $32159 - $32156
 
-UnknownData_0x32159:
+Unknown_0x32159:
 INCBIN "baserom.gbc", $32159, $3215A - $32159
 
 LoggedData_0x3215A:
 INCBIN "baserom.gbc", $3215A, $3215D - $3215A
 
-UnknownData_0x3215D:
+Unknown_0x3215D:
 INCBIN "baserom.gbc", $3215D, $3215E - $3215D
 
 LoggedData_0x3215E:
 INCBIN "baserom.gbc", $3215E, $32161 - $3215E
 
-UnknownData_0x32161:
+Unknown_0x32161:
 INCBIN "baserom.gbc", $32161, $32162 - $32161
 
 LoggedData_0x32162:
 INCBIN "baserom.gbc", $32162, $32165 - $32162
 
-UnknownData_0x32165:
+Unknown_0x32165:
 INCBIN "baserom.gbc", $32165, $32166 - $32165
 
 LoggedData_0x32166:
 INCBIN "baserom.gbc", $32166, $32169 - $32166
 
-UnknownData_0x32169:
+Unknown_0x32169:
 INCBIN "baserom.gbc", $32169, $3216A - $32169
 
 LoggedData_0x3216A:
 INCBIN "baserom.gbc", $3216A, $3216D - $3216A
 
-UnknownData_0x3216D:
+Unknown_0x3216D:
 INCBIN "baserom.gbc", $3216D, $3216E - $3216D
 
 LoggedData_0x3216E:
 INCBIN "baserom.gbc", $3216E, $32171 - $3216E
 
-UnknownData_0x32171:
+Unknown_0x32171:
 INCBIN "baserom.gbc", $32171, $32172 - $32171
 
 LoggedData_0x32172:
 INCBIN "baserom.gbc", $32172, $32175 - $32172
 
-UnknownData_0x32175:
+Unknown_0x32175:
 INCBIN "baserom.gbc", $32175, $32176 - $32175
 
 LoggedData_0x32176:
 INCBIN "baserom.gbc", $32176, $32179 - $32176
 
-UnknownData_0x32179:
+Unknown_0x32179:
 INCBIN "baserom.gbc", $32179, $3217A - $32179
 
 LoggedData_0x3217A:
 INCBIN "baserom.gbc", $3217A, $3217D - $3217A
 
-UnknownData_0x3217D:
+Unknown_0x3217D:
 INCBIN "baserom.gbc", $3217D, $3217E - $3217D
 
 LoggedData_0x3217E:
 INCBIN "baserom.gbc", $3217E, $32181 - $3217E
 
-UnknownData_0x32181:
+Unknown_0x32181:
 INCBIN "baserom.gbc", $32181, $32182 - $32181
 
 LoggedData_0x32182:
 INCBIN "baserom.gbc", $32182, $32185 - $32182
 
-UnknownData_0x32185:
+Unknown_0x32185:
 INCBIN "baserom.gbc", $32185, $32186 - $32185
 
 LoggedData_0x32186:
 INCBIN "baserom.gbc", $32186, $32189 - $32186
 
-UnknownData_0x32189:
+Unknown_0x32189:
 INCBIN "baserom.gbc", $32189, $3218A - $32189
 
 LoggedData_0x3218A:
 INCBIN "baserom.gbc", $3218A, $3218D - $3218A
 
-UnknownData_0x3218D:
+Unknown_0x3218D:
 INCBIN "baserom.gbc", $3218D, $3218E - $3218D
 
 LoggedData_0x3218E:
 INCBIN "baserom.gbc", $3218E, $32191 - $3218E
 
-UnknownData_0x32191:
+Unknown_0x32191:
 INCBIN "baserom.gbc", $32191, $32192 - $32191
 
 LoggedData_0x32192:
 INCBIN "baserom.gbc", $32192, $32195 - $32192
 
-UnknownData_0x32195:
+Unknown_0x32195:
 INCBIN "baserom.gbc", $32195, $32196 - $32195
 
 LoggedData_0x32196:
 INCBIN "baserom.gbc", $32196, $32199 - $32196
 
-UnknownData_0x32199:
+Unknown_0x32199:
 INCBIN "baserom.gbc", $32199, $3219A - $32199
 
 LoggedData_0x3219A:
 INCBIN "baserom.gbc", $3219A, $3219D - $3219A
 
-UnknownData_0x3219D:
+Unknown_0x3219D:
 INCBIN "baserom.gbc", $3219D, $3219E - $3219D
 
 LoggedData_0x3219E:
 INCBIN "baserom.gbc", $3219E, $321A1 - $3219E
 
-UnknownData_0x321A1:
+Unknown_0x321A1:
 INCBIN "baserom.gbc", $321A1, $321A2 - $321A1
 
 LoggedData_0x321A2:
 INCBIN "baserom.gbc", $321A2, $321A5 - $321A2
 
-UnknownData_0x321A5:
+Unknown_0x321A5:
 INCBIN "baserom.gbc", $321A5, $321A6 - $321A5
 
 LoggedData_0x321A6:
 INCBIN "baserom.gbc", $321A6, $321A9 - $321A6
 
-UnknownData_0x321A9:
+Unknown_0x321A9:
 INCBIN "baserom.gbc", $321A9, $321AA - $321A9
 
 LoggedData_0x321AA:
 INCBIN "baserom.gbc", $321AA, $321AD - $321AA
 
-UnknownData_0x321AD:
+Unknown_0x321AD:
 INCBIN "baserom.gbc", $321AD, $321AE - $321AD
 
 LoggedData_0x321AE:
 INCBIN "baserom.gbc", $321AE, $321B1 - $321AE
 
-UnknownData_0x321B1:
+Unknown_0x321B1:
 INCBIN "baserom.gbc", $321B1, $321B2 - $321B1
 
 LoggedData_0x321B2:
 INCBIN "baserom.gbc", $321B2, $321B5 - $321B2
 
-UnknownData_0x321B5:
+Unknown_0x321B5:
 INCBIN "baserom.gbc", $321B5, $321B6 - $321B5
 
 LoggedData_0x321B6:
 INCBIN "baserom.gbc", $321B6, $321B9 - $321B6
 
-UnknownData_0x321B9:
+Unknown_0x321B9:
 INCBIN "baserom.gbc", $321B9, $321BA - $321B9
 
 LoggedData_0x321BA:
 INCBIN "baserom.gbc", $321BA, $321BD - $321BA
 
-UnknownData_0x321BD:
+Unknown_0x321BD:
 INCBIN "baserom.gbc", $321BD, $321BE - $321BD
 
 LoggedData_0x321BE:
 INCBIN "baserom.gbc", $321BE, $321C1 - $321BE
 
-UnknownData_0x321C1:
+Unknown_0x321C1:
 INCBIN "baserom.gbc", $321C1, $321C2 - $321C1
 
 LoggedData_0x321C2:
 INCBIN "baserom.gbc", $321C2, $321C5 - $321C2
 
-UnknownData_0x321C5:
+Unknown_0x321C5:
 INCBIN "baserom.gbc", $321C5, $321C6 - $321C5
 
 LoggedData_0x321C6:
 INCBIN "baserom.gbc", $321C6, $321C9 - $321C6
 
-UnknownData_0x321C9:
+Unknown_0x321C9:
 INCBIN "baserom.gbc", $321C9, $321CA - $321C9
 
 LoggedData_0x321CA:
 INCBIN "baserom.gbc", $321CA, $321CD - $321CA
 
-UnknownData_0x321CD:
+Unknown_0x321CD:
 INCBIN "baserom.gbc", $321CD, $321CE - $321CD
 
 LoggedData_0x321CE:
 INCBIN "baserom.gbc", $321CE, $321D1 - $321CE
 
-UnknownData_0x321D1:
+Unknown_0x321D1:
 INCBIN "baserom.gbc", $321D1, $321D2 - $321D1
 
 LoggedData_0x321D2:
 INCBIN "baserom.gbc", $321D2, $321D5 - $321D2
 
-UnknownData_0x321D5:
+Unknown_0x321D5:
 INCBIN "baserom.gbc", $321D5, $321D6 - $321D5
 
 LoggedData_0x321D6:
 INCBIN "baserom.gbc", $321D6, $321D9 - $321D6
 
-UnknownData_0x321D9:
+Unknown_0x321D9:
 INCBIN "baserom.gbc", $321D9, $321DA - $321D9
 
 LoggedData_0x321DA:
 INCBIN "baserom.gbc", $321DA, $321DD - $321DA
 
-UnknownData_0x321DD:
+Unknown_0x321DD:
 INCBIN "baserom.gbc", $321DD, $32266 - $321DD
 
 LoggedData_0x32266:
 INCBIN "baserom.gbc", $32266, $32269 - $32266
 
-UnknownData_0x32269:
+Unknown_0x32269:
 INCBIN "baserom.gbc", $32269, $3226A - $32269
 
 LoggedData_0x3226A:
 INCBIN "baserom.gbc", $3226A, $3226D - $3226A
 
-UnknownData_0x3226D:
+Unknown_0x3226D:
 INCBIN "baserom.gbc", $3226D, $3226E - $3226D
 
 LoggedData_0x3226E:
 INCBIN "baserom.gbc", $3226E, $32271 - $3226E
 
-UnknownData_0x32271:
+Unknown_0x32271:
 INCBIN "baserom.gbc", $32271, $32272 - $32271
 
 LoggedData_0x32272:
 INCBIN "baserom.gbc", $32272, $32275 - $32272
 
-UnknownData_0x32275:
+Unknown_0x32275:
 INCBIN "baserom.gbc", $32275, $32276 - $32275
 
 LoggedData_0x32276:
 INCBIN "baserom.gbc", $32276, $32279 - $32276
 
-UnknownData_0x32279:
+Unknown_0x32279:
 INCBIN "baserom.gbc", $32279, $3227A - $32279
 
 LoggedData_0x3227A:
 INCBIN "baserom.gbc", $3227A, $3227D - $3227A
 
-UnknownData_0x3227D:
+Unknown_0x3227D:
 INCBIN "baserom.gbc", $3227D, $3227E - $3227D
 
 LoggedData_0x3227E:
 INCBIN "baserom.gbc", $3227E, $32281 - $3227E
 
-UnknownData_0x32281:
+Unknown_0x32281:
 INCBIN "baserom.gbc", $32281, $32282 - $32281
 
 LoggedData_0x32282:
 INCBIN "baserom.gbc", $32282, $32285 - $32282
 
-UnknownData_0x32285:
+Unknown_0x32285:
 INCBIN "baserom.gbc", $32285, $32286 - $32285
 
 LoggedData_0x32286:
 INCBIN "baserom.gbc", $32286, $32289 - $32286
 
-UnknownData_0x32289:
+Unknown_0x32289:
 INCBIN "baserom.gbc", $32289, $3228A - $32289
 
 LoggedData_0x3228A:
 INCBIN "baserom.gbc", $3228A, $3228D - $3228A
 
-UnknownData_0x3228D:
+Unknown_0x3228D:
 INCBIN "baserom.gbc", $3228D, $3228E - $3228D
 
 LoggedData_0x3228E:
 INCBIN "baserom.gbc", $3228E, $32291 - $3228E
 
-UnknownData_0x32291:
+Unknown_0x32291:
 INCBIN "baserom.gbc", $32291, $32292 - $32291
 
 LoggedData_0x32292:
 INCBIN "baserom.gbc", $32292, $32295 - $32292
 
-UnknownData_0x32295:
+Unknown_0x32295:
 INCBIN "baserom.gbc", $32295, $32296 - $32295
 
 LoggedData_0x32296:
 INCBIN "baserom.gbc", $32296, $32299 - $32296
 
-UnknownData_0x32299:
+Unknown_0x32299:
 INCBIN "baserom.gbc", $32299, $3229A - $32299
 
 LoggedData_0x3229A:
 INCBIN "baserom.gbc", $3229A, $3229D - $3229A
 
-UnknownData_0x3229D:
+Unknown_0x3229D:
 INCBIN "baserom.gbc", $3229D, $3229E - $3229D
 
 LoggedData_0x3229E:
 INCBIN "baserom.gbc", $3229E, $322A1 - $3229E
 
-UnknownData_0x322A1:
+Unknown_0x322A1:
 INCBIN "baserom.gbc", $322A1, $322A2 - $322A1
 
 LoggedData_0x322A2:
 INCBIN "baserom.gbc", $322A2, $322A5 - $322A2
 
-UnknownData_0x322A5:
+Unknown_0x322A5:
 INCBIN "baserom.gbc", $322A5, $322A6 - $322A5
 
 LoggedData_0x322A6:
 INCBIN "baserom.gbc", $322A6, $322A9 - $322A6
 
-UnknownData_0x322A9:
+Unknown_0x322A9:
 INCBIN "baserom.gbc", $322A9, $322AA - $322A9
 
 LoggedData_0x322AA:
 INCBIN "baserom.gbc", $322AA, $322AD - $322AA
 
-UnknownData_0x322AD:
+Unknown_0x322AD:
 INCBIN "baserom.gbc", $322AD, $322AE - $322AD
 
 LoggedData_0x322AE:
 INCBIN "baserom.gbc", $322AE, $322B1 - $322AE
 
-UnknownData_0x322B1:
+Unknown_0x322B1:
 INCBIN "baserom.gbc", $322B1, $322B2 - $322B1
 
 LoggedData_0x322B2:
 INCBIN "baserom.gbc", $322B2, $322B5 - $322B2
 
-UnknownData_0x322B5:
+Unknown_0x322B5:
 INCBIN "baserom.gbc", $322B5, $322B6 - $322B5
 
 LoggedData_0x322B6:
 INCBIN "baserom.gbc", $322B6, $322B9 - $322B6
 
-UnknownData_0x322B9:
+Unknown_0x322B9:
 INCBIN "baserom.gbc", $322B9, $322BA - $322B9
 
 LoggedData_0x322BA:
 INCBIN "baserom.gbc", $322BA, $322BD - $322BA
 
-UnknownData_0x322BD:
+Unknown_0x322BD:
 INCBIN "baserom.gbc", $322BD, $322BE - $322BD
 
 LoggedData_0x322BE:
 INCBIN "baserom.gbc", $322BE, $322C1 - $322BE
 
-UnknownData_0x322C1:
+Unknown_0x322C1:
 INCBIN "baserom.gbc", $322C1, $322C2 - $322C1
 
 LoggedData_0x322C2:
 INCBIN "baserom.gbc", $322C2, $322C5 - $322C2
 
-UnknownData_0x322C5:
+Unknown_0x322C5:
 INCBIN "baserom.gbc", $322C5, $322C6 - $322C5
 
 LoggedData_0x322C6:
 INCBIN "baserom.gbc", $322C6, $322C9 - $322C6
 
-UnknownData_0x322C9:
+Unknown_0x322C9:
 INCBIN "baserom.gbc", $322C9, $322CA - $322C9
 
 LoggedData_0x322CA:
 INCBIN "baserom.gbc", $322CA, $322CD - $322CA
 
-UnknownData_0x322CD:
+Unknown_0x322CD:
 INCBIN "baserom.gbc", $322CD, $322D6 - $322CD
 
 LoggedData_0x322D6:
 INCBIN "baserom.gbc", $322D6, $322D9 - $322D6
 
-UnknownData_0x322D9:
+Unknown_0x322D9:
 INCBIN "baserom.gbc", $322D9, $322DA - $322D9
 
 LoggedData_0x322DA:
 INCBIN "baserom.gbc", $322DA, $322DD - $322DA
 
-UnknownData_0x322DD:
+Unknown_0x322DD:
 INCBIN "baserom.gbc", $322DD, $322DE - $322DD
 
 LoggedData_0x322DE:
 INCBIN "baserom.gbc", $322DE, $322E1 - $322DE
 
-UnknownData_0x322E1:
+Unknown_0x322E1:
 INCBIN "baserom.gbc", $322E1, $322E2 - $322E1
 
 LoggedData_0x322E2:
 INCBIN "baserom.gbc", $322E2, $322E5 - $322E2
 
-UnknownData_0x322E5:
+Unknown_0x322E5:
 INCBIN "baserom.gbc", $322E5, $322E6 - $322E5
 
 LoggedData_0x322E6:
 INCBIN "baserom.gbc", $322E6, $322E9 - $322E6
 
-UnknownData_0x322E9:
+Unknown_0x322E9:
 INCBIN "baserom.gbc", $322E9, $322EA - $322E9
 
 LoggedData_0x322EA:
 INCBIN "baserom.gbc", $322EA, $322ED - $322EA
 
-UnknownData_0x322ED:
+Unknown_0x322ED:
 INCBIN "baserom.gbc", $322ED, $322EE - $322ED
 
 LoggedData_0x322EE:
 INCBIN "baserom.gbc", $322EE, $322F1 - $322EE
 
-UnknownData_0x322F1:
+Unknown_0x322F1:
 INCBIN "baserom.gbc", $322F1, $322F2 - $322F1
 
 LoggedData_0x322F2:
 INCBIN "baserom.gbc", $322F2, $322F5 - $322F2
 
-UnknownData_0x322F5:
+Unknown_0x322F5:
 INCBIN "baserom.gbc", $322F5, $322F6 - $322F5
 
 LoggedData_0x322F6:
 INCBIN "baserom.gbc", $322F6, $322F9 - $322F6
 
-UnknownData_0x322F9:
+Unknown_0x322F9:
 INCBIN "baserom.gbc", $322F9, $322FA - $322F9
 
 LoggedData_0x322FA:
 INCBIN "baserom.gbc", $322FA, $322FD - $322FA
 
-UnknownData_0x322FD:
+Unknown_0x322FD:
 INCBIN "baserom.gbc", $322FD, $322FE - $322FD
 
 LoggedData_0x322FE:
 INCBIN "baserom.gbc", $322FE, $32301 - $322FE
 
-UnknownData_0x32301:
+Unknown_0x32301:
 INCBIN "baserom.gbc", $32301, $32302 - $32301
 
 LoggedData_0x32302:
 INCBIN "baserom.gbc", $32302, $32305 - $32302
 
-UnknownData_0x32305:
+Unknown_0x32305:
 INCBIN "baserom.gbc", $32305, $32306 - $32305
 
 LoggedData_0x32306:
 INCBIN "baserom.gbc", $32306, $32309 - $32306
 
-UnknownData_0x32309:
+Unknown_0x32309:
 INCBIN "baserom.gbc", $32309, $3230A - $32309
 
 LoggedData_0x3230A:
 INCBIN "baserom.gbc", $3230A, $3230D - $3230A
 
-UnknownData_0x3230D:
+Unknown_0x3230D:
 INCBIN "baserom.gbc", $3230D, $3230E - $3230D
 
 LoggedData_0x3230E:
 INCBIN "baserom.gbc", $3230E, $32311 - $3230E
 
-UnknownData_0x32311:
+Unknown_0x32311:
 INCBIN "baserom.gbc", $32311, $32312 - $32311
 
 LoggedData_0x32312:
 INCBIN "baserom.gbc", $32312, $32315 - $32312
 
-UnknownData_0x32315:
+Unknown_0x32315:
 INCBIN "baserom.gbc", $32315, $3231E - $32315
 
 LoggedData_0x3231E:
 INCBIN "baserom.gbc", $3231E, $32321 - $3231E
 
-UnknownData_0x32321:
+Unknown_0x32321:
 INCBIN "baserom.gbc", $32321, $32322 - $32321
 
 LoggedData_0x32322:
 INCBIN "baserom.gbc", $32322, $32325 - $32322
 
-UnknownData_0x32325:
+Unknown_0x32325:
 INCBIN "baserom.gbc", $32325, $32326 - $32325
 
 LoggedData_0x32326:
 INCBIN "baserom.gbc", $32326, $32329 - $32326
 
-UnknownData_0x32329:
+Unknown_0x32329:
 INCBIN "baserom.gbc", $32329, $3232A - $32329
 
 LoggedData_0x3232A:
 INCBIN "baserom.gbc", $3232A, $3232D - $3232A
 
-UnknownData_0x3232D:
+Unknown_0x3232D:
 INCBIN "baserom.gbc", $3232D, $3232E - $3232D
 
 LoggedData_0x3232E:
 INCBIN "baserom.gbc", $3232E, $32331 - $3232E
 
-UnknownData_0x32331:
+Unknown_0x32331:
 INCBIN "baserom.gbc", $32331, $32332 - $32331
 
 LoggedData_0x32332:
 INCBIN "baserom.gbc", $32332, $32335 - $32332
 
-UnknownData_0x32335:
+Unknown_0x32335:
 INCBIN "baserom.gbc", $32335, $32336 - $32335
 
 LoggedData_0x32336:
 INCBIN "baserom.gbc", $32336, $32339 - $32336
 
-UnknownData_0x32339:
+Unknown_0x32339:
 INCBIN "baserom.gbc", $32339, $3233A - $32339
 
 LoggedData_0x3233A:
 INCBIN "baserom.gbc", $3233A, $3233D - $3233A
 
-UnknownData_0x3233D:
+Unknown_0x3233D:
 INCBIN "baserom.gbc", $3233D, $3233E - $3233D
 
 LoggedData_0x3233E:
 INCBIN "baserom.gbc", $3233E, $32341 - $3233E
 
-UnknownData_0x32341:
+Unknown_0x32341:
 INCBIN "baserom.gbc", $32341, $32342 - $32341
 
 LoggedData_0x32342:
 INCBIN "baserom.gbc", $32342, $32345 - $32342
 
-UnknownData_0x32345:
+Unknown_0x32345:
 INCBIN "baserom.gbc", $32345, $32346 - $32345
 
 LoggedData_0x32346:
 INCBIN "baserom.gbc", $32346, $32349 - $32346
 
-UnknownData_0x32349:
+Unknown_0x32349:
 INCBIN "baserom.gbc", $32349, $3234A - $32349
 
 LoggedData_0x3234A:
 INCBIN "baserom.gbc", $3234A, $3234D - $3234A
 
-UnknownData_0x3234D:
+Unknown_0x3234D:
 INCBIN "baserom.gbc", $3234D, $3234E - $3234D
 
 LoggedData_0x3234E:
 INCBIN "baserom.gbc", $3234E, $32351 - $3234E
 
-UnknownData_0x32351:
+Unknown_0x32351:
 INCBIN "baserom.gbc", $32351, $32352 - $32351
 
 LoggedData_0x32352:
 INCBIN "baserom.gbc", $32352, $32355 - $32352
 
-UnknownData_0x32355:
+Unknown_0x32355:
 INCBIN "baserom.gbc", $32355, $32356 - $32355
 
 LoggedData_0x32356:
 INCBIN "baserom.gbc", $32356, $32359 - $32356
 
-UnknownData_0x32359:
+Unknown_0x32359:
 INCBIN "baserom.gbc", $32359, $3235A - $32359
 
 LoggedData_0x3235A:
 INCBIN "baserom.gbc", $3235A, $3235D - $3235A
 
-UnknownData_0x3235D:
+Unknown_0x3235D:
 INCBIN "baserom.gbc", $3235D, $3235E - $3235D
 
 LoggedData_0x3235E:
 INCBIN "baserom.gbc", $3235E, $32361 - $3235E
 
-UnknownData_0x32361:
+Unknown_0x32361:
 INCBIN "baserom.gbc", $32361, $32362 - $32361
 
 LoggedData_0x32362:
 INCBIN "baserom.gbc", $32362, $32365 - $32362
 
-UnknownData_0x32365:
+Unknown_0x32365:
 INCBIN "baserom.gbc", $32365, $32366 - $32365
 
 LoggedData_0x32366:
 INCBIN "baserom.gbc", $32366, $32369 - $32366
 
-UnknownData_0x32369:
+Unknown_0x32369:
 INCBIN "baserom.gbc", $32369, $3236A - $32369
 
 LoggedData_0x3236A:
 INCBIN "baserom.gbc", $3236A, $3236D - $3236A
 
-UnknownData_0x3236D:
+Unknown_0x3236D:
 INCBIN "baserom.gbc", $3236D, $3236E - $3236D
 
 LoggedData_0x3236E:
 INCBIN "baserom.gbc", $3236E, $32371 - $3236E
 
-UnknownData_0x32371:
+Unknown_0x32371:
 INCBIN "baserom.gbc", $32371, $32372 - $32371
 
 LoggedData_0x32372:
 INCBIN "baserom.gbc", $32372, $32375 - $32372
 
-UnknownData_0x32375:
+Unknown_0x32375:
 INCBIN "baserom.gbc", $32375, $32376 - $32375
 
 LoggedData_0x32376:
 INCBIN "baserom.gbc", $32376, $32379 - $32376
 
-UnknownData_0x32379:
+Unknown_0x32379:
 INCBIN "baserom.gbc", $32379, $3237A - $32379
 
 LoggedData_0x3237A:
 INCBIN "baserom.gbc", $3237A, $3237D - $3237A
 
-UnknownData_0x3237D:
+Unknown_0x3237D:
 INCBIN "baserom.gbc", $3237D, $3237E - $3237D
 
 LoggedData_0x3237E:
 INCBIN "baserom.gbc", $3237E, $32381 - $3237E
 
-UnknownData_0x32381:
+Unknown_0x32381:
 INCBIN "baserom.gbc", $32381, $32382 - $32381
 
 LoggedData_0x32382:
 INCBIN "baserom.gbc", $32382, $32385 - $32382
 
-UnknownData_0x32385:
+Unknown_0x32385:
 INCBIN "baserom.gbc", $32385, $32386 - $32385
 
 LoggedData_0x32386:
 INCBIN "baserom.gbc", $32386, $32389 - $32386
 
-UnknownData_0x32389:
+Unknown_0x32389:
 INCBIN "baserom.gbc", $32389, $3238A - $32389
 
 LoggedData_0x3238A:
 INCBIN "baserom.gbc", $3238A, $3238D - $3238A
 
-UnknownData_0x3238D:
+Unknown_0x3238D:
 INCBIN "baserom.gbc", $3238D, $3238E - $3238D
 
 LoggedData_0x3238E:
 INCBIN "baserom.gbc", $3238E, $32391 - $3238E
 
-UnknownData_0x32391:
+Unknown_0x32391:
 INCBIN "baserom.gbc", $32391, $32392 - $32391
 
 LoggedData_0x32392:
 INCBIN "baserom.gbc", $32392, $32395 - $32392
 
-UnknownData_0x32395:
+Unknown_0x32395:
 INCBIN "baserom.gbc", $32395, $32396 - $32395
 
 LoggedData_0x32396:
 INCBIN "baserom.gbc", $32396, $32399 - $32396
 
-UnknownData_0x32399:
+Unknown_0x32399:
 INCBIN "baserom.gbc", $32399, $3239A - $32399
 
 LoggedData_0x3239A:
 INCBIN "baserom.gbc", $3239A, $3239D - $3239A
 
-UnknownData_0x3239D:
+Unknown_0x3239D:
 INCBIN "baserom.gbc", $3239D, $3239E - $3239D
 
 LoggedData_0x3239E:
 INCBIN "baserom.gbc", $3239E, $323A1 - $3239E
 
-UnknownData_0x323A1:
+Unknown_0x323A1:
 INCBIN "baserom.gbc", $323A1, $323A2 - $323A1
 
 LoggedData_0x323A2:
 INCBIN "baserom.gbc", $323A2, $323A5 - $323A2
 
-UnknownData_0x323A5:
+Unknown_0x323A5:
 INCBIN "baserom.gbc", $323A5, $323AE - $323A5
 
 LoggedData_0x323AE:
 INCBIN "baserom.gbc", $323AE, $323B1 - $323AE
 
-UnknownData_0x323B1:
+Unknown_0x323B1:
 INCBIN "baserom.gbc", $323B1, $323B2 - $323B1
 
 LoggedData_0x323B2:
 INCBIN "baserom.gbc", $323B2, $323B5 - $323B2
 
-UnknownData_0x323B5:
+Unknown_0x323B5:
 INCBIN "baserom.gbc", $323B5, $323B6 - $323B5
 
 LoggedData_0x323B6:
 INCBIN "baserom.gbc", $323B6, $323B9 - $323B6
 
-UnknownData_0x323B9:
+Unknown_0x323B9:
 INCBIN "baserom.gbc", $323B9, $323BA - $323B9
 
 LoggedData_0x323BA:
 INCBIN "baserom.gbc", $323BA, $323BD - $323BA
 
-UnknownData_0x323BD:
+Unknown_0x323BD:
 INCBIN "baserom.gbc", $323BD, $323BE - $323BD
 
 LoggedData_0x323BE:
 INCBIN "baserom.gbc", $323BE, $323C1 - $323BE
 
-UnknownData_0x323C1:
+Unknown_0x323C1:
 INCBIN "baserom.gbc", $323C1, $323C2 - $323C1
 
 LoggedData_0x323C2:
 INCBIN "baserom.gbc", $323C2, $323C5 - $323C2
 
-UnknownData_0x323C5:
+Unknown_0x323C5:
 INCBIN "baserom.gbc", $323C5, $323C6 - $323C5
 
 LoggedData_0x323C6:
 INCBIN "baserom.gbc", $323C6, $323C9 - $323C6
 
-UnknownData_0x323C9:
+Unknown_0x323C9:
 INCBIN "baserom.gbc", $323C9, $323CA - $323C9
 
 LoggedData_0x323CA:
 INCBIN "baserom.gbc", $323CA, $323CD - $323CA
 
-UnknownData_0x323CD:
+Unknown_0x323CD:
 INCBIN "baserom.gbc", $323CD, $323CE - $323CD
 
 LoggedData_0x323CE:
 INCBIN "baserom.gbc", $323CE, $323D1 - $323CE
 
-UnknownData_0x323D1:
+Unknown_0x323D1:
 INCBIN "baserom.gbc", $323D1, $323D2 - $323D1
 
 LoggedData_0x323D2:
 INCBIN "baserom.gbc", $323D2, $323D5 - $323D2
 
-UnknownData_0x323D5:
+Unknown_0x323D5:
 INCBIN "baserom.gbc", $323D5, $323D6 - $323D5
 
 LoggedData_0x323D6:
 INCBIN "baserom.gbc", $323D6, $323D9 - $323D6
 
-UnknownData_0x323D9:
+Unknown_0x323D9:
 INCBIN "baserom.gbc", $323D9, $323DA - $323D9
 
 LoggedData_0x323DA:
 INCBIN "baserom.gbc", $323DA, $323DD - $323DA
 
-UnknownData_0x323DD:
+Unknown_0x323DD:
 INCBIN "baserom.gbc", $323DD, $323DE - $323DD
 
 LoggedData_0x323DE:
 INCBIN "baserom.gbc", $323DE, $323E1 - $323DE
 
-UnknownData_0x323E1:
+Unknown_0x323E1:
 INCBIN "baserom.gbc", $323E1, $323E2 - $323E1
 
 LoggedData_0x323E2:
 INCBIN "baserom.gbc", $323E2, $323E5 - $323E2
 
-UnknownData_0x323E5:
+Unknown_0x323E5:
 INCBIN "baserom.gbc", $323E5, $323E6 - $323E5
 
 LoggedData_0x323E6:
 INCBIN "baserom.gbc", $323E6, $323E9 - $323E6
 
-UnknownData_0x323E9:
+Unknown_0x323E9:
 INCBIN "baserom.gbc", $323E9, $323EA - $323E9
 
 LoggedData_0x323EA:
 INCBIN "baserom.gbc", $323EA, $323ED - $323EA
 
-UnknownData_0x323ED:
+Unknown_0x323ED:
 INCBIN "baserom.gbc", $323ED, $32466 - $323ED
 
 LoggedData_0x32466:
 INCBIN "baserom.gbc", $32466, $32469 - $32466
 
-UnknownData_0x32469:
+Unknown_0x32469:
 INCBIN "baserom.gbc", $32469, $3246A - $32469
 
 LoggedData_0x3246A:
 INCBIN "baserom.gbc", $3246A, $3246D - $3246A
 
-UnknownData_0x3246D:
+Unknown_0x3246D:
 INCBIN "baserom.gbc", $3246D, $3246E - $3246D
 
 LoggedData_0x3246E:
 INCBIN "baserom.gbc", $3246E, $32471 - $3246E
 
-UnknownData_0x32471:
+Unknown_0x32471:
 INCBIN "baserom.gbc", $32471, $32472 - $32471
 
 LoggedData_0x32472:
 INCBIN "baserom.gbc", $32472, $32475 - $32472
 
-UnknownData_0x32475:
+Unknown_0x32475:
 INCBIN "baserom.gbc", $32475, $32476 - $32475
 
 LoggedData_0x32476:
 INCBIN "baserom.gbc", $32476, $32479 - $32476
 
-UnknownData_0x32479:
+Unknown_0x32479:
 INCBIN "baserom.gbc", $32479, $3247A - $32479
 
 LoggedData_0x3247A:
 INCBIN "baserom.gbc", $3247A, $3247D - $3247A
 
-UnknownData_0x3247D:
+Unknown_0x3247D:
 INCBIN "baserom.gbc", $3247D, $3247E - $3247D
 
 LoggedData_0x3247E:
 INCBIN "baserom.gbc", $3247E, $32481 - $3247E
 
-UnknownData_0x32481:
+Unknown_0x32481:
 INCBIN "baserom.gbc", $32481, $32482 - $32481
 
 LoggedData_0x32482:
 INCBIN "baserom.gbc", $32482, $32485 - $32482
 
-UnknownData_0x32485:
+Unknown_0x32485:
 INCBIN "baserom.gbc", $32485, $32486 - $32485
 
 LoggedData_0x32486:
 INCBIN "baserom.gbc", $32486, $32489 - $32486
 
-UnknownData_0x32489:
+Unknown_0x32489:
 INCBIN "baserom.gbc", $32489, $3248A - $32489
 
 LoggedData_0x3248A:
 INCBIN "baserom.gbc", $3248A, $3248D - $3248A
 
-UnknownData_0x3248D:
+Unknown_0x3248D:
 INCBIN "baserom.gbc", $3248D, $3248E - $3248D
 
 LoggedData_0x3248E:
 INCBIN "baserom.gbc", $3248E, $32491 - $3248E
 
-UnknownData_0x32491:
+Unknown_0x32491:
 INCBIN "baserom.gbc", $32491, $32492 - $32491
 
 LoggedData_0x32492:
 INCBIN "baserom.gbc", $32492, $32495 - $32492
 
-UnknownData_0x32495:
+Unknown_0x32495:
 INCBIN "baserom.gbc", $32495, $32496 - $32495
 
 LoggedData_0x32496:
 INCBIN "baserom.gbc", $32496, $32499 - $32496
 
-UnknownData_0x32499:
+Unknown_0x32499:
 INCBIN "baserom.gbc", $32499, $3249A - $32499
 
 LoggedData_0x3249A:
 INCBIN "baserom.gbc", $3249A, $3249D - $3249A
 
-UnknownData_0x3249D:
+Unknown_0x3249D:
 INCBIN "baserom.gbc", $3249D, $3249E - $3249D
 
 LoggedData_0x3249E:
 INCBIN "baserom.gbc", $3249E, $324A1 - $3249E
 
-UnknownData_0x324A1:
+Unknown_0x324A1:
 INCBIN "baserom.gbc", $324A1, $324A2 - $324A1
 
 LoggedData_0x324A2:
 INCBIN "baserom.gbc", $324A2, $324A5 - $324A2
 
-UnknownData_0x324A5:
+Unknown_0x324A5:
 INCBIN "baserom.gbc", $324A5, $324A6 - $324A5
 
 LoggedData_0x324A6:
 INCBIN "baserom.gbc", $324A6, $324A9 - $324A6
 
-UnknownData_0x324A9:
+Unknown_0x324A9:
 INCBIN "baserom.gbc", $324A9, $324AA - $324A9
 
 LoggedData_0x324AA:
 INCBIN "baserom.gbc", $324AA, $324AD - $324AA
 
-UnknownData_0x324AD:
+Unknown_0x324AD:
 INCBIN "baserom.gbc", $324AD, $324AE - $324AD
 
 LoggedData_0x324AE:
 INCBIN "baserom.gbc", $324AE, $324B1 - $324AE
 
-UnknownData_0x324B1:
+Unknown_0x324B1:
 INCBIN "baserom.gbc", $324B1, $324B2 - $324B1
 
 LoggedData_0x324B2:
 INCBIN "baserom.gbc", $324B2, $324B5 - $324B2
 
-UnknownData_0x324B5:
+Unknown_0x324B5:
 INCBIN "baserom.gbc", $324B5, $324B6 - $324B5
 
 LoggedData_0x324B6:
 INCBIN "baserom.gbc", $324B6, $324B9 - $324B6
 
-UnknownData_0x324B9:
+Unknown_0x324B9:
 INCBIN "baserom.gbc", $324B9, $324BA - $324B9
 
 LoggedData_0x324BA:
 INCBIN "baserom.gbc", $324BA, $324BD - $324BA
 
-UnknownData_0x324BD:
+Unknown_0x324BD:
 INCBIN "baserom.gbc", $324BD, $324BE - $324BD
 
 LoggedData_0x324BE:
 INCBIN "baserom.gbc", $324BE, $324C1 - $324BE
 
-UnknownData_0x324C1:
+Unknown_0x324C1:
 INCBIN "baserom.gbc", $324C1, $324C2 - $324C1
 
 LoggedData_0x324C2:
 INCBIN "baserom.gbc", $324C2, $324C5 - $324C2
 
-UnknownData_0x324C5:
+Unknown_0x324C5:
 INCBIN "baserom.gbc", $324C5, $324C6 - $324C5
 
 LoggedData_0x324C6:
 INCBIN "baserom.gbc", $324C6, $324C9 - $324C6
 
-UnknownData_0x324C9:
+Unknown_0x324C9:
 INCBIN "baserom.gbc", $324C9, $324CA - $324C9
 
 LoggedData_0x324CA:
 INCBIN "baserom.gbc", $324CA, $324CD - $324CA
 
-UnknownData_0x324CD:
+Unknown_0x324CD:
 INCBIN "baserom.gbc", $324CD, $324CE - $324CD
 
 LoggedData_0x324CE:
 INCBIN "baserom.gbc", $324CE, $324D1 - $324CE
 
-UnknownData_0x324D1:
+Unknown_0x324D1:
 INCBIN "baserom.gbc", $324D1, $324D2 - $324D1
 
 LoggedData_0x324D2:
 INCBIN "baserom.gbc", $324D2, $324D5 - $324D2
 
-UnknownData_0x324D5:
+Unknown_0x324D5:
 INCBIN "baserom.gbc", $324D5, $324D6 - $324D5
 
 LoggedData_0x324D6:
 INCBIN "baserom.gbc", $324D6, $324D9 - $324D6
 
-UnknownData_0x324D9:
+Unknown_0x324D9:
 INCBIN "baserom.gbc", $324D9, $324DA - $324D9
 
 LoggedData_0x324DA:
 INCBIN "baserom.gbc", $324DA, $324DD - $324DA
 
-UnknownData_0x324DD:
+Unknown_0x324DD:
 INCBIN "baserom.gbc", $324DD, $324DE - $324DD
 
 LoggedData_0x324DE:
 INCBIN "baserom.gbc", $324DE, $324E1 - $324DE
 
-UnknownData_0x324E1:
+Unknown_0x324E1:
 INCBIN "baserom.gbc", $324E1, $324E2 - $324E1
 
 LoggedData_0x324E2:
 INCBIN "baserom.gbc", $324E2, $324E5 - $324E2
 
-UnknownData_0x324E5:
+Unknown_0x324E5:
 INCBIN "baserom.gbc", $324E5, $324E6 - $324E5
 
 LoggedData_0x324E6:
 INCBIN "baserom.gbc", $324E6, $324E9 - $324E6
 
-UnknownData_0x324E9:
+Unknown_0x324E9:
 INCBIN "baserom.gbc", $324E9, $324EA - $324E9
 
 LoggedData_0x324EA:
 INCBIN "baserom.gbc", $324EA, $324ED - $324EA
 
-UnknownData_0x324ED:
+Unknown_0x324ED:
 INCBIN "baserom.gbc", $324ED, $324EE - $324ED
 
 LoggedData_0x324EE:
 INCBIN "baserom.gbc", $324EE, $324F1 - $324EE
 
-UnknownData_0x324F1:
+Unknown_0x324F1:
 INCBIN "baserom.gbc", $324F1, $324F2 - $324F1
 
 LoggedData_0x324F2:
 INCBIN "baserom.gbc", $324F2, $324F5 - $324F2
 
-UnknownData_0x324F5:
+Unknown_0x324F5:
 INCBIN "baserom.gbc", $324F5, $324F6 - $324F5
 
 LoggedData_0x324F6:
 INCBIN "baserom.gbc", $324F6, $324F9 - $324F6
 
-UnknownData_0x324F9:
+Unknown_0x324F9:
 INCBIN "baserom.gbc", $324F9, $324FA - $324F9
 
 LoggedData_0x324FA:
 INCBIN "baserom.gbc", $324FA, $324FD - $324FA
 
-UnknownData_0x324FD:
+Unknown_0x324FD:
 INCBIN "baserom.gbc", $324FD, $324FE - $324FD
 
 LoggedData_0x324FE:
 INCBIN "baserom.gbc", $324FE, $32501 - $324FE
 
-UnknownData_0x32501:
+Unknown_0x32501:
 INCBIN "baserom.gbc", $32501, $32502 - $32501
 
 LoggedData_0x32502:
 INCBIN "baserom.gbc", $32502, $32505 - $32502
 
-UnknownData_0x32505:
+Unknown_0x32505:
 INCBIN "baserom.gbc", $32505, $32506 - $32505
 
 LoggedData_0x32506:
 INCBIN "baserom.gbc", $32506, $32509 - $32506
 
-UnknownData_0x32509:
+Unknown_0x32509:
 INCBIN "baserom.gbc", $32509, $3250A - $32509
 
 LoggedData_0x3250A:
 INCBIN "baserom.gbc", $3250A, $3250D - $3250A
 
-UnknownData_0x3250D:
+Unknown_0x3250D:
 INCBIN "baserom.gbc", $3250D, $3250E - $3250D
 
 LoggedData_0x3250E:
 INCBIN "baserom.gbc", $3250E, $32511 - $3250E
 
-UnknownData_0x32511:
+Unknown_0x32511:
 INCBIN "baserom.gbc", $32511, $32512 - $32511
 
 LoggedData_0x32512:
 INCBIN "baserom.gbc", $32512, $32515 - $32512
 
-UnknownData_0x32515:
+Unknown_0x32515:
 INCBIN "baserom.gbc", $32515, $32516 - $32515
 
 LoggedData_0x32516:
 INCBIN "baserom.gbc", $32516, $32519 - $32516
 
-UnknownData_0x32519:
+Unknown_0x32519:
 INCBIN "baserom.gbc", $32519, $3251A - $32519
 
 LoggedData_0x3251A:
 INCBIN "baserom.gbc", $3251A, $3251D - $3251A
 
-UnknownData_0x3251D:
+Unknown_0x3251D:
 INCBIN "baserom.gbc", $3251D, $3251E - $3251D
 
 LoggedData_0x3251E:
 INCBIN "baserom.gbc", $3251E, $32521 - $3251E
 
-UnknownData_0x32521:
+Unknown_0x32521:
 INCBIN "baserom.gbc", $32521, $32522 - $32521
 
 LoggedData_0x32522:
 INCBIN "baserom.gbc", $32522, $32525 - $32522
 
-UnknownData_0x32525:
+Unknown_0x32525:
 INCBIN "baserom.gbc", $32525, $32526 - $32525
 
 LoggedData_0x32526:
 INCBIN "baserom.gbc", $32526, $32529 - $32526
 
-UnknownData_0x32529:
+Unknown_0x32529:
 INCBIN "baserom.gbc", $32529, $3252A - $32529
 
 LoggedData_0x3252A:
 INCBIN "baserom.gbc", $3252A, $3252D - $3252A
 
-UnknownData_0x3252D:
+Unknown_0x3252D:
 INCBIN "baserom.gbc", $3252D, $3252E - $3252D
 
 LoggedData_0x3252E:
 INCBIN "baserom.gbc", $3252E, $32531 - $3252E
 
-UnknownData_0x32531:
+Unknown_0x32531:
 INCBIN "baserom.gbc", $32531, $32532 - $32531
 
 LoggedData_0x32532:
 INCBIN "baserom.gbc", $32532, $32535 - $32532
 
-UnknownData_0x32535:
+Unknown_0x32535:
 INCBIN "baserom.gbc", $32535, $32566 - $32535
 
 LoggedData_0x32566:
 INCBIN "baserom.gbc", $32566, $32569 - $32566
 
-UnknownData_0x32569:
+Unknown_0x32569:
 INCBIN "baserom.gbc", $32569, $3256A - $32569
 
 LoggedData_0x3256A:
 INCBIN "baserom.gbc", $3256A, $3256D - $3256A
 
-UnknownData_0x3256D:
+Unknown_0x3256D:
 INCBIN "baserom.gbc", $3256D, $3256E - $3256D
 
 LoggedData_0x3256E:
 INCBIN "baserom.gbc", $3256E, $32571 - $3256E
 
-UnknownData_0x32571:
+Unknown_0x32571:
 INCBIN "baserom.gbc", $32571, $32572 - $32571
 
 LoggedData_0x32572:
 INCBIN "baserom.gbc", $32572, $32575 - $32572
 
-UnknownData_0x32575:
+Unknown_0x32575:
 INCBIN "baserom.gbc", $32575, $32576 - $32575
 
 LoggedData_0x32576:
 INCBIN "baserom.gbc", $32576, $32579 - $32576
 
-UnknownData_0x32579:
+Unknown_0x32579:
 INCBIN "baserom.gbc", $32579, $3257A - $32579
 
 LoggedData_0x3257A:
 INCBIN "baserom.gbc", $3257A, $3257D - $3257A
 
-UnknownData_0x3257D:
+Unknown_0x3257D:
 INCBIN "baserom.gbc", $3257D, $3257E - $3257D
 
 LoggedData_0x3257E:
 INCBIN "baserom.gbc", $3257E, $32581 - $3257E
 
-UnknownData_0x32581:
+Unknown_0x32581:
 INCBIN "baserom.gbc", $32581, $32582 - $32581
 
 LoggedData_0x32582:
 INCBIN "baserom.gbc", $32582, $32585 - $32582
 
-UnknownData_0x32585:
+Unknown_0x32585:
 INCBIN "baserom.gbc", $32585, $32586 - $32585
 
 LoggedData_0x32586:
 INCBIN "baserom.gbc", $32586, $32589 - $32586
 
-UnknownData_0x32589:
+Unknown_0x32589:
 INCBIN "baserom.gbc", $32589, $3258A - $32589
 
 LoggedData_0x3258A:
 INCBIN "baserom.gbc", $3258A, $3258D - $3258A
 
-UnknownData_0x3258D:
+Unknown_0x3258D:
 INCBIN "baserom.gbc", $3258D, $3258E - $3258D
 
 LoggedData_0x3258E:
 INCBIN "baserom.gbc", $3258E, $32591 - $3258E
 
-UnknownData_0x32591:
+Unknown_0x32591:
 INCBIN "baserom.gbc", $32591, $32592 - $32591
 
 LoggedData_0x32592:
 INCBIN "baserom.gbc", $32592, $32595 - $32592
 
-UnknownData_0x32595:
+Unknown_0x32595:
 INCBIN "baserom.gbc", $32595, $32596 - $32595
 
 LoggedData_0x32596:
 INCBIN "baserom.gbc", $32596, $32599 - $32596
 
-UnknownData_0x32599:
+Unknown_0x32599:
 INCBIN "baserom.gbc", $32599, $3259A - $32599
 
 LoggedData_0x3259A:
 INCBIN "baserom.gbc", $3259A, $3259D - $3259A
 
-UnknownData_0x3259D:
+Unknown_0x3259D:
 INCBIN "baserom.gbc", $3259D, $3259E - $3259D
 
 LoggedData_0x3259E:
 INCBIN "baserom.gbc", $3259E, $325A1 - $3259E
 
-UnknownData_0x325A1:
+Unknown_0x325A1:
 INCBIN "baserom.gbc", $325A1, $325A2 - $325A1
 
 LoggedData_0x325A2:
 INCBIN "baserom.gbc", $325A2, $325A5 - $325A2
 
-UnknownData_0x325A5:
+Unknown_0x325A5:
 INCBIN "baserom.gbc", $325A5, $325A6 - $325A5
 
 LoggedData_0x325A6:
 INCBIN "baserom.gbc", $325A6, $325A9 - $325A6
 
-UnknownData_0x325A9:
+Unknown_0x325A9:
 INCBIN "baserom.gbc", $325A9, $325AA - $325A9
 
 LoggedData_0x325AA:
 INCBIN "baserom.gbc", $325AA, $325AD - $325AA
 
-UnknownData_0x325AD:
+Unknown_0x325AD:
 INCBIN "baserom.gbc", $325AD, $325AE - $325AD
 
 LoggedData_0x325AE:
 INCBIN "baserom.gbc", $325AE, $325B1 - $325AE
 
-UnknownData_0x325B1:
+Unknown_0x325B1:
 INCBIN "baserom.gbc", $325B1, $325B2 - $325B1
 
 LoggedData_0x325B2:
 INCBIN "baserom.gbc", $325B2, $325B5 - $325B2
 
-UnknownData_0x325B5:
+Unknown_0x325B5:
 INCBIN "baserom.gbc", $325B5, $325B6 - $325B5
 
 LoggedData_0x325B6:
 INCBIN "baserom.gbc", $325B6, $325B9 - $325B6
 
-UnknownData_0x325B9:
+Unknown_0x325B9:
 INCBIN "baserom.gbc", $325B9, $325BA - $325B9
 
 LoggedData_0x325BA:
 INCBIN "baserom.gbc", $325BA, $325BD - $325BA
 
-UnknownData_0x325BD:
+Unknown_0x325BD:
 INCBIN "baserom.gbc", $325BD, $325BE - $325BD
 
 LoggedData_0x325BE:
 INCBIN "baserom.gbc", $325BE, $325C1 - $325BE
 
-UnknownData_0x325C1:
+Unknown_0x325C1:
 INCBIN "baserom.gbc", $325C1, $325C2 - $325C1
 
 LoggedData_0x325C2:
 INCBIN "baserom.gbc", $325C2, $325C5 - $325C2
 
-UnknownData_0x325C5:
+Unknown_0x325C5:
 INCBIN "baserom.gbc", $325C5, $325C6 - $325C5
 
 LoggedData_0x325C6:
 INCBIN "baserom.gbc", $325C6, $325C9 - $325C6
 
-UnknownData_0x325C9:
+Unknown_0x325C9:
 INCBIN "baserom.gbc", $325C9, $325CA - $325C9
 
 LoggedData_0x325CA:
 INCBIN "baserom.gbc", $325CA, $325CD - $325CA
 
-UnknownData_0x325CD:
+Unknown_0x325CD:
 INCBIN "baserom.gbc", $325CD, $325CE - $325CD
 
 LoggedData_0x325CE:
 INCBIN "baserom.gbc", $325CE, $325D1 - $325CE
 
-UnknownData_0x325D1:
+Unknown_0x325D1:
 INCBIN "baserom.gbc", $325D1, $325D2 - $325D1
 
 LoggedData_0x325D2:
 INCBIN "baserom.gbc", $325D2, $325D5 - $325D2
 
-UnknownData_0x325D5:
+Unknown_0x325D5:
 INCBIN "baserom.gbc", $325D5, $325D6 - $325D5
 
 LoggedData_0x325D6:
 INCBIN "baserom.gbc", $325D6, $325D9 - $325D6
 
-UnknownData_0x325D9:
+Unknown_0x325D9:
 INCBIN "baserom.gbc", $325D9, $325DA - $325D9
 
 LoggedData_0x325DA:
 INCBIN "baserom.gbc", $325DA, $325DD - $325DA
 
-UnknownData_0x325DD:
+Unknown_0x325DD:
 INCBIN "baserom.gbc", $325DD, $325DE - $325DD
 
 LoggedData_0x325DE:
 INCBIN "baserom.gbc", $325DE, $325E1 - $325DE
 
-UnknownData_0x325E1:
+Unknown_0x325E1:
 INCBIN "baserom.gbc", $325E1, $325E2 - $325E1
 
 LoggedData_0x325E2:
 INCBIN "baserom.gbc", $325E2, $325E5 - $325E2
 
-UnknownData_0x325E5:
+Unknown_0x325E5:
 INCBIN "baserom.gbc", $325E5, $325E6 - $325E5
 
 LoggedData_0x325E6:
 INCBIN "baserom.gbc", $325E6, $325E9 - $325E6
 
-UnknownData_0x325E9:
+Unknown_0x325E9:
 INCBIN "baserom.gbc", $325E9, $325EA - $325E9
 
 LoggedData_0x325EA:
 INCBIN "baserom.gbc", $325EA, $325ED - $325EA
 
-UnknownData_0x325ED:
+Unknown_0x325ED:
 INCBIN "baserom.gbc", $325ED, $325EE - $325ED
 
 LoggedData_0x325EE:
 INCBIN "baserom.gbc", $325EE, $325F1 - $325EE
 
-UnknownData_0x325F1:
+Unknown_0x325F1:
 INCBIN "baserom.gbc", $325F1, $325F2 - $325F1
 
 LoggedData_0x325F2:
 INCBIN "baserom.gbc", $325F2, $325F5 - $325F2
 
-UnknownData_0x325F5:
+Unknown_0x325F5:
 INCBIN "baserom.gbc", $325F5, $325F6 - $325F5
 
 LoggedData_0x325F6:
 INCBIN "baserom.gbc", $325F6, $325F9 - $325F6
 
-UnknownData_0x325F9:
+Unknown_0x325F9:
 INCBIN "baserom.gbc", $325F9, $325FA - $325F9
 
 LoggedData_0x325FA:
 INCBIN "baserom.gbc", $325FA, $325FD - $325FA
 
-UnknownData_0x325FD:
+Unknown_0x325FD:
 INCBIN "baserom.gbc", $325FD, $325FE - $325FD
 
 LoggedData_0x325FE:
 INCBIN "baserom.gbc", $325FE, $32601 - $325FE
 
-UnknownData_0x32601:
+Unknown_0x32601:
 INCBIN "baserom.gbc", $32601, $32602 - $32601
 
 LoggedData_0x32602:
 INCBIN "baserom.gbc", $32602, $32605 - $32602
 
-UnknownData_0x32605:
+Unknown_0x32605:
 INCBIN "baserom.gbc", $32605, $32606 - $32605
 
 LoggedData_0x32606:
 INCBIN "baserom.gbc", $32606, $32609 - $32606
 
-UnknownData_0x32609:
+Unknown_0x32609:
 INCBIN "baserom.gbc", $32609, $3260A - $32609
 
 LoggedData_0x3260A:
 INCBIN "baserom.gbc", $3260A, $3260D - $3260A
 
-UnknownData_0x3260D:
+Unknown_0x3260D:
 INCBIN "baserom.gbc", $3260D, $3260E - $3260D
 
 LoggedData_0x3260E:
 INCBIN "baserom.gbc", $3260E, $32611 - $3260E
 
-UnknownData_0x32611:
+Unknown_0x32611:
 INCBIN "baserom.gbc", $32611, $32612 - $32611
 
 LoggedData_0x32612:
 INCBIN "baserom.gbc", $32612, $32615 - $32612
 
-UnknownData_0x32615:
+Unknown_0x32615:
 INCBIN "baserom.gbc", $32615, $32616 - $32615
 
 LoggedData_0x32616:
 INCBIN "baserom.gbc", $32616, $32619 - $32616
 
-UnknownData_0x32619:
+Unknown_0x32619:
 INCBIN "baserom.gbc", $32619, $3261A - $32619
 
 LoggedData_0x3261A:
 INCBIN "baserom.gbc", $3261A, $3261D - $3261A
 
-UnknownData_0x3261D:
+Unknown_0x3261D:
 INCBIN "baserom.gbc", $3261D, $3261E - $3261D
 
 LoggedData_0x3261E:
 INCBIN "baserom.gbc", $3261E, $32621 - $3261E
 
-UnknownData_0x32621:
+Unknown_0x32621:
 INCBIN "baserom.gbc", $32621, $32622 - $32621
 
 LoggedData_0x32622:
 INCBIN "baserom.gbc", $32622, $32625 - $32622
 
-UnknownData_0x32625:
+Unknown_0x32625:
 INCBIN "baserom.gbc", $32625, $32626 - $32625
 
 LoggedData_0x32626:
 INCBIN "baserom.gbc", $32626, $32629 - $32626
 
-UnknownData_0x32629:
+Unknown_0x32629:
 INCBIN "baserom.gbc", $32629, $3262A - $32629
 
 LoggedData_0x3262A:
 INCBIN "baserom.gbc", $3262A, $3262D - $3262A
 
-UnknownData_0x3262D:
+Unknown_0x3262D:
 INCBIN "baserom.gbc", $3262D, $3262E - $3262D
 
 LoggedData_0x3262E:
 INCBIN "baserom.gbc", $3262E, $32631 - $3262E
 
-UnknownData_0x32631:
+Unknown_0x32631:
 INCBIN "baserom.gbc", $32631, $32632 - $32631
 
 LoggedData_0x32632:
 INCBIN "baserom.gbc", $32632, $32635 - $32632
 
-UnknownData_0x32635:
+Unknown_0x32635:
 INCBIN "baserom.gbc", $32635, $32636 - $32635
 
 LoggedData_0x32636:
 INCBIN "baserom.gbc", $32636, $32639 - $32636
 
-UnknownData_0x32639:
+Unknown_0x32639:
 INCBIN "baserom.gbc", $32639, $3263A - $32639
 
 LoggedData_0x3263A:
 INCBIN "baserom.gbc", $3263A, $3263D - $3263A
 
-UnknownData_0x3263D:
+Unknown_0x3263D:
 INCBIN "baserom.gbc", $3263D, $3263E - $3263D
 
 LoggedData_0x3263E:
 INCBIN "baserom.gbc", $3263E, $32641 - $3263E
 
-UnknownData_0x32641:
+Unknown_0x32641:
 INCBIN "baserom.gbc", $32641, $32642 - $32641
 
 LoggedData_0x32642:
 INCBIN "baserom.gbc", $32642, $32645 - $32642
 
-UnknownData_0x32645:
+Unknown_0x32645:
 INCBIN "baserom.gbc", $32645, $32646 - $32645
 
 LoggedData_0x32646:
 INCBIN "baserom.gbc", $32646, $32649 - $32646
 
-UnknownData_0x32649:
+Unknown_0x32649:
 INCBIN "baserom.gbc", $32649, $3264A - $32649
 
 LoggedData_0x3264A:
 INCBIN "baserom.gbc", $3264A, $3264D - $3264A
 
-UnknownData_0x3264D:
+Unknown_0x3264D:
 INCBIN "baserom.gbc", $3264D, $3264E - $3264D
 
 LoggedData_0x3264E:
 INCBIN "baserom.gbc", $3264E, $32651 - $3264E
 
-UnknownData_0x32651:
+Unknown_0x32651:
 INCBIN "baserom.gbc", $32651, $32652 - $32651
 
 LoggedData_0x32652:
 INCBIN "baserom.gbc", $32652, $32655 - $32652
 
-UnknownData_0x32655:
+Unknown_0x32655:
 INCBIN "baserom.gbc", $32655, $32656 - $32655
 
 LoggedData_0x32656:
 INCBIN "baserom.gbc", $32656, $32659 - $32656
 
-UnknownData_0x32659:
+Unknown_0x32659:
 INCBIN "baserom.gbc", $32659, $3265A - $32659
 
 LoggedData_0x3265A:
 INCBIN "baserom.gbc", $3265A, $3265D - $3265A
 
-UnknownData_0x3265D:
+Unknown_0x3265D:
 INCBIN "baserom.gbc", $3265D, $3265E - $3265D
 
 LoggedData_0x3265E:
 INCBIN "baserom.gbc", $3265E, $32661 - $3265E
 
-UnknownData_0x32661:
+Unknown_0x32661:
 INCBIN "baserom.gbc", $32661, $32662 - $32661
 
 LoggedData_0x32662:
 INCBIN "baserom.gbc", $32662, $32665 - $32662
 
-UnknownData_0x32665:
+Unknown_0x32665:
 INCBIN "baserom.gbc", $32665, $32666 - $32665
 
 LoggedData_0x32666:
 INCBIN "baserom.gbc", $32666, $32669 - $32666
 
-UnknownData_0x32669:
+Unknown_0x32669:
 INCBIN "baserom.gbc", $32669, $3266A - $32669
 
 LoggedData_0x3266A:
 INCBIN "baserom.gbc", $3266A, $3266D - $3266A
 
-UnknownData_0x3266D:
+Unknown_0x3266D:
 INCBIN "baserom.gbc", $3266D, $3266E - $3266D
 
 LoggedData_0x3266E:
 INCBIN "baserom.gbc", $3266E, $32671 - $3266E
 
-UnknownData_0x32671:
+Unknown_0x32671:
 INCBIN "baserom.gbc", $32671, $32672 - $32671
 
 LoggedData_0x32672:
 INCBIN "baserom.gbc", $32672, $32675 - $32672
 
-UnknownData_0x32675:
+Unknown_0x32675:
 INCBIN "baserom.gbc", $32675, $32676 - $32675
 
 LoggedData_0x32676:
 INCBIN "baserom.gbc", $32676, $32679 - $32676
 
-UnknownData_0x32679:
+Unknown_0x32679:
 INCBIN "baserom.gbc", $32679, $3267A - $32679
 
 LoggedData_0x3267A:
 INCBIN "baserom.gbc", $3267A, $3267D - $3267A
 
-UnknownData_0x3267D:
+Unknown_0x3267D:
 INCBIN "baserom.gbc", $3267D, $3267E - $3267D
 
 LoggedData_0x3267E:
 INCBIN "baserom.gbc", $3267E, $32681 - $3267E
 
-UnknownData_0x32681:
+Unknown_0x32681:
 INCBIN "baserom.gbc", $32681, $32682 - $32681
 
 LoggedData_0x32682:
 INCBIN "baserom.gbc", $32682, $32685 - $32682
 
-UnknownData_0x32685:
+Unknown_0x32685:
 INCBIN "baserom.gbc", $32685, $32686 - $32685
 
 LoggedData_0x32686:
 INCBIN "baserom.gbc", $32686, $32689 - $32686
 
-UnknownData_0x32689:
+Unknown_0x32689:
 INCBIN "baserom.gbc", $32689, $3268A - $32689
 
 LoggedData_0x3268A:
 INCBIN "baserom.gbc", $3268A, $3268D - $3268A
 
-UnknownData_0x3268D:
+Unknown_0x3268D:
 INCBIN "baserom.gbc", $3268D, $3268E - $3268D
 
 LoggedData_0x3268E:
 INCBIN "baserom.gbc", $3268E, $32691 - $3268E
 
-UnknownData_0x32691:
+Unknown_0x32691:
 INCBIN "baserom.gbc", $32691, $32692 - $32691
 
 LoggedData_0x32692:
 INCBIN "baserom.gbc", $32692, $32695 - $32692
 
-UnknownData_0x32695:
+Unknown_0x32695:
 INCBIN "baserom.gbc", $32695, $32696 - $32695
 
 LoggedData_0x32696:
 INCBIN "baserom.gbc", $32696, $32699 - $32696
 
-UnknownData_0x32699:
+Unknown_0x32699:
 INCBIN "baserom.gbc", $32699, $3269A - $32699
 
 LoggedData_0x3269A:
 INCBIN "baserom.gbc", $3269A, $3269D - $3269A
 
-UnknownData_0x3269D:
+Unknown_0x3269D:
 INCBIN "baserom.gbc", $3269D, $3269E - $3269D
 
 LoggedData_0x3269E:
 INCBIN "baserom.gbc", $3269E, $326A1 - $3269E
 
-UnknownData_0x326A1:
+Unknown_0x326A1:
 INCBIN "baserom.gbc", $326A1, $326A2 - $326A1
 
 LoggedData_0x326A2:
 INCBIN "baserom.gbc", $326A2, $326A5 - $326A2
 
-UnknownData_0x326A5:
+Unknown_0x326A5:
 INCBIN "baserom.gbc", $326A5, $326A6 - $326A5
 
 LoggedData_0x326A6:
 INCBIN "baserom.gbc", $326A6, $326A9 - $326A6
 
-UnknownData_0x326A9:
+Unknown_0x326A9:
 INCBIN "baserom.gbc", $326A9, $326AA - $326A9
 
 LoggedData_0x326AA:
 INCBIN "baserom.gbc", $326AA, $326AD - $326AA
 
-UnknownData_0x326AD:
+Unknown_0x326AD:
 INCBIN "baserom.gbc", $326AD, $326AE - $326AD
 
 LoggedData_0x326AE:
 INCBIN "baserom.gbc", $326AE, $326B1 - $326AE
 
-UnknownData_0x326B1:
+Unknown_0x326B1:
 INCBIN "baserom.gbc", $326B1, $326B2 - $326B1
 
 LoggedData_0x326B2:
 INCBIN "baserom.gbc", $326B2, $326B5 - $326B2
 
-UnknownData_0x326B5:
+Unknown_0x326B5:
 INCBIN "baserom.gbc", $326B5, $326BE - $326B5
 
 LoggedData_0x326BE:
 INCBIN "baserom.gbc", $326BE, $326C1 - $326BE
 
-UnknownData_0x326C1:
+Unknown_0x326C1:
 INCBIN "baserom.gbc", $326C1, $326C2 - $326C1
 
 LoggedData_0x326C2:
 INCBIN "baserom.gbc", $326C2, $326C5 - $326C2
 
-UnknownData_0x326C5:
+Unknown_0x326C5:
 INCBIN "baserom.gbc", $326C5, $326C6 - $326C5
 
 LoggedData_0x326C6:
 INCBIN "baserom.gbc", $326C6, $326C9 - $326C6
 
-UnknownData_0x326C9:
+Unknown_0x326C9:
 INCBIN "baserom.gbc", $326C9, $326CA - $326C9
 
 LoggedData_0x326CA:
 INCBIN "baserom.gbc", $326CA, $326CD - $326CA
 
-UnknownData_0x326CD:
+Unknown_0x326CD:
 INCBIN "baserom.gbc", $326CD, $326CE - $326CD
 
 LoggedData_0x326CE:
 INCBIN "baserom.gbc", $326CE, $326D1 - $326CE
 
-UnknownData_0x326D1:
+Unknown_0x326D1:
 INCBIN "baserom.gbc", $326D1, $326D2 - $326D1
 
 LoggedData_0x326D2:
 INCBIN "baserom.gbc", $326D2, $326D5 - $326D2
 
-UnknownData_0x326D5:
+Unknown_0x326D5:
 INCBIN "baserom.gbc", $326D5, $326D6 - $326D5
 
 LoggedData_0x326D6:
 INCBIN "baserom.gbc", $326D6, $326D9 - $326D6
 
-UnknownData_0x326D9:
+Unknown_0x326D9:
 INCBIN "baserom.gbc", $326D9, $326DA - $326D9
 
 LoggedData_0x326DA:
 INCBIN "baserom.gbc", $326DA, $326DD - $326DA
 
-UnknownData_0x326DD:
+Unknown_0x326DD:
 INCBIN "baserom.gbc", $326DD, $326DE - $326DD
 
 LoggedData_0x326DE:
 INCBIN "baserom.gbc", $326DE, $326E1 - $326DE
 
-UnknownData_0x326E1:
+Unknown_0x326E1:
 INCBIN "baserom.gbc", $326E1, $326E2 - $326E1
 
 LoggedData_0x326E2:
 INCBIN "baserom.gbc", $326E2, $326E5 - $326E2
 
-UnknownData_0x326E5:
+Unknown_0x326E5:
 INCBIN "baserom.gbc", $326E5, $326E6 - $326E5
 
 LoggedData_0x326E6:
 INCBIN "baserom.gbc", $326E6, $326E9 - $326E6
 
-UnknownData_0x326E9:
+Unknown_0x326E9:
 INCBIN "baserom.gbc", $326E9, $326EA - $326E9
 
 LoggedData_0x326EA:
 INCBIN "baserom.gbc", $326EA, $326ED - $326EA
 
-UnknownData_0x326ED:
+Unknown_0x326ED:
 INCBIN "baserom.gbc", $326ED, $326EE - $326ED
 
 LoggedData_0x326EE:
 INCBIN "baserom.gbc", $326EE, $326F1 - $326EE
 
-UnknownData_0x326F1:
+Unknown_0x326F1:
 INCBIN "baserom.gbc", $326F1, $326F2 - $326F1
 
 LoggedData_0x326F2:
 INCBIN "baserom.gbc", $326F2, $326F5 - $326F2
 
-UnknownData_0x326F5:
+Unknown_0x326F5:
 INCBIN "baserom.gbc", $326F5, $326F6 - $326F5
 
 LoggedData_0x326F6:
 INCBIN "baserom.gbc", $326F6, $326F9 - $326F6
 
-UnknownData_0x326F9:
+Unknown_0x326F9:
 INCBIN "baserom.gbc", $326F9, $326FA - $326F9
 
 LoggedData_0x326FA:
 INCBIN "baserom.gbc", $326FA, $326FD - $326FA
 
-UnknownData_0x326FD:
+Unknown_0x326FD:
 INCBIN "baserom.gbc", $326FD, $326FE - $326FD
 
 LoggedData_0x326FE:
 INCBIN "baserom.gbc", $326FE, $32701 - $326FE
 
-UnknownData_0x32701:
+Unknown_0x32701:
 INCBIN "baserom.gbc", $32701, $32702 - $32701
 
 LoggedData_0x32702:
 INCBIN "baserom.gbc", $32702, $32705 - $32702
 
-UnknownData_0x32705:
+Unknown_0x32705:
 INCBIN "baserom.gbc", $32705, $32706 - $32705
 
 LoggedData_0x32706:
 INCBIN "baserom.gbc", $32706, $32709 - $32706
 
-UnknownData_0x32709:
+Unknown_0x32709:
 INCBIN "baserom.gbc", $32709, $3270A - $32709
 
 LoggedData_0x3270A:
 INCBIN "baserom.gbc", $3270A, $3270D - $3270A
 
-UnknownData_0x3270D:
+Unknown_0x3270D:
 INCBIN "baserom.gbc", $3270D, $32716 - $3270D
 
 LoggedData_0x32716:
 INCBIN "baserom.gbc", $32716, $32719 - $32716
 
-UnknownData_0x32719:
+Unknown_0x32719:
 INCBIN "baserom.gbc", $32719, $3271A - $32719
 
 LoggedData_0x3271A:
 INCBIN "baserom.gbc", $3271A, $3271D - $3271A
 
-UnknownData_0x3271D:
+Unknown_0x3271D:
 INCBIN "baserom.gbc", $3271D, $3271E - $3271D
 
 LoggedData_0x3271E:
 INCBIN "baserom.gbc", $3271E, $32721 - $3271E
 
-UnknownData_0x32721:
+Unknown_0x32721:
 INCBIN "baserom.gbc", $32721, $32722 - $32721
 
 LoggedData_0x32722:
 INCBIN "baserom.gbc", $32722, $32725 - $32722
 
-UnknownData_0x32725:
+Unknown_0x32725:
 INCBIN "baserom.gbc", $32725, $32726 - $32725
 
 LoggedData_0x32726:
 INCBIN "baserom.gbc", $32726, $3285D - $32726
 
-UnknownData_0x3285D:
+Unknown_0x3285D:
 INCBIN "baserom.gbc", $3285D, $3285E - $3285D
 
 LoggedData_0x3285E:
 INCBIN "baserom.gbc", $3285E, $32917 - $3285E
 
-UnknownData_0x32917:
+Unknown_0x32917:
 INCBIN "baserom.gbc", $32917, $32918 - $32917
 
 LoggedData_0x32918:
 INCBIN "baserom.gbc", $32918, $32A08 - $32918
 
-UnknownData_0x32A08:
+Unknown_0x32A08:
 INCBIN "baserom.gbc", $32A08, $32A09 - $32A08
 
 LoggedData_0x32A09:
 INCBIN "baserom.gbc", $32A09, $32A97 - $32A09
 
-UnknownData_0x32A97:
+Unknown_0x32A97:
 INCBIN "baserom.gbc", $32A97, $32A9A - $32A97
 
 LoggedData_0x32A9A:
 INCBIN "baserom.gbc", $32A9A, $32AA2 - $32A9A
 
-UnknownData_0x32AA2:
+Unknown_0x32AA2:
 INCBIN "baserom.gbc", $32AA2, $32AB2 - $32AA2
 
 LoggedData_0x32AB2:
 INCBIN "baserom.gbc", $32AB2, $32BF9 - $32AB2
 
-UnknownData_0x32BF9:
+Unknown_0x32BF9:
 INCBIN "baserom.gbc", $32BF9, $32BFD - $32BF9
 
 LoggedData_0x32BFD:
 INCBIN "baserom.gbc", $32BFD, $32C3A - $32BFD
 
-UnknownData_0x32C3A:
+Unknown_0x32C3A:
 INCBIN "baserom.gbc", $32C3A, $32C3B - $32C3A
 
 LoggedData_0x32C3B:
 INCBIN "baserom.gbc", $32C3B, $32D26 - $32C3B
 
-UnknownData_0x32D26:
+Unknown_0x32D26:
 INCBIN "baserom.gbc", $32D26, $32D29 - $32D26
 
 LoggedData_0x32D29:
 INCBIN "baserom.gbc", $32D29, $32D2F - $32D29
 
-UnknownData_0x32D2F:
+Unknown_0x32D2F:
 INCBIN "baserom.gbc", $32D2F, $32D3B - $32D2F
 
 LoggedData_0x32D3B:
 INCBIN "baserom.gbc", $32D3B, $32E14 - $32D3B
 
-UnknownData_0x32E14:
+Unknown_0x32E14:
 INCBIN "baserom.gbc", $32E14, $32E15 - $32E14
 
 LoggedData_0x32E15:
 INCBIN "baserom.gbc", $32E15, $32EEC - $32E15
 
-UnknownData_0x32EEC:
+Unknown_0x32EEC:
 INCBIN "baserom.gbc", $32EEC, $32EEF - $32EEC
 
 LoggedData_0x32EEF:
 INCBIN "baserom.gbc", $32EEF, $32EF3 - $32EEF
 
-UnknownData_0x32EF3:
+Unknown_0x32EF3:
 INCBIN "baserom.gbc", $32EF3, $32EFB - $32EF3
 
 LoggedData_0x32EFB:
 INCBIN "baserom.gbc", $32EFB, $3307E - $32EFB
 
-UnknownData_0x3307E:
+Unknown_0x3307E:
 INCBIN "baserom.gbc", $3307E, $330A1 - $3307E
 
 LoggedData_0x330A1:
 INCBIN "baserom.gbc", $330A1, $33241 - $330A1
 
-UnknownData_0x33241:
+Unknown_0x33241:
 INCBIN "baserom.gbc", $33241, $33246 - $33241
 
 LoggedData_0x33246:
 INCBIN "baserom.gbc", $33246, $332D9 - $33246
 
-UnknownData_0x332D9:
+Unknown_0x332D9:
 INCBIN "baserom.gbc", $332D9, $332E9 - $332D9
 
 LoggedData_0x332E9:
 INCBIN "baserom.gbc", $332E9, $332EF - $332E9
 
-UnknownData_0x332EF:
+Unknown_0x332EF:
 INCBIN "baserom.gbc", $332EF, $332FB - $332EF
 
 LoggedData_0x332FB:
 INCBIN "baserom.gbc", $332FB, $333C7 - $332FB
 
-UnknownData_0x333C7:
+Unknown_0x333C7:
 INCBIN "baserom.gbc", $333C7, $333C8 - $333C7
 
 LoggedData_0x333C8:
 INCBIN "baserom.gbc", $333C8, $334F3 - $333C8
 
-UnknownData_0x334F3:
+Unknown_0x334F3:
 INCBIN "baserom.gbc", $334F3, $334F4 - $334F3
 
 LoggedData_0x334F4:
 INCBIN "baserom.gbc", $334F4, $335AE - $334F4
 
-UnknownData_0x335AE:
+Unknown_0x335AE:
 INCBIN "baserom.gbc", $335AE, $335B1 - $335AE
 
 LoggedData_0x335B1:
 INCBIN "baserom.gbc", $335B1, $335B7 - $335B1
 
-UnknownData_0x335B7:
+Unknown_0x335B7:
 INCBIN "baserom.gbc", $335B7, $335C3 - $335B7
 
 LoggedData_0x335C3:
 INCBIN "baserom.gbc", $335C3, $336D1 - $335C3
 
-UnknownData_0x336D1:
+Unknown_0x336D1:
 INCBIN "baserom.gbc", $336D1, $336D2 - $336D1
 
 LoggedData_0x336D2:
 INCBIN "baserom.gbc", $336D2, $3374A - $336D2
 
-UnknownData_0x3374A:
+Unknown_0x3374A:
 INCBIN "baserom.gbc", $3374A, $3374B - $3374A
 
 LoggedData_0x3374B:
 INCBIN "baserom.gbc", $3374B, $337F8 - $3374B
 
-UnknownData_0x337F8:
+Unknown_0x337F8:
 INCBIN "baserom.gbc", $337F8, $337FB - $337F8
 
 LoggedData_0x337FB:
 INCBIN "baserom.gbc", $337FB, $33801 - $337FB
 
-UnknownData_0x33801:
+Unknown_0x33801:
 INCBIN "baserom.gbc", $33801, $3380D - $33801
 
 LoggedData_0x3380D:
 INCBIN "baserom.gbc", $3380D, $338E3 - $3380D
 
-UnknownData_0x338E3:
+Unknown_0x338E3:
 INCBIN "baserom.gbc", $338E3, $338E4 - $338E3
 
 LoggedData_0x338E4:
 INCBIN "baserom.gbc", $338E4, $339B4 - $338E4
 
-UnknownData_0x339B4:
+Unknown_0x339B4:
 INCBIN "baserom.gbc", $339B4, $339B5 - $339B4
 
 LoggedData_0x339B5:
 INCBIN "baserom.gbc", $339B5, $33A5D - $339B5
 
-UnknownData_0x33A5D:
+Unknown_0x33A5D:
 INCBIN "baserom.gbc", $33A5D, $33A5E - $33A5D
 
 LoggedData_0x33A5E:
 INCBIN "baserom.gbc", $33A5E, $33B2D - $33A5E
 
-UnknownData_0x33B2D:
+Unknown_0x33B2D:
 INCBIN "baserom.gbc", $33B2D, $33B30 - $33B2D
 
 LoggedData_0x33B30:
 INCBIN "baserom.gbc", $33B30, $33B38 - $33B30
 
-UnknownData_0x33B38:
+Unknown_0x33B38:
 INCBIN "baserom.gbc", $33B38, $33B48 - $33B38
 
 LoggedData_0x33B48:
 INCBIN "baserom.gbc", $33B48, $33BBD - $33B48
 
-UnknownData_0x33BBD:
+Unknown_0x33BBD:
 INCBIN "baserom.gbc", $33BBD, $33BBE - $33BBD
 
 LoggedData_0x33BBE:
 INCBIN "baserom.gbc", $33BBE, $33CC4 - $33BBE
 
-UnknownData_0x33CC4:
+Unknown_0x33CC4:
 INCBIN "baserom.gbc", $33CC4, $33CC5 - $33CC4
 
 LoggedData_0x33CC5:
 INCBIN "baserom.gbc", $33CC5, $33DD4 - $33CC5
 
-UnknownData_0x33DD4:
+Unknown_0x33DD4:
 INCBIN "baserom.gbc", $33DD4, $33DD7 - $33DD4
 
 LoggedData_0x33DD7:
 INCBIN "baserom.gbc", $33DD7, $33DDD - $33DD7
 
-UnknownData_0x33DDD:
+Unknown_0x33DDD:
 INCBIN "baserom.gbc", $33DDD, $34000 - $33DDD
 
 SECTION "Bank0D", ROMX, BANK[$0D]
@@ -53780,547 +53780,547 @@ SECTION "Bank0D", ROMX, BANK[$0D]
 LoggedData_0x34000:
 INCBIN "baserom.gbc", $34000, $3413C - $34000
 
-UnknownData_0x3413C:
+Unknown_0x3413C:
 INCBIN "baserom.gbc", $3413C, $34149 - $3413C
 
 LoggedData_0x34149:
 INCBIN "baserom.gbc", $34149, $3424D - $34149
 
-UnknownData_0x3424D:
+Unknown_0x3424D:
 INCBIN "baserom.gbc", $3424D, $34259 - $3424D
 
 LoggedData_0x34259:
 INCBIN "baserom.gbc", $34259, $34384 - $34259
 
-UnknownData_0x34384:
+Unknown_0x34384:
 INCBIN "baserom.gbc", $34384, $34393 - $34384
 
 LoggedData_0x34393:
 INCBIN "baserom.gbc", $34393, $34399 - $34393
 
-UnknownData_0x34399:
+Unknown_0x34399:
 INCBIN "baserom.gbc", $34399, $343A5 - $34399
 
 LoggedData_0x343A5:
 INCBIN "baserom.gbc", $343A5, $344E8 - $343A5
 
-UnknownData_0x344E8:
+Unknown_0x344E8:
 INCBIN "baserom.gbc", $344E8, $344E9 - $344E8
 
 LoggedData_0x344E9:
 INCBIN "baserom.gbc", $344E9, $3465B - $344E9
 
-UnknownData_0x3465B:
+Unknown_0x3465B:
 INCBIN "baserom.gbc", $3465B, $3465C - $3465B
 
 LoggedData_0x3465C:
 INCBIN "baserom.gbc", $3465C, $3481A - $3465C
 
-UnknownData_0x3481A:
+Unknown_0x3481A:
 INCBIN "baserom.gbc", $3481A, $3481E - $3481A
 
 LoggedData_0x3481E:
 INCBIN "baserom.gbc", $3481E, $34824 - $3481E
 
-UnknownData_0x34824:
+Unknown_0x34824:
 INCBIN "baserom.gbc", $34824, $34830 - $34824
 
 LoggedData_0x34830:
 INCBIN "baserom.gbc", $34830, $348FA - $34830
 
-UnknownData_0x348FA:
+Unknown_0x348FA:
 INCBIN "baserom.gbc", $348FA, $348FB - $348FA
 
 LoggedData_0x348FB:
 INCBIN "baserom.gbc", $348FB, $349D9 - $348FB
 
-UnknownData_0x349D9:
+Unknown_0x349D9:
 INCBIN "baserom.gbc", $349D9, $349DA - $349D9
 
 LoggedData_0x349DA:
 INCBIN "baserom.gbc", $349DA, $34A4F - $349DA
 
-UnknownData_0x34A4F:
+Unknown_0x34A4F:
 INCBIN "baserom.gbc", $34A4F, $34A52 - $34A4F
 
 LoggedData_0x34A52:
 INCBIN "baserom.gbc", $34A52, $34A58 - $34A52
 
-UnknownData_0x34A58:
+Unknown_0x34A58:
 INCBIN "baserom.gbc", $34A58, $34A64 - $34A58
 
 LoggedData_0x34A64:
 INCBIN "baserom.gbc", $34A64, $34BC6 - $34A64
 
-UnknownData_0x34BC6:
+Unknown_0x34BC6:
 INCBIN "baserom.gbc", $34BC6, $34BC7 - $34BC6
 
 LoggedData_0x34BC7:
 INCBIN "baserom.gbc", $34BC7, $34CCC - $34BC7
 
-UnknownData_0x34CCC:
+Unknown_0x34CCC:
 INCBIN "baserom.gbc", $34CCC, $34CCD - $34CCC
 
 LoggedData_0x34CCD:
 INCBIN "baserom.gbc", $34CCD, $34D68 - $34CCD
 
-UnknownData_0x34D68:
+Unknown_0x34D68:
 INCBIN "baserom.gbc", $34D68, $34D6B - $34D68
 
 LoggedData_0x34D6B:
 INCBIN "baserom.gbc", $34D6B, $34D71 - $34D6B
 
-UnknownData_0x34D71:
+Unknown_0x34D71:
 INCBIN "baserom.gbc", $34D71, $34D7D - $34D71
 
 LoggedData_0x34D7D:
 INCBIN "baserom.gbc", $34D7D, $34EC4 - $34D7D
 
-UnknownData_0x34EC4:
+Unknown_0x34EC4:
 INCBIN "baserom.gbc", $34EC4, $34ECA - $34EC4
 
 LoggedData_0x34ECA:
 INCBIN "baserom.gbc", $34ECA, $3500E - $34ECA
 
-UnknownData_0x3500E:
+Unknown_0x3500E:
 INCBIN "baserom.gbc", $3500E, $3500F - $3500E
 
 LoggedData_0x3500F:
 INCBIN "baserom.gbc", $3500F, $35178 - $3500F
 
-UnknownData_0x35178:
+Unknown_0x35178:
 INCBIN "baserom.gbc", $35178, $3517B - $35178
 
 LoggedData_0x3517B:
 INCBIN "baserom.gbc", $3517B, $35181 - $3517B
 
-UnknownData_0x35181:
+Unknown_0x35181:
 INCBIN "baserom.gbc", $35181, $3518D - $35181
 
 LoggedData_0x3518D:
 INCBIN "baserom.gbc", $3518D, $3527A - $3518D
 
-UnknownData_0x3527A:
+Unknown_0x3527A:
 INCBIN "baserom.gbc", $3527A, $35281 - $3527A
 
 LoggedData_0x35281:
 INCBIN "baserom.gbc", $35281, $352FF - $35281
 
-UnknownData_0x352FF:
+Unknown_0x352FF:
 INCBIN "baserom.gbc", $352FF, $3530B - $352FF
 
 LoggedData_0x3530B:
 INCBIN "baserom.gbc", $3530B, $353F3 - $3530B
 
-UnknownData_0x353F3:
+Unknown_0x353F3:
 INCBIN "baserom.gbc", $353F3, $35410 - $353F3
 
 LoggedData_0x35410:
 INCBIN "baserom.gbc", $35410, $3546B - $35410
 
-UnknownData_0x3546B:
+Unknown_0x3546B:
 INCBIN "baserom.gbc", $3546B, $3547C - $3546B
 
 LoggedData_0x3547C:
 INCBIN "baserom.gbc", $3547C, $35484 - $3547C
 
-UnknownData_0x35484:
+Unknown_0x35484:
 INCBIN "baserom.gbc", $35484, $35494 - $35484
 
 LoggedData_0x35494:
 INCBIN "baserom.gbc", $35494, $3551B - $35494
 
-UnknownData_0x3551B:
+Unknown_0x3551B:
 INCBIN "baserom.gbc", $3551B, $35526 - $3551B
 
 LoggedData_0x35526:
 INCBIN "baserom.gbc", $35526, $355AD - $35526
 
-UnknownData_0x355AD:
+Unknown_0x355AD:
 INCBIN "baserom.gbc", $355AD, $355B8 - $355AD
 
 LoggedData_0x355B8:
 INCBIN "baserom.gbc", $355B8, $35679 - $355B8
 
-UnknownData_0x35679:
+Unknown_0x35679:
 INCBIN "baserom.gbc", $35679, $35690 - $35679
 
 LoggedData_0x35690:
 INCBIN "baserom.gbc", $35690, $35701 - $35690
 
-UnknownData_0x35701:
+Unknown_0x35701:
 INCBIN "baserom.gbc", $35701, $3571A - $35701
 
 LoggedData_0x3571A:
 INCBIN "baserom.gbc", $3571A, $35722 - $3571A
 
-UnknownData_0x35722:
+Unknown_0x35722:
 INCBIN "baserom.gbc", $35722, $35732 - $35722
 
 LoggedData_0x35732:
 INCBIN "baserom.gbc", $35732, $3583B - $35732
 
-UnknownData_0x3583B:
+Unknown_0x3583B:
 INCBIN "baserom.gbc", $3583B, $35852 - $3583B
 
 LoggedData_0x35852:
 INCBIN "baserom.gbc", $35852, $35937 - $35852
 
-UnknownData_0x35937:
+Unknown_0x35937:
 INCBIN "baserom.gbc", $35937, $3594A - $35937
 
 LoggedData_0x3594A:
 INCBIN "baserom.gbc", $3594A, $359D4 - $3594A
 
-UnknownData_0x359D4:
+Unknown_0x359D4:
 INCBIN "baserom.gbc", $359D4, $359DD - $359D4
 
 LoggedData_0x359DD:
 INCBIN "baserom.gbc", $359DD, $35A4D - $359DD
 
-UnknownData_0x35A4D:
+Unknown_0x35A4D:
 INCBIN "baserom.gbc", $35A4D, $35A65 - $35A4D
 
 LoggedData_0x35A65:
 INCBIN "baserom.gbc", $35A65, $35A6D - $35A65
 
-UnknownData_0x35A6D:
+Unknown_0x35A6D:
 INCBIN "baserom.gbc", $35A6D, $35A7D - $35A6D
 
 LoggedData_0x35A7D:
 INCBIN "baserom.gbc", $35A7D, $35BC0 - $35A7D
 
-UnknownData_0x35BC0:
+Unknown_0x35BC0:
 INCBIN "baserom.gbc", $35BC0, $35BCA - $35BC0
 
 LoggedData_0x35BCA:
 INCBIN "baserom.gbc", $35BCA, $35CE9 - $35BCA
 
-UnknownData_0x35CE9:
+Unknown_0x35CE9:
 INCBIN "baserom.gbc", $35CE9, $35CF4 - $35CE9
 
 LoggedData_0x35CF4:
 INCBIN "baserom.gbc", $35CF4, $35E9A - $35CF4
 
-UnknownData_0x35E9A:
+Unknown_0x35E9A:
 INCBIN "baserom.gbc", $35E9A, $35EB7 - $35E9A
 
 LoggedData_0x35EB7:
 INCBIN "baserom.gbc", $35EB7, $35F30 - $35EB7
 
-UnknownData_0x35F30:
+Unknown_0x35F30:
 INCBIN "baserom.gbc", $35F30, $35F46 - $35F30
 
 LoggedData_0x35F46:
 INCBIN "baserom.gbc", $35F46, $35F4E - $35F46
 
-UnknownData_0x35F4E:
+Unknown_0x35F4E:
 INCBIN "baserom.gbc", $35F4E, $35F5E - $35F4E
 
 LoggedData_0x35F5E:
 INCBIN "baserom.gbc", $35F5E, $360BA - $35F5E
 
-UnknownData_0x360BA:
+Unknown_0x360BA:
 INCBIN "baserom.gbc", $360BA, $360D0 - $360BA
 
 LoggedData_0x360D0:
 INCBIN "baserom.gbc", $360D0, $36251 - $360D0
 
-UnknownData_0x36251:
+Unknown_0x36251:
 INCBIN "baserom.gbc", $36251, $36266 - $36251
 
 LoggedData_0x36266:
 INCBIN "baserom.gbc", $36266, $3641B - $36266
 
-UnknownData_0x3641B:
+Unknown_0x3641B:
 INCBIN "baserom.gbc", $3641B, $3641F - $3641B
 
 LoggedData_0x3641F:
 INCBIN "baserom.gbc", $3641F, $364B8 - $3641F
 
-UnknownData_0x364B8:
+Unknown_0x364B8:
 INCBIN "baserom.gbc", $364B8, $364C8 - $364B8
 
 LoggedData_0x364C8:
 INCBIN "baserom.gbc", $364C8, $364D0 - $364C8
 
-UnknownData_0x364D0:
+Unknown_0x364D0:
 INCBIN "baserom.gbc", $364D0, $364E0 - $364D0
 
 LoggedData_0x364E0:
 INCBIN "baserom.gbc", $364E0, $365B4 - $364E0
 
-UnknownData_0x365B4:
+Unknown_0x365B4:
 INCBIN "baserom.gbc", $365B4, $365B5 - $365B4
 
 LoggedData_0x365B5:
 INCBIN "baserom.gbc", $365B5, $3666A - $365B5
 
-UnknownData_0x3666A:
+Unknown_0x3666A:
 INCBIN "baserom.gbc", $3666A, $3666B - $3666A
 
 LoggedData_0x3666B:
 INCBIN "baserom.gbc", $3666B, $36720 - $3666B
 
-UnknownData_0x36720:
+Unknown_0x36720:
 INCBIN "baserom.gbc", $36720, $36721 - $36720
 
 LoggedData_0x36721:
 INCBIN "baserom.gbc", $36721, $367CA - $36721
 
-UnknownData_0x367CA:
+Unknown_0x367CA:
 INCBIN "baserom.gbc", $367CA, $367CD - $367CA
 
 LoggedData_0x367CD:
 INCBIN "baserom.gbc", $367CD, $367D5 - $367CD
 
-UnknownData_0x367D5:
+Unknown_0x367D5:
 INCBIN "baserom.gbc", $367D5, $367E5 - $367D5
 
 LoggedData_0x367E5:
 INCBIN "baserom.gbc", $367E5, $36832 - $367E5
 
-UnknownData_0x36832:
+Unknown_0x36832:
 INCBIN "baserom.gbc", $36832, $3683F - $36832
 
 LoggedData_0x3683F:
 INCBIN "baserom.gbc", $3683F, $3688A - $3683F
 
-UnknownData_0x3688A:
+Unknown_0x3688A:
 INCBIN "baserom.gbc", $3688A, $36897 - $3688A
 
 LoggedData_0x36897:
 INCBIN "baserom.gbc", $36897, $368FE - $36897
 
-UnknownData_0x368FE:
+Unknown_0x368FE:
 INCBIN "baserom.gbc", $368FE, $36909 - $368FE
 
 LoggedData_0x36909:
 INCBIN "baserom.gbc", $36909, $3697D - $36909
 
-UnknownData_0x3697D:
+Unknown_0x3697D:
 INCBIN "baserom.gbc", $3697D, $36999 - $3697D
 
 LoggedData_0x36999:
 INCBIN "baserom.gbc", $36999, $369A1 - $36999
 
-UnknownData_0x369A1:
+Unknown_0x369A1:
 INCBIN "baserom.gbc", $369A1, $369B1 - $369A1
 
 LoggedData_0x369B1:
 INCBIN "baserom.gbc", $369B1, $37451 - $369B1
 
-UnknownData_0x37451:
+Unknown_0x37451:
 INCBIN "baserom.gbc", $37451, $37452 - $37451
 
 LoggedData_0x37452:
 INCBIN "baserom.gbc", $37452, $374D0 - $37452
 
-UnknownData_0x374D0:
+Unknown_0x374D0:
 INCBIN "baserom.gbc", $374D0, $374D1 - $374D0
 
 LoggedData_0x374D1:
 INCBIN "baserom.gbc", $374D1, $37533 - $374D1
 
-UnknownData_0x37533:
+Unknown_0x37533:
 INCBIN "baserom.gbc", $37533, $37534 - $37533
 
 LoggedData_0x37534:
 INCBIN "baserom.gbc", $37534, $375C0 - $37534
 
-UnknownData_0x375C0:
+Unknown_0x375C0:
 INCBIN "baserom.gbc", $375C0, $375C3 - $375C0
 
 LoggedData_0x375C3:
 INCBIN "baserom.gbc", $375C3, $375C9 - $375C3
 
-UnknownData_0x375C9:
+Unknown_0x375C9:
 INCBIN "baserom.gbc", $375C9, $375D5 - $375C9
 
 LoggedData_0x375D5:
 INCBIN "baserom.gbc", $375D5, $375F4 - $375D5
 
-UnknownData_0x375F4:
+Unknown_0x375F4:
 INCBIN "baserom.gbc", $375F4, $37608 - $375F4
 
 LoggedData_0x37608:
 INCBIN "baserom.gbc", $37608, $3767B - $37608
 
-UnknownData_0x3767B:
+Unknown_0x3767B:
 INCBIN "baserom.gbc", $3767B, $376B0 - $3767B
 
 LoggedData_0x376B0:
 INCBIN "baserom.gbc", $376B0, $376D0 - $376B0
 
-UnknownData_0x376D0:
+Unknown_0x376D0:
 INCBIN "baserom.gbc", $376D0, $376E2 - $376D0
 
 LoggedData_0x376E2:
 INCBIN "baserom.gbc", $376E2, $376E8 - $376E2
 
-UnknownData_0x376E8:
+Unknown_0x376E8:
 INCBIN "baserom.gbc", $376E8, $376F4 - $376E8
 
 LoggedData_0x376F4:
 INCBIN "baserom.gbc", $376F4, $3778A - $376F4
 
-UnknownData_0x3778A:
+Unknown_0x3778A:
 INCBIN "baserom.gbc", $3778A, $3778B - $3778A
 
 LoggedData_0x3778B:
 INCBIN "baserom.gbc", $3778B, $377C7 - $3778B
 
-UnknownData_0x377C7:
+Unknown_0x377C7:
 INCBIN "baserom.gbc", $377C7, $377C8 - $377C7
 
 LoggedData_0x377C8:
 INCBIN "baserom.gbc", $377C8, $37828 - $377C8
 
-UnknownData_0x37828:
+Unknown_0x37828:
 INCBIN "baserom.gbc", $37828, $3782B - $37828
 
 LoggedData_0x3782B:
 INCBIN "baserom.gbc", $3782B, $37831 - $3782B
 
-UnknownData_0x37831:
+Unknown_0x37831:
 INCBIN "baserom.gbc", $37831, $3783D - $37831
 
 LoggedData_0x3783D:
 INCBIN "baserom.gbc", $3783D, $37882 - $3783D
 
-UnknownData_0x37882:
+Unknown_0x37882:
 INCBIN "baserom.gbc", $37882, $37883 - $37882
 
 LoggedData_0x37883:
 INCBIN "baserom.gbc", $37883, $37900 - $37883
 
-UnknownData_0x37900:
+Unknown_0x37900:
 INCBIN "baserom.gbc", $37900, $37903 - $37900
 
 LoggedData_0x37903:
 INCBIN "baserom.gbc", $37903, $37907 - $37903
 
-UnknownData_0x37907:
+Unknown_0x37907:
 INCBIN "baserom.gbc", $37907, $3790F - $37907
 
 LoggedData_0x3790F:
 INCBIN "baserom.gbc", $3790F, $37968 - $3790F
 
-UnknownData_0x37968:
+Unknown_0x37968:
 INCBIN "baserom.gbc", $37968, $37969 - $37968
 
 LoggedData_0x37969:
 INCBIN "baserom.gbc", $37969, $379A1 - $37969
 
-UnknownData_0x379A1:
+Unknown_0x379A1:
 INCBIN "baserom.gbc", $379A1, $379A2 - $379A1
 
 LoggedData_0x379A2:
 INCBIN "baserom.gbc", $379A2, $379E4 - $379A2
 
-UnknownData_0x379E4:
+Unknown_0x379E4:
 INCBIN "baserom.gbc", $379E4, $379E7 - $379E4
 
 LoggedData_0x379E7:
 INCBIN "baserom.gbc", $379E7, $379ED - $379E7
 
-UnknownData_0x379ED:
+Unknown_0x379ED:
 INCBIN "baserom.gbc", $379ED, $379F9 - $379ED
 
 LoggedData_0x379F9:
 INCBIN "baserom.gbc", $379F9, $37A16 - $379F9
 
-UnknownData_0x37A16:
+Unknown_0x37A16:
 INCBIN "baserom.gbc", $37A16, $37A6E - $37A16
 
 LoggedData_0x37A6E:
 INCBIN "baserom.gbc", $37A6E, $37A86 - $37A6E
 
-UnknownData_0x37A86:
+Unknown_0x37A86:
 INCBIN "baserom.gbc", $37A86, $37ABE - $37A86
 
 LoggedData_0x37ABE:
 INCBIN "baserom.gbc", $37ABE, $37AF4 - $37ABE
 
-UnknownData_0x37AF4:
+Unknown_0x37AF4:
 INCBIN "baserom.gbc", $37AF4, $37B7A - $37AF4
 
 LoggedData_0x37B7A:
 INCBIN "baserom.gbc", $37B7A, $37B80 - $37B7A
 
-UnknownData_0x37B80:
+Unknown_0x37B80:
 INCBIN "baserom.gbc", $37B80, $37B8C - $37B80
 
 LoggedData_0x37B8C:
 INCBIN "baserom.gbc", $37B8C, $37C01 - $37B8C
 
-UnknownData_0x37C01:
+Unknown_0x37C01:
 INCBIN "baserom.gbc", $37C01, $37C02 - $37C01
 
 LoggedData_0x37C02:
 INCBIN "baserom.gbc", $37C02, $37C75 - $37C02
 
-UnknownData_0x37C75:
+Unknown_0x37C75:
 INCBIN "baserom.gbc", $37C75, $37C76 - $37C75
 
 LoggedData_0x37C76:
 INCBIN "baserom.gbc", $37C76, $37CEF - $37C76
 
-UnknownData_0x37CEF:
+Unknown_0x37CEF:
 INCBIN "baserom.gbc", $37CEF, $37CF2 - $37CEF
 
 LoggedData_0x37CF2:
 INCBIN "baserom.gbc", $37CF2, $37CF8 - $37CF2
 
-UnknownData_0x37CF8:
+Unknown_0x37CF8:
 INCBIN "baserom.gbc", $37CF8, $37D04 - $37CF8
 
 LoggedData_0x37D04:
 INCBIN "baserom.gbc", $37D04, $37D62 - $37D04
 
-UnknownData_0x37D62:
+Unknown_0x37D62:
 INCBIN "baserom.gbc", $37D62, $37D63 - $37D62
 
 LoggedData_0x37D63:
 INCBIN "baserom.gbc", $37D63, $37DA1 - $37D63
 
-UnknownData_0x37DA1:
+Unknown_0x37DA1:
 INCBIN "baserom.gbc", $37DA1, $37DA2 - $37DA1
 
 LoggedData_0x37DA2:
 INCBIN "baserom.gbc", $37DA2, $37DF7 - $37DA2
 
-UnknownData_0x37DF7:
+Unknown_0x37DF7:
 INCBIN "baserom.gbc", $37DF7, $37DFA - $37DF7
 
 LoggedData_0x37DFA:
 INCBIN "baserom.gbc", $37DFA, $37E00 - $37DFA
 
-UnknownData_0x37E00:
+Unknown_0x37E00:
 INCBIN "baserom.gbc", $37E00, $37E0C - $37E00
 
 LoggedData_0x37E0C:
 INCBIN "baserom.gbc", $37E0C, $37E9D - $37E0C
 
-UnknownData_0x37E9D:
+Unknown_0x37E9D:
 INCBIN "baserom.gbc", $37E9D, $37E9E - $37E9D
 
 LoggedData_0x37E9E:
 INCBIN "baserom.gbc", $37E9E, $37EE4 - $37E9E
 
-UnknownData_0x37EE4:
+Unknown_0x37EE4:
 INCBIN "baserom.gbc", $37EE4, $37EE5 - $37EE4
 
 LoggedData_0x37EE5:
 INCBIN "baserom.gbc", $37EE5, $37F40 - $37EE5
 
-UnknownData_0x37F40:
+Unknown_0x37F40:
 INCBIN "baserom.gbc", $37F40, $37F43 - $37F40
 
 LoggedData_0x37F43:
 INCBIN "baserom.gbc", $37F43, $37F49 - $37F43
 
-UnknownData_0x37F49:
+Unknown_0x37F49:
 INCBIN "baserom.gbc", $37F49, $38000 - $37F49
 
 SECTION "Bank0E", ROMX, BANK[$0E]
@@ -54328,859 +54328,859 @@ SECTION "Bank0E", ROMX, BANK[$0E]
 LoggedData_0x38000:
 INCBIN "baserom.gbc", $38000, $38101 - $38000
 
-UnknownData_0x38101:
+Unknown_0x38101:
 INCBIN "baserom.gbc", $38101, $3815C - $38101
 
 LoggedData_0x3815C:
 INCBIN "baserom.gbc", $3815C, $381C1 - $3815C
 
-UnknownData_0x381C1:
+Unknown_0x381C1:
 INCBIN "baserom.gbc", $381C1, $381E8 - $381C1
 
 LoggedData_0x381E8:
 INCBIN "baserom.gbc", $381E8, $381EC - $381E8
 
-UnknownData_0x381EC:
+Unknown_0x381EC:
 INCBIN "baserom.gbc", $381EC, $381F4 - $381EC
 
 LoggedData_0x381F4:
 INCBIN "baserom.gbc", $381F4, $38291 - $381F4
 
-UnknownData_0x38291:
+Unknown_0x38291:
 INCBIN "baserom.gbc", $38291, $38295 - $38291
 
 LoggedData_0x38295:
 INCBIN "baserom.gbc", $38295, $382CF - $38295
 
-UnknownData_0x382CF:
+Unknown_0x382CF:
 INCBIN "baserom.gbc", $382CF, $382DD - $382CF
 
 LoggedData_0x382DD:
 INCBIN "baserom.gbc", $382DD, $3833D - $382DD
 
-UnknownData_0x3833D:
+Unknown_0x3833D:
 INCBIN "baserom.gbc", $3833D, $38353 - $3833D
 
 LoggedData_0x38353:
 INCBIN "baserom.gbc", $38353, $38359 - $38353
 
-UnknownData_0x38359:
+Unknown_0x38359:
 INCBIN "baserom.gbc", $38359, $38365 - $38359
 
 LoggedData_0x38365:
 INCBIN "baserom.gbc", $38365, $3841A - $38365
 
-UnknownData_0x3841A:
+Unknown_0x3841A:
 INCBIN "baserom.gbc", $3841A, $38469 - $3841A
 
 LoggedData_0x38469:
 INCBIN "baserom.gbc", $38469, $3850B - $38469
 
-UnknownData_0x3850B:
+Unknown_0x3850B:
 INCBIN "baserom.gbc", $3850B, $3855B - $3850B
 
 LoggedData_0x3855B:
 INCBIN "baserom.gbc", $3855B, $38619 - $3855B
 
-UnknownData_0x38619:
+Unknown_0x38619:
 INCBIN "baserom.gbc", $38619, $38651 - $38619
 
 LoggedData_0x38651:
 INCBIN "baserom.gbc", $38651, $386C5 - $38651
 
-UnknownData_0x386C5:
+Unknown_0x386C5:
 INCBIN "baserom.gbc", $386C5, $386F8 - $386C5
 
 LoggedData_0x386F8:
 INCBIN "baserom.gbc", $386F8, $38700 - $386F8
 
-UnknownData_0x38700:
+Unknown_0x38700:
 INCBIN "baserom.gbc", $38700, $38710 - $38700
 
 LoggedData_0x38710:
 INCBIN "baserom.gbc", $38710, $387A7 - $38710
 
-UnknownData_0x387A7:
+Unknown_0x387A7:
 INCBIN "baserom.gbc", $387A7, $387B9 - $387A7
 
 LoggedData_0x387B9:
 INCBIN "baserom.gbc", $387B9, $38844 - $387B9
 
-UnknownData_0x38844:
+Unknown_0x38844:
 INCBIN "baserom.gbc", $38844, $38857 - $38844
 
 LoggedData_0x38857:
 INCBIN "baserom.gbc", $38857, $3893C - $38857
 
-UnknownData_0x3893C:
+Unknown_0x3893C:
 INCBIN "baserom.gbc", $3893C, $38953 - $3893C
 
 LoggedData_0x38953:
 INCBIN "baserom.gbc", $38953, $38959 - $38953
 
-UnknownData_0x38959:
+Unknown_0x38959:
 INCBIN "baserom.gbc", $38959, $38965 - $38959
 
 LoggedData_0x38965:
 INCBIN "baserom.gbc", $38965, $389BC - $38965
 
-UnknownData_0x389BC:
+Unknown_0x389BC:
 INCBIN "baserom.gbc", $389BC, $389BD - $389BC
 
 LoggedData_0x389BD:
 INCBIN "baserom.gbc", $389BD, $38A08 - $389BD
 
-UnknownData_0x38A08:
+Unknown_0x38A08:
 INCBIN "baserom.gbc", $38A08, $38A09 - $38A08
 
 LoggedData_0x38A09:
 INCBIN "baserom.gbc", $38A09, $38A62 - $38A09
 
-UnknownData_0x38A62:
+Unknown_0x38A62:
 INCBIN "baserom.gbc", $38A62, $38A65 - $38A62
 
 LoggedData_0x38A65:
 INCBIN "baserom.gbc", $38A65, $38A6B - $38A65
 
-UnknownData_0x38A6B:
+Unknown_0x38A6B:
 INCBIN "baserom.gbc", $38A6B, $38A77 - $38A6B
 
 LoggedData_0x38A77:
 INCBIN "baserom.gbc", $38A77, $38B5F - $38A77
 
-UnknownData_0x38B5F:
+Unknown_0x38B5F:
 INCBIN "baserom.gbc", $38B5F, $38B60 - $38B5F
 
 LoggedData_0x38B60:
 INCBIN "baserom.gbc", $38B60, $38B93 - $38B60
 
-UnknownData_0x38B93:
+Unknown_0x38B93:
 INCBIN "baserom.gbc", $38B93, $38B9E - $38B93
 
 LoggedData_0x38B9E:
 INCBIN "baserom.gbc", $38B9E, $38BC9 - $38B9E
 
-UnknownData_0x38BC9:
+Unknown_0x38BC9:
 INCBIN "baserom.gbc", $38BC9, $38BD8 - $38BC9
 
 LoggedData_0x38BD8:
 INCBIN "baserom.gbc", $38BD8, $38BDC - $38BD8
 
-UnknownData_0x38BDC:
+Unknown_0x38BDC:
 INCBIN "baserom.gbc", $38BDC, $38BE4 - $38BDC
 
 LoggedData_0x38BE4:
 INCBIN "baserom.gbc", $38BE4, $38D83 - $38BE4
 
-UnknownData_0x38D83:
+Unknown_0x38D83:
 INCBIN "baserom.gbc", $38D83, $38D84 - $38D83
 
 LoggedData_0x38D84:
 INCBIN "baserom.gbc", $38D84, $38E1B - $38D84
 
-UnknownData_0x38E1B:
+Unknown_0x38E1B:
 INCBIN "baserom.gbc", $38E1B, $38E1C - $38E1B
 
 LoggedData_0x38E1C:
 INCBIN "baserom.gbc", $38E1C, $38F12 - $38E1C
 
-UnknownData_0x38F12:
+Unknown_0x38F12:
 INCBIN "baserom.gbc", $38F12, $38F15 - $38F12
 
 LoggedData_0x38F15:
 INCBIN "baserom.gbc", $38F15, $38F1B - $38F15
 
-UnknownData_0x38F1B:
+Unknown_0x38F1B:
 INCBIN "baserom.gbc", $38F1B, $38F27 - $38F1B
 
 LoggedData_0x38F27:
 INCBIN "baserom.gbc", $38F27, $39054 - $38F27
 
-UnknownData_0x39054:
+Unknown_0x39054:
 INCBIN "baserom.gbc", $39054, $39055 - $39054
 
 LoggedData_0x39055:
 INCBIN "baserom.gbc", $39055, $3911D - $39055
 
-UnknownData_0x3911D:
+Unknown_0x3911D:
 INCBIN "baserom.gbc", $3911D, $3911E - $3911D
 
 LoggedData_0x3911E:
 INCBIN "baserom.gbc", $3911E, $3926C - $3911E
 
-UnknownData_0x3926C:
+Unknown_0x3926C:
 INCBIN "baserom.gbc", $3926C, $3926D - $3926C
 
 LoggedData_0x3926D:
 INCBIN "baserom.gbc", $3926D, $39307 - $3926D
 
-UnknownData_0x39307:
+Unknown_0x39307:
 INCBIN "baserom.gbc", $39307, $3930A - $39307
 
 LoggedData_0x3930A:
 INCBIN "baserom.gbc", $3930A, $39312 - $3930A
 
-UnknownData_0x39312:
+Unknown_0x39312:
 INCBIN "baserom.gbc", $39312, $39322 - $39312
 
 LoggedData_0x39322:
 INCBIN "baserom.gbc", $39322, $39398 - $39322
 
-UnknownData_0x39398:
+Unknown_0x39398:
 INCBIN "baserom.gbc", $39398, $39399 - $39398
 
 LoggedData_0x39399:
 INCBIN "baserom.gbc", $39399, $393EA - $39399
 
-UnknownData_0x393EA:
+Unknown_0x393EA:
 INCBIN "baserom.gbc", $393EA, $393EB - $393EA
 
 LoggedData_0x393EB:
 INCBIN "baserom.gbc", $393EB, $3945A - $393EB
 
-UnknownData_0x3945A:
+Unknown_0x3945A:
 INCBIN "baserom.gbc", $3945A, $3945B - $3945A
 
 LoggedData_0x3945B:
 INCBIN "baserom.gbc", $3945B, $394CB - $3945B
 
-UnknownData_0x394CB:
+Unknown_0x394CB:
 INCBIN "baserom.gbc", $394CB, $394CE - $394CB
 
 LoggedData_0x394CE:
 INCBIN "baserom.gbc", $394CE, $394D6 - $394CE
 
-UnknownData_0x394D6:
+Unknown_0x394D6:
 INCBIN "baserom.gbc", $394D6, $394E6 - $394D6
 
 LoggedData_0x394E6:
 INCBIN "baserom.gbc", $394E6, $39552 - $394E6
 
-UnknownData_0x39552:
+Unknown_0x39552:
 INCBIN "baserom.gbc", $39552, $39553 - $39552
 
 LoggedData_0x39553:
 INCBIN "baserom.gbc", $39553, $395DB - $39553
 
-UnknownData_0x395DB:
+Unknown_0x395DB:
 INCBIN "baserom.gbc", $395DB, $395E3 - $395DB
 
 LoggedData_0x395E3:
 INCBIN "baserom.gbc", $395E3, $395E7 - $395E3
 
-UnknownData_0x395E7:
+Unknown_0x395E7:
 INCBIN "baserom.gbc", $395E7, $395EF - $395E7
 
 LoggedData_0x395EF:
 INCBIN "baserom.gbc", $395EF, $39642 - $395EF
 
-UnknownData_0x39642:
+Unknown_0x39642:
 INCBIN "baserom.gbc", $39642, $39643 - $39642
 
 LoggedData_0x39643:
 INCBIN "baserom.gbc", $39643, $396BD - $39643
 
-UnknownData_0x396BD:
+Unknown_0x396BD:
 INCBIN "baserom.gbc", $396BD, $396BE - $396BD
 
 LoggedData_0x396BE:
 INCBIN "baserom.gbc", $396BE, $397F3 - $396BE
 
-UnknownData_0x397F3:
+Unknown_0x397F3:
 INCBIN "baserom.gbc", $397F3, $397F4 - $397F3
 
 LoggedData_0x397F4:
 INCBIN "baserom.gbc", $397F4, $39837 - $397F4
 
-UnknownData_0x39837:
+Unknown_0x39837:
 INCBIN "baserom.gbc", $39837, $39856 - $39837
 
 LoggedData_0x39856:
 INCBIN "baserom.gbc", $39856, $39893 - $39856
 
-UnknownData_0x39893:
+Unknown_0x39893:
 INCBIN "baserom.gbc", $39893, $398B6 - $39893
 
 LoggedData_0x398B6:
 INCBIN "baserom.gbc", $398B6, $398BA - $398B6
 
-UnknownData_0x398BA:
+Unknown_0x398BA:
 INCBIN "baserom.gbc", $398BA, $398C2 - $398BA
 
 LoggedData_0x398C2:
 INCBIN "baserom.gbc", $398C2, $3993D - $398C2
 
-UnknownData_0x3993D:
+Unknown_0x3993D:
 INCBIN "baserom.gbc", $3993D, $3993E - $3993D
 
 LoggedData_0x3993E:
 INCBIN "baserom.gbc", $3993E, $39990 - $3993E
 
-UnknownData_0x39990:
+Unknown_0x39990:
 INCBIN "baserom.gbc", $39990, $39993 - $39990
 
 LoggedData_0x39993:
 INCBIN "baserom.gbc", $39993, $39997 - $39993
 
-UnknownData_0x39997:
+Unknown_0x39997:
 INCBIN "baserom.gbc", $39997, $3999F - $39997
 
 LoggedData_0x3999F:
 INCBIN "baserom.gbc", $3999F, $399EA - $3999F
 
-UnknownData_0x399EA:
+Unknown_0x399EA:
 INCBIN "baserom.gbc", $399EA, $39A29 - $399EA
 
 LoggedData_0x39A29:
 INCBIN "baserom.gbc", $39A29, $39A70 - $39A29
 
-UnknownData_0x39A70:
+Unknown_0x39A70:
 INCBIN "baserom.gbc", $39A70, $39AAD - $39A70
 
 LoggedData_0x39AAD:
 INCBIN "baserom.gbc", $39AAD, $39AF8 - $39AAD
 
-UnknownData_0x39AF8:
+Unknown_0x39AF8:
 INCBIN "baserom.gbc", $39AF8, $39B46 - $39AF8
 
 LoggedData_0x39B46:
 INCBIN "baserom.gbc", $39B46, $39B92 - $39B46
 
-UnknownData_0x39B92:
+Unknown_0x39B92:
 INCBIN "baserom.gbc", $39B92, $39BAA - $39B92
 
 LoggedData_0x39BAA:
 INCBIN "baserom.gbc", $39BAA, $39BB2 - $39BAA
 
-UnknownData_0x39BB2:
+Unknown_0x39BB2:
 INCBIN "baserom.gbc", $39BB2, $39BC2 - $39BB2
 
 LoggedData_0x39BC2:
 INCBIN "baserom.gbc", $39BC2, $39C1F - $39BC2
 
-UnknownData_0x39C1F:
+Unknown_0x39C1F:
 INCBIN "baserom.gbc", $39C1F, $39C63 - $39C1F
 
 LoggedData_0x39C63:
 INCBIN "baserom.gbc", $39C63, $39C8E - $39C63
 
-UnknownData_0x39C8E:
+Unknown_0x39C8E:
 INCBIN "baserom.gbc", $39C8E, $39CBA - $39C8E
 
 LoggedData_0x39CBA:
 INCBIN "baserom.gbc", $39CBA, $39D11 - $39CBA
 
-UnknownData_0x39D11:
+Unknown_0x39D11:
 INCBIN "baserom.gbc", $39D11, $39D55 - $39D11
 
 LoggedData_0x39D55:
 INCBIN "baserom.gbc", $39D55, $39D5B - $39D55
 
-UnknownData_0x39D5B:
+Unknown_0x39D5B:
 INCBIN "baserom.gbc", $39D5B, $39D67 - $39D5B
 
 LoggedData_0x39D67:
 INCBIN "baserom.gbc", $39D67, $39D84 - $39D67
 
-UnknownData_0x39D84:
+Unknown_0x39D84:
 INCBIN "baserom.gbc", $39D84, $39D85 - $39D84
 
 LoggedData_0x39D85:
 INCBIN "baserom.gbc", $39D85, $39DA0 - $39D85
 
-UnknownData_0x39DA0:
+Unknown_0x39DA0:
 INCBIN "baserom.gbc", $39DA0, $39DA1 - $39DA0
 
 LoggedData_0x39DA1:
 INCBIN "baserom.gbc", $39DA1, $39DB6 - $39DA1
 
-UnknownData_0x39DB6:
+Unknown_0x39DB6:
 INCBIN "baserom.gbc", $39DB6, $39DB9 - $39DB6
 
 LoggedData_0x39DB9:
 INCBIN "baserom.gbc", $39DB9, $39DBF - $39DB9
 
-UnknownData_0x39DBF:
+Unknown_0x39DBF:
 INCBIN "baserom.gbc", $39DBF, $39DCB - $39DBF
 
 LoggedData_0x39DCB:
 INCBIN "baserom.gbc", $39DCB, $39E68 - $39DCB
 
-UnknownData_0x39E68:
+Unknown_0x39E68:
 INCBIN "baserom.gbc", $39E68, $39E69 - $39E68
 
 LoggedData_0x39E69:
 INCBIN "baserom.gbc", $39E69, $39F10 - $39E69
 
-UnknownData_0x39F10:
+Unknown_0x39F10:
 INCBIN "baserom.gbc", $39F10, $39F13 - $39F10
 
 LoggedData_0x39F13:
 INCBIN "baserom.gbc", $39F13, $39F17 - $39F13
 
-UnknownData_0x39F17:
+Unknown_0x39F17:
 INCBIN "baserom.gbc", $39F17, $39F1F - $39F17
 
 LoggedData_0x39F1F:
 INCBIN "baserom.gbc", $39F1F, $39F6F - $39F1F
 
-UnknownData_0x39F6F:
+Unknown_0x39F6F:
 INCBIN "baserom.gbc", $39F6F, $39FE5 - $39F6F
 
 LoggedData_0x39FE5:
 INCBIN "baserom.gbc", $39FE5, $3A08B - $39FE5
 
-UnknownData_0x3A08B:
+Unknown_0x3A08B:
 INCBIN "baserom.gbc", $3A08B, $3A170 - $3A08B
 
 LoggedData_0x3A170:
 INCBIN "baserom.gbc", $3A170, $3A1BA - $3A170
 
-UnknownData_0x3A1BA:
+Unknown_0x3A1BA:
 INCBIN "baserom.gbc", $3A1BA, $3A24B - $3A1BA
 
 LoggedData_0x3A24B:
 INCBIN "baserom.gbc", $3A24B, $3A2A9 - $3A24B
 
-UnknownData_0x3A2A9:
+Unknown_0x3A2A9:
 INCBIN "baserom.gbc", $3A2A9, $3A2F1 - $3A2A9
 
 LoggedData_0x3A2F1:
 INCBIN "baserom.gbc", $3A2F1, $3A2F9 - $3A2F1
 
-UnknownData_0x3A2F9:
+Unknown_0x3A2F9:
 INCBIN "baserom.gbc", $3A2F9, $3A309 - $3A2F9
 
 LoggedData_0x3A309:
 INCBIN "baserom.gbc", $3A309, $3A642 - $3A309
 
-UnknownData_0x3A642:
+Unknown_0x3A642:
 INCBIN "baserom.gbc", $3A642, $3A643 - $3A642
 
 LoggedData_0x3A643:
 INCBIN "baserom.gbc", $3A643, $3A71D - $3A643
 
-UnknownData_0x3A71D:
+Unknown_0x3A71D:
 INCBIN "baserom.gbc", $3A71D, $3A848 - $3A71D
 
 LoggedData_0x3A848:
 INCBIN "baserom.gbc", $3A848, $3A8D7 - $3A848
 
-UnknownData_0x3A8D7:
+Unknown_0x3A8D7:
 INCBIN "baserom.gbc", $3A8D7, $3AA0B - $3A8D7
 
 LoggedData_0x3AA0B:
 INCBIN "baserom.gbc", $3AA0B, $3AAA3 - $3AA0B
 
-UnknownData_0x3AAA3:
+Unknown_0x3AAA3:
 INCBIN "baserom.gbc", $3AAA3, $3AB6D - $3AAA3
 
 LoggedData_0x3AB6D:
 INCBIN "baserom.gbc", $3AB6D, $3ABDF - $3AB6D
 
-UnknownData_0x3ABDF:
+Unknown_0x3ABDF:
 INCBIN "baserom.gbc", $3ABDF, $3AC2D - $3ABDF
 
 LoggedData_0x3AC2D:
 INCBIN "baserom.gbc", $3AC2D, $3AC35 - $3AC2D
 
-UnknownData_0x3AC35:
+Unknown_0x3AC35:
 INCBIN "baserom.gbc", $3AC35, $3AC45 - $3AC35
 
 LoggedData_0x3AC45:
 INCBIN "baserom.gbc", $3AC45, $3ADCC - $3AC45
 
-UnknownData_0x3ADCC:
+Unknown_0x3ADCC:
 INCBIN "baserom.gbc", $3ADCC, $3ADCD - $3ADCC
 
 LoggedData_0x3ADCD:
 INCBIN "baserom.gbc", $3ADCD, $3AF7C - $3ADCD
 
-UnknownData_0x3AF7C:
+Unknown_0x3AF7C:
 INCBIN "baserom.gbc", $3AF7C, $3AF7D - $3AF7C
 
 LoggedData_0x3AF7D:
 INCBIN "baserom.gbc", $3AF7D, $3B0C0 - $3AF7D
 
-UnknownData_0x3B0C0:
+Unknown_0x3B0C0:
 INCBIN "baserom.gbc", $3B0C0, $3B0C1 - $3B0C0
 
 LoggedData_0x3B0C1:
 INCBIN "baserom.gbc", $3B0C1, $3B151 - $3B0C1
 
-UnknownData_0x3B151:
+Unknown_0x3B151:
 INCBIN "baserom.gbc", $3B151, $3B154 - $3B151
 
 LoggedData_0x3B154:
 INCBIN "baserom.gbc", $3B154, $3B15C - $3B154
 
-UnknownData_0x3B15C:
+Unknown_0x3B15C:
 INCBIN "baserom.gbc", $3B15C, $3B16C - $3B15C
 
 LoggedData_0x3B16C:
 INCBIN "baserom.gbc", $3B16C, $3B1B7 - $3B16C
 
-UnknownData_0x3B1B7:
+Unknown_0x3B1B7:
 INCBIN "baserom.gbc", $3B1B7, $3B1DA - $3B1B7
 
 LoggedData_0x3B1DA:
 INCBIN "baserom.gbc", $3B1DA, $3B223 - $3B1DA
 
-UnknownData_0x3B223:
+Unknown_0x3B223:
 INCBIN "baserom.gbc", $3B223, $3B246 - $3B223
 
 LoggedData_0x3B246:
 INCBIN "baserom.gbc", $3B246, $3B28A - $3B246
 
-UnknownData_0x3B28A:
+Unknown_0x3B28A:
 INCBIN "baserom.gbc", $3B28A, $3B2A8 - $3B28A
 
 LoggedData_0x3B2A8:
 INCBIN "baserom.gbc", $3B2A8, $3B2AE - $3B2A8
 
-UnknownData_0x3B2AE:
+Unknown_0x3B2AE:
 INCBIN "baserom.gbc", $3B2AE, $3B2BA - $3B2AE
 
 LoggedData_0x3B2BA:
 INCBIN "baserom.gbc", $3B2BA, $3B336 - $3B2BA
 
-UnknownData_0x3B336:
+Unknown_0x3B336:
 INCBIN "baserom.gbc", $3B336, $3B337 - $3B336
 
 LoggedData_0x3B337:
 INCBIN "baserom.gbc", $3B337, $3B3B2 - $3B337
 
-UnknownData_0x3B3B2:
+Unknown_0x3B3B2:
 INCBIN "baserom.gbc", $3B3B2, $3B3B3 - $3B3B2
 
 LoggedData_0x3B3B3:
 INCBIN "baserom.gbc", $3B3B3, $3B48C - $3B3B3
 
-UnknownData_0x3B48C:
+Unknown_0x3B48C:
 INCBIN "baserom.gbc", $3B48C, $3B48F - $3B48C
 
 LoggedData_0x3B48F:
 INCBIN "baserom.gbc", $3B48F, $3B495 - $3B48F
 
-UnknownData_0x3B495:
+Unknown_0x3B495:
 INCBIN "baserom.gbc", $3B495, $3B4A1 - $3B495
 
 LoggedData_0x3B4A1:
 INCBIN "baserom.gbc", $3B4A1, $3B4E6 - $3B4A1
 
-UnknownData_0x3B4E6:
+Unknown_0x3B4E6:
 INCBIN "baserom.gbc", $3B4E6, $3B4E7 - $3B4E6
 
 LoggedData_0x3B4E7:
 INCBIN "baserom.gbc", $3B4E7, $3B55C - $3B4E7
 
-UnknownData_0x3B55C:
+Unknown_0x3B55C:
 INCBIN "baserom.gbc", $3B55C, $3B60A - $3B55C
 
 LoggedData_0x3B60A:
 INCBIN "baserom.gbc", $3B60A, $3B677 - $3B60A
 
-UnknownData_0x3B677:
+Unknown_0x3B677:
 INCBIN "baserom.gbc", $3B677, $3B725 - $3B677
 
 LoggedData_0x3B725:
 INCBIN "baserom.gbc", $3B725, $3B74E - $3B725
 
-UnknownData_0x3B74E:
+Unknown_0x3B74E:
 INCBIN "baserom.gbc", $3B74E, $3B7AB - $3B74E
 
 LoggedData_0x3B7AB:
 INCBIN "baserom.gbc", $3B7AB, $3B800 - $3B7AB
 
-UnknownData_0x3B800:
+Unknown_0x3B800:
 INCBIN "baserom.gbc", $3B800, $3B836 - $3B800
 
 LoggedData_0x3B836:
 INCBIN "baserom.gbc", $3B836, $3B83E - $3B836
 
-UnknownData_0x3B83E:
+Unknown_0x3B83E:
 INCBIN "baserom.gbc", $3B83E, $3B84E - $3B83E
 
 LoggedData_0x3B84E:
 INCBIN "baserom.gbc", $3B84E, $3B85C - $3B84E
 
-UnknownData_0x3B85C:
+Unknown_0x3B85C:
 INCBIN "baserom.gbc", $3B85C, $3B85D - $3B85C
 
 LoggedData_0x3B85D:
 INCBIN "baserom.gbc", $3B85D, $3B92F - $3B85D
 
-UnknownData_0x3B92F:
+Unknown_0x3B92F:
 INCBIN "baserom.gbc", $3B92F, $3B930 - $3B92F
 
 LoggedData_0x3B930:
 INCBIN "baserom.gbc", $3B930, $3B940 - $3B930
 
-UnknownData_0x3B940:
+Unknown_0x3B940:
 INCBIN "baserom.gbc", $3B940, $3B941 - $3B940
 
 LoggedData_0x3B941:
 INCBIN "baserom.gbc", $3B941, $3B959 - $3B941
 
-UnknownData_0x3B959:
+Unknown_0x3B959:
 INCBIN "baserom.gbc", $3B959, $3B95A - $3B959
 
 LoggedData_0x3B95A:
 INCBIN "baserom.gbc", $3B95A, $3B982 - $3B95A
 
-UnknownData_0x3B982:
+Unknown_0x3B982:
 INCBIN "baserom.gbc", $3B982, $3B983 - $3B982
 
 LoggedData_0x3B983:
 INCBIN "baserom.gbc", $3B983, $3B9BD - $3B983
 
-UnknownData_0x3B9BD:
+Unknown_0x3B9BD:
 INCBIN "baserom.gbc", $3B9BD, $3B9BE - $3B9BD
 
 LoggedData_0x3B9BE:
 INCBIN "baserom.gbc", $3B9BE, $3B9D4 - $3B9BE
 
-UnknownData_0x3B9D4:
+Unknown_0x3B9D4:
 INCBIN "baserom.gbc", $3B9D4, $3B9D5 - $3B9D4
 
 LoggedData_0x3B9D5:
 INCBIN "baserom.gbc", $3B9D5, $3B9F8 - $3B9D5
 
-UnknownData_0x3B9F8:
+Unknown_0x3B9F8:
 INCBIN "baserom.gbc", $3B9F8, $3B9F9 - $3B9F8
 
 LoggedData_0x3B9F9:
 INCBIN "baserom.gbc", $3B9F9, $3BA25 - $3B9F9
 
-UnknownData_0x3BA25:
+Unknown_0x3BA25:
 INCBIN "baserom.gbc", $3BA25, $3BA26 - $3BA25
 
 LoggedData_0x3BA26:
 INCBIN "baserom.gbc", $3BA26, $3BA45 - $3BA26
 
-UnknownData_0x3BA45:
+Unknown_0x3BA45:
 INCBIN "baserom.gbc", $3BA45, $3BA46 - $3BA45
 
 LoggedData_0x3BA46:
 INCBIN "baserom.gbc", $3BA46, $3BA56 - $3BA46
 
-UnknownData_0x3BA56:
+Unknown_0x3BA56:
 INCBIN "baserom.gbc", $3BA56, $3BA57 - $3BA56
 
 LoggedData_0x3BA57:
 INCBIN "baserom.gbc", $3BA57, $3BA59 - $3BA57
 
-UnknownData_0x3BA59:
+Unknown_0x3BA59:
 INCBIN "baserom.gbc", $3BA59, $3BA5B - $3BA59
 
 LoggedData_0x3BA5B:
 INCBIN "baserom.gbc", $3BA5B, $3BA69 - $3BA5B
 
-UnknownData_0x3BA69:
+Unknown_0x3BA69:
 INCBIN "baserom.gbc", $3BA69, $3BA6A - $3BA69
 
 LoggedData_0x3BA6A:
 INCBIN "baserom.gbc", $3BA6A, $3BAA7 - $3BA6A
 
-UnknownData_0x3BAA7:
+Unknown_0x3BAA7:
 INCBIN "baserom.gbc", $3BAA7, $3BAA8 - $3BAA7
 
 LoggedData_0x3BAA8:
 INCBIN "baserom.gbc", $3BAA8, $3BAC8 - $3BAA8
 
-UnknownData_0x3BAC8:
+Unknown_0x3BAC8:
 INCBIN "baserom.gbc", $3BAC8, $3BAC9 - $3BAC8
 
 LoggedData_0x3BAC9:
 INCBIN "baserom.gbc", $3BAC9, $3BADE - $3BAC9
 
-UnknownData_0x3BADE:
+Unknown_0x3BADE:
 INCBIN "baserom.gbc", $3BADE, $3BADF - $3BADE
 
 LoggedData_0x3BADF:
 INCBIN "baserom.gbc", $3BADF, $3BAF3 - $3BADF
 
-UnknownData_0x3BAF3:
+Unknown_0x3BAF3:
 INCBIN "baserom.gbc", $3BAF3, $3BAF4 - $3BAF3
 
 LoggedData_0x3BAF4:
 INCBIN "baserom.gbc", $3BAF4, $3BB06 - $3BAF4
 
-UnknownData_0x3BB06:
+Unknown_0x3BB06:
 INCBIN "baserom.gbc", $3BB06, $3BB07 - $3BB06
 
 LoggedData_0x3BB07:
 INCBIN "baserom.gbc", $3BB07, $3BB39 - $3BB07
 
-UnknownData_0x3BB39:
+Unknown_0x3BB39:
 INCBIN "baserom.gbc", $3BB39, $3BB3A - $3BB39
 
 LoggedData_0x3BB3A:
 INCBIN "baserom.gbc", $3BB3A, $3BB71 - $3BB3A
 
-UnknownData_0x3BB71:
+Unknown_0x3BB71:
 INCBIN "baserom.gbc", $3BB71, $3BB72 - $3BB71
 
 LoggedData_0x3BB72:
 INCBIN "baserom.gbc", $3BB72, $3BB84 - $3BB72
 
-UnknownData_0x3BB84:
+Unknown_0x3BB84:
 INCBIN "baserom.gbc", $3BB84, $3BB85 - $3BB84
 
 LoggedData_0x3BB85:
 INCBIN "baserom.gbc", $3BB85, $3BB95 - $3BB85
 
-UnknownData_0x3BB95:
+Unknown_0x3BB95:
 INCBIN "baserom.gbc", $3BB95, $3BB96 - $3BB95
 
 LoggedData_0x3BB96:
 INCBIN "baserom.gbc", $3BB96, $3BBA6 - $3BB96
 
-UnknownData_0x3BBA6:
+Unknown_0x3BBA6:
 INCBIN "baserom.gbc", $3BBA6, $3BBA7 - $3BBA6
 
 LoggedData_0x3BBA7:
 INCBIN "baserom.gbc", $3BBA7, $3BBD0 - $3BBA7
 
-UnknownData_0x3BBD0:
+Unknown_0x3BBD0:
 INCBIN "baserom.gbc", $3BBD0, $3BBD1 - $3BBD0
 
 LoggedData_0x3BBD1:
 INCBIN "baserom.gbc", $3BBD1, $3BBFE - $3BBD1
 
-UnknownData_0x3BBFE:
+Unknown_0x3BBFE:
 INCBIN "baserom.gbc", $3BBFE, $3BBFF - $3BBFE
 
 LoggedData_0x3BBFF:
 INCBIN "baserom.gbc", $3BBFF, $3BC0F - $3BBFF
 
-UnknownData_0x3BC0F:
+Unknown_0x3BC0F:
 INCBIN "baserom.gbc", $3BC0F, $3BC10 - $3BC0F
 
 LoggedData_0x3BC10:
 INCBIN "baserom.gbc", $3BC10, $3BC22 - $3BC10
 
-UnknownData_0x3BC22:
+Unknown_0x3BC22:
 INCBIN "baserom.gbc", $3BC22, $3BC23 - $3BC22
 
 LoggedData_0x3BC23:
 INCBIN "baserom.gbc", $3BC23, $3BC86 - $3BC23
 
-UnknownData_0x3BC86:
+Unknown_0x3BC86:
 INCBIN "baserom.gbc", $3BC86, $3BC87 - $3BC86
 
 LoggedData_0x3BC87:
 INCBIN "baserom.gbc", $3BC87, $3BCAB - $3BC87
 
-UnknownData_0x3BCAB:
+Unknown_0x3BCAB:
 INCBIN "baserom.gbc", $3BCAB, $3BCAC - $3BCAB
 
 LoggedData_0x3BCAC:
 INCBIN "baserom.gbc", $3BCAC, $3BCBC - $3BCAC
 
-UnknownData_0x3BCBC:
+Unknown_0x3BCBC:
 INCBIN "baserom.gbc", $3BCBC, $3BCBD - $3BCBC
 
 LoggedData_0x3BCBD:
 INCBIN "baserom.gbc", $3BCBD, $3BCCD - $3BCBD
 
-UnknownData_0x3BCCD:
+Unknown_0x3BCCD:
 INCBIN "baserom.gbc", $3BCCD, $3BCCE - $3BCCD
 
 LoggedData_0x3BCCE:
 INCBIN "baserom.gbc", $3BCCE, $3BCE2 - $3BCCE
 
-UnknownData_0x3BCE2:
+Unknown_0x3BCE2:
 INCBIN "baserom.gbc", $3BCE2, $3BCE3 - $3BCE2
 
 LoggedData_0x3BCE3:
 INCBIN "baserom.gbc", $3BCE3, $3BD05 - $3BCE3
 
-UnknownData_0x3BD05:
+Unknown_0x3BD05:
 INCBIN "baserom.gbc", $3BD05, $3BD06 - $3BD05
 
 LoggedData_0x3BD06:
 INCBIN "baserom.gbc", $3BD06, $3BD1E - $3BD06
 
-UnknownData_0x3BD1E:
+Unknown_0x3BD1E:
 INCBIN "baserom.gbc", $3BD1E, $3BD1F - $3BD1E
 
 LoggedData_0x3BD1F:
 INCBIN "baserom.gbc", $3BD1F, $3BD30 - $3BD1F
 
-UnknownData_0x3BD30:
+Unknown_0x3BD30:
 INCBIN "baserom.gbc", $3BD30, $3BD31 - $3BD30
 
 LoggedData_0x3BD31:
 INCBIN "baserom.gbc", $3BD31, $3BD61 - $3BD31
 
-UnknownData_0x3BD61:
+Unknown_0x3BD61:
 INCBIN "baserom.gbc", $3BD61, $3BD62 - $3BD61
 
 LoggedData_0x3BD62:
 INCBIN "baserom.gbc", $3BD62, $3BDCD - $3BD62
 
-UnknownData_0x3BDCD:
+Unknown_0x3BDCD:
 INCBIN "baserom.gbc", $3BDCD, $3BDCE - $3BDCD
 
 LoggedData_0x3BDCE:
 INCBIN "baserom.gbc", $3BDCE, $3BDEB - $3BDCE
 
-UnknownData_0x3BDEB:
+Unknown_0x3BDEB:
 INCBIN "baserom.gbc", $3BDEB, $3BDEC - $3BDEB
 
 LoggedData_0x3BDEC:
 INCBIN "baserom.gbc", $3BDEC, $3BE16 - $3BDEC
 
-UnknownData_0x3BE16:
+Unknown_0x3BE16:
 INCBIN "baserom.gbc", $3BE16, $3BE17 - $3BE16
 
 LoggedData_0x3BE17:
 INCBIN "baserom.gbc", $3BE17, $3BE45 - $3BE17
 
-UnknownData_0x3BE45:
+Unknown_0x3BE45:
 INCBIN "baserom.gbc", $3BE45, $3BE46 - $3BE45
 
 LoggedData_0x3BE46:
 INCBIN "baserom.gbc", $3BE46, $3BE64 - $3BE46
 
-UnknownData_0x3BE64:
+Unknown_0x3BE64:
 INCBIN "baserom.gbc", $3BE64, $3BE65 - $3BE64
 
 LoggedData_0x3BE65:
 INCBIN "baserom.gbc", $3BE65, $3BE7F - $3BE65
 
-UnknownData_0x3BE7F:
+Unknown_0x3BE7F:
 INCBIN "baserom.gbc", $3BE7F, $3BE80 - $3BE7F
 
 LoggedData_0x3BE80:
 INCBIN "baserom.gbc", $3BE80, $3BEB0 - $3BE80
 
-UnknownData_0x3BEB0:
+Unknown_0x3BEB0:
 INCBIN "baserom.gbc", $3BEB0, $3BEB1 - $3BEB0
 
 LoggedData_0x3BEB1:
 INCBIN "baserom.gbc", $3BEB1, $3BFC5 - $3BEB1
 
-UnknownData_0x3BFC5:
+Unknown_0x3BFC5:
 INCBIN "baserom.gbc", $3BFC5, $3BFC6 - $3BFC5
 
 LoggedData_0x3BFC6:
 INCBIN "baserom.gbc", $3BFC6, $3BFD6 - $3BFC6
 
-UnknownData_0x3BFD6:
+Unknown_0x3BFD6:
 INCBIN "baserom.gbc", $3BFD6, $3BFD7 - $3BFD6
 
 LoggedData_0x3BFD7:
 INCBIN "baserom.gbc", $3BFD7, $3BFEF - $3BFD7
 
-UnknownData_0x3BFEF:
+Unknown_0x3BFEF:
 INCBIN "baserom.gbc", $3BFEF, $3BFF0 - $3BFEF
 
 LoggedData_0x3BFF0:
 INCBIN "baserom.gbc", $3BFF0, $3BFF2 - $3BFF0
 
-UnknownData_0x3BFF2:
+Unknown_0x3BFF2:
 INCBIN "baserom.gbc", $3BFF2, $3C000 - $3BFF2
 
 SECTION "Bank0F", ROMX, BANK[$0F]
@@ -55188,1675 +55188,1675 @@ SECTION "Bank0F", ROMX, BANK[$0F]
 LoggedData_0x3C000:
 INCBIN "baserom.gbc", $3C000, $3C016 - $3C000
 
-UnknownData_0x3C016:
+Unknown_0x3C016:
 INCBIN "baserom.gbc", $3C016, $3C017 - $3C016
 
 LoggedData_0x3C017:
 INCBIN "baserom.gbc", $3C017, $3C02B - $3C017
 
-UnknownData_0x3C02B:
+Unknown_0x3C02B:
 INCBIN "baserom.gbc", $3C02B, $3C02C - $3C02B
 
 LoggedData_0x3C02C:
 INCBIN "baserom.gbc", $3C02C, $3C03E - $3C02C
 
-UnknownData_0x3C03E:
+Unknown_0x3C03E:
 INCBIN "baserom.gbc", $3C03E, $3C03F - $3C03E
 
 LoggedData_0x3C03F:
 INCBIN "baserom.gbc", $3C03F, $3C0AF - $3C03F
 
-UnknownData_0x3C0AF:
+Unknown_0x3C0AF:
 INCBIN "baserom.gbc", $3C0AF, $3C0B0 - $3C0AF
 
 LoggedData_0x3C0B0:
 INCBIN "baserom.gbc", $3C0B0, $3C150 - $3C0B0
 
-UnknownData_0x3C150:
+Unknown_0x3C150:
 INCBIN "baserom.gbc", $3C150, $3C151 - $3C150
 
 LoggedData_0x3C151:
 INCBIN "baserom.gbc", $3C151, $3C167 - $3C151
 
-UnknownData_0x3C167:
+Unknown_0x3C167:
 INCBIN "baserom.gbc", $3C167, $3C168 - $3C167
 
 LoggedData_0x3C168:
 INCBIN "baserom.gbc", $3C168, $3C1AD - $3C168
 
-UnknownData_0x3C1AD:
+Unknown_0x3C1AD:
 INCBIN "baserom.gbc", $3C1AD, $3C1AE - $3C1AD
 
 LoggedData_0x3C1AE:
 INCBIN "baserom.gbc", $3C1AE, $3C1C9 - $3C1AE
 
-UnknownData_0x3C1C9:
+Unknown_0x3C1C9:
 INCBIN "baserom.gbc", $3C1C9, $3C1CA - $3C1C9
 
 LoggedData_0x3C1CA:
 INCBIN "baserom.gbc", $3C1CA, $3C1CC - $3C1CA
 
-UnknownData_0x3C1CC:
+Unknown_0x3C1CC:
 INCBIN "baserom.gbc", $3C1CC, $3C1EE - $3C1CC
 
 LoggedData_0x3C1EE:
 INCBIN "baserom.gbc", $3C1EE, $3C207 - $3C1EE
 
-UnknownData_0x3C207:
+Unknown_0x3C207:
 INCBIN "baserom.gbc", $3C207, $3C208 - $3C207
 
 LoggedData_0x3C208:
 INCBIN "baserom.gbc", $3C208, $3C229 - $3C208
 
-UnknownData_0x3C229:
+Unknown_0x3C229:
 INCBIN "baserom.gbc", $3C229, $3C22A - $3C229
 
 LoggedData_0x3C22A:
 INCBIN "baserom.gbc", $3C22A, $3C254 - $3C22A
 
-UnknownData_0x3C254:
+Unknown_0x3C254:
 INCBIN "baserom.gbc", $3C254, $3C255 - $3C254
 
 LoggedData_0x3C255:
 INCBIN "baserom.gbc", $3C255, $3C297 - $3C255
 
-UnknownData_0x3C297:
+Unknown_0x3C297:
 INCBIN "baserom.gbc", $3C297, $3C298 - $3C297
 
 LoggedData_0x3C298:
 INCBIN "baserom.gbc", $3C298, $3C2AE - $3C298
 
-UnknownData_0x3C2AE:
+Unknown_0x3C2AE:
 INCBIN "baserom.gbc", $3C2AE, $3C2AF - $3C2AE
 
 LoggedData_0x3C2AF:
 INCBIN "baserom.gbc", $3C2AF, $3C2D5 - $3C2AF
 
-UnknownData_0x3C2D5:
+Unknown_0x3C2D5:
 INCBIN "baserom.gbc", $3C2D5, $3C2D6 - $3C2D5
 
 LoggedData_0x3C2D6:
 INCBIN "baserom.gbc", $3C2D6, $3C32A - $3C2D6
 
-UnknownData_0x3C32A:
+Unknown_0x3C32A:
 INCBIN "baserom.gbc", $3C32A, $3C32B - $3C32A
 
 LoggedData_0x3C32B:
 INCBIN "baserom.gbc", $3C32B, $3C375 - $3C32B
 
-UnknownData_0x3C375:
+Unknown_0x3C375:
 INCBIN "baserom.gbc", $3C375, $3C376 - $3C375
 
 LoggedData_0x3C376:
 INCBIN "baserom.gbc", $3C376, $3C3DD - $3C376
 
-UnknownData_0x3C3DD:
+Unknown_0x3C3DD:
 INCBIN "baserom.gbc", $3C3DD, $3C3DE - $3C3DD
 
 LoggedData_0x3C3DE:
 INCBIN "baserom.gbc", $3C3DE, $3C3F2 - $3C3DE
 
-UnknownData_0x3C3F2:
+Unknown_0x3C3F2:
 INCBIN "baserom.gbc", $3C3F2, $3C3F3 - $3C3F2
 
 LoggedData_0x3C3F3:
 INCBIN "baserom.gbc", $3C3F3, $3C419 - $3C3F3
 
-UnknownData_0x3C419:
+Unknown_0x3C419:
 INCBIN "baserom.gbc", $3C419, $3C41A - $3C419
 
 LoggedData_0x3C41A:
 INCBIN "baserom.gbc", $3C41A, $3C42E - $3C41A
 
-UnknownData_0x3C42E:
+Unknown_0x3C42E:
 INCBIN "baserom.gbc", $3C42E, $3C454 - $3C42E
 
 LoggedData_0x3C454:
 INCBIN "baserom.gbc", $3C454, $3C4AA - $3C454
 
-UnknownData_0x3C4AA:
+Unknown_0x3C4AA:
 INCBIN "baserom.gbc", $3C4AA, $3C4AB - $3C4AA
 
 LoggedData_0x3C4AB:
 INCBIN "baserom.gbc", $3C4AB, $3C521 - $3C4AB
 
-UnknownData_0x3C521:
+Unknown_0x3C521:
 INCBIN "baserom.gbc", $3C521, $3C522 - $3C521
 
 LoggedData_0x3C522:
 INCBIN "baserom.gbc", $3C522, $3C598 - $3C522
 
-UnknownData_0x3C598:
+Unknown_0x3C598:
 INCBIN "baserom.gbc", $3C598, $3C599 - $3C598
 
 LoggedData_0x3C599:
 INCBIN "baserom.gbc", $3C599, $3C618 - $3C599
 
-UnknownData_0x3C618:
+Unknown_0x3C618:
 INCBIN "baserom.gbc", $3C618, $3C619 - $3C618
 
 LoggedData_0x3C619:
 INCBIN "baserom.gbc", $3C619, $3C684 - $3C619
 
-UnknownData_0x3C684:
+Unknown_0x3C684:
 INCBIN "baserom.gbc", $3C684, $3C685 - $3C684
 
 LoggedData_0x3C685:
 INCBIN "baserom.gbc", $3C685, $3C719 - $3C685
 
-UnknownData_0x3C719:
+Unknown_0x3C719:
 INCBIN "baserom.gbc", $3C719, $3C71A - $3C719
 
 LoggedData_0x3C71A:
 INCBIN "baserom.gbc", $3C71A, $3C72E - $3C71A
 
-UnknownData_0x3C72E:
+Unknown_0x3C72E:
 INCBIN "baserom.gbc", $3C72E, $3C72F - $3C72E
 
 LoggedData_0x3C72F:
 INCBIN "baserom.gbc", $3C72F, $3C742 - $3C72F
 
-UnknownData_0x3C742:
+Unknown_0x3C742:
 INCBIN "baserom.gbc", $3C742, $3C743 - $3C742
 
 LoggedData_0x3C743:
 INCBIN "baserom.gbc", $3C743, $3C77D - $3C743
 
-UnknownData_0x3C77D:
+Unknown_0x3C77D:
 INCBIN "baserom.gbc", $3C77D, $3C77E - $3C77D
 
 LoggedData_0x3C77E:
 INCBIN "baserom.gbc", $3C77E, $3C7A0 - $3C77E
 
-UnknownData_0x3C7A0:
+Unknown_0x3C7A0:
 INCBIN "baserom.gbc", $3C7A0, $3C7B6 - $3C7A0
 
 LoggedData_0x3C7B6:
 INCBIN "baserom.gbc", $3C7B6, $3C7D2 - $3C7B6
 
-UnknownData_0x3C7D2:
+Unknown_0x3C7D2:
 INCBIN "baserom.gbc", $3C7D2, $3C7ED - $3C7D2
 
 LoggedData_0x3C7ED:
 INCBIN "baserom.gbc", $3C7ED, $3C810 - $3C7ED
 
-UnknownData_0x3C810:
+Unknown_0x3C810:
 INCBIN "baserom.gbc", $3C810, $3C811 - $3C810
 
 LoggedData_0x3C811:
 INCBIN "baserom.gbc", $3C811, $3C82B - $3C811
 
-UnknownData_0x3C82B:
+Unknown_0x3C82B:
 INCBIN "baserom.gbc", $3C82B, $3C82C - $3C82B
 
 LoggedData_0x3C82C:
 INCBIN "baserom.gbc", $3C82C, $3C84D - $3C82C
 
-UnknownData_0x3C84D:
+Unknown_0x3C84D:
 INCBIN "baserom.gbc", $3C84D, $3C84E - $3C84D
 
 LoggedData_0x3C84E:
 INCBIN "baserom.gbc", $3C84E, $3C8A2 - $3C84E
 
-UnknownData_0x3C8A2:
+Unknown_0x3C8A2:
 INCBIN "baserom.gbc", $3C8A2, $3C8A3 - $3C8A2
 
 LoggedData_0x3C8A3:
 INCBIN "baserom.gbc", $3C8A3, $3C8B8 - $3C8A3
 
-UnknownData_0x3C8B8:
+Unknown_0x3C8B8:
 INCBIN "baserom.gbc", $3C8B8, $3C8B9 - $3C8B8
 
 LoggedData_0x3C8B9:
 INCBIN "baserom.gbc", $3C8B9, $3C8CD - $3C8B9
 
-UnknownData_0x3C8CD:
+Unknown_0x3C8CD:
 INCBIN "baserom.gbc", $3C8CD, $3C8CE - $3C8CD
 
 LoggedData_0x3C8CE:
 INCBIN "baserom.gbc", $3C8CE, $3C8EC - $3C8CE
 
-UnknownData_0x3C8EC:
+Unknown_0x3C8EC:
 INCBIN "baserom.gbc", $3C8EC, $3C8ED - $3C8EC
 
 LoggedData_0x3C8ED:
 INCBIN "baserom.gbc", $3C8ED, $3C907 - $3C8ED
 
-UnknownData_0x3C907:
+Unknown_0x3C907:
 INCBIN "baserom.gbc", $3C907, $3C908 - $3C907
 
 LoggedData_0x3C908:
 INCBIN "baserom.gbc", $3C908, $3C91A - $3C908
 
-UnknownData_0x3C91A:
+Unknown_0x3C91A:
 INCBIN "baserom.gbc", $3C91A, $3C91B - $3C91A
 
 LoggedData_0x3C91B:
 INCBIN "baserom.gbc", $3C91B, $3C93C - $3C91B
 
-UnknownData_0x3C93C:
+Unknown_0x3C93C:
 INCBIN "baserom.gbc", $3C93C, $3C93D - $3C93C
 
 LoggedData_0x3C93D:
 INCBIN "baserom.gbc", $3C93D, $3C953 - $3C93D
 
-UnknownData_0x3C953:
+Unknown_0x3C953:
 INCBIN "baserom.gbc", $3C953, $3C954 - $3C953
 
 LoggedData_0x3C954:
 INCBIN "baserom.gbc", $3C954, $3C9C1 - $3C954
 
-UnknownData_0x3C9C1:
+Unknown_0x3C9C1:
 INCBIN "baserom.gbc", $3C9C1, $3C9C2 - $3C9C1
 
 LoggedData_0x3C9C2:
 INCBIN "baserom.gbc", $3C9C2, $3C9D6 - $3C9C2
 
-UnknownData_0x3C9D6:
+Unknown_0x3C9D6:
 INCBIN "baserom.gbc", $3C9D6, $3C9D7 - $3C9D6
 
 LoggedData_0x3C9D7:
 INCBIN "baserom.gbc", $3C9D7, $3C9D9 - $3C9D7
 
-UnknownData_0x3C9D9:
+Unknown_0x3C9D9:
 INCBIN "baserom.gbc", $3C9D9, $3C9F7 - $3C9D9
 
 LoggedData_0x3C9F7:
 INCBIN "baserom.gbc", $3C9F7, $3CA13 - $3C9F7
 
-UnknownData_0x3CA13:
+Unknown_0x3CA13:
 INCBIN "baserom.gbc", $3CA13, $3CA14 - $3CA13
 
 LoggedData_0x3CA14:
 INCBIN "baserom.gbc", $3CA14, $3CA2E - $3CA14
 
-UnknownData_0x3CA2E:
+Unknown_0x3CA2E:
 INCBIN "baserom.gbc", $3CA2E, $3CA2F - $3CA2E
 
 LoggedData_0x3CA2F:
 INCBIN "baserom.gbc", $3CA2F, $3CA47 - $3CA2F
 
-UnknownData_0x3CA47:
+Unknown_0x3CA47:
 INCBIN "baserom.gbc", $3CA47, $3CA48 - $3CA47
 
 LoggedData_0x3CA48:
 INCBIN "baserom.gbc", $3CA48, $3CA7E - $3CA48
 
-UnknownData_0x3CA7E:
+Unknown_0x3CA7E:
 INCBIN "baserom.gbc", $3CA7E, $3CA7F - $3CA7E
 
 LoggedData_0x3CA7F:
 INCBIN "baserom.gbc", $3CA7F, $3CA93 - $3CA7F
 
-UnknownData_0x3CA93:
+Unknown_0x3CA93:
 INCBIN "baserom.gbc", $3CA93, $3CA94 - $3CA93
 
 LoggedData_0x3CA94:
 INCBIN "baserom.gbc", $3CA94, $3CAD1 - $3CA94
 
-UnknownData_0x3CAD1:
+Unknown_0x3CAD1:
 INCBIN "baserom.gbc", $3CAD1, $3CAD2 - $3CAD1
 
 LoggedData_0x3CAD2:
 INCBIN "baserom.gbc", $3CAD2, $3CAF2 - $3CAD2
 
-UnknownData_0x3CAF2:
+Unknown_0x3CAF2:
 INCBIN "baserom.gbc", $3CAF2, $3CAF3 - $3CAF2
 
 LoggedData_0x3CAF3:
 INCBIN "baserom.gbc", $3CAF3, $3CB0B - $3CAF3
 
-UnknownData_0x3CB0B:
+Unknown_0x3CB0B:
 INCBIN "baserom.gbc", $3CB0B, $3CB0C - $3CB0B
 
 LoggedData_0x3CB0C:
 INCBIN "baserom.gbc", $3CB0C, $3CB31 - $3CB0C
 
-UnknownData_0x3CB31:
+Unknown_0x3CB31:
 INCBIN "baserom.gbc", $3CB31, $3CB32 - $3CB31
 
 LoggedData_0x3CB32:
 INCBIN "baserom.gbc", $3CB32, $3CB45 - $3CB32
 
-UnknownData_0x3CB45:
+Unknown_0x3CB45:
 INCBIN "baserom.gbc", $3CB45, $3CB46 - $3CB45
 
 LoggedData_0x3CB46:
 INCBIN "baserom.gbc", $3CB46, $3CB7B - $3CB46
 
-UnknownData_0x3CB7B:
+Unknown_0x3CB7B:
 INCBIN "baserom.gbc", $3CB7B, $3CB7C - $3CB7B
 
 LoggedData_0x3CB7C:
 INCBIN "baserom.gbc", $3CB7C, $3CB98 - $3CB7C
 
-UnknownData_0x3CB98:
+Unknown_0x3CB98:
 INCBIN "baserom.gbc", $3CB98, $3CB99 - $3CB98
 
 LoggedData_0x3CB99:
 INCBIN "baserom.gbc", $3CB99, $3CBAF - $3CB99
 
-UnknownData_0x3CBAF:
+Unknown_0x3CBAF:
 INCBIN "baserom.gbc", $3CBAF, $3CBB0 - $3CBAF
 
 LoggedData_0x3CBB0:
 INCBIN "baserom.gbc", $3CBB0, $3CC85 - $3CBB0
 
-UnknownData_0x3CC85:
+Unknown_0x3CC85:
 INCBIN "baserom.gbc", $3CC85, $3CC86 - $3CC85
 
 LoggedData_0x3CC86:
 INCBIN "baserom.gbc", $3CC86, $3CC9E - $3CC86
 
-UnknownData_0x3CC9E:
+Unknown_0x3CC9E:
 INCBIN "baserom.gbc", $3CC9E, $3CC9F - $3CC9E
 
 LoggedData_0x3CC9F:
 INCBIN "baserom.gbc", $3CC9F, $3CCB3 - $3CC9F
 
-UnknownData_0x3CCB3:
+Unknown_0x3CCB3:
 INCBIN "baserom.gbc", $3CCB3, $3CCB4 - $3CCB3
 
 LoggedData_0x3CCB4:
 INCBIN "baserom.gbc", $3CCB4, $3CCE8 - $3CCB4
 
-UnknownData_0x3CCE8:
+Unknown_0x3CCE8:
 INCBIN "baserom.gbc", $3CCE8, $3CCE9 - $3CCE8
 
 LoggedData_0x3CCE9:
 INCBIN "baserom.gbc", $3CCE9, $3CD09 - $3CCE9
 
-UnknownData_0x3CD09:
+Unknown_0x3CD09:
 INCBIN "baserom.gbc", $3CD09, $3CD0A - $3CD09
 
 LoggedData_0x3CD0A:
 INCBIN "baserom.gbc", $3CD0A, $3CD78 - $3CD0A
 
-UnknownData_0x3CD78:
+Unknown_0x3CD78:
 INCBIN "baserom.gbc", $3CD78, $3CD79 - $3CD78
 
 LoggedData_0x3CD79:
 INCBIN "baserom.gbc", $3CD79, $3CE0B - $3CD79
 
-UnknownData_0x3CE0B:
+Unknown_0x3CE0B:
 INCBIN "baserom.gbc", $3CE0B, $3CE0C - $3CE0B
 
 LoggedData_0x3CE0C:
 INCBIN "baserom.gbc", $3CE0C, $3CE5B - $3CE0C
 
-UnknownData_0x3CE5B:
+Unknown_0x3CE5B:
 INCBIN "baserom.gbc", $3CE5B, $3CE5C - $3CE5B
 
 LoggedData_0x3CE5C:
 INCBIN "baserom.gbc", $3CE5C, $3CE7C - $3CE5C
 
-UnknownData_0x3CE7C:
+Unknown_0x3CE7C:
 INCBIN "baserom.gbc", $3CE7C, $3CE7D - $3CE7C
 
 LoggedData_0x3CE7D:
 INCBIN "baserom.gbc", $3CE7D, $3CE91 - $3CE7D
 
-UnknownData_0x3CE91:
+Unknown_0x3CE91:
 INCBIN "baserom.gbc", $3CE91, $3CE92 - $3CE91
 
 LoggedData_0x3CE92:
 INCBIN "baserom.gbc", $3CE92, $3CEAE - $3CE92
 
-UnknownData_0x3CEAE:
+Unknown_0x3CEAE:
 INCBIN "baserom.gbc", $3CEAE, $3CEAF - $3CEAE
 
 LoggedData_0x3CEAF:
 INCBIN "baserom.gbc", $3CEAF, $3CEC3 - $3CEAF
 
-UnknownData_0x3CEC3:
+Unknown_0x3CEC3:
 INCBIN "baserom.gbc", $3CEC3, $3CEC4 - $3CEC3
 
 LoggedData_0x3CEC4:
 INCBIN "baserom.gbc", $3CEC4, $3CF37 - $3CEC4
 
-UnknownData_0x3CF37:
+Unknown_0x3CF37:
 INCBIN "baserom.gbc", $3CF37, $3CF38 - $3CF37
 
 LoggedData_0x3CF38:
 INCBIN "baserom.gbc", $3CF38, $3CF58 - $3CF38
 
-UnknownData_0x3CF58:
+Unknown_0x3CF58:
 INCBIN "baserom.gbc", $3CF58, $3CF59 - $3CF58
 
 LoggedData_0x3CF59:
 INCBIN "baserom.gbc", $3CF59, $3CFD6 - $3CF59
 
-UnknownData_0x3CFD6:
+Unknown_0x3CFD6:
 INCBIN "baserom.gbc", $3CFD6, $3CFD7 - $3CFD6
 
 LoggedData_0x3CFD7:
 INCBIN "baserom.gbc", $3CFD7, $3D001 - $3CFD7
 
-UnknownData_0x3D001:
+Unknown_0x3D001:
 INCBIN "baserom.gbc", $3D001, $3D002 - $3D001
 
 LoggedData_0x3D002:
 INCBIN "baserom.gbc", $3D002, $3D02E - $3D002
 
-UnknownData_0x3D02E:
+Unknown_0x3D02E:
 INCBIN "baserom.gbc", $3D02E, $3D02F - $3D02E
 
 LoggedData_0x3D02F:
 INCBIN "baserom.gbc", $3D02F, $3D08D - $3D02F
 
-UnknownData_0x3D08D:
+Unknown_0x3D08D:
 INCBIN "baserom.gbc", $3D08D, $3D08E - $3D08D
 
 LoggedData_0x3D08E:
 INCBIN "baserom.gbc", $3D08E, $3D0FA - $3D08E
 
-UnknownData_0x3D0FA:
+Unknown_0x3D0FA:
 INCBIN "baserom.gbc", $3D0FA, $3D0FB - $3D0FA
 
 LoggedData_0x3D0FB:
 INCBIN "baserom.gbc", $3D0FB, $3D11F - $3D0FB
 
-UnknownData_0x3D11F:
+Unknown_0x3D11F:
 INCBIN "baserom.gbc", $3D11F, $3D120 - $3D11F
 
 LoggedData_0x3D120:
 INCBIN "baserom.gbc", $3D120, $3D164 - $3D120
 
-UnknownData_0x3D164:
+Unknown_0x3D164:
 INCBIN "baserom.gbc", $3D164, $3D165 - $3D164
 
 LoggedData_0x3D165:
 INCBIN "baserom.gbc", $3D165, $3D1B4 - $3D165
 
-UnknownData_0x3D1B4:
+Unknown_0x3D1B4:
 INCBIN "baserom.gbc", $3D1B4, $3D1B5 - $3D1B4
 
 LoggedData_0x3D1B5:
 INCBIN "baserom.gbc", $3D1B5, $3D1C7 - $3D1B5
 
-UnknownData_0x3D1C7:
+Unknown_0x3D1C7:
 INCBIN "baserom.gbc", $3D1C7, $3D1C8 - $3D1C7
 
 LoggedData_0x3D1C8:
 INCBIN "baserom.gbc", $3D1C8, $3D1F6 - $3D1C8
 
-UnknownData_0x3D1F6:
+Unknown_0x3D1F6:
 INCBIN "baserom.gbc", $3D1F6, $3D1F7 - $3D1F6
 
 LoggedData_0x3D1F7:
 INCBIN "baserom.gbc", $3D1F7, $3D207 - $3D1F7
 
-UnknownData_0x3D207:
+Unknown_0x3D207:
 INCBIN "baserom.gbc", $3D207, $3D208 - $3D207
 
 LoggedData_0x3D208:
 INCBIN "baserom.gbc", $3D208, $3D24C - $3D208
 
-UnknownData_0x3D24C:
+Unknown_0x3D24C:
 INCBIN "baserom.gbc", $3D24C, $3D24D - $3D24C
 
 LoggedData_0x3D24D:
 INCBIN "baserom.gbc", $3D24D, $3D2A9 - $3D24D
 
-UnknownData_0x3D2A9:
+Unknown_0x3D2A9:
 INCBIN "baserom.gbc", $3D2A9, $3D2AA - $3D2A9
 
 LoggedData_0x3D2AA:
 INCBIN "baserom.gbc", $3D2AA, $3D2F3 - $3D2AA
 
-UnknownData_0x3D2F3:
+Unknown_0x3D2F3:
 INCBIN "baserom.gbc", $3D2F3, $3D2F4 - $3D2F3
 
 LoggedData_0x3D2F4:
 INCBIN "baserom.gbc", $3D2F4, $3D356 - $3D2F4
 
-UnknownData_0x3D356:
+Unknown_0x3D356:
 INCBIN "baserom.gbc", $3D356, $3D357 - $3D356
 
 LoggedData_0x3D357:
 INCBIN "baserom.gbc", $3D357, $3D386 - $3D357
 
-UnknownData_0x3D386:
+Unknown_0x3D386:
 INCBIN "baserom.gbc", $3D386, $3D387 - $3D386
 
 LoggedData_0x3D387:
 INCBIN "baserom.gbc", $3D387, $3D3AA - $3D387
 
-UnknownData_0x3D3AA:
+Unknown_0x3D3AA:
 INCBIN "baserom.gbc", $3D3AA, $3D3AB - $3D3AA
 
 LoggedData_0x3D3AB:
 INCBIN "baserom.gbc", $3D3AB, $3D4BB - $3D3AB
 
-UnknownData_0x3D4BB:
+Unknown_0x3D4BB:
 INCBIN "baserom.gbc", $3D4BB, $3D4BC - $3D4BB
 
 LoggedData_0x3D4BC:
 INCBIN "baserom.gbc", $3D4BC, $3D4D1 - $3D4BC
 
-UnknownData_0x3D4D1:
+Unknown_0x3D4D1:
 INCBIN "baserom.gbc", $3D4D1, $3D4D2 - $3D4D1
 
 LoggedData_0x3D4D2:
 INCBIN "baserom.gbc", $3D4D2, $3D4D4 - $3D4D2
 
-UnknownData_0x3D4D4:
+Unknown_0x3D4D4:
 INCBIN "baserom.gbc", $3D4D4, $3D4EB - $3D4D4
 
 LoggedData_0x3D4EB:
 INCBIN "baserom.gbc", $3D4EB, $3D4FA - $3D4EB
 
-UnknownData_0x3D4FA:
+Unknown_0x3D4FA:
 INCBIN "baserom.gbc", $3D4FA, $3D500 - $3D4FA
 
 LoggedData_0x3D500:
 INCBIN "baserom.gbc", $3D500, $3D644 - $3D500
 
-UnknownData_0x3D644:
+Unknown_0x3D644:
 INCBIN "baserom.gbc", $3D644, $3D645 - $3D644
 
 LoggedData_0x3D645:
 INCBIN "baserom.gbc", $3D645, $3D685 - $3D645
 
-UnknownData_0x3D685:
+Unknown_0x3D685:
 INCBIN "baserom.gbc", $3D685, $3D686 - $3D685
 
 LoggedData_0x3D686:
 INCBIN "baserom.gbc", $3D686, $3D727 - $3D686
 
-UnknownData_0x3D727:
+Unknown_0x3D727:
 INCBIN "baserom.gbc", $3D727, $3D728 - $3D727
 
 LoggedData_0x3D728:
 INCBIN "baserom.gbc", $3D728, $3D75C - $3D728
 
-UnknownData_0x3D75C:
+Unknown_0x3D75C:
 INCBIN "baserom.gbc", $3D75C, $3D75D - $3D75C
 
 LoggedData_0x3D75D:
 INCBIN "baserom.gbc", $3D75D, $3D831 - $3D75D
 
-UnknownData_0x3D831:
+Unknown_0x3D831:
 INCBIN "baserom.gbc", $3D831, $3D832 - $3D831
 
 LoggedData_0x3D832:
 INCBIN "baserom.gbc", $3D832, $3D847 - $3D832
 
-UnknownData_0x3D847:
+Unknown_0x3D847:
 INCBIN "baserom.gbc", $3D847, $3D851 - $3D847
 
 LoggedData_0x3D851:
 INCBIN "baserom.gbc", $3D851, $3D86E - $3D851
 
-UnknownData_0x3D86E:
+Unknown_0x3D86E:
 INCBIN "baserom.gbc", $3D86E, $3D86F - $3D86E
 
 LoggedData_0x3D86F:
 INCBIN "baserom.gbc", $3D86F, $3D8AD - $3D86F
 
-UnknownData_0x3D8AD:
+Unknown_0x3D8AD:
 INCBIN "baserom.gbc", $3D8AD, $3D8AE - $3D8AD
 
 LoggedData_0x3D8AE:
 INCBIN "baserom.gbc", $3D8AE, $3D8B2 - $3D8AE
 
-UnknownData_0x3D8B2:
+Unknown_0x3D8B2:
 INCBIN "baserom.gbc", $3D8B2, $3D8F1 - $3D8B2
 
 LoggedData_0x3D8F1:
 INCBIN "baserom.gbc", $3D8F1, $3D92B - $3D8F1
 
-UnknownData_0x3D92B:
+Unknown_0x3D92B:
 INCBIN "baserom.gbc", $3D92B, $3D92C - $3D92B
 
 LoggedData_0x3D92C:
 INCBIN "baserom.gbc", $3D92C, $3D94C - $3D92C
 
-UnknownData_0x3D94C:
+Unknown_0x3D94C:
 INCBIN "baserom.gbc", $3D94C, $3D94D - $3D94C
 
 LoggedData_0x3D94D:
 INCBIN "baserom.gbc", $3D94D, $3D96E - $3D94D
 
-UnknownData_0x3D96E:
+Unknown_0x3D96E:
 INCBIN "baserom.gbc", $3D96E, $3D96F - $3D96E
 
 LoggedData_0x3D96F:
 INCBIN "baserom.gbc", $3D96F, $3D9B4 - $3D96F
 
-UnknownData_0x3D9B4:
+Unknown_0x3D9B4:
 INCBIN "baserom.gbc", $3D9B4, $3D9B5 - $3D9B4
 
 LoggedData_0x3D9B5:
 INCBIN "baserom.gbc", $3D9B5, $3D9F0 - $3D9B5
 
-UnknownData_0x3D9F0:
+Unknown_0x3D9F0:
 INCBIN "baserom.gbc", $3D9F0, $3D9F1 - $3D9F0
 
 LoggedData_0x3D9F1:
 INCBIN "baserom.gbc", $3D9F1, $3DA98 - $3D9F1
 
-UnknownData_0x3DA98:
+Unknown_0x3DA98:
 INCBIN "baserom.gbc", $3DA98, $3DA99 - $3DA98
 
 LoggedData_0x3DA99:
 INCBIN "baserom.gbc", $3DA99, $3DACB - $3DA99
 
-UnknownData_0x3DACB:
+Unknown_0x3DACB:
 INCBIN "baserom.gbc", $3DACB, $3DACC - $3DACB
 
 LoggedData_0x3DACC:
 INCBIN "baserom.gbc", $3DACC, $3DB18 - $3DACC
 
-UnknownData_0x3DB18:
+Unknown_0x3DB18:
 INCBIN "baserom.gbc", $3DB18, $3DB19 - $3DB18
 
 LoggedData_0x3DB19:
 INCBIN "baserom.gbc", $3DB19, $3DB77 - $3DB19
 
-UnknownData_0x3DB77:
+Unknown_0x3DB77:
 INCBIN "baserom.gbc", $3DB77, $3DB78 - $3DB77
 
 LoggedData_0x3DB78:
 INCBIN "baserom.gbc", $3DB78, $3DB97 - $3DB78
 
-UnknownData_0x3DB97:
+Unknown_0x3DB97:
 INCBIN "baserom.gbc", $3DB97, $3DB98 - $3DB97
 
 LoggedData_0x3DB98:
 INCBIN "baserom.gbc", $3DB98, $3DBE9 - $3DB98
 
-UnknownData_0x3DBE9:
+Unknown_0x3DBE9:
 INCBIN "baserom.gbc", $3DBE9, $3DBEA - $3DBE9
 
 LoggedData_0x3DBEA:
 INCBIN "baserom.gbc", $3DBEA, $3DBFA - $3DBEA
 
-UnknownData_0x3DBFA:
+Unknown_0x3DBFA:
 INCBIN "baserom.gbc", $3DBFA, $3DBFB - $3DBFA
 
 LoggedData_0x3DBFB:
 INCBIN "baserom.gbc", $3DBFB, $3DC0B - $3DBFB
 
-UnknownData_0x3DC0B:
+Unknown_0x3DC0B:
 INCBIN "baserom.gbc", $3DC0B, $3DC0C - $3DC0B
 
 LoggedData_0x3DC0C:
 INCBIN "baserom.gbc", $3DC0C, $3DC1E - $3DC0C
 
-UnknownData_0x3DC1E:
+Unknown_0x3DC1E:
 INCBIN "baserom.gbc", $3DC1E, $3DC1F - $3DC1E
 
 LoggedData_0x3DC1F:
 INCBIN "baserom.gbc", $3DC1F, $3DC35 - $3DC1F
 
-UnknownData_0x3DC35:
+Unknown_0x3DC35:
 INCBIN "baserom.gbc", $3DC35, $3DC36 - $3DC35
 
 LoggedData_0x3DC36:
 INCBIN "baserom.gbc", $3DC36, $3DCBD - $3DC36
 
-UnknownData_0x3DCBD:
+Unknown_0x3DCBD:
 INCBIN "baserom.gbc", $3DCBD, $3DCBE - $3DCBD
 
 LoggedData_0x3DCBE:
 INCBIN "baserom.gbc", $3DCBE, $3DDB0 - $3DCBE
 
-UnknownData_0x3DDB0:
+Unknown_0x3DDB0:
 INCBIN "baserom.gbc", $3DDB0, $3DDD3 - $3DDB0
 
 LoggedData_0x3DDD3:
 INCBIN "baserom.gbc", $3DDD3, $3DDD5 - $3DDD3
 
-UnknownData_0x3DDD5:
+Unknown_0x3DDD5:
 INCBIN "baserom.gbc", $3DDD5, $3DDE8 - $3DDD5
 
 LoggedData_0x3DDE8:
 INCBIN "baserom.gbc", $3DDE8, $3DE43 - $3DDE8
 
-UnknownData_0x3DE43:
+Unknown_0x3DE43:
 INCBIN "baserom.gbc", $3DE43, $3DE44 - $3DE43
 
 LoggedData_0x3DE44:
 INCBIN "baserom.gbc", $3DE44, $3DE7D - $3DE44
 
-UnknownData_0x3DE7D:
+Unknown_0x3DE7D:
 INCBIN "baserom.gbc", $3DE7D, $3DE7E - $3DE7D
 
 LoggedData_0x3DE7E:
 INCBIN "baserom.gbc", $3DE7E, $3DF78 - $3DE7E
 
-UnknownData_0x3DF78:
+Unknown_0x3DF78:
 INCBIN "baserom.gbc", $3DF78, $3DF79 - $3DF78
 
 LoggedData_0x3DF79:
 INCBIN "baserom.gbc", $3DF79, $3DF7D - $3DF79
 
-UnknownData_0x3DF7D:
+Unknown_0x3DF7D:
 INCBIN "baserom.gbc", $3DF7D, $3DFBA - $3DF7D
 
 LoggedData_0x3DFBA:
 INCBIN "baserom.gbc", $3DFBA, $3E033 - $3DFBA
 
-UnknownData_0x3E033:
+Unknown_0x3E033:
 INCBIN "baserom.gbc", $3E033, $3E036 - $3E033
 
 LoggedData_0x3E036:
 INCBIN "baserom.gbc", $3E036, $3E0C2 - $3E036
 
-UnknownData_0x3E0C2:
+Unknown_0x3E0C2:
 INCBIN "baserom.gbc", $3E0C2, $3E0C3 - $3E0C2
 
 LoggedData_0x3E0C3:
 INCBIN "baserom.gbc", $3E0C3, $3E180 - $3E0C3
 
-UnknownData_0x3E180:
+Unknown_0x3E180:
 INCBIN "baserom.gbc", $3E180, $3E181 - $3E180
 
 LoggedData_0x3E181:
 INCBIN "baserom.gbc", $3E181, $3E23B - $3E181
 
-UnknownData_0x3E23B:
+Unknown_0x3E23B:
 INCBIN "baserom.gbc", $3E23B, $3E23C - $3E23B
 
 LoggedData_0x3E23C:
 INCBIN "baserom.gbc", $3E23C, $3E25A - $3E23C
 
-UnknownData_0x3E25A:
+Unknown_0x3E25A:
 INCBIN "baserom.gbc", $3E25A, $3E25B - $3E25A
 
 LoggedData_0x3E25B:
 INCBIN "baserom.gbc", $3E25B, $3E29F - $3E25B
 
-UnknownData_0x3E29F:
+Unknown_0x3E29F:
 INCBIN "baserom.gbc", $3E29F, $3E2A0 - $3E29F
 
 LoggedData_0x3E2A0:
 INCBIN "baserom.gbc", $3E2A0, $3E2B8 - $3E2A0
 
-UnknownData_0x3E2B8:
+Unknown_0x3E2B8:
 INCBIN "baserom.gbc", $3E2B8, $3E2B9 - $3E2B8
 
 LoggedData_0x3E2B9:
 INCBIN "baserom.gbc", $3E2B9, $3E2C9 - $3E2B9
 
-UnknownData_0x3E2C9:
+Unknown_0x3E2C9:
 INCBIN "baserom.gbc", $3E2C9, $3E2CA - $3E2C9
 
 LoggedData_0x3E2CA:
 INCBIN "baserom.gbc", $3E2CA, $3E2E9 - $3E2CA
 
-UnknownData_0x3E2E9:
+Unknown_0x3E2E9:
 INCBIN "baserom.gbc", $3E2E9, $3E2EA - $3E2E9
 
 LoggedData_0x3E2EA:
 INCBIN "baserom.gbc", $3E2EA, $3E304 - $3E2EA
 
-UnknownData_0x3E304:
+Unknown_0x3E304:
 INCBIN "baserom.gbc", $3E304, $3E305 - $3E304
 
 LoggedData_0x3E305:
 INCBIN "baserom.gbc", $3E305, $3E334 - $3E305
 
-UnknownData_0x3E334:
+Unknown_0x3E334:
 INCBIN "baserom.gbc", $3E334, $3E335 - $3E334
 
 LoggedData_0x3E335:
 INCBIN "baserom.gbc", $3E335, $3E357 - $3E335
 
-UnknownData_0x3E357:
+Unknown_0x3E357:
 INCBIN "baserom.gbc", $3E357, $3E358 - $3E357
 
 LoggedData_0x3E358:
 INCBIN "baserom.gbc", $3E358, $3E377 - $3E358
 
-UnknownData_0x3E377:
+Unknown_0x3E377:
 INCBIN "baserom.gbc", $3E377, $3E378 - $3E377
 
 LoggedData_0x3E378:
 INCBIN "baserom.gbc", $3E378, $3E413 - $3E378
 
-UnknownData_0x3E413:
+Unknown_0x3E413:
 INCBIN "baserom.gbc", $3E413, $3E414 - $3E413
 
 LoggedData_0x3E414:
 INCBIN "baserom.gbc", $3E414, $3E441 - $3E414
 
-UnknownData_0x3E441:
+Unknown_0x3E441:
 INCBIN "baserom.gbc", $3E441, $3E442 - $3E441
 
 LoggedData_0x3E442:
 INCBIN "baserom.gbc", $3E442, $3E46F - $3E442
 
-UnknownData_0x3E46F:
+Unknown_0x3E46F:
 INCBIN "baserom.gbc", $3E46F, $3E470 - $3E46F
 
 LoggedData_0x3E470:
 INCBIN "baserom.gbc", $3E470, $3E4C0 - $3E470
 
-UnknownData_0x3E4C0:
+Unknown_0x3E4C0:
 INCBIN "baserom.gbc", $3E4C0, $3E4C1 - $3E4C0
 
 LoggedData_0x3E4C1:
 INCBIN "baserom.gbc", $3E4C1, $3E4D5 - $3E4C1
 
-UnknownData_0x3E4D5:
+Unknown_0x3E4D5:
 INCBIN "baserom.gbc", $3E4D5, $3E4D6 - $3E4D5
 
 LoggedData_0x3E4D6:
 INCBIN "baserom.gbc", $3E4D6, $3E507 - $3E4D6
 
-UnknownData_0x3E507:
+Unknown_0x3E507:
 INCBIN "baserom.gbc", $3E507, $3E508 - $3E507
 
 LoggedData_0x3E508:
 INCBIN "baserom.gbc", $3E508, $3E559 - $3E508
 
-UnknownData_0x3E559:
+Unknown_0x3E559:
 INCBIN "baserom.gbc", $3E559, $3E55A - $3E559
 
 LoggedData_0x3E55A:
 INCBIN "baserom.gbc", $3E55A, $3E57C - $3E55A
 
-UnknownData_0x3E57C:
+Unknown_0x3E57C:
 INCBIN "baserom.gbc", $3E57C, $3E57D - $3E57C
 
 LoggedData_0x3E57D:
 INCBIN "baserom.gbc", $3E57D, $3E5B5 - $3E57D
 
-UnknownData_0x3E5B5:
+Unknown_0x3E5B5:
 INCBIN "baserom.gbc", $3E5B5, $3E5B6 - $3E5B5
 
 LoggedData_0x3E5B6:
 INCBIN "baserom.gbc", $3E5B6, $3E5CA - $3E5B6
 
-UnknownData_0x3E5CA:
+Unknown_0x3E5CA:
 INCBIN "baserom.gbc", $3E5CA, $3E5CB - $3E5CA
 
 LoggedData_0x3E5CB:
 INCBIN "baserom.gbc", $3E5CB, $3E5DD - $3E5CB
 
-UnknownData_0x3E5DD:
+Unknown_0x3E5DD:
 INCBIN "baserom.gbc", $3E5DD, $3E5DE - $3E5DD
 
 LoggedData_0x3E5DE:
 INCBIN "baserom.gbc", $3E5DE, $3E5F0 - $3E5DE
 
-UnknownData_0x3E5F0:
+Unknown_0x3E5F0:
 INCBIN "baserom.gbc", $3E5F0, $3E5F1 - $3E5F0
 
 LoggedData_0x3E5F1:
 INCBIN "baserom.gbc", $3E5F1, $3E611 - $3E5F1
 
-UnknownData_0x3E611:
+Unknown_0x3E611:
 INCBIN "baserom.gbc", $3E611, $3E612 - $3E611
 
 LoggedData_0x3E612:
 INCBIN "baserom.gbc", $3E612, $3E63E - $3E612
 
-UnknownData_0x3E63E:
+Unknown_0x3E63E:
 INCBIN "baserom.gbc", $3E63E, $3E63F - $3E63E
 
 LoggedData_0x3E63F:
 INCBIN "baserom.gbc", $3E63F, $3E655 - $3E63F
 
-UnknownData_0x3E655:
+Unknown_0x3E655:
 INCBIN "baserom.gbc", $3E655, $3E656 - $3E655
 
 LoggedData_0x3E656:
 INCBIN "baserom.gbc", $3E656, $3E66C - $3E656
 
-UnknownData_0x3E66C:
+Unknown_0x3E66C:
 INCBIN "baserom.gbc", $3E66C, $3E66D - $3E66C
 
 LoggedData_0x3E66D:
 INCBIN "baserom.gbc", $3E66D, $3E683 - $3E66D
 
-UnknownData_0x3E683:
+Unknown_0x3E683:
 INCBIN "baserom.gbc", $3E683, $3E684 - $3E683
 
 LoggedData_0x3E684:
 INCBIN "baserom.gbc", $3E684, $3E6A6 - $3E684
 
-UnknownData_0x3E6A6:
+Unknown_0x3E6A6:
 INCBIN "baserom.gbc", $3E6A6, $3E6A7 - $3E6A6
 
 LoggedData_0x3E6A7:
 INCBIN "baserom.gbc", $3E6A7, $3E740 - $3E6A7
 
-UnknownData_0x3E740:
+Unknown_0x3E740:
 INCBIN "baserom.gbc", $3E740, $3E741 - $3E740
 
 LoggedData_0x3E741:
 INCBIN "baserom.gbc", $3E741, $3E78D - $3E741
 
-UnknownData_0x3E78D:
+Unknown_0x3E78D:
 INCBIN "baserom.gbc", $3E78D, $3E78E - $3E78D
 
 LoggedData_0x3E78E:
 INCBIN "baserom.gbc", $3E78E, $3E7C2 - $3E78E
 
-UnknownData_0x3E7C2:
+Unknown_0x3E7C2:
 INCBIN "baserom.gbc", $3E7C2, $3E7C3 - $3E7C2
 
 LoggedData_0x3E7C3:
 INCBIN "baserom.gbc", $3E7C3, $3E7DB - $3E7C3
 
-UnknownData_0x3E7DB:
+Unknown_0x3E7DB:
 INCBIN "baserom.gbc", $3E7DB, $3E7DC - $3E7DB
 
 LoggedData_0x3E7DC:
 INCBIN "baserom.gbc", $3E7DC, $3E83A - $3E7DC
 
-UnknownData_0x3E83A:
+Unknown_0x3E83A:
 INCBIN "baserom.gbc", $3E83A, $3E83B - $3E83A
 
 LoggedData_0x3E83B:
 INCBIN "baserom.gbc", $3E83B, $3E973 - $3E83B
 
-UnknownData_0x3E973:
+Unknown_0x3E973:
 INCBIN "baserom.gbc", $3E973, $3E974 - $3E973
 
 LoggedData_0x3E974:
 INCBIN "baserom.gbc", $3E974, $3E989 - $3E974
 
-UnknownData_0x3E989:
+Unknown_0x3E989:
 INCBIN "baserom.gbc", $3E989, $3E98A - $3E989
 
 LoggedData_0x3E98A:
 INCBIN "baserom.gbc", $3E98A, $3E9A2 - $3E98A
 
-UnknownData_0x3E9A2:
+Unknown_0x3E9A2:
 INCBIN "baserom.gbc", $3E9A2, $3E9A3 - $3E9A2
 
 LoggedData_0x3E9A3:
 INCBIN "baserom.gbc", $3E9A3, $3EA0A - $3E9A3
 
-UnknownData_0x3EA0A:
+Unknown_0x3EA0A:
 INCBIN "baserom.gbc", $3EA0A, $3EA0B - $3EA0A
 
 LoggedData_0x3EA0B:
 INCBIN "baserom.gbc", $3EA0B, $3EA2A - $3EA0B
 
-UnknownData_0x3EA2A:
+Unknown_0x3EA2A:
 INCBIN "baserom.gbc", $3EA2A, $3EA2B - $3EA2A
 
 LoggedData_0x3EA2B:
 INCBIN "baserom.gbc", $3EA2B, $3EA4D - $3EA2B
 
-UnknownData_0x3EA4D:
+Unknown_0x3EA4D:
 INCBIN "baserom.gbc", $3EA4D, $3EA4F - $3EA4D
 
 LoggedData_0x3EA4F:
 INCBIN "baserom.gbc", $3EA4F, $3EA5F - $3EA4F
 
-UnknownData_0x3EA5F:
+Unknown_0x3EA5F:
 INCBIN "baserom.gbc", $3EA5F, $3EA60 - $3EA5F
 
 LoggedData_0x3EA60:
 INCBIN "baserom.gbc", $3EA60, $3EAC6 - $3EA60
 
-UnknownData_0x3EAC6:
+Unknown_0x3EAC6:
 INCBIN "baserom.gbc", $3EAC6, $3EAC7 - $3EAC6
 
 LoggedData_0x3EAC7:
 INCBIN "baserom.gbc", $3EAC7, $3EAE3 - $3EAC7
 
-UnknownData_0x3EAE3:
+Unknown_0x3EAE3:
 INCBIN "baserom.gbc", $3EAE3, $3EAE4 - $3EAE3
 
 LoggedData_0x3EAE4:
 INCBIN "baserom.gbc", $3EAE4, $3EB58 - $3EAE4
 
-UnknownData_0x3EB58:
+Unknown_0x3EB58:
 INCBIN "baserom.gbc", $3EB58, $3EB59 - $3EB58
 
 LoggedData_0x3EB59:
 INCBIN "baserom.gbc", $3EB59, $3EB73 - $3EB59
 
-UnknownData_0x3EB73:
+Unknown_0x3EB73:
 INCBIN "baserom.gbc", $3EB73, $3EB74 - $3EB73
 
 LoggedData_0x3EB74:
 INCBIN "baserom.gbc", $3EB74, $3EBA3 - $3EB74
 
-UnknownData_0x3EBA3:
+Unknown_0x3EBA3:
 INCBIN "baserom.gbc", $3EBA3, $3EBA4 - $3EBA3
 
 LoggedData_0x3EBA4:
 INCBIN "baserom.gbc", $3EBA4, $3EBBA - $3EBA4
 
-UnknownData_0x3EBBA:
+Unknown_0x3EBBA:
 INCBIN "baserom.gbc", $3EBBA, $3EBBC - $3EBBA
 
 LoggedData_0x3EBBC:
 INCBIN "baserom.gbc", $3EBBC, $3EC4A - $3EBBC
 
-UnknownData_0x3EC4A:
+Unknown_0x3EC4A:
 INCBIN "baserom.gbc", $3EC4A, $3EC4B - $3EC4A
 
 LoggedData_0x3EC4B:
 INCBIN "baserom.gbc", $3EC4B, $3EC71 - $3EC4B
 
-UnknownData_0x3EC71:
+Unknown_0x3EC71:
 INCBIN "baserom.gbc", $3EC71, $3EC72 - $3EC71
 
 LoggedData_0x3EC72:
 INCBIN "baserom.gbc", $3EC72, $3EC86 - $3EC72
 
-UnknownData_0x3EC86:
+Unknown_0x3EC86:
 INCBIN "baserom.gbc", $3EC86, $3EC88 - $3EC86
 
 LoggedData_0x3EC88:
 INCBIN "baserom.gbc", $3EC88, $3EC9C - $3EC88
 
-UnknownData_0x3EC9C:
+Unknown_0x3EC9C:
 INCBIN "baserom.gbc", $3EC9C, $3EC9E - $3EC9C
 
 LoggedData_0x3EC9E:
 INCBIN "baserom.gbc", $3EC9E, $3ECB3 - $3EC9E
 
-UnknownData_0x3ECB3:
+Unknown_0x3ECB3:
 INCBIN "baserom.gbc", $3ECB3, $3ECB4 - $3ECB3
 
 LoggedData_0x3ECB4:
 INCBIN "baserom.gbc", $3ECB4, $3ECF6 - $3ECB4
 
-UnknownData_0x3ECF6:
+Unknown_0x3ECF6:
 INCBIN "baserom.gbc", $3ECF6, $3ECF7 - $3ECF6
 
 LoggedData_0x3ECF7:
 INCBIN "baserom.gbc", $3ECF7, $3ED33 - $3ECF7
 
-UnknownData_0x3ED33:
+Unknown_0x3ED33:
 INCBIN "baserom.gbc", $3ED33, $3ED34 - $3ED33
 
 LoggedData_0x3ED34:
 INCBIN "baserom.gbc", $3ED34, $3ED7D - $3ED34
 
-UnknownData_0x3ED7D:
+Unknown_0x3ED7D:
 INCBIN "baserom.gbc", $3ED7D, $3ED7E - $3ED7D
 
 LoggedData_0x3ED7E:
 INCBIN "baserom.gbc", $3ED7E, $3ED9E - $3ED7E
 
-UnknownData_0x3ED9E:
+Unknown_0x3ED9E:
 INCBIN "baserom.gbc", $3ED9E, $3ED9F - $3ED9E
 
 LoggedData_0x3ED9F:
 INCBIN "baserom.gbc", $3ED9F, $3EEF3 - $3ED9F
 
-UnknownData_0x3EEF3:
+Unknown_0x3EEF3:
 INCBIN "baserom.gbc", $3EEF3, $3EEF4 - $3EEF3
 
 LoggedData_0x3EEF4:
 INCBIN "baserom.gbc", $3EEF4, $3EF2E - $3EEF4
 
-UnknownData_0x3EF2E:
+Unknown_0x3EF2E:
 INCBIN "baserom.gbc", $3EF2E, $3EF2F - $3EF2E
 
 LoggedData_0x3EF2F:
 INCBIN "baserom.gbc", $3EF2F, $3EF95 - $3EF2F
 
-UnknownData_0x3EF95:
+Unknown_0x3EF95:
 INCBIN "baserom.gbc", $3EF95, $3EF96 - $3EF95
 
 LoggedData_0x3EF96:
 INCBIN "baserom.gbc", $3EF96, $3EFCC - $3EF96
 
-UnknownData_0x3EFCC:
+Unknown_0x3EFCC:
 INCBIN "baserom.gbc", $3EFCC, $3EFCD - $3EFCC
 
 LoggedData_0x3EFCD:
 INCBIN "baserom.gbc", $3EFCD, $3F00A - $3EFCD
 
-UnknownData_0x3F00A:
+Unknown_0x3F00A:
 INCBIN "baserom.gbc", $3F00A, $3F00B - $3F00A
 
 LoggedData_0x3F00B:
 INCBIN "baserom.gbc", $3F00B, $3F043 - $3F00B
 
-UnknownData_0x3F043:
+Unknown_0x3F043:
 INCBIN "baserom.gbc", $3F043, $3F044 - $3F043
 
 LoggedData_0x3F044:
 INCBIN "baserom.gbc", $3F044, $3F080 - $3F044
 
-UnknownData_0x3F080:
+Unknown_0x3F080:
 INCBIN "baserom.gbc", $3F080, $3F081 - $3F080
 
 LoggedData_0x3F081:
 INCBIN "baserom.gbc", $3F081, $3F0A5 - $3F081
 
-UnknownData_0x3F0A5:
+Unknown_0x3F0A5:
 INCBIN "baserom.gbc", $3F0A5, $3F0A6 - $3F0A5
 
 LoggedData_0x3F0A6:
 INCBIN "baserom.gbc", $3F0A6, $3F0CE - $3F0A6
 
-UnknownData_0x3F0CE:
+Unknown_0x3F0CE:
 INCBIN "baserom.gbc", $3F0CE, $3F0CF - $3F0CE
 
 LoggedData_0x3F0CF:
 INCBIN "baserom.gbc", $3F0CF, $3F0FF - $3F0CF
 
-UnknownData_0x3F0FF:
+Unknown_0x3F0FF:
 INCBIN "baserom.gbc", $3F0FF, $3F100 - $3F0FF
 
 LoggedData_0x3F100:
 INCBIN "baserom.gbc", $3F100, $3F110 - $3F100
 
-UnknownData_0x3F110:
+Unknown_0x3F110:
 INCBIN "baserom.gbc", $3F110, $3F111 - $3F110
 
 LoggedData_0x3F111:
 INCBIN "baserom.gbc", $3F111, $3F121 - $3F111
 
-UnknownData_0x3F121:
+Unknown_0x3F121:
 INCBIN "baserom.gbc", $3F121, $3F122 - $3F121
 
 LoggedData_0x3F122:
 INCBIN "baserom.gbc", $3F122, $3F155 - $3F122
 
-UnknownData_0x3F155:
+Unknown_0x3F155:
 INCBIN "baserom.gbc", $3F155, $3F156 - $3F155
 
 LoggedData_0x3F156:
 INCBIN "baserom.gbc", $3F156, $3F1A8 - $3F156
 
-UnknownData_0x3F1A8:
+Unknown_0x3F1A8:
 INCBIN "baserom.gbc", $3F1A8, $3F1A9 - $3F1A8
 
 LoggedData_0x3F1A9:
 INCBIN "baserom.gbc", $3F1A9, $3F1C1 - $3F1A9
 
-UnknownData_0x3F1C1:
+Unknown_0x3F1C1:
 INCBIN "baserom.gbc", $3F1C1, $3F1C2 - $3F1C1
 
 LoggedData_0x3F1C2:
 INCBIN "baserom.gbc", $3F1C2, $3F1DA - $3F1C2
 
-UnknownData_0x3F1DA:
+Unknown_0x3F1DA:
 INCBIN "baserom.gbc", $3F1DA, $3F1DB - $3F1DA
 
 LoggedData_0x3F1DB:
 INCBIN "baserom.gbc", $3F1DB, $3F1DD - $3F1DB
 
-UnknownData_0x3F1DD:
+Unknown_0x3F1DD:
 INCBIN "baserom.gbc", $3F1DD, $3F1EE - $3F1DD
 
 LoggedData_0x3F1EE:
 INCBIN "baserom.gbc", $3F1EE, $3F20B - $3F1EE
 
-UnknownData_0x3F20B:
+Unknown_0x3F20B:
 INCBIN "baserom.gbc", $3F20B, $3F20C - $3F20B
 
 LoggedData_0x3F20C:
 INCBIN "baserom.gbc", $3F20C, $3F22A - $3F20C
 
-UnknownData_0x3F22A:
+Unknown_0x3F22A:
 INCBIN "baserom.gbc", $3F22A, $3F22B - $3F22A
 
 LoggedData_0x3F22B:
 INCBIN "baserom.gbc", $3F22B, $3F2A6 - $3F22B
 
-UnknownData_0x3F2A6:
+Unknown_0x3F2A6:
 INCBIN "baserom.gbc", $3F2A6, $3F2A7 - $3F2A6
 
 LoggedData_0x3F2A7:
 INCBIN "baserom.gbc", $3F2A7, $3F2CA - $3F2A7
 
-UnknownData_0x3F2CA:
+Unknown_0x3F2CA:
 INCBIN "baserom.gbc", $3F2CA, $3F2CB - $3F2CA
 
 LoggedData_0x3F2CB:
 INCBIN "baserom.gbc", $3F2CB, $3F2DF - $3F2CB
 
-UnknownData_0x3F2DF:
+Unknown_0x3F2DF:
 INCBIN "baserom.gbc", $3F2DF, $3F2E0 - $3F2DF
 
 LoggedData_0x3F2E0:
 INCBIN "baserom.gbc", $3F2E0, $3F2F4 - $3F2E0
 
-UnknownData_0x3F2F4:
+Unknown_0x3F2F4:
 INCBIN "baserom.gbc", $3F2F4, $3F2F5 - $3F2F4
 
 LoggedData_0x3F2F5:
 INCBIN "baserom.gbc", $3F2F5, $3F309 - $3F2F5
 
-UnknownData_0x3F309:
+Unknown_0x3F309:
 INCBIN "baserom.gbc", $3F309, $3F30A - $3F309
 
 LoggedData_0x3F30A:
 INCBIN "baserom.gbc", $3F30A, $3F31C - $3F30A
 
-UnknownData_0x3F31C:
+Unknown_0x3F31C:
 INCBIN "baserom.gbc", $3F31C, $3F31D - $3F31C
 
 LoggedData_0x3F31D:
 INCBIN "baserom.gbc", $3F31D, $3F32D - $3F31D
 
-UnknownData_0x3F32D:
+Unknown_0x3F32D:
 INCBIN "baserom.gbc", $3F32D, $3F32E - $3F32D
 
 LoggedData_0x3F32E:
 INCBIN "baserom.gbc", $3F32E, $3F34D - $3F32E
 
-UnknownData_0x3F34D:
+Unknown_0x3F34D:
 INCBIN "baserom.gbc", $3F34D, $3F34F - $3F34D
 
 LoggedData_0x3F34F:
 INCBIN "baserom.gbc", $3F34F, $3F351 - $3F34F
 
-UnknownData_0x3F351:
+Unknown_0x3F351:
 INCBIN "baserom.gbc", $3F351, $3F366 - $3F351
 
 LoggedData_0x3F366:
 INCBIN "baserom.gbc", $3F366, $3F376 - $3F366
 
-UnknownData_0x3F376:
+Unknown_0x3F376:
 INCBIN "baserom.gbc", $3F376, $3F377 - $3F376
 
 LoggedData_0x3F377:
 INCBIN "baserom.gbc", $3F377, $3F38F - $3F377
 
-UnknownData_0x3F38F:
+Unknown_0x3F38F:
 INCBIN "baserom.gbc", $3F38F, $3F390 - $3F38F
 
 LoggedData_0x3F390:
 INCBIN "baserom.gbc", $3F390, $3F392 - $3F390
 
-UnknownData_0x3F392:
+Unknown_0x3F392:
 INCBIN "baserom.gbc", $3F392, $3FE02 - $3F392
 
 LoggedData_0x3FE02:
 INCBIN "baserom.gbc", $3FE02, $3FE0B - $3FE02
 
-UnknownData_0x3FE0B:
+Unknown_0x3FE0B:
 INCBIN "baserom.gbc", $3FE0B, $3FE0C - $3FE0B
 
 LoggedData_0x3FE0C:
 INCBIN "baserom.gbc", $3FE0C, $3FE0F - $3FE0C
 
-UnknownData_0x3FE0F:
+Unknown_0x3FE0F:
 INCBIN "baserom.gbc", $3FE0F, $3FE10 - $3FE0F
 
 LoggedData_0x3FE10:
 INCBIN "baserom.gbc", $3FE10, $3FE19 - $3FE10
 
-UnknownData_0x3FE19:
+Unknown_0x3FE19:
 INCBIN "baserom.gbc", $3FE19, $3FE1A - $3FE19
 
 LoggedData_0x3FE1A:
 INCBIN "baserom.gbc", $3FE1A, $3FE1B - $3FE1A
 
-UnknownData_0x3FE1B:
+Unknown_0x3FE1B:
 INCBIN "baserom.gbc", $3FE1B, $3FE1C - $3FE1B
 
 LoggedData_0x3FE1C:
 INCBIN "baserom.gbc", $3FE1C, $3FE1F - $3FE1C
 
-UnknownData_0x3FE1F:
+Unknown_0x3FE1F:
 INCBIN "baserom.gbc", $3FE1F, $3FE20 - $3FE1F
 
 LoggedData_0x3FE20:
 INCBIN "baserom.gbc", $3FE20, $3FE23 - $3FE20
 
-UnknownData_0x3FE23:
+Unknown_0x3FE23:
 INCBIN "baserom.gbc", $3FE23, $3FE24 - $3FE23
 
 LoggedData_0x3FE24:
 INCBIN "baserom.gbc", $3FE24, $3FE25 - $3FE24
 
-UnknownData_0x3FE25:
+Unknown_0x3FE25:
 INCBIN "baserom.gbc", $3FE25, $3FE26 - $3FE25
 
 LoggedData_0x3FE26:
 INCBIN "baserom.gbc", $3FE26, $3FE27 - $3FE26
 
-UnknownData_0x3FE27:
+Unknown_0x3FE27:
 INCBIN "baserom.gbc", $3FE27, $3FE40 - $3FE27
 
 LoggedData_0x3FE40:
 INCBIN "baserom.gbc", $3FE40, $3FE42 - $3FE40
 
-UnknownData_0x3FE42:
+Unknown_0x3FE42:
 INCBIN "baserom.gbc", $3FE42, $3FE46 - $3FE42
 
 LoggedData_0x3FE46:
 INCBIN "baserom.gbc", $3FE46, $3FE48 - $3FE46
 
-UnknownData_0x3FE48:
+Unknown_0x3FE48:
 INCBIN "baserom.gbc", $3FE48, $3FE4A - $3FE48
 
 LoggedData_0x3FE4A:
 INCBIN "baserom.gbc", $3FE4A, $3FE52 - $3FE4A
 
-UnknownData_0x3FE52:
+Unknown_0x3FE52:
 INCBIN "baserom.gbc", $3FE52, $3FE56 - $3FE52
 
 LoggedData_0x3FE56:
 INCBIN "baserom.gbc", $3FE56, $3FE58 - $3FE56
 
-UnknownData_0x3FE58:
+Unknown_0x3FE58:
 INCBIN "baserom.gbc", $3FE58, $3FE5C - $3FE58
 
 LoggedData_0x3FE5C:
 INCBIN "baserom.gbc", $3FE5C, $3FE60 - $3FE5C
 
-UnknownData_0x3FE60:
+Unknown_0x3FE60:
 INCBIN "baserom.gbc", $3FE60, $3FE62 - $3FE60
 
 LoggedData_0x3FE62:
 INCBIN "baserom.gbc", $3FE62, $3FE66 - $3FE62
 
-UnknownData_0x3FE66:
+Unknown_0x3FE66:
 INCBIN "baserom.gbc", $3FE66, $3FE68 - $3FE66
 
 LoggedData_0x3FE68:
 INCBIN "baserom.gbc", $3FE68, $3FE6A - $3FE68
 
-UnknownData_0x3FE6A:
+Unknown_0x3FE6A:
 INCBIN "baserom.gbc", $3FE6A, $3FE6E - $3FE6A
 
 LoggedData_0x3FE6E:
 INCBIN "baserom.gbc", $3FE6E, $3FE72 - $3FE6E
 
-UnknownData_0x3FE72:
+Unknown_0x3FE72:
 INCBIN "baserom.gbc", $3FE72, $3FE74 - $3FE72
 
 LoggedData_0x3FE74:
 INCBIN "baserom.gbc", $3FE74, $3FE78 - $3FE74
 
-UnknownData_0x3FE78:
+Unknown_0x3FE78:
 INCBIN "baserom.gbc", $3FE78, $3FE7E - $3FE78
 
 LoggedData_0x3FE7E:
 INCBIN "baserom.gbc", $3FE7E, $3FE80 - $3FE7E
 
-UnknownData_0x3FE80:
+Unknown_0x3FE80:
 INCBIN "baserom.gbc", $3FE80, $3FE82 - $3FE80
 
 LoggedData_0x3FE82:
 INCBIN "baserom.gbc", $3FE82, $3FE84 - $3FE82
 
-UnknownData_0x3FE84:
+Unknown_0x3FE84:
 INCBIN "baserom.gbc", $3FE84, $3FE88 - $3FE84
 
 LoggedData_0x3FE88:
 INCBIN "baserom.gbc", $3FE88, $3FE8A - $3FE88
 
-UnknownData_0x3FE8A:
+Unknown_0x3FE8A:
 INCBIN "baserom.gbc", $3FE8A, $3FE8C - $3FE8A
 
 LoggedData_0x3FE8C:
 INCBIN "baserom.gbc", $3FE8C, $3FE90 - $3FE8C
 
-UnknownData_0x3FE90:
+Unknown_0x3FE90:
 INCBIN "baserom.gbc", $3FE90, $3FE94 - $3FE90
 
 LoggedData_0x3FE94:
 INCBIN "baserom.gbc", $3FE94, $3FE9A - $3FE94
 
-UnknownData_0x3FE9A:
+Unknown_0x3FE9A:
 INCBIN "baserom.gbc", $3FE9A, $3FE9C - $3FE9A
 
 LoggedData_0x3FE9C:
 INCBIN "baserom.gbc", $3FE9C, $3FE9E - $3FE9C
 
-UnknownData_0x3FE9E:
+Unknown_0x3FE9E:
 INCBIN "baserom.gbc", $3FE9E, $3FEA2 - $3FE9E
 
 LoggedData_0x3FEA2:
 INCBIN "baserom.gbc", $3FEA2, $3FEA4 - $3FEA2
 
-UnknownData_0x3FEA4:
+Unknown_0x3FEA4:
 INCBIN "baserom.gbc", $3FEA4, $3FEA6 - $3FEA4
 
 LoggedData_0x3FEA6:
 INCBIN "baserom.gbc", $3FEA6, $3FEA8 - $3FEA6
 
-UnknownData_0x3FEA8:
+Unknown_0x3FEA8:
 INCBIN "baserom.gbc", $3FEA8, $3FEAA - $3FEA8
 
 LoggedData_0x3FEAA:
 INCBIN "baserom.gbc", $3FEAA, $3FEAC - $3FEAA
 
-UnknownData_0x3FEAC:
+Unknown_0x3FEAC:
 INCBIN "baserom.gbc", $3FEAC, $3FEAE - $3FEAC
 
 LoggedData_0x3FEAE:
 INCBIN "baserom.gbc", $3FEAE, $3FEB0 - $3FEAE
 
-UnknownData_0x3FEB0:
+Unknown_0x3FEB0:
 INCBIN "baserom.gbc", $3FEB0, $3FEB4 - $3FEB0
 
 LoggedData_0x3FEB4:
 INCBIN "baserom.gbc", $3FEB4, $3FEB6 - $3FEB4
 
-UnknownData_0x3FEB6:
+Unknown_0x3FEB6:
 INCBIN "baserom.gbc", $3FEB6, $3FEB8 - $3FEB6
 
 LoggedData_0x3FEB8:
 INCBIN "baserom.gbc", $3FEB8, $3FEBC - $3FEB8
 
-UnknownData_0x3FEBC:
+Unknown_0x3FEBC:
 INCBIN "baserom.gbc", $3FEBC, $3FEBE - $3FEBC
 
 LoggedData_0x3FEBE:
 INCBIN "baserom.gbc", $3FEBE, $3FEC4 - $3FEBE
 
-UnknownData_0x3FEC4:
+Unknown_0x3FEC4:
 INCBIN "baserom.gbc", $3FEC4, $3FECA - $3FEC4
 
 LoggedData_0x3FECA:
 INCBIN "baserom.gbc", $3FECA, $3FED0 - $3FECA
 
-UnknownData_0x3FED0:
+Unknown_0x3FED0:
 INCBIN "baserom.gbc", $3FED0, $3FED4 - $3FED0
 
 LoggedData_0x3FED4:
 INCBIN "baserom.gbc", $3FED4, $3FEDE - $3FED4
 
-UnknownData_0x3FEDE:
+Unknown_0x3FEDE:
 INCBIN "baserom.gbc", $3FEDE, $3FEE0 - $3FEDE
 
 LoggedData_0x3FEE0:
 INCBIN "baserom.gbc", $3FEE0, $3FEE2 - $3FEE0
 
-UnknownData_0x3FEE2:
+Unknown_0x3FEE2:
 INCBIN "baserom.gbc", $3FEE2, $3FEE4 - $3FEE2
 
 LoggedData_0x3FEE4:
 INCBIN "baserom.gbc", $3FEE4, $3FEE8 - $3FEE4
 
-UnknownData_0x3FEE8:
+Unknown_0x3FEE8:
 INCBIN "baserom.gbc", $3FEE8, $3FEEC - $3FEE8
 
 LoggedData_0x3FEEC:
 INCBIN "baserom.gbc", $3FEEC, $3FEEE - $3FEEC
 
-UnknownData_0x3FEEE:
+Unknown_0x3FEEE:
 INCBIN "baserom.gbc", $3FEEE, $3FEF4 - $3FEEE
 
 LoggedData_0x3FEF4:
 INCBIN "baserom.gbc", $3FEF4, $3FEF6 - $3FEF4
 
-UnknownData_0x3FEF6:
+Unknown_0x3FEF6:
 INCBIN "baserom.gbc", $3FEF6, $3FEF8 - $3FEF6
 
 LoggedData_0x3FEF8:
 INCBIN "baserom.gbc", $3FEF8, $3FEFC - $3FEF8
 
-UnknownData_0x3FEFC:
+Unknown_0x3FEFC:
 INCBIN "baserom.gbc", $3FEFC, $3FEFE - $3FEFC
 
 LoggedData_0x3FEFE:
 INCBIN "baserom.gbc", $3FEFE, $3FF04 - $3FEFE
 
-UnknownData_0x3FF04:
+Unknown_0x3FF04:
 INCBIN "baserom.gbc", $3FF04, $3FF0C - $3FF04
 
 LoggedData_0x3FF0C:
 INCBIN "baserom.gbc", $3FF0C, $3FF10 - $3FF0C
 
-UnknownData_0x3FF10:
+Unknown_0x3FF10:
 INCBIN "baserom.gbc", $3FF10, $3FF18 - $3FF10
 
 LoggedData_0x3FF18:
 INCBIN "baserom.gbc", $3FF18, $3FF1A - $3FF18
 
-UnknownData_0x3FF1A:
+Unknown_0x3FF1A:
 INCBIN "baserom.gbc", $3FF1A, $3FF1C - $3FF1A
 
 LoggedData_0x3FF1C:
 INCBIN "baserom.gbc", $3FF1C, $3FF24 - $3FF1C
 
-UnknownData_0x3FF24:
+Unknown_0x3FF24:
 INCBIN "baserom.gbc", $3FF24, $3FF26 - $3FF24
 
 LoggedData_0x3FF26:
 INCBIN "baserom.gbc", $3FF26, $3FF28 - $3FF26
 
-UnknownData_0x3FF28:
+Unknown_0x3FF28:
 INCBIN "baserom.gbc", $3FF28, $3FF2C - $3FF28
 
 LoggedData_0x3FF2C:
 INCBIN "baserom.gbc", $3FF2C, $3FF2E - $3FF2C
 
-UnknownData_0x3FF2E:
+Unknown_0x3FF2E:
 INCBIN "baserom.gbc", $3FF2E, $3FF30 - $3FF2E
 
 LoggedData_0x3FF30:
 INCBIN "baserom.gbc", $3FF30, $3FF32 - $3FF30
 
-UnknownData_0x3FF32:
+Unknown_0x3FF32:
 INCBIN "baserom.gbc", $3FF32, $3FF36 - $3FF32
 
 LoggedData_0x3FF36:
 INCBIN "baserom.gbc", $3FF36, $3FF38 - $3FF36
 
-UnknownData_0x3FF38:
+Unknown_0x3FF38:
 INCBIN "baserom.gbc", $3FF38, $3FF3A - $3FF38
 
 LoggedData_0x3FF3A:
 INCBIN "baserom.gbc", $3FF3A, $3FF42 - $3FF3A
 
-UnknownData_0x3FF42:
+Unknown_0x3FF42:
 INCBIN "baserom.gbc", $3FF42, $3FF44 - $3FF42
 
 LoggedData_0x3FF44:
 INCBIN "baserom.gbc", $3FF44, $3FF46 - $3FF44
 
-UnknownData_0x3FF46:
+Unknown_0x3FF46:
 INCBIN "baserom.gbc", $3FF46, $3FF4C - $3FF46
 
 LoggedData_0x3FF4C:
 INCBIN "baserom.gbc", $3FF4C, $3FF50 - $3FF4C
 
-UnknownData_0x3FF50:
+Unknown_0x3FF50:
 INCBIN "baserom.gbc", $3FF50, $3FF52 - $3FF50
 
 LoggedData_0x3FF52:
 INCBIN "baserom.gbc", $3FF52, $3FF58 - $3FF52
 
-UnknownData_0x3FF58:
+Unknown_0x3FF58:
 INCBIN "baserom.gbc", $3FF58, $3FF5A - $3FF58
 
 LoggedData_0x3FF5A:
 INCBIN "baserom.gbc", $3FF5A, $3FF5C - $3FF5A
 
-UnknownData_0x3FF5C:
+Unknown_0x3FF5C:
 INCBIN "baserom.gbc", $3FF5C, $3FF5E - $3FF5C
 
 LoggedData_0x3FF5E:
 INCBIN "baserom.gbc", $3FF5E, $3FF60 - $3FF5E
 
-UnknownData_0x3FF60:
+Unknown_0x3FF60:
 INCBIN "baserom.gbc", $3FF60, $3FF66 - $3FF60
 
 LoggedData_0x3FF66:
 INCBIN "baserom.gbc", $3FF66, $3FF6E - $3FF66
 
-UnknownData_0x3FF6E:
+Unknown_0x3FF6E:
 INCBIN "baserom.gbc", $3FF6E, $3FF76 - $3FF6E
 
 LoggedData_0x3FF76:
 INCBIN "baserom.gbc", $3FF76, $3FF7A - $3FF76
 
-UnknownData_0x3FF7A:
+Unknown_0x3FF7A:
 INCBIN "baserom.gbc", $3FF7A, $3FF7C - $3FF7A
 
 LoggedData_0x3FF7C:
 INCBIN "baserom.gbc", $3FF7C, $3FF80 - $3FF7C
 
-UnknownData_0x3FF80:
+Unknown_0x3FF80:
 INCBIN "baserom.gbc", $3FF80, $3FF84 - $3FF80
 
 LoggedData_0x3FF84:
 INCBIN "baserom.gbc", $3FF84, $3FF86 - $3FF84
 
-UnknownData_0x3FF86:
+Unknown_0x3FF86:
 INCBIN "baserom.gbc", $3FF86, $3FF88 - $3FF86
 
 LoggedData_0x3FF88:
 INCBIN "baserom.gbc", $3FF88, $3FF8A - $3FF88
 
-UnknownData_0x3FF8A:
+Unknown_0x3FF8A:
 INCBIN "baserom.gbc", $3FF8A, $3FF8C - $3FF8A
 
 LoggedData_0x3FF8C:
 INCBIN "baserom.gbc", $3FF8C, $3FF90 - $3FF8C
 
-UnknownData_0x3FF90:
+Unknown_0x3FF90:
 INCBIN "baserom.gbc", $3FF90, $3FF94 - $3FF90
 
 LoggedData_0x3FF94:
 INCBIN "baserom.gbc", $3FF94, $3FF9A - $3FF94
 
-UnknownData_0x3FF9A:
+Unknown_0x3FF9A:
 INCBIN "baserom.gbc", $3FF9A, $3FF9E - $3FF9A
 
 LoggedData_0x3FF9E:
 INCBIN "baserom.gbc", $3FF9E, $3FFA0 - $3FF9E
 
-UnknownData_0x3FFA0:
+Unknown_0x3FFA0:
 INCBIN "baserom.gbc", $3FFA0, $3FFA4 - $3FFA0
 
 LoggedData_0x3FFA4:
 INCBIN "baserom.gbc", $3FFA4, $3FFAA - $3FFA4
 
-UnknownData_0x3FFAA:
+Unknown_0x3FFAA:
 INCBIN "baserom.gbc", $3FFAA, $3FFAE - $3FFAA
 
 LoggedData_0x3FFAE:
 INCBIN "baserom.gbc", $3FFAE, $3FFB4 - $3FFAE
 
-UnknownData_0x3FFB4:
+Unknown_0x3FFB4:
 INCBIN "baserom.gbc", $3FFB4, $3FFB6 - $3FFB4
 
 LoggedData_0x3FFB6:
 INCBIN "baserom.gbc", $3FFB6, $3FFB8 - $3FFB6
 
-UnknownData_0x3FFB8:
+Unknown_0x3FFB8:
 INCBIN "baserom.gbc", $3FFB8, $3FFBA - $3FFB8
 
 LoggedData_0x3FFBA:
 INCBIN "baserom.gbc", $3FFBA, $3FFBE - $3FFBA
 
-UnknownData_0x3FFBE:
+Unknown_0x3FFBE:
 INCBIN "baserom.gbc", $3FFBE, $3FFC2 - $3FFBE
 
 LoggedData_0x3FFC2:
 INCBIN "baserom.gbc", $3FFC2, $3FFC6 - $3FFC2
 
-UnknownData_0x3FFC6:
+Unknown_0x3FFC6:
 INCBIN "baserom.gbc", $3FFC6, $3FFCC - $3FFC6
 
 LoggedData_0x3FFCC:
 INCBIN "baserom.gbc", $3FFCC, $3FFD2 - $3FFCC
 
-UnknownData_0x3FFD2:
+Unknown_0x3FFD2:
 INCBIN "baserom.gbc", $3FFD2, $40000 - $3FFD2
 
 SECTION "Bank10", ROMX, BANK[$10]
@@ -58780,7 +58780,7 @@ Logged_0x40C04:
 Logged_0x40C16:
 	jp Logged_0x342D
 
-UnknownData_0x40C19:
+Unknown_0x40C19:
 INCBIN "baserom.gbc", $40C19, $40C3F - $40C19
 	call Logged_0x30CA
 	jr Logged_0x40C51
@@ -58837,7 +58837,7 @@ Logged_0x40C7F:
 	ld [$D100],a
 	ret
 
-UnknownData_0x40CA1:
+Unknown_0x40CA1:
 INCBIN "baserom.gbc", $40CA1, $40E12 - $40CA1
 	ld hl,$D100
 	res 4,[hl]
@@ -65547,7 +65547,7 @@ Logged_0x436DB:
 	call Logged_0x30F0
 	ret
 
-UnknownData_0x4370F:
+Unknown_0x4370F:
 INCBIN "baserom.gbc", $4370F, $4371B - $4370F
 	call Logged_0x3655
 	ld hl,$D11B
@@ -65577,7 +65577,7 @@ INCBIN "baserom.gbc", $4370F, $4371B - $4370F
 Unknown_0x43747:
 	jp Logged_0x3173
 
-UnknownData_0x4374A:
+Unknown_0x4374A:
 INCBIN "baserom.gbc", $4374A, $4379B - $4374A
 	ld de,$58AE
 	jr Logged_0x437A8
@@ -65998,7 +65998,7 @@ Logged_0x43A42:
 	call Logged_0x305C
 	jp Logged_0x437F7
 
-UnknownData_0x43A48:
+Unknown_0x43A48:
 INCBIN "baserom.gbc", $43A48, $44000 - $43A48
 
 SECTION "Bank11", ROMX, BANK[$11]
@@ -66006,13 +66006,13 @@ SECTION "Bank11", ROMX, BANK[$11]
 LoggedData_0x44000:
 INCBIN "baserom.gbc", $44000, $4404F - $44000
 
-UnknownData_0x4404F:
+Unknown_0x4404F:
 INCBIN "baserom.gbc", $4404F, $44050 - $4404F
 
 LoggedData_0x44050:
 INCBIN "baserom.gbc", $44050, $4407F - $44050
 
-UnknownData_0x4407F:
+Unknown_0x4407F:
 INCBIN "baserom.gbc", $4407F, $44080 - $4407F
 	ld hl,$D100
 	res 4,[hl]
@@ -74646,7 +74646,7 @@ Logged_0x47540:
 	ld [$D100],a
 	ret
 
-UnknownData_0x4756F:
+Unknown_0x4756F:
 INCBIN "baserom.gbc", $4756F, $47718 - $4756F
 	ld hl,$D100
 	res 4,[hl]
@@ -75009,7 +75009,7 @@ Logged_0x47966:
 	ld [$D11B],a
 	ret
 
-UnknownData_0x47988:
+Unknown_0x47988:
 INCBIN "baserom.gbc", $47988, $4798D - $47988
 
 Logged_0x4798D:
@@ -75699,7 +75699,7 @@ Logged_0x47DA8:
 	inc [hl]
 	ret
 
-UnknownData_0x47DB3:
+Unknown_0x47DB3:
 INCBIN "baserom.gbc", $47DB3, $48000 - $47DB3
 
 SECTION "Bank12", ROMX, BANK[$12]
@@ -77003,7 +77003,7 @@ Logged_0x4884D:
 	ld de,$46EA
 	jp Logged_0x30F0
 
-UnknownData_0x48853:
+Unknown_0x48853:
 INCBIN "baserom.gbc", $48853, $48858 - $48853
 	call Logged_0x309A
 	ld l,$00
@@ -77076,7 +77076,7 @@ Logged_0x488C8:
 	ld [$D100],a
 	ret
 
-UnknownData_0x488CD:
+Unknown_0x488CD:
 INCBIN "baserom.gbc", $488CD, $488DC - $488CD
 	ld hl,$D11F
 	ld a,$48
@@ -81583,7 +81583,7 @@ Logged_0x4A5A4:
 LoggedData_0x4A5A9:
 INCBIN "baserom.gbc", $4A5A9, $4A697 - $4A5A9
 
-UnknownData_0x4A697:
+Unknown_0x4A697:
 INCBIN "baserom.gbc", $4A697, $4A69A - $4A697
 	ld hl,$D100
 	res 4,[hl]
@@ -82329,7 +82329,7 @@ Unknown_0x4AAE9:
 	ld [hl],a
 	ret
 
-UnknownData_0x4AB1E:
+Unknown_0x4AB1E:
 INCBIN "baserom.gbc", $4AB1E, $4C000 - $4AB1E
 
 SECTION "Bank13", ROMX, BANK[$13]
@@ -82337,79 +82337,79 @@ SECTION "Bank13", ROMX, BANK[$13]
 LoggedData_0x4C000:
 INCBIN "baserom.gbc", $4C000, $4C242 - $4C000
 
-UnknownData_0x4C242:
+Unknown_0x4C242:
 INCBIN "baserom.gbc", $4C242, $4C280 - $4C242
 
 LoggedData_0x4C280:
 INCBIN "baserom.gbc", $4C280, $4C2FF - $4C280
 
-UnknownData_0x4C2FF:
+Unknown_0x4C2FF:
 INCBIN "baserom.gbc", $4C2FF, $4C300 - $4C2FF
 
 LoggedData_0x4C300:
 INCBIN "baserom.gbc", $4C300, $4C37F - $4C300
 
-UnknownData_0x4C37F:
+Unknown_0x4C37F:
 INCBIN "baserom.gbc", $4C37F, $4C380 - $4C37F
 
 LoggedData_0x4C380:
 INCBIN "baserom.gbc", $4C380, $4C3FF - $4C380
 
-UnknownData_0x4C3FF:
+Unknown_0x4C3FF:
 INCBIN "baserom.gbc", $4C3FF, $4C400 - $4C3FF
 
 LoggedData_0x4C400:
 INCBIN "baserom.gbc", $4C400, $4C47F - $4C400
 
-UnknownData_0x4C47F:
+Unknown_0x4C47F:
 INCBIN "baserom.gbc", $4C47F, $4C480 - $4C47F
 
 LoggedData_0x4C480:
 INCBIN "baserom.gbc", $4C480, $4C4FF - $4C480
 
-UnknownData_0x4C4FF:
+Unknown_0x4C4FF:
 INCBIN "baserom.gbc", $4C4FF, $4C500 - $4C4FF
 
 LoggedData_0x4C500:
 INCBIN "baserom.gbc", $4C500, $4C53A - $4C500
 
-UnknownData_0x4C53A:
+Unknown_0x4C53A:
 INCBIN "baserom.gbc", $4C53A, $4C540 - $4C53A
 
 LoggedData_0x4C540:
 INCBIN "baserom.gbc", $4C540, $4C57F - $4C540
 
-UnknownData_0x4C57F:
+Unknown_0x4C57F:
 INCBIN "baserom.gbc", $4C57F, $4C580 - $4C57F
 
 LoggedData_0x4C580:
 INCBIN "baserom.gbc", $4C580, $4C67F - $4C580
 
-UnknownData_0x4C67F:
+Unknown_0x4C67F:
 INCBIN "baserom.gbc", $4C67F, $4C680 - $4C67F
 
 LoggedData_0x4C680:
 INCBIN "baserom.gbc", $4C680, $4C6E0 - $4C680
 
-UnknownData_0x4C6E0:
+Unknown_0x4C6E0:
 INCBIN "baserom.gbc", $4C6E0, $4C700 - $4C6E0
 
 LoggedData_0x4C700:
 INCBIN "baserom.gbc", $4C700, $4C75F - $4C700
 
-UnknownData_0x4C75F:
+Unknown_0x4C75F:
 INCBIN "baserom.gbc", $4C75F, $4C760 - $4C75F
 
 LoggedData_0x4C760:
 INCBIN "baserom.gbc", $4C760, $4C7BF - $4C760
 
-UnknownData_0x4C7BF:
+Unknown_0x4C7BF:
 INCBIN "baserom.gbc", $4C7BF, $4C800 - $4C7BF
 
 LoggedData_0x4C800:
 INCBIN "baserom.gbc", $4C800, $4C85F - $4C800
 
-UnknownData_0x4C85F:
+Unknown_0x4C85F:
 INCBIN "baserom.gbc", $4C85F, $4C860 - $4C85F
 	ld a,$81
 	ld [$D11C],a
@@ -84910,7 +84910,7 @@ Logged_0x4D8F0:
 	jp z,Logged_0x3362
 	jp Logged_0x4D8C9
 
-UnknownData_0x4D8FA:
+Unknown_0x4D8FA:
 INCBIN "baserom.gbc", $4D8FA, $50000 - $4D8FA
 
 SECTION "Bank14", ROMX, BANK[$14]
@@ -87232,7 +87232,7 @@ Logged_0x50ED5:
 Unknown_0x50F0B:
 	ret
 
-UnknownData_0x50F0C:
+Unknown_0x50F0C:
 INCBIN "baserom.gbc", $50F0C, $50F0F - $50F0C
 
 Unknown_0x50F0F:
@@ -87262,7 +87262,7 @@ Logged_0x50F14:
 Logged_0x50F37:
 	ret
 
-UnknownData_0x50F38:
+Unknown_0x50F38:
 INCBIN "baserom.gbc", $50F38, $50F3B - $50F38
 
 Unknown_0x50F3B:
@@ -87276,7 +87276,7 @@ Unknown_0x50F3E:
 	ld [$D119],a
 	ret
 
-UnknownData_0x50F49:
+Unknown_0x50F49:
 INCBIN "baserom.gbc", $50F49, $50FAD - $50F49
 	ld a,$81
 	ld [$D11C],a
@@ -87771,7 +87771,7 @@ Unknown_0x512DC:
 	ld [$D11B],a
 	ret
 
-UnknownData_0x512E9:
+Unknown_0x512E9:
 INCBIN "baserom.gbc", $512E9, $51329 - $512E9
 
 Logged_0x51329:
@@ -87984,7 +87984,7 @@ Unknown_0x5149D:
 	ld [hli],a
 	ret
 
-UnknownData_0x514A4:
+Unknown_0x514A4:
 INCBIN "baserom.gbc", $514A4, $514EB - $514A4
 
 Logged_0x514EB:
@@ -88413,7 +88413,7 @@ Logged_0x51785:
 	ld [$D118],a
 	ret
 
-UnknownData_0x5178C:
+Unknown_0x5178C:
 INCBIN "baserom.gbc", $5178C, $5179A - $5178C
 
 Logged_0x5179A:
@@ -88880,7 +88880,7 @@ Unknown_0x51A4E:
 	ld [$D106],a
 	ret
 
-UnknownData_0x51A65:
+Unknown_0x51A65:
 INCBIN "baserom.gbc", $51A65, $51B6E - $51A65
 	ld hl,$D100
 	set 4,[hl]
@@ -90548,7 +90548,7 @@ Logged_0x5263D:
 	call $FF80
 	ret
 
-UnknownData_0x52665:
+Unknown_0x52665:
 INCBIN "baserom.gbc", $52665, $54000 - $52665
 
 SECTION "Bank15", ROMX, BANK[$15]
@@ -90689,7 +90689,7 @@ Logged_0x540CE:
 	ld [$FF00+$B6],a
 	ret
 
-UnknownData_0x54103:
+Unknown_0x54103:
 INCBIN "baserom.gbc", $54103, $54109 - $54103
 
 Logged_0x54109:
@@ -91160,7 +91160,7 @@ Logged_0x543C4:
 	jp nc,Logged_0x30BD
 	jp Logged_0x30CA
 
-UnknownData_0x543E9:
+Unknown_0x543E9:
 INCBIN "baserom.gbc", $543E9, $54401 - $543E9
 	ld a,$81
 	ld [$D11C],a
@@ -91201,7 +91201,7 @@ Logged_0x54425:
 	ld [$FF00+$B6],a
 	ret
 
-UnknownData_0x54441:
+Unknown_0x54441:
 INCBIN "baserom.gbc", $54441, $54456 - $54441
 	ld hl,$D11F
 	ld a,$44
@@ -91336,7 +91336,7 @@ INCBIN "baserom.gbc", $544DD, $544E5 - $544DD
 	ld bc,$4F64
 	jp Logged_0x342D
 
-UnknownData_0x54542:
+Unknown_0x54542:
 INCBIN "baserom.gbc", $54542, $54563 - $54542
 
 Unknown_0x54563:
@@ -92292,7 +92292,7 @@ Logged_0x54B75:
 	ld [hli],a
 	ret
 
-UnknownData_0x54B86:
+Unknown_0x54B86:
 INCBIN "baserom.gbc", $54B86, $54B93 - $54B86
 	ld hl,$D116
 	ld a,[hl]
@@ -94528,7 +94528,7 @@ Logged_0x55BC6:
 	jp nc,Logged_0x30BD
 	jp Logged_0x30CA
 
-UnknownData_0x55BD6:
+Unknown_0x55BD6:
 INCBIN "baserom.gbc", $55BD6, $55BD8 - $55BD6
 
 Logged_0x55BD8:
@@ -98134,7 +98134,7 @@ Logged_0x57254:
 	call Logged_0x1287
 	jp Logged_0x1169
 
-UnknownData_0x5725B:
+Unknown_0x5725B:
 INCBIN "baserom.gbc", $5725B, $57264 - $5725B
 	ld hl,$D11F
 	ld a,$72
@@ -98224,17 +98224,17 @@ Logged_0x572FA:
 	ld [$D10F],a
 	ret
 
-UnknownData_0x57300:
+Unknown_0x57300:
 INCBIN "baserom.gbc", $57300, $58000 - $57300
 
 SECTION "Bank16", ROMX, BANK[$16]
 
-UnknownData_0x58000:
+Unknown_0x58000:
 INCBIN "baserom.gbc", $58000, $5C000 - $58000
 
 SECTION "Bank17", ROMX, BANK[$17]
 
-UnknownData_0x5C000:
+Unknown_0x5C000:
 INCBIN "baserom.gbc", $5C000, $60000 - $5C000
 
 SECTION "Bank18", ROMX, BANK[$18]
@@ -98242,199 +98242,199 @@ SECTION "Bank18", ROMX, BANK[$18]
 LoggedData_0x60000:
 INCBIN "baserom.gbc", $60000, $6003E - $60000
 
-UnknownData_0x6003E:
+Unknown_0x6003E:
 INCBIN "baserom.gbc", $6003E, $60040 - $6003E
 
 LoggedData_0x60040:
 INCBIN "baserom.gbc", $60040, $6007D - $60040
 
-UnknownData_0x6007D:
+Unknown_0x6007D:
 INCBIN "baserom.gbc", $6007D, $60080 - $6007D
 
 LoggedData_0x60080:
 INCBIN "baserom.gbc", $60080, $600E0 - $60080
 
-UnknownData_0x600E0:
+Unknown_0x600E0:
 INCBIN "baserom.gbc", $600E0, $60100 - $600E0
 
 LoggedData_0x60100:
 INCBIN "baserom.gbc", $60100, $60160 - $60100
 
-UnknownData_0x60160:
+Unknown_0x60160:
 INCBIN "baserom.gbc", $60160, $60180 - $60160
 
 LoggedData_0x60180:
 INCBIN "baserom.gbc", $60180, $601CA - $60180
 
-UnknownData_0x601CA:
+Unknown_0x601CA:
 INCBIN "baserom.gbc", $601CA, $601E0 - $601CA
 
 LoggedData_0x601E0:
 INCBIN "baserom.gbc", $601E0, $601EA - $601E0
 
-UnknownData_0x601EA:
+Unknown_0x601EA:
 INCBIN "baserom.gbc", $601EA, $60280 - $601EA
 
 LoggedData_0x60280:
 INCBIN "baserom.gbc", $60280, $602A6 - $60280
 
-UnknownData_0x602A6:
+Unknown_0x602A6:
 INCBIN "baserom.gbc", $602A6, $602B0 - $602A6
 
 LoggedData_0x602B0:
 INCBIN "baserom.gbc", $602B0, $602BC - $602B0
 
-UnknownData_0x602BC:
+Unknown_0x602BC:
 INCBIN "baserom.gbc", $602BC, $602C0 - $602BC
 
 LoggedData_0x602C0:
 INCBIN "baserom.gbc", $602C0, $602C4 - $602C0
 
-UnknownData_0x602C4:
+Unknown_0x602C4:
 INCBIN "baserom.gbc", $602C4, $602D0 - $602C4
 
 LoggedData_0x602D0:
 INCBIN "baserom.gbc", $602D0, $602D1 - $602D0
 
-UnknownData_0x602D1:
+Unknown_0x602D1:
 INCBIN "baserom.gbc", $602D1, $602E0 - $602D1
 
 LoggedData_0x602E0:
 INCBIN "baserom.gbc", $602E0, $602E5 - $602E0
 
-UnknownData_0x602E5:
+Unknown_0x602E5:
 INCBIN "baserom.gbc", $602E5, $602F0 - $602E5
 
 LoggedData_0x602F0:
 INCBIN "baserom.gbc", $602F0, $602F4 - $602F0
 
-UnknownData_0x602F4:
+Unknown_0x602F4:
 INCBIN "baserom.gbc", $602F4, $60300 - $602F4
 
 LoggedData_0x60300:
 INCBIN "baserom.gbc", $60300, $60306 - $60300
 
-UnknownData_0x60306:
+Unknown_0x60306:
 INCBIN "baserom.gbc", $60306, $60310 - $60306
 
 LoggedData_0x60310:
 INCBIN "baserom.gbc", $60310, $60312 - $60310
 
-UnknownData_0x60312:
+Unknown_0x60312:
 INCBIN "baserom.gbc", $60312, $60320 - $60312
 
 LoggedData_0x60320:
 INCBIN "baserom.gbc", $60320, $60340 - $60320
 
-UnknownData_0x60340:
+Unknown_0x60340:
 INCBIN "baserom.gbc", $60340, $603D0 - $60340
 
 LoggedData_0x603D0:
 INCBIN "baserom.gbc", $603D0, $60400 - $603D0
 
-UnknownData_0x60400:
+Unknown_0x60400:
 INCBIN "baserom.gbc", $60400, $60490 - $60400
 
 LoggedData_0x60490:
 INCBIN "baserom.gbc", $60490, $604A0 - $60490
 
-UnknownData_0x604A0:
+Unknown_0x604A0:
 INCBIN "baserom.gbc", $604A0, $604B0 - $604A0
 
 LoggedData_0x604B0:
 INCBIN "baserom.gbc", $604B0, $604BF - $604B0
 
-UnknownData_0x604BF:
+Unknown_0x604BF:
 INCBIN "baserom.gbc", $604BF, $604C0 - $604BF
 
 LoggedData_0x604C0:
 INCBIN "baserom.gbc", $604C0, $60537 - $604C0
 
-UnknownData_0x60537:
+Unknown_0x60537:
 INCBIN "baserom.gbc", $60537, $60540 - $60537
 
 LoggedData_0x60540:
 INCBIN "baserom.gbc", $60540, $6071C - $60540
 
-UnknownData_0x6071C:
+Unknown_0x6071C:
 INCBIN "baserom.gbc", $6071C, $6075C - $6071C
 
 LoggedData_0x6075C:
 INCBIN "baserom.gbc", $6075C, $6088E - $6075C
 
-UnknownData_0x6088E:
+Unknown_0x6088E:
 INCBIN "baserom.gbc", $6088E, $608A0 - $6088E
 
 LoggedData_0x608A0:
 INCBIN "baserom.gbc", $608A0, $608B0 - $608A0
 
-UnknownData_0x608B0:
+Unknown_0x608B0:
 INCBIN "baserom.gbc", $608B0, $60900 - $608B0
 
 LoggedData_0x60900:
 INCBIN "baserom.gbc", $60900, $60A00 - $60900
 
-UnknownData_0x60A00:
+Unknown_0x60A00:
 INCBIN "baserom.gbc", $60A00, $60A20 - $60A00
 
 LoggedData_0x60A20:
 INCBIN "baserom.gbc", $60A20, $60A8F - $60A20
 
-UnknownData_0x60A8F:
+Unknown_0x60A8F:
 INCBIN "baserom.gbc", $60A8F, $60A90 - $60A8F
 
 LoggedData_0x60A90:
 INCBIN "baserom.gbc", $60A90, $60AD0 - $60A90
 
-UnknownData_0x60AD0:
+Unknown_0x60AD0:
 INCBIN "baserom.gbc", $60AD0, $60AE0 - $60AD0
 
 LoggedData_0x60AE0:
 INCBIN "baserom.gbc", $60AE0, $60B80 - $60AE0
 
-UnknownData_0x60B80:
+Unknown_0x60B80:
 INCBIN "baserom.gbc", $60B80, $60BD0 - $60B80
 
 LoggedData_0x60BD0:
 INCBIN "baserom.gbc", $60BD0, $60C00 - $60BD0
 
-UnknownData_0x60C00:
+Unknown_0x60C00:
 INCBIN "baserom.gbc", $60C00, $60C20 - $60C00
 
 LoggedData_0x60C20:
 INCBIN "baserom.gbc", $60C20, $60D3E - $60C20
 
-UnknownData_0x60D3E:
+Unknown_0x60D3E:
 INCBIN "baserom.gbc", $60D3E, $60D40 - $60D3E
 
 LoggedData_0x60D40:
 INCBIN "baserom.gbc", $60D40, $60D7D - $60D40
 
-UnknownData_0x60D7D:
+Unknown_0x60D7D:
 INCBIN "baserom.gbc", $60D7D, $60D80 - $60D7D
 
 LoggedData_0x60D80:
 INCBIN "baserom.gbc", $60D80, $60E18 - $60D80
 
-UnknownData_0x60E18:
+Unknown_0x60E18:
 INCBIN "baserom.gbc", $60E18, $60E20 - $60E18
 
 LoggedData_0x60E20:
 INCBIN "baserom.gbc", $60E20, $60E87 - $60E20
 
-UnknownData_0x60E87:
+Unknown_0x60E87:
 INCBIN "baserom.gbc", $60E87, $60E90 - $60E87
 
 LoggedData_0x60E90:
 INCBIN "baserom.gbc", $60E90, $60EB0 - $60E90
 
-UnknownData_0x60EB0:
+Unknown_0x60EB0:
 INCBIN "baserom.gbc", $60EB0, $60EC9 - $60EB0
 
 LoggedData_0x60EC9:
 INCBIN "baserom.gbc", $60EC9, $6104A - $60EC9
 
-UnknownData_0x6104A:
+Unknown_0x6104A:
 INCBIN "baserom.gbc", $6104A, $611CB - $6104A
 
 Logged_0x611CB:
@@ -105047,7 +105047,7 @@ Logged_0x6392D:
 	ld [$D115],a
 	ret
 
-UnknownData_0x63936:
+Unknown_0x63936:
 INCBIN "baserom.gbc", $63936, $64000 - $63936
 
 SECTION "Bank19", ROMX, BANK[$19]
@@ -105775,175 +105775,175 @@ Logged_0x643AB:
 LoggedData_0x643BF:
 INCBIN "baserom.gbc", $643BF, $64453 - $643BF
 
-UnknownData_0x64453:
+Unknown_0x64453:
 INCBIN "baserom.gbc", $64453, $6445B - $64453
 
 LoggedData_0x6445B:
 INCBIN "baserom.gbc", $6445B, $64563 - $6445B
 
-UnknownData_0x64563:
+Unknown_0x64563:
 INCBIN "baserom.gbc", $64563, $6456B - $64563
 
 LoggedData_0x6456B:
 INCBIN "baserom.gbc", $6456B, $647B5 - $6456B
 
-UnknownData_0x647B5:
+Unknown_0x647B5:
 INCBIN "baserom.gbc", $647B5, $647DF - $647B5
 
 LoggedData_0x647DF:
 INCBIN "baserom.gbc", $647DF, $648B1 - $647DF
 
-UnknownData_0x648B1:
+Unknown_0x648B1:
 INCBIN "baserom.gbc", $648B1, $648C6 - $648B1
 
 LoggedData_0x648C6:
 INCBIN "baserom.gbc", $648C6, $64998 - $648C6
 
-UnknownData_0x64998:
+Unknown_0x64998:
 INCBIN "baserom.gbc", $64998, $649C2 - $64998
 
 LoggedData_0x649C2:
 INCBIN "baserom.gbc", $649C2, $649D7 - $649C2
 
-UnknownData_0x649D7:
+Unknown_0x649D7:
 INCBIN "baserom.gbc", $649D7, $649EC - $649D7
 
 LoggedData_0x649EC:
 INCBIN "baserom.gbc", $649EC, $64A16 - $649EC
 
-UnknownData_0x64A16:
+Unknown_0x64A16:
 INCBIN "baserom.gbc", $64A16, $64A2B - $64A16
 
 LoggedData_0x64A2B:
 INCBIN "baserom.gbc", $64A2B, $64BCF - $64A2B
 
-UnknownData_0x64BCF:
+Unknown_0x64BCF:
 INCBIN "baserom.gbc", $64BCF, $64C0E - $64BCF
 
 LoggedData_0x64C0E:
 INCBIN "baserom.gbc", $64C0E, $64C62 - $64C0E
 
-UnknownData_0x64C62:
+Unknown_0x64C62:
 INCBIN "baserom.gbc", $64C62, $64C8C - $64C62
 
 LoggedData_0x64C8C:
 INCBIN "baserom.gbc", $64C8C, $64CCB - $64C8C
 
-UnknownData_0x64CCB:
+Unknown_0x64CCB:
 INCBIN "baserom.gbc", $64CCB, $64CE0 - $64CCB
 
 LoggedData_0x64CE0:
 INCBIN "baserom.gbc", $64CE0, $64E30 - $64CE0
 
-UnknownData_0x64E30:
+Unknown_0x64E30:
 INCBIN "baserom.gbc", $64E30, $64E5A - $64E30
 
 LoggedData_0x64E5A:
 INCBIN "baserom.gbc", $64E5A, $65009 - $64E5A
 
-UnknownData_0x65009:
+Unknown_0x65009:
 INCBIN "baserom.gbc", $65009, $6500D - $65009
 
 LoggedData_0x6500D:
 INCBIN "baserom.gbc", $6500D, $65019 - $6500D
 
-UnknownData_0x65019:
+Unknown_0x65019:
 INCBIN "baserom.gbc", $65019, $65021 - $65019
 
 LoggedData_0x65021:
 INCBIN "baserom.gbc", $65021, $65049 - $65021
 
-UnknownData_0x65049:
+Unknown_0x65049:
 INCBIN "baserom.gbc", $65049, $6504D - $65049
 
 LoggedData_0x6504D:
 INCBIN "baserom.gbc", $6504D, $650A5 - $6504D
 
-UnknownData_0x650A5:
+Unknown_0x650A5:
 INCBIN "baserom.gbc", $650A5, $650A9 - $650A5
 
 LoggedData_0x650A9:
 INCBIN "baserom.gbc", $650A9, $650C1 - $650A9
 
-UnknownData_0x650C1:
+Unknown_0x650C1:
 INCBIN "baserom.gbc", $650C1, $650C5 - $650C1
 
 LoggedData_0x650C5:
 INCBIN "baserom.gbc", $650C5, $650E1 - $650C5
 
-UnknownData_0x650E1:
+Unknown_0x650E1:
 INCBIN "baserom.gbc", $650E1, $650E5 - $650E1
 
 LoggedData_0x650E5:
 INCBIN "baserom.gbc", $650E5, $650E9 - $650E5
 
-UnknownData_0x650E9:
+Unknown_0x650E9:
 INCBIN "baserom.gbc", $650E9, $650ED - $650E9
 
 LoggedData_0x650ED:
 INCBIN "baserom.gbc", $650ED, $65111 - $650ED
 
-UnknownData_0x65111:
+Unknown_0x65111:
 INCBIN "baserom.gbc", $65111, $65115 - $65111
 
 LoggedData_0x65115:
 INCBIN "baserom.gbc", $65115, $65155 - $65115
 
-UnknownData_0x65155:
+Unknown_0x65155:
 INCBIN "baserom.gbc", $65155, $65159 - $65155
 
 LoggedData_0x65159:
 INCBIN "baserom.gbc", $65159, $651A5 - $65159
 
-UnknownData_0x651A5:
+Unknown_0x651A5:
 INCBIN "baserom.gbc", $651A5, $651A9 - $651A5
 
 LoggedData_0x651A9:
 INCBIN "baserom.gbc", $651A9, $65219 - $651A9
 
-UnknownData_0x65219:
+Unknown_0x65219:
 INCBIN "baserom.gbc", $65219, $6521D - $65219
 
 LoggedData_0x6521D:
 INCBIN "baserom.gbc", $6521D, $65251 - $6521D
 
-UnknownData_0x65251:
+Unknown_0x65251:
 INCBIN "baserom.gbc", $65251, $652AF - $65251
 
 LoggedData_0x652AF:
 INCBIN "baserom.gbc", $652AF, $653B0 - $652AF
 
-UnknownData_0x653B0:
+Unknown_0x653B0:
 INCBIN "baserom.gbc", $653B0, $65412 - $653B0
 
 LoggedData_0x65412:
 INCBIN "baserom.gbc", $65412, $65641 - $65412
 
-UnknownData_0x65641:
+Unknown_0x65641:
 INCBIN "baserom.gbc", $65641, $65672 - $65641
 
 LoggedData_0x65672:
 INCBIN "baserom.gbc", $65672, $65C72 - $65672
 
-UnknownData_0x65C72:
+Unknown_0x65C72:
 INCBIN "baserom.gbc", $65C72, $65CA5 - $65C72
 
 LoggedData_0x65CA5:
 INCBIN "baserom.gbc", $65CA5, $65FA2 - $65CA5
 
-UnknownData_0x65FA2:
+Unknown_0x65FA2:
 INCBIN "baserom.gbc", $65FA2, $65FD5 - $65FA2
 
 LoggedData_0x65FD5:
 INCBIN "baserom.gbc", $65FD5, $6675B - $65FD5
 
-UnknownData_0x6675B:
+Unknown_0x6675B:
 INCBIN "baserom.gbc", $6675B, $6678E - $6675B
 
 LoggedData_0x6678E:
 INCBIN "baserom.gbc", $6678E, $669B7 - $6678E
 
-UnknownData_0x669B7:
+Unknown_0x669B7:
 INCBIN "baserom.gbc", $669B7, $68000 - $669B7
 
 SECTION "Bank1A", ROMX, BANK[$1A]
@@ -105951,2354 +105951,2354 @@ SECTION "Bank1A", ROMX, BANK[$1A]
 LoggedData_0x68000:
 INCBIN "baserom.gbc", $68000, $68035 - $68000
 
-UnknownData_0x68035:
+Unknown_0x68035:
 INCBIN "baserom.gbc", $68035, $68036 - $68035
 
 LoggedData_0x68036:
 INCBIN "baserom.gbc", $68036, $68065 - $68036
 
-UnknownData_0x68065:
+Unknown_0x68065:
 INCBIN "baserom.gbc", $68065, $68072 - $68065
 
 LoggedData_0x68072:
 INCBIN "baserom.gbc", $68072, $68074 - $68072
 
-UnknownData_0x68074:
+Unknown_0x68074:
 INCBIN "baserom.gbc", $68074, $680A5 - $68074
 
 LoggedData_0x680A5:
 INCBIN "baserom.gbc", $680A5, $680B5 - $680A5
 
-UnknownData_0x680B5:
+Unknown_0x680B5:
 INCBIN "baserom.gbc", $680B5, $680B6 - $680B5
 
 LoggedData_0x680B6:
 INCBIN "baserom.gbc", $680B6, $680C4 - $680B6
 
-UnknownData_0x680C4:
+Unknown_0x680C4:
 INCBIN "baserom.gbc", $680C4, $680C5 - $680C4
 
 LoggedData_0x680C5:
 INCBIN "baserom.gbc", $680C5, $68112 - $680C5
 
-UnknownData_0x68112:
+Unknown_0x68112:
 INCBIN "baserom.gbc", $68112, $68113 - $68112
 
 LoggedData_0x68113:
 INCBIN "baserom.gbc", $68113, $6814B - $68113
 
-UnknownData_0x6814B:
+Unknown_0x6814B:
 INCBIN "baserom.gbc", $6814B, $6814C - $6814B
 
 LoggedData_0x6814C:
 INCBIN "baserom.gbc", $6814C, $68184 - $6814C
 
-UnknownData_0x68184:
+Unknown_0x68184:
 INCBIN "baserom.gbc", $68184, $68185 - $68184
 
 LoggedData_0x68185:
 INCBIN "baserom.gbc", $68185, $681BD - $68185
 
-UnknownData_0x681BD:
+Unknown_0x681BD:
 INCBIN "baserom.gbc", $681BD, $681BE - $681BD
 
 LoggedData_0x681BE:
 INCBIN "baserom.gbc", $681BE, $681FE - $681BE
 
-UnknownData_0x681FE:
+Unknown_0x681FE:
 INCBIN "baserom.gbc", $681FE, $681FF - $681FE
 
 LoggedData_0x681FF:
 INCBIN "baserom.gbc", $681FF, $68212 - $681FF
 
-UnknownData_0x68212:
+Unknown_0x68212:
 INCBIN "baserom.gbc", $68212, $68213 - $68212
 
 LoggedData_0x68213:
 INCBIN "baserom.gbc", $68213, $6821D - $68213
 
-UnknownData_0x6821D:
+Unknown_0x6821D:
 INCBIN "baserom.gbc", $6821D, $6821E - $6821D
 
 LoggedData_0x6821E:
 INCBIN "baserom.gbc", $6821E, $68228 - $6821E
 
-UnknownData_0x68228:
+Unknown_0x68228:
 INCBIN "baserom.gbc", $68228, $68229 - $68228
 
 LoggedData_0x68229:
 INCBIN "baserom.gbc", $68229, $68233 - $68229
 
-UnknownData_0x68233:
+Unknown_0x68233:
 INCBIN "baserom.gbc", $68233, $68234 - $68233
 
 LoggedData_0x68234:
 INCBIN "baserom.gbc", $68234, $6823D - $68234
 
-UnknownData_0x6823D:
+Unknown_0x6823D:
 INCBIN "baserom.gbc", $6823D, $6824F - $6823D
 
 LoggedData_0x6824F:
 INCBIN "baserom.gbc", $6824F, $6826D - $6824F
 
-UnknownData_0x6826D:
+Unknown_0x6826D:
 INCBIN "baserom.gbc", $6826D, $6826E - $6826D
 
 LoggedData_0x6826E:
 INCBIN "baserom.gbc", $6826E, $68276 - $6826E
 
-UnknownData_0x68276:
+Unknown_0x68276:
 INCBIN "baserom.gbc", $68276, $68277 - $68276
 
 LoggedData_0x68277:
 INCBIN "baserom.gbc", $68277, $68286 - $68277
 
-UnknownData_0x68286:
+Unknown_0x68286:
 INCBIN "baserom.gbc", $68286, $68287 - $68286
 
 LoggedData_0x68287:
 INCBIN "baserom.gbc", $68287, $68291 - $68287
 
-UnknownData_0x68291:
+Unknown_0x68291:
 INCBIN "baserom.gbc", $68291, $68292 - $68291
 
 LoggedData_0x68292:
 INCBIN "baserom.gbc", $68292, $682A9 - $68292
 
-UnknownData_0x682A9:
+Unknown_0x682A9:
 INCBIN "baserom.gbc", $682A9, $682B7 - $682A9
 
 LoggedData_0x682B7:
 INCBIN "baserom.gbc", $682B7, $682C1 - $682B7
 
-UnknownData_0x682C1:
+Unknown_0x682C1:
 INCBIN "baserom.gbc", $682C1, $682C2 - $682C1
 
 LoggedData_0x682C2:
 INCBIN "baserom.gbc", $682C2, $682C4 - $682C2
 
-UnknownData_0x682C4:
+Unknown_0x682C4:
 INCBIN "baserom.gbc", $682C4, $682C8 - $682C4
 
 LoggedData_0x682C8:
 INCBIN "baserom.gbc", $682C8, $682D1 - $682C8
 
-UnknownData_0x682D1:
+Unknown_0x682D1:
 INCBIN "baserom.gbc", $682D1, $682DB - $682D1
 
 LoggedData_0x682DB:
 INCBIN "baserom.gbc", $682DB, $682E1 - $682DB
 
-UnknownData_0x682E1:
+Unknown_0x682E1:
 INCBIN "baserom.gbc", $682E1, $682E2 - $682E1
 
 LoggedData_0x682E2:
 INCBIN "baserom.gbc", $682E2, $68318 - $682E2
 
-UnknownData_0x68318:
+Unknown_0x68318:
 INCBIN "baserom.gbc", $68318, $68319 - $68318
 
 LoggedData_0x68319:
 INCBIN "baserom.gbc", $68319, $68345 - $68319
 
-UnknownData_0x68345:
+Unknown_0x68345:
 INCBIN "baserom.gbc", $68345, $68348 - $68345
 
 LoggedData_0x68348:
 INCBIN "baserom.gbc", $68348, $68351 - $68348
 
-UnknownData_0x68351:
+Unknown_0x68351:
 INCBIN "baserom.gbc", $68351, $68354 - $68351
 
 LoggedData_0x68354:
 INCBIN "baserom.gbc", $68354, $6835F - $68354
 
-UnknownData_0x6835F:
+Unknown_0x6835F:
 INCBIN "baserom.gbc", $6835F, $68360 - $6835F
 
 LoggedData_0x68360:
 INCBIN "baserom.gbc", $68360, $6837A - $68360
 
-UnknownData_0x6837A:
+Unknown_0x6837A:
 INCBIN "baserom.gbc", $6837A, $683BC - $6837A
 
 LoggedData_0x683BC:
 INCBIN "baserom.gbc", $683BC, $683C3 - $683BC
 
-UnknownData_0x683C3:
+Unknown_0x683C3:
 INCBIN "baserom.gbc", $683C3, $683C4 - $683C3
 
 LoggedData_0x683C4:
 INCBIN "baserom.gbc", $683C4, $683C6 - $683C4
 
-UnknownData_0x683C6:
+Unknown_0x683C6:
 INCBIN "baserom.gbc", $683C6, $683C7 - $683C6
 
 LoggedData_0x683C7:
 INCBIN "baserom.gbc", $683C7, $683C9 - $683C7
 
-UnknownData_0x683C9:
+Unknown_0x683C9:
 INCBIN "baserom.gbc", $683C9, $683D4 - $683C9
 
 LoggedData_0x683D4:
 INCBIN "baserom.gbc", $683D4, $683DE - $683D4
 
-UnknownData_0x683DE:
+Unknown_0x683DE:
 INCBIN "baserom.gbc", $683DE, $683E1 - $683DE
 
 LoggedData_0x683E1:
 INCBIN "baserom.gbc", $683E1, $683F7 - $683E1
 
-UnknownData_0x683F7:
+Unknown_0x683F7:
 INCBIN "baserom.gbc", $683F7, $683F8 - $683F7
 
 LoggedData_0x683F8:
 INCBIN "baserom.gbc", $683F8, $683FA - $683F8
 
-UnknownData_0x683FA:
+Unknown_0x683FA:
 INCBIN "baserom.gbc", $683FA, $683FB - $683FA
 
 LoggedData_0x683FB:
 INCBIN "baserom.gbc", $683FB, $68417 - $683FB
 
-UnknownData_0x68417:
+Unknown_0x68417:
 INCBIN "baserom.gbc", $68417, $6842A - $68417
 
 LoggedData_0x6842A:
 INCBIN "baserom.gbc", $6842A, $6842C - $6842A
 
-UnknownData_0x6842C:
+Unknown_0x6842C:
 INCBIN "baserom.gbc", $6842C, $68430 - $6842C
 
 LoggedData_0x68430:
 INCBIN "baserom.gbc", $68430, $68438 - $68430
 
-UnknownData_0x68438:
+Unknown_0x68438:
 INCBIN "baserom.gbc", $68438, $68439 - $68438
 
 LoggedData_0x68439:
 INCBIN "baserom.gbc", $68439, $6845A - $68439
 
-UnknownData_0x6845A:
+Unknown_0x6845A:
 INCBIN "baserom.gbc", $6845A, $6845D - $6845A
 
 LoggedData_0x6845D:
 INCBIN "baserom.gbc", $6845D, $6846D - $6845D
 
-UnknownData_0x6846D:
+Unknown_0x6846D:
 INCBIN "baserom.gbc", $6846D, $6847F - $6846D
 
 LoggedData_0x6847F:
 INCBIN "baserom.gbc", $6847F, $6848F - $6847F
 
-UnknownData_0x6848F:
+Unknown_0x6848F:
 INCBIN "baserom.gbc", $6848F, $684A1 - $6848F
 
 LoggedData_0x684A1:
 INCBIN "baserom.gbc", $684A1, $684B9 - $684A1
 
-UnknownData_0x684B9:
+Unknown_0x684B9:
 INCBIN "baserom.gbc", $684B9, $684BA - $684B9
 
 LoggedData_0x684BA:
 INCBIN "baserom.gbc", $684BA, $684D1 - $684BA
 
-UnknownData_0x684D1:
+Unknown_0x684D1:
 INCBIN "baserom.gbc", $684D1, $684D2 - $684D1
 
 LoggedData_0x684D2:
 INCBIN "baserom.gbc", $684D2, $684DF - $684D2
 
-UnknownData_0x684DF:
+Unknown_0x684DF:
 INCBIN "baserom.gbc", $684DF, $684E0 - $684DF
 
 LoggedData_0x684E0:
 INCBIN "baserom.gbc", $684E0, $684E2 - $684E0
 
-UnknownData_0x684E2:
+Unknown_0x684E2:
 INCBIN "baserom.gbc", $684E2, $684E7 - $684E2
 
 LoggedData_0x684E7:
 INCBIN "baserom.gbc", $684E7, $68509 - $684E7
 
-UnknownData_0x68509:
+Unknown_0x68509:
 INCBIN "baserom.gbc", $68509, $6850A - $68509
 
 LoggedData_0x6850A:
 INCBIN "baserom.gbc", $6850A, $68524 - $6850A
 
-UnknownData_0x68524:
+Unknown_0x68524:
 INCBIN "baserom.gbc", $68524, $6855F - $68524
 
 LoggedData_0x6855F:
 INCBIN "baserom.gbc", $6855F, $68561 - $6855F
 
-UnknownData_0x68561:
+Unknown_0x68561:
 INCBIN "baserom.gbc", $68561, $68562 - $68561
 
 LoggedData_0x68562:
 INCBIN "baserom.gbc", $68562, $68596 - $68562
 
-UnknownData_0x68596:
+Unknown_0x68596:
 INCBIN "baserom.gbc", $68596, $68597 - $68596
 
 LoggedData_0x68597:
 INCBIN "baserom.gbc", $68597, $685D4 - $68597
 
-UnknownData_0x685D4:
+Unknown_0x685D4:
 INCBIN "baserom.gbc", $685D4, $685D7 - $685D4
 
 LoggedData_0x685D7:
 INCBIN "baserom.gbc", $685D7, $685E7 - $685D7
 
-UnknownData_0x685E7:
+Unknown_0x685E7:
 INCBIN "baserom.gbc", $685E7, $685EA - $685E7
 
 LoggedData_0x685EA:
 INCBIN "baserom.gbc", $685EA, $68604 - $685EA
 
-UnknownData_0x68604:
+Unknown_0x68604:
 INCBIN "baserom.gbc", $68604, $68605 - $68604
 
 LoggedData_0x68605:
 INCBIN "baserom.gbc", $68605, $6860B - $68605
 
-UnknownData_0x6860B:
+Unknown_0x6860B:
 INCBIN "baserom.gbc", $6860B, $6860C - $6860B
 
 LoggedData_0x6860C:
 INCBIN "baserom.gbc", $6860C, $68625 - $6860C
 
-UnknownData_0x68625:
+Unknown_0x68625:
 INCBIN "baserom.gbc", $68625, $68634 - $68625
 
 LoggedData_0x68634:
 INCBIN "baserom.gbc", $68634, $6863E - $68634
 
-UnknownData_0x6863E:
+Unknown_0x6863E:
 INCBIN "baserom.gbc", $6863E, $6863F - $6863E
 
 LoggedData_0x6863F:
 INCBIN "baserom.gbc", $6863F, $68649 - $6863F
 
-UnknownData_0x68649:
+Unknown_0x68649:
 INCBIN "baserom.gbc", $68649, $6864A - $68649
 
 LoggedData_0x6864A:
 INCBIN "baserom.gbc", $6864A, $68654 - $6864A
 
-UnknownData_0x68654:
+Unknown_0x68654:
 INCBIN "baserom.gbc", $68654, $68655 - $68654
 
 LoggedData_0x68655:
 INCBIN "baserom.gbc", $68655, $6865F - $68655
 
-UnknownData_0x6865F:
+Unknown_0x6865F:
 INCBIN "baserom.gbc", $6865F, $68698 - $6865F
 
 LoggedData_0x68698:
 INCBIN "baserom.gbc", $68698, $6869A - $68698
 
-UnknownData_0x6869A:
+Unknown_0x6869A:
 INCBIN "baserom.gbc", $6869A, $686A4 - $6869A
 
 LoggedData_0x686A4:
 INCBIN "baserom.gbc", $686A4, $686B0 - $686A4
 
-UnknownData_0x686B0:
+Unknown_0x686B0:
 INCBIN "baserom.gbc", $686B0, $686B9 - $686B0
 
 LoggedData_0x686B9:
 INCBIN "baserom.gbc", $686B9, $686CD - $686B9
 
-UnknownData_0x686CD:
+Unknown_0x686CD:
 INCBIN "baserom.gbc", $686CD, $686D3 - $686CD
 
 LoggedData_0x686D3:
 INCBIN "baserom.gbc", $686D3, $686D7 - $686D3
 
-UnknownData_0x686D7:
+Unknown_0x686D7:
 INCBIN "baserom.gbc", $686D7, $686DB - $686D7
 
 LoggedData_0x686DB:
 INCBIN "baserom.gbc", $686DB, $686DD - $686DB
 
-UnknownData_0x686DD:
+Unknown_0x686DD:
 INCBIN "baserom.gbc", $686DD, $686E5 - $686DD
 
 LoggedData_0x686E5:
 INCBIN "baserom.gbc", $686E5, $686F7 - $686E5
 
-UnknownData_0x686F7:
+Unknown_0x686F7:
 INCBIN "baserom.gbc", $686F7, $686F8 - $686F7
 
 LoggedData_0x686F8:
 INCBIN "baserom.gbc", $686F8, $68700 - $686F8
 
-UnknownData_0x68700:
+Unknown_0x68700:
 INCBIN "baserom.gbc", $68700, $6870A - $68700
 
 LoggedData_0x6870A:
 INCBIN "baserom.gbc", $6870A, $68712 - $6870A
 
-UnknownData_0x68712:
+Unknown_0x68712:
 INCBIN "baserom.gbc", $68712, $68713 - $68712
 
 LoggedData_0x68713:
 INCBIN "baserom.gbc", $68713, $6871D - $68713
 
-UnknownData_0x6871D:
+Unknown_0x6871D:
 INCBIN "baserom.gbc", $6871D, $6871E - $6871D
 
 LoggedData_0x6871E:
 INCBIN "baserom.gbc", $6871E, $68728 - $6871E
 
-UnknownData_0x68728:
+Unknown_0x68728:
 INCBIN "baserom.gbc", $68728, $68729 - $68728
 
 LoggedData_0x68729:
 INCBIN "baserom.gbc", $68729, $68770 - $68729
 
-UnknownData_0x68770:
+Unknown_0x68770:
 INCBIN "baserom.gbc", $68770, $68771 - $68770
 
 LoggedData_0x68771:
 INCBIN "baserom.gbc", $68771, $68779 - $68771
 
-UnknownData_0x68779:
+Unknown_0x68779:
 INCBIN "baserom.gbc", $68779, $6877A - $68779
 
 LoggedData_0x6877A:
 INCBIN "baserom.gbc", $6877A, $6879E - $6877A
 
-UnknownData_0x6879E:
+Unknown_0x6879E:
 INCBIN "baserom.gbc", $6879E, $687B0 - $6879E
 
 LoggedData_0x687B0:
 INCBIN "baserom.gbc", $687B0, $687B8 - $687B0
 
-UnknownData_0x687B8:
+Unknown_0x687B8:
 INCBIN "baserom.gbc", $687B8, $687BB - $687B8
 
 LoggedData_0x687BB:
 INCBIN "baserom.gbc", $687BB, $687C3 - $687BB
 
-UnknownData_0x687C3:
+Unknown_0x687C3:
 INCBIN "baserom.gbc", $687C3, $687C6 - $687C3
 
 LoggedData_0x687C6:
 INCBIN "baserom.gbc", $687C6, $68838 - $687C6
 
-UnknownData_0x68838:
+Unknown_0x68838:
 INCBIN "baserom.gbc", $68838, $6883D - $68838
 
 LoggedData_0x6883D:
 INCBIN "baserom.gbc", $6883D, $6883F - $6883D
 
-UnknownData_0x6883F:
+Unknown_0x6883F:
 INCBIN "baserom.gbc", $6883F, $6884B - $6883F
 
 LoggedData_0x6884B:
 INCBIN "baserom.gbc", $6884B, $6884D - $6884B
 
-UnknownData_0x6884D:
+Unknown_0x6884D:
 INCBIN "baserom.gbc", $6884D, $68852 - $6884D
 
 LoggedData_0x68852:
 INCBIN "baserom.gbc", $68852, $6886E - $68852
 
-UnknownData_0x6886E:
+Unknown_0x6886E:
 INCBIN "baserom.gbc", $6886E, $6886F - $6886E
 
 LoggedData_0x6886F:
 INCBIN "baserom.gbc", $6886F, $6888B - $6886F
 
-UnknownData_0x6888B:
+Unknown_0x6888B:
 INCBIN "baserom.gbc", $6888B, $6888C - $6888B
 
 LoggedData_0x6888C:
 INCBIN "baserom.gbc", $6888C, $688C5 - $6888C
 
-UnknownData_0x688C5:
+Unknown_0x688C5:
 INCBIN "baserom.gbc", $688C5, $688C6 - $688C5
 
 LoggedData_0x688C6:
 INCBIN "baserom.gbc", $688C6, $688E2 - $688C6
 
-UnknownData_0x688E2:
+Unknown_0x688E2:
 INCBIN "baserom.gbc", $688E2, $688E3 - $688E2
 
 LoggedData_0x688E3:
 INCBIN "baserom.gbc", $688E3, $688FF - $688E3
 
-UnknownData_0x688FF:
+Unknown_0x688FF:
 INCBIN "baserom.gbc", $688FF, $68900 - $688FF
 
 LoggedData_0x68900:
 INCBIN "baserom.gbc", $68900, $68939 - $68900
 
-UnknownData_0x68939:
+Unknown_0x68939:
 INCBIN "baserom.gbc", $68939, $6893A - $68939
 
 LoggedData_0x6893A:
 INCBIN "baserom.gbc", $6893A, $6895B - $6893A
 
-UnknownData_0x6895B:
+Unknown_0x6895B:
 INCBIN "baserom.gbc", $6895B, $6895C - $6895B
 
 LoggedData_0x6895C:
 INCBIN "baserom.gbc", $6895C, $68968 - $6895C
 
-UnknownData_0x68968:
+Unknown_0x68968:
 INCBIN "baserom.gbc", $68968, $68969 - $68968
 
 LoggedData_0x68969:
 INCBIN "baserom.gbc", $68969, $68975 - $68969
 
-UnknownData_0x68975:
+Unknown_0x68975:
 INCBIN "baserom.gbc", $68975, $68976 - $68975
 
 LoggedData_0x68976:
 INCBIN "baserom.gbc", $68976, $68982 - $68976
 
-UnknownData_0x68982:
+Unknown_0x68982:
 INCBIN "baserom.gbc", $68982, $68983 - $68982
 
 LoggedData_0x68983:
 INCBIN "baserom.gbc", $68983, $689AB - $68983
 
-UnknownData_0x689AB:
+Unknown_0x689AB:
 INCBIN "baserom.gbc", $689AB, $689AC - $689AB
 
 LoggedData_0x689AC:
 INCBIN "baserom.gbc", $689AC, $689B2 - $689AC
 
-UnknownData_0x689B2:
+Unknown_0x689B2:
 INCBIN "baserom.gbc", $689B2, $689B3 - $689B2
 
 LoggedData_0x689B3:
 INCBIN "baserom.gbc", $689B3, $689BD - $689B3
 
-UnknownData_0x689BD:
+Unknown_0x689BD:
 INCBIN "baserom.gbc", $689BD, $689BE - $689BD
 
 LoggedData_0x689BE:
 INCBIN "baserom.gbc", $689BE, $689C8 - $689BE
 
-UnknownData_0x689C8:
+Unknown_0x689C8:
 INCBIN "baserom.gbc", $689C8, $689C9 - $689C8
 
 LoggedData_0x689C9:
 INCBIN "baserom.gbc", $689C9, $689DB - $689C9
 
-UnknownData_0x689DB:
+Unknown_0x689DB:
 INCBIN "baserom.gbc", $689DB, $689E9 - $689DB
 
 LoggedData_0x689E9:
 INCBIN "baserom.gbc", $689E9, $68A08 - $689E9
 
-UnknownData_0x68A08:
+Unknown_0x68A08:
 INCBIN "baserom.gbc", $68A08, $68A09 - $68A08
 
 LoggedData_0x68A09:
 INCBIN "baserom.gbc", $68A09, $68A11 - $68A09
 
-UnknownData_0x68A11:
+Unknown_0x68A11:
 INCBIN "baserom.gbc", $68A11, $68A12 - $68A11
 
 LoggedData_0x68A12:
 INCBIN "baserom.gbc", $68A12, $68A39 - $68A12
 
-UnknownData_0x68A39:
+Unknown_0x68A39:
 INCBIN "baserom.gbc", $68A39, $68A3A - $68A39
 
 LoggedData_0x68A3A:
 INCBIN "baserom.gbc", $68A3A, $68A54 - $68A3A
 
-UnknownData_0x68A54:
+Unknown_0x68A54:
 INCBIN "baserom.gbc", $68A54, $68A60 - $68A54
 
 LoggedData_0x68A60:
 INCBIN "baserom.gbc", $68A60, $68A8A - $68A60
 
-UnknownData_0x68A8A:
+Unknown_0x68A8A:
 INCBIN "baserom.gbc", $68A8A, $68A8B - $68A8A
 
 LoggedData_0x68A8B:
 INCBIN "baserom.gbc", $68A8B, $68A91 - $68A8B
 
-UnknownData_0x68A91:
+Unknown_0x68A91:
 INCBIN "baserom.gbc", $68A91, $68A9F - $68A91
 
 LoggedData_0x68A9F:
 INCBIN "baserom.gbc", $68A9F, $68AA8 - $68A9F
 
-UnknownData_0x68AA8:
+Unknown_0x68AA8:
 INCBIN "baserom.gbc", $68AA8, $68AC6 - $68AA8
 
 LoggedData_0x68AC6:
 INCBIN "baserom.gbc", $68AC6, $68ADD - $68AC6
 
-UnknownData_0x68ADD:
+Unknown_0x68ADD:
 INCBIN "baserom.gbc", $68ADD, $68AE6 - $68ADD
 
 LoggedData_0x68AE6:
 INCBIN "baserom.gbc", $68AE6, $68B00 - $68AE6
 
-UnknownData_0x68B00:
+Unknown_0x68B00:
 INCBIN "baserom.gbc", $68B00, $68B01 - $68B00
 
 LoggedData_0x68B01:
 INCBIN "baserom.gbc", $68B01, $68B11 - $68B01
 
-UnknownData_0x68B11:
+Unknown_0x68B11:
 INCBIN "baserom.gbc", $68B11, $68B12 - $68B11
 
 LoggedData_0x68B12:
 INCBIN "baserom.gbc", $68B12, $68B40 - $68B12
 
-UnknownData_0x68B40:
+Unknown_0x68B40:
 INCBIN "baserom.gbc", $68B40, $68B45 - $68B40
 
 LoggedData_0x68B45:
 INCBIN "baserom.gbc", $68B45, $68B60 - $68B45
 
-UnknownData_0x68B60:
+Unknown_0x68B60:
 INCBIN "baserom.gbc", $68B60, $68B61 - $68B60
 
 LoggedData_0x68B61:
 INCBIN "baserom.gbc", $68B61, $68B63 - $68B61
 
-UnknownData_0x68B63:
+Unknown_0x68B63:
 INCBIN "baserom.gbc", $68B63, $68B64 - $68B63
 
 LoggedData_0x68B64:
 INCBIN "baserom.gbc", $68B64, $68B7C - $68B64
 
-UnknownData_0x68B7C:
+Unknown_0x68B7C:
 INCBIN "baserom.gbc", $68B7C, $68B7D - $68B7C
 
 LoggedData_0x68B7D:
 INCBIN "baserom.gbc", $68B7D, $68B83 - $68B7D
 
-UnknownData_0x68B83:
+Unknown_0x68B83:
 INCBIN "baserom.gbc", $68B83, $68B84 - $68B83
 
 LoggedData_0x68B84:
 INCBIN "baserom.gbc", $68B84, $68B88 - $68B84
 
-UnknownData_0x68B88:
+Unknown_0x68B88:
 INCBIN "baserom.gbc", $68B88, $68B8B - $68B88
 
 LoggedData_0x68B8B:
 INCBIN "baserom.gbc", $68B8B, $68BB4 - $68B8B
 
-UnknownData_0x68BB4:
+Unknown_0x68BB4:
 INCBIN "baserom.gbc", $68BB4, $68BB5 - $68BB4
 
 LoggedData_0x68BB5:
 INCBIN "baserom.gbc", $68BB5, $68BCB - $68BB5
 
-UnknownData_0x68BCB:
+Unknown_0x68BCB:
 INCBIN "baserom.gbc", $68BCB, $68BCC - $68BCB
 
 LoggedData_0x68BCC:
 INCBIN "baserom.gbc", $68BCC, $68BD0 - $68BCC
 
-UnknownData_0x68BD0:
+Unknown_0x68BD0:
 INCBIN "baserom.gbc", $68BD0, $68BD1 - $68BD0
 
 LoggedData_0x68BD1:
 INCBIN "baserom.gbc", $68BD1, $68BE8 - $68BD1
 
-UnknownData_0x68BE8:
+Unknown_0x68BE8:
 INCBIN "baserom.gbc", $68BE8, $68BED - $68BE8
 
 LoggedData_0x68BED:
 INCBIN "baserom.gbc", $68BED, $68BF5 - $68BED
 
-UnknownData_0x68BF5:
+Unknown_0x68BF5:
 INCBIN "baserom.gbc", $68BF5, $68BF6 - $68BF5
 
 LoggedData_0x68BF6:
 INCBIN "baserom.gbc", $68BF6, $68BFE - $68BF6
 
-UnknownData_0x68BFE:
+Unknown_0x68BFE:
 INCBIN "baserom.gbc", $68BFE, $68BFF - $68BFE
 
 LoggedData_0x68BFF:
 INCBIN "baserom.gbc", $68BFF, $68C07 - $68BFF
 
-UnknownData_0x68C07:
+Unknown_0x68C07:
 INCBIN "baserom.gbc", $68C07, $68C08 - $68C07
 
 LoggedData_0x68C08:
 INCBIN "baserom.gbc", $68C08, $68C10 - $68C08
 
-UnknownData_0x68C10:
+Unknown_0x68C10:
 INCBIN "baserom.gbc", $68C10, $68C17 - $68C10
 
 LoggedData_0x68C17:
 INCBIN "baserom.gbc", $68C17, $68C24 - $68C17
 
-UnknownData_0x68C24:
+Unknown_0x68C24:
 INCBIN "baserom.gbc", $68C24, $68C25 - $68C24
 
 LoggedData_0x68C25:
 INCBIN "baserom.gbc", $68C25, $68C2B - $68C25
 
-UnknownData_0x68C2B:
+Unknown_0x68C2B:
 INCBIN "baserom.gbc", $68C2B, $68C2C - $68C2B
 
 LoggedData_0x68C2C:
 INCBIN "baserom.gbc", $68C2C, $68C32 - $68C2C
 
-UnknownData_0x68C32:
+Unknown_0x68C32:
 INCBIN "baserom.gbc", $68C32, $68C33 - $68C32
 
 LoggedData_0x68C33:
 INCBIN "baserom.gbc", $68C33, $68C35 - $68C33
 
-UnknownData_0x68C35:
+Unknown_0x68C35:
 INCBIN "baserom.gbc", $68C35, $68C36 - $68C35
 
 LoggedData_0x68C36:
 INCBIN "baserom.gbc", $68C36, $68C4C - $68C36
 
-UnknownData_0x68C4C:
+Unknown_0x68C4C:
 INCBIN "baserom.gbc", $68C4C, $68C50 - $68C4C
 
 LoggedData_0x68C50:
 INCBIN "baserom.gbc", $68C50, $68C52 - $68C50
 
-UnknownData_0x68C52:
+Unknown_0x68C52:
 INCBIN "baserom.gbc", $68C52, $68C56 - $68C52
 
 LoggedData_0x68C56:
 INCBIN "baserom.gbc", $68C56, $68C58 - $68C56
 
-UnknownData_0x68C58:
+Unknown_0x68C58:
 INCBIN "baserom.gbc", $68C58, $68C59 - $68C58
 
 LoggedData_0x68C59:
 INCBIN "baserom.gbc", $68C59, $68C5B - $68C59
 
-UnknownData_0x68C5B:
+Unknown_0x68C5B:
 INCBIN "baserom.gbc", $68C5B, $68C5C - $68C5B
 
 LoggedData_0x68C5C:
 INCBIN "baserom.gbc", $68C5C, $68C6D - $68C5C
 
-UnknownData_0x68C6D:
+Unknown_0x68C6D:
 INCBIN "baserom.gbc", $68C6D, $68C7F - $68C6D
 
 LoggedData_0x68C7F:
 INCBIN "baserom.gbc", $68C7F, $68C94 - $68C7F
 
-UnknownData_0x68C94:
+Unknown_0x68C94:
 INCBIN "baserom.gbc", $68C94, $68C97 - $68C94
 
 LoggedData_0x68C97:
 INCBIN "baserom.gbc", $68C97, $68CA9 - $68C97
 
-UnknownData_0x68CA9:
+Unknown_0x68CA9:
 INCBIN "baserom.gbc", $68CA9, $68CC4 - $68CA9
 
 LoggedData_0x68CC4:
 INCBIN "baserom.gbc", $68CC4, $68CDD - $68CC4
 
-UnknownData_0x68CDD:
+Unknown_0x68CDD:
 INCBIN "baserom.gbc", $68CDD, $68D1F - $68CDD
 
 LoggedData_0x68D1F:
 INCBIN "baserom.gbc", $68D1F, $68D2A - $68D1F
 
-UnknownData_0x68D2A:
+Unknown_0x68D2A:
 INCBIN "baserom.gbc", $68D2A, $68D2B - $68D2A
 
 LoggedData_0x68D2B:
 INCBIN "baserom.gbc", $68D2B, $68D31 - $68D2B
 
-UnknownData_0x68D31:
+Unknown_0x68D31:
 INCBIN "baserom.gbc", $68D31, $68D81 - $68D31
 
 LoggedData_0x68D81:
 INCBIN "baserom.gbc", $68D81, $68D99 - $68D81
 
-UnknownData_0x68D99:
+Unknown_0x68D99:
 INCBIN "baserom.gbc", $68D99, $68D9C - $68D99
 
 LoggedData_0x68D9C:
 INCBIN "baserom.gbc", $68D9C, $68DA2 - $68D9C
 
-UnknownData_0x68DA2:
+Unknown_0x68DA2:
 INCBIN "baserom.gbc", $68DA2, $68DA5 - $68DA2
 
 LoggedData_0x68DA5:
 INCBIN "baserom.gbc", $68DA5, $68DAB - $68DA5
 
-UnknownData_0x68DAB:
+Unknown_0x68DAB:
 INCBIN "baserom.gbc", $68DAB, $68DAC - $68DAB
 
 LoggedData_0x68DAC:
 INCBIN "baserom.gbc", $68DAC, $68DB2 - $68DAC
 
-UnknownData_0x68DB2:
+Unknown_0x68DB2:
 INCBIN "baserom.gbc", $68DB2, $68DB3 - $68DB2
 
 LoggedData_0x68DB3:
 INCBIN "baserom.gbc", $68DB3, $68DC3 - $68DB3
 
-UnknownData_0x68DC3:
+Unknown_0x68DC3:
 INCBIN "baserom.gbc", $68DC3, $68DC4 - $68DC3
 
 LoggedData_0x68DC4:
 INCBIN "baserom.gbc", $68DC4, $68DD4 - $68DC4
 
-UnknownData_0x68DD4:
+Unknown_0x68DD4:
 INCBIN "baserom.gbc", $68DD4, $68DD5 - $68DD4
 
 LoggedData_0x68DD5:
 INCBIN "baserom.gbc", $68DD5, $68DF7 - $68DD5
 
-UnknownData_0x68DF7:
+Unknown_0x68DF7:
 INCBIN "baserom.gbc", $68DF7, $68DF8 - $68DF7
 
 LoggedData_0x68DF8:
 INCBIN "baserom.gbc", $68DF8, $68DFE - $68DF8
 
-UnknownData_0x68DFE:
+Unknown_0x68DFE:
 INCBIN "baserom.gbc", $68DFE, $68DFF - $68DFE
 
 LoggedData_0x68DFF:
 INCBIN "baserom.gbc", $68DFF, $68E05 - $68DFF
 
-UnknownData_0x68E05:
+Unknown_0x68E05:
 INCBIN "baserom.gbc", $68E05, $68E08 - $68E05
 
 LoggedData_0x68E08:
 INCBIN "baserom.gbc", $68E08, $68E0E - $68E08
 
-UnknownData_0x68E0E:
+Unknown_0x68E0E:
 INCBIN "baserom.gbc", $68E0E, $68E11 - $68E0E
 
 LoggedData_0x68E11:
 INCBIN "baserom.gbc", $68E11, $68E29 - $68E11
 
-UnknownData_0x68E29:
+Unknown_0x68E29:
 INCBIN "baserom.gbc", $68E29, $68E2E - $68E29
 
 LoggedData_0x68E2E:
 INCBIN "baserom.gbc", $68E2E, $68E39 - $68E2E
 
-UnknownData_0x68E39:
+Unknown_0x68E39:
 INCBIN "baserom.gbc", $68E39, $68E3A - $68E39
 
 LoggedData_0x68E3A:
 INCBIN "baserom.gbc", $68E3A, $68E40 - $68E3A
 
-UnknownData_0x68E40:
+Unknown_0x68E40:
 INCBIN "baserom.gbc", $68E40, $68E41 - $68E40
 
 LoggedData_0x68E41:
 INCBIN "baserom.gbc", $68E41, $68E4B - $68E41
 
-UnknownData_0x68E4B:
+Unknown_0x68E4B:
 INCBIN "baserom.gbc", $68E4B, $68E4C - $68E4B
 
 LoggedData_0x68E4C:
 INCBIN "baserom.gbc", $68E4C, $68E56 - $68E4C
 
-UnknownData_0x68E56:
+Unknown_0x68E56:
 INCBIN "baserom.gbc", $68E56, $68E57 - $68E56
 
 LoggedData_0x68E57:
 INCBIN "baserom.gbc", $68E57, $68E6F - $68E57
 
-UnknownData_0x68E6F:
+Unknown_0x68E6F:
 INCBIN "baserom.gbc", $68E6F, $68E77 - $68E6F
 
 LoggedData_0x68E77:
 INCBIN "baserom.gbc", $68E77, $68E95 - $68E77
 
-UnknownData_0x68E95:
+Unknown_0x68E95:
 INCBIN "baserom.gbc", $68E95, $68E96 - $68E95
 
 LoggedData_0x68E96:
 INCBIN "baserom.gbc", $68E96, $68EA2 - $68E96
 
-UnknownData_0x68EA2:
+Unknown_0x68EA2:
 INCBIN "baserom.gbc", $68EA2, $68EA3 - $68EA2
 
 LoggedData_0x68EA3:
 INCBIN "baserom.gbc", $68EA3, $68EA9 - $68EA3
 
-UnknownData_0x68EA9:
+Unknown_0x68EA9:
 INCBIN "baserom.gbc", $68EA9, $68EAA - $68EA9
 
 LoggedData_0x68EAA:
 INCBIN "baserom.gbc", $68EAA, $68EB0 - $68EAA
 
-UnknownData_0x68EB0:
+Unknown_0x68EB0:
 INCBIN "baserom.gbc", $68EB0, $68EB1 - $68EB0
 
 LoggedData_0x68EB1:
 INCBIN "baserom.gbc", $68EB1, $68EB3 - $68EB1
 
-UnknownData_0x68EB3:
+Unknown_0x68EB3:
 INCBIN "baserom.gbc", $68EB3, $68EB4 - $68EB3
 
 LoggedData_0x68EB4:
 INCBIN "baserom.gbc", $68EB4, $68EB6 - $68EB4
 
-UnknownData_0x68EB6:
+Unknown_0x68EB6:
 INCBIN "baserom.gbc", $68EB6, $68EB7 - $68EB6
 
 LoggedData_0x68EB7:
 INCBIN "baserom.gbc", $68EB7, $68ED9 - $68EB7
 
-UnknownData_0x68ED9:
+Unknown_0x68ED9:
 INCBIN "baserom.gbc", $68ED9, $68EDA - $68ED9
 
 LoggedData_0x68EDA:
 INCBIN "baserom.gbc", $68EDA, $68EE0 - $68EDA
 
-UnknownData_0x68EE0:
+Unknown_0x68EE0:
 INCBIN "baserom.gbc", $68EE0, $68EE1 - $68EE0
 
 LoggedData_0x68EE1:
 INCBIN "baserom.gbc", $68EE1, $68EE9 - $68EE1
 
-UnknownData_0x68EE9:
+Unknown_0x68EE9:
 INCBIN "baserom.gbc", $68EE9, $68EEA - $68EE9
 
 LoggedData_0x68EEA:
 INCBIN "baserom.gbc", $68EEA, $68EF2 - $68EEA
 
-UnknownData_0x68EF2:
+Unknown_0x68EF2:
 INCBIN "baserom.gbc", $68EF2, $68EF3 - $68EF2
 
 LoggedData_0x68EF3:
 INCBIN "baserom.gbc", $68EF3, $68EFD - $68EF3
 
-UnknownData_0x68EFD:
+Unknown_0x68EFD:
 INCBIN "baserom.gbc", $68EFD, $68F0B - $68EFD
 
 LoggedData_0x68F0B:
 INCBIN "baserom.gbc", $68F0B, $68F3D - $68F0B
 
-UnknownData_0x68F3D:
+Unknown_0x68F3D:
 INCBIN "baserom.gbc", $68F3D, $68F42 - $68F3D
 
 LoggedData_0x68F42:
 INCBIN "baserom.gbc", $68F42, $68F7D - $68F42
 
-UnknownData_0x68F7D:
+Unknown_0x68F7D:
 INCBIN "baserom.gbc", $68F7D, $68F8F - $68F7D
 
 LoggedData_0x68F8F:
 INCBIN "baserom.gbc", $68F8F, $68F9D - $68F8F
 
-UnknownData_0x68F9D:
+Unknown_0x68F9D:
 INCBIN "baserom.gbc", $68F9D, $68F9E - $68F9D
 
 LoggedData_0x68F9E:
 INCBIN "baserom.gbc", $68F9E, $68FAC - $68F9E
 
-UnknownData_0x68FAC:
+Unknown_0x68FAC:
 INCBIN "baserom.gbc", $68FAC, $68FAD - $68FAC
 
 LoggedData_0x68FAD:
 INCBIN "baserom.gbc", $68FAD, $68FBF - $68FAD
 
-UnknownData_0x68FBF:
+Unknown_0x68FBF:
 INCBIN "baserom.gbc", $68FBF, $68FC0 - $68FBF
 
 LoggedData_0x68FC0:
 INCBIN "baserom.gbc", $68FC0, $68FC8 - $68FC0
 
-UnknownData_0x68FC8:
+Unknown_0x68FC8:
 INCBIN "baserom.gbc", $68FC8, $68FC9 - $68FC8
 
 LoggedData_0x68FC9:
 INCBIN "baserom.gbc", $68FC9, $68FCF - $68FC9
 
-UnknownData_0x68FCF:
+Unknown_0x68FCF:
 INCBIN "baserom.gbc", $68FCF, $69041 - $68FCF
 
 LoggedData_0x69041:
 INCBIN "baserom.gbc", $69041, $69060 - $69041
 
-UnknownData_0x69060:
+Unknown_0x69060:
 INCBIN "baserom.gbc", $69060, $690AB - $69060
 
 LoggedData_0x690AB:
 INCBIN "baserom.gbc", $690AB, $690B6 - $690AB
 
-UnknownData_0x690B6:
+Unknown_0x690B6:
 INCBIN "baserom.gbc", $690B6, $690B7 - $690B6
 
 LoggedData_0x690B7:
 INCBIN "baserom.gbc", $690B7, $690B9 - $690B7
 
-UnknownData_0x690B9:
+Unknown_0x690B9:
 INCBIN "baserom.gbc", $690B9, $690BA - $690B9
 
 LoggedData_0x690BA:
 INCBIN "baserom.gbc", $690BA, $690BC - $690BA
 
-UnknownData_0x690BC:
+Unknown_0x690BC:
 INCBIN "baserom.gbc", $690BC, $690BD - $690BC
 
 LoggedData_0x690BD:
 INCBIN "baserom.gbc", $690BD, $690BF - $690BD
 
-UnknownData_0x690BF:
+Unknown_0x690BF:
 INCBIN "baserom.gbc", $690BF, $690C0 - $690BF
 
 LoggedData_0x690C0:
 INCBIN "baserom.gbc", $690C0, $690C2 - $690C0
 
-UnknownData_0x690C2:
+Unknown_0x690C2:
 INCBIN "baserom.gbc", $690C2, $690C3 - $690C2
 
 LoggedData_0x690C3:
 INCBIN "baserom.gbc", $690C3, $690C5 - $690C3
 
-UnknownData_0x690C5:
+Unknown_0x690C5:
 INCBIN "baserom.gbc", $690C5, $690C6 - $690C5
 
 LoggedData_0x690C6:
 INCBIN "baserom.gbc", $690C6, $690C8 - $690C6
 
-UnknownData_0x690C8:
+Unknown_0x690C8:
 INCBIN "baserom.gbc", $690C8, $690C9 - $690C8
 
 LoggedData_0x690C9:
 INCBIN "baserom.gbc", $690C9, $690DB - $690C9
 
-UnknownData_0x690DB:
+Unknown_0x690DB:
 INCBIN "baserom.gbc", $690DB, $690DC - $690DB
 
 LoggedData_0x690DC:
 INCBIN "baserom.gbc", $690DC, $690DE - $690DC
 
-UnknownData_0x690DE:
+Unknown_0x690DE:
 INCBIN "baserom.gbc", $690DE, $690DF - $690DE
 
 LoggedData_0x690DF:
 INCBIN "baserom.gbc", $690DF, $690E1 - $690DF
 
-UnknownData_0x690E1:
+Unknown_0x690E1:
 INCBIN "baserom.gbc", $690E1, $690E2 - $690E1
 
 LoggedData_0x690E2:
 INCBIN "baserom.gbc", $690E2, $690E4 - $690E2
 
-UnknownData_0x690E4:
+Unknown_0x690E4:
 INCBIN "baserom.gbc", $690E4, $690E5 - $690E4
 
 LoggedData_0x690E5:
 INCBIN "baserom.gbc", $690E5, $690E7 - $690E5
 
-UnknownData_0x690E7:
+Unknown_0x690E7:
 INCBIN "baserom.gbc", $690E7, $690E8 - $690E7
 
 LoggedData_0x690E8:
 INCBIN "baserom.gbc", $690E8, $690EA - $690E8
 
-UnknownData_0x690EA:
+Unknown_0x690EA:
 INCBIN "baserom.gbc", $690EA, $690EB - $690EA
 
 LoggedData_0x690EB:
 INCBIN "baserom.gbc", $690EB, $6910B - $690EB
 
-UnknownData_0x6910B:
+Unknown_0x6910B:
 INCBIN "baserom.gbc", $6910B, $6910C - $6910B
 
 LoggedData_0x6910C:
 INCBIN "baserom.gbc", $6910C, $69114 - $6910C
 
-UnknownData_0x69114:
+Unknown_0x69114:
 INCBIN "baserom.gbc", $69114, $69115 - $69114
 
 LoggedData_0x69115:
 INCBIN "baserom.gbc", $69115, $69139 - $69115
 
-UnknownData_0x69139:
+Unknown_0x69139:
 INCBIN "baserom.gbc", $69139, $6913A - $69139
 
 LoggedData_0x6913A:
 INCBIN "baserom.gbc", $6913A, $6913C - $6913A
 
-UnknownData_0x6913C:
+Unknown_0x6913C:
 INCBIN "baserom.gbc", $6913C, $6913D - $6913C
 
 LoggedData_0x6913D:
 INCBIN "baserom.gbc", $6913D, $6914B - $6913D
 
-UnknownData_0x6914B:
+Unknown_0x6914B:
 INCBIN "baserom.gbc", $6914B, $6914C - $6914B
 
 LoggedData_0x6914C:
 INCBIN "baserom.gbc", $6914C, $6915A - $6914C
 
-UnknownData_0x6915A:
+Unknown_0x6915A:
 INCBIN "baserom.gbc", $6915A, $6915B - $6915A
 
 LoggedData_0x6915B:
 INCBIN "baserom.gbc", $6915B, $69174 - $6915B
 
-UnknownData_0x69174:
+Unknown_0x69174:
 INCBIN "baserom.gbc", $69174, $69175 - $69174
 
 LoggedData_0x69175:
 INCBIN "baserom.gbc", $69175, $6917B - $69175
 
-UnknownData_0x6917B:
+Unknown_0x6917B:
 INCBIN "baserom.gbc", $6917B, $6917C - $6917B
 
 LoggedData_0x6917C:
 INCBIN "baserom.gbc", $6917C, $6918D - $6917C
 
-UnknownData_0x6918D:
+Unknown_0x6918D:
 INCBIN "baserom.gbc", $6918D, $6918E - $6918D
 
 LoggedData_0x6918E:
 INCBIN "baserom.gbc", $6918E, $69198 - $6918E
 
-UnknownData_0x69198:
+Unknown_0x69198:
 INCBIN "baserom.gbc", $69198, $69199 - $69198
 
 LoggedData_0x69199:
 INCBIN "baserom.gbc", $69199, $691BE - $69199
 
-UnknownData_0x691BE:
+Unknown_0x691BE:
 INCBIN "baserom.gbc", $691BE, $691BF - $691BE
 
 LoggedData_0x691BF:
 INCBIN "baserom.gbc", $691BF, $691FA - $691BF
 
-UnknownData_0x691FA:
+Unknown_0x691FA:
 INCBIN "baserom.gbc", $691FA, $691FB - $691FA
 
 LoggedData_0x691FB:
 INCBIN "baserom.gbc", $691FB, $6920C - $691FB
 
-UnknownData_0x6920C:
+Unknown_0x6920C:
 INCBIN "baserom.gbc", $6920C, $69213 - $6920C
 
 LoggedData_0x69213:
 INCBIN "baserom.gbc", $69213, $69222 - $69213
 
-UnknownData_0x69222:
+Unknown_0x69222:
 INCBIN "baserom.gbc", $69222, $69227 - $69222
 
 LoggedData_0x69227:
 INCBIN "baserom.gbc", $69227, $6922F - $69227
 
-UnknownData_0x6922F:
+Unknown_0x6922F:
 INCBIN "baserom.gbc", $6922F, $69230 - $6922F
 
 LoggedData_0x69230:
 INCBIN "baserom.gbc", $69230, $69255 - $69230
 
-UnknownData_0x69255:
+Unknown_0x69255:
 INCBIN "baserom.gbc", $69255, $69256 - $69255
 
 LoggedData_0x69256:
 INCBIN "baserom.gbc", $69256, $69262 - $69256
 
-UnknownData_0x69262:
+Unknown_0x69262:
 INCBIN "baserom.gbc", $69262, $69263 - $69262
 
 LoggedData_0x69263:
 INCBIN "baserom.gbc", $69263, $6926C - $69263
 
-UnknownData_0x6926C:
+Unknown_0x6926C:
 INCBIN "baserom.gbc", $6926C, $69275 - $6926C
 
 LoggedData_0x69275:
 INCBIN "baserom.gbc", $69275, $6927B - $69275
 
-UnknownData_0x6927B:
+Unknown_0x6927B:
 INCBIN "baserom.gbc", $6927B, $6927C - $6927B
 
 LoggedData_0x6927C:
 INCBIN "baserom.gbc", $6927C, $6927E - $6927C
 
-UnknownData_0x6927E:
+Unknown_0x6927E:
 INCBIN "baserom.gbc", $6927E, $6927F - $6927E
 
 LoggedData_0x6927F:
 INCBIN "baserom.gbc", $6927F, $692A9 - $6927F
 
-UnknownData_0x692A9:
+Unknown_0x692A9:
 INCBIN "baserom.gbc", $692A9, $692AA - $692A9
 
 LoggedData_0x692AA:
 INCBIN "baserom.gbc", $692AA, $692B2 - $692AA
 
-UnknownData_0x692B2:
+Unknown_0x692B2:
 INCBIN "baserom.gbc", $692B2, $692B3 - $692B2
 
 LoggedData_0x692B3:
 INCBIN "baserom.gbc", $692B3, $692CD - $692B3
 
-UnknownData_0x692CD:
+Unknown_0x692CD:
 INCBIN "baserom.gbc", $692CD, $692CE - $692CD
 
 LoggedData_0x692CE:
 INCBIN "baserom.gbc", $692CE, $692D4 - $692CE
 
-UnknownData_0x692D4:
+Unknown_0x692D4:
 INCBIN "baserom.gbc", $692D4, $692D5 - $692D4
 
 LoggedData_0x692D5:
 INCBIN "baserom.gbc", $692D5, $69334 - $692D5
 
-UnknownData_0x69334:
+Unknown_0x69334:
 INCBIN "baserom.gbc", $69334, $69335 - $69334
 
 LoggedData_0x69335:
 INCBIN "baserom.gbc", $69335, $69340 - $69335
 
-UnknownData_0x69340:
+Unknown_0x69340:
 INCBIN "baserom.gbc", $69340, $6936C - $69340
 
 LoggedData_0x6936C:
 INCBIN "baserom.gbc", $6936C, $69382 - $6936C
 
-UnknownData_0x69382:
+Unknown_0x69382:
 INCBIN "baserom.gbc", $69382, $693C4 - $69382
 
 LoggedData_0x693C4:
 INCBIN "baserom.gbc", $693C4, $693F0 - $693C4
 
-UnknownData_0x693F0:
+Unknown_0x693F0:
 INCBIN "baserom.gbc", $693F0, $693F9 - $693F0
 
 LoggedData_0x693F9:
 INCBIN "baserom.gbc", $693F9, $69401 - $693F9
 
-UnknownData_0x69401:
+Unknown_0x69401:
 INCBIN "baserom.gbc", $69401, $69402 - $69401
 
 LoggedData_0x69402:
 INCBIN "baserom.gbc", $69402, $69410 - $69402
 
-UnknownData_0x69410:
+Unknown_0x69410:
 INCBIN "baserom.gbc", $69410, $69411 - $69410
 
 LoggedData_0x69411:
 INCBIN "baserom.gbc", $69411, $6941B - $69411
 
-UnknownData_0x6941B:
+Unknown_0x6941B:
 INCBIN "baserom.gbc", $6941B, $69424 - $6941B
 
 LoggedData_0x69424:
 INCBIN "baserom.gbc", $69424, $6942C - $69424
 
-UnknownData_0x6942C:
+Unknown_0x6942C:
 INCBIN "baserom.gbc", $6942C, $6942D - $6942C
 
 LoggedData_0x6942D:
 INCBIN "baserom.gbc", $6942D, $6943B - $6942D
 
-UnknownData_0x6943B:
+Unknown_0x6943B:
 INCBIN "baserom.gbc", $6943B, $6943C - $6943B
 
 LoggedData_0x6943C:
 INCBIN "baserom.gbc", $6943C, $6944C - $6943C
 
-UnknownData_0x6944C:
+Unknown_0x6944C:
 INCBIN "baserom.gbc", $6944C, $6944D - $6944C
 
 LoggedData_0x6944D:
 INCBIN "baserom.gbc", $6944D, $6945C - $6944D
 
-UnknownData_0x6945C:
+Unknown_0x6945C:
 INCBIN "baserom.gbc", $6945C, $69463 - $6945C
 
 LoggedData_0x69463:
 INCBIN "baserom.gbc", $69463, $69473 - $69463
 
-UnknownData_0x69473:
+Unknown_0x69473:
 INCBIN "baserom.gbc", $69473, $69474 - $69473
 
 LoggedData_0x69474:
 INCBIN "baserom.gbc", $69474, $69484 - $69474
 
-UnknownData_0x69484:
+Unknown_0x69484:
 INCBIN "baserom.gbc", $69484, $69485 - $69484
 
 LoggedData_0x69485:
 INCBIN "baserom.gbc", $69485, $6948D - $69485
 
-UnknownData_0x6948D:
+Unknown_0x6948D:
 INCBIN "baserom.gbc", $6948D, $69496 - $6948D
 
 LoggedData_0x69496:
 INCBIN "baserom.gbc", $69496, $69498 - $69496
 
-UnknownData_0x69498:
+Unknown_0x69498:
 INCBIN "baserom.gbc", $69498, $694A7 - $69498
 
 LoggedData_0x694A7:
 INCBIN "baserom.gbc", $694A7, $694B8 - $694A7
 
-UnknownData_0x694B8:
+Unknown_0x694B8:
 INCBIN "baserom.gbc", $694B8, $694C9 - $694B8
 
 LoggedData_0x694C9:
 INCBIN "baserom.gbc", $694C9, $694CF - $694C9
 
-UnknownData_0x694CF:
+Unknown_0x694CF:
 INCBIN "baserom.gbc", $694CF, $694D0 - $694CF
 
 LoggedData_0x694D0:
 INCBIN "baserom.gbc", $694D0, $694D6 - $694D0
 
-UnknownData_0x694D6:
+Unknown_0x694D6:
 INCBIN "baserom.gbc", $694D6, $694D7 - $694D6
 
 LoggedData_0x694D7:
 INCBIN "baserom.gbc", $694D7, $694DC - $694D7
 
-UnknownData_0x694DC:
+Unknown_0x694DC:
 INCBIN "baserom.gbc", $694DC, $694E1 - $694DC
 
 LoggedData_0x694E1:
 INCBIN "baserom.gbc", $694E1, $694ED - $694E1
 
-UnknownData_0x694ED:
+Unknown_0x694ED:
 INCBIN "baserom.gbc", $694ED, $694EE - $694ED
 
 LoggedData_0x694EE:
 INCBIN "baserom.gbc", $694EE, $69511 - $694EE
 
-UnknownData_0x69511:
+Unknown_0x69511:
 INCBIN "baserom.gbc", $69511, $69512 - $69511
 
 LoggedData_0x69512:
 INCBIN "baserom.gbc", $69512, $69518 - $69512
 
-UnknownData_0x69518:
+Unknown_0x69518:
 INCBIN "baserom.gbc", $69518, $69519 - $69518
 
 LoggedData_0x69519:
 INCBIN "baserom.gbc", $69519, $69536 - $69519
 
-UnknownData_0x69536:
+Unknown_0x69536:
 INCBIN "baserom.gbc", $69536, $6953C - $69536
 
 LoggedData_0x6953C:
 INCBIN "baserom.gbc", $6953C, $69542 - $6953C
 
-UnknownData_0x69542:
+Unknown_0x69542:
 INCBIN "baserom.gbc", $69542, $6954A - $69542
 
 LoggedData_0x6954A:
 INCBIN "baserom.gbc", $6954A, $69553 - $6954A
 
-UnknownData_0x69553:
+Unknown_0x69553:
 INCBIN "baserom.gbc", $69553, $6955B - $69553
 
 LoggedData_0x6955B:
 INCBIN "baserom.gbc", $6955B, $69567 - $6955B
 
-UnknownData_0x69567:
+Unknown_0x69567:
 INCBIN "baserom.gbc", $69567, $6957E - $69567
 
 LoggedData_0x6957E:
 INCBIN "baserom.gbc", $6957E, $6958E - $6957E
 
-UnknownData_0x6958E:
+Unknown_0x6958E:
 INCBIN "baserom.gbc", $6958E, $6958F - $6958E
 
 LoggedData_0x6958F:
 INCBIN "baserom.gbc", $6958F, $695A5 - $6958F
 
-UnknownData_0x695A5:
+Unknown_0x695A5:
 INCBIN "baserom.gbc", $695A5, $695A6 - $695A5
 
 LoggedData_0x695A6:
 INCBIN "baserom.gbc", $695A6, $695AE - $695A6
 
-UnknownData_0x695AE:
+Unknown_0x695AE:
 INCBIN "baserom.gbc", $695AE, $695AF - $695AE
 
 LoggedData_0x695AF:
 INCBIN "baserom.gbc", $695AF, $695BF - $695AF
 
-UnknownData_0x695BF:
+Unknown_0x695BF:
 INCBIN "baserom.gbc", $695BF, $695C0 - $695BF
 
 LoggedData_0x695C0:
 INCBIN "baserom.gbc", $695C0, $695CA - $695C0
 
-UnknownData_0x695CA:
+Unknown_0x695CA:
 INCBIN "baserom.gbc", $695CA, $695CB - $695CA
 
 LoggedData_0x695CB:
 INCBIN "baserom.gbc", $695CB, $695D5 - $695CB
 
-UnknownData_0x695D5:
+Unknown_0x695D5:
 INCBIN "baserom.gbc", $695D5, $695D6 - $695D5
 
 LoggedData_0x695D6:
 INCBIN "baserom.gbc", $695D6, $695D8 - $695D6
 
-UnknownData_0x695D8:
+Unknown_0x695D8:
 INCBIN "baserom.gbc", $695D8, $695D9 - $695D8
 
 LoggedData_0x695D9:
 INCBIN "baserom.gbc", $695D9, $695DD - $695D9
 
-UnknownData_0x695DD:
+Unknown_0x695DD:
 INCBIN "baserom.gbc", $695DD, $695DE - $695DD
 
 LoggedData_0x695DE:
 INCBIN "baserom.gbc", $695DE, $69607 - $695DE
 
-UnknownData_0x69607:
+Unknown_0x69607:
 INCBIN "baserom.gbc", $69607, $69615 - $69607
 
 LoggedData_0x69615:
 INCBIN "baserom.gbc", $69615, $6961E - $69615
 
-UnknownData_0x6961E:
+Unknown_0x6961E:
 INCBIN "baserom.gbc", $6961E, $69625 - $6961E
 
 LoggedData_0x69625:
 INCBIN "baserom.gbc", $69625, $69631 - $69625
 
-UnknownData_0x69631:
+Unknown_0x69631:
 INCBIN "baserom.gbc", $69631, $69632 - $69631
 
 LoggedData_0x69632:
 INCBIN "baserom.gbc", $69632, $69645 - $69632
 
-UnknownData_0x69645:
+Unknown_0x69645:
 INCBIN "baserom.gbc", $69645, $69646 - $69645
 
 LoggedData_0x69646:
 INCBIN "baserom.gbc", $69646, $6964A - $69646
 
-UnknownData_0x6964A:
+Unknown_0x6964A:
 INCBIN "baserom.gbc", $6964A, $6964D - $6964A
 
 LoggedData_0x6964D:
 INCBIN "baserom.gbc", $6964D, $69656 - $6964D
 
-UnknownData_0x69656:
+Unknown_0x69656:
 INCBIN "baserom.gbc", $69656, $69675 - $69656
 
 LoggedData_0x69675:
 INCBIN "baserom.gbc", $69675, $6967A - $69675
 
-UnknownData_0x6967A:
+Unknown_0x6967A:
 INCBIN "baserom.gbc", $6967A, $6967F - $6967A
 
 LoggedData_0x6967F:
 INCBIN "baserom.gbc", $6967F, $69695 - $6967F
 
-UnknownData_0x69695:
+Unknown_0x69695:
 INCBIN "baserom.gbc", $69695, $6969F - $69695
 
 LoggedData_0x6969F:
 INCBIN "baserom.gbc", $6969F, $696B6 - $6969F
 
-UnknownData_0x696B6:
+Unknown_0x696B6:
 INCBIN "baserom.gbc", $696B6, $696C5 - $696B6
 
 LoggedData_0x696C5:
 INCBIN "baserom.gbc", $696C5, $696CD - $696C5
 
-UnknownData_0x696CD:
+Unknown_0x696CD:
 INCBIN "baserom.gbc", $696CD, $696CE - $696CD
 
 LoggedData_0x696CE:
 INCBIN "baserom.gbc", $696CE, $696D9 - $696CE
 
-UnknownData_0x696D9:
+Unknown_0x696D9:
 INCBIN "baserom.gbc", $696D9, $696E0 - $696D9
 
 LoggedData_0x696E0:
 INCBIN "baserom.gbc", $696E0, $696E4 - $696E0
 
-UnknownData_0x696E4:
+Unknown_0x696E4:
 INCBIN "baserom.gbc", $696E4, $696E5 - $696E4
 
 LoggedData_0x696E5:
 INCBIN "baserom.gbc", $696E5, $69719 - $696E5
 
-UnknownData_0x69719:
+Unknown_0x69719:
 INCBIN "baserom.gbc", $69719, $6971C - $69719
 
 LoggedData_0x6971C:
 INCBIN "baserom.gbc", $6971C, $69720 - $6971C
 
-UnknownData_0x69720:
+Unknown_0x69720:
 INCBIN "baserom.gbc", $69720, $69721 - $69720
 
 LoggedData_0x69721:
 INCBIN "baserom.gbc", $69721, $6972F - $69721
 
-UnknownData_0x6972F:
+Unknown_0x6972F:
 INCBIN "baserom.gbc", $6972F, $69734 - $6972F
 
 LoggedData_0x69734:
 INCBIN "baserom.gbc", $69734, $6973C - $69734
 
-UnknownData_0x6973C:
+Unknown_0x6973C:
 INCBIN "baserom.gbc", $6973C, $69746 - $6973C
 
 LoggedData_0x69746:
 INCBIN "baserom.gbc", $69746, $6974C - $69746
 
-UnknownData_0x6974C:
+Unknown_0x6974C:
 INCBIN "baserom.gbc", $6974C, $6974D - $6974C
 
 LoggedData_0x6974D:
 INCBIN "baserom.gbc", $6974D, $69753 - $6974D
 
-UnknownData_0x69753:
+Unknown_0x69753:
 INCBIN "baserom.gbc", $69753, $69754 - $69753
 
 LoggedData_0x69754:
 INCBIN "baserom.gbc", $69754, $6975A - $69754
 
-UnknownData_0x6975A:
+Unknown_0x6975A:
 INCBIN "baserom.gbc", $6975A, $6975B - $6975A
 
 LoggedData_0x6975B:
 INCBIN "baserom.gbc", $6975B, $69771 - $6975B
 
-UnknownData_0x69771:
+Unknown_0x69771:
 INCBIN "baserom.gbc", $69771, $69772 - $69771
 
 LoggedData_0x69772:
 INCBIN "baserom.gbc", $69772, $69774 - $69772
 
-UnknownData_0x69774:
+Unknown_0x69774:
 INCBIN "baserom.gbc", $69774, $69775 - $69774
 
 LoggedData_0x69775:
 INCBIN "baserom.gbc", $69775, $69791 - $69775
 
-UnknownData_0x69791:
+Unknown_0x69791:
 INCBIN "baserom.gbc", $69791, $697B0 - $69791
 
 LoggedData_0x697B0:
 INCBIN "baserom.gbc", $697B0, $697BA - $697B0
 
-UnknownData_0x697BA:
+Unknown_0x697BA:
 INCBIN "baserom.gbc", $697BA, $697BB - $697BA
 
 LoggedData_0x697BB:
 INCBIN "baserom.gbc", $697BB, $697C5 - $697BB
 
-UnknownData_0x697C5:
+Unknown_0x697C5:
 INCBIN "baserom.gbc", $697C5, $697C6 - $697C5
 
 LoggedData_0x697C6:
 INCBIN "baserom.gbc", $697C6, $697D4 - $697C6
 
-UnknownData_0x697D4:
+Unknown_0x697D4:
 INCBIN "baserom.gbc", $697D4, $697D5 - $697D4
 
 LoggedData_0x697D5:
 INCBIN "baserom.gbc", $697D5, $697E5 - $697D5
 
-UnknownData_0x697E5:
+Unknown_0x697E5:
 INCBIN "baserom.gbc", $697E5, $697E6 - $697E5
 
 LoggedData_0x697E6:
 INCBIN "baserom.gbc", $697E6, $697F0 - $697E6
 
-UnknownData_0x697F0:
+Unknown_0x697F0:
 INCBIN "baserom.gbc", $697F0, $69845 - $697F0
 
 LoggedData_0x69845:
 INCBIN "baserom.gbc", $69845, $69866 - $69845
 
-UnknownData_0x69866:
+Unknown_0x69866:
 INCBIN "baserom.gbc", $69866, $6987A - $69866
 
 LoggedData_0x6987A:
 INCBIN "baserom.gbc", $6987A, $69881 - $6987A
 
-UnknownData_0x69881:
+Unknown_0x69881:
 INCBIN "baserom.gbc", $69881, $69882 - $69881
 
 LoggedData_0x69882:
 INCBIN "baserom.gbc", $69882, $69892 - $69882
 
-UnknownData_0x69892:
+Unknown_0x69892:
 INCBIN "baserom.gbc", $69892, $69893 - $69892
 
 LoggedData_0x69893:
 INCBIN "baserom.gbc", $69893, $698A4 - $69893
 
-UnknownData_0x698A4:
+Unknown_0x698A4:
 INCBIN "baserom.gbc", $698A4, $698A8 - $698A4
 
 LoggedData_0x698A8:
 INCBIN "baserom.gbc", $698A8, $698B3 - $698A8
 
-UnknownData_0x698B3:
+Unknown_0x698B3:
 INCBIN "baserom.gbc", $698B3, $698B4 - $698B3
 
 LoggedData_0x698B4:
 INCBIN "baserom.gbc", $698B4, $698B6 - $698B4
 
-UnknownData_0x698B6:
+Unknown_0x698B6:
 INCBIN "baserom.gbc", $698B6, $698B7 - $698B6
 
 LoggedData_0x698B7:
 INCBIN "baserom.gbc", $698B7, $698B9 - $698B7
 
-UnknownData_0x698B9:
+Unknown_0x698B9:
 INCBIN "baserom.gbc", $698B9, $698BA - $698B9
 
 LoggedData_0x698BA:
 INCBIN "baserom.gbc", $698BA, $698BC - $698BA
 
-UnknownData_0x698BC:
+Unknown_0x698BC:
 INCBIN "baserom.gbc", $698BC, $698BD - $698BC
 
 LoggedData_0x698BD:
 INCBIN "baserom.gbc", $698BD, $698BF - $698BD
 
-UnknownData_0x698BF:
+Unknown_0x698BF:
 INCBIN "baserom.gbc", $698BF, $698C0 - $698BF
 
 LoggedData_0x698C0:
 INCBIN "baserom.gbc", $698C0, $698C2 - $698C0
 
-UnknownData_0x698C2:
+Unknown_0x698C2:
 INCBIN "baserom.gbc", $698C2, $698C3 - $698C2
 
 LoggedData_0x698C3:
 INCBIN "baserom.gbc", $698C3, $698C5 - $698C3
 
-UnknownData_0x698C5:
+Unknown_0x698C5:
 INCBIN "baserom.gbc", $698C5, $698C6 - $698C5
 
 LoggedData_0x698C6:
 INCBIN "baserom.gbc", $698C6, $698C8 - $698C6
 
-UnknownData_0x698C8:
+Unknown_0x698C8:
 INCBIN "baserom.gbc", $698C8, $698C9 - $698C8
 
 LoggedData_0x698C9:
 INCBIN "baserom.gbc", $698C9, $698CB - $698C9
 
-UnknownData_0x698CB:
+Unknown_0x698CB:
 INCBIN "baserom.gbc", $698CB, $698CC - $698CB
 
 LoggedData_0x698CC:
 INCBIN "baserom.gbc", $698CC, $698CE - $698CC
 
-UnknownData_0x698CE:
+Unknown_0x698CE:
 INCBIN "baserom.gbc", $698CE, $698CF - $698CE
 
 LoggedData_0x698CF:
 INCBIN "baserom.gbc", $698CF, $698D1 - $698CF
 
-UnknownData_0x698D1:
+Unknown_0x698D1:
 INCBIN "baserom.gbc", $698D1, $698D2 - $698D1
 
 LoggedData_0x698D2:
 INCBIN "baserom.gbc", $698D2, $698D4 - $698D2
 
-UnknownData_0x698D4:
+Unknown_0x698D4:
 INCBIN "baserom.gbc", $698D4, $698D5 - $698D4
 
 LoggedData_0x698D5:
 INCBIN "baserom.gbc", $698D5, $698D7 - $698D5
 
-UnknownData_0x698D7:
+Unknown_0x698D7:
 INCBIN "baserom.gbc", $698D7, $698D8 - $698D7
 
 LoggedData_0x698D8:
 INCBIN "baserom.gbc", $698D8, $698DA - $698D8
 
-UnknownData_0x698DA:
+Unknown_0x698DA:
 INCBIN "baserom.gbc", $698DA, $698DB - $698DA
 
 LoggedData_0x698DB:
 INCBIN "baserom.gbc", $698DB, $698DD - $698DB
 
-UnknownData_0x698DD:
+Unknown_0x698DD:
 INCBIN "baserom.gbc", $698DD, $698DE - $698DD
 
 LoggedData_0x698DE:
 INCBIN "baserom.gbc", $698DE, $698E0 - $698DE
 
-UnknownData_0x698E0:
+Unknown_0x698E0:
 INCBIN "baserom.gbc", $698E0, $698E1 - $698E0
 
 LoggedData_0x698E1:
 INCBIN "baserom.gbc", $698E1, $698E3 - $698E1
 
-UnknownData_0x698E3:
+Unknown_0x698E3:
 INCBIN "baserom.gbc", $698E3, $698E4 - $698E3
 
 LoggedData_0x698E4:
 INCBIN "baserom.gbc", $698E4, $698E6 - $698E4
 
-UnknownData_0x698E6:
+Unknown_0x698E6:
 INCBIN "baserom.gbc", $698E6, $698E7 - $698E6
 
 LoggedData_0x698E7:
 INCBIN "baserom.gbc", $698E7, $698E9 - $698E7
 
-UnknownData_0x698E9:
+Unknown_0x698E9:
 INCBIN "baserom.gbc", $698E9, $698EA - $698E9
 
 LoggedData_0x698EA:
 INCBIN "baserom.gbc", $698EA, $698EC - $698EA
 
-UnknownData_0x698EC:
+Unknown_0x698EC:
 INCBIN "baserom.gbc", $698EC, $698ED - $698EC
 
 LoggedData_0x698ED:
 INCBIN "baserom.gbc", $698ED, $698EF - $698ED
 
-UnknownData_0x698EF:
+Unknown_0x698EF:
 INCBIN "baserom.gbc", $698EF, $698F0 - $698EF
 
 LoggedData_0x698F0:
 INCBIN "baserom.gbc", $698F0, $698F2 - $698F0
 
-UnknownData_0x698F2:
+Unknown_0x698F2:
 INCBIN "baserom.gbc", $698F2, $698F3 - $698F2
 
 LoggedData_0x698F3:
 INCBIN "baserom.gbc", $698F3, $698F5 - $698F3
 
-UnknownData_0x698F5:
+Unknown_0x698F5:
 INCBIN "baserom.gbc", $698F5, $698F6 - $698F5
 
 LoggedData_0x698F6:
 INCBIN "baserom.gbc", $698F6, $698F8 - $698F6
 
-UnknownData_0x698F8:
+Unknown_0x698F8:
 INCBIN "baserom.gbc", $698F8, $698F9 - $698F8
 
 LoggedData_0x698F9:
 INCBIN "baserom.gbc", $698F9, $698FB - $698F9
 
-UnknownData_0x698FB:
+Unknown_0x698FB:
 INCBIN "baserom.gbc", $698FB, $698FC - $698FB
 
 LoggedData_0x698FC:
 INCBIN "baserom.gbc", $698FC, $698FE - $698FC
 
-UnknownData_0x698FE:
+Unknown_0x698FE:
 INCBIN "baserom.gbc", $698FE, $698FF - $698FE
 
 LoggedData_0x698FF:
 INCBIN "baserom.gbc", $698FF, $69911 - $698FF
 
-UnknownData_0x69911:
+Unknown_0x69911:
 INCBIN "baserom.gbc", $69911, $69918 - $69911
 
 LoggedData_0x69918:
 INCBIN "baserom.gbc", $69918, $69926 - $69918
 
-UnknownData_0x69926:
+Unknown_0x69926:
 INCBIN "baserom.gbc", $69926, $69942 - $69926
 
 LoggedData_0x69942:
 INCBIN "baserom.gbc", $69942, $69949 - $69942
 
-UnknownData_0x69949:
+Unknown_0x69949:
 INCBIN "baserom.gbc", $69949, $69950 - $69949
 
 LoggedData_0x69950:
 INCBIN "baserom.gbc", $69950, $6996C - $69950
 
-UnknownData_0x6996C:
+Unknown_0x6996C:
 INCBIN "baserom.gbc", $6996C, $6997A - $6996C
 
 LoggedData_0x6997A:
 INCBIN "baserom.gbc", $6997A, $69980 - $6997A
 
-UnknownData_0x69980:
+Unknown_0x69980:
 INCBIN "baserom.gbc", $69980, $69988 - $69980
 
 LoggedData_0x69988:
 INCBIN "baserom.gbc", $69988, $6998E - $69988
 
-UnknownData_0x6998E:
+Unknown_0x6998E:
 INCBIN "baserom.gbc", $6998E, $6998F - $6998E
 
 LoggedData_0x6998F:
 INCBIN "baserom.gbc", $6998F, $69995 - $6998F
 
-UnknownData_0x69995:
+Unknown_0x69995:
 INCBIN "baserom.gbc", $69995, $69996 - $69995
 
 LoggedData_0x69996:
 INCBIN "baserom.gbc", $69996, $6999C - $69996
 
-UnknownData_0x6999C:
+Unknown_0x6999C:
 INCBIN "baserom.gbc", $6999C, $6999D - $6999C
 
 LoggedData_0x6999D:
 INCBIN "baserom.gbc", $6999D, $699A3 - $6999D
 
-UnknownData_0x699A3:
+Unknown_0x699A3:
 INCBIN "baserom.gbc", $699A3, $699BC - $699A3
 
 LoggedData_0x699BC:
 INCBIN "baserom.gbc", $699BC, $699DE - $699BC
 
-UnknownData_0x699DE:
+Unknown_0x699DE:
 INCBIN "baserom.gbc", $699DE, $699DF - $699DE
 
 LoggedData_0x699DF:
 INCBIN "baserom.gbc", $699DF, $699E3 - $699DF
 
-UnknownData_0x699E3:
+Unknown_0x699E3:
 INCBIN "baserom.gbc", $699E3, $699E4 - $699E3
 
 LoggedData_0x699E4:
 INCBIN "baserom.gbc", $699E4, $699E9 - $699E4
 
-UnknownData_0x699E9:
+Unknown_0x699E9:
 INCBIN "baserom.gbc", $699E9, $69A00 - $699E9
 
 LoggedData_0x69A00:
 INCBIN "baserom.gbc", $69A00, $69A03 - $69A00
 
-UnknownData_0x69A03:
+Unknown_0x69A03:
 INCBIN "baserom.gbc", $69A03, $69A1A - $69A03
 
 LoggedData_0x69A1A:
 INCBIN "baserom.gbc", $69A1A, $69A1C - $69A1A
 
-UnknownData_0x69A1C:
+Unknown_0x69A1C:
 INCBIN "baserom.gbc", $69A1C, $69A1D - $69A1C
 
 LoggedData_0x69A1D:
 INCBIN "baserom.gbc", $69A1D, $69A1F - $69A1D
 
-UnknownData_0x69A1F:
+Unknown_0x69A1F:
 INCBIN "baserom.gbc", $69A1F, $69A26 - $69A1F
 
 LoggedData_0x69A26:
 INCBIN "baserom.gbc", $69A26, $69A2A - $69A26
 
-UnknownData_0x69A2A:
+Unknown_0x69A2A:
 INCBIN "baserom.gbc", $69A2A, $69A33 - $69A2A
 
 LoggedData_0x69A33:
 INCBIN "baserom.gbc", $69A33, $69A38 - $69A33
 
-UnknownData_0x69A38:
+Unknown_0x69A38:
 INCBIN "baserom.gbc", $69A38, $69A3D - $69A38
 
 LoggedData_0x69A3D:
 INCBIN "baserom.gbc", $69A3D, $69A3F - $69A3D
 
-UnknownData_0x69A3F:
+Unknown_0x69A3F:
 INCBIN "baserom.gbc", $69A3F, $69A5F - $69A3F
 
 LoggedData_0x69A5F:
 INCBIN "baserom.gbc", $69A5F, $69A79 - $69A5F
 
-UnknownData_0x69A79:
+Unknown_0x69A79:
 INCBIN "baserom.gbc", $69A79, $69A7A - $69A79
 
 LoggedData_0x69A7A:
 INCBIN "baserom.gbc", $69A7A, $69A94 - $69A7A
 
-UnknownData_0x69A94:
+Unknown_0x69A94:
 INCBIN "baserom.gbc", $69A94, $69A95 - $69A94
 
 LoggedData_0x69A95:
 INCBIN "baserom.gbc", $69A95, $69AA7 - $69A95
 
-UnknownData_0x69AA7:
+Unknown_0x69AA7:
 INCBIN "baserom.gbc", $69AA7, $69AA8 - $69AA7
 
 LoggedData_0x69AA8:
 INCBIN "baserom.gbc", $69AA8, $69AB2 - $69AA8
 
-UnknownData_0x69AB2:
+Unknown_0x69AB2:
 INCBIN "baserom.gbc", $69AB2, $69AB3 - $69AB2
 
 LoggedData_0x69AB3:
 INCBIN "baserom.gbc", $69AB3, $69AC2 - $69AB3
 
-UnknownData_0x69AC2:
+Unknown_0x69AC2:
 INCBIN "baserom.gbc", $69AC2, $69AC3 - $69AC2
 
 LoggedData_0x69AC3:
 INCBIN "baserom.gbc", $69AC3, $69ACC - $69AC3
 
-UnknownData_0x69ACC:
+Unknown_0x69ACC:
 INCBIN "baserom.gbc", $69ACC, $69AE3 - $69ACC
 
 LoggedData_0x69AE3:
 INCBIN "baserom.gbc", $69AE3, $69AEC - $69AE3
 
-UnknownData_0x69AEC:
+Unknown_0x69AEC:
 INCBIN "baserom.gbc", $69AEC, $69AF5 - $69AEC
 
 LoggedData_0x69AF5:
 INCBIN "baserom.gbc", $69AF5, $69AFC - $69AF5
 
-UnknownData_0x69AFC:
+Unknown_0x69AFC:
 INCBIN "baserom.gbc", $69AFC, $69B08 - $69AFC
 
 LoggedData_0x69B08:
 INCBIN "baserom.gbc", $69B08, $69B1B - $69B08
 
-UnknownData_0x69B1B:
+Unknown_0x69B1B:
 INCBIN "baserom.gbc", $69B1B, $69B1E - $69B1B
 
 LoggedData_0x69B1E:
 INCBIN "baserom.gbc", $69B1E, $69B4B - $69B1E
 
-UnknownData_0x69B4B:
+Unknown_0x69B4B:
 INCBIN "baserom.gbc", $69B4B, $69B4C - $69B4B
 
 LoggedData_0x69B4C:
 INCBIN "baserom.gbc", $69B4C, $69B56 - $69B4C
 
-UnknownData_0x69B56:
+Unknown_0x69B56:
 INCBIN "baserom.gbc", $69B56, $69B57 - $69B56
 
 LoggedData_0x69B57:
 INCBIN "baserom.gbc", $69B57, $69B73 - $69B57
 
-UnknownData_0x69B73:
+Unknown_0x69B73:
 INCBIN "baserom.gbc", $69B73, $69B74 - $69B73
 
 LoggedData_0x69B74:
 INCBIN "baserom.gbc", $69B74, $69B7E - $69B74
 
-UnknownData_0x69B7E:
+Unknown_0x69B7E:
 INCBIN "baserom.gbc", $69B7E, $69B88 - $69B7E
 
 LoggedData_0x69B88:
 INCBIN "baserom.gbc", $69B88, $69B91 - $69B88
 
-UnknownData_0x69B91:
+Unknown_0x69B91:
 INCBIN "baserom.gbc", $69B91, $69BA0 - $69B91
 
 LoggedData_0x69BA0:
 INCBIN "baserom.gbc", $69BA0, $69BCD - $69BA0
 
-UnknownData_0x69BCD:
+Unknown_0x69BCD:
 INCBIN "baserom.gbc", $69BCD, $69BCE - $69BCD
 
 LoggedData_0x69BCE:
 INCBIN "baserom.gbc", $69BCE, $69BD8 - $69BCE
 
-UnknownData_0x69BD8:
+Unknown_0x69BD8:
 INCBIN "baserom.gbc", $69BD8, $69BD9 - $69BD8
 
 LoggedData_0x69BD9:
 INCBIN "baserom.gbc", $69BD9, $69BE2 - $69BD9
 
-UnknownData_0x69BE2:
+Unknown_0x69BE2:
 INCBIN "baserom.gbc", $69BE2, $69BFE - $69BE2
 
 LoggedData_0x69BFE:
 INCBIN "baserom.gbc", $69BFE, $69C09 - $69BFE
 
-UnknownData_0x69C09:
+Unknown_0x69C09:
 INCBIN "baserom.gbc", $69C09, $69C0A - $69C09
 
 LoggedData_0x69C0A:
 INCBIN "baserom.gbc", $69C0A, $69C1E - $69C0A
 
-UnknownData_0x69C1E:
+Unknown_0x69C1E:
 INCBIN "baserom.gbc", $69C1E, $69C25 - $69C1E
 
 LoggedData_0x69C25:
 INCBIN "baserom.gbc", $69C25, $69C3B - $69C25
 
-UnknownData_0x69C3B:
+Unknown_0x69C3B:
 INCBIN "baserom.gbc", $69C3B, $69C40 - $69C3B
 
 LoggedData_0x69C40:
 INCBIN "baserom.gbc", $69C40, $69C58 - $69C40
 
-UnknownData_0x69C58:
+Unknown_0x69C58:
 INCBIN "baserom.gbc", $69C58, $69C69 - $69C58
 
 LoggedData_0x69C69:
 INCBIN "baserom.gbc", $69C69, $69C89 - $69C69
 
-UnknownData_0x69C89:
+Unknown_0x69C89:
 INCBIN "baserom.gbc", $69C89, $69C92 - $69C89
 
 LoggedData_0x69C92:
 INCBIN "baserom.gbc", $69C92, $69CA0 - $69C92
 
-UnknownData_0x69CA0:
+Unknown_0x69CA0:
 INCBIN "baserom.gbc", $69CA0, $69CA1 - $69CA0
 
 LoggedData_0x69CA1:
 INCBIN "baserom.gbc", $69CA1, $69CAE - $69CA1
 
-UnknownData_0x69CAE:
+Unknown_0x69CAE:
 INCBIN "baserom.gbc", $69CAE, $69CB0 - $69CAE
 
 LoggedData_0x69CB0:
 INCBIN "baserom.gbc", $69CB0, $69D4D - $69CB0
 
-UnknownData_0x69D4D:
+Unknown_0x69D4D:
 INCBIN "baserom.gbc", $69D4D, $69D52 - $69D4D
 
 LoggedData_0x69D52:
 INCBIN "baserom.gbc", $69D52, $69D7C - $69D52
 
-UnknownData_0x69D7C:
+Unknown_0x69D7C:
 INCBIN "baserom.gbc", $69D7C, $69D85 - $69D7C
 
 LoggedData_0x69D85:
 INCBIN "baserom.gbc", $69D85, $69DCA - $69D85
 
-UnknownData_0x69DCA:
+Unknown_0x69DCA:
 INCBIN "baserom.gbc", $69DCA, $69DCB - $69DCA
 
 LoggedData_0x69DCB:
 INCBIN "baserom.gbc", $69DCB, $69DD0 - $69DCB
 
-UnknownData_0x69DD0:
+Unknown_0x69DD0:
 INCBIN "baserom.gbc", $69DD0, $69DD5 - $69DD0
 
 LoggedData_0x69DD5:
 INCBIN "baserom.gbc", $69DD5, $69DDB - $69DD5
 
-UnknownData_0x69DDB:
+Unknown_0x69DDB:
 INCBIN "baserom.gbc", $69DDB, $69DDE - $69DDB
 
 LoggedData_0x69DDE:
 INCBIN "baserom.gbc", $69DDE, $69DE4 - $69DDE
 
-UnknownData_0x69DE4:
+Unknown_0x69DE4:
 INCBIN "baserom.gbc", $69DE4, $69DE7 - $69DE4
 
 LoggedData_0x69DE7:
 INCBIN "baserom.gbc", $69DE7, $69DFF - $69DE7
 
-UnknownData_0x69DFF:
+Unknown_0x69DFF:
 INCBIN "baserom.gbc", $69DFF, $69E00 - $69DFF
 
 LoggedData_0x69E00:
 INCBIN "baserom.gbc", $69E00, $69E04 - $69E00
 
-UnknownData_0x69E04:
+Unknown_0x69E04:
 INCBIN "baserom.gbc", $69E04, $69E05 - $69E04
 
 LoggedData_0x69E05:
 INCBIN "baserom.gbc", $69E05, $69E5F - $69E05
 
-UnknownData_0x69E5F:
+Unknown_0x69E5F:
 INCBIN "baserom.gbc", $69E5F, $69E60 - $69E5F
 
 LoggedData_0x69E60:
 INCBIN "baserom.gbc", $69E60, $69E69 - $69E60
 
-UnknownData_0x69E69:
+Unknown_0x69E69:
 INCBIN "baserom.gbc", $69E69, $69E72 - $69E69
 
 LoggedData_0x69E72:
 INCBIN "baserom.gbc", $69E72, $69E9F - $69E72
 
-UnknownData_0x69E9F:
+Unknown_0x69E9F:
 INCBIN "baserom.gbc", $69E9F, $69EA0 - $69E9F
 
 LoggedData_0x69EA0:
 INCBIN "baserom.gbc", $69EA0, $69EB1 - $69EA0
 
-UnknownData_0x69EB1:
+Unknown_0x69EB1:
 INCBIN "baserom.gbc", $69EB1, $69EB2 - $69EB1
 
 LoggedData_0x69EB2:
 INCBIN "baserom.gbc", $69EB2, $69EC2 - $69EB2
 
-UnknownData_0x69EC2:
+Unknown_0x69EC2:
 INCBIN "baserom.gbc", $69EC2, $69F35 - $69EC2
 
 LoggedData_0x69F35:
 INCBIN "baserom.gbc", $69F35, $69F3F - $69F35
 
-UnknownData_0x69F3F:
+Unknown_0x69F3F:
 INCBIN "baserom.gbc", $69F3F, $69F40 - $69F3F
 
 LoggedData_0x69F40:
 INCBIN "baserom.gbc", $69F40, $69F4A - $69F40
 
-UnknownData_0x69F4A:
+Unknown_0x69F4A:
 INCBIN "baserom.gbc", $69F4A, $69F54 - $69F4A
 
 LoggedData_0x69F54:
 INCBIN "baserom.gbc", $69F54, $69F5C - $69F54
 
-UnknownData_0x69F5C:
+Unknown_0x69F5C:
 INCBIN "baserom.gbc", $69F5C, $69F5D - $69F5C
 
 LoggedData_0x69F5D:
 INCBIN "baserom.gbc", $69F5D, $69F81 - $69F5D
 
-UnknownData_0x69F81:
+Unknown_0x69F81:
 INCBIN "baserom.gbc", $69F81, $69F8A - $69F81
 
 LoggedData_0x69F8A:
 INCBIN "baserom.gbc", $69F8A, $69F92 - $69F8A
 
-UnknownData_0x69F92:
+Unknown_0x69F92:
 INCBIN "baserom.gbc", $69F92, $69F9A - $69F92
 
 LoggedData_0x69F9A:
 INCBIN "baserom.gbc", $69F9A, $69FAE - $69F9A
 
-UnknownData_0x69FAE:
+Unknown_0x69FAE:
 INCBIN "baserom.gbc", $69FAE, $69FBA - $69FAE
 
 LoggedData_0x69FBA:
 INCBIN "baserom.gbc", $69FBA, $69FCE - $69FBA
 
-UnknownData_0x69FCE:
+Unknown_0x69FCE:
 INCBIN "baserom.gbc", $69FCE, $69FCF - $69FCE
 
 LoggedData_0x69FCF:
 INCBIN "baserom.gbc", $69FCF, $69FDB - $69FCF
 
-UnknownData_0x69FDB:
+Unknown_0x69FDB:
 INCBIN "baserom.gbc", $69FDB, $69FDC - $69FDB
 
 LoggedData_0x69FDC:
 INCBIN "baserom.gbc", $69FDC, $69FFC - $69FDC
 
-UnknownData_0x69FFC:
+Unknown_0x69FFC:
 INCBIN "baserom.gbc", $69FFC, $69FFD - $69FFC
 
 LoggedData_0x69FFD:
 INCBIN "baserom.gbc", $69FFD, $69FFF - $69FFD
 
-UnknownData_0x69FFF:
+Unknown_0x69FFF:
 INCBIN "baserom.gbc", $69FFF, $6A000 - $69FFF
 
 LoggedData_0x6A000:
 INCBIN "baserom.gbc", $6A000, $6A00A - $6A000
 
-UnknownData_0x6A00A:
+Unknown_0x6A00A:
 INCBIN "baserom.gbc", $6A00A, $6A00B - $6A00A
 
 LoggedData_0x6A00B:
 INCBIN "baserom.gbc", $6A00B, $6A016 - $6A00B
 
-UnknownData_0x6A016:
+Unknown_0x6A016:
 INCBIN "baserom.gbc", $6A016, $6A017 - $6A016
 
 LoggedData_0x6A017:
 INCBIN "baserom.gbc", $6A017, $6A021 - $6A017
 
-UnknownData_0x6A021:
+Unknown_0x6A021:
 INCBIN "baserom.gbc", $6A021, $6A022 - $6A021
 
 LoggedData_0x6A022:
 INCBIN "baserom.gbc", $6A022, $6A02A - $6A022
 
-UnknownData_0x6A02A:
+Unknown_0x6A02A:
 INCBIN "baserom.gbc", $6A02A, $6A02B - $6A02A
 
 LoggedData_0x6A02B:
 INCBIN "baserom.gbc", $6A02B, $6A02D - $6A02B
 
-UnknownData_0x6A02D:
+Unknown_0x6A02D:
 INCBIN "baserom.gbc", $6A02D, $6A02E - $6A02D
 
 LoggedData_0x6A02E:
 INCBIN "baserom.gbc", $6A02E, $6A030 - $6A02E
 
-UnknownData_0x6A030:
+Unknown_0x6A030:
 INCBIN "baserom.gbc", $6A030, $6A031 - $6A030
 
 LoggedData_0x6A031:
 INCBIN "baserom.gbc", $6A031, $6A033 - $6A031
 
-UnknownData_0x6A033:
+Unknown_0x6A033:
 INCBIN "baserom.gbc", $6A033, $6A034 - $6A033
 
 LoggedData_0x6A034:
 INCBIN "baserom.gbc", $6A034, $6A036 - $6A034
 
-UnknownData_0x6A036:
+Unknown_0x6A036:
 INCBIN "baserom.gbc", $6A036, $6A037 - $6A036
 
 LoggedData_0x6A037:
 INCBIN "baserom.gbc", $6A037, $6A039 - $6A037
 
-UnknownData_0x6A039:
+Unknown_0x6A039:
 INCBIN "baserom.gbc", $6A039, $6A03A - $6A039
 
 LoggedData_0x6A03A:
 INCBIN "baserom.gbc", $6A03A, $6A042 - $6A03A
 
-UnknownData_0x6A042:
+Unknown_0x6A042:
 INCBIN "baserom.gbc", $6A042, $6A043 - $6A042
 
 LoggedData_0x6A043:
 INCBIN "baserom.gbc", $6A043, $6A045 - $6A043
 
-UnknownData_0x6A045:
+Unknown_0x6A045:
 INCBIN "baserom.gbc", $6A045, $6A046 - $6A045
 
 LoggedData_0x6A046:
 INCBIN "baserom.gbc", $6A046, $6A048 - $6A046
 
-UnknownData_0x6A048:
+Unknown_0x6A048:
 INCBIN "baserom.gbc", $6A048, $6A049 - $6A048
 
 LoggedData_0x6A049:
 INCBIN "baserom.gbc", $6A049, $6A04B - $6A049
 
-UnknownData_0x6A04B:
+Unknown_0x6A04B:
 INCBIN "baserom.gbc", $6A04B, $6A04C - $6A04B
 
 LoggedData_0x6A04C:
 INCBIN "baserom.gbc", $6A04C, $6A04E - $6A04C
 
-UnknownData_0x6A04E:
+Unknown_0x6A04E:
 INCBIN "baserom.gbc", $6A04E, $6A04F - $6A04E
 
 LoggedData_0x6A04F:
 INCBIN "baserom.gbc", $6A04F, $6A051 - $6A04F
 
-UnknownData_0x6A051:
+Unknown_0x6A051:
 INCBIN "baserom.gbc", $6A051, $6A052 - $6A051
 
 LoggedData_0x6A052:
 INCBIN "baserom.gbc", $6A052, $6A07E - $6A052
 
-UnknownData_0x6A07E:
+Unknown_0x6A07E:
 INCBIN "baserom.gbc", $6A07E, $6A07F - $6A07E
 
 LoggedData_0x6A07F:
 INCBIN "baserom.gbc", $6A07F, $6A083 - $6A07F
 
-UnknownData_0x6A083:
+Unknown_0x6A083:
 INCBIN "baserom.gbc", $6A083, $6A084 - $6A083
 
 LoggedData_0x6A084:
 INCBIN "baserom.gbc", $6A084, $6A091 - $6A084
 
-UnknownData_0x6A091:
+Unknown_0x6A091:
 INCBIN "baserom.gbc", $6A091, $6A092 - $6A091
 
 LoggedData_0x6A092:
 INCBIN "baserom.gbc", $6A092, $6A096 - $6A092
 
-UnknownData_0x6A096:
+Unknown_0x6A096:
 INCBIN "baserom.gbc", $6A096, $6A0B2 - $6A096
 
 LoggedData_0x6A0B2:
 INCBIN "baserom.gbc", $6A0B2, $6A0C2 - $6A0B2
 
-UnknownData_0x6A0C2:
+Unknown_0x6A0C2:
 INCBIN "baserom.gbc", $6A0C2, $6A0C3 - $6A0C2
 
 LoggedData_0x6A0C3:
 INCBIN "baserom.gbc", $6A0C3, $6A0C7 - $6A0C3
 
-UnknownData_0x6A0C7:
+Unknown_0x6A0C7:
 INCBIN "baserom.gbc", $6A0C7, $6A0C8 - $6A0C7
 
 LoggedData_0x6A0C8:
 INCBIN "baserom.gbc", $6A0C8, $6A0CE - $6A0C8
 
-UnknownData_0x6A0CE:
+Unknown_0x6A0CE:
 INCBIN "baserom.gbc", $6A0CE, $6A0CF - $6A0CE
 
 LoggedData_0x6A0CF:
 INCBIN "baserom.gbc", $6A0CF, $6A0D3 - $6A0CF
 
-UnknownData_0x6A0D3:
+Unknown_0x6A0D3:
 INCBIN "baserom.gbc", $6A0D3, $6A0D4 - $6A0D3
 
 LoggedData_0x6A0D4:
 INCBIN "baserom.gbc", $6A0D4, $6A0D7 - $6A0D4
 
-UnknownData_0x6A0D7:
+Unknown_0x6A0D7:
 INCBIN "baserom.gbc", $6A0D7, $6A0EF - $6A0D7
 
 LoggedData_0x6A0EF:
 INCBIN "baserom.gbc", $6A0EF, $6A0F1 - $6A0EF
 
-UnknownData_0x6A0F1:
+Unknown_0x6A0F1:
 INCBIN "baserom.gbc", $6A0F1, $6A0F2 - $6A0F1
 
 LoggedData_0x6A0F2:
 INCBIN "baserom.gbc", $6A0F2, $6A0F5 - $6A0F2
 
-UnknownData_0x6A0F5:
+Unknown_0x6A0F5:
 INCBIN "baserom.gbc", $6A0F5, $6A0FE - $6A0F5
 
 LoggedData_0x6A0FE:
 INCBIN "baserom.gbc", $6A0FE, $6A101 - $6A0FE
 
-UnknownData_0x6A101:
+Unknown_0x6A101:
 INCBIN "baserom.gbc", $6A101, $6A119 - $6A101
 
 LoggedData_0x6A119:
 INCBIN "baserom.gbc", $6A119, $6A11B - $6A119
 
-UnknownData_0x6A11B:
+Unknown_0x6A11B:
 INCBIN "baserom.gbc", $6A11B, $6A11C - $6A11B
 
 LoggedData_0x6A11C:
 INCBIN "baserom.gbc", $6A11C, $6A11F - $6A11C
 
-UnknownData_0x6A11F:
+Unknown_0x6A11F:
 INCBIN "baserom.gbc", $6A11F, $6A128 - $6A11F
 
 LoggedData_0x6A128:
 INCBIN "baserom.gbc", $6A128, $6A140 - $6A128
 
-UnknownData_0x6A140:
+Unknown_0x6A140:
 INCBIN "baserom.gbc", $6A140, $6A145 - $6A140
 
 LoggedData_0x6A145:
 INCBIN "baserom.gbc", $6A145, $6A14F - $6A145
 
-UnknownData_0x6A14F:
+Unknown_0x6A14F:
 INCBIN "baserom.gbc", $6A14F, $6C000 - $6A14F
 
 SECTION "Bank1B", ROMX, BANK[$1B]
 
-UnknownData_0x6C000:
+Unknown_0x6C000:
 INCBIN "baserom.gbc", $6C000, $70000 - $6C000
 
 SECTION "Bank1C", ROMX, BANK[$1C]
 
-UnknownData_0x70000:
+Unknown_0x70000:
 INCBIN "baserom.gbc", $70000, $74000 - $70000
 
 SECTION "Bank1D", ROMX, BANK[$1D]
 
-UnknownData_0x74000:
+Unknown_0x74000:
 INCBIN "baserom.gbc", $74000, $78000 - $74000
 
 SECTION "Bank1E", ROMX, BANK[$1E]
 
-UnknownData_0x78000:
+Unknown_0x78000:
 INCBIN "baserom.gbc", $78000, $7C000 - $78000
 
 SECTION "Bank1F", ROMX, BANK[$1F]
 
-UnknownData_0x7C000:
+Unknown_0x7C000:
 INCBIN "baserom.gbc", $7C000, $80000 - $7C000
 
 SECTION "Bank20", ROMX, BANK[$20]
@@ -108306,685 +108306,685 @@ SECTION "Bank20", ROMX, BANK[$20]
 LoggedData_0x80000:
 INCBIN "baserom.gbc", $80000, $80008 - $80000
 
-UnknownData_0x80008:
+Unknown_0x80008:
 INCBIN "baserom.gbc", $80008, $8000A - $80008
 
 LoggedData_0x8000A:
 INCBIN "baserom.gbc", $8000A, $8001A - $8000A
 
-UnknownData_0x8001A:
+Unknown_0x8001A:
 INCBIN "baserom.gbc", $8001A, $8001C - $8001A
 
 LoggedData_0x8001C:
 INCBIN "baserom.gbc", $8001C, $8002A - $8001C
 
-UnknownData_0x8002A:
+Unknown_0x8002A:
 INCBIN "baserom.gbc", $8002A, $8002C - $8002A
 
 LoggedData_0x8002C:
 INCBIN "baserom.gbc", $8002C, $8003A - $8002C
 
-UnknownData_0x8003A:
+Unknown_0x8003A:
 INCBIN "baserom.gbc", $8003A, $8003C - $8003A
 
 LoggedData_0x8003C:
 INCBIN "baserom.gbc", $8003C, $80054 - $8003C
 
-UnknownData_0x80054:
+Unknown_0x80054:
 INCBIN "baserom.gbc", $80054, $80056 - $80054
 
 LoggedData_0x80056:
 INCBIN "baserom.gbc", $80056, $80066 - $80056
 
-UnknownData_0x80066:
+Unknown_0x80066:
 INCBIN "baserom.gbc", $80066, $80068 - $80066
 
 LoggedData_0x80068:
 INCBIN "baserom.gbc", $80068, $80076 - $80068
 
-UnknownData_0x80076:
+Unknown_0x80076:
 INCBIN "baserom.gbc", $80076, $80078 - $80076
 
 LoggedData_0x80078:
 INCBIN "baserom.gbc", $80078, $80086 - $80078
 
-UnknownData_0x80086:
+Unknown_0x80086:
 INCBIN "baserom.gbc", $80086, $80088 - $80086
 
 LoggedData_0x80088:
 INCBIN "baserom.gbc", $80088, $80098 - $80088
 
-UnknownData_0x80098:
+Unknown_0x80098:
 INCBIN "baserom.gbc", $80098, $8009A - $80098
 
 LoggedData_0x8009A:
 INCBIN "baserom.gbc", $8009A, $8009E - $8009A
 
-UnknownData_0x8009E:
+Unknown_0x8009E:
 INCBIN "baserom.gbc", $8009E, $8009F - $8009E
 
 LoggedData_0x8009F:
 INCBIN "baserom.gbc", $8009F, $800A3 - $8009F
 
-UnknownData_0x800A3:
+Unknown_0x800A3:
 INCBIN "baserom.gbc", $800A3, $800A4 - $800A3
 
 LoggedData_0x800A4:
 INCBIN "baserom.gbc", $800A4, $800A8 - $800A4
 
-UnknownData_0x800A8:
+Unknown_0x800A8:
 INCBIN "baserom.gbc", $800A8, $800A9 - $800A8
 
 LoggedData_0x800A9:
 INCBIN "baserom.gbc", $800A9, $800AD - $800A9
 
-UnknownData_0x800AD:
+Unknown_0x800AD:
 INCBIN "baserom.gbc", $800AD, $800AE - $800AD
 
 LoggedData_0x800AE:
 INCBIN "baserom.gbc", $800AE, $800B2 - $800AE
 
-UnknownData_0x800B2:
+Unknown_0x800B2:
 INCBIN "baserom.gbc", $800B2, $800B3 - $800B2
 
 LoggedData_0x800B3:
 INCBIN "baserom.gbc", $800B3, $800B7 - $800B3
 
-UnknownData_0x800B7:
+Unknown_0x800B7:
 INCBIN "baserom.gbc", $800B7, $800B8 - $800B7
 
 LoggedData_0x800B8:
 INCBIN "baserom.gbc", $800B8, $800BC - $800B8
 
-UnknownData_0x800BC:
+Unknown_0x800BC:
 INCBIN "baserom.gbc", $800BC, $800BD - $800BC
 
 LoggedData_0x800BD:
 INCBIN "baserom.gbc", $800BD, $800C1 - $800BD
 
-UnknownData_0x800C1:
+Unknown_0x800C1:
 INCBIN "baserom.gbc", $800C1, $800C4 - $800C1
 
 LoggedData_0x800C4:
 INCBIN "baserom.gbc", $800C4, $800C8 - $800C4
 
-UnknownData_0x800C8:
+Unknown_0x800C8:
 INCBIN "baserom.gbc", $800C8, $800C9 - $800C8
 
 LoggedData_0x800C9:
 INCBIN "baserom.gbc", $800C9, $800CD - $800C9
 
-UnknownData_0x800CD:
+Unknown_0x800CD:
 INCBIN "baserom.gbc", $800CD, $800CE - $800CD
 
 LoggedData_0x800CE:
 INCBIN "baserom.gbc", $800CE, $800D2 - $800CE
 
-UnknownData_0x800D2:
+Unknown_0x800D2:
 INCBIN "baserom.gbc", $800D2, $800D3 - $800D2
 
 LoggedData_0x800D3:
 INCBIN "baserom.gbc", $800D3, $800D7 - $800D3
 
-UnknownData_0x800D7:
+Unknown_0x800D7:
 INCBIN "baserom.gbc", $800D7, $800D8 - $800D7
 
 LoggedData_0x800D8:
 INCBIN "baserom.gbc", $800D8, $800DC - $800D8
 
-UnknownData_0x800DC:
+Unknown_0x800DC:
 INCBIN "baserom.gbc", $800DC, $800DD - $800DC
 
 LoggedData_0x800DD:
 INCBIN "baserom.gbc", $800DD, $800E1 - $800DD
 
-UnknownData_0x800E1:
+Unknown_0x800E1:
 INCBIN "baserom.gbc", $800E1, $800E2 - $800E1
 
 LoggedData_0x800E2:
 INCBIN "baserom.gbc", $800E2, $800E6 - $800E2
 
-UnknownData_0x800E6:
+Unknown_0x800E6:
 INCBIN "baserom.gbc", $800E6, $800E9 - $800E6
 
 LoggedData_0x800E9:
 INCBIN "baserom.gbc", $800E9, $800ED - $800E9
 
-UnknownData_0x800ED:
+Unknown_0x800ED:
 INCBIN "baserom.gbc", $800ED, $800EE - $800ED
 
 LoggedData_0x800EE:
 INCBIN "baserom.gbc", $800EE, $800F2 - $800EE
 
-UnknownData_0x800F2:
+Unknown_0x800F2:
 INCBIN "baserom.gbc", $800F2, $800F3 - $800F2
 
 LoggedData_0x800F3:
 INCBIN "baserom.gbc", $800F3, $800F7 - $800F3
 
-UnknownData_0x800F7:
+Unknown_0x800F7:
 INCBIN "baserom.gbc", $800F7, $800F8 - $800F7
 
 LoggedData_0x800F8:
 INCBIN "baserom.gbc", $800F8, $800FC - $800F8
 
-UnknownData_0x800FC:
+Unknown_0x800FC:
 INCBIN "baserom.gbc", $800FC, $800FD - $800FC
 
 LoggedData_0x800FD:
 INCBIN "baserom.gbc", $800FD, $80101 - $800FD
 
-UnknownData_0x80101:
+Unknown_0x80101:
 INCBIN "baserom.gbc", $80101, $80102 - $80101
 
 LoggedData_0x80102:
 INCBIN "baserom.gbc", $80102, $80106 - $80102
 
-UnknownData_0x80106:
+Unknown_0x80106:
 INCBIN "baserom.gbc", $80106, $80107 - $80106
 
 LoggedData_0x80107:
 INCBIN "baserom.gbc", $80107, $8010B - $80107
 
-UnknownData_0x8010B:
+Unknown_0x8010B:
 INCBIN "baserom.gbc", $8010B, $8010E - $8010B
 
 LoggedData_0x8010E:
 INCBIN "baserom.gbc", $8010E, $80112 - $8010E
 
-UnknownData_0x80112:
+Unknown_0x80112:
 INCBIN "baserom.gbc", $80112, $80113 - $80112
 
 LoggedData_0x80113:
 INCBIN "baserom.gbc", $80113, $80117 - $80113
 
-UnknownData_0x80117:
+Unknown_0x80117:
 INCBIN "baserom.gbc", $80117, $80118 - $80117
 
 LoggedData_0x80118:
 INCBIN "baserom.gbc", $80118, $8011C - $80118
 
-UnknownData_0x8011C:
+Unknown_0x8011C:
 INCBIN "baserom.gbc", $8011C, $8011D - $8011C
 
 LoggedData_0x8011D:
 INCBIN "baserom.gbc", $8011D, $80121 - $8011D
 
-UnknownData_0x80121:
+Unknown_0x80121:
 INCBIN "baserom.gbc", $80121, $80122 - $80121
 
 LoggedData_0x80122:
 INCBIN "baserom.gbc", $80122, $80126 - $80122
 
-UnknownData_0x80126:
+Unknown_0x80126:
 INCBIN "baserom.gbc", $80126, $80127 - $80126
 
 LoggedData_0x80127:
 INCBIN "baserom.gbc", $80127, $8012B - $80127
 
-UnknownData_0x8012B:
+Unknown_0x8012B:
 INCBIN "baserom.gbc", $8012B, $8012C - $8012B
 
 LoggedData_0x8012C:
 INCBIN "baserom.gbc", $8012C, $80130 - $8012C
 
-UnknownData_0x80130:
+Unknown_0x80130:
 INCBIN "baserom.gbc", $80130, $80131 - $80130
 
 LoggedData_0x80131:
 INCBIN "baserom.gbc", $80131, $80135 - $80131
 
-UnknownData_0x80135:
+Unknown_0x80135:
 INCBIN "baserom.gbc", $80135, $80136 - $80135
 
 LoggedData_0x80136:
 INCBIN "baserom.gbc", $80136, $8015E - $80136
 
-UnknownData_0x8015E:
+Unknown_0x8015E:
 INCBIN "baserom.gbc", $8015E, $80176 - $8015E
 
 LoggedData_0x80176:
 INCBIN "baserom.gbc", $80176, $80196 - $80176
 
-UnknownData_0x80196:
+Unknown_0x80196:
 INCBIN "baserom.gbc", $80196, $801B6 - $80196
 
 LoggedData_0x801B6:
 INCBIN "baserom.gbc", $801B6, $801D6 - $801B6
 
-UnknownData_0x801D6:
+Unknown_0x801D6:
 INCBIN "baserom.gbc", $801D6, $801F6 - $801D6
 
 LoggedData_0x801F6:
 INCBIN "baserom.gbc", $801F6, $8021A - $801F6
 
-UnknownData_0x8021A:
+Unknown_0x8021A:
 INCBIN "baserom.gbc", $8021A, $80236 - $8021A
 
 LoggedData_0x80236:
 INCBIN "baserom.gbc", $80236, $80246 - $80236
 
-UnknownData_0x80246:
+Unknown_0x80246:
 INCBIN "baserom.gbc", $80246, $80247 - $80246
 
 LoggedData_0x80247:
 INCBIN "baserom.gbc", $80247, $80248 - $80247
 
-UnknownData_0x80248:
+Unknown_0x80248:
 INCBIN "baserom.gbc", $80248, $8024B - $80248
 
 LoggedData_0x8024B:
 INCBIN "baserom.gbc", $8024B, $8024C - $8024B
 
-UnknownData_0x8024C:
+Unknown_0x8024C:
 INCBIN "baserom.gbc", $8024C, $8024E - $8024C
 
 LoggedData_0x8024E:
 INCBIN "baserom.gbc", $8024E, $8024F - $8024E
 
-UnknownData_0x8024F:
+Unknown_0x8024F:
 INCBIN "baserom.gbc", $8024F, $80251 - $8024F
 
 LoggedData_0x80251:
 INCBIN "baserom.gbc", $80251, $80253 - $80251
 
-UnknownData_0x80253:
+Unknown_0x80253:
 INCBIN "baserom.gbc", $80253, $80255 - $80253
 
 LoggedData_0x80255:
 INCBIN "baserom.gbc", $80255, $80256 - $80255
 
-UnknownData_0x80256:
+Unknown_0x80256:
 INCBIN "baserom.gbc", $80256, $80257 - $80256
 
 LoggedData_0x80257:
 INCBIN "baserom.gbc", $80257, $80259 - $80257
 
-UnknownData_0x80259:
+Unknown_0x80259:
 INCBIN "baserom.gbc", $80259, $8025B - $80259
 
 LoggedData_0x8025B:
 INCBIN "baserom.gbc", $8025B, $8025D - $8025B
 
-UnknownData_0x8025D:
+Unknown_0x8025D:
 INCBIN "baserom.gbc", $8025D, $8025E - $8025D
 
 LoggedData_0x8025E:
 INCBIN "baserom.gbc", $8025E, $80260 - $8025E
 
-UnknownData_0x80260:
+Unknown_0x80260:
 INCBIN "baserom.gbc", $80260, $80261 - $80260
 
 LoggedData_0x80261:
 INCBIN "baserom.gbc", $80261, $80264 - $80261
 
-UnknownData_0x80264:
+Unknown_0x80264:
 INCBIN "baserom.gbc", $80264, $80265 - $80264
 
 LoggedData_0x80265:
 INCBIN "baserom.gbc", $80265, $80267 - $80265
 
-UnknownData_0x80267:
+Unknown_0x80267:
 INCBIN "baserom.gbc", $80267, $80269 - $80267
 
 LoggedData_0x80269:
 INCBIN "baserom.gbc", $80269, $8026B - $80269
 
-UnknownData_0x8026B:
+Unknown_0x8026B:
 INCBIN "baserom.gbc", $8026B, $8026D - $8026B
 
 LoggedData_0x8026D:
 INCBIN "baserom.gbc", $8026D, $80270 - $8026D
 
-UnknownData_0x80270:
+Unknown_0x80270:
 INCBIN "baserom.gbc", $80270, $80272 - $80270
 
 LoggedData_0x80272:
 INCBIN "baserom.gbc", $80272, $80274 - $80272
 
-UnknownData_0x80274:
+Unknown_0x80274:
 INCBIN "baserom.gbc", $80274, $80277 - $80274
 
 LoggedData_0x80277:
 INCBIN "baserom.gbc", $80277, $80278 - $80277
 
-UnknownData_0x80278:
+Unknown_0x80278:
 INCBIN "baserom.gbc", $80278, $8027B - $80278
 
 LoggedData_0x8027B:
 INCBIN "baserom.gbc", $8027B, $8027C - $8027B
 
-UnknownData_0x8027C:
+Unknown_0x8027C:
 INCBIN "baserom.gbc", $8027C, $8027E - $8027C
 
 LoggedData_0x8027E:
 INCBIN "baserom.gbc", $8027E, $8027F - $8027E
 
-UnknownData_0x8027F:
+Unknown_0x8027F:
 INCBIN "baserom.gbc", $8027F, $80280 - $8027F
 
 LoggedData_0x80280:
 INCBIN "baserom.gbc", $80280, $80283 - $80280
 
-UnknownData_0x80283:
+Unknown_0x80283:
 INCBIN "baserom.gbc", $80283, $80284 - $80283
 
 LoggedData_0x80284:
 INCBIN "baserom.gbc", $80284, $80286 - $80284
 
-UnknownData_0x80286:
+Unknown_0x80286:
 INCBIN "baserom.gbc", $80286, $80287 - $80286
 
 LoggedData_0x80287:
 INCBIN "baserom.gbc", $80287, $80289 - $80287
 
-UnknownData_0x80289:
+Unknown_0x80289:
 INCBIN "baserom.gbc", $80289, $8028B - $80289
 
 LoggedData_0x8028B:
 INCBIN "baserom.gbc", $8028B, $8028D - $8028B
 
-UnknownData_0x8028D:
+Unknown_0x8028D:
 INCBIN "baserom.gbc", $8028D, $8028F - $8028D
 
 LoggedData_0x8028F:
 INCBIN "baserom.gbc", $8028F, $80292 - $8028F
 
-UnknownData_0x80292:
+Unknown_0x80292:
 INCBIN "baserom.gbc", $80292, $80293 - $80292
 
 LoggedData_0x80293:
 INCBIN "baserom.gbc", $80293, $80298 - $80293
 
-UnknownData_0x80298:
+Unknown_0x80298:
 INCBIN "baserom.gbc", $80298, $80299 - $80298
 
 LoggedData_0x80299:
 INCBIN "baserom.gbc", $80299, $8029C - $80299
 
-UnknownData_0x8029C:
+Unknown_0x8029C:
 INCBIN "baserom.gbc", $8029C, $8029D - $8029C
 
 LoggedData_0x8029D:
 INCBIN "baserom.gbc", $8029D, $8029E - $8029D
 
-UnknownData_0x8029E:
+Unknown_0x8029E:
 INCBIN "baserom.gbc", $8029E, $802A0 - $8029E
 
 LoggedData_0x802A0:
 INCBIN "baserom.gbc", $802A0, $802A2 - $802A0
 
-UnknownData_0x802A2:
+Unknown_0x802A2:
 INCBIN "baserom.gbc", $802A2, $802A4 - $802A2
 
 LoggedData_0x802A4:
 INCBIN "baserom.gbc", $802A4, $802A6 - $802A4
 
-UnknownData_0x802A6:
+Unknown_0x802A6:
 INCBIN "baserom.gbc", $802A6, $802A8 - $802A6
 
 LoggedData_0x802A8:
 INCBIN "baserom.gbc", $802A8, $802A9 - $802A8
 
-UnknownData_0x802A9:
+Unknown_0x802A9:
 INCBIN "baserom.gbc", $802A9, $802AC - $802A9
 
 LoggedData_0x802AC:
 INCBIN "baserom.gbc", $802AC, $802AD - $802AC
 
-UnknownData_0x802AD:
+Unknown_0x802AD:
 INCBIN "baserom.gbc", $802AD, $802AF - $802AD
 
 LoggedData_0x802AF:
 INCBIN "baserom.gbc", $802AF, $802B0 - $802AF
 
-UnknownData_0x802B0:
+Unknown_0x802B0:
 INCBIN "baserom.gbc", $802B0, $802B3 - $802B0
 
 LoggedData_0x802B3:
 INCBIN "baserom.gbc", $802B3, $802B4 - $802B3
 
-UnknownData_0x802B4:
+Unknown_0x802B4:
 INCBIN "baserom.gbc", $802B4, $802B6 - $802B4
 
 LoggedData_0x802B6:
 INCBIN "baserom.gbc", $802B6, $802B8 - $802B6
 
-UnknownData_0x802B8:
+Unknown_0x802B8:
 INCBIN "baserom.gbc", $802B8, $802BA - $802B8
 
 LoggedData_0x802BA:
 INCBIN "baserom.gbc", $802BA, $802BC - $802BA
 
-UnknownData_0x802BC:
+Unknown_0x802BC:
 INCBIN "baserom.gbc", $802BC, $802BE - $802BC
 
 LoggedData_0x802BE:
 INCBIN "baserom.gbc", $802BE, $802C9 - $802BE
 
-UnknownData_0x802C9:
+Unknown_0x802C9:
 INCBIN "baserom.gbc", $802C9, $802CA - $802C9
 
 LoggedData_0x802CA:
 INCBIN "baserom.gbc", $802CA, $802CD - $802CA
 
-UnknownData_0x802CD:
+Unknown_0x802CD:
 INCBIN "baserom.gbc", $802CD, $802CF - $802CD
 
 LoggedData_0x802CF:
 INCBIN "baserom.gbc", $802CF, $802D0 - $802CF
 
-UnknownData_0x802D0:
+Unknown_0x802D0:
 INCBIN "baserom.gbc", $802D0, $802D3 - $802D0
 
 LoggedData_0x802D3:
 INCBIN "baserom.gbc", $802D3, $802D4 - $802D3
 
-UnknownData_0x802D4:
+Unknown_0x802D4:
 INCBIN "baserom.gbc", $802D4, $802D7 - $802D4
 
 LoggedData_0x802D7:
 INCBIN "baserom.gbc", $802D7, $802D8 - $802D7
 
-UnknownData_0x802D8:
+Unknown_0x802D8:
 INCBIN "baserom.gbc", $802D8, $802DB - $802D8
 
 LoggedData_0x802DB:
 INCBIN "baserom.gbc", $802DB, $802DC - $802DB
 
-UnknownData_0x802DC:
+Unknown_0x802DC:
 INCBIN "baserom.gbc", $802DC, $802DF - $802DC
 
 LoggedData_0x802DF:
 INCBIN "baserom.gbc", $802DF, $802E0 - $802DF
 
-UnknownData_0x802E0:
+Unknown_0x802E0:
 INCBIN "baserom.gbc", $802E0, $802E3 - $802E0
 
 LoggedData_0x802E3:
 INCBIN "baserom.gbc", $802E3, $802E4 - $802E3
 
-UnknownData_0x802E4:
+Unknown_0x802E4:
 INCBIN "baserom.gbc", $802E4, $802E7 - $802E4
 
 LoggedData_0x802E7:
 INCBIN "baserom.gbc", $802E7, $802EA - $802E7
 
-UnknownData_0x802EA:
+Unknown_0x802EA:
 INCBIN "baserom.gbc", $802EA, $802EB - $802EA
 
 LoggedData_0x802EB:
 INCBIN "baserom.gbc", $802EB, $802EE - $802EB
 
-UnknownData_0x802EE:
+Unknown_0x802EE:
 INCBIN "baserom.gbc", $802EE, $802EF - $802EE
 
 LoggedData_0x802EF:
 INCBIN "baserom.gbc", $802EF, $802F1 - $802EF
 
-UnknownData_0x802F1:
+Unknown_0x802F1:
 INCBIN "baserom.gbc", $802F1, $802F3 - $802F1
 
 LoggedData_0x802F3:
 INCBIN "baserom.gbc", $802F3, $802F5 - $802F3
 
-UnknownData_0x802F5:
+Unknown_0x802F5:
 INCBIN "baserom.gbc", $802F5, $802F7 - $802F5
 
 LoggedData_0x802F7:
 INCBIN "baserom.gbc", $802F7, $802F9 - $802F7
 
-UnknownData_0x802F9:
+Unknown_0x802F9:
 INCBIN "baserom.gbc", $802F9, $802FB - $802F9
 
 LoggedData_0x802FB:
 INCBIN "baserom.gbc", $802FB, $802FD - $802FB
 
-UnknownData_0x802FD:
+Unknown_0x802FD:
 INCBIN "baserom.gbc", $802FD, $80300 - $802FD
 
 LoggedData_0x80300:
 INCBIN "baserom.gbc", $80300, $80302 - $80300
 
-UnknownData_0x80302:
+Unknown_0x80302:
 INCBIN "baserom.gbc", $80302, $80304 - $80302
 
 LoggedData_0x80304:
 INCBIN "baserom.gbc", $80304, $80306 - $80304
 
-UnknownData_0x80306:
+Unknown_0x80306:
 INCBIN "baserom.gbc", $80306, $80308 - $80306
 
 LoggedData_0x80308:
 INCBIN "baserom.gbc", $80308, $80309 - $80308
 
-UnknownData_0x80309:
+Unknown_0x80309:
 INCBIN "baserom.gbc", $80309, $8030C - $80309
 
 LoggedData_0x8030C:
 INCBIN "baserom.gbc", $8030C, $8030D - $8030C
 
-UnknownData_0x8030D:
+Unknown_0x8030D:
 INCBIN "baserom.gbc", $8030D, $80311 - $8030D
 
 LoggedData_0x80311:
 INCBIN "baserom.gbc", $80311, $80312 - $80311
 
-UnknownData_0x80312:
+Unknown_0x80312:
 INCBIN "baserom.gbc", $80312, $80315 - $80312
 
 LoggedData_0x80315:
 INCBIN "baserom.gbc", $80315, $80318 - $80315
 
-UnknownData_0x80318:
+Unknown_0x80318:
 INCBIN "baserom.gbc", $80318, $80319 - $80318
 
 LoggedData_0x80319:
 INCBIN "baserom.gbc", $80319, $8031C - $80319
 
-UnknownData_0x8031C:
+Unknown_0x8031C:
 INCBIN "baserom.gbc", $8031C, $8031D - $8031C
 
 LoggedData_0x8031D:
 INCBIN "baserom.gbc", $8031D, $80326 - $8031D
 
-UnknownData_0x80326:
+Unknown_0x80326:
 INCBIN "baserom.gbc", $80326, $80327 - $80326
 
 LoggedData_0x80327:
 INCBIN "baserom.gbc", $80327, $80328 - $80327
 
-UnknownData_0x80328:
+Unknown_0x80328:
 INCBIN "baserom.gbc", $80328, $8032B - $80328
 
 LoggedData_0x8032B:
 INCBIN "baserom.gbc", $8032B, $8032C - $8032B
 
-UnknownData_0x8032C:
+Unknown_0x8032C:
 INCBIN "baserom.gbc", $8032C, $8032E - $8032C
 
 LoggedData_0x8032E:
 INCBIN "baserom.gbc", $8032E, $8032F - $8032E
 
-UnknownData_0x8032F:
+Unknown_0x8032F:
 INCBIN "baserom.gbc", $8032F, $80332 - $8032F
 
 LoggedData_0x80332:
 INCBIN "baserom.gbc", $80332, $80333 - $80332
 
-UnknownData_0x80333:
+Unknown_0x80333:
 INCBIN "baserom.gbc", $80333, $80337 - $80333
 
 LoggedData_0x80337:
 INCBIN "baserom.gbc", $80337, $80338 - $80337
 
-UnknownData_0x80338:
+Unknown_0x80338:
 INCBIN "baserom.gbc", $80338, $8033B - $80338
 
 LoggedData_0x8033B:
 INCBIN "baserom.gbc", $8033B, $8033C - $8033B
 
-UnknownData_0x8033C:
+Unknown_0x8033C:
 INCBIN "baserom.gbc", $8033C, $8033E - $8033C
 
 LoggedData_0x8033E:
 INCBIN "baserom.gbc", $8033E, $8033F - $8033E
 
-UnknownData_0x8033F:
+Unknown_0x8033F:
 INCBIN "baserom.gbc", $8033F, $80342 - $8033F
 
 LoggedData_0x80342:
 INCBIN "baserom.gbc", $80342, $80343 - $80342
 
-UnknownData_0x80343:
+Unknown_0x80343:
 INCBIN "baserom.gbc", $80343, $80347 - $80343
 
 LoggedData_0x80347:
 INCBIN "baserom.gbc", $80347, $80348 - $80347
 
-UnknownData_0x80348:
+Unknown_0x80348:
 INCBIN "baserom.gbc", $80348, $8034B - $80348
 
 LoggedData_0x8034B:
 INCBIN "baserom.gbc", $8034B, $8034C - $8034B
 
-UnknownData_0x8034C:
+Unknown_0x8034C:
 INCBIN "baserom.gbc", $8034C, $8034E - $8034C
 
 LoggedData_0x8034E:
 INCBIN "baserom.gbc", $8034E, $8034F - $8034E
 
-UnknownData_0x8034F:
+Unknown_0x8034F:
 INCBIN "baserom.gbc", $8034F, $80352 - $8034F
 
 LoggedData_0x80352:
 INCBIN "baserom.gbc", $80352, $80353 - $80352
 
-UnknownData_0x80353:
+Unknown_0x80353:
 INCBIN "baserom.gbc", $80353, $80357 - $80353
 
 LoggedData_0x80357:
 INCBIN "baserom.gbc", $80357, $80358 - $80357
 
-UnknownData_0x80358:
+Unknown_0x80358:
 INCBIN "baserom.gbc", $80358, $8035B - $80358
 
 LoggedData_0x8035B:
 INCBIN "baserom.gbc", $8035B, $8035C - $8035B
 
-UnknownData_0x8035C:
+Unknown_0x8035C:
 INCBIN "baserom.gbc", $8035C, $8035E - $8035C
 
 LoggedData_0x8035E:
 INCBIN "baserom.gbc", $8035E, $8035F - $8035E
 
-UnknownData_0x8035F:
+Unknown_0x8035F:
 INCBIN "baserom.gbc", $8035F, $80362 - $8035F
 
 LoggedData_0x80362:
 INCBIN "baserom.gbc", $80362, $80363 - $80362
 
-UnknownData_0x80363:
+Unknown_0x80363:
 INCBIN "baserom.gbc", $80363, $80366 - $80363
 
 Logged_0x80366:
@@ -110223,7 +110223,7 @@ Unknown_0x80CA2:
 Logged_0x80CB1:
 	ld hl,RAMCode_0x80CBD
 	ld de,$C200
-	ld b,UnknownData_0x80D5C - RAMCode_0x80CBD
+	ld b,Unknown_0x80D5C - RAMCode_0x80CBD
 	call MemCopy_DE_HL
 	ret
 
@@ -110318,7 +110318,7 @@ Unknown_0x80D1B:
 	ld a,$CC
 	jp $FFE8
 
-UnknownData_0x80D5C:
+Unknown_0x80D5C:
 INCBIN "baserom.gbc", $80D5C, $80D6C - $80D5C
 
 Logged_0x80D6C:
@@ -111074,7 +111074,7 @@ Logged_0x81240:
 	jr z,Logged_0x81269
 	xor a
 	ld [$C09C],a
-	ld hl,$C09B
+	ld hl,wGameState
 	inc [hl]
 	scf
 	ret
@@ -111137,7 +111137,7 @@ Logged_0x8129F:
 LoggedData_0x812AC:
 INCBIN "baserom.gbc", $812AC, $812B1 - $812AC
 
-UnknownData_0x812B1:
+Unknown_0x812B1:
 INCBIN "baserom.gbc", $812B1, $812C0 - $812B1
 
 Logged_0x812C0:
@@ -111362,7 +111362,7 @@ Logged_0x8142D:
 	ld [$D0E4],a
 	ret
 
-UnknownData_0x8143D:
+Unknown_0x8143D:
 INCBIN "baserom.gbc", $8143D, $81477 - $8143D
 
 Logged_0x81477:
@@ -111828,7 +111828,7 @@ Logged_0x817A3:
 	set 1,[hl]
 	ret
 
-UnknownData_0x817B1:
+Unknown_0x817B1:
 INCBIN "baserom.gbc", $817B1, $817D7 - $817B1
 
 Logged_0x817D7:
@@ -112230,13 +112230,13 @@ Logged_0x81B13:
 	ld [$D027],a
 	ret
 
-UnknownData_0x81B2B:
+Unknown_0x81B2B:
 INCBIN "baserom.gbc", $81B2B, $81B2D - $81B2B
 
 LoggedData_0x81B2D:
 INCBIN "baserom.gbc", $81B2D, $81BE1 - $81B2D
 
-UnknownData_0x81BE1:
+Unknown_0x81BE1:
 INCBIN "baserom.gbc", $81BE1, $81BE2 - $81BE1
 
 LoggedData_0x81BE2:
@@ -112522,7 +112522,7 @@ Logged_0x81FB4:
 	ld [$D076],a
 	ret
 
-UnknownData_0x81FB8:
+Unknown_0x81FB8:
 INCBIN "baserom.gbc", $81FB8, $81FB9 - $81FB8
 
 Logged_0x81FB9:
@@ -112599,7 +112599,7 @@ Logged_0x82012:
 LoggedData_0x82024:
 INCBIN "baserom.gbc", $82024, $82026 - $82024
 
-UnknownData_0x82026:
+Unknown_0x82026:
 INCBIN "baserom.gbc", $82026, $8202C - $82026
 
 Logged_0x8202C:
@@ -113201,7 +113201,7 @@ Unknown_0x823F0:
 	ld [$D068],a
 	ret
 
-UnknownData_0x823F8:
+Unknown_0x823F8:
 INCBIN "baserom.gbc", $823F8, $82400 - $823F8
 
 Logged_0x82400:
@@ -113356,7 +113356,7 @@ Logged_0x824D4:
 LoggedData_0x824DE:
 INCBIN "baserom.gbc", $824DE, $824E6 - $824DE
 
-UnknownData_0x824E6:
+Unknown_0x824E6:
 INCBIN "baserom.gbc", $824E6, $824E8 - $824E6
 
 LoggedData_0x824E8:
@@ -113690,7 +113690,7 @@ Logged_0x826F6:
 	ld [$D0B9],a
 	ret
 
-UnknownData_0x82729:
+Unknown_0x82729:
 INCBIN "baserom.gbc", $82729, $82761 - $82729
 
 Logged_0x82761:
@@ -114519,7 +114519,7 @@ Logged_0x82CB0:
 	ret nz
 	jp Logged_0x82C22
 
-UnknownData_0x82CB8:
+Unknown_0x82CB8:
 INCBIN "baserom.gbc", $82CB8, $84000 - $82CB8
 
 SECTION "Bank21", ROMX, BANK[$21]
@@ -114527,19 +114527,19 @@ SECTION "Bank21", ROMX, BANK[$21]
 LoggedData_0x84000:
 INCBIN "baserom.gbc", $84000, $848C0 - $84000
 
-UnknownData_0x848C0:
+Unknown_0x848C0:
 INCBIN "baserom.gbc", $848C0, $848E0 - $848C0
 
 LoggedData_0x848E0:
 INCBIN "baserom.gbc", $848E0, $848F0 - $848E0
 
-UnknownData_0x848F0:
+Unknown_0x848F0:
 INCBIN "baserom.gbc", $848F0, $84900 - $848F0
 
 LoggedData_0x84900:
 INCBIN "baserom.gbc", $84900, $84A00 - $84900
 
-UnknownData_0x84A00:
+Unknown_0x84A00:
 INCBIN "baserom.gbc", $84A00, $84A20 - $84A00
 
 LoggedData_0x84A20:
@@ -114591,7 +114591,7 @@ Logged_0x84A87:
 	inc [hl]
 	ret
 
-UnknownData_0x84A8E:
+Unknown_0x84A8E:
 INCBIN "baserom.gbc", $84A8E, $84A97 - $84A8E
 
 Logged_0x84A97:
@@ -115329,7 +115329,7 @@ Logged_0x84FBE:
 	call MemCopy_DE_HL
 	ret
 
-UnknownData_0x84FD5:
+Unknown_0x84FD5:
 INCBIN "baserom.gbc", $84FD5, $84FEA - $84FD5
 
 Logged_0x84FEA:
@@ -115708,7 +115708,7 @@ Logged_0x852D8:
 	rl c
 	ret
 
-UnknownData_0x852DD:
+Unknown_0x852DD:
 INCBIN "baserom.gbc", $852DD, $852DF - $852DD
 
 LoggedData_0x852DF:
@@ -116118,139 +116118,139 @@ Logged_0x85502:
 LoggedData_0x8550B:
 INCBIN "baserom.gbc", $8550B, $856A8 - $8550B
 
-UnknownData_0x856A8:
+Unknown_0x856A8:
 INCBIN "baserom.gbc", $856A8, $856B7 - $856A8
 
 LoggedData_0x856B7:
 INCBIN "baserom.gbc", $856B7, $856BB - $856B7
 
-UnknownData_0x856BB:
+Unknown_0x856BB:
 INCBIN "baserom.gbc", $856BB, $856C9 - $856BB
 
 LoggedData_0x856C9:
 INCBIN "baserom.gbc", $856C9, $856DB - $856C9
 
-UnknownData_0x856DB:
+Unknown_0x856DB:
 INCBIN "baserom.gbc", $856DB, $856E9 - $856DB
 
 LoggedData_0x856E9:
 INCBIN "baserom.gbc", $856E9, $856FB - $856E9
 
-UnknownData_0x856FB:
+Unknown_0x856FB:
 INCBIN "baserom.gbc", $856FB, $85709 - $856FB
 
 LoggedData_0x85709:
 INCBIN "baserom.gbc", $85709, $8571B - $85709
 
-UnknownData_0x8571B:
+Unknown_0x8571B:
 INCBIN "baserom.gbc", $8571B, $85729 - $8571B
 
 LoggedData_0x85729:
 INCBIN "baserom.gbc", $85729, $8573B - $85729
 
-UnknownData_0x8573B:
+Unknown_0x8573B:
 INCBIN "baserom.gbc", $8573B, $85757 - $8573B
 
 LoggedData_0x85757:
 INCBIN "baserom.gbc", $85757, $8575B - $85757
 
-UnknownData_0x8575B:
+Unknown_0x8575B:
 INCBIN "baserom.gbc", $8575B, $85769 - $8575B
 
 LoggedData_0x85769:
 INCBIN "baserom.gbc", $85769, $8577B - $85769
 
-UnknownData_0x8577B:
+Unknown_0x8577B:
 INCBIN "baserom.gbc", $8577B, $85789 - $8577B
 
 LoggedData_0x85789:
 INCBIN "baserom.gbc", $85789, $8579B - $85789
 
-UnknownData_0x8579B:
+Unknown_0x8579B:
 INCBIN "baserom.gbc", $8579B, $857A9 - $8579B
 
 LoggedData_0x857A9:
 INCBIN "baserom.gbc", $857A9, $857BB - $857A9
 
-UnknownData_0x857BB:
+Unknown_0x857BB:
 INCBIN "baserom.gbc", $857BB, $857C9 - $857BB
 
 LoggedData_0x857C9:
 INCBIN "baserom.gbc", $857C9, $857DB - $857C9
 
-UnknownData_0x857DB:
+Unknown_0x857DB:
 INCBIN "baserom.gbc", $857DB, $857F7 - $857DB
 
 LoggedData_0x857F7:
 INCBIN "baserom.gbc", $857F7, $85888 - $857F7
 
-UnknownData_0x85888:
+Unknown_0x85888:
 INCBIN "baserom.gbc", $85888, $85897 - $85888
 
 LoggedData_0x85897:
 INCBIN "baserom.gbc", $85897, $85928 - $85897
 
-UnknownData_0x85928:
+Unknown_0x85928:
 INCBIN "baserom.gbc", $85928, $85937 - $85928
 
 LoggedData_0x85937:
 INCBIN "baserom.gbc", $85937, $8593B - $85937
 
-UnknownData_0x8593B:
+Unknown_0x8593B:
 INCBIN "baserom.gbc", $8593B, $85949 - $8593B
 
 LoggedData_0x85949:
 INCBIN "baserom.gbc", $85949, $8595B - $85949
 
-UnknownData_0x8595B:
+Unknown_0x8595B:
 INCBIN "baserom.gbc", $8595B, $85969 - $8595B
 
 LoggedData_0x85969:
 INCBIN "baserom.gbc", $85969, $8597B - $85969
 
-UnknownData_0x8597B:
+Unknown_0x8597B:
 INCBIN "baserom.gbc", $8597B, $85989 - $8597B
 
 LoggedData_0x85989:
 INCBIN "baserom.gbc", $85989, $8599B - $85989
 
-UnknownData_0x8599B:
+Unknown_0x8599B:
 INCBIN "baserom.gbc", $8599B, $859A9 - $8599B
 
 LoggedData_0x859A9:
 INCBIN "baserom.gbc", $859A9, $859BB - $859A9
 
-UnknownData_0x859BB:
+Unknown_0x859BB:
 INCBIN "baserom.gbc", $859BB, $859D7 - $859BB
 
 LoggedData_0x859D7:
 INCBIN "baserom.gbc", $859D7, $859DB - $859D7
 
-UnknownData_0x859DB:
+Unknown_0x859DB:
 INCBIN "baserom.gbc", $859DB, $859E9 - $859DB
 
 LoggedData_0x859E9:
 INCBIN "baserom.gbc", $859E9, $859FB - $859E9
 
-UnknownData_0x859FB:
+Unknown_0x859FB:
 INCBIN "baserom.gbc", $859FB, $85A09 - $859FB
 
 LoggedData_0x85A09:
 INCBIN "baserom.gbc", $85A09, $85A1B - $85A09
 
-UnknownData_0x85A1B:
+Unknown_0x85A1B:
 INCBIN "baserom.gbc", $85A1B, $85A29 - $85A1B
 
 LoggedData_0x85A29:
 INCBIN "baserom.gbc", $85A29, $85A3B - $85A29
 
-UnknownData_0x85A3B:
+Unknown_0x85A3B:
 INCBIN "baserom.gbc", $85A3B, $85A49 - $85A3B
 
 LoggedData_0x85A49:
 INCBIN "baserom.gbc", $85A49, $85A5B - $85A49
 
-UnknownData_0x85A5B:
+Unknown_0x85A5B:
 INCBIN "baserom.gbc", $85A5B, $85A68 - $85A5B
 
 Logged_0x85A68:
@@ -116357,7 +116357,7 @@ Logged_0x85ACB:
 LoggedData_0x85AF4:
 INCBIN "baserom.gbc", $85AF4, $86B5D - $85AF4
 
-UnknownData_0x86B5D:
+Unknown_0x86B5D:
 INCBIN "baserom.gbc", $86B5D, $88000 - $86B5D
 
 SECTION "Bank22", ROMX, BANK[$22]
@@ -116365,7 +116365,7 @@ SECTION "Bank22", ROMX, BANK[$22]
 LoggedData_0x88000:
 INCBIN "baserom.gbc", $88000, $8B91E - $88000
 
-UnknownData_0x8B91E:
+Unknown_0x8B91E:
 INCBIN "baserom.gbc", $8B91E, $8C000 - $8B91E
 
 SECTION "Bank23", ROMX, BANK[$23]
@@ -116373,23 +116373,23 @@ SECTION "Bank23", ROMX, BANK[$23]
 LoggedData_0x8C000:
 INCBIN "baserom.gbc", $8C000, $8EA1A - $8C000
 
-UnknownData_0x8EA1A:
+Unknown_0x8EA1A:
 INCBIN "baserom.gbc", $8EA1A, $90000 - $8EA1A
 
 SECTION "Bank24", ROMX, BANK[$24]
 
-UnknownData_0x90000:
+Unknown_0x90000:
 INCBIN "baserom.gbc", $90000, $94000 - $90000
 
 SECTION "Bank25", ROMX, BANK[$25]
 
-UnknownData_0x94000:
+Unknown_0x94000:
 INCBIN "baserom.gbc", $94000, $94E00 - $94000
 
 LoggedData_0x94E00:
 INCBIN "baserom.gbc", $94E00, $94F00 - $94E00
 
-UnknownData_0x94F00:
+Unknown_0x94F00:
 INCBIN "baserom.gbc", $94F00, $98000 - $94F00
 
 SECTION "Bank26", ROMX, BANK[$26]
@@ -116397,7 +116397,7 @@ SECTION "Bank26", ROMX, BANK[$26]
 LoggedData_0x98000:
 INCBIN "baserom.gbc", $98000, $99AC0 - $98000
 
-UnknownData_0x99AC0:
+Unknown_0x99AC0:
 INCBIN "baserom.gbc", $99AC0, $99AE0 - $99AC0
 
 LoggedData_0x99AE0:
@@ -116984,7 +116984,7 @@ Logged_0x9A78E:
 LoggedData_0x9A7A2:
 INCBIN "baserom.gbc", $9A7A2, $9A7A3 - $9A7A2
 
-UnknownData_0x9A7A3:
+Unknown_0x9A7A3:
 INCBIN "baserom.gbc", $9A7A3, $9A7A4 - $9A7A3
 
 LoggedData_0x9A7A4:
@@ -117165,61 +117165,61 @@ Logged_0x9A8D8:
 LoggedData_0x9A8E0:
 INCBIN "baserom.gbc", $9A8E0, $9A8E4 - $9A8E0
 
-UnknownData_0x9A8E4:
+Unknown_0x9A8E4:
 INCBIN "baserom.gbc", $9A8E4, $9A8E8 - $9A8E4
 
 LoggedData_0x9A8E8:
 INCBIN "baserom.gbc", $9A8E8, $9A8F1 - $9A8E8
 
-UnknownData_0x9A8F1:
+Unknown_0x9A8F1:
 INCBIN "baserom.gbc", $9A8F1, $9A8F7 - $9A8F1
 
 LoggedData_0x9A8F7:
 INCBIN "baserom.gbc", $9A8F7, $9A8FB - $9A8F7
 
-UnknownData_0x9A8FB:
+Unknown_0x9A8FB:
 INCBIN "baserom.gbc", $9A8FB, $9A8FF - $9A8FB
 
 LoggedData_0x9A8FF:
 INCBIN "baserom.gbc", $9A8FF, $9A901 - $9A8FF
 
-UnknownData_0x9A901:
+Unknown_0x9A901:
 INCBIN "baserom.gbc", $9A901, $9A909 - $9A901
 
 LoggedData_0x9A909:
 INCBIN "baserom.gbc", $9A909, $9A90F - $9A909
 
-UnknownData_0x9A90F:
+Unknown_0x9A90F:
 INCBIN "baserom.gbc", $9A90F, $9A913 - $9A90F
 
 LoggedData_0x9A913:
 INCBIN "baserom.gbc", $9A913, $9A923 - $9A913
 
-UnknownData_0x9A923:
+Unknown_0x9A923:
 INCBIN "baserom.gbc", $9A923, $9A92B - $9A923
 
 LoggedData_0x9A92B:
 INCBIN "baserom.gbc", $9A92B, $9A92D - $9A92B
 
-UnknownData_0x9A92D:
+Unknown_0x9A92D:
 INCBIN "baserom.gbc", $9A92D, $9A9BE - $9A92D
 
 LoggedData_0x9A9BE:
 INCBIN "baserom.gbc", $9A9BE, $9A9C0 - $9A9BE
 
-UnknownData_0x9A9C0:
+Unknown_0x9A9C0:
 INCBIN "baserom.gbc", $9A9C0, $9A9C8 - $9A9C0
 
 LoggedData_0x9A9C8:
 INCBIN "baserom.gbc", $9A9C8, $9A9CA - $9A9C8
 
-UnknownData_0x9A9CA:
+Unknown_0x9A9CA:
 INCBIN "baserom.gbc", $9A9CA, $9A9E2 - $9A9CA
 
 LoggedData_0x9A9E2:
 INCBIN "baserom.gbc", $9A9E2, $9A9EB - $9A9E2
 
-UnknownData_0x9A9EB:
+Unknown_0x9A9EB:
 INCBIN "baserom.gbc", $9A9EB, $9A9EC - $9A9EB
 
 Logged_0x9A9EC:
@@ -117236,7 +117236,7 @@ Logged_0x9A9F7:
 	call Logged_0x3A00
 	ret
 
-UnknownData_0x9A9FD:
+Unknown_0x9A9FD:
 INCBIN "baserom.gbc", $9A9FD, $9AA0D - $9A9FD
 
 Logged_0x9AA0D:
@@ -117277,7 +117277,7 @@ Logged_0x9AA56:
 	call Logged_0x9A9F7
 	ret
 
-UnknownData_0x9AA60:
+Unknown_0x9AA60:
 INCBIN "baserom.gbc", $9AA60, $9AA6C - $9AA60
 
 Logged_0x9AA6C:
@@ -117525,49 +117525,49 @@ Logged_0x9ABEB:
 LoggedData_0x9ABF7:
 INCBIN "baserom.gbc", $9ABF7, $9AC6D - $9ABF7
 
-UnknownData_0x9AC6D:
+Unknown_0x9AC6D:
 INCBIN "baserom.gbc", $9AC6D, $9AC6F - $9AC6D
 
 LoggedData_0x9AC6F:
 INCBIN "baserom.gbc", $9AC6F, $9AC73 - $9AC6F
 
-UnknownData_0x9AC73:
+Unknown_0x9AC73:
 INCBIN "baserom.gbc", $9AC73, $9AC75 - $9AC73
 
 LoggedData_0x9AC75:
 INCBIN "baserom.gbc", $9AC75, $9ACCD - $9AC75
 
-UnknownData_0x9ACCD:
+Unknown_0x9ACCD:
 INCBIN "baserom.gbc", $9ACCD, $9ACD2 - $9ACCD
 
 LoggedData_0x9ACD2:
 INCBIN "baserom.gbc", $9ACD2, $9ACDC - $9ACD2
 
-UnknownData_0x9ACDC:
+Unknown_0x9ACDC:
 INCBIN "baserom.gbc", $9ACDC, $9ACE1 - $9ACDC
 
 LoggedData_0x9ACE1:
 INCBIN "baserom.gbc", $9ACE1, $9ACF7 - $9ACE1
 
-UnknownData_0x9ACF7:
+Unknown_0x9ACF7:
 INCBIN "baserom.gbc", $9ACF7, $9ACFC - $9ACF7
 
 LoggedData_0x9ACFC:
 INCBIN "baserom.gbc", $9ACFC, $9AD00 - $9ACFC
 
-UnknownData_0x9AD00:
+Unknown_0x9AD00:
 INCBIN "baserom.gbc", $9AD00, $9AD05 - $9AD00
 
 LoggedData_0x9AD05:
 INCBIN "baserom.gbc", $9AD05, $9AD85 - $9AD05
 
-UnknownData_0x9AD85:
+Unknown_0x9AD85:
 INCBIN "baserom.gbc", $9AD85, $9AE45 - $9AD85
 
 LoggedData_0x9AE45:
 INCBIN "baserom.gbc", $9AE45, $9AE4D - $9AE45
 
-UnknownData_0x9AE4D:
+Unknown_0x9AE4D:
 INCBIN "baserom.gbc", $9AE4D, $9C000 - $9AE4D
 
 SECTION "Bank27", ROMX, BANK[$27]
@@ -121531,7 +121531,7 @@ Logged_0x9DC16:
 	ld a,[hl]
 	ret
 
-UnknownData_0x9DC1F:
+Unknown_0x9DC1F:
 INCBIN "baserom.gbc", $9DC1F, $9DC20 - $9DC1F
 
 LoggedData_0x9DC20:
@@ -122436,13 +122436,13 @@ Logged_0x9E1FC:
 	ld a,[hl]
 	ret
 
-UnknownData_0x9E205:
+Unknown_0x9E205:
 INCBIN "baserom.gbc", $9E205, $9E206 - $9E205
 
 LoggedData_0x9E206:
 INCBIN "baserom.gbc", $9E206, $9E230 - $9E206
 
-UnknownData_0x9E230:
+Unknown_0x9E230:
 INCBIN "baserom.gbc", $9E230, $9E231 - $9E230
 
 Logged_0x9E231:
@@ -126113,7 +126113,7 @@ Logged_0x9FC85:
 LoggedData_0x9FC8B:
 INCBIN "baserom.gbc", $9FC8B, $9FCAB - $9FC8B
 
-UnknownData_0x9FCAB:
+Unknown_0x9FCAB:
 INCBIN "baserom.gbc", $9FCAB, $A0000 - $9FCAB
 
 SECTION "Bank28", ROMX, BANK[$28]
@@ -126121,7 +126121,7 @@ SECTION "Bank28", ROMX, BANK[$28]
 LoggedData_0xA0000:
 INCBIN "baserom.gbc", $A0000, $A36CE - $A0000
 
-UnknownData_0xA36CE:
+Unknown_0xA36CE:
 INCBIN "baserom.gbc", $A36CE, $A4000 - $A36CE
 
 SECTION "Bank29", ROMX, BANK[$29]
@@ -126129,7 +126129,7 @@ SECTION "Bank29", ROMX, BANK[$29]
 LoggedData_0xA4000:
 INCBIN "baserom.gbc", $A4000, $A796D - $A4000
 
-UnknownData_0xA796D:
+Unknown_0xA796D:
 INCBIN "baserom.gbc", $A796D, $A8000 - $A796D
 
 SECTION "Bank2A", ROMX, BANK[$2A]
@@ -126137,283 +126137,283 @@ SECTION "Bank2A", ROMX, BANK[$2A]
 LoggedData_0xA8000:
 INCBIN "baserom.gbc", $A8000, $A80C4 - $A8000
 
-UnknownData_0xA80C4:
+Unknown_0xA80C4:
 INCBIN "baserom.gbc", $A80C4, $A80DA - $A80C4
 
 LoggedData_0xA80DA:
 INCBIN "baserom.gbc", $A80DA, $A80F8 - $A80DA
 
-UnknownData_0xA80F8:
+Unknown_0xA80F8:
 INCBIN "baserom.gbc", $A80F8, $A8100 - $A80F8
 
 LoggedData_0xA8100:
 INCBIN "baserom.gbc", $A8100, $A8482 - $A8100
 
-UnknownData_0xA8482:
+Unknown_0xA8482:
 INCBIN "baserom.gbc", $A8482, $A8505 - $A8482
 
 LoggedData_0xA8505:
 INCBIN "baserom.gbc", $A8505, $A856C - $A8505
 
-UnknownData_0xA856C:
+Unknown_0xA856C:
 INCBIN "baserom.gbc", $A856C, $A8590 - $A856C
 
 LoggedData_0xA8590:
 INCBIN "baserom.gbc", $A8590, $A86C3 - $A8590
 
-UnknownData_0xA86C3:
+Unknown_0xA86C3:
 INCBIN "baserom.gbc", $A86C3, $A86DA - $A86C3
 
 LoggedData_0xA86DA:
 INCBIN "baserom.gbc", $A86DA, $A87B9 - $A86DA
 
-UnknownData_0xA87B9:
+Unknown_0xA87B9:
 INCBIN "baserom.gbc", $A87B9, $A87D2 - $A87B9
 
 LoggedData_0xA87D2:
 INCBIN "baserom.gbc", $A87D2, $A88FA - $A87D2
 
-UnknownData_0xA88FA:
+Unknown_0xA88FA:
 INCBIN "baserom.gbc", $A88FA, $A88FC - $A88FA
 
 LoggedData_0xA88FC:
 INCBIN "baserom.gbc", $A88FC, $A8916 - $A88FC
 
-UnknownData_0xA8916:
+Unknown_0xA8916:
 INCBIN "baserom.gbc", $A8916, $A8918 - $A8916
 
 LoggedData_0xA8918:
 INCBIN "baserom.gbc", $A8918, $A8CE8 - $A8918
 
-UnknownData_0xA8CE8:
+Unknown_0xA8CE8:
 INCBIN "baserom.gbc", $A8CE8, $A8CF9 - $A8CE8
 
 LoggedData_0xA8CF9:
 INCBIN "baserom.gbc", $A8CF9, $A8D92 - $A8CF9
 
-UnknownData_0xA8D92:
+Unknown_0xA8D92:
 INCBIN "baserom.gbc", $A8D92, $A8D9F - $A8D92
 
 LoggedData_0xA8D9F:
 INCBIN "baserom.gbc", $A8D9F, $A8F37 - $A8D9F
 
-UnknownData_0xA8F37:
+Unknown_0xA8F37:
 INCBIN "baserom.gbc", $A8F37, $A8F3A - $A8F37
 
 LoggedData_0xA8F3A:
 INCBIN "baserom.gbc", $A8F3A, $A8F54 - $A8F3A
 
-UnknownData_0xA8F54:
+Unknown_0xA8F54:
 INCBIN "baserom.gbc", $A8F54, $A8F57 - $A8F54
 
 LoggedData_0xA8F57:
 INCBIN "baserom.gbc", $A8F57, $A90B2 - $A8F57
 
-UnknownData_0xA90B2:
+Unknown_0xA90B2:
 INCBIN "baserom.gbc", $A90B2, $A90EB - $A90B2
 
 LoggedData_0xA90EB:
 INCBIN "baserom.gbc", $A90EB, $A91F9 - $A90EB
 
-UnknownData_0xA91F9:
+Unknown_0xA91F9:
 INCBIN "baserom.gbc", $A91F9, $A91FF - $A91F9
 
 LoggedData_0xA91FF:
 INCBIN "baserom.gbc", $A91FF, $A958F - $A91FF
 
-UnknownData_0xA958F:
+Unknown_0xA958F:
 INCBIN "baserom.gbc", $A958F, $A959E - $A958F
 
 LoggedData_0xA959E:
 INCBIN "baserom.gbc", $A959E, $A9711 - $A959E
 
-UnknownData_0xA9711:
+Unknown_0xA9711:
 INCBIN "baserom.gbc", $A9711, $A974A - $A9711
 
 LoggedData_0xA974A:
 INCBIN "baserom.gbc", $A974A, $A9824 - $A974A
 
-UnknownData_0xA9824:
+Unknown_0xA9824:
 INCBIN "baserom.gbc", $A9824, $A982E - $A9824
 
 LoggedData_0xA982E:
 INCBIN "baserom.gbc", $A982E, $A99A6 - $A982E
 
-UnknownData_0xA99A6:
+Unknown_0xA99A6:
 INCBIN "baserom.gbc", $A99A6, $A99E7 - $A99A6
 
 LoggedData_0xA99E7:
 INCBIN "baserom.gbc", $A99E7, $A9E81 - $A99E7
 
-UnknownData_0xA9E81:
+Unknown_0xA9E81:
 INCBIN "baserom.gbc", $A9E81, $A9E8C - $A9E81
 
 LoggedData_0xA9E8C:
 INCBIN "baserom.gbc", $A9E8C, $A9EA9 - $A9E8C
 
-UnknownData_0xA9EA9:
+Unknown_0xA9EA9:
 INCBIN "baserom.gbc", $A9EA9, $A9EAA - $A9EA9
 
 LoggedData_0xA9EAA:
 INCBIN "baserom.gbc", $A9EAA, $A9FF2 - $A9EAA
 
-UnknownData_0xA9FF2:
+Unknown_0xA9FF2:
 INCBIN "baserom.gbc", $A9FF2, $A9FF6 - $A9FF2
 
 LoggedData_0xA9FF6:
 INCBIN "baserom.gbc", $A9FF6, $A9FFA - $A9FF6
 
-UnknownData_0xA9FFA:
+Unknown_0xA9FFA:
 INCBIN "baserom.gbc", $A9FFA, $A9FFE - $A9FFA
 
 LoggedData_0xA9FFE:
 INCBIN "baserom.gbc", $A9FFE, $AA000 - $A9FFE
 
-UnknownData_0xAA000:
+Unknown_0xAA000:
 INCBIN "baserom.gbc", $AA000, $AA004 - $AA000
 
 LoggedData_0xAA004:
 INCBIN "baserom.gbc", $AA004, $AA04C - $AA004
 
-UnknownData_0xAA04C:
+Unknown_0xAA04C:
 INCBIN "baserom.gbc", $AA04C, $AA056 - $AA04C
 
 LoggedData_0xAA056:
 INCBIN "baserom.gbc", $AA056, $AA068 - $AA056
 
-UnknownData_0xAA068:
+Unknown_0xAA068:
 INCBIN "baserom.gbc", $AA068, $AA072 - $AA068
 
 LoggedData_0xAA072:
 INCBIN "baserom.gbc", $AA072, $AA077 - $AA072
 
-UnknownData_0xAA077:
+Unknown_0xAA077:
 INCBIN "baserom.gbc", $AA077, $AA091 - $AA077
 
 LoggedData_0xAA091:
 INCBIN "baserom.gbc", $AA091, $AA0A0 - $AA091
 
-UnknownData_0xAA0A0:
+Unknown_0xAA0A0:
 INCBIN "baserom.gbc", $AA0A0, $AA0A3 - $AA0A0
 
 LoggedData_0xAA0A3:
 INCBIN "baserom.gbc", $AA0A3, $AA0A6 - $AA0A3
 
-UnknownData_0xAA0A6:
+Unknown_0xAA0A6:
 INCBIN "baserom.gbc", $AA0A6, $AA0B1 - $AA0A6
 
 LoggedData_0xAA0B1:
 INCBIN "baserom.gbc", $AA0B1, $AA0B9 - $AA0B1
 
-UnknownData_0xAA0B9:
+Unknown_0xAA0B9:
 INCBIN "baserom.gbc", $AA0B9, $AA0BC - $AA0B9
 
 LoggedData_0xAA0BC:
 INCBIN "baserom.gbc", $AA0BC, $AA0C6 - $AA0BC
 
-UnknownData_0xAA0C6:
+Unknown_0xAA0C6:
 INCBIN "baserom.gbc", $AA0C6, $AA0CF - $AA0C6
 
 LoggedData_0xAA0CF:
 INCBIN "baserom.gbc", $AA0CF, $AA0E3 - $AA0CF
 
-UnknownData_0xAA0E3:
+Unknown_0xAA0E3:
 INCBIN "baserom.gbc", $AA0E3, $AA10B - $AA0E3
 
 LoggedData_0xAA10B:
 INCBIN "baserom.gbc", $AA10B, $AA10D - $AA10B
 
-UnknownData_0xAA10D:
+Unknown_0xAA10D:
 INCBIN "baserom.gbc", $AA10D, $AA10F - $AA10D
 
 LoggedData_0xAA10F:
 INCBIN "baserom.gbc", $AA10F, $AA113 - $AA10F
 
-UnknownData_0xAA113:
+Unknown_0xAA113:
 INCBIN "baserom.gbc", $AA113, $AA11F - $AA113
 
 LoggedData_0xAA11F:
 INCBIN "baserom.gbc", $AA11F, $AA167 - $AA11F
 
-UnknownData_0xAA167:
+Unknown_0xAA167:
 INCBIN "baserom.gbc", $AA167, $AA21B - $AA167
 
 LoggedData_0xAA21B:
 INCBIN "baserom.gbc", $AA21B, $AA220 - $AA21B
 
-UnknownData_0xAA220:
+Unknown_0xAA220:
 INCBIN "baserom.gbc", $AA220, $AA225 - $AA220
 
 LoggedData_0xAA225:
 INCBIN "baserom.gbc", $AA225, $AA22F - $AA225
 
-UnknownData_0xAA22F:
+Unknown_0xAA22F:
 INCBIN "baserom.gbc", $AA22F, $AA24D - $AA22F
 
 LoggedData_0xAA24D:
 INCBIN "baserom.gbc", $AA24D, $AA255 - $AA24D
 
-UnknownData_0xAA255:
+Unknown_0xAA255:
 INCBIN "baserom.gbc", $AA255, $AA25E - $AA255
 
 LoggedData_0xAA25E:
 INCBIN "baserom.gbc", $AA25E, $AA26D - $AA25E
 
-UnknownData_0xAA26D:
+Unknown_0xAA26D:
 INCBIN "baserom.gbc", $AA26D, $AA329 - $AA26D
 
 LoggedData_0xAA329:
 INCBIN "baserom.gbc", $AA329, $AA33D - $AA329
 
-UnknownData_0xAA33D:
+Unknown_0xAA33D:
 INCBIN "baserom.gbc", $AA33D, $AA33F - $AA33D
 
 LoggedData_0xAA33F:
 INCBIN "baserom.gbc", $AA33F, $AA3AB - $AA33F
 
-UnknownData_0xAA3AB:
+Unknown_0xAA3AB:
 INCBIN "baserom.gbc", $AA3AB, $AA3B4 - $AA3AB
 
 LoggedData_0xAA3B4:
 INCBIN "baserom.gbc", $AA3B4, $AA5E9 - $AA3B4
 
-UnknownData_0xAA5E9:
+Unknown_0xAA5E9:
 INCBIN "baserom.gbc", $AA5E9, $AA5F5 - $AA5E9
 
 LoggedData_0xAA5F5:
 INCBIN "baserom.gbc", $AA5F5, $AA5FB - $AA5F5
 
-UnknownData_0xAA5FB:
+Unknown_0xAA5FB:
 INCBIN "baserom.gbc", $AA5FB, $AA5FE - $AA5FB
 
 LoggedData_0xAA5FE:
 INCBIN "baserom.gbc", $AA5FE, $AA90C - $AA5FE
 
-UnknownData_0xAA90C:
+Unknown_0xAA90C:
 INCBIN "baserom.gbc", $AA90C, $AA90D - $AA90C
 
 LoggedData_0xAA90D:
 INCBIN "baserom.gbc", $AA90D, $AA910 - $AA90D
 
-UnknownData_0xAA910:
+Unknown_0xAA910:
 INCBIN "baserom.gbc", $AA910, $AA913 - $AA910
 
 LoggedData_0xAA913:
 INCBIN "baserom.gbc", $AA913, $AB095 - $AA913
 
-UnknownData_0xAB095:
+Unknown_0xAB095:
 INCBIN "baserom.gbc", $AB095, $AB098 - $AB095
 
 LoggedData_0xAB098:
 INCBIN "baserom.gbc", $AB098, $AB0AC - $AB098
 
-UnknownData_0xAB0AC:
+Unknown_0xAB0AC:
 INCBIN "baserom.gbc", $AB0AC, $AB0C5 - $AB0AC
 
 LoggedData_0xAB0C5:
 INCBIN "baserom.gbc", $AB0C5, $AB16A - $AB0C5
 
-UnknownData_0xAB16A:
+Unknown_0xAB16A:
 INCBIN "baserom.gbc", $AB16A, $AC000 - $AB16A
 
 SECTION "Bank2B", ROMX, BANK[$2B]
@@ -126484,7 +126484,7 @@ Logged_0xAC04C:
 	ld b,$57
 	jp Logged_0x3A00
 
-UnknownData_0xAC051:
+Unknown_0xAC051:
 INCBIN "baserom.gbc", $AC051, $AC056 - $AC051
 
 Logged_0xAC056:
@@ -126574,7 +126574,7 @@ Logged_0xAC0F5:
 	ld de,$697D
 	jp Logged_0xAC04C
 
-UnknownData_0xAC0FB:
+Unknown_0xAC0FB:
 INCBIN "baserom.gbc", $AC0FB, $AC100 - $AC0FB
 
 Logged_0xAC100:
@@ -126582,7 +126582,7 @@ Logged_0xAC100:
 	jr nz,Logged_0xAC0F5
 	jr Logged_0xAC0B6
 
-UnknownData_0xAC107:
+Unknown_0xAC107:
 INCBIN "baserom.gbc", $AC107, $AC11C - $AC107
 
 Logged_0xAC11C:
@@ -126922,7 +126922,7 @@ Logged_0xAC306:
 	dw Logged_0xAC3B7
 	dw Logged_0xAC3BC
 
-UnknownData_0xAC330:
+Unknown_0xAC330:
 INCBIN "baserom.gbc", $AC32E, $AC331 - $AC32E
 
 Logged_0xAC331:
@@ -126941,7 +126941,7 @@ Logged_0xAC343:
 	ld de,$6813
 	jp Logged_0xAC047
 
-UnknownData_0xAC34C:
+Unknown_0xAC34C:
 INCBIN "baserom.gbc", $AC34C, $AC358 - $AC34C
 
 Logged_0xAC358:
@@ -127032,7 +127032,7 @@ Logged_0xAC3C4:
 	ld b,$63
 	jp Logged_0x3A00
 
-UnknownData_0xAC3CC:
+Unknown_0xAC3CC:
 INCBIN "baserom.gbc", $AC3CC, $AC3D1 - $AC3CC
 
 Logged_0xAC3D1:
@@ -127801,7 +127801,7 @@ Logged_0xAC8B2:
 	ld de,$4316
 	jp Logged_0xAC5F8
 
-UnknownData_0xAC8B8:
+Unknown_0xAC8B8:
 INCBIN "baserom.gbc", $AC8B8, $AC8D4 - $AC8B8
 
 Logged_0xAC8D4:
@@ -127906,7 +127906,7 @@ Logged_0xAC930:
 LoggedData_0xAC962:
 INCBIN "baserom.gbc", $AC962, $AC9B6 - $AC962
 
-UnknownData_0xAC9B6:
+Unknown_0xAC9B6:
 INCBIN "baserom.gbc", $AC9B6, $AC9B7 - $AC9B6
 
 Unknown_0xAC9B7:
@@ -127960,7 +127960,7 @@ Logged_0xAC9EE:
 LoggedData_0xAC9F5:
 INCBIN "baserom.gbc", $AC9F5, $AC9FA - $AC9F5
 
-UnknownData_0xAC9FA:
+Unknown_0xAC9FA:
 INCBIN "baserom.gbc", $AC9FA, $AC9FF - $AC9FA
 
 LoggedData_0xAC9FF:
@@ -127977,7 +127977,7 @@ Logged_0xACA09:
 	call MemCopy_DE_HL
 	ret
 
-UnknownData_0xACA20:
+Unknown_0xACA20:
 INCBIN "baserom.gbc", $ACA20, $ACA25 - $ACA20
 
 Logged_0xACA25:
@@ -128033,7 +128033,7 @@ Logged_0xACA63:
 	dec [hl]
 	ret
 
-UnknownData_0xACA68:
+Unknown_0xACA68:
 INCBIN "baserom.gbc", $ACA68, $ACA6D - $ACA68
 
 Logged_0xACA6D:
@@ -128905,7 +128905,7 @@ Logged_0xAD01D:
 	ld [$FF00+$B6],a
 	xor a
 	ld [$C09C],a
-	ld hl,$C09B
+	ld hl,wGameState
 	inc [hl]
 	scf
 	ret
@@ -130372,13 +130372,13 @@ Logged_0xADA4A:
 LoggedData_0xADA6E:
 INCBIN "baserom.gbc", $ADA6E, $ADA71 - $ADA6E
 
-UnknownData_0xADA71:
+Unknown_0xADA71:
 INCBIN "baserom.gbc", $ADA71, $ADA72 - $ADA71
 
 LoggedData_0xADA72:
 INCBIN "baserom.gbc", $ADA72, $ADA75 - $ADA72
 
-UnknownData_0xADA75:
+Unknown_0xADA75:
 INCBIN "baserom.gbc", $ADA75, $ADA76 - $ADA75
 
 Logged_0xADA76:
@@ -130848,7 +130848,7 @@ Logged_0xADD93:
 	ld [$D00F],a
 	xor a
 	ld [$C09C],a
-	ld hl,$C09B
+	ld hl,wGameState
 	inc [hl]
 	ret
 
@@ -130881,7 +130881,7 @@ Unknown_0xADDC0:
 LoggedData_0xADDC9:
 INCBIN "baserom.gbc", $ADDC9, $ADE09 - $ADDC9
 
-UnknownData_0xADE09:
+Unknown_0xADE09:
 INCBIN "baserom.gbc", $ADE09, $ADE0B - $ADE09
 
 LoggedData_0xADE0B:
@@ -131868,7 +131868,7 @@ Logged_0xAE4C8:
 	ld a,[hl]
 	ret
 
-UnknownData_0xAE4D1:
+Unknown_0xAE4D1:
 INCBIN "baserom.gbc", $AE4D1, $AE4D2 - $AE4D1
 
 LoggedData_0xAE4D2:
@@ -131899,7 +131899,7 @@ Logged_0xAE4FE:
 	ld b,[hl]
 	ret
 
-UnknownData_0xAE509:
+Unknown_0xAE509:
 INCBIN "baserom.gbc", $AE509, $AE50A - $AE509
 
 LoggedData_0xAE50A:
@@ -131945,7 +131945,7 @@ Logged_0xAE540:
 	ld [$D143],a
 	ret
 
-UnknownData_0xAE54B:
+Unknown_0xAE54B:
 INCBIN "baserom.gbc", $AE54B, $AE54C - $AE54B
 
 LoggedData_0xAE54C:
@@ -133200,7 +133200,7 @@ Logged_0xAECFC:
 	ld de,$6D6D
 	jr Logged_0xAECF5
 
-UnknownData_0xAED01:
+Unknown_0xAED01:
 INCBIN "baserom.gbc", $AED01, $AED06 - $AED01
 
 LoggedData_0xAED06:
@@ -133406,7 +133406,7 @@ Logged_0xAF014:
 	inc [hl]
 	ret
 
-UnknownData_0xAF01F:
+Unknown_0xAF01F:
 INCBIN "baserom.gbc", $AF01F, $AF130 - $AF01F
 
 Logged_0xAF130:
@@ -133811,7 +133811,7 @@ Logged_0xAF400:
 	ret nz
 	jr Logged_0xAF40C
 
-UnknownData_0xAF407:
+Unknown_0xAF407:
 INCBIN "baserom.gbc", $AF407, $AF40C - $AF407
 
 Logged_0xAF40C:
@@ -134620,7 +134620,7 @@ Logged_0xAF902:
 	inc [hl]
 	ret
 
-UnknownData_0xAF915:
+Unknown_0xAF915:
 INCBIN "baserom.gbc", $AF915, $B0000 - $AF915
 
 SECTION "Bank2C", ROMX, BANK[$2C]
@@ -134628,43 +134628,43 @@ SECTION "Bank2C", ROMX, BANK[$2C]
 LoggedData_0xB0000:
 INCBIN "baserom.gbc", $B0000, $B1FD7 - $B0000
 
-UnknownData_0xB1FD7:
+Unknown_0xB1FD7:
 INCBIN "baserom.gbc", $B1FD7, $B211A - $B1FD7
 
 LoggedData_0xB211A:
 INCBIN "baserom.gbc", $B211A, $B231C - $B211A
 
-UnknownData_0xB231C:
+Unknown_0xB231C:
 INCBIN "baserom.gbc", $B231C, $B2424 - $B231C
 
 LoggedData_0xB2424:
 INCBIN "baserom.gbc", $B2424, $B2533 - $B2424
 
-UnknownData_0xB2533:
+Unknown_0xB2533:
 INCBIN "baserom.gbc", $B2533, $B2546 - $B2533
 
 LoggedData_0xB2546:
 INCBIN "baserom.gbc", $B2546, $B26BF - $B2546
 
-UnknownData_0xB26BF:
+Unknown_0xB26BF:
 INCBIN "baserom.gbc", $B26BF, $B330C - $B26BF
 
 LoggedData_0xB330C:
 INCBIN "baserom.gbc", $B330C, $B3675 - $B330C
 
-UnknownData_0xB3675:
+Unknown_0xB3675:
 INCBIN "baserom.gbc", $B3675, $B37F9 - $B3675
 
 LoggedData_0xB37F9:
 INCBIN "baserom.gbc", $B37F9, $B39F0 - $B37F9
 
-UnknownData_0xB39F0:
+Unknown_0xB39F0:
 INCBIN "baserom.gbc", $B39F0, $B3A03 - $B39F0
 
 LoggedData_0xB3A03:
 INCBIN "baserom.gbc", $B3A03, $B3C47 - $B3A03
 
-UnknownData_0xB3C47:
+Unknown_0xB3C47:
 INCBIN "baserom.gbc", $B3C47, $B4000 - $B3C47
 
 SECTION "Bank2D", ROMX, BANK[$2D]
@@ -135232,7 +135232,7 @@ Logged_0xB43E9:
 LoggedData_0xB442D:
 INCBIN "baserom.gbc", $B442D, $B443F - $B442D
 
-UnknownData_0xB443F:
+Unknown_0xB443F:
 INCBIN "baserom.gbc", $B443F, $B4440 - $B443F
 
 LoggedData_0xB4440:
@@ -135734,7 +135734,7 @@ Logged_0xB47DC:
 LoggedData_0xB47E2:
 INCBIN "baserom.gbc", $B47E2, $B47E5 - $B47E2
 
-UnknownData_0xB47E5:
+Unknown_0xB47E5:
 INCBIN "baserom.gbc", $B47E5, $B47E8 - $B47E5
 
 LoggedData_0xB47E8:
@@ -135835,7 +135835,7 @@ Logged_0xB4887:
 	ld [hl],a
 	ret
 
-UnknownData_0xB4895:
+Unknown_0xB4895:
 INCBIN "baserom.gbc", $B4895, $B48A7 - $B4895
 
 Logged_0xB48A7:
@@ -136680,7 +136680,7 @@ Logged_0xB4E65:
 	ld de,$4F57
 	jp Logged_0xB4A1D
 
-UnknownData_0xB4E6B:
+Unknown_0xB4E6B:
 INCBIN "baserom.gbc", $B4E6B, $B4E70 - $B4E6B
 
 Logged_0xB4E70:
@@ -137129,7 +137129,7 @@ Logged_0xB5117:
 	ld de,$5FE2
 	jp Logged_0xB4A1D
 
-UnknownData_0xB511D:
+Unknown_0xB511D:
 INCBIN "baserom.gbc", $B511D, $B5122 - $B511D
 
 Logged_0xB5122:
@@ -138225,7 +138225,7 @@ Logged_0xB5835:
 	pop de
 	jr Logged_0xB5835
 
-UnknownData_0xB5849:
+Unknown_0xB5849:
 INCBIN "baserom.gbc", $B5849, $B584B - $B5849
 
 Logged_0xB584B:
@@ -138306,7 +138306,7 @@ Logged_0xB58A5:
 	ld a,[hl]
 	ret
 
-UnknownData_0xB58AE:
+Unknown_0xB58AE:
 INCBIN "baserom.gbc", $B58AE, $B58AF - $B58AE
 
 LoggedData_0xB58AF:
@@ -139753,7 +139753,7 @@ Logged_0xB66B9:
 	ld a,[hl]
 	ret
 
-UnknownData_0xB66C2:
+Unknown_0xB66C2:
 INCBIN "baserom.gbc", $B66C2, $B66C3 - $B66C2
 
 LoggedData_0xB66C3:
@@ -140959,55 +140959,55 @@ Logged_0xB6E50:
 LoggedData_0xB6E5A:
 INCBIN "baserom.gbc", $B6E5A, $B6E62 - $B6E5A
 
-UnknownData_0xB6E62:
+Unknown_0xB6E62:
 INCBIN "baserom.gbc", $B6E62, $B6E65 - $B6E62
 
 LoggedData_0xB6E65:
 INCBIN "baserom.gbc", $B6E65, $B6E68 - $B6E65
 
-UnknownData_0xB6E68:
+Unknown_0xB6E68:
 INCBIN "baserom.gbc", $B6E68, $B6E75 - $B6E68
 
 LoggedData_0xB6E75:
 INCBIN "baserom.gbc", $B6E75, $B6E78 - $B6E75
 
-UnknownData_0xB6E78:
+Unknown_0xB6E78:
 INCBIN "baserom.gbc", $B6E78, $B6E7B - $B6E78
 
 LoggedData_0xB6E7B:
 INCBIN "baserom.gbc", $B6E7B, $B6E7C - $B6E7B
 
-UnknownData_0xB6E7C:
+Unknown_0xB6E7C:
 INCBIN "baserom.gbc", $B6E7C, $B6E80 - $B6E7C
 
 LoggedData_0xB6E80:
 INCBIN "baserom.gbc", $B6E80, $B6E82 - $B6E80
 
-UnknownData_0xB6E82:
+Unknown_0xB6E82:
 INCBIN "baserom.gbc", $B6E82, $B6E83 - $B6E82
 
 LoggedData_0xB6E83:
 INCBIN "baserom.gbc", $B6E83, $B6E84 - $B6E83
 
-UnknownData_0xB6E84:
+Unknown_0xB6E84:
 INCBIN "baserom.gbc", $B6E84, $B6E86 - $B6E84
 
 LoggedData_0xB6E86:
 INCBIN "baserom.gbc", $B6E86, $B6E87 - $B6E86
 
-UnknownData_0xB6E87:
+Unknown_0xB6E87:
 INCBIN "baserom.gbc", $B6E87, $B6E88 - $B6E87
 
 LoggedData_0xB6E88:
 INCBIN "baserom.gbc", $B6E88, $B6E89 - $B6E88
 
-UnknownData_0xB6E89:
+Unknown_0xB6E89:
 INCBIN "baserom.gbc", $B6E89, $B6E8C - $B6E89
 
 LoggedData_0xB6E8C:
 INCBIN "baserom.gbc", $B6E8C, $B6E8D - $B6E8C
 
-UnknownData_0xB6E8D:
+Unknown_0xB6E8D:
 INCBIN "baserom.gbc", $B6E8D, $B6E8E - $B6E8D
 
 Logged_0xB6E8E:
@@ -141067,7 +141067,7 @@ Logged_0xB6EEA:
 	ld a,$3C
 	jp Logged_0xB584B
 
-UnknownData_0xB6EEF:
+Unknown_0xB6EEF:
 INCBIN "baserom.gbc", $B6EEF, $B6EF4 - $B6EEF
 
 Logged_0xB6EF4:
@@ -141135,7 +141135,7 @@ Logged_0xB6F52:
 	call Logged_0x3B2B
 	jr Logged_0xB6F64
 
-UnknownData_0xB6F61:
+Unknown_0xB6F61:
 INCBIN "baserom.gbc", $B6F61, $B6F64 - $B6F61
 
 Logged_0xB6F64:
@@ -141700,7 +141700,7 @@ Logged_0xB7322:
 	inc [hl]
 	jr Logged_0xB7304
 
-UnknownData_0xB732B:
+Unknown_0xB732B:
 INCBIN "baserom.gbc", $B732B, $B7334 - $B732B
 
 Logged_0xB7334:
@@ -141729,7 +141729,7 @@ Logged_0xB734C:
 	ld [$D142],a
 	ret
 
-UnknownData_0xB7354:
+Unknown_0xB7354:
 INCBIN "baserom.gbc", $B7354, $B735C - $B7354
 
 Logged_0xB735C:
@@ -142054,7 +142054,7 @@ Logged_0xB7544:
 LoggedData_0xB7550:
 INCBIN "baserom.gbc", $B7550, $B7556 - $B7550
 
-UnknownData_0xB7556:
+Unknown_0xB7556:
 INCBIN "baserom.gbc", $B7556, $B7580 - $B7556
 
 Logged_0xB7580:
@@ -142412,7 +142412,7 @@ Logged_0xB778C:
 	ld [$D122],a
 	jr Logged_0xB7763
 
-UnknownData_0xB7799:
+Unknown_0xB7799:
 INCBIN "baserom.gbc", $B7799, $B77A6 - $B7799
 
 Logged_0xB77A6:
@@ -143261,7 +143261,7 @@ Logged_0xB7D0D:
 	inc [hl]
 	ret
 
-UnknownData_0xB7D12:
+Unknown_0xB7D12:
 INCBIN "baserom.gbc", $B7D12, $B8000 - $B7D12
 
 SECTION "Bank2E", ROMX, BANK[$2E]
@@ -143269,7 +143269,7 @@ SECTION "Bank2E", ROMX, BANK[$2E]
 LoggedData_0xB8000:
 INCBIN "baserom.gbc", $B8000, $BAADE - $B8000
 
-UnknownData_0xBAADE:
+Unknown_0xBAADE:
 INCBIN "baserom.gbc", $BAADE, $BC000 - $BAADE
 
 SECTION "Bank2F", ROMX, BANK[$2F]
@@ -143277,19 +143277,19 @@ SECTION "Bank2F", ROMX, BANK[$2F]
 LoggedData_0xBC000:
 INCBIN "baserom.gbc", $BC000, $BC10D - $BC000
 
-UnknownData_0xBC10D:
+Unknown_0xBC10D:
 INCBIN "baserom.gbc", $BC10D, $BC122 - $BC10D
 
 LoggedData_0xBC122:
 INCBIN "baserom.gbc", $BC122, $BEFD4 - $BC122
 
-UnknownData_0xBEFD4:
+Unknown_0xBEFD4:
 INCBIN "baserom.gbc", $BEFD4, $BEFD5 - $BEFD4
 
 LoggedData_0xBEFD5:
 INCBIN "baserom.gbc", $BEFD5, $BF92D - $BEFD5
 
-UnknownData_0xBF92D:
+Unknown_0xBF92D:
 INCBIN "baserom.gbc", $BF92D, $C0000 - $BF92D
 
 SECTION "Bank30", ROMX, BANK[$30]
@@ -143398,4938 +143398,4938 @@ Logged_0xC0038:
 LoggedData_0xC00BE:
 INCBIN "baserom.gbc", $C00BE, $C00C0 - $C00BE
 
-UnknownData_0xC00C0:
+Unknown_0xC00C0:
 INCBIN "baserom.gbc", $C00C0, $C00C4 - $C00C0
 
 LoggedData_0xC00C4:
 INCBIN "baserom.gbc", $C00C4, $C00C6 - $C00C4
 
-UnknownData_0xC00C6:
+Unknown_0xC00C6:
 INCBIN "baserom.gbc", $C00C6, $C00C8 - $C00C6
 
 LoggedData_0xC00C8:
 INCBIN "baserom.gbc", $C00C8, $C00D0 - $C00C8
 
-UnknownData_0xC00D0:
+Unknown_0xC00D0:
 INCBIN "baserom.gbc", $C00D0, $C00D4 - $C00D0
 
 LoggedData_0xC00D4:
 INCBIN "baserom.gbc", $C00D4, $C00D6 - $C00D4
 
-UnknownData_0xC00D6:
+Unknown_0xC00D6:
 INCBIN "baserom.gbc", $C00D6, $C00DA - $C00D6
 
 LoggedData_0xC00DA:
 INCBIN "baserom.gbc", $C00DA, $C00DE - $C00DA
 
-UnknownData_0xC00DE:
+Unknown_0xC00DE:
 INCBIN "baserom.gbc", $C00DE, $C00E0 - $C00DE
 
 LoggedData_0xC00E0:
 INCBIN "baserom.gbc", $C00E0, $C00E4 - $C00E0
 
-UnknownData_0xC00E4:
+Unknown_0xC00E4:
 INCBIN "baserom.gbc", $C00E4, $C00E6 - $C00E4
 
 LoggedData_0xC00E6:
 INCBIN "baserom.gbc", $C00E6, $C00E8 - $C00E6
 
-UnknownData_0xC00E8:
+Unknown_0xC00E8:
 INCBIN "baserom.gbc", $C00E8, $C00EC - $C00E8
 
 LoggedData_0xC00EC:
 INCBIN "baserom.gbc", $C00EC, $C00F0 - $C00EC
 
-UnknownData_0xC00F0:
+Unknown_0xC00F0:
 INCBIN "baserom.gbc", $C00F0, $C00F2 - $C00F0
 
 LoggedData_0xC00F2:
 INCBIN "baserom.gbc", $C00F2, $C00F6 - $C00F2
 
-UnknownData_0xC00F6:
+Unknown_0xC00F6:
 INCBIN "baserom.gbc", $C00F6, $C00FC - $C00F6
 
 LoggedData_0xC00FC:
 INCBIN "baserom.gbc", $C00FC, $C00FE - $C00FC
 
-UnknownData_0xC00FE:
+Unknown_0xC00FE:
 INCBIN "baserom.gbc", $C00FE, $C0100 - $C00FE
 
 LoggedData_0xC0100:
 INCBIN "baserom.gbc", $C0100, $C0102 - $C0100
 
-UnknownData_0xC0102:
+Unknown_0xC0102:
 INCBIN "baserom.gbc", $C0102, $C0106 - $C0102
 
 LoggedData_0xC0106:
 INCBIN "baserom.gbc", $C0106, $C0108 - $C0106
 
-UnknownData_0xC0108:
+Unknown_0xC0108:
 INCBIN "baserom.gbc", $C0108, $C010A - $C0108
 
 LoggedData_0xC010A:
 INCBIN "baserom.gbc", $C010A, $C010E - $C010A
 
-UnknownData_0xC010E:
+Unknown_0xC010E:
 INCBIN "baserom.gbc", $C010E, $C0112 - $C010E
 
 LoggedData_0xC0112:
 INCBIN "baserom.gbc", $C0112, $C0118 - $C0112
 
-UnknownData_0xC0118:
+Unknown_0xC0118:
 INCBIN "baserom.gbc", $C0118, $C011A - $C0118
 
 LoggedData_0xC011A:
 INCBIN "baserom.gbc", $C011A, $C011C - $C011A
 
-UnknownData_0xC011C:
+Unknown_0xC011C:
 INCBIN "baserom.gbc", $C011C, $C0120 - $C011C
 
 LoggedData_0xC0120:
 INCBIN "baserom.gbc", $C0120, $C0122 - $C0120
 
-UnknownData_0xC0122:
+Unknown_0xC0122:
 INCBIN "baserom.gbc", $C0122, $C0124 - $C0122
 
 LoggedData_0xC0124:
 INCBIN "baserom.gbc", $C0124, $C0126 - $C0124
 
-UnknownData_0xC0126:
+Unknown_0xC0126:
 INCBIN "baserom.gbc", $C0126, $C0128 - $C0126
 
 LoggedData_0xC0128:
 INCBIN "baserom.gbc", $C0128, $C012A - $C0128
 
-UnknownData_0xC012A:
+Unknown_0xC012A:
 INCBIN "baserom.gbc", $C012A, $C012C - $C012A
 
 LoggedData_0xC012C:
 INCBIN "baserom.gbc", $C012C, $C012E - $C012C
 
-UnknownData_0xC012E:
+Unknown_0xC012E:
 INCBIN "baserom.gbc", $C012E, $C0132 - $C012E
 
 LoggedData_0xC0132:
 INCBIN "baserom.gbc", $C0132, $C0134 - $C0132
 
-UnknownData_0xC0134:
+Unknown_0xC0134:
 INCBIN "baserom.gbc", $C0134, $C0136 - $C0134
 
 LoggedData_0xC0136:
 INCBIN "baserom.gbc", $C0136, $C013A - $C0136
 
-UnknownData_0xC013A:
+Unknown_0xC013A:
 INCBIN "baserom.gbc", $C013A, $C013C - $C013A
 
 LoggedData_0xC013C:
 INCBIN "baserom.gbc", $C013C, $C0142 - $C013C
 
-UnknownData_0xC0142:
+Unknown_0xC0142:
 INCBIN "baserom.gbc", $C0142, $C0148 - $C0142
 
 LoggedData_0xC0148:
 INCBIN "baserom.gbc", $C0148, $C014E - $C0148
 
-UnknownData_0xC014E:
+Unknown_0xC014E:
 INCBIN "baserom.gbc", $C014E, $C0152 - $C014E
 
 LoggedData_0xC0152:
 INCBIN "baserom.gbc", $C0152, $C015C - $C0152
 
-UnknownData_0xC015C:
+Unknown_0xC015C:
 INCBIN "baserom.gbc", $C015C, $C015E - $C015C
 
 LoggedData_0xC015E:
 INCBIN "baserom.gbc", $C015E, $C0160 - $C015E
 
-UnknownData_0xC0160:
+Unknown_0xC0160:
 INCBIN "baserom.gbc", $C0160, $C0162 - $C0160
 
 LoggedData_0xC0162:
 INCBIN "baserom.gbc", $C0162, $C0166 - $C0162
 
-UnknownData_0xC0166:
+Unknown_0xC0166:
 INCBIN "baserom.gbc", $C0166, $C016A - $C0166
 
 LoggedData_0xC016A:
 INCBIN "baserom.gbc", $C016A, $C016C - $C016A
 
-UnknownData_0xC016C:
+Unknown_0xC016C:
 INCBIN "baserom.gbc", $C016C, $C0172 - $C016C
 
 LoggedData_0xC0172:
 INCBIN "baserom.gbc", $C0172, $C0174 - $C0172
 
-UnknownData_0xC0174:
+Unknown_0xC0174:
 INCBIN "baserom.gbc", $C0174, $C0176 - $C0174
 
 LoggedData_0xC0176:
 INCBIN "baserom.gbc", $C0176, $C017A - $C0176
 
-UnknownData_0xC017A:
+Unknown_0xC017A:
 INCBIN "baserom.gbc", $C017A, $C017C - $C017A
 
 LoggedData_0xC017C:
 INCBIN "baserom.gbc", $C017C, $C0182 - $C017C
 
-UnknownData_0xC0182:
+Unknown_0xC0182:
 INCBIN "baserom.gbc", $C0182, $C018A - $C0182
 
 LoggedData_0xC018A:
 INCBIN "baserom.gbc", $C018A, $C018E - $C018A
 
-UnknownData_0xC018E:
+Unknown_0xC018E:
 INCBIN "baserom.gbc", $C018E, $C0196 - $C018E
 
 LoggedData_0xC0196:
 INCBIN "baserom.gbc", $C0196, $C0198 - $C0196
 
-UnknownData_0xC0198:
+Unknown_0xC0198:
 INCBIN "baserom.gbc", $C0198, $C019A - $C0198
 
 LoggedData_0xC019A:
 INCBIN "baserom.gbc", $C019A, $C01A2 - $C019A
 
-UnknownData_0xC01A2:
+Unknown_0xC01A2:
 INCBIN "baserom.gbc", $C01A2, $C01A4 - $C01A2
 
 LoggedData_0xC01A4:
 INCBIN "baserom.gbc", $C01A4, $C01A6 - $C01A4
 
-UnknownData_0xC01A6:
+Unknown_0xC01A6:
 INCBIN "baserom.gbc", $C01A6, $C01AA - $C01A6
 
 LoggedData_0xC01AA:
 INCBIN "baserom.gbc", $C01AA, $C01AC - $C01AA
 
-UnknownData_0xC01AC:
+Unknown_0xC01AC:
 INCBIN "baserom.gbc", $C01AC, $C01AE - $C01AC
 
 LoggedData_0xC01AE:
 INCBIN "baserom.gbc", $C01AE, $C01B0 - $C01AE
 
-UnknownData_0xC01B0:
+Unknown_0xC01B0:
 INCBIN "baserom.gbc", $C01B0, $C01B4 - $C01B0
 
 LoggedData_0xC01B4:
 INCBIN "baserom.gbc", $C01B4, $C01B6 - $C01B4
 
-UnknownData_0xC01B6:
+Unknown_0xC01B6:
 INCBIN "baserom.gbc", $C01B6, $C01B8 - $C01B6
 
 LoggedData_0xC01B8:
 INCBIN "baserom.gbc", $C01B8, $C01C0 - $C01B8
 
-UnknownData_0xC01C0:
+Unknown_0xC01C0:
 INCBIN "baserom.gbc", $C01C0, $C01C2 - $C01C0
 
 LoggedData_0xC01C2:
 INCBIN "baserom.gbc", $C01C2, $C01C4 - $C01C2
 
-UnknownData_0xC01C4:
+Unknown_0xC01C4:
 INCBIN "baserom.gbc", $C01C4, $C01CA - $C01C4
 
 LoggedData_0xC01CA:
 INCBIN "baserom.gbc", $C01CA, $C01CE - $C01CA
 
-UnknownData_0xC01CE:
+Unknown_0xC01CE:
 INCBIN "baserom.gbc", $C01CE, $C01D0 - $C01CE
 
 LoggedData_0xC01D0:
 INCBIN "baserom.gbc", $C01D0, $C01D6 - $C01D0
 
-UnknownData_0xC01D6:
+Unknown_0xC01D6:
 INCBIN "baserom.gbc", $C01D6, $C01D8 - $C01D6
 
 LoggedData_0xC01D8:
 INCBIN "baserom.gbc", $C01D8, $C01DA - $C01D8
 
-UnknownData_0xC01DA:
+Unknown_0xC01DA:
 INCBIN "baserom.gbc", $C01DA, $C01DC - $C01DA
 
 LoggedData_0xC01DC:
 INCBIN "baserom.gbc", $C01DC, $C01DE - $C01DC
 
-UnknownData_0xC01DE:
+Unknown_0xC01DE:
 INCBIN "baserom.gbc", $C01DE, $C01E4 - $C01DE
 
 LoggedData_0xC01E4:
 INCBIN "baserom.gbc", $C01E4, $C01EC - $C01E4
 
-UnknownData_0xC01EC:
+Unknown_0xC01EC:
 INCBIN "baserom.gbc", $C01EC, $C01F4 - $C01EC
 
 LoggedData_0xC01F4:
 INCBIN "baserom.gbc", $C01F4, $C01F8 - $C01F4
 
-UnknownData_0xC01F8:
+Unknown_0xC01F8:
 INCBIN "baserom.gbc", $C01F8, $C01FA - $C01F8
 
 LoggedData_0xC01FA:
 INCBIN "baserom.gbc", $C01FA, $C01FE - $C01FA
 
-UnknownData_0xC01FE:
+Unknown_0xC01FE:
 INCBIN "baserom.gbc", $C01FE, $C0202 - $C01FE
 
 LoggedData_0xC0202:
 INCBIN "baserom.gbc", $C0202, $C0204 - $C0202
 
-UnknownData_0xC0204:
+Unknown_0xC0204:
 INCBIN "baserom.gbc", $C0204, $C0206 - $C0204
 
 LoggedData_0xC0206:
 INCBIN "baserom.gbc", $C0206, $C0208 - $C0206
 
-UnknownData_0xC0208:
+Unknown_0xC0208:
 INCBIN "baserom.gbc", $C0208, $C020A - $C0208
 
 LoggedData_0xC020A:
 INCBIN "baserom.gbc", $C020A, $C020E - $C020A
 
-UnknownData_0xC020E:
+Unknown_0xC020E:
 INCBIN "baserom.gbc", $C020E, $C0212 - $C020E
 
 LoggedData_0xC0212:
 INCBIN "baserom.gbc", $C0212, $C0218 - $C0212
 
-UnknownData_0xC0218:
+Unknown_0xC0218:
 INCBIN "baserom.gbc", $C0218, $C021C - $C0218
 
 LoggedData_0xC021C:
 INCBIN "baserom.gbc", $C021C, $C021E - $C021C
 
-UnknownData_0xC021E:
+Unknown_0xC021E:
 INCBIN "baserom.gbc", $C021E, $C0222 - $C021E
 
 LoggedData_0xC0222:
 INCBIN "baserom.gbc", $C0222, $C0228 - $C0222
 
-UnknownData_0xC0228:
+Unknown_0xC0228:
 INCBIN "baserom.gbc", $C0228, $C022C - $C0228
 
 LoggedData_0xC022C:
 INCBIN "baserom.gbc", $C022C, $C0232 - $C022C
 
-UnknownData_0xC0232:
+Unknown_0xC0232:
 INCBIN "baserom.gbc", $C0232, $C0234 - $C0232
 
 LoggedData_0xC0234:
 INCBIN "baserom.gbc", $C0234, $C0236 - $C0234
 
-UnknownData_0xC0236:
+Unknown_0xC0236:
 INCBIN "baserom.gbc", $C0236, $C0238 - $C0236
 
 LoggedData_0xC0238:
 INCBIN "baserom.gbc", $C0238, $C023C - $C0238
 
-UnknownData_0xC023C:
+Unknown_0xC023C:
 INCBIN "baserom.gbc", $C023C, $C0240 - $C023C
 
 LoggedData_0xC0240:
 INCBIN "baserom.gbc", $C0240, $C0244 - $C0240
 
-UnknownData_0xC0244:
+Unknown_0xC0244:
 INCBIN "baserom.gbc", $C0244, $C024A - $C0244
 
 LoggedData_0xC024A:
 INCBIN "baserom.gbc", $C024A, $C0250 - $C024A
 
-UnknownData_0xC0250:
+Unknown_0xC0250:
 INCBIN "baserom.gbc", $C0250, $C026A - $C0250
 
 LoggedData_0xC026A:
 INCBIN "baserom.gbc", $C026A, $C0314 - $C026A
 
-UnknownData_0xC0314:
+Unknown_0xC0314:
 INCBIN "baserom.gbc", $C0314, $C0319 - $C0314
 
 LoggedData_0xC0319:
 INCBIN "baserom.gbc", $C0319, $C031B - $C0319
 
-UnknownData_0xC031B:
+Unknown_0xC031B:
 INCBIN "baserom.gbc", $C031B, $C031F - $C031B
 
 LoggedData_0xC031F:
 INCBIN "baserom.gbc", $C031F, $C0321 - $C031F
 
-UnknownData_0xC0321:
+Unknown_0xC0321:
 INCBIN "baserom.gbc", $C0321, $C0323 - $C0321
 
 LoggedData_0xC0323:
 INCBIN "baserom.gbc", $C0323, $C032B - $C0323
 
-UnknownData_0xC032B:
+Unknown_0xC032B:
 INCBIN "baserom.gbc", $C032B, $C032F - $C032B
 
 LoggedData_0xC032F:
 INCBIN "baserom.gbc", $C032F, $C0331 - $C032F
 
-UnknownData_0xC0331:
+Unknown_0xC0331:
 INCBIN "baserom.gbc", $C0331, $C0335 - $C0331
 
 LoggedData_0xC0335:
 INCBIN "baserom.gbc", $C0335, $C0339 - $C0335
 
-UnknownData_0xC0339:
+Unknown_0xC0339:
 INCBIN "baserom.gbc", $C0339, $C033B - $C0339
 
 LoggedData_0xC033B:
 INCBIN "baserom.gbc", $C033B, $C033F - $C033B
 
-UnknownData_0xC033F:
+Unknown_0xC033F:
 INCBIN "baserom.gbc", $C033F, $C0341 - $C033F
 
 LoggedData_0xC0341:
 INCBIN "baserom.gbc", $C0341, $C0343 - $C0341
 
-UnknownData_0xC0343:
+Unknown_0xC0343:
 INCBIN "baserom.gbc", $C0343, $C0347 - $C0343
 
 LoggedData_0xC0347:
 INCBIN "baserom.gbc", $C0347, $C034B - $C0347
 
-UnknownData_0xC034B:
+Unknown_0xC034B:
 INCBIN "baserom.gbc", $C034B, $C034D - $C034B
 
 LoggedData_0xC034D:
 INCBIN "baserom.gbc", $C034D, $C0351 - $C034D
 
-UnknownData_0xC0351:
+Unknown_0xC0351:
 INCBIN "baserom.gbc", $C0351, $C0357 - $C0351
 
 LoggedData_0xC0357:
 INCBIN "baserom.gbc", $C0357, $C0359 - $C0357
 
-UnknownData_0xC0359:
+Unknown_0xC0359:
 INCBIN "baserom.gbc", $C0359, $C035B - $C0359
 
 LoggedData_0xC035B:
 INCBIN "baserom.gbc", $C035B, $C035D - $C035B
 
-UnknownData_0xC035D:
+Unknown_0xC035D:
 INCBIN "baserom.gbc", $C035D, $C0361 - $C035D
 
 LoggedData_0xC0361:
 INCBIN "baserom.gbc", $C0361, $C0363 - $C0361
 
-UnknownData_0xC0363:
+Unknown_0xC0363:
 INCBIN "baserom.gbc", $C0363, $C0365 - $C0363
 
 LoggedData_0xC0365:
 INCBIN "baserom.gbc", $C0365, $C0369 - $C0365
 
-UnknownData_0xC0369:
+Unknown_0xC0369:
 INCBIN "baserom.gbc", $C0369, $C036D - $C0369
 
 LoggedData_0xC036D:
 INCBIN "baserom.gbc", $C036D, $C0373 - $C036D
 
-UnknownData_0xC0373:
+Unknown_0xC0373:
 INCBIN "baserom.gbc", $C0373, $C0375 - $C0373
 
 LoggedData_0xC0375:
 INCBIN "baserom.gbc", $C0375, $C0377 - $C0375
 
-UnknownData_0xC0377:
+Unknown_0xC0377:
 INCBIN "baserom.gbc", $C0377, $C037B - $C0377
 
 LoggedData_0xC037B:
 INCBIN "baserom.gbc", $C037B, $C037D - $C037B
 
-UnknownData_0xC037D:
+Unknown_0xC037D:
 INCBIN "baserom.gbc", $C037D, $C037F - $C037D
 
 LoggedData_0xC037F:
 INCBIN "baserom.gbc", $C037F, $C0381 - $C037F
 
-UnknownData_0xC0381:
+Unknown_0xC0381:
 INCBIN "baserom.gbc", $C0381, $C0383 - $C0381
 
 LoggedData_0xC0383:
 INCBIN "baserom.gbc", $C0383, $C0385 - $C0383
 
-UnknownData_0xC0385:
+Unknown_0xC0385:
 INCBIN "baserom.gbc", $C0385, $C0387 - $C0385
 
 LoggedData_0xC0387:
 INCBIN "baserom.gbc", $C0387, $C0389 - $C0387
 
-UnknownData_0xC0389:
+Unknown_0xC0389:
 INCBIN "baserom.gbc", $C0389, $C038D - $C0389
 
 LoggedData_0xC038D:
 INCBIN "baserom.gbc", $C038D, $C038F - $C038D
 
-UnknownData_0xC038F:
+Unknown_0xC038F:
 INCBIN "baserom.gbc", $C038F, $C0391 - $C038F
 
 LoggedData_0xC0391:
 INCBIN "baserom.gbc", $C0391, $C0395 - $C0391
 
-UnknownData_0xC0395:
+Unknown_0xC0395:
 INCBIN "baserom.gbc", $C0395, $C0397 - $C0395
 
 LoggedData_0xC0397:
 INCBIN "baserom.gbc", $C0397, $C039D - $C0397
 
-UnknownData_0xC039D:
+Unknown_0xC039D:
 INCBIN "baserom.gbc", $C039D, $C03A3 - $C039D
 
 LoggedData_0xC03A3:
 INCBIN "baserom.gbc", $C03A3, $C03A9 - $C03A3
 
-UnknownData_0xC03A9:
+Unknown_0xC03A9:
 INCBIN "baserom.gbc", $C03A9, $C03AD - $C03A9
 
 LoggedData_0xC03AD:
 INCBIN "baserom.gbc", $C03AD, $C03B7 - $C03AD
 
-UnknownData_0xC03B7:
+Unknown_0xC03B7:
 INCBIN "baserom.gbc", $C03B7, $C03B9 - $C03B7
 
 LoggedData_0xC03B9:
 INCBIN "baserom.gbc", $C03B9, $C03BB - $C03B9
 
-UnknownData_0xC03BB:
+Unknown_0xC03BB:
 INCBIN "baserom.gbc", $C03BB, $C03BD - $C03BB
 
 LoggedData_0xC03BD:
 INCBIN "baserom.gbc", $C03BD, $C03C1 - $C03BD
 
-UnknownData_0xC03C1:
+Unknown_0xC03C1:
 INCBIN "baserom.gbc", $C03C1, $C03C5 - $C03C1
 
 LoggedData_0xC03C5:
 INCBIN "baserom.gbc", $C03C5, $C03C7 - $C03C5
 
-UnknownData_0xC03C7:
+Unknown_0xC03C7:
 INCBIN "baserom.gbc", $C03C7, $C03CD - $C03C7
 
 LoggedData_0xC03CD:
 INCBIN "baserom.gbc", $C03CD, $C03CF - $C03CD
 
-UnknownData_0xC03CF:
+Unknown_0xC03CF:
 INCBIN "baserom.gbc", $C03CF, $C03D1 - $C03CF
 
 LoggedData_0xC03D1:
 INCBIN "baserom.gbc", $C03D1, $C03D5 - $C03D1
 
-UnknownData_0xC03D5:
+Unknown_0xC03D5:
 INCBIN "baserom.gbc", $C03D5, $C03D7 - $C03D5
 
 LoggedData_0xC03D7:
 INCBIN "baserom.gbc", $C03D7, $C03DD - $C03D7
 
-UnknownData_0xC03DD:
+Unknown_0xC03DD:
 INCBIN "baserom.gbc", $C03DD, $C03E5 - $C03DD
 
 LoggedData_0xC03E5:
 INCBIN "baserom.gbc", $C03E5, $C03E9 - $C03E5
 
-UnknownData_0xC03E9:
+Unknown_0xC03E9:
 INCBIN "baserom.gbc", $C03E9, $C03F1 - $C03E9
 
 LoggedData_0xC03F1:
 INCBIN "baserom.gbc", $C03F1, $C03F3 - $C03F1
 
-UnknownData_0xC03F3:
+Unknown_0xC03F3:
 INCBIN "baserom.gbc", $C03F3, $C03F5 - $C03F3
 
 LoggedData_0xC03F5:
 INCBIN "baserom.gbc", $C03F5, $C03FD - $C03F5
 
-UnknownData_0xC03FD:
+Unknown_0xC03FD:
 INCBIN "baserom.gbc", $C03FD, $C03FF - $C03FD
 
 LoggedData_0xC03FF:
 INCBIN "baserom.gbc", $C03FF, $C0401 - $C03FF
 
-UnknownData_0xC0401:
+Unknown_0xC0401:
 INCBIN "baserom.gbc", $C0401, $C0405 - $C0401
 
 LoggedData_0xC0405:
 INCBIN "baserom.gbc", $C0405, $C0407 - $C0405
 
-UnknownData_0xC0407:
+Unknown_0xC0407:
 INCBIN "baserom.gbc", $C0407, $C0409 - $C0407
 
 LoggedData_0xC0409:
 INCBIN "baserom.gbc", $C0409, $C040B - $C0409
 
-UnknownData_0xC040B:
+Unknown_0xC040B:
 INCBIN "baserom.gbc", $C040B, $C040F - $C040B
 
 LoggedData_0xC040F:
 INCBIN "baserom.gbc", $C040F, $C0411 - $C040F
 
-UnknownData_0xC0411:
+Unknown_0xC0411:
 INCBIN "baserom.gbc", $C0411, $C0413 - $C0411
 
 LoggedData_0xC0413:
 INCBIN "baserom.gbc", $C0413, $C041B - $C0413
 
-UnknownData_0xC041B:
+Unknown_0xC041B:
 INCBIN "baserom.gbc", $C041B, $C041D - $C041B
 
 LoggedData_0xC041D:
 INCBIN "baserom.gbc", $C041D, $C041F - $C041D
 
-UnknownData_0xC041F:
+Unknown_0xC041F:
 INCBIN "baserom.gbc", $C041F, $C0425 - $C041F
 
 LoggedData_0xC0425:
 INCBIN "baserom.gbc", $C0425, $C0429 - $C0425
 
-UnknownData_0xC0429:
+Unknown_0xC0429:
 INCBIN "baserom.gbc", $C0429, $C042B - $C0429
 
 LoggedData_0xC042B:
 INCBIN "baserom.gbc", $C042B, $C0431 - $C042B
 
-UnknownData_0xC0431:
+Unknown_0xC0431:
 INCBIN "baserom.gbc", $C0431, $C0433 - $C0431
 
 LoggedData_0xC0433:
 INCBIN "baserom.gbc", $C0433, $C0435 - $C0433
 
-UnknownData_0xC0435:
+Unknown_0xC0435:
 INCBIN "baserom.gbc", $C0435, $C0437 - $C0435
 
 LoggedData_0xC0437:
 INCBIN "baserom.gbc", $C0437, $C0439 - $C0437
 
-UnknownData_0xC0439:
+Unknown_0xC0439:
 INCBIN "baserom.gbc", $C0439, $C043F - $C0439
 
 LoggedData_0xC043F:
 INCBIN "baserom.gbc", $C043F, $C0447 - $C043F
 
-UnknownData_0xC0447:
+Unknown_0xC0447:
 INCBIN "baserom.gbc", $C0447, $C044F - $C0447
 
 LoggedData_0xC044F:
 INCBIN "baserom.gbc", $C044F, $C0453 - $C044F
 
-UnknownData_0xC0453:
+Unknown_0xC0453:
 INCBIN "baserom.gbc", $C0453, $C0455 - $C0453
 
 LoggedData_0xC0455:
 INCBIN "baserom.gbc", $C0455, $C0459 - $C0455
 
-UnknownData_0xC0459:
+Unknown_0xC0459:
 INCBIN "baserom.gbc", $C0459, $C045D - $C0459
 
 LoggedData_0xC045D:
 INCBIN "baserom.gbc", $C045D, $C045F - $C045D
 
-UnknownData_0xC045F:
+Unknown_0xC045F:
 INCBIN "baserom.gbc", $C045F, $C0461 - $C045F
 
 LoggedData_0xC0461:
 INCBIN "baserom.gbc", $C0461, $C0463 - $C0461
 
-UnknownData_0xC0463:
+Unknown_0xC0463:
 INCBIN "baserom.gbc", $C0463, $C0465 - $C0463
 
 LoggedData_0xC0465:
 INCBIN "baserom.gbc", $C0465, $C0469 - $C0465
 
-UnknownData_0xC0469:
+Unknown_0xC0469:
 INCBIN "baserom.gbc", $C0469, $C046D - $C0469
 
 LoggedData_0xC046D:
 INCBIN "baserom.gbc", $C046D, $C0473 - $C046D
 
-UnknownData_0xC0473:
+Unknown_0xC0473:
 INCBIN "baserom.gbc", $C0473, $C0477 - $C0473
 
 LoggedData_0xC0477:
 INCBIN "baserom.gbc", $C0477, $C0479 - $C0477
 
-UnknownData_0xC0479:
+Unknown_0xC0479:
 INCBIN "baserom.gbc", $C0479, $C047D - $C0479
 
 LoggedData_0xC047D:
 INCBIN "baserom.gbc", $C047D, $C0483 - $C047D
 
-UnknownData_0xC0483:
+Unknown_0xC0483:
 INCBIN "baserom.gbc", $C0483, $C0487 - $C0483
 
 LoggedData_0xC0487:
 INCBIN "baserom.gbc", $C0487, $C048D - $C0487
 
-UnknownData_0xC048D:
+Unknown_0xC048D:
 INCBIN "baserom.gbc", $C048D, $C048F - $C048D
 
 LoggedData_0xC048F:
 INCBIN "baserom.gbc", $C048F, $C0491 - $C048F
 
-UnknownData_0xC0491:
+Unknown_0xC0491:
 INCBIN "baserom.gbc", $C0491, $C0493 - $C0491
 
 LoggedData_0xC0493:
 INCBIN "baserom.gbc", $C0493, $C0497 - $C0493
 
-UnknownData_0xC0497:
+Unknown_0xC0497:
 INCBIN "baserom.gbc", $C0497, $C049B - $C0497
 
 LoggedData_0xC049B:
 INCBIN "baserom.gbc", $C049B, $C049F - $C049B
 
-UnknownData_0xC049F:
+Unknown_0xC049F:
 INCBIN "baserom.gbc", $C049F, $C04A5 - $C049F
 
 LoggedData_0xC04A5:
 INCBIN "baserom.gbc", $C04A5, $C04AB - $C04A5
 
-UnknownData_0xC04AB:
+Unknown_0xC04AB:
 INCBIN "baserom.gbc", $C04AB, $C04C7 - $C04AB
 
 LoggedData_0xC04C7:
 INCBIN "baserom.gbc", $C04C7, $C04D3 - $C04C7
 
-UnknownData_0xC04D3:
+Unknown_0xC04D3:
 INCBIN "baserom.gbc", $C04D3, $C04D7 - $C04D3
 
 LoggedData_0xC04D7:
 INCBIN "baserom.gbc", $C04D7, $C04E5 - $C04D7
 
-UnknownData_0xC04E5:
+Unknown_0xC04E5:
 INCBIN "baserom.gbc", $C04E5, $C04E7 - $C04E5
 
 LoggedData_0xC04E7:
 INCBIN "baserom.gbc", $C04E7, $C04F1 - $C04E7
 
-UnknownData_0xC04F1:
+Unknown_0xC04F1:
 INCBIN "baserom.gbc", $C04F1, $C04F3 - $C04F1
 
 LoggedData_0xC04F3:
 INCBIN "baserom.gbc", $C04F3, $C050D - $C04F3
 
-UnknownData_0xC050D:
+Unknown_0xC050D:
 INCBIN "baserom.gbc", $C050D, $C050F - $C050D
 
 LoggedData_0xC050F:
 INCBIN "baserom.gbc", $C050F, $C051B - $C050F
 
-UnknownData_0xC051B:
+Unknown_0xC051B:
 INCBIN "baserom.gbc", $C051B, $C051D - $C051B
 
 LoggedData_0xC051D:
 INCBIN "baserom.gbc", $C051D, $C0537 - $C051D
 
-UnknownData_0xC0537:
+Unknown_0xC0537:
 INCBIN "baserom.gbc", $C0537, $C0539 - $C0537
 
 LoggedData_0xC0539:
 INCBIN "baserom.gbc", $C0539, $C0543 - $C0539
 
-UnknownData_0xC0543:
+Unknown_0xC0543:
 INCBIN "baserom.gbc", $C0543, $C0549 - $C0543
 
 LoggedData_0xC0549:
 INCBIN "baserom.gbc", $C0549, $C055B - $C0549
 
-UnknownData_0xC055B:
+Unknown_0xC055B:
 INCBIN "baserom.gbc", $C055B, $C055D - $C055B
 
 LoggedData_0xC055D:
 INCBIN "baserom.gbc", $C055D, $C0569 - $C055D
 
-UnknownData_0xC0569:
+Unknown_0xC0569:
 INCBIN "baserom.gbc", $C0569, $C056B - $C0569
 
 LoggedData_0xC056B:
 INCBIN "baserom.gbc", $C056B, $C0577 - $C056B
 
-UnknownData_0xC0577:
+Unknown_0xC0577:
 INCBIN "baserom.gbc", $C0577, $C0579 - $C0577
 
 LoggedData_0xC0579:
 INCBIN "baserom.gbc", $C0579, $C057B - $C0579
 
-UnknownData_0xC057B:
+Unknown_0xC057B:
 INCBIN "baserom.gbc", $C057B, $C057D - $C057B
 
 LoggedData_0xC057D:
 INCBIN "baserom.gbc", $C057D, $C0583 - $C057D
 
-UnknownData_0xC0583:
+Unknown_0xC0583:
 INCBIN "baserom.gbc", $C0583, $C0585 - $C0583
 
 LoggedData_0xC0585:
 INCBIN "baserom.gbc", $C0585, $C0587 - $C0585
 
-UnknownData_0xC0587:
+Unknown_0xC0587:
 INCBIN "baserom.gbc", $C0587, $C0589 - $C0587
 
 LoggedData_0xC0589:
 INCBIN "baserom.gbc", $C0589, $C058B - $C0589
 
-UnknownData_0xC058B:
+Unknown_0xC058B:
 INCBIN "baserom.gbc", $C058B, $C058D - $C058B
 
 LoggedData_0xC058D:
 INCBIN "baserom.gbc", $C058D, $C058F - $C058D
 
-UnknownData_0xC058F:
+Unknown_0xC058F:
 INCBIN "baserom.gbc", $C058F, $C0591 - $C058F
 
 LoggedData_0xC0591:
 INCBIN "baserom.gbc", $C0591, $C0593 - $C0591
 
-UnknownData_0xC0593:
+Unknown_0xC0593:
 INCBIN "baserom.gbc", $C0593, $C0595 - $C0593
 
 LoggedData_0xC0595:
 INCBIN "baserom.gbc", $C0595, $C05BF - $C0595
 
-UnknownData_0xC05BF:
+Unknown_0xC05BF:
 INCBIN "baserom.gbc", $C05BF, $C05C1 - $C05BF
 
 LoggedData_0xC05C1:
 INCBIN "baserom.gbc", $C05C1, $C05C3 - $C05C1
 
-UnknownData_0xC05C3:
+Unknown_0xC05C3:
 INCBIN "baserom.gbc", $C05C3, $C05C5 - $C05C3
 
 LoggedData_0xC05C5:
 INCBIN "baserom.gbc", $C05C5, $C05CB - $C05C5
 
-UnknownData_0xC05CB:
+Unknown_0xC05CB:
 INCBIN "baserom.gbc", $C05CB, $C05CD - $C05CB
 
 LoggedData_0xC05CD:
 INCBIN "baserom.gbc", $C05CD, $C05DD - $C05CD
 
-UnknownData_0xC05DD:
+Unknown_0xC05DD:
 INCBIN "baserom.gbc", $C05DD, $C05DF - $C05DD
 
 LoggedData_0xC05DF:
 INCBIN "baserom.gbc", $C05DF, $C05E1 - $C05DF
 
-UnknownData_0xC05E1:
+Unknown_0xC05E1:
 INCBIN "baserom.gbc", $C05E1, $C05E3 - $C05E1
 
 LoggedData_0xC05E3:
 INCBIN "baserom.gbc", $C05E3, $C05EB - $C05E3
 
-UnknownData_0xC05EB:
+Unknown_0xC05EB:
 INCBIN "baserom.gbc", $C05EB, $C05ED - $C05EB
 
 LoggedData_0xC05ED:
 INCBIN "baserom.gbc", $C05ED, $C05FB - $C05ED
 
-UnknownData_0xC05FB:
+Unknown_0xC05FB:
 INCBIN "baserom.gbc", $C05FB, $C060B - $C05FB
 
 LoggedData_0xC060B:
 INCBIN "baserom.gbc", $C060B, $C0629 - $C060B
 
-UnknownData_0xC0629:
+Unknown_0xC0629:
 INCBIN "baserom.gbc", $C0629, $C0633 - $C0629
 
 LoggedData_0xC0633:
 INCBIN "baserom.gbc", $C0633, $C0656 - $C0633
 
-UnknownData_0xC0656:
+Unknown_0xC0656:
 INCBIN "baserom.gbc", $C0656, $C065B - $C0656
 
 LoggedData_0xC065B:
 INCBIN "baserom.gbc", $C065B, $C0674 - $C065B
 
-UnknownData_0xC0674:
+Unknown_0xC0674:
 INCBIN "baserom.gbc", $C0674, $C0679 - $C0674
 
 LoggedData_0xC0679:
 INCBIN "baserom.gbc", $C0679, $C06BA - $C0679
 
-UnknownData_0xC06BA:
+Unknown_0xC06BA:
 INCBIN "baserom.gbc", $C06BA, $C06BF - $C06BA
 
 LoggedData_0xC06BF:
 INCBIN "baserom.gbc", $C06BF, $C06DD - $C06BF
 
-UnknownData_0xC06DD:
+Unknown_0xC06DD:
 INCBIN "baserom.gbc", $C06DD, $C06E2 - $C06DD
 
 LoggedData_0xC06E2:
 INCBIN "baserom.gbc", $C06E2, $C0723 - $C06E2
 
-UnknownData_0xC0723:
+Unknown_0xC0723:
 INCBIN "baserom.gbc", $C0723, $C0728 - $C0723
 
 LoggedData_0xC0728:
 INCBIN "baserom.gbc", $C0728, $C0741 - $C0728
 
-UnknownData_0xC0741:
+Unknown_0xC0741:
 INCBIN "baserom.gbc", $C0741, $C0750 - $C0741
 
 LoggedData_0xC0750:
 INCBIN "baserom.gbc", $C0750, $C077D - $C0750
 
-UnknownData_0xC077D:
+Unknown_0xC077D:
 INCBIN "baserom.gbc", $C077D, $C0782 - $C077D
 
 LoggedData_0xC0782:
 INCBIN "baserom.gbc", $C0782, $C07A0 - $C0782
 
-UnknownData_0xC07A0:
+Unknown_0xC07A0:
 INCBIN "baserom.gbc", $C07A0, $C07A5 - $C07A0
 
 LoggedData_0xC07A5:
 INCBIN "baserom.gbc", $C07A5, $C07C3 - $C07A5
 
-UnknownData_0xC07C3:
+Unknown_0xC07C3:
 INCBIN "baserom.gbc", $C07C3, $C07C8 - $C07C3
 
 LoggedData_0xC07C8:
 INCBIN "baserom.gbc", $C07C8, $C07CD - $C07C8
 
-UnknownData_0xC07CD:
+Unknown_0xC07CD:
 INCBIN "baserom.gbc", $C07CD, $C07D2 - $C07CD
 
 LoggedData_0xC07D2:
 INCBIN "baserom.gbc", $C07D2, $C07E1 - $C07D2
 
-UnknownData_0xC07E1:
+Unknown_0xC07E1:
 INCBIN "baserom.gbc", $C07E1, $C07E6 - $C07E1
 
 LoggedData_0xC07E6:
 INCBIN "baserom.gbc", $C07E6, $C07EB - $C07E6
 
-UnknownData_0xC07EB:
+Unknown_0xC07EB:
 INCBIN "baserom.gbc", $C07EB, $C07F0 - $C07EB
 
 LoggedData_0xC07F0:
 INCBIN "baserom.gbc", $C07F0, $C07F5 - $C07F0
 
-UnknownData_0xC07F5:
+Unknown_0xC07F5:
 INCBIN "baserom.gbc", $C07F5, $C07FA - $C07F5
 
 LoggedData_0xC07FA:
 INCBIN "baserom.gbc", $C07FA, $C07FF - $C07FA
 
-UnknownData_0xC07FF:
+Unknown_0xC07FF:
 INCBIN "baserom.gbc", $C07FF, $C0804 - $C07FF
 
 LoggedData_0xC0804:
 INCBIN "baserom.gbc", $C0804, $C0809 - $C0804
 
-UnknownData_0xC0809:
+Unknown_0xC0809:
 INCBIN "baserom.gbc", $C0809, $C080E - $C0809
 
 LoggedData_0xC080E:
 INCBIN "baserom.gbc", $C080E, $C0877 - $C080E
 
-UnknownData_0xC0877:
+Unknown_0xC0877:
 INCBIN "baserom.gbc", $C0877, $C087C - $C0877
 
 LoggedData_0xC087C:
 INCBIN "baserom.gbc", $C087C, $C0881 - $C087C
 
-UnknownData_0xC0881:
+Unknown_0xC0881:
 INCBIN "baserom.gbc", $C0881, $C0886 - $C0881
 
 LoggedData_0xC0886:
 INCBIN "baserom.gbc", $C0886, $C0895 - $C0886
 
-UnknownData_0xC0895:
+Unknown_0xC0895:
 INCBIN "baserom.gbc", $C0895, $C089A - $C0895
 
 LoggedData_0xC089A:
 INCBIN "baserom.gbc", $C089A, $C08C2 - $C089A
 
-UnknownData_0xC08C2:
+Unknown_0xC08C2:
 INCBIN "baserom.gbc", $C08C2, $C08C7 - $C08C2
 
 LoggedData_0xC08C7:
 INCBIN "baserom.gbc", $C08C7, $C08CC - $C08C7
 
-UnknownData_0xC08CC:
+Unknown_0xC08CC:
 INCBIN "baserom.gbc", $C08CC, $C08D1 - $C08CC
 
 LoggedData_0xC08D1:
 INCBIN "baserom.gbc", $C08D1, $C08E5 - $C08D1
 
-UnknownData_0xC08E5:
+Unknown_0xC08E5:
 INCBIN "baserom.gbc", $C08E5, $C08EA - $C08E5
 
 LoggedData_0xC08EA:
 INCBIN "baserom.gbc", $C08EA, $C098B - $C08EA
 
-UnknownData_0xC098B:
+Unknown_0xC098B:
 INCBIN "baserom.gbc", $C098B, $C098D - $C098B
 
 LoggedData_0xC098D:
 INCBIN "baserom.gbc", $C098D, $C09A5 - $C098D
 
-UnknownData_0xC09A5:
+Unknown_0xC09A5:
 INCBIN "baserom.gbc", $C09A5, $C09A7 - $C09A5
 
 LoggedData_0xC09A7:
 INCBIN "baserom.gbc", $C09A7, $C09BD - $C09A7
 
-UnknownData_0xC09BD:
+Unknown_0xC09BD:
 INCBIN "baserom.gbc", $C09BD, $C09D1 - $C09BD
 
 LoggedData_0xC09D1:
 INCBIN "baserom.gbc", $C09D1, $C0A4F - $C09D1
 
-UnknownData_0xC0A4F:
+Unknown_0xC0A4F:
 INCBIN "baserom.gbc", $C0A4F, $C0A51 - $C0A4F
 
 LoggedData_0xC0A51:
 INCBIN "baserom.gbc", $C0A51, $C0A69 - $C0A51
 
-UnknownData_0xC0A69:
+Unknown_0xC0A69:
 INCBIN "baserom.gbc", $C0A69, $C0A6B - $C0A69
 
 LoggedData_0xC0A6B:
 INCBIN "baserom.gbc", $C0A6B, $C0A81 - $C0A6B
 
-UnknownData_0xC0A81:
+Unknown_0xC0A81:
 INCBIN "baserom.gbc", $C0A81, $C0A95 - $C0A81
 
 LoggedData_0xC0A95:
 INCBIN "baserom.gbc", $C0A95, $C0AE5 - $C0A95
 
-UnknownData_0xC0AE5:
+Unknown_0xC0AE5:
 INCBIN "baserom.gbc", $C0AE5, $C0AF7 - $C0AE5
 
 LoggedData_0xC0AF7:
 INCBIN "baserom.gbc", $C0AF7, $C0B09 - $C0AF7
 
-UnknownData_0xC0B09:
+Unknown_0xC0B09:
 INCBIN "baserom.gbc", $C0B09, $C0B1B - $C0B09
 
 LoggedData_0xC0B1B:
 INCBIN "baserom.gbc", $C0B1B, $C0B5B - $C0B1B
 
-UnknownData_0xC0B5B:
+Unknown_0xC0B5B:
 INCBIN "baserom.gbc", $C0B5B, $C0B5D - $C0B5B
 
 LoggedData_0xC0B5D:
 INCBIN "baserom.gbc", $C0B5D, $C0B85 - $C0B5D
 
-UnknownData_0xC0B85:
+Unknown_0xC0B85:
 INCBIN "baserom.gbc", $C0B85, $C0B87 - $C0B85
 
 LoggedData_0xC0B87:
 INCBIN "baserom.gbc", $C0B87, $C0BAF - $C0B87
 
-UnknownData_0xC0BAF:
+Unknown_0xC0BAF:
 INCBIN "baserom.gbc", $C0BAF, $C0BB1 - $C0BAF
 
 LoggedData_0xC0BB1:
 INCBIN "baserom.gbc", $C0BB1, $C0BF3 - $C0BB1
 
-UnknownData_0xC0BF3:
+Unknown_0xC0BF3:
 INCBIN "baserom.gbc", $C0BF3, $C0BF5 - $C0BF3
 
 LoggedData_0xC0BF5:
 INCBIN "baserom.gbc", $C0BF5, $C0C3F - $C0BF5
 
-UnknownData_0xC0C3F:
+Unknown_0xC0C3F:
 INCBIN "baserom.gbc", $C0C3F, $C0C51 - $C0C3F
 
 LoggedData_0xC0C51:
 INCBIN "baserom.gbc", $C0C51, $C0C69 - $C0C51
 
-UnknownData_0xC0C69:
+Unknown_0xC0C69:
 INCBIN "baserom.gbc", $C0C69, $C0C81 - $C0C69
 
 LoggedData_0xC0C81:
 INCBIN "baserom.gbc", $C0C81, $C0D05 - $C0C81
 
-UnknownData_0xC0D05:
+Unknown_0xC0D05:
 INCBIN "baserom.gbc", $C0D05, $C0D07 - $C0D05
 
 LoggedData_0xC0D07:
 INCBIN "baserom.gbc", $C0D07, $C0D0F - $C0D07
 
-UnknownData_0xC0D0F:
+Unknown_0xC0D0F:
 INCBIN "baserom.gbc", $C0D0F, $C0D1F - $C0D0F
 
 LoggedData_0xC0D1F:
 INCBIN "baserom.gbc", $C0D1F, $C0D21 - $C0D1F
 
-UnknownData_0xC0D21:
+Unknown_0xC0D21:
 INCBIN "baserom.gbc", $C0D21, $C0D29 - $C0D21
 
 LoggedData_0xC0D29:
 INCBIN "baserom.gbc", $C0D29, $C0D2B - $C0D29
 
-UnknownData_0xC0D2B:
+Unknown_0xC0D2B:
 INCBIN "baserom.gbc", $C0D2B, $C0D43 - $C0D2B
 
 LoggedData_0xC0D43:
 INCBIN "baserom.gbc", $C0D43, $C0D47 - $C0D43
 
-UnknownData_0xC0D47:
+Unknown_0xC0D47:
 INCBIN "baserom.gbc", $C0D47, $C0D49 - $C0D47
 
 LoggedData_0xC0D49:
 INCBIN "baserom.gbc", $C0D49, $C0D4B - $C0D49
 
-UnknownData_0xC0D4B:
+Unknown_0xC0D4B:
 INCBIN "baserom.gbc", $C0D4B, $C0D4D - $C0D4B
 
 LoggedData_0xC0D4D:
 INCBIN "baserom.gbc", $C0D4D, $C0D4F - $C0D4D
 
-UnknownData_0xC0D4F:
+Unknown_0xC0D4F:
 INCBIN "baserom.gbc", $C0D4F, $C0D5B - $C0D4F
 
 LoggedData_0xC0D5B:
 INCBIN "baserom.gbc", $C0D5B, $C0D63 - $C0D5B
 
-UnknownData_0xC0D63:
+Unknown_0xC0D63:
 INCBIN "baserom.gbc", $C0D63, $C0D7B - $C0D63
 
 LoggedData_0xC0D7B:
 INCBIN "baserom.gbc", $C0D7B, $C0D83 - $C0D7B
 
-UnknownData_0xC0D83:
+Unknown_0xC0D83:
 INCBIN "baserom.gbc", $C0D83, $C0DCB - $C0D83
 
 LoggedData_0xC0DCB:
 INCBIN "baserom.gbc", $C0DCB, $C0DEB - $C0DCB
 
-UnknownData_0xC0DEB:
+Unknown_0xC0DEB:
 INCBIN "baserom.gbc", $C0DEB, $C0EE7 - $C0DEB
 
 LoggedData_0xC0EE7:
 INCBIN "baserom.gbc", $C0EE7, $C0EE9 - $C0EE7
 
-UnknownData_0xC0EE9:
+Unknown_0xC0EE9:
 INCBIN "baserom.gbc", $C0EE9, $C0EEB - $C0EE9
 
 LoggedData_0xC0EEB:
 INCBIN "baserom.gbc", $C0EEB, $C0EED - $C0EEB
 
-UnknownData_0xC0EED:
+Unknown_0xC0EED:
 INCBIN "baserom.gbc", $C0EED, $C0EEF - $C0EED
 
 LoggedData_0xC0EEF:
 INCBIN "baserom.gbc", $C0EEF, $C0EF1 - $C0EEF
 
-UnknownData_0xC0EF1:
+Unknown_0xC0EF1:
 INCBIN "baserom.gbc", $C0EF1, $C0EF3 - $C0EF1
 
 LoggedData_0xC0EF3:
 INCBIN "baserom.gbc", $C0EF3, $C0EF5 - $C0EF3
 
-UnknownData_0xC0EF5:
+Unknown_0xC0EF5:
 INCBIN "baserom.gbc", $C0EF5, $C0EFD - $C0EF5
 
 LoggedData_0xC0EFD:
 INCBIN "baserom.gbc", $C0EFD, $C0F01 - $C0EFD
 
-UnknownData_0xC0F01:
+Unknown_0xC0F01:
 INCBIN "baserom.gbc", $C0F01, $C0F0D - $C0F01
 
 LoggedData_0xC0F0D:
 INCBIN "baserom.gbc", $C0F0D, $C0F0F - $C0F0D
 
-UnknownData_0xC0F0F:
+Unknown_0xC0F0F:
 INCBIN "baserom.gbc", $C0F0F, $C0F11 - $C0F0F
 
 LoggedData_0xC0F11:
 INCBIN "baserom.gbc", $C0F11, $C0F13 - $C0F11
 
-UnknownData_0xC0F13:
+Unknown_0xC0F13:
 INCBIN "baserom.gbc", $C0F13, $C0F1B - $C0F13
 
 LoggedData_0xC0F1B:
 INCBIN "baserom.gbc", $C0F1B, $C0F1D - $C0F1B
 
-UnknownData_0xC0F1D:
+Unknown_0xC0F1D:
 INCBIN "baserom.gbc", $C0F1D, $C0F23 - $C0F1D
 
 LoggedData_0xC0F23:
 INCBIN "baserom.gbc", $C0F23, $C0F33 - $C0F23
 
-UnknownData_0xC0F33:
+Unknown_0xC0F33:
 INCBIN "baserom.gbc", $C0F33, $C0F3B - $C0F33
 
 LoggedData_0xC0F3B:
 INCBIN "baserom.gbc", $C0F3B, $C0F43 - $C0F3B
 
-UnknownData_0xC0F43:
+Unknown_0xC0F43:
 INCBIN "baserom.gbc", $C0F43, $C0F4B - $C0F43
 
 LoggedData_0xC0F4B:
 INCBIN "baserom.gbc", $C0F4B, $C0F53 - $C0F4B
 
-UnknownData_0xC0F53:
+Unknown_0xC0F53:
 INCBIN "baserom.gbc", $C0F53, $C0F5B - $C0F53
 
 LoggedData_0xC0F5B:
 INCBIN "baserom.gbc", $C0F5B, $C0F6B - $C0F5B
 
-UnknownData_0xC0F6B:
+Unknown_0xC0F6B:
 INCBIN "baserom.gbc", $C0F6B, $C0F9B - $C0F6B
 
 LoggedData_0xC0F9B:
 INCBIN "baserom.gbc", $C0F9B, $C0FAB - $C0F9B
 
-UnknownData_0xC0FAB:
+Unknown_0xC0FAB:
 INCBIN "baserom.gbc", $C0FAB, $C0FB3 - $C0FAB
 
 LoggedData_0xC0FB3:
 INCBIN "baserom.gbc", $C0FB3, $C0FBB - $C0FB3
 
-UnknownData_0xC0FBB:
+Unknown_0xC0FBB:
 INCBIN "baserom.gbc", $C0FBB, $C0FCB - $C0FBB
 
 LoggedData_0xC0FCB:
 INCBIN "baserom.gbc", $C0FCB, $C0FCD - $C0FCB
 
-UnknownData_0xC0FCD:
+Unknown_0xC0FCD:
 INCBIN "baserom.gbc", $C0FCD, $C0FE7 - $C0FCD
 
 LoggedData_0xC0FE7:
 INCBIN "baserom.gbc", $C0FE7, $C0FE9 - $C0FE7
 
-UnknownData_0xC0FE9:
+Unknown_0xC0FE9:
 INCBIN "baserom.gbc", $C0FE9, $C0FF5 - $C0FE9
 
 LoggedData_0xC0FF5:
 INCBIN "baserom.gbc", $C0FF5, $C0FF7 - $C0FF5
 
-UnknownData_0xC0FF7:
+Unknown_0xC0FF7:
 INCBIN "baserom.gbc", $C0FF7, $C1001 - $C0FF7
 
 LoggedData_0xC1001:
 INCBIN "baserom.gbc", $C1001, $C1003 - $C1001
 
-UnknownData_0xC1003:
+Unknown_0xC1003:
 INCBIN "baserom.gbc", $C1003, $C1007 - $C1003
 
 LoggedData_0xC1007:
 INCBIN "baserom.gbc", $C1007, $C100F - $C1007
 
-UnknownData_0xC100F:
+Unknown_0xC100F:
 INCBIN "baserom.gbc", $C100F, $C1057 - $C100F
 
 LoggedData_0xC1057:
 INCBIN "baserom.gbc", $C1057, $C105F - $C1057
 
-UnknownData_0xC105F:
+Unknown_0xC105F:
 INCBIN "baserom.gbc", $C105F, $C1087 - $C105F
 
 LoggedData_0xC1087:
 INCBIN "baserom.gbc", $C1087, $C108F - $C1087
 
-UnknownData_0xC108F:
+Unknown_0xC108F:
 INCBIN "baserom.gbc", $C108F, $C109F - $C108F
 
 LoggedData_0xC109F:
 INCBIN "baserom.gbc", $C109F, $C10A7 - $C109F
 
-UnknownData_0xC10A7:
+Unknown_0xC10A7:
 INCBIN "baserom.gbc", $C10A7, $C10AF - $C10A7
 
 LoggedData_0xC10AF:
 INCBIN "baserom.gbc", $C10AF, $C10B1 - $C10AF
 
-UnknownData_0xC10B1:
+Unknown_0xC10B1:
 INCBIN "baserom.gbc", $C10B1, $C10B5 - $C10B1
 
 LoggedData_0xC10B5:
 INCBIN "baserom.gbc", $C10B5, $C10B7 - $C10B5
 
-UnknownData_0xC10B7:
+Unknown_0xC10B7:
 INCBIN "baserom.gbc", $C10B7, $C10D3 - $C10B7
 
 LoggedData_0xC10D3:
 INCBIN "baserom.gbc", $C10D3, $C10D7 - $C10D3
 
-UnknownData_0xC10D7:
+Unknown_0xC10D7:
 INCBIN "baserom.gbc", $C10D7, $C10D9 - $C10D7
 
 LoggedData_0xC10D9:
 INCBIN "baserom.gbc", $C10D9, $C10DB - $C10D9
 
-UnknownData_0xC10DB:
+Unknown_0xC10DB:
 INCBIN "baserom.gbc", $C10DB, $C10DD - $C10DB
 
 LoggedData_0xC10DD:
 INCBIN "baserom.gbc", $C10DD, $C10DF - $C10DD
 
-UnknownData_0xC10DF:
+Unknown_0xC10DF:
 INCBIN "baserom.gbc", $C10DF, $C10EB - $C10DF
 
 LoggedData_0xC10EB:
 INCBIN "baserom.gbc", $C10EB, $C10F3 - $C10EB
 
-UnknownData_0xC10F3:
+Unknown_0xC10F3:
 INCBIN "baserom.gbc", $C10F3, $C10FB - $C10F3
 
 LoggedData_0xC10FB:
 INCBIN "baserom.gbc", $C10FB, $C1103 - $C10FB
 
-UnknownData_0xC1103:
+Unknown_0xC1103:
 INCBIN "baserom.gbc", $C1103, $C115B - $C1103
 
 LoggedData_0xC115B:
 INCBIN "baserom.gbc", $C115B, $C117B - $C115B
 
-UnknownData_0xC117B:
+Unknown_0xC117B:
 INCBIN "baserom.gbc", $C117B, $C1193 - $C117B
 
 LoggedData_0xC1193:
 INCBIN "baserom.gbc", $C1193, $C1195 - $C1193
 
-UnknownData_0xC1195:
+Unknown_0xC1195:
 INCBIN "baserom.gbc", $C1195, $C1197 - $C1195
 
 LoggedData_0xC1197:
 INCBIN "baserom.gbc", $C1197, $C119F - $C1197
 
-UnknownData_0xC119F:
+Unknown_0xC119F:
 INCBIN "baserom.gbc", $C119F, $C11A7 - $C119F
 
 LoggedData_0xC11A7:
 INCBIN "baserom.gbc", $C11A7, $C11A9 - $C11A7
 
-UnknownData_0xC11A9:
+Unknown_0xC11A9:
 INCBIN "baserom.gbc", $C11A9, $C11AB - $C11A9
 
 LoggedData_0xC11AB:
 INCBIN "baserom.gbc", $C11AB, $C11AD - $C11AB
 
-UnknownData_0xC11AD:
+Unknown_0xC11AD:
 INCBIN "baserom.gbc", $C11AD, $C11B1 - $C11AD
 
 LoggedData_0xC11B1:
 INCBIN "baserom.gbc", $C11B1, $C11B3 - $C11B1
 
-UnknownData_0xC11B3:
+Unknown_0xC11B3:
 INCBIN "baserom.gbc", $C11B3, $C11B9 - $C11B3
 
 LoggedData_0xC11B9:
 INCBIN "baserom.gbc", $C11B9, $C11BB - $C11B9
 
-UnknownData_0xC11BB:
+Unknown_0xC11BB:
 INCBIN "baserom.gbc", $C11BB, $C11BD - $C11BB
 
 LoggedData_0xC11BD:
 INCBIN "baserom.gbc", $C11BD, $C11BF - $C11BD
 
-UnknownData_0xC11BF:
+Unknown_0xC11BF:
 INCBIN "baserom.gbc", $C11BF, $C11C7 - $C11BF
 
 LoggedData_0xC11C7:
 INCBIN "baserom.gbc", $C11C7, $C11CB - $C11C7
 
-UnknownData_0xC11CB:
+Unknown_0xC11CB:
 INCBIN "baserom.gbc", $C11CB, $C11CF - $C11CB
 
 LoggedData_0xC11CF:
 INCBIN "baserom.gbc", $C11CF, $C11F7 - $C11CF
 
-UnknownData_0xC11F7:
+Unknown_0xC11F7:
 INCBIN "baserom.gbc", $C11F7, $C11FF - $C11F7
 
 LoggedData_0xC11FF:
 INCBIN "baserom.gbc", $C11FF, $C1207 - $C11FF
 
-UnknownData_0xC1207:
+Unknown_0xC1207:
 INCBIN "baserom.gbc", $C1207, $C120F - $C1207
 
 LoggedData_0xC120F:
 INCBIN "baserom.gbc", $C120F, $C1217 - $C120F
 
-UnknownData_0xC1217:
+Unknown_0xC1217:
 INCBIN "baserom.gbc", $C1217, $C1227 - $C1217
 
 LoggedData_0xC1227:
 INCBIN "baserom.gbc", $C1227, $C122F - $C1227
 
-UnknownData_0xC122F:
+Unknown_0xC122F:
 INCBIN "baserom.gbc", $C122F, $C1247 - $C122F
 
 LoggedData_0xC1247:
 INCBIN "baserom.gbc", $C1247, $C1257 - $C1247
 
-UnknownData_0xC1257:
+Unknown_0xC1257:
 INCBIN "baserom.gbc", $C1257, $C125F - $C1257
 
 LoggedData_0xC125F:
 INCBIN "baserom.gbc", $C125F, $C126F - $C125F
 
-UnknownData_0xC126F:
+Unknown_0xC126F:
 INCBIN "baserom.gbc", $C126F, $C1277 - $C126F
 
 LoggedData_0xC1277:
 INCBIN "baserom.gbc", $C1277, $C1279 - $C1277
 
-UnknownData_0xC1279:
+Unknown_0xC1279:
 INCBIN "baserom.gbc", $C1279, $C127D - $C1279
 
 LoggedData_0xC127D:
 INCBIN "baserom.gbc", $C127D, $C127F - $C127D
 
-UnknownData_0xC127F:
+Unknown_0xC127F:
 INCBIN "baserom.gbc", $C127F, $C12B3 - $C127F
 
 LoggedData_0xC12B3:
 INCBIN "baserom.gbc", $C12B3, $C12BB - $C12B3
 
-UnknownData_0xC12BB:
+Unknown_0xC12BB:
 INCBIN "baserom.gbc", $C12BB, $C12CB - $C12BB
 
 LoggedData_0xC12CB:
 INCBIN "baserom.gbc", $C12CB, $C12D3 - $C12CB
 
-UnknownData_0xC12D3:
+Unknown_0xC12D3:
 INCBIN "baserom.gbc", $C12D3, $C135B - $C12D3
 
 LoggedData_0xC135B:
 INCBIN "baserom.gbc", $C135B, $C135F - $C135B
 
-UnknownData_0xC135F:
+Unknown_0xC135F:
 INCBIN "baserom.gbc", $C135F, $C1373 - $C135F
 
 LoggedData_0xC1373:
 INCBIN "baserom.gbc", $C1373, $C1375 - $C1373
 
-UnknownData_0xC1375:
+Unknown_0xC1375:
 INCBIN "baserom.gbc", $C1375, $C1377 - $C1375
 
 LoggedData_0xC1377:
 INCBIN "baserom.gbc", $C1377, $C137F - $C1377
 
-UnknownData_0xC137F:
+Unknown_0xC137F:
 INCBIN "baserom.gbc", $C137F, $C1397 - $C137F
 
 LoggedData_0xC1397:
 INCBIN "baserom.gbc", $C1397, $C13A7 - $C1397
 
-UnknownData_0xC13A7:
+Unknown_0xC13A7:
 INCBIN "baserom.gbc", $C13A7, $C13E7 - $C13A7
 
 LoggedData_0xC13E7:
 INCBIN "baserom.gbc", $C13E7, $C13EF - $C13E7
 
-UnknownData_0xC13EF:
+Unknown_0xC13EF:
 INCBIN "baserom.gbc", $C13EF, $C13F7 - $C13EF
 
 LoggedData_0xC13F7:
 INCBIN "baserom.gbc", $C13F7, $C1417 - $C13F7
 
-UnknownData_0xC1417:
+Unknown_0xC1417:
 INCBIN "baserom.gbc", $C1417, $C1523 - $C1417
 
 LoggedData_0xC1523:
 INCBIN "baserom.gbc", $C1523, $C1529 - $C1523
 
-UnknownData_0xC1529:
+Unknown_0xC1529:
 INCBIN "baserom.gbc", $C1529, $C152B - $C1529
 
 LoggedData_0xC152B:
 INCBIN "baserom.gbc", $C152B, $C152F - $C152B
 
-UnknownData_0xC152F:
+Unknown_0xC152F:
 INCBIN "baserom.gbc", $C152F, $C1533 - $C152F
 
 LoggedData_0xC1533:
 INCBIN "baserom.gbc", $C1533, $C1537 - $C1533
 
-UnknownData_0xC1537:
+Unknown_0xC1537:
 INCBIN "baserom.gbc", $C1537, $C153F - $C1537
 
 LoggedData_0xC153F:
 INCBIN "baserom.gbc", $C153F, $C1541 - $C153F
 
-UnknownData_0xC1541:
+Unknown_0xC1541:
 INCBIN "baserom.gbc", $C1541, $C1543 - $C1541
 
 LoggedData_0xC1543:
 INCBIN "baserom.gbc", $C1543, $C1545 - $C1543
 
-UnknownData_0xC1545:
+Unknown_0xC1545:
 INCBIN "baserom.gbc", $C1545, $C1559 - $C1545
 
 LoggedData_0xC1559:
 INCBIN "baserom.gbc", $C1559, $C155D - $C1559
 
-UnknownData_0xC155D:
+Unknown_0xC155D:
 INCBIN "baserom.gbc", $C155D, $C155F - $C155D
 
 LoggedData_0xC155F:
 INCBIN "baserom.gbc", $C155F, $C1577 - $C155F
 
-UnknownData_0xC1577:
+Unknown_0xC1577:
 INCBIN "baserom.gbc", $C1577, $C157F - $C1577
 
 LoggedData_0xC157F:
 INCBIN "baserom.gbc", $C157F, $C158F - $C157F
 
-UnknownData_0xC158F:
+Unknown_0xC158F:
 INCBIN "baserom.gbc", $C158F, $C1597 - $C158F
 
 LoggedData_0xC1597:
 INCBIN "baserom.gbc", $C1597, $C15A7 - $C1597
 
-UnknownData_0xC15A7:
+Unknown_0xC15A7:
 INCBIN "baserom.gbc", $C15A7, $C15BF - $C15A7
 
 LoggedData_0xC15BF:
 INCBIN "baserom.gbc", $C15BF, $C15C7 - $C15BF
 
-UnknownData_0xC15C7:
+Unknown_0xC15C7:
 INCBIN "baserom.gbc", $C15C7, $C15CF - $C15C7
 
 LoggedData_0xC15CF:
 INCBIN "baserom.gbc", $C15CF, $C15D7 - $C15CF
 
-UnknownData_0xC15D7:
+Unknown_0xC15D7:
 INCBIN "baserom.gbc", $C15D7, $C15F7 - $C15D7
 
 LoggedData_0xC15F7:
 INCBIN "baserom.gbc", $C15F7, $C1609 - $C15F7
 
-UnknownData_0xC1609:
+Unknown_0xC1609:
 INCBIN "baserom.gbc", $C1609, $C160D - $C1609
 
 LoggedData_0xC160D:
 INCBIN "baserom.gbc", $C160D, $C160F - $C160D
 
-UnknownData_0xC160F:
+Unknown_0xC160F:
 INCBIN "baserom.gbc", $C160F, $C1615 - $C160F
 
 LoggedData_0xC1615:
 INCBIN "baserom.gbc", $C1615, $C1617 - $C1615
 
-UnknownData_0xC1617:
+Unknown_0xC1617:
 INCBIN "baserom.gbc", $C1617, $C1619 - $C1617
 
 LoggedData_0xC1619:
 INCBIN "baserom.gbc", $C1619, $C161B - $C1619
 
-UnknownData_0xC161B:
+Unknown_0xC161B:
 INCBIN "baserom.gbc", $C161B, $C161D - $C161B
 
 LoggedData_0xC161D:
 INCBIN "baserom.gbc", $C161D, $C161F - $C161D
 
-UnknownData_0xC161F:
+Unknown_0xC161F:
 INCBIN "baserom.gbc", $C161F, $C162F - $C161F
 
 LoggedData_0xC162F:
 INCBIN "baserom.gbc", $C162F, $C1631 - $C162F
 
-UnknownData_0xC1631:
+Unknown_0xC1631:
 INCBIN "baserom.gbc", $C1631, $C1633 - $C1631
 
 LoggedData_0xC1633:
 INCBIN "baserom.gbc", $C1633, $C1637 - $C1633
 
-UnknownData_0xC1637:
+Unknown_0xC1637:
 INCBIN "baserom.gbc", $C1637, $C1643 - $C1637
 
 LoggedData_0xC1643:
 INCBIN "baserom.gbc", $C1643, $C1663 - $C1643
 
-UnknownData_0xC1663:
+Unknown_0xC1663:
 INCBIN "baserom.gbc", $C1663, $C166B - $C1663
 
 LoggedData_0xC166B:
 INCBIN "baserom.gbc", $C166B, $C1673 - $C166B
 
-UnknownData_0xC1673:
+Unknown_0xC1673:
 INCBIN "baserom.gbc", $C1673, $C168B - $C1673
 
 LoggedData_0xC168B:
 INCBIN "baserom.gbc", $C168B, $C16A3 - $C168B
 
-UnknownData_0xC16A3:
+Unknown_0xC16A3:
 INCBIN "baserom.gbc", $C16A3, $C177F - $C16A3
 
 LoggedData_0xC177F:
 INCBIN "baserom.gbc", $C177F, $C1781 - $C177F
 
-UnknownData_0xC1781:
+Unknown_0xC1781:
 INCBIN "baserom.gbc", $C1781, $C17BB - $C1781
 
 LoggedData_0xC17BB:
 INCBIN "baserom.gbc", $C17BB, $C17C3 - $C17BB
 
-UnknownData_0xC17C3:
+Unknown_0xC17C3:
 INCBIN "baserom.gbc", $C17C3, $C183B - $C17C3
 
 LoggedData_0xC183B:
 INCBIN "baserom.gbc", $C183B, $C183D - $C183B
 
-UnknownData_0xC183D:
+Unknown_0xC183D:
 INCBIN "baserom.gbc", $C183D, $C1859 - $C183D
 
 LoggedData_0xC1859:
 INCBIN "baserom.gbc", $C1859, $C185B - $C1859
 
-UnknownData_0xC185B:
+Unknown_0xC185B:
 INCBIN "baserom.gbc", $C185B, $C1871 - $C185B
 
 LoggedData_0xC1871:
 INCBIN "baserom.gbc", $C1871, $C1873 - $C1871
 
-UnknownData_0xC1873:
+Unknown_0xC1873:
 INCBIN "baserom.gbc", $C1873, $C1875 - $C1873
 
 LoggedData_0xC1875:
 INCBIN "baserom.gbc", $C1875, $C187F - $C1875
 
-UnknownData_0xC187F:
+Unknown_0xC187F:
 INCBIN "baserom.gbc", $C187F, $C18AF - $C187F
 
 LoggedData_0xC18AF:
 INCBIN "baserom.gbc", $C18AF, $C18B7 - $C18AF
 
-UnknownData_0xC18B7:
+Unknown_0xC18B7:
 INCBIN "baserom.gbc", $C18B7, $C18E7 - $C18B7
 
 LoggedData_0xC18E7:
 INCBIN "baserom.gbc", $C18E7, $C18F9 - $C18E7
 
-UnknownData_0xC18F9:
+Unknown_0xC18F9:
 INCBIN "baserom.gbc", $C18F9, $C18FD - $C18F9
 
 LoggedData_0xC18FD:
 INCBIN "baserom.gbc", $C18FD, $C18FF - $C18FD
 
-UnknownData_0xC18FF:
+Unknown_0xC18FF:
 INCBIN "baserom.gbc", $C18FF, $C1907 - $C18FF
 
 LoggedData_0xC1907:
 INCBIN "baserom.gbc", $C1907, $C190B - $C1907
 
-UnknownData_0xC190B:
+Unknown_0xC190B:
 INCBIN "baserom.gbc", $C190B, $C1913 - $C190B
 
 LoggedData_0xC1913:
 INCBIN "baserom.gbc", $C1913, $C1915 - $C1913
 
-UnknownData_0xC1915:
+Unknown_0xC1915:
 INCBIN "baserom.gbc", $C1915, $C1917 - $C1915
 
 LoggedData_0xC1917:
 INCBIN "baserom.gbc", $C1917, $C1919 - $C1917
 
-UnknownData_0xC1919:
+Unknown_0xC1919:
 INCBIN "baserom.gbc", $C1919, $C191F - $C1919
 
 LoggedData_0xC191F:
 INCBIN "baserom.gbc", $C191F, $C1921 - $C191F
 
-UnknownData_0xC1921:
+Unknown_0xC1921:
 INCBIN "baserom.gbc", $C1921, $C1933 - $C1921
 
 LoggedData_0xC1933:
 INCBIN "baserom.gbc", $C1933, $C193B - $C1933
 
-UnknownData_0xC193B:
+Unknown_0xC193B:
 INCBIN "baserom.gbc", $C193B, $C1943 - $C193B
 
 LoggedData_0xC1943:
 INCBIN "baserom.gbc", $C1943, $C194B - $C1943
 
-UnknownData_0xC194B:
+Unknown_0xC194B:
 INCBIN "baserom.gbc", $C194B, $C1963 - $C194B
 
 LoggedData_0xC1963:
 INCBIN "baserom.gbc", $C1963, $C1973 - $C1963
 
-UnknownData_0xC1973:
+Unknown_0xC1973:
 INCBIN "baserom.gbc", $C1973, $C197B - $C1973
 
 LoggedData_0xC197B:
 INCBIN "baserom.gbc", $C197B, $C1983 - $C197B
 
-UnknownData_0xC1983:
+Unknown_0xC1983:
 INCBIN "baserom.gbc", $C1983, $C198B - $C1983
 
 LoggedData_0xC198B:
 INCBIN "baserom.gbc", $C198B, $C1993 - $C198B
 
-UnknownData_0xC1993:
+Unknown_0xC1993:
 INCBIN "baserom.gbc", $C1993, $C19A3 - $C1993
 
 LoggedData_0xC19A3:
 INCBIN "baserom.gbc", $C19A3, $C19AB - $C19A3
 
-UnknownData_0xC19AB:
+Unknown_0xC19AB:
 INCBIN "baserom.gbc", $C19AB, $C19D3 - $C19AB
 
 LoggedData_0xC19D3:
 INCBIN "baserom.gbc", $C19D3, $C19D7 - $C19D3
 
-UnknownData_0xC19D7:
+Unknown_0xC19D7:
 INCBIN "baserom.gbc", $C19D7, $C19F7 - $C19D7
 
 LoggedData_0xC19F7:
 INCBIN "baserom.gbc", $C19F7, $C19F9 - $C19F7
 
-UnknownData_0xC19F9:
+Unknown_0xC19F9:
 INCBIN "baserom.gbc", $C19F9, $C1A01 - $C19F9
 
 LoggedData_0xC1A01:
 INCBIN "baserom.gbc", $C1A01, $C1A03 - $C1A01
 
-UnknownData_0xC1A03:
+Unknown_0xC1A03:
 INCBIN "baserom.gbc", $C1A03, $C1A0F - $C1A03
 
 LoggedData_0xC1A0F:
 INCBIN "baserom.gbc", $C1A0F, $C1A1F - $C1A0F
 
-UnknownData_0xC1A1F:
+Unknown_0xC1A1F:
 INCBIN "baserom.gbc", $C1A1F, $C1A6F - $C1A1F
 
 LoggedData_0xC1A6F:
 INCBIN "baserom.gbc", $C1A6F, $C1A77 - $C1A6F
 
-UnknownData_0xC1A77:
+Unknown_0xC1A77:
 INCBIN "baserom.gbc", $C1A77, $C1A97 - $C1A77
 
 LoggedData_0xC1A97:
 INCBIN "baserom.gbc", $C1A97, $C1A9F - $C1A97
 
-UnknownData_0xC1A9F:
+Unknown_0xC1A9F:
 INCBIN "baserom.gbc", $C1A9F, $C1B8B - $C1A9F
 
 LoggedData_0xC1B8B:
 INCBIN "baserom.gbc", $C1B8B, $C1B8D - $C1B8B
 
-UnknownData_0xC1B8D:
+Unknown_0xC1B8D:
 INCBIN "baserom.gbc", $C1B8D, $C1B91 - $C1B8D
 
 LoggedData_0xC1B91:
 INCBIN "baserom.gbc", $C1B91, $C1B95 - $C1B91
 
-UnknownData_0xC1B95:
+Unknown_0xC1B95:
 INCBIN "baserom.gbc", $C1B95, $C1B99 - $C1B95
 
 LoggedData_0xC1B99:
 INCBIN "baserom.gbc", $C1B99, $C1B9B - $C1B99
 
-UnknownData_0xC1B9B:
+Unknown_0xC1B9B:
 INCBIN "baserom.gbc", $C1B9B, $C1BB3 - $C1B9B
 
 LoggedData_0xC1BB3:
 INCBIN "baserom.gbc", $C1BB3, $C1BB9 - $C1BB3
 
-UnknownData_0xC1BB9:
+Unknown_0xC1BB9:
 INCBIN "baserom.gbc", $C1BB9, $C1BC7 - $C1BB9
 
 LoggedData_0xC1BC7:
 INCBIN "baserom.gbc", $C1BC7, $C1BCF - $C1BC7
 
-UnknownData_0xC1BCF:
+Unknown_0xC1BCF:
 INCBIN "baserom.gbc", $C1BCF, $C1BD7 - $C1BCF
 
 LoggedData_0xC1BD7:
 INCBIN "baserom.gbc", $C1BD7, $C1BE7 - $C1BD7
 
-UnknownData_0xC1BE7:
+Unknown_0xC1BE7:
 INCBIN "baserom.gbc", $C1BE7, $C1BEF - $C1BE7
 
 LoggedData_0xC1BEF:
 INCBIN "baserom.gbc", $C1BEF, $C1BF7 - $C1BEF
 
-UnknownData_0xC1BF7:
+Unknown_0xC1BF7:
 INCBIN "baserom.gbc", $C1BF7, $C1C37 - $C1BF7
 
 LoggedData_0xC1C37:
 INCBIN "baserom.gbc", $C1C37, $C1C4F - $C1C37
 
-UnknownData_0xC1C4F:
+Unknown_0xC1C4F:
 INCBIN "baserom.gbc", $C1C4F, $C1C67 - $C1C4F
 
 LoggedData_0xC1C67:
 INCBIN "baserom.gbc", $C1C67, $C1C69 - $C1C67
 
-UnknownData_0xC1C69:
+Unknown_0xC1C69:
 INCBIN "baserom.gbc", $C1C69, $C1C7B - $C1C69
 
 LoggedData_0xC1C7B:
 INCBIN "baserom.gbc", $C1C7B, $C1C7D - $C1C7B
 
-UnknownData_0xC1C7D:
+Unknown_0xC1C7D:
 INCBIN "baserom.gbc", $C1C7D, $C1C81 - $C1C7D
 
 LoggedData_0xC1C81:
 INCBIN "baserom.gbc", $C1C81, $C1C83 - $C1C81
 
-UnknownData_0xC1C83:
+Unknown_0xC1C83:
 INCBIN "baserom.gbc", $C1C83, $C1CA1 - $C1C83
 
 LoggedData_0xC1CA1:
 INCBIN "baserom.gbc", $C1CA1, $C1CAB - $C1CA1
 
-UnknownData_0xC1CAB:
+Unknown_0xC1CAB:
 INCBIN "baserom.gbc", $C1CAB, $C1CC3 - $C1CAB
 
 LoggedData_0xC1CC3:
 INCBIN "baserom.gbc", $C1CC3, $C1CCB - $C1CC3
 
-UnknownData_0xC1CCB:
+Unknown_0xC1CCB:
 INCBIN "baserom.gbc", $C1CCB, $C1CD3 - $C1CCB
 
 LoggedData_0xC1CD3:
 INCBIN "baserom.gbc", $C1CD3, $C1CDB - $C1CD3
 
-UnknownData_0xC1CDB:
+Unknown_0xC1CDB:
 INCBIN "baserom.gbc", $C1CDB, $C1D23 - $C1CDB
 
 LoggedData_0xC1D23:
 INCBIN "baserom.gbc", $C1D23, $C1D2B - $C1D23
 
-UnknownData_0xC1D2B:
+Unknown_0xC1D2B:
 INCBIN "baserom.gbc", $C1D2B, $C1EB3 - $C1D2B
 
 LoggedData_0xC1EB3:
 INCBIN "baserom.gbc", $C1EB3, $C1EB5 - $C1EB3
 
-UnknownData_0xC1EB5:
+Unknown_0xC1EB5:
 INCBIN "baserom.gbc", $C1EB5, $C1EBB - $C1EB5
 
 LoggedData_0xC1EBB:
 INCBIN "baserom.gbc", $C1EBB, $C1EBD - $C1EBB
 
-UnknownData_0xC1EBD:
+Unknown_0xC1EBD:
 INCBIN "baserom.gbc", $C1EBD, $C1EC1 - $C1EBD
 
 LoggedData_0xC1EC1:
 INCBIN "baserom.gbc", $C1EC1, $C1EC3 - $C1EC1
 
-UnknownData_0xC1EC3:
+Unknown_0xC1EC3:
 INCBIN "baserom.gbc", $C1EC3, $C1ECB - $C1EC3
 
 LoggedData_0xC1ECB:
 INCBIN "baserom.gbc", $C1ECB, $C1ECD - $C1ECB
 
-UnknownData_0xC1ECD:
+Unknown_0xC1ECD:
 INCBIN "baserom.gbc", $C1ECD, $C1ECF - $C1ECD
 
 LoggedData_0xC1ECF:
 INCBIN "baserom.gbc", $C1ECF, $C1ED1 - $C1ECF
 
-UnknownData_0xC1ED1:
+Unknown_0xC1ED1:
 INCBIN "baserom.gbc", $C1ED1, $C1EDB - $C1ED1
 
 LoggedData_0xC1EDB:
 INCBIN "baserom.gbc", $C1EDB, $C1EDD - $C1EDB
 
-UnknownData_0xC1EDD:
+Unknown_0xC1EDD:
 INCBIN "baserom.gbc", $C1EDD, $C1EE9 - $C1EDD
 
 LoggedData_0xC1EE9:
 INCBIN "baserom.gbc", $C1EE9, $C1EEB - $C1EE9
 
-UnknownData_0xC1EEB:
+Unknown_0xC1EEB:
 INCBIN "baserom.gbc", $C1EEB, $C1EEF - $C1EEB
 
 LoggedData_0xC1EEF:
 INCBIN "baserom.gbc", $C1EEF, $C1F07 - $C1EEF
 
-UnknownData_0xC1F07:
+Unknown_0xC1F07:
 INCBIN "baserom.gbc", $C1F07, $C1F17 - $C1F07
 
 LoggedData_0xC1F17:
 INCBIN "baserom.gbc", $C1F17, $C1F1F - $C1F17
 
-UnknownData_0xC1F1F:
+Unknown_0xC1F1F:
 INCBIN "baserom.gbc", $C1F1F, $C1F27 - $C1F1F
 
 LoggedData_0xC1F27:
 INCBIN "baserom.gbc", $C1F27, $C1F2F - $C1F27
 
-UnknownData_0xC1F2F:
+Unknown_0xC1F2F:
 INCBIN "baserom.gbc", $C1F2F, $C1F37 - $C1F2F
 
 LoggedData_0xC1F37:
 INCBIN "baserom.gbc", $C1F37, $C1F3F - $C1F37
 
-UnknownData_0xC1F3F:
+Unknown_0xC1F3F:
 INCBIN "baserom.gbc", $C1F3F, $C1F5F - $C1F3F
 
 LoggedData_0xC1F5F:
 INCBIN "baserom.gbc", $C1F5F, $C1F67 - $C1F5F
 
-UnknownData_0xC1F67:
+Unknown_0xC1F67:
 INCBIN "baserom.gbc", $C1F67, $C1F77 - $C1F67
 
 LoggedData_0xC1F77:
 INCBIN "baserom.gbc", $C1F77, $C1F79 - $C1F77
 
-UnknownData_0xC1F79:
+Unknown_0xC1F79:
 INCBIN "baserom.gbc", $C1F79, $C1F7F - $C1F79
 
 LoggedData_0xC1F7F:
 INCBIN "baserom.gbc", $C1F7F, $C1F81 - $C1F7F
 
-UnknownData_0xC1F81:
+Unknown_0xC1F81:
 INCBIN "baserom.gbc", $C1F81, $C1F93 - $C1F81
 
 LoggedData_0xC1F93:
 INCBIN "baserom.gbc", $C1F93, $C1F95 - $C1F93
 
-UnknownData_0xC1F95:
+Unknown_0xC1F95:
 INCBIN "baserom.gbc", $C1F95, $C1F9F - $C1F95
 
 LoggedData_0xC1F9F:
 INCBIN "baserom.gbc", $C1F9F, $C1FA3 - $C1F9F
 
-UnknownData_0xC1FA3:
+Unknown_0xC1FA3:
 INCBIN "baserom.gbc", $C1FA3, $C1FA5 - $C1FA3
 
 LoggedData_0xC1FA5:
 INCBIN "baserom.gbc", $C1FA5, $C1FA7 - $C1FA5
 
-UnknownData_0xC1FA7:
+Unknown_0xC1FA7:
 INCBIN "baserom.gbc", $C1FA7, $C1FA9 - $C1FA7
 
 LoggedData_0xC1FA9:
 INCBIN "baserom.gbc", $C1FA9, $C1FAF - $C1FA9
 
-UnknownData_0xC1FAF:
+Unknown_0xC1FAF:
 INCBIN "baserom.gbc", $C1FAF, $C1FB3 - $C1FAF
 
 LoggedData_0xC1FB3:
 INCBIN "baserom.gbc", $C1FB3, $C1FC3 - $C1FB3
 
-UnknownData_0xC1FC3:
+Unknown_0xC1FC3:
 INCBIN "baserom.gbc", $C1FC3, $C1FEB - $C1FC3
 
 LoggedData_0xC1FEB:
 INCBIN "baserom.gbc", $C1FEB, $C1FF3 - $C1FEB
 
-UnknownData_0xC1FF3:
+Unknown_0xC1FF3:
 INCBIN "baserom.gbc", $C1FF3, $C1FFB - $C1FF3
 
 LoggedData_0xC1FFB:
 INCBIN "baserom.gbc", $C1FFB, $C202B - $C1FFB
 
-UnknownData_0xC202B:
+Unknown_0xC202B:
 INCBIN "baserom.gbc", $C202B, $C203B - $C202B
 
 LoggedData_0xC203B:
 INCBIN "baserom.gbc", $C203B, $C203D - $C203B
 
-UnknownData_0xC203D:
+Unknown_0xC203D:
 INCBIN "baserom.gbc", $C203D, $C2053 - $C203D
 
 LoggedData_0xC2053:
 INCBIN "baserom.gbc", $C2053, $C2055 - $C2053
 
-UnknownData_0xC2055:
+Unknown_0xC2055:
 INCBIN "baserom.gbc", $C2055, $C205D - $C2055
 
 LoggedData_0xC205D:
 INCBIN "baserom.gbc", $C205D, $C205F - $C205D
 
-UnknownData_0xC205F:
+Unknown_0xC205F:
 INCBIN "baserom.gbc", $C205F, $C2077 - $C205F
 
 LoggedData_0xC2077:
 INCBIN "baserom.gbc", $C2077, $C207F - $C2077
 
-UnknownData_0xC207F:
+Unknown_0xC207F:
 INCBIN "baserom.gbc", $C207F, $C209F - $C207F
 
 LoggedData_0xC209F:
 INCBIN "baserom.gbc", $C209F, $C20A7 - $C209F
 
-UnknownData_0xC20A7:
+Unknown_0xC20A7:
 INCBIN "baserom.gbc", $C20A7, $C20B7 - $C20A7
 
 LoggedData_0xC20B7:
 INCBIN "baserom.gbc", $C20B7, $C20BF - $C20B7
 
-UnknownData_0xC20BF:
+Unknown_0xC20BF:
 INCBIN "baserom.gbc", $C20BF, $C21C3 - $C20BF
 
 LoggedData_0xC21C3:
 INCBIN "baserom.gbc", $C21C3, $C21C5 - $C21C3
 
-UnknownData_0xC21C5:
+Unknown_0xC21C5:
 INCBIN "baserom.gbc", $C21C5, $C21C9 - $C21C5
 
 LoggedData_0xC21C9:
 INCBIN "baserom.gbc", $C21C9, $C21CB - $C21C9
 
-UnknownData_0xC21CB:
+Unknown_0xC21CB:
 INCBIN "baserom.gbc", $C21CB, $C21EB - $C21CB
 
 LoggedData_0xC21EB:
 INCBIN "baserom.gbc", $C21EB, $C21F7 - $C21EB
 
-UnknownData_0xC21F7:
+Unknown_0xC21F7:
 INCBIN "baserom.gbc", $C21F7, $C21F9 - $C21F7
 
 LoggedData_0xC21F9:
 INCBIN "baserom.gbc", $C21F9, $C21FB - $C21F9
 
-UnknownData_0xC21FB:
+Unknown_0xC21FB:
 INCBIN "baserom.gbc", $C21FB, $C21FF - $C21FB
 
 LoggedData_0xC21FF:
 INCBIN "baserom.gbc", $C21FF, $C220F - $C21FF
 
-UnknownData_0xC220F:
+Unknown_0xC220F:
 INCBIN "baserom.gbc", $C220F, $C2237 - $C220F
 
 LoggedData_0xC2237:
 INCBIN "baserom.gbc", $C2237, $C2267 - $C2237
 
-UnknownData_0xC2267:
+Unknown_0xC2267:
 INCBIN "baserom.gbc", $C2267, $C226F - $C2267
 
 LoggedData_0xC226F:
 INCBIN "baserom.gbc", $C226F, $C2277 - $C226F
 
-UnknownData_0xC2277:
+Unknown_0xC2277:
 INCBIN "baserom.gbc", $C2277, $C2287 - $C2277
 
 LoggedData_0xC2287:
 INCBIN "baserom.gbc", $C2287, $C2289 - $C2287
 
-UnknownData_0xC2289:
+Unknown_0xC2289:
 INCBIN "baserom.gbc", $C2289, $C228D - $C2289
 
 LoggedData_0xC228D:
 INCBIN "baserom.gbc", $C228D, $C228F - $C228D
 
-UnknownData_0xC228F:
+Unknown_0xC228F:
 INCBIN "baserom.gbc", $C228F, $C22B1 - $C228F
 
 LoggedData_0xC22B1:
 INCBIN "baserom.gbc", $C22B1, $C22B3 - $C22B1
 
-UnknownData_0xC22B3:
+Unknown_0xC22B3:
 INCBIN "baserom.gbc", $C22B3, $C22BB - $C22B3
 
 LoggedData_0xC22BB:
 INCBIN "baserom.gbc", $C22BB, $C22BD - $C22BB
 
-UnknownData_0xC22BD:
+Unknown_0xC22BD:
 INCBIN "baserom.gbc", $C22BD, $C22C3 - $C22BD
 
 LoggedData_0xC22C3:
 INCBIN "baserom.gbc", $C22C3, $C22D3 - $C22C3
 
-UnknownData_0xC22D3:
+Unknown_0xC22D3:
 INCBIN "baserom.gbc", $C22D3, $C2303 - $C22D3
 
 LoggedData_0xC2303:
 INCBIN "baserom.gbc", $C2303, $C230B - $C2303
 
-UnknownData_0xC230B:
+Unknown_0xC230B:
 INCBIN "baserom.gbc", $C230B, $C232B - $C230B
 
 LoggedData_0xC232B:
 INCBIN "baserom.gbc", $C232B, $C2333 - $C232B
 
-UnknownData_0xC2333:
+Unknown_0xC2333:
 INCBIN "baserom.gbc", $C2333, $C234B - $C2333
 
 LoggedData_0xC234B:
 INCBIN "baserom.gbc", $C234B, $C234D - $C234B
 
-UnknownData_0xC234D:
+Unknown_0xC234D:
 INCBIN "baserom.gbc", $C234D, $C2355 - $C234D
 
 LoggedData_0xC2355:
 INCBIN "baserom.gbc", $C2355, $C2357 - $C2355
 
-UnknownData_0xC2357:
+Unknown_0xC2357:
 INCBIN "baserom.gbc", $C2357, $C2365 - $C2357
 
 LoggedData_0xC2365:
 INCBIN "baserom.gbc", $C2365, $C2367 - $C2365
 
-UnknownData_0xC2367:
+Unknown_0xC2367:
 INCBIN "baserom.gbc", $C2367, $C2387 - $C2367
 
 LoggedData_0xC2387:
 INCBIN "baserom.gbc", $C2387, $C238F - $C2387
 
-UnknownData_0xC238F:
+Unknown_0xC238F:
 INCBIN "baserom.gbc", $C238F, $C2397 - $C238F
 
 LoggedData_0xC2397:
 INCBIN "baserom.gbc", $C2397, $C239F - $C2397
 
-UnknownData_0xC239F:
+Unknown_0xC239F:
 INCBIN "baserom.gbc", $C239F, $C23AF - $C239F
 
 LoggedData_0xC23AF:
 INCBIN "baserom.gbc", $C23AF, $C23B7 - $C23AF
 
-UnknownData_0xC23B7:
+Unknown_0xC23B7:
 INCBIN "baserom.gbc", $C23B7, $C240F - $C23B7
 
 LoggedData_0xC240F:
 INCBIN "baserom.gbc", $C240F, $C2411 - $C240F
 
-UnknownData_0xC2411:
+Unknown_0xC2411:
 INCBIN "baserom.gbc", $C2411, $C2425 - $C2411
 
 LoggedData_0xC2425:
 INCBIN "baserom.gbc", $C2425, $C2427 - $C2425
 
-UnknownData_0xC2427:
+Unknown_0xC2427:
 INCBIN "baserom.gbc", $C2427, $C2449 - $C2427
 
 LoggedData_0xC2449:
 INCBIN "baserom.gbc", $C2449, $C2453 - $C2449
 
-UnknownData_0xC2453:
+Unknown_0xC2453:
 INCBIN "baserom.gbc", $C2453, $C246B - $C2453
 
 LoggedData_0xC246B:
 INCBIN "baserom.gbc", $C246B, $C2473 - $C246B
 
-UnknownData_0xC2473:
+Unknown_0xC2473:
 INCBIN "baserom.gbc", $C2473, $C24CB - $C2473
 
 LoggedData_0xC24CB:
 INCBIN "baserom.gbc", $C24CB, $C24D3 - $C24CB
 
-UnknownData_0xC24D3:
+Unknown_0xC24D3:
 INCBIN "baserom.gbc", $C24D3, $C2597 - $C24D3
 
 LoggedData_0xC2597:
 INCBIN "baserom.gbc", $C2597, $C2599 - $C2597
 
-UnknownData_0xC2599:
+Unknown_0xC2599:
 INCBIN "baserom.gbc", $C2599, $C259F - $C2599
 
 LoggedData_0xC259F:
 INCBIN "baserom.gbc", $C259F, $C25A7 - $C259F
 
-UnknownData_0xC25A7:
+Unknown_0xC25A7:
 INCBIN "baserom.gbc", $C25A7, $C25AB - $C25A7
 
 LoggedData_0xC25AB:
 INCBIN "baserom.gbc", $C25AB, $C25AF - $C25AB
 
-UnknownData_0xC25AF:
+Unknown_0xC25AF:
 INCBIN "baserom.gbc", $C25AF, $C25B3 - $C25AF
 
 LoggedData_0xC25B3:
 INCBIN "baserom.gbc", $C25B3, $C25B5 - $C25B3
 
-UnknownData_0xC25B5:
+Unknown_0xC25B5:
 INCBIN "baserom.gbc", $C25B5, $C25C1 - $C25B5
 
 LoggedData_0xC25C1:
 INCBIN "baserom.gbc", $C25C1, $C25C3 - $C25C1
 
-UnknownData_0xC25C3:
+Unknown_0xC25C3:
 INCBIN "baserom.gbc", $C25C3, $C25CB - $C25C3
 
 LoggedData_0xC25CB:
 INCBIN "baserom.gbc", $C25CB, $C25D1 - $C25CB
 
-UnknownData_0xC25D1:
+Unknown_0xC25D1:
 INCBIN "baserom.gbc", $C25D1, $C25D3 - $C25D1
 
 LoggedData_0xC25D3:
 INCBIN "baserom.gbc", $C25D3, $C25DB - $C25D3
 
-UnknownData_0xC25DB:
+Unknown_0xC25DB:
 INCBIN "baserom.gbc", $C25DB, $C25E3 - $C25DB
 
 LoggedData_0xC25E3:
 INCBIN "baserom.gbc", $C25E3, $C2603 - $C25E3
 
-UnknownData_0xC2603:
+Unknown_0xC2603:
 INCBIN "baserom.gbc", $C2603, $C2613 - $C2603
 
 LoggedData_0xC2613:
 INCBIN "baserom.gbc", $C2613, $C262B - $C2613
 
-UnknownData_0xC262B:
+Unknown_0xC262B:
 INCBIN "baserom.gbc", $C262B, $C2643 - $C262B
 
 LoggedData_0xC2643:
 INCBIN "baserom.gbc", $C2643, $C264B - $C2643
 
-UnknownData_0xC264B:
+Unknown_0xC264B:
 INCBIN "baserom.gbc", $C264B, $C2663 - $C264B
 
 LoggedData_0xC2663:
 INCBIN "baserom.gbc", $C2663, $C267F - $C2663
 
-UnknownData_0xC267F:
+Unknown_0xC267F:
 INCBIN "baserom.gbc", $C267F, $C2683 - $C267F
 
 LoggedData_0xC2683:
 INCBIN "baserom.gbc", $C2683, $C2685 - $C2683
 
-UnknownData_0xC2685:
+Unknown_0xC2685:
 INCBIN "baserom.gbc", $C2685, $C2687 - $C2685
 
 LoggedData_0xC2687:
 INCBIN "baserom.gbc", $C2687, $C2689 - $C2687
 
-UnknownData_0xC2689:
+Unknown_0xC2689:
 INCBIN "baserom.gbc", $C2689, $C268F - $C2689
 
 LoggedData_0xC268F:
 INCBIN "baserom.gbc", $C268F, $C2693 - $C268F
 
-UnknownData_0xC2693:
+Unknown_0xC2693:
 INCBIN "baserom.gbc", $C2693, $C2697 - $C2693
 
 LoggedData_0xC2697:
 INCBIN "baserom.gbc", $C2697, $C269B - $C2697
 
-UnknownData_0xC269B:
+Unknown_0xC269B:
 INCBIN "baserom.gbc", $C269B, $C26A3 - $C269B
 
 LoggedData_0xC26A3:
 INCBIN "baserom.gbc", $C26A3, $C26A9 - $C26A3
 
-UnknownData_0xC26A9:
+Unknown_0xC26A9:
 INCBIN "baserom.gbc", $C26A9, $C26AB - $C26A9
 
 LoggedData_0xC26AB:
 INCBIN "baserom.gbc", $C26AB, $C26B5 - $C26AB
 
-UnknownData_0xC26B5:
+Unknown_0xC26B5:
 INCBIN "baserom.gbc", $C26B5, $C26B7 - $C26B5
 
 LoggedData_0xC26B7:
 INCBIN "baserom.gbc", $C26B7, $C26CF - $C26B7
 
-UnknownData_0xC26CF:
+Unknown_0xC26CF:
 INCBIN "baserom.gbc", $C26CF, $C26D7 - $C26CF
 
 LoggedData_0xC26D7:
 INCBIN "baserom.gbc", $C26D7, $C26DF - $C26D7
 
-UnknownData_0xC26DF:
+Unknown_0xC26DF:
 INCBIN "baserom.gbc", $C26DF, $C26F7 - $C26DF
 
 LoggedData_0xC26F7:
 INCBIN "baserom.gbc", $C26F7, $C2717 - $C26F7
 
-UnknownData_0xC2717:
+Unknown_0xC2717:
 INCBIN "baserom.gbc", $C2717, $C271F - $C2717
 
 LoggedData_0xC271F:
 INCBIN "baserom.gbc", $C271F, $C275F - $C271F
 
-UnknownData_0xC275F:
+Unknown_0xC275F:
 INCBIN "baserom.gbc", $C275F, $C283B - $C275F
 
 LoggedData_0xC283B:
 INCBIN "baserom.gbc", $C283B, $C283D - $C283B
 
-UnknownData_0xC283D:
+Unknown_0xC283D:
 INCBIN "baserom.gbc", $C283D, $C283F - $C283D
 
 LoggedData_0xC283F:
 INCBIN "baserom.gbc", $C283F, $C2845 - $C283F
 
-UnknownData_0xC2845:
+Unknown_0xC2845:
 INCBIN "baserom.gbc", $C2845, $C2849 - $C2845
 
 LoggedData_0xC2849:
 INCBIN "baserom.gbc", $C2849, $C284B - $C2849
 
-UnknownData_0xC284B:
+Unknown_0xC284B:
 INCBIN "baserom.gbc", $C284B, $C284F - $C284B
 
 LoggedData_0xC284F:
 INCBIN "baserom.gbc", $C284F, $C2851 - $C284F
 
-UnknownData_0xC2851:
+Unknown_0xC2851:
 INCBIN "baserom.gbc", $C2851, $C2867 - $C2851
 
 LoggedData_0xC2867:
 INCBIN "baserom.gbc", $C2867, $C2869 - $C2867
 
-UnknownData_0xC2869:
+Unknown_0xC2869:
 INCBIN "baserom.gbc", $C2869, $C2873 - $C2869
 
 LoggedData_0xC2873:
 INCBIN "baserom.gbc", $C2873, $C2875 - $C2873
 
-UnknownData_0xC2875:
+Unknown_0xC2875:
 INCBIN "baserom.gbc", $C2875, $C2877 - $C2875
 
 LoggedData_0xC2877:
 INCBIN "baserom.gbc", $C2877, $C2897 - $C2877
 
-UnknownData_0xC2897:
+Unknown_0xC2897:
 INCBIN "baserom.gbc", $C2897, $C289F - $C2897
 
 LoggedData_0xC289F:
 INCBIN "baserom.gbc", $C289F, $C28A7 - $C289F
 
-UnknownData_0xC28A7:
+Unknown_0xC28A7:
 INCBIN "baserom.gbc", $C28A7, $C28AF - $C28A7
 
 LoggedData_0xC28AF:
 INCBIN "baserom.gbc", $C28AF, $C28B7 - $C28AF
 
-UnknownData_0xC28B7:
+Unknown_0xC28B7:
 INCBIN "baserom.gbc", $C28B7, $C28F7 - $C28B7
 
 LoggedData_0xC28F7:
 INCBIN "baserom.gbc", $C28F7, $C28FF - $C28F7
 
-UnknownData_0xC28FF:
+Unknown_0xC28FF:
 INCBIN "baserom.gbc", $C28FF, $C2907 - $C28FF
 
 LoggedData_0xC2907:
 INCBIN "baserom.gbc", $C2907, $C290F - $C2907
 
-UnknownData_0xC290F:
+Unknown_0xC290F:
 INCBIN "baserom.gbc", $C290F, $C2917 - $C290F
 
 LoggedData_0xC2917:
 INCBIN "baserom.gbc", $C2917, $C2919 - $C2917
 
-UnknownData_0xC2919:
+Unknown_0xC2919:
 INCBIN "baserom.gbc", $C2919, $C291D - $C2919
 
 LoggedData_0xC291D:
 INCBIN "baserom.gbc", $C291D, $C291F - $C291D
 
-UnknownData_0xC291F:
+Unknown_0xC291F:
 INCBIN "baserom.gbc", $C291F, $C2923 - $C291F
 
 LoggedData_0xC2923:
 INCBIN "baserom.gbc", $C2923, $C2927 - $C2923
 
-UnknownData_0xC2927:
+Unknown_0xC2927:
 INCBIN "baserom.gbc", $C2927, $C292B - $C2927
 
 LoggedData_0xC292B:
 INCBIN "baserom.gbc", $C292B, $C292F - $C292B
 
-UnknownData_0xC292F:
+Unknown_0xC292F:
 INCBIN "baserom.gbc", $C292F, $C2935 - $C292F
 
 LoggedData_0xC2935:
 INCBIN "baserom.gbc", $C2935, $C2939 - $C2935
 
-UnknownData_0xC2939:
+Unknown_0xC2939:
 INCBIN "baserom.gbc", $C2939, $C2943 - $C2939
 
 LoggedData_0xC2943:
 INCBIN "baserom.gbc", $C2943, $C2945 - $C2943
 
-UnknownData_0xC2945:
+Unknown_0xC2945:
 INCBIN "baserom.gbc", $C2945, $C294B - $C2945
 
 LoggedData_0xC294B:
 INCBIN "baserom.gbc", $C294B, $C294D - $C294B
 
-UnknownData_0xC294D:
+Unknown_0xC294D:
 INCBIN "baserom.gbc", $C294D, $C2953 - $C294D
 
 LoggedData_0xC2953:
 INCBIN "baserom.gbc", $C2953, $C295B - $C2953
 
-UnknownData_0xC295B:
+Unknown_0xC295B:
 INCBIN "baserom.gbc", $C295B, $C2963 - $C295B
 
 LoggedData_0xC2963:
 INCBIN "baserom.gbc", $C2963, $C296B - $C2963
 
-UnknownData_0xC296B:
+Unknown_0xC296B:
 INCBIN "baserom.gbc", $C296B, $C2973 - $C296B
 
 LoggedData_0xC2973:
 INCBIN "baserom.gbc", $C2973, $C2983 - $C2973
 
-UnknownData_0xC2983:
+Unknown_0xC2983:
 INCBIN "baserom.gbc", $C2983, $C298B - $C2983
 
 LoggedData_0xC298B:
 INCBIN "baserom.gbc", $C298B, $C29AB - $C298B
 
-UnknownData_0xC29AB:
+Unknown_0xC29AB:
 INCBIN "baserom.gbc", $C29AB, $C29D3 - $C29AB
 
 LoggedData_0xC29D3:
 INCBIN "baserom.gbc", $C29D3, $C29E3 - $C29D3
 
-UnknownData_0xC29E3:
+Unknown_0xC29E3:
 INCBIN "baserom.gbc", $C29E3, $C29F3 - $C29E3
 
 LoggedData_0xC29F3:
 INCBIN "baserom.gbc", $C29F3, $C29F5 - $C29F3
 
-UnknownData_0xC29F5:
+Unknown_0xC29F5:
 INCBIN "baserom.gbc", $C29F5, $C2A05 - $C29F5
 
 LoggedData_0xC2A05:
 INCBIN "baserom.gbc", $C2A05, $C2A07 - $C2A05
 
-UnknownData_0xC2A07:
+Unknown_0xC2A07:
 INCBIN "baserom.gbc", $C2A07, $C2A15 - $C2A07
 
 LoggedData_0xC2A15:
 INCBIN "baserom.gbc", $C2A15, $C2A19 - $C2A15
 
-UnknownData_0xC2A19:
+Unknown_0xC2A19:
 INCBIN "baserom.gbc", $C2A19, $C2A1B - $C2A19
 
 LoggedData_0xC2A1B:
 INCBIN "baserom.gbc", $C2A1B, $C2A21 - $C2A1B
 
-UnknownData_0xC2A21:
+Unknown_0xC2A21:
 INCBIN "baserom.gbc", $C2A21, $C2A2F - $C2A21
 
 LoggedData_0xC2A2F:
 INCBIN "baserom.gbc", $C2A2F, $C2A37 - $C2A2F
 
-UnknownData_0xC2A37:
+Unknown_0xC2A37:
 INCBIN "baserom.gbc", $C2A37, $C2A5F - $C2A37
 
 LoggedData_0xC2A5F:
 INCBIN "baserom.gbc", $C2A5F, $C2A67 - $C2A5F
 
-UnknownData_0xC2A67:
+Unknown_0xC2A67:
 INCBIN "baserom.gbc", $C2A67, $C2A87 - $C2A67
 
 LoggedData_0xC2A87:
 INCBIN "baserom.gbc", $C2A87, $C2A97 - $C2A87
 
-UnknownData_0xC2A97:
+Unknown_0xC2A97:
 INCBIN "baserom.gbc", $C2A97, $C2A9F - $C2A97
 
 LoggedData_0xC2A9F:
 INCBIN "baserom.gbc", $C2A9F, $C2AB7 - $C2A9F
 
-UnknownData_0xC2AB7:
+Unknown_0xC2AB7:
 INCBIN "baserom.gbc", $C2AB7, $C2ACF - $C2AB7
 
 LoggedData_0xC2ACF:
 INCBIN "baserom.gbc", $C2ACF, $C2AD1 - $C2ACF
 
-UnknownData_0xC2AD1:
+Unknown_0xC2AD1:
 INCBIN "baserom.gbc", $C2AD1, $C2AD9 - $C2AD1
 
 LoggedData_0xC2AD9:
 INCBIN "baserom.gbc", $C2AD9, $C2ADB - $C2AD9
 
-UnknownData_0xC2ADB:
+Unknown_0xC2ADB:
 INCBIN "baserom.gbc", $C2ADB, $C2AE3 - $C2ADB
 
 LoggedData_0xC2AE3:
 INCBIN "baserom.gbc", $C2AE3, $C2AE7 - $C2AE3
 
-UnknownData_0xC2AE7:
+Unknown_0xC2AE7:
 INCBIN "baserom.gbc", $C2AE7, $C2B01 - $C2AE7
 
 LoggedData_0xC2B01:
 INCBIN "baserom.gbc", $C2B01, $C2B03 - $C2B01
 
-UnknownData_0xC2B03:
+Unknown_0xC2B03:
 INCBIN "baserom.gbc", $C2B03, $C2B0B - $C2B03
 
 LoggedData_0xC2B0B:
 INCBIN "baserom.gbc", $C2B0B, $C2B13 - $C2B0B
 
-UnknownData_0xC2B13:
+Unknown_0xC2B13:
 INCBIN "baserom.gbc", $C2B13, $C2B1B - $C2B13
 
 LoggedData_0xC2B1B:
 INCBIN "baserom.gbc", $C2B1B, $C2B23 - $C2B1B
 
-UnknownData_0xC2B23:
+Unknown_0xC2B23:
 INCBIN "baserom.gbc", $C2B23, $C2B3B - $C2B23
 
 LoggedData_0xC2B3B:
 INCBIN "baserom.gbc", $C2B3B, $C2B4B - $C2B3B
 
-UnknownData_0xC2B4B:
+Unknown_0xC2B4B:
 INCBIN "baserom.gbc", $C2B4B, $C2B7B - $C2B4B
 
 LoggedData_0xC2B7B:
 INCBIN "baserom.gbc", $C2B7B, $C2B83 - $C2B7B
 
-UnknownData_0xC2B83:
+Unknown_0xC2B83:
 INCBIN "baserom.gbc", $C2B83, $C2C47 - $C2B83
 
 LoggedData_0xC2C47:
 INCBIN "baserom.gbc", $C2C47, $C2C4B - $C2C47
 
-UnknownData_0xC2C4B:
+Unknown_0xC2C4B:
 INCBIN "baserom.gbc", $C2C4B, $C2C53 - $C2C4B
 
 LoggedData_0xC2C53:
 INCBIN "baserom.gbc", $C2C53, $C2C55 - $C2C53
 
-UnknownData_0xC2C55:
+Unknown_0xC2C55:
 INCBIN "baserom.gbc", $C2C55, $C2C5D - $C2C55
 
 LoggedData_0xC2C5D:
 INCBIN "baserom.gbc", $C2C5D, $C2C5F - $C2C5D
 
-UnknownData_0xC2C5F:
+Unknown_0xC2C5F:
 INCBIN "baserom.gbc", $C2C5F, $C2C61 - $C2C5F
 
 LoggedData_0xC2C61:
 INCBIN "baserom.gbc", $C2C61, $C2C63 - $C2C61
 
-UnknownData_0xC2C63:
+Unknown_0xC2C63:
 INCBIN "baserom.gbc", $C2C63, $C2C67 - $C2C63
 
 LoggedData_0xC2C67:
 INCBIN "baserom.gbc", $C2C67, $C2C69 - $C2C67
 
-UnknownData_0xC2C69:
+Unknown_0xC2C69:
 INCBIN "baserom.gbc", $C2C69, $C2C6D - $C2C69
 
 LoggedData_0xC2C6D:
 INCBIN "baserom.gbc", $C2C6D, $C2C6F - $C2C6D
 
-UnknownData_0xC2C6F:
+Unknown_0xC2C6F:
 INCBIN "baserom.gbc", $C2C6F, $C2C71 - $C2C6F
 
 LoggedData_0xC2C71:
 INCBIN "baserom.gbc", $C2C71, $C2C73 - $C2C71
 
-UnknownData_0xC2C73:
+Unknown_0xC2C73:
 INCBIN "baserom.gbc", $C2C73, $C2C75 - $C2C73
 
 LoggedData_0xC2C75:
 INCBIN "baserom.gbc", $C2C75, $C2C79 - $C2C75
 
-UnknownData_0xC2C79:
+Unknown_0xC2C79:
 INCBIN "baserom.gbc", $C2C79, $C2C83 - $C2C79
 
 LoggedData_0xC2C83:
 INCBIN "baserom.gbc", $C2C83, $C2C93 - $C2C83
 
-UnknownData_0xC2C93:
+Unknown_0xC2C93:
 INCBIN "baserom.gbc", $C2C93, $C2C9B - $C2C93
 
 LoggedData_0xC2C9B:
 INCBIN "baserom.gbc", $C2C9B, $C2CA3 - $C2C9B
 
-UnknownData_0xC2CA3:
+Unknown_0xC2CA3:
 INCBIN "baserom.gbc", $C2CA3, $C2CBB - $C2CA3
 
 LoggedData_0xC2CBB:
 INCBIN "baserom.gbc", $C2CBB, $C2CCB - $C2CBB
 
-UnknownData_0xC2CCB:
+Unknown_0xC2CCB:
 INCBIN "baserom.gbc", $C2CCB, $C2CD3 - $C2CCB
 
 LoggedData_0xC2CD3:
 INCBIN "baserom.gbc", $C2CD3, $C2CE3 - $C2CD3
 
-UnknownData_0xC2CE3:
+Unknown_0xC2CE3:
 INCBIN "baserom.gbc", $C2CE3, $C2CEB - $C2CE3
 
 LoggedData_0xC2CEB:
 INCBIN "baserom.gbc", $C2CEB, $C2CF3 - $C2CEB
 
-UnknownData_0xC2CF3:
+Unknown_0xC2CF3:
 INCBIN "baserom.gbc", $C2CF3, $C2D03 - $C2CF3
 
 LoggedData_0xC2D03:
 INCBIN "baserom.gbc", $C2D03, $C2D05 - $C2D03
 
-UnknownData_0xC2D05:
+Unknown_0xC2D05:
 INCBIN "baserom.gbc", $C2D05, $C2D1F - $C2D05
 
 LoggedData_0xC2D1F:
 INCBIN "baserom.gbc", $C2D1F, $C2D21 - $C2D1F
 
-UnknownData_0xC2D21:
+Unknown_0xC2D21:
 INCBIN "baserom.gbc", $C2D21, $C2D3F - $C2D21
 
 LoggedData_0xC2D3F:
 INCBIN "baserom.gbc", $C2D3F, $C2D47 - $C2D3F
 
-UnknownData_0xC2D47:
+Unknown_0xC2D47:
 INCBIN "baserom.gbc", $C2D47, $C2D87 - $C2D47
 
 LoggedData_0xC2D87:
 INCBIN "baserom.gbc", $C2D87, $C2D8F - $C2D87
 
-UnknownData_0xC2D8F:
+Unknown_0xC2D8F:
 INCBIN "baserom.gbc", $C2D8F, $C2DBF - $C2D8F
 
 LoggedData_0xC2DBF:
 INCBIN "baserom.gbc", $C2DBF, $C2DC1 - $C2DBF
 
-UnknownData_0xC2DC1:
+Unknown_0xC2DC1:
 INCBIN "baserom.gbc", $C2DC1, $C2DC9 - $C2DC1
 
 LoggedData_0xC2DC9:
 INCBIN "baserom.gbc", $C2DC9, $C2DCD - $C2DC9
 
-UnknownData_0xC2DCD:
+Unknown_0xC2DCD:
 INCBIN "baserom.gbc", $C2DCD, $C2DD5 - $C2DCD
 
 LoggedData_0xC2DD5:
 INCBIN "baserom.gbc", $C2DD5, $C2DD7 - $C2DD5
 
-UnknownData_0xC2DD7:
+Unknown_0xC2DD7:
 INCBIN "baserom.gbc", $C2DD7, $C2DDD - $C2DD7
 
 LoggedData_0xC2DDD:
 INCBIN "baserom.gbc", $C2DDD, $C2DDF - $C2DDD
 
-UnknownData_0xC2DDF:
+Unknown_0xC2DDF:
 INCBIN "baserom.gbc", $C2DDF, $C2DE9 - $C2DDF
 
 LoggedData_0xC2DE9:
 INCBIN "baserom.gbc", $C2DE9, $C2DED - $C2DE9
 
-UnknownData_0xC2DED:
+Unknown_0xC2DED:
 INCBIN "baserom.gbc", $C2DED, $C2DF7 - $C2DED
 
 LoggedData_0xC2DF7:
 INCBIN "baserom.gbc", $C2DF7, $C2DF9 - $C2DF7
 
-UnknownData_0xC2DF9:
+Unknown_0xC2DF9:
 INCBIN "baserom.gbc", $C2DF9, $C2DFB - $C2DF9
 
 LoggedData_0xC2DFB:
 INCBIN "baserom.gbc", $C2DFB, $C2E03 - $C2DFB
 
-UnknownData_0xC2E03:
+Unknown_0xC2E03:
 INCBIN "baserom.gbc", $C2E03, $C2E0B - $C2E03
 
 LoggedData_0xC2E0B:
 INCBIN "baserom.gbc", $C2E0B, $C2E1B - $C2E0B
 
-UnknownData_0xC2E1B:
+Unknown_0xC2E1B:
 INCBIN "baserom.gbc", $C2E1B, $C2E2B - $C2E1B
 
 LoggedData_0xC2E2B:
 INCBIN "baserom.gbc", $C2E2B, $C2E33 - $C2E2B
 
-UnknownData_0xC2E33:
+Unknown_0xC2E33:
 INCBIN "baserom.gbc", $C2E33, $C2E3B - $C2E33
 
 LoggedData_0xC2E3B:
 INCBIN "baserom.gbc", $C2E3B, $C2E43 - $C2E3B
 
-UnknownData_0xC2E43:
+Unknown_0xC2E43:
 INCBIN "baserom.gbc", $C2E43, $C2E63 - $C2E43
 
 LoggedData_0xC2E63:
 INCBIN "baserom.gbc", $C2E63, $C2E73 - $C2E63
 
-UnknownData_0xC2E73:
+Unknown_0xC2E73:
 INCBIN "baserom.gbc", $C2E73, $C2E9B - $C2E73
 
 LoggedData_0xC2E9B:
 INCBIN "baserom.gbc", $C2E9B, $C2EA3 - $C2E9B
 
-UnknownData_0xC2EA3:
+Unknown_0xC2EA3:
 INCBIN "baserom.gbc", $C2EA3, $C2EAB - $C2EA3
 
 LoggedData_0xC2EAB:
 INCBIN "baserom.gbc", $C2EAB, $C2EAD - $C2EAB
 
-UnknownData_0xC2EAD:
+Unknown_0xC2EAD:
 INCBIN "baserom.gbc", $C2EAD, $C2EC7 - $C2EAD
 
 LoggedData_0xC2EC7:
 INCBIN "baserom.gbc", $C2EC7, $C2EC9 - $C2EC7
 
-UnknownData_0xC2EC9:
+Unknown_0xC2EC9:
 INCBIN "baserom.gbc", $C2EC9, $C2ECD - $C2EC9
 
 LoggedData_0xC2ECD:
 INCBIN "baserom.gbc", $C2ECD, $C2ED3 - $C2ECD
 
-UnknownData_0xC2ED3:
+Unknown_0xC2ED3:
 INCBIN "baserom.gbc", $C2ED3, $C2EE5 - $C2ED3
 
 LoggedData_0xC2EE5:
 INCBIN "baserom.gbc", $C2EE5, $C2EEF - $C2EE5
 
-UnknownData_0xC2EEF:
+Unknown_0xC2EEF:
 INCBIN "baserom.gbc", $C2EEF, $C2F1F - $C2EEF
 
 LoggedData_0xC2F1F:
 INCBIN "baserom.gbc", $C2F1F, $C2F27 - $C2F1F
 
-UnknownData_0xC2F27:
+Unknown_0xC2F27:
 INCBIN "baserom.gbc", $C2F27, $C2F37 - $C2F27
 
 LoggedData_0xC2F37:
 INCBIN "baserom.gbc", $C2F37, $C2F4F - $C2F37
 
-UnknownData_0xC2F4F:
+Unknown_0xC2F4F:
 INCBIN "baserom.gbc", $C2F4F, $C2F8F - $C2F4F
 
 LoggedData_0xC2F8F:
 INCBIN "baserom.gbc", $C2F8F, $C2F99 - $C2F8F
 
-UnknownData_0xC2F99:
+Unknown_0xC2F99:
 INCBIN "baserom.gbc", $C2F99, $C2F9F - $C2F99
 
 LoggedData_0xC2F9F:
 INCBIN "baserom.gbc", $C2F9F, $C2FA1 - $C2F9F
 
-UnknownData_0xC2FA1:
+Unknown_0xC2FA1:
 INCBIN "baserom.gbc", $C2FA1, $C2FA9 - $C2FA1
 
 LoggedData_0xC2FA9:
 INCBIN "baserom.gbc", $C2FA9, $C2FAD - $C2FA9
 
-UnknownData_0xC2FAD:
+Unknown_0xC2FAD:
 INCBIN "baserom.gbc", $C2FAD, $C2FB3 - $C2FAD
 
 LoggedData_0xC2FB3:
 INCBIN "baserom.gbc", $C2FB3, $C2FB5 - $C2FB3
 
-UnknownData_0xC2FB5:
+Unknown_0xC2FB5:
 INCBIN "baserom.gbc", $C2FB5, $C2FB9 - $C2FB5
 
 LoggedData_0xC2FB9:
 INCBIN "baserom.gbc", $C2FB9, $C2FBF - $C2FB9
 
-UnknownData_0xC2FBF:
+Unknown_0xC2FBF:
 INCBIN "baserom.gbc", $C2FBF, $C2FC5 - $C2FBF
 
 LoggedData_0xC2FC5:
 INCBIN "baserom.gbc", $C2FC5, $C2FCF - $C2FC5
 
-UnknownData_0xC2FCF:
+Unknown_0xC2FCF:
 INCBIN "baserom.gbc", $C2FCF, $C2FD1 - $C2FCF
 
 LoggedData_0xC2FD1:
 INCBIN "baserom.gbc", $C2FD1, $C2FE3 - $C2FD1
 
-UnknownData_0xC2FE3:
+Unknown_0xC2FE3:
 INCBIN "baserom.gbc", $C2FE3, $C2FF3 - $C2FE3
 
 LoggedData_0xC2FF3:
 INCBIN "baserom.gbc", $C2FF3, $C3003 - $C2FF3
 
-UnknownData_0xC3003:
+Unknown_0xC3003:
 INCBIN "baserom.gbc", $C3003, $C300B - $C3003
 
 LoggedData_0xC300B:
 INCBIN "baserom.gbc", $C300B, $C3013 - $C300B
 
-UnknownData_0xC3013:
+Unknown_0xC3013:
 INCBIN "baserom.gbc", $C3013, $C3023 - $C3013
 
 LoggedData_0xC3023:
 INCBIN "baserom.gbc", $C3023, $C303B - $C3023
 
-UnknownData_0xC303B:
+Unknown_0xC303B:
 INCBIN "baserom.gbc", $C303B, $C304B - $C303B
 
 LoggedData_0xC304B:
 INCBIN "baserom.gbc", $C304B, $C3073 - $C304B
 
-UnknownData_0xC3073:
+Unknown_0xC3073:
 INCBIN "baserom.gbc", $C3073, $C307B - $C3073
 
 LoggedData_0xC307B:
 INCBIN "baserom.gbc", $C307B, $C3083 - $C307B
 
-UnknownData_0xC3083:
+Unknown_0xC3083:
 INCBIN "baserom.gbc", $C3083, $C316F - $C3083
 
 LoggedData_0xC316F:
 INCBIN "baserom.gbc", $C316F, $C3171 - $C316F
 
-UnknownData_0xC3171:
+Unknown_0xC3171:
 INCBIN "baserom.gbc", $C3171, $C3181 - $C3171
 
 LoggedData_0xC3181:
 INCBIN "baserom.gbc", $C3181, $C3183 - $C3181
 
-UnknownData_0xC3183:
+Unknown_0xC3183:
 INCBIN "baserom.gbc", $C3183, $C3187 - $C3183
 
 LoggedData_0xC3187:
 INCBIN "baserom.gbc", $C3187, $C3189 - $C3187
 
-UnknownData_0xC3189:
+Unknown_0xC3189:
 INCBIN "baserom.gbc", $C3189, $C3193 - $C3189
 
 LoggedData_0xC3193:
 INCBIN "baserom.gbc", $C3193, $C3195 - $C3193
 
-UnknownData_0xC3195:
+Unknown_0xC3195:
 INCBIN "baserom.gbc", $C3195, $C31AB - $C3195
 
 LoggedData_0xC31AB:
 INCBIN "baserom.gbc", $C31AB, $C31B3 - $C31AB
 
-UnknownData_0xC31B3:
+Unknown_0xC31B3:
 INCBIN "baserom.gbc", $C31B3, $C31E3 - $C31B3
 
 LoggedData_0xC31E3:
 INCBIN "baserom.gbc", $C31E3, $C31EB - $C31E3
 
-UnknownData_0xC31EB:
+Unknown_0xC31EB:
 INCBIN "baserom.gbc", $C31EB, $C31F3 - $C31EB
 
 LoggedData_0xC31F3:
 INCBIN "baserom.gbc", $C31F3, $C31FB - $C31F3
 
-UnknownData_0xC31FB:
+Unknown_0xC31FB:
 INCBIN "baserom.gbc", $C31FB, $C320B - $C31FB
 
 LoggedData_0xC320B:
 INCBIN "baserom.gbc", $C320B, $C3213 - $C320B
 
-UnknownData_0xC3213:
+Unknown_0xC3213:
 INCBIN "baserom.gbc", $C3213, $C325B - $C3213
 
 LoggedData_0xC325B:
 INCBIN "baserom.gbc", $C325B, $C325D - $C325B
 
-UnknownData_0xC325D:
+Unknown_0xC325D:
 INCBIN "baserom.gbc", $C325D, $C3263 - $C325D
 
 LoggedData_0xC3263:
 INCBIN "baserom.gbc", $C3263, $C3265 - $C3263
 
-UnknownData_0xC3265:
+Unknown_0xC3265:
 INCBIN "baserom.gbc", $C3265, $C3267 - $C3265
 
 LoggedData_0xC3267:
 INCBIN "baserom.gbc", $C3267, $C3269 - $C3267
 
-UnknownData_0xC3269:
+Unknown_0xC3269:
 INCBIN "baserom.gbc", $C3269, $C326D - $C3269
 
 LoggedData_0xC326D:
 INCBIN "baserom.gbc", $C326D, $C3271 - $C326D
 
-UnknownData_0xC3271:
+Unknown_0xC3271:
 INCBIN "baserom.gbc", $C3271, $C3273 - $C3271
 
 LoggedData_0xC3273:
 INCBIN "baserom.gbc", $C3273, $C3275 - $C3273
 
-UnknownData_0xC3275:
+Unknown_0xC3275:
 INCBIN "baserom.gbc", $C3275, $C3277 - $C3275
 
 LoggedData_0xC3277:
 INCBIN "baserom.gbc", $C3277, $C3279 - $C3277
 
-UnknownData_0xC3279:
+Unknown_0xC3279:
 INCBIN "baserom.gbc", $C3279, $C327D - $C3279
 
 LoggedData_0xC327D:
 INCBIN "baserom.gbc", $C327D, $C3281 - $C327D
 
-UnknownData_0xC3281:
+Unknown_0xC3281:
 INCBIN "baserom.gbc", $C3281, $C3283 - $C3281
 
 LoggedData_0xC3283:
 INCBIN "baserom.gbc", $C3283, $C328D - $C3283
 
-UnknownData_0xC328D:
+Unknown_0xC328D:
 INCBIN "baserom.gbc", $C328D, $C328F - $C328D
 
 LoggedData_0xC328F:
 INCBIN "baserom.gbc", $C328F, $C3291 - $C328F
 
-UnknownData_0xC3291:
+Unknown_0xC3291:
 INCBIN "baserom.gbc", $C3291, $C3297 - $C3291
 
 LoggedData_0xC3297:
 INCBIN "baserom.gbc", $C3297, $C329F - $C3297
 
-UnknownData_0xC329F:
+Unknown_0xC329F:
 INCBIN "baserom.gbc", $C329F, $C32AF - $C329F
 
 LoggedData_0xC32AF:
 INCBIN "baserom.gbc", $C32AF, $C32B7 - $C32AF
 
-UnknownData_0xC32B7:
+Unknown_0xC32B7:
 INCBIN "baserom.gbc", $C32B7, $C32BF - $C32B7
 
 LoggedData_0xC32BF:
 INCBIN "baserom.gbc", $C32BF, $C32C7 - $C32BF
 
-UnknownData_0xC32C7:
+Unknown_0xC32C7:
 INCBIN "baserom.gbc", $C32C7, $C32CF - $C32C7
 
 LoggedData_0xC32CF:
 INCBIN "baserom.gbc", $C32CF, $C32FF - $C32CF
 
-UnknownData_0xC32FF:
+Unknown_0xC32FF:
 INCBIN "baserom.gbc", $C32FF, $C3307 - $C32FF
 
 LoggedData_0xC3307:
 INCBIN "baserom.gbc", $C3307, $C332F - $C3307
 
-UnknownData_0xC332F:
+Unknown_0xC332F:
 INCBIN "baserom.gbc", $C332F, $C3337 - $C332F
 
 LoggedData_0xC3337:
 INCBIN "baserom.gbc", $C3337, $C333F - $C3337
 
-UnknownData_0xC333F:
+Unknown_0xC333F:
 INCBIN "baserom.gbc", $C333F, $C3347 - $C333F
 
 LoggedData_0xC3347:
 INCBIN "baserom.gbc", $C3347, $C3349 - $C3347
 
-UnknownData_0xC3349:
+Unknown_0xC3349:
 INCBIN "baserom.gbc", $C3349, $C334F - $C3349
 
 LoggedData_0xC334F:
 INCBIN "baserom.gbc", $C334F, $C3351 - $C334F
 
-UnknownData_0xC3351:
+Unknown_0xC3351:
 INCBIN "baserom.gbc", $C3351, $C336B - $C3351
 
 LoggedData_0xC336B:
 INCBIN "baserom.gbc", $C336B, $C336F - $C336B
 
-UnknownData_0xC336F:
+Unknown_0xC336F:
 INCBIN "baserom.gbc", $C336F, $C337D - $C336F
 
 LoggedData_0xC337D:
 INCBIN "baserom.gbc", $C337D, $C337F - $C337D
 
-UnknownData_0xC337F:
+Unknown_0xC337F:
 INCBIN "baserom.gbc", $C337F, $C3383 - $C337F
 
 LoggedData_0xC3383:
 INCBIN "baserom.gbc", $C3383, $C338B - $C3383
 
-UnknownData_0xC338B:
+Unknown_0xC338B:
 INCBIN "baserom.gbc", $C338B, $C339B - $C338B
 
 LoggedData_0xC339B:
 INCBIN "baserom.gbc", $C339B, $C33A3 - $C339B
 
-UnknownData_0xC33A3:
+Unknown_0xC33A3:
 INCBIN "baserom.gbc", $C33A3, $C33E3 - $C33A3
 
 LoggedData_0xC33E3:
 INCBIN "baserom.gbc", $C33E3, $C33F3 - $C33E3
 
-UnknownData_0xC33F3:
+Unknown_0xC33F3:
 INCBIN "baserom.gbc", $C33F3, $C342B - $C33F3
 
 LoggedData_0xC342B:
 INCBIN "baserom.gbc", $C342B, $C3433 - $C342B
 
-UnknownData_0xC3433:
+Unknown_0xC3433:
 INCBIN "baserom.gbc", $C3433, $C351F - $C3433
 
 LoggedData_0xC351F:
 INCBIN "baserom.gbc", $C351F, $C3521 - $C351F
 
-UnknownData_0xC3521:
+Unknown_0xC3521:
 INCBIN "baserom.gbc", $C3521, $C3525 - $C3521
 
 LoggedData_0xC3525:
 INCBIN "baserom.gbc", $C3525, $C3527 - $C3525
 
-UnknownData_0xC3527:
+Unknown_0xC3527:
 INCBIN "baserom.gbc", $C3527, $C3529 - $C3527
 
 LoggedData_0xC3529:
 INCBIN "baserom.gbc", $C3529, $C352F - $C3529
 
-UnknownData_0xC352F:
+Unknown_0xC352F:
 INCBIN "baserom.gbc", $C352F, $C353B - $C352F
 
 LoggedData_0xC353B:
 INCBIN "baserom.gbc", $C353B, $C353D - $C353B
 
-UnknownData_0xC353D:
+Unknown_0xC353D:
 INCBIN "baserom.gbc", $C353D, $C3543 - $C353D
 
 LoggedData_0xC3543:
 INCBIN "baserom.gbc", $C3543, $C3545 - $C3543
 
-UnknownData_0xC3545:
+Unknown_0xC3545:
 INCBIN "baserom.gbc", $C3545, $C3553 - $C3545
 
 LoggedData_0xC3553:
 INCBIN "baserom.gbc", $C3553, $C3555 - $C3553
 
-UnknownData_0xC3555:
+Unknown_0xC3555:
 INCBIN "baserom.gbc", $C3555, $C355B - $C3555
 
 LoggedData_0xC355B:
 INCBIN "baserom.gbc", $C355B, $C3563 - $C355B
 
-UnknownData_0xC3563:
+Unknown_0xC3563:
 INCBIN "baserom.gbc", $C3563, $C356B - $C3563
 
 LoggedData_0xC356B:
 INCBIN "baserom.gbc", $C356B, $C3573 - $C356B
 
-UnknownData_0xC3573:
+Unknown_0xC3573:
 INCBIN "baserom.gbc", $C3573, $C357B - $C3573
 
 LoggedData_0xC357B:
 INCBIN "baserom.gbc", $C357B, $C3593 - $C357B
 
-UnknownData_0xC3593:
+Unknown_0xC3593:
 INCBIN "baserom.gbc", $C3593, $C35AB - $C3593
 
 LoggedData_0xC35AB:
 INCBIN "baserom.gbc", $C35AB, $C35B3 - $C35AB
 
-UnknownData_0xC35B3:
+Unknown_0xC35B3:
 INCBIN "baserom.gbc", $C35B3, $C35BB - $C35B3
 
 LoggedData_0xC35BB:
 INCBIN "baserom.gbc", $C35BB, $C35C3 - $C35BB
 
-UnknownData_0xC35C3:
+Unknown_0xC35C3:
 INCBIN "baserom.gbc", $C35C3, $C35FB - $C35C3
 
 LoggedData_0xC35FB:
 INCBIN "baserom.gbc", $C35FB, $C3603 - $C35FB
 
-UnknownData_0xC3603:
+Unknown_0xC3603:
 INCBIN "baserom.gbc", $C3603, $C3783 - $C3603
 
 LoggedData_0xC3783:
 INCBIN "baserom.gbc", $C3783, $C3787 - $C3783
 
-UnknownData_0xC3787:
+Unknown_0xC3787:
 INCBIN "baserom.gbc", $C3787, $C37BF - $C3787
 
 LoggedData_0xC37BF:
 INCBIN "baserom.gbc", $C37BF, $C37CF - $C37BF
 
-UnknownData_0xC37CF:
+Unknown_0xC37CF:
 INCBIN "baserom.gbc", $C37CF, $C389B - $C37CF
 
 LoggedData_0xC389B:
 INCBIN "baserom.gbc", $C389B, $C389D - $C389B
 
-UnknownData_0xC389D:
+Unknown_0xC389D:
 INCBIN "baserom.gbc", $C389D, $C38C3 - $C389D
 
 LoggedData_0xC38C3:
 INCBIN "baserom.gbc", $C38C3, $C38C9 - $C38C3
 
-UnknownData_0xC38C9:
+Unknown_0xC38C9:
 INCBIN "baserom.gbc", $C38C9, $C38D7 - $C38C9
 
 LoggedData_0xC38D7:
 INCBIN "baserom.gbc", $C38D7, $C38DF - $C38D7
 
-UnknownData_0xC38DF:
+Unknown_0xC38DF:
 INCBIN "baserom.gbc", $C38DF, $C38F7 - $C38DF
 
 LoggedData_0xC38F7:
 INCBIN "baserom.gbc", $C38F7, $C390F - $C38F7
 
-UnknownData_0xC390F:
+Unknown_0xC390F:
 INCBIN "baserom.gbc", $C390F, $C39B3 - $C390F
 
 LoggedData_0xC39B3:
 INCBIN "baserom.gbc", $C39B3, $C39B5 - $C39B3
 
-UnknownData_0xC39B5:
+Unknown_0xC39B5:
 INCBIN "baserom.gbc", $C39B5, $C39CD - $C39B5
 
 LoggedData_0xC39CD:
 INCBIN "baserom.gbc", $C39CD, $C39CF - $C39CD
 
-UnknownData_0xC39CF:
+Unknown_0xC39CF:
 INCBIN "baserom.gbc", $C39CF, $C39ED - $C39CF
 
 LoggedData_0xC39ED:
 INCBIN "baserom.gbc", $C39ED, $C39F7 - $C39ED
 
-UnknownData_0xC39F7:
+Unknown_0xC39F7:
 INCBIN "baserom.gbc", $C39F7, $C3A07 - $C39F7
 
 LoggedData_0xC3A07:
 INCBIN "baserom.gbc", $C3A07, $C3A0F - $C3A07
 
-UnknownData_0xC3A0F:
+Unknown_0xC3A0F:
 INCBIN "baserom.gbc", $C3A0F, $C3A37 - $C3A0F
 
 LoggedData_0xC3A37:
 INCBIN "baserom.gbc", $C3A37, $C3A41 - $C3A37
 
-UnknownData_0xC3A41:
+Unknown_0xC3A41:
 INCBIN "baserom.gbc", $C3A41, $C3A47 - $C3A41
 
 LoggedData_0xC3A47:
 INCBIN "baserom.gbc", $C3A47, $C3A49 - $C3A47
 
-UnknownData_0xC3A49:
+Unknown_0xC3A49:
 INCBIN "baserom.gbc", $C3A49, $C3A5B - $C3A49
 
 LoggedData_0xC3A5B:
 INCBIN "baserom.gbc", $C3A5B, $C3A5D - $C3A5B
 
-UnknownData_0xC3A5D:
+Unknown_0xC3A5D:
 INCBIN "baserom.gbc", $C3A5D, $C3A5F - $C3A5D
 
 LoggedData_0xC3A5F:
 INCBIN "baserom.gbc", $C3A5F, $C3A61 - $C3A5F
 
-UnknownData_0xC3A61:
+Unknown_0xC3A61:
 INCBIN "baserom.gbc", $C3A61, $C3A69 - $C3A61
 
 LoggedData_0xC3A69:
 INCBIN "baserom.gbc", $C3A69, $C3A6B - $C3A69
 
-UnknownData_0xC3A6B:
+Unknown_0xC3A6B:
 INCBIN "baserom.gbc", $C3A6B, $C3A7B - $C3A6B
 
 LoggedData_0xC3A7B:
 INCBIN "baserom.gbc", $C3A7B, $C3A83 - $C3A7B
 
-UnknownData_0xC3A83:
+Unknown_0xC3A83:
 INCBIN "baserom.gbc", $C3A83, $C3A93 - $C3A83
 
 LoggedData_0xC3A93:
 INCBIN "baserom.gbc", $C3A93, $C3A9B - $C3A93
 
-UnknownData_0xC3A9B:
+Unknown_0xC3A9B:
 INCBIN "baserom.gbc", $C3A9B, $C3AC3 - $C3A9B
 
 LoggedData_0xC3AC3:
 INCBIN "baserom.gbc", $C3AC3, $C3ACB - $C3AC3
 
-UnknownData_0xC3ACB:
+Unknown_0xC3ACB:
 INCBIN "baserom.gbc", $C3ACB, $C3AD3 - $C3ACB
 
 LoggedData_0xC3AD3:
 INCBIN "baserom.gbc", $C3AD3, $C3ADB - $C3AD3
 
-UnknownData_0xC3ADB:
+Unknown_0xC3ADB:
 INCBIN "baserom.gbc", $C3ADB, $C3AF3 - $C3ADB
 
 LoggedData_0xC3AF3:
 INCBIN "baserom.gbc", $C3AF3, $C3AFB - $C3AF3
 
-UnknownData_0xC3AFB:
+Unknown_0xC3AFB:
 INCBIN "baserom.gbc", $C3AFB, $C3B2B - $C3AFB
 
 LoggedData_0xC3B2B:
 INCBIN "baserom.gbc", $C3B2B, $C3B2D - $C3B2B
 
-UnknownData_0xC3B2D:
+Unknown_0xC3B2D:
 INCBIN "baserom.gbc", $C3B2D, $C3B35 - $C3B2D
 
 LoggedData_0xC3B35:
 INCBIN "baserom.gbc", $C3B35, $C3B37 - $C3B35
 
-UnknownData_0xC3B37:
+Unknown_0xC3B37:
 INCBIN "baserom.gbc", $C3B37, $C3B5B - $C3B37
 
 LoggedData_0xC3B5B:
 INCBIN "baserom.gbc", $C3B5B, $C3B5D - $C3B5B
 
-UnknownData_0xC3B5D:
+Unknown_0xC3B5D:
 INCBIN "baserom.gbc", $C3B5D, $C3B67 - $C3B5D
 
 LoggedData_0xC3B67:
 INCBIN "baserom.gbc", $C3B67, $C3B6F - $C3B67
 
-UnknownData_0xC3B6F:
+Unknown_0xC3B6F:
 INCBIN "baserom.gbc", $C3B6F, $C3B87 - $C3B6F
 
 LoggedData_0xC3B87:
 INCBIN "baserom.gbc", $C3B87, $C3B8F - $C3B87
 
-UnknownData_0xC3B8F:
+Unknown_0xC3B8F:
 INCBIN "baserom.gbc", $C3B8F, $C3BEF - $C3B8F
 
 LoggedData_0xC3BEF:
 INCBIN "baserom.gbc", $C3BEF, $C3BF7 - $C3BEF
 
-UnknownData_0xC3BF7:
+Unknown_0xC3BF7:
 INCBIN "baserom.gbc", $C3BF7, $C4000 - $C3BF7
 
 SECTION "Bank31", ROMX, BANK[$31]
 
-UnknownData_0xC4000:
+Unknown_0xC4000:
 INCBIN "baserom.gbc", $C4000, $C41D8 - $C4000
 
 LoggedData_0xC41D8:
 INCBIN "baserom.gbc", $C41D8, $C41DE - $C41D8
 
-UnknownData_0xC41DE:
+Unknown_0xC41DE:
 INCBIN "baserom.gbc", $C41DE, $C41E8 - $C41DE
 
 LoggedData_0xC41E8:
 INCBIN "baserom.gbc", $C41E8, $C41EA - $C41E8
 
-UnknownData_0xC41EA:
+Unknown_0xC41EA:
 INCBIN "baserom.gbc", $C41EA, $C41F6 - $C41EA
 
 LoggedData_0xC41F6:
 INCBIN "baserom.gbc", $C41F6, $C41F8 - $C41F6
 
-UnknownData_0xC41F8:
+Unknown_0xC41F8:
 INCBIN "baserom.gbc", $C41F8, $C41FE - $C41F8
 
 LoggedData_0xC41FE:
 INCBIN "baserom.gbc", $C41FE, $C4200 - $C41FE
 
-UnknownData_0xC4200:
+Unknown_0xC4200:
 INCBIN "baserom.gbc", $C4200, $C420A - $C4200
 
 LoggedData_0xC420A:
 INCBIN "baserom.gbc", $C420A, $C420C - $C420A
 
-UnknownData_0xC420C:
+Unknown_0xC420C:
 INCBIN "baserom.gbc", $C420C, $C420E - $C420C
 
 LoggedData_0xC420E:
 INCBIN "baserom.gbc", $C420E, $C422C - $C420E
 
-UnknownData_0xC422C:
+Unknown_0xC422C:
 INCBIN "baserom.gbc", $C422C, $C4244 - $C422C
 
 LoggedData_0xC4244:
 INCBIN "baserom.gbc", $C4244, $C424C - $C4244
 
-UnknownData_0xC424C:
+Unknown_0xC424C:
 INCBIN "baserom.gbc", $C424C, $C4264 - $C424C
 
 LoggedData_0xC4264:
 INCBIN "baserom.gbc", $C4264, $C426C - $C4264
 
-UnknownData_0xC426C:
+Unknown_0xC426C:
 INCBIN "baserom.gbc", $C426C, $C427C - $C426C
 
 LoggedData_0xC427C:
 INCBIN "baserom.gbc", $C427C, $C4284 - $C427C
 
-UnknownData_0xC4284:
+Unknown_0xC4284:
 INCBIN "baserom.gbc", $C4284, $C42A4 - $C4284
 
 LoggedData_0xC42A4:
 INCBIN "baserom.gbc", $C42A4, $C42C4 - $C42A4
 
-UnknownData_0xC42C4:
+Unknown_0xC42C4:
 INCBIN "baserom.gbc", $C42C4, $C43FC - $C42C4
 
 LoggedData_0xC43FC:
 INCBIN "baserom.gbc", $C43FC, $C43FE - $C43FC
 
-UnknownData_0xC43FE:
+Unknown_0xC43FE:
 INCBIN "baserom.gbc", $C43FE, $C4406 - $C43FE
 
 LoggedData_0xC4406:
 INCBIN "baserom.gbc", $C4406, $C4408 - $C4406
 
-UnknownData_0xC4408:
+Unknown_0xC4408:
 INCBIN "baserom.gbc", $C4408, $C4410 - $C4408
 
 LoggedData_0xC4410:
 INCBIN "baserom.gbc", $C4410, $C4412 - $C4410
 
-UnknownData_0xC4412:
+Unknown_0xC4412:
 INCBIN "baserom.gbc", $C4412, $C441A - $C4412
 
 LoggedData_0xC441A:
 INCBIN "baserom.gbc", $C441A, $C441C - $C441A
 
-UnknownData_0xC441C:
+Unknown_0xC441C:
 INCBIN "baserom.gbc", $C441C, $C442A - $C441C
 
 LoggedData_0xC442A:
 INCBIN "baserom.gbc", $C442A, $C442E - $C442A
 
-UnknownData_0xC442E:
+Unknown_0xC442E:
 INCBIN "baserom.gbc", $C442E, $C4438 - $C442E
 
 LoggedData_0xC4438:
 INCBIN "baserom.gbc", $C4438, $C4440 - $C4438
 
-UnknownData_0xC4440:
+Unknown_0xC4440:
 INCBIN "baserom.gbc", $C4440, $C4448 - $C4440
 
 LoggedData_0xC4448:
 INCBIN "baserom.gbc", $C4448, $C4450 - $C4448
 
-UnknownData_0xC4450:
+Unknown_0xC4450:
 INCBIN "baserom.gbc", $C4450, $C4458 - $C4450
 
 LoggedData_0xC4458:
 INCBIN "baserom.gbc", $C4458, $C4460 - $C4458
 
-UnknownData_0xC4460:
+Unknown_0xC4460:
 INCBIN "baserom.gbc", $C4460, $C4470 - $C4460
 
 LoggedData_0xC4470:
 INCBIN "baserom.gbc", $C4470, $C4478 - $C4470
 
-UnknownData_0xC4478:
+Unknown_0xC4478:
 INCBIN "baserom.gbc", $C4478, $C4480 - $C4478
 
 LoggedData_0xC4480:
 INCBIN "baserom.gbc", $C4480, $C4490 - $C4480
 
-UnknownData_0xC4490:
+Unknown_0xC4490:
 INCBIN "baserom.gbc", $C4490, $C4498 - $C4490
 
 LoggedData_0xC4498:
 INCBIN "baserom.gbc", $C4498, $C449C - $C4498
 
-UnknownData_0xC449C:
+Unknown_0xC449C:
 INCBIN "baserom.gbc", $C449C, $C44A4 - $C449C
 
 LoggedData_0xC44A4:
 INCBIN "baserom.gbc", $C44A4, $C44A6 - $C44A4
 
-UnknownData_0xC44A6:
+Unknown_0xC44A6:
 INCBIN "baserom.gbc", $C44A6, $C44AE - $C44A6
 
 LoggedData_0xC44AE:
 INCBIN "baserom.gbc", $C44AE, $C44B0 - $C44AE
 
-UnknownData_0xC44B0:
+Unknown_0xC44B0:
 INCBIN "baserom.gbc", $C44B0, $C44B2 - $C44B0
 
 LoggedData_0xC44B2:
 INCBIN "baserom.gbc", $C44B2, $C44B4 - $C44B2
 
-UnknownData_0xC44B4:
+Unknown_0xC44B4:
 INCBIN "baserom.gbc", $C44B4, $C44CA - $C44B4
 
 LoggedData_0xC44CA:
 INCBIN "baserom.gbc", $C44CA, $C44CC - $C44CA
 
-UnknownData_0xC44CC:
+Unknown_0xC44CC:
 INCBIN "baserom.gbc", $C44CC, $C44D4 - $C44CC
 
 LoggedData_0xC44D4:
 INCBIN "baserom.gbc", $C44D4, $C44E4 - $C44D4
 
-UnknownData_0xC44E4:
+Unknown_0xC44E4:
 INCBIN "baserom.gbc", $C44E4, $C44EC - $C44E4
 
 LoggedData_0xC44EC:
 INCBIN "baserom.gbc", $C44EC, $C44F4 - $C44EC
 
-UnknownData_0xC44F4:
+Unknown_0xC44F4:
 INCBIN "baserom.gbc", $C44F4, $C44FC - $C44F4
 
 LoggedData_0xC44FC:
 INCBIN "baserom.gbc", $C44FC, $C450C - $C44FC
 
-UnknownData_0xC450C:
+Unknown_0xC450C:
 INCBIN "baserom.gbc", $C450C, $C452C - $C450C
 
 LoggedData_0xC452C:
 INCBIN "baserom.gbc", $C452C, $C4536 - $C452C
 
-UnknownData_0xC4536:
+Unknown_0xC4536:
 INCBIN "baserom.gbc", $C4536, $C4542 - $C4536
 
 LoggedData_0xC4542:
 INCBIN "baserom.gbc", $C4542, $C4544 - $C4542
 
-UnknownData_0xC4544:
+Unknown_0xC4544:
 INCBIN "baserom.gbc", $C4544, $C455A - $C4544
 
 LoggedData_0xC455A:
 INCBIN "baserom.gbc", $C455A, $C455C - $C455A
 
-UnknownData_0xC455C:
+Unknown_0xC455C:
 INCBIN "baserom.gbc", $C455C, $C4562 - $C455C
 
 LoggedData_0xC4562:
 INCBIN "baserom.gbc", $C4562, $C4564 - $C4562
 
-UnknownData_0xC4564:
+Unknown_0xC4564:
 INCBIN "baserom.gbc", $C4564, $C456E - $C4564
 
 LoggedData_0xC456E:
 INCBIN "baserom.gbc", $C456E, $C4578 - $C456E
 
-UnknownData_0xC4578:
+Unknown_0xC4578:
 INCBIN "baserom.gbc", $C4578, $C4590 - $C4578
 
 LoggedData_0xC4590:
 INCBIN "baserom.gbc", $C4590, $C4598 - $C4590
 
-UnknownData_0xC4598:
+Unknown_0xC4598:
 INCBIN "baserom.gbc", $C4598, $C45A8 - $C4598
 
 LoggedData_0xC45A8:
 INCBIN "baserom.gbc", $C45A8, $C45B0 - $C45A8
 
-UnknownData_0xC45B0:
+Unknown_0xC45B0:
 INCBIN "baserom.gbc", $C45B0, $C45C0 - $C45B0
 
 LoggedData_0xC45C0:
 INCBIN "baserom.gbc", $C45C0, $C45C8 - $C45C0
 
-UnknownData_0xC45C8:
+Unknown_0xC45C8:
 INCBIN "baserom.gbc", $C45C8, $C45E0 - $C45C8
 
 LoggedData_0xC45E0:
 INCBIN "baserom.gbc", $C45E0, $C45EA - $C45E0
 
-UnknownData_0xC45EA:
+Unknown_0xC45EA:
 INCBIN "baserom.gbc", $C45EA, $C45F2 - $C45EA
 
 LoggedData_0xC45F2:
 INCBIN "baserom.gbc", $C45F2, $C45F6 - $C45F2
 
-UnknownData_0xC45F6:
+Unknown_0xC45F6:
 INCBIN "baserom.gbc", $C45F6, $C4618 - $C45F6
 
 LoggedData_0xC4618:
 INCBIN "baserom.gbc", $C4618, $C461E - $C4618
 
-UnknownData_0xC461E:
+Unknown_0xC461E:
 INCBIN "baserom.gbc", $C461E, $C4624 - $C461E
 
 LoggedData_0xC4624:
 INCBIN "baserom.gbc", $C4624, $C462C - $C4624
 
-UnknownData_0xC462C:
+Unknown_0xC462C:
 INCBIN "baserom.gbc", $C462C, $C4634 - $C462C
 
 LoggedData_0xC4634:
 INCBIN "baserom.gbc", $C4634, $C4644 - $C4634
 
-UnknownData_0xC4644:
+Unknown_0xC4644:
 INCBIN "baserom.gbc", $C4644, $C467C - $C4644
 
 LoggedData_0xC467C:
 INCBIN "baserom.gbc", $C467C, $C4694 - $C467C
 
-UnknownData_0xC4694:
+Unknown_0xC4694:
 INCBIN "baserom.gbc", $C4694, $C4750 - $C4694
 
 LoggedData_0xC4750:
 INCBIN "baserom.gbc", $C4750, $C4754 - $C4750
 
-UnknownData_0xC4754:
+Unknown_0xC4754:
 INCBIN "baserom.gbc", $C4754, $C475E - $C4754
 
 LoggedData_0xC475E:
 INCBIN "baserom.gbc", $C475E, $C4760 - $C475E
 
-UnknownData_0xC4760:
+Unknown_0xC4760:
 INCBIN "baserom.gbc", $C4760, $C4768 - $C4760
 
 LoggedData_0xC4768:
 INCBIN "baserom.gbc", $C4768, $C476A - $C4768
 
-UnknownData_0xC476A:
+Unknown_0xC476A:
 INCBIN "baserom.gbc", $C476A, $C4776 - $C476A
 
 LoggedData_0xC4776:
 INCBIN "baserom.gbc", $C4776, $C477A - $C4776
 
-UnknownData_0xC477A:
+Unknown_0xC477A:
 INCBIN "baserom.gbc", $C477A, $C478C - $C477A
 
 LoggedData_0xC478C:
 INCBIN "baserom.gbc", $C478C, $C479C - $C478C
 
-UnknownData_0xC479C:
+Unknown_0xC479C:
 INCBIN "baserom.gbc", $C479C, $C47AC - $C479C
 
 LoggedData_0xC47AC:
 INCBIN "baserom.gbc", $C47AC, $C47BC - $C47AC
 
-UnknownData_0xC47BC:
+Unknown_0xC47BC:
 INCBIN "baserom.gbc", $C47BC, $C47C4 - $C47BC
 
 LoggedData_0xC47C4:
 INCBIN "baserom.gbc", $C47C4, $C47D4 - $C47C4
 
-UnknownData_0xC47D4:
+Unknown_0xC47D4:
 INCBIN "baserom.gbc", $C47D4, $C496C - $C47D4
 
 LoggedData_0xC496C:
 INCBIN "baserom.gbc", $C496C, $C496E - $C496C
 
-UnknownData_0xC496E:
+Unknown_0xC496E:
 INCBIN "baserom.gbc", $C496E, $C497A - $C496E
 
 LoggedData_0xC497A:
 INCBIN "baserom.gbc", $C497A, $C497C - $C497A
 
-UnknownData_0xC497C:
+Unknown_0xC497C:
 INCBIN "baserom.gbc", $C497C, $C4992 - $C497C
 
 LoggedData_0xC4992:
 INCBIN "baserom.gbc", $C4992, $C4994 - $C4992
 
-UnknownData_0xC4994:
+Unknown_0xC4994:
 INCBIN "baserom.gbc", $C4994, $C49A8 - $C4994
 
 LoggedData_0xC49A8:
 INCBIN "baserom.gbc", $C49A8, $C49B0 - $C49A8
 
-UnknownData_0xC49B0:
+Unknown_0xC49B0:
 INCBIN "baserom.gbc", $C49B0, $C49C8 - $C49B0
 
 LoggedData_0xC49C8:
 INCBIN "baserom.gbc", $C49C8, $C49D0 - $C49C8
 
-UnknownData_0xC49D0:
+Unknown_0xC49D0:
 INCBIN "baserom.gbc", $C49D0, $C49E0 - $C49D0
 
 LoggedData_0xC49E0:
 INCBIN "baserom.gbc", $C49E0, $C49E8 - $C49E0
 
-UnknownData_0xC49E8:
+Unknown_0xC49E8:
 INCBIN "baserom.gbc", $C49E8, $C4AD4 - $C49E8
 
 LoggedData_0xC4AD4:
 INCBIN "baserom.gbc", $C4AD4, $C4AD6 - $C4AD4
 
-UnknownData_0xC4AD6:
+Unknown_0xC4AD6:
 INCBIN "baserom.gbc", $C4AD6, $C4B10 - $C4AD6
 
 LoggedData_0xC4B10:
 INCBIN "baserom.gbc", $C4B10, $C4B18 - $C4B10
 
-UnknownData_0xC4B18:
+Unknown_0xC4B18:
 INCBIN "baserom.gbc", $C4B18, $C4B80 - $C4B18
 
 LoggedData_0xC4B80:
 INCBIN "baserom.gbc", $C4B80, $C4B82 - $C4B80
 
-UnknownData_0xC4B82:
+Unknown_0xC4B82:
 INCBIN "baserom.gbc", $C4B82, $C4B94 - $C4B82
 
 LoggedData_0xC4B94:
 INCBIN "baserom.gbc", $C4B94, $C4B96 - $C4B94
 
-UnknownData_0xC4B96:
+Unknown_0xC4B96:
 INCBIN "baserom.gbc", $C4B96, $C4B9C - $C4B96
 
 LoggedData_0xC4B9C:
 INCBIN "baserom.gbc", $C4B9C, $C4B9E - $C4B9C
 
-UnknownData_0xC4B9E:
+Unknown_0xC4B9E:
 INCBIN "baserom.gbc", $C4B9E, $C4BB0 - $C4B9E
 
 LoggedData_0xC4BB0:
 INCBIN "baserom.gbc", $C4BB0, $C4BB4 - $C4BB0
 
-UnknownData_0xC4BB4:
+Unknown_0xC4BB4:
 INCBIN "baserom.gbc", $C4BB4, $C4BBC - $C4BB4
 
 LoggedData_0xC4BBC:
 INCBIN "baserom.gbc", $C4BBC, $C4BC4 - $C4BBC
 
-UnknownData_0xC4BC4:
+Unknown_0xC4BC4:
 INCBIN "baserom.gbc", $C4BC4, $C4BD4 - $C4BC4
 
 LoggedData_0xC4BD4:
 INCBIN "baserom.gbc", $C4BD4, $C4BE4 - $C4BD4
 
-UnknownData_0xC4BE4:
+Unknown_0xC4BE4:
 INCBIN "baserom.gbc", $C4BE4, $C4C0C - $C4BE4
 
 LoggedData_0xC4C0C:
 INCBIN "baserom.gbc", $C4C0C, $C4C1C - $C4C0C
 
-UnknownData_0xC4C1C:
+Unknown_0xC4C1C:
 INCBIN "baserom.gbc", $C4C1C, $C4C2C - $C4C1C
 
 LoggedData_0xC4C2C:
 INCBIN "baserom.gbc", $C4C2C, $C4C2E - $C4C2C
 
-UnknownData_0xC4C2E:
+Unknown_0xC4C2E:
 INCBIN "baserom.gbc", $C4C2E, $C4C48 - $C4C2E
 
 LoggedData_0xC4C48:
 INCBIN "baserom.gbc", $C4C48, $C4C4A - $C4C48
 
-UnknownData_0xC4C4A:
+Unknown_0xC4C4A:
 INCBIN "baserom.gbc", $C4C4A, $C4C54 - $C4C4A
 
 LoggedData_0xC4C54:
 INCBIN "baserom.gbc", $C4C54, $C4C58 - $C4C54
 
-UnknownData_0xC4C58:
+Unknown_0xC4C58:
 INCBIN "baserom.gbc", $C4C58, $C4C68 - $C4C58
 
 LoggedData_0xC4C68:
 INCBIN "baserom.gbc", $C4C68, $C4C70 - $C4C68
 
-UnknownData_0xC4C70:
+Unknown_0xC4C70:
 INCBIN "baserom.gbc", $C4C70, $C4C88 - $C4C70
 
 LoggedData_0xC4C88:
 INCBIN "baserom.gbc", $C4C88, $C4C90 - $C4C88
 
-UnknownData_0xC4C90:
+Unknown_0xC4C90:
 INCBIN "baserom.gbc", $C4C90, $C4CA8 - $C4C90
 
 LoggedData_0xC4CA8:
 INCBIN "baserom.gbc", $C4CA8, $C4CB8 - $C4CA8
 
-UnknownData_0xC4CB8:
+Unknown_0xC4CB8:
 INCBIN "baserom.gbc", $C4CB8, $C4CD8 - $C4CB8
 
 LoggedData_0xC4CD8:
 INCBIN "baserom.gbc", $C4CD8, $C4CDA - $C4CD8
 
-UnknownData_0xC4CDA:
+Unknown_0xC4CDA:
 INCBIN "baserom.gbc", $C4CDA, $C4CE6 - $C4CDA
 
 LoggedData_0xC4CE6:
 INCBIN "baserom.gbc", $C4CE6, $C4CEA - $C4CE6
 
-UnknownData_0xC4CEA:
+Unknown_0xC4CEA:
 INCBIN "baserom.gbc", $C4CEA, $C4CF8 - $C4CEA
 
 LoggedData_0xC4CF8:
 INCBIN "baserom.gbc", $C4CF8, $C4CFA - $C4CF8
 
-UnknownData_0xC4CFA:
+Unknown_0xC4CFA:
 INCBIN "baserom.gbc", $C4CFA, $C4CFC - $C4CFA
 
 LoggedData_0xC4CFC:
 INCBIN "baserom.gbc", $C4CFC, $C4CFE - $C4CFC
 
-UnknownData_0xC4CFE:
+Unknown_0xC4CFE:
 INCBIN "baserom.gbc", $C4CFE, $C4D10 - $C4CFE
 
 LoggedData_0xC4D10:
 INCBIN "baserom.gbc", $C4D10, $C4D2C - $C4D10
 
-UnknownData_0xC4D2C:
+Unknown_0xC4D2C:
 INCBIN "baserom.gbc", $C4D2C, $C4D3C - $C4D2C
 
 LoggedData_0xC4D3C:
 INCBIN "baserom.gbc", $C4D3C, $C4D44 - $C4D3C
 
-UnknownData_0xC4D44:
+Unknown_0xC4D44:
 INCBIN "baserom.gbc", $C4D44, $C4D4C - $C4D44
 
 LoggedData_0xC4D4C:
 INCBIN "baserom.gbc", $C4D4C, $C4D54 - $C4D4C
 
-UnknownData_0xC4D54:
+Unknown_0xC4D54:
 INCBIN "baserom.gbc", $C4D54, $C4D74 - $C4D54
 
 LoggedData_0xC4D74:
 INCBIN "baserom.gbc", $C4D74, $C4D86 - $C4D74
 
-UnknownData_0xC4D86:
+Unknown_0xC4D86:
 INCBIN "baserom.gbc", $C4D86, $C4DBA - $C4D86
 
 LoggedData_0xC4DBA:
 INCBIN "baserom.gbc", $C4DBA, $C4DBE - $C4DBA
 
-UnknownData_0xC4DBE:
+Unknown_0xC4DBE:
 INCBIN "baserom.gbc", $C4DBE, $C4DC0 - $C4DBE
 
 LoggedData_0xC4DC0:
 INCBIN "baserom.gbc", $C4DC0, $C4DC8 - $C4DC0
 
-UnknownData_0xC4DC8:
+Unknown_0xC4DC8:
 INCBIN "baserom.gbc", $C4DC8, $C4E48 - $C4DC8
 
 LoggedData_0xC4E48:
 INCBIN "baserom.gbc", $C4E48, $C4E5A - $C4E48
 
-UnknownData_0xC4E5A:
+Unknown_0xC4E5A:
 INCBIN "baserom.gbc", $C4E5A, $C4E60 - $C4E5A
 
 LoggedData_0xC4E60:
 INCBIN "baserom.gbc", $C4E60, $C4E62 - $C4E60
 
-UnknownData_0xC4E62:
+Unknown_0xC4E62:
 INCBIN "baserom.gbc", $C4E62, $C4E66 - $C4E62
 
 LoggedData_0xC4E66:
 INCBIN "baserom.gbc", $C4E66, $C4E68 - $C4E66
 
-UnknownData_0xC4E68:
+Unknown_0xC4E68:
 INCBIN "baserom.gbc", $C4E68, $C4E6A - $C4E68
 
 LoggedData_0xC4E6A:
 INCBIN "baserom.gbc", $C4E6A, $C4E6C - $C4E6A
 
-UnknownData_0xC4E6C:
+Unknown_0xC4E6C:
 INCBIN "baserom.gbc", $C4E6C, $C4E80 - $C4E6C
 
 LoggedData_0xC4E80:
 INCBIN "baserom.gbc", $C4E80, $C4E84 - $C4E80
 
-UnknownData_0xC4E84:
+Unknown_0xC4E84:
 INCBIN "baserom.gbc", $C4E84, $C4E86 - $C4E84
 
 LoggedData_0xC4E86:
 INCBIN "baserom.gbc", $C4E86, $C4E88 - $C4E86
 
-UnknownData_0xC4E88:
+Unknown_0xC4E88:
 INCBIN "baserom.gbc", $C4E88, $C4E8C - $C4E88
 
 LoggedData_0xC4E8C:
 INCBIN "baserom.gbc", $C4E8C, $C4E8E - $C4E8C
 
-UnknownData_0xC4E8E:
+Unknown_0xC4E8E:
 INCBIN "baserom.gbc", $C4E8E, $C4E94 - $C4E8E
 
 LoggedData_0xC4E94:
 INCBIN "baserom.gbc", $C4E94, $C4E9C - $C4E94
 
-UnknownData_0xC4E9C:
+Unknown_0xC4E9C:
 INCBIN "baserom.gbc", $C4E9C, $C4EA4 - $C4E9C
 
 LoggedData_0xC4EA4:
 INCBIN "baserom.gbc", $C4EA4, $C4EAC - $C4EA4
 
-UnknownData_0xC4EAC:
+Unknown_0xC4EAC:
 INCBIN "baserom.gbc", $C4EAC, $C4EB4 - $C4EAC
 
 LoggedData_0xC4EB4:
 INCBIN "baserom.gbc", $C4EB4, $C4EBC - $C4EB4
 
-UnknownData_0xC4EBC:
+Unknown_0xC4EBC:
 INCBIN "baserom.gbc", $C4EBC, $C4EC4 - $C4EBC
 
 LoggedData_0xC4EC4:
 INCBIN "baserom.gbc", $C4EC4, $C4ECC - $C4EC4
 
-UnknownData_0xC4ECC:
+Unknown_0xC4ECC:
 INCBIN "baserom.gbc", $C4ECC, $C4EF4 - $C4ECC
 
 LoggedData_0xC4EF4:
 INCBIN "baserom.gbc", $C4EF4, $C4F0C - $C4EF4
 
-UnknownData_0xC4F0C:
+Unknown_0xC4F0C:
 INCBIN "baserom.gbc", $C4F0C, $C4F14 - $C4F0C
 
 LoggedData_0xC4F14:
 INCBIN "baserom.gbc", $C4F14, $C4F1C - $C4F14
 
-UnknownData_0xC4F1C:
+Unknown_0xC4F1C:
 INCBIN "baserom.gbc", $C4F1C, $C4F2C - $C4F1C
 
 LoggedData_0xC4F2C:
 INCBIN "baserom.gbc", $C4F2C, $C4F2E - $C4F2C
 
-UnknownData_0xC4F2E:
+Unknown_0xC4F2E:
 INCBIN "baserom.gbc", $C4F2E, $C4F30 - $C4F2E
 
 LoggedData_0xC4F30:
 INCBIN "baserom.gbc", $C4F30, $C4F32 - $C4F30
 
-UnknownData_0xC4F32:
+Unknown_0xC4F32:
 INCBIN "baserom.gbc", $C4F32, $C4F38 - $C4F32
 
 LoggedData_0xC4F38:
 INCBIN "baserom.gbc", $C4F38, $C4F3A - $C4F38
 
-UnknownData_0xC4F3A:
+Unknown_0xC4F3A:
 INCBIN "baserom.gbc", $C4F3A, $C4F3C - $C4F3A
 
 LoggedData_0xC4F3C:
 INCBIN "baserom.gbc", $C4F3C, $C4F3E - $C4F3C
 
-UnknownData_0xC4F3E:
+Unknown_0xC4F3E:
 INCBIN "baserom.gbc", $C4F3E, $C4F44 - $C4F3E
 
 LoggedData_0xC4F44:
 INCBIN "baserom.gbc", $C4F44, $C4F48 - $C4F44
 
-UnknownData_0xC4F48:
+Unknown_0xC4F48:
 INCBIN "baserom.gbc", $C4F48, $C4F68 - $C4F48
 
 LoggedData_0xC4F68:
 INCBIN "baserom.gbc", $C4F68, $C4F78 - $C4F68
 
-UnknownData_0xC4F78:
+Unknown_0xC4F78:
 INCBIN "baserom.gbc", $C4F78, $C4F80 - $C4F78
 
 LoggedData_0xC4F80:
 INCBIN "baserom.gbc", $C4F80, $C4F88 - $C4F80
 
-UnknownData_0xC4F88:
+Unknown_0xC4F88:
 INCBIN "baserom.gbc", $C4F88, $C4F90 - $C4F88
 
 LoggedData_0xC4F90:
 INCBIN "baserom.gbc", $C4F90, $C4F98 - $C4F90
 
-UnknownData_0xC4F98:
+Unknown_0xC4F98:
 INCBIN "baserom.gbc", $C4F98, $C4FA8 - $C4F98
 
 LoggedData_0xC4FA8:
 INCBIN "baserom.gbc", $C4FA8, $C4FB8 - $C4FA8
 
-UnknownData_0xC4FB8:
+Unknown_0xC4FB8:
 INCBIN "baserom.gbc", $C4FB8, $C5000 - $C4FB8
 
 LoggedData_0xC5000:
 INCBIN "baserom.gbc", $C5000, $C5002 - $C5000
 
-UnknownData_0xC5002:
+Unknown_0xC5002:
 INCBIN "baserom.gbc", $C5002, $C5004 - $C5002
 
 LoggedData_0xC5004:
 INCBIN "baserom.gbc", $C5004, $C5006 - $C5004
 
-UnknownData_0xC5006:
+Unknown_0xC5006:
 INCBIN "baserom.gbc", $C5006, $C501E - $C5006
 
 LoggedData_0xC501E:
 INCBIN "baserom.gbc", $C501E, $C5022 - $C501E
 
-UnknownData_0xC5022:
+Unknown_0xC5022:
 INCBIN "baserom.gbc", $C5022, $C5038 - $C5022
 
 LoggedData_0xC5038:
 INCBIN "baserom.gbc", $C5038, $C504C - $C5038
 
-UnknownData_0xC504C:
+Unknown_0xC504C:
 INCBIN "baserom.gbc", $C504C, $C5074 - $C504C
 
 LoggedData_0xC5074:
 INCBIN "baserom.gbc", $C5074, $C5084 - $C5074
 
-UnknownData_0xC5084:
+Unknown_0xC5084:
 INCBIN "baserom.gbc", $C5084, $C50B4 - $C5084
 
 LoggedData_0xC50B4:
 INCBIN "baserom.gbc", $C50B4, $C50C6 - $C50B4
 
-UnknownData_0xC50C6:
+Unknown_0xC50C6:
 INCBIN "baserom.gbc", $C50C6, $C50C8 - $C50C6
 
 LoggedData_0xC50C8:
 INCBIN "baserom.gbc", $C50C8, $C50CA - $C50C8
 
-UnknownData_0xC50CA:
+Unknown_0xC50CA:
 INCBIN "baserom.gbc", $C50CA, $C50CE - $C50CA
 
 LoggedData_0xC50CE:
 INCBIN "baserom.gbc", $C50CE, $C50D0 - $C50CE
 
-UnknownData_0xC50D0:
+Unknown_0xC50D0:
 INCBIN "baserom.gbc", $C50D0, $C50DA - $C50D0
 
 LoggedData_0xC50DA:
 INCBIN "baserom.gbc", $C50DA, $C50DC - $C50DA
 
-UnknownData_0xC50DC:
+Unknown_0xC50DC:
 INCBIN "baserom.gbc", $C50DC, $C5100 - $C50DC
 
 LoggedData_0xC5100:
 INCBIN "baserom.gbc", $C5100, $C5110 - $C5100
 
-UnknownData_0xC5110:
+Unknown_0xC5110:
 INCBIN "baserom.gbc", $C5110, $C5118 - $C5110
 
 LoggedData_0xC5118:
 INCBIN "baserom.gbc", $C5118, $C5120 - $C5118
 
-UnknownData_0xC5120:
+Unknown_0xC5120:
 INCBIN "baserom.gbc", $C5120, $C5188 - $C5120
 
 LoggedData_0xC5188:
 INCBIN "baserom.gbc", $C5188, $C518A - $C5188
 
-UnknownData_0xC518A:
+Unknown_0xC518A:
 INCBIN "baserom.gbc", $C518A, $C518C - $C518A
 
 LoggedData_0xC518C:
 INCBIN "baserom.gbc", $C518C, $C5190 - $C518C
 
-UnknownData_0xC5190:
+Unknown_0xC5190:
 INCBIN "baserom.gbc", $C5190, $C519E - $C5190
 
 LoggedData_0xC519E:
 INCBIN "baserom.gbc", $C519E, $C51A2 - $C519E
 
-UnknownData_0xC51A2:
+Unknown_0xC51A2:
 INCBIN "baserom.gbc", $C51A2, $C51A6 - $C51A2
 
 LoggedData_0xC51A6:
 INCBIN "baserom.gbc", $C51A6, $C51AA - $C51A6
 
-UnknownData_0xC51AA:
+Unknown_0xC51AA:
 INCBIN "baserom.gbc", $C51AA, $C51BA - $C51AA
 
 LoggedData_0xC51BA:
 INCBIN "baserom.gbc", $C51BA, $C51BC - $C51BA
 
-UnknownData_0xC51BC:
+Unknown_0xC51BC:
 INCBIN "baserom.gbc", $C51BC, $C51C0 - $C51BC
 
 LoggedData_0xC51C0:
 INCBIN "baserom.gbc", $C51C0, $C51DC - $C51C0
 
-UnknownData_0xC51DC:
+Unknown_0xC51DC:
 INCBIN "baserom.gbc", $C51DC, $C51F4 - $C51DC
 
 LoggedData_0xC51F4:
 INCBIN "baserom.gbc", $C51F4, $C520C - $C51F4
 
-UnknownData_0xC520C:
+Unknown_0xC520C:
 INCBIN "baserom.gbc", $C520C, $C522C - $C520C
 
 LoggedData_0xC522C:
 INCBIN "baserom.gbc", $C522C, $C5234 - $C522C
 
-UnknownData_0xC5234:
+Unknown_0xC5234:
 INCBIN "baserom.gbc", $C5234, $C523C - $C5234
 
 LoggedData_0xC523C:
 INCBIN "baserom.gbc", $C523C, $C524E - $C523C
 
-UnknownData_0xC524E:
+Unknown_0xC524E:
 INCBIN "baserom.gbc", $C524E, $C5250 - $C524E
 
 LoggedData_0xC5250:
 INCBIN "baserom.gbc", $C5250, $C5252 - $C5250
 
-UnknownData_0xC5252:
+Unknown_0xC5252:
 INCBIN "baserom.gbc", $C5252, $C5258 - $C5252
 
 LoggedData_0xC5258:
 INCBIN "baserom.gbc", $C5258, $C525A - $C5258
 
-UnknownData_0xC525A:
+Unknown_0xC525A:
 INCBIN "baserom.gbc", $C525A, $C5274 - $C525A
 
 LoggedData_0xC5274:
 INCBIN "baserom.gbc", $C5274, $C5276 - $C5274
 
-UnknownData_0xC5276:
+Unknown_0xC5276:
 INCBIN "baserom.gbc", $C5276, $C5278 - $C5276
 
 LoggedData_0xC5278:
 INCBIN "baserom.gbc", $C5278, $C527C - $C5278
 
-UnknownData_0xC527C:
+Unknown_0xC527C:
 INCBIN "baserom.gbc", $C527C, $C5288 - $C527C
 
 LoggedData_0xC5288:
 INCBIN "baserom.gbc", $C5288, $C5298 - $C5288
 
-UnknownData_0xC5298:
+Unknown_0xC5298:
 INCBIN "baserom.gbc", $C5298, $C52A8 - $C5298
 
 LoggedData_0xC52A8:
 INCBIN "baserom.gbc", $C52A8, $C52B0 - $C52A8
 
-UnknownData_0xC52B0:
+Unknown_0xC52B0:
 INCBIN "baserom.gbc", $C52B0, $C52D0 - $C52B0
 
 LoggedData_0xC52D0:
 INCBIN "baserom.gbc", $C52D0, $C52E8 - $C52D0
 
-UnknownData_0xC52E8:
+Unknown_0xC52E8:
 INCBIN "baserom.gbc", $C52E8, $C53C4 - $C52E8
 
 LoggedData_0xC53C4:
 INCBIN "baserom.gbc", $C53C4, $C53C6 - $C53C4
 
-UnknownData_0xC53C6:
+Unknown_0xC53C6:
 INCBIN "baserom.gbc", $C53C6, $C53DE - $C53C6
 
 LoggedData_0xC53DE:
 INCBIN "baserom.gbc", $C53DE, $C53E4 - $C53DE
 
-UnknownData_0xC53E4:
+Unknown_0xC53E4:
 INCBIN "baserom.gbc", $C53E4, $C53EC - $C53E4
 
 LoggedData_0xC53EC:
 INCBIN "baserom.gbc", $C53EC, $C53EE - $C53EC
 
-UnknownData_0xC53EE:
+Unknown_0xC53EE:
 INCBIN "baserom.gbc", $C53EE, $C53F0 - $C53EE
 
 LoggedData_0xC53F0:
 INCBIN "baserom.gbc", $C53F0, $C53F2 - $C53F0
 
-UnknownData_0xC53F2:
+Unknown_0xC53F2:
 INCBIN "baserom.gbc", $C53F2, $C53FA - $C53F2
 
 LoggedData_0xC53FA:
 INCBIN "baserom.gbc", $C53FA, $C53FC - $C53FA
 
-UnknownData_0xC53FC:
+Unknown_0xC53FC:
 INCBIN "baserom.gbc", $C53FC, $C5400 - $C53FC
 
 LoggedData_0xC5400:
 INCBIN "baserom.gbc", $C5400, $C5408 - $C5400
 
-UnknownData_0xC5408:
+Unknown_0xC5408:
 INCBIN "baserom.gbc", $C5408, $C5420 - $C5408
 
 LoggedData_0xC5420:
 INCBIN "baserom.gbc", $C5420, $C5438 - $C5420
 
-UnknownData_0xC5438:
+Unknown_0xC5438:
 INCBIN "baserom.gbc", $C5438, $C5440 - $C5438
 
 LoggedData_0xC5440:
 INCBIN "baserom.gbc", $C5440, $C5448 - $C5440
 
-UnknownData_0xC5448:
+Unknown_0xC5448:
 INCBIN "baserom.gbc", $C5448, $C5450 - $C5448
 
 LoggedData_0xC5450:
 INCBIN "baserom.gbc", $C5450, $C5458 - $C5450
 
-UnknownData_0xC5458:
+Unknown_0xC5458:
 INCBIN "baserom.gbc", $C5458, $C5470 - $C5458
 
 LoggedData_0xC5470:
 INCBIN "baserom.gbc", $C5470, $C547A - $C5470
 
-UnknownData_0xC547A:
+Unknown_0xC547A:
 INCBIN "baserom.gbc", $C547A, $C5486 - $C547A
 
 LoggedData_0xC5486:
 INCBIN "baserom.gbc", $C5486, $C5488 - $C5486
 
-UnknownData_0xC5488:
+Unknown_0xC5488:
 INCBIN "baserom.gbc", $C5488, $C548C - $C5488
 
 LoggedData_0xC548C:
 INCBIN "baserom.gbc", $C548C, $C548E - $C548C
 
-UnknownData_0xC548E:
+Unknown_0xC548E:
 INCBIN "baserom.gbc", $C548E, $C5490 - $C548E
 
 LoggedData_0xC5490:
 INCBIN "baserom.gbc", $C5490, $C549A - $C5490
 
-UnknownData_0xC549A:
+Unknown_0xC549A:
 INCBIN "baserom.gbc", $C549A, $C54A0 - $C549A
 
 LoggedData_0xC54A0:
 INCBIN "baserom.gbc", $C54A0, $C54A2 - $C54A0
 
-UnknownData_0xC54A2:
+Unknown_0xC54A2:
 INCBIN "baserom.gbc", $C54A2, $C54A4 - $C54A2
 
 LoggedData_0xC54A4:
 INCBIN "baserom.gbc", $C54A4, $C54AA - $C54A4
 
-UnknownData_0xC54AA:
+Unknown_0xC54AA:
 INCBIN "baserom.gbc", $C54AA, $C54AE - $C54AA
 
 LoggedData_0xC54AE:
 INCBIN "baserom.gbc", $C54AE, $C54B0 - $C54AE
 
-UnknownData_0xC54B0:
+Unknown_0xC54B0:
 INCBIN "baserom.gbc", $C54B0, $C54B4 - $C54B0
 
 LoggedData_0xC54B4:
 INCBIN "baserom.gbc", $C54B4, $C54FC - $C54B4
 
-UnknownData_0xC54FC:
+Unknown_0xC54FC:
 INCBIN "baserom.gbc", $C54FC, $C5504 - $C54FC
 
 LoggedData_0xC5504:
 INCBIN "baserom.gbc", $C5504, $C551C - $C5504
 
-UnknownData_0xC551C:
+Unknown_0xC551C:
 INCBIN "baserom.gbc", $C551C, $C5524 - $C551C
 
 LoggedData_0xC5524:
 INCBIN "baserom.gbc", $C5524, $C552C - $C5524
 
-UnknownData_0xC552C:
+Unknown_0xC552C:
 INCBIN "baserom.gbc", $C552C, $C56AC - $C552C
 
 LoggedData_0xC56AC:
 INCBIN "baserom.gbc", $C56AC, $C56AE - $C56AC
 
-UnknownData_0xC56AE:
+Unknown_0xC56AE:
 INCBIN "baserom.gbc", $C56AE, $C56CA - $C56AE
 
 LoggedData_0xC56CA:
 INCBIN "baserom.gbc", $C56CA, $C56CC - $C56CA
 
-UnknownData_0xC56CC:
+Unknown_0xC56CC:
 INCBIN "baserom.gbc", $C56CC, $C56E8 - $C56CC
 
 LoggedData_0xC56E8:
 INCBIN "baserom.gbc", $C56E8, $C56F0 - $C56E8
 
-UnknownData_0xC56F0:
+Unknown_0xC56F0:
 INCBIN "baserom.gbc", $C56F0, $C5718 - $C56F0
 
 LoggedData_0xC5718:
 INCBIN "baserom.gbc", $C5718, $C5720 - $C5718
 
-UnknownData_0xC5720:
+Unknown_0xC5720:
 INCBIN "baserom.gbc", $C5720, $C5778 - $C5720
 
 LoggedData_0xC5778:
 INCBIN "baserom.gbc", $C5778, $C577A - $C5778
 
-UnknownData_0xC577A:
+Unknown_0xC577A:
 INCBIN "baserom.gbc", $C577A, $C57B4 - $C577A
 
 LoggedData_0xC57B4:
 INCBIN "baserom.gbc", $C57B4, $C57BC - $C57B4
 
-UnknownData_0xC57BC:
+Unknown_0xC57BC:
 INCBIN "baserom.gbc", $C57BC, $C5844 - $C57BC
 
 LoggedData_0xC5844:
 INCBIN "baserom.gbc", $C5844, $C5848 - $C5844
 
-UnknownData_0xC5848:
+Unknown_0xC5848:
 INCBIN "baserom.gbc", $C5848, $C584A - $C5848
 
 LoggedData_0xC584A:
 INCBIN "baserom.gbc", $C584A, $C584C - $C584A
 
-UnknownData_0xC584C:
+Unknown_0xC584C:
 INCBIN "baserom.gbc", $C584C, $C5852 - $C584C
 
 LoggedData_0xC5852:
 INCBIN "baserom.gbc", $C5852, $C5856 - $C5852
 
-UnknownData_0xC5856:
+Unknown_0xC5856:
 INCBIN "baserom.gbc", $C5856, $C585E - $C5856
 
 LoggedData_0xC585E:
 INCBIN "baserom.gbc", $C585E, $C5860 - $C585E
 
-UnknownData_0xC5860:
+Unknown_0xC5860:
 INCBIN "baserom.gbc", $C5860, $C5866 - $C5860
 
 LoggedData_0xC5866:
 INCBIN "baserom.gbc", $C5866, $C586E - $C5866
 
-UnknownData_0xC586E:
+Unknown_0xC586E:
 INCBIN "baserom.gbc", $C586E, $C5870 - $C586E
 
 LoggedData_0xC5870:
 INCBIN "baserom.gbc", $C5870, $C5876 - $C5870
 
-UnknownData_0xC5876:
+Unknown_0xC5876:
 INCBIN "baserom.gbc", $C5876, $C5880 - $C5876
 
 LoggedData_0xC5880:
 INCBIN "baserom.gbc", $C5880, $C58B0 - $C5880
 
-UnknownData_0xC58B0:
+Unknown_0xC58B0:
 INCBIN "baserom.gbc", $C58B0, $C58C0 - $C58B0
 
 LoggedData_0xC58C0:
 INCBIN "baserom.gbc", $C58C0, $C58E0 - $C58C0
 
-UnknownData_0xC58E0:
+Unknown_0xC58E0:
 INCBIN "baserom.gbc", $C58E0, $C58E8 - $C58E0
 
 LoggedData_0xC58E8:
 INCBIN "baserom.gbc", $C58E8, $C5900 - $C58E8
 
-UnknownData_0xC5900:
+Unknown_0xC5900:
 INCBIN "baserom.gbc", $C5900, $C5910 - $C5900
 
 LoggedData_0xC5910:
 INCBIN "baserom.gbc", $C5910, $C5918 - $C5910
 
-UnknownData_0xC5918:
+Unknown_0xC5918:
 INCBIN "baserom.gbc", $C5918, $C5924 - $C5918
 
 LoggedData_0xC5924:
 INCBIN "baserom.gbc", $C5924, $C5926 - $C5924
 
-UnknownData_0xC5926:
+Unknown_0xC5926:
 INCBIN "baserom.gbc", $C5926, $C5928 - $C5926
 
 LoggedData_0xC5928:
 INCBIN "baserom.gbc", $C5928, $C592A - $C5928
 
-UnknownData_0xC592A:
+Unknown_0xC592A:
 INCBIN "baserom.gbc", $C592A, $C5938 - $C592A
 
 LoggedData_0xC5938:
 INCBIN "baserom.gbc", $C5938, $C593C - $C5938
 
-UnknownData_0xC593C:
+Unknown_0xC593C:
 INCBIN "baserom.gbc", $C593C, $C5940 - $C593C
 
 LoggedData_0xC5940:
 INCBIN "baserom.gbc", $C5940, $C5942 - $C5940
 
-UnknownData_0xC5942:
+Unknown_0xC5942:
 INCBIN "baserom.gbc", $C5942, $C594C - $C5942
 
 LoggedData_0xC594C:
 INCBIN "baserom.gbc", $C594C, $C596C - $C594C
 
-UnknownData_0xC596C:
+Unknown_0xC596C:
 INCBIN "baserom.gbc", $C596C, $C597C - $C596C
 
 LoggedData_0xC597C:
 INCBIN "baserom.gbc", $C597C, $C598C - $C597C
 
-UnknownData_0xC598C:
+Unknown_0xC598C:
 INCBIN "baserom.gbc", $C598C, $C59B4 - $C598C
 
 LoggedData_0xC59B4:
 INCBIN "baserom.gbc", $C59B4, $C59C4 - $C59B4
 
-UnknownData_0xC59C4:
+Unknown_0xC59C4:
 INCBIN "baserom.gbc", $C59C4, $C59D4 - $C59C4
 
 LoggedData_0xC59D4:
 INCBIN "baserom.gbc", $C59D4, $C59DC - $C59D4
 
-UnknownData_0xC59DC:
+Unknown_0xC59DC:
 INCBIN "baserom.gbc", $C59DC, $C5AD8 - $C59DC
 
 LoggedData_0xC5AD8:
 INCBIN "baserom.gbc", $C5AD8, $C5AE0 - $C5AD8
 
-UnknownData_0xC5AE0:
+Unknown_0xC5AE0:
 INCBIN "baserom.gbc", $C5AE0, $C5AE2 - $C5AE0
 
 LoggedData_0xC5AE2:
 INCBIN "baserom.gbc", $C5AE2, $C5AE4 - $C5AE2
 
-UnknownData_0xC5AE4:
+Unknown_0xC5AE4:
 INCBIN "baserom.gbc", $C5AE4, $C5AEA - $C5AE4
 
 LoggedData_0xC5AEA:
 INCBIN "baserom.gbc", $C5AEA, $C5AEE - $C5AEA
 
-UnknownData_0xC5AEE:
+Unknown_0xC5AEE:
 INCBIN "baserom.gbc", $C5AEE, $C5AF0 - $C5AEE
 
 LoggedData_0xC5AF0:
 INCBIN "baserom.gbc", $C5AF0, $C5AF6 - $C5AF0
 
-UnknownData_0xC5AF6:
+Unknown_0xC5AF6:
 INCBIN "baserom.gbc", $C5AF6, $C5AF8 - $C5AF6
 
 LoggedData_0xC5AF8:
 INCBIN "baserom.gbc", $C5AF8, $C5AFA - $C5AF8
 
-UnknownData_0xC5AFA:
+Unknown_0xC5AFA:
 INCBIN "baserom.gbc", $C5AFA, $C5B00 - $C5AFA
 
 LoggedData_0xC5B00:
 INCBIN "baserom.gbc", $C5B00, $C5B04 - $C5B00
 
-UnknownData_0xC5B04:
+Unknown_0xC5B04:
 INCBIN "baserom.gbc", $C5B04, $C5B08 - $C5B04
 
 LoggedData_0xC5B08:
 INCBIN "baserom.gbc", $C5B08, $C5B0E - $C5B08
 
-UnknownData_0xC5B0E:
+Unknown_0xC5B0E:
 INCBIN "baserom.gbc", $C5B0E, $C5B10 - $C5B0E
 
 LoggedData_0xC5B10:
 INCBIN "baserom.gbc", $C5B10, $C5B12 - $C5B10
 
-UnknownData_0xC5B12:
+Unknown_0xC5B12:
 INCBIN "baserom.gbc", $C5B12, $C5B14 - $C5B12
 
 LoggedData_0xC5B14:
 INCBIN "baserom.gbc", $C5B14, $C5B6C - $C5B14
 
-UnknownData_0xC5B6C:
+Unknown_0xC5B6C:
 INCBIN "baserom.gbc", $C5B6C, $C5B7C - $C5B6C
 
 LoggedData_0xC5B7C:
 INCBIN "baserom.gbc", $C5B7C, $C5B8C - $C5B7C
 
-UnknownData_0xC5B8C:
+Unknown_0xC5B8C:
 INCBIN "baserom.gbc", $C5B8C, $C5B9C - $C5B8C
 
 LoggedData_0xC5B9C:
 INCBIN "baserom.gbc", $C5B9C, $C5BC4 - $C5B9C
 
-UnknownData_0xC5BC4:
+Unknown_0xC5BC4:
 INCBIN "baserom.gbc", $C5BC4, $C5BD0 - $C5BC4
 
 LoggedData_0xC5BD0:
 INCBIN "baserom.gbc", $C5BD0, $C5BD2 - $C5BD0
 
-UnknownData_0xC5BD2:
+Unknown_0xC5BD2:
 INCBIN "baserom.gbc", $C5BD2, $C5BD4 - $C5BD2
 
 LoggedData_0xC5BD4:
 INCBIN "baserom.gbc", $C5BD4, $C5BD6 - $C5BD4
 
-UnknownData_0xC5BD6:
+Unknown_0xC5BD6:
 INCBIN "baserom.gbc", $C5BD6, $C5BDE - $C5BD6
 
 LoggedData_0xC5BDE:
 INCBIN "baserom.gbc", $C5BDE, $C5BE2 - $C5BDE
 
-UnknownData_0xC5BE2:
+Unknown_0xC5BE2:
 INCBIN "baserom.gbc", $C5BE2, $C5BE4 - $C5BE2
 
 LoggedData_0xC5BE4:
 INCBIN "baserom.gbc", $C5BE4, $C5BEC - $C5BE4
 
-UnknownData_0xC5BEC:
+Unknown_0xC5BEC:
 INCBIN "baserom.gbc", $C5BEC, $C5BF8 - $C5BEC
 
 LoggedData_0xC5BF8:
 INCBIN "baserom.gbc", $C5BF8, $C5C18 - $C5BF8
 
-UnknownData_0xC5C18:
+Unknown_0xC5C18:
 INCBIN "baserom.gbc", $C5C18, $C5C28 - $C5C18
 
 LoggedData_0xC5C28:
 INCBIN "baserom.gbc", $C5C28, $C5C38 - $C5C28
 
-UnknownData_0xC5C38:
+Unknown_0xC5C38:
 INCBIN "baserom.gbc", $C5C38, $C5C50 - $C5C38
 
 LoggedData_0xC5C50:
 INCBIN "baserom.gbc", $C5C50, $C5C80 - $C5C50
 
-UnknownData_0xC5C80:
+Unknown_0xC5C80:
 INCBIN "baserom.gbc", $C5C80, $C5CA0 - $C5C80
 
 LoggedData_0xC5CA0:
 INCBIN "baserom.gbc", $C5CA0, $C5CA2 - $C5CA0
 
-UnknownData_0xC5CA2:
+Unknown_0xC5CA2:
 INCBIN "baserom.gbc", $C5CA2, $C5CBA - $C5CA2
 
 LoggedData_0xC5CBA:
 INCBIN "baserom.gbc", $C5CBA, $C5CBC - $C5CBA
 
-UnknownData_0xC5CBC:
+Unknown_0xC5CBC:
 INCBIN "baserom.gbc", $C5CBC, $C5CDC - $C5CBC
 
 LoggedData_0xC5CDC:
 INCBIN "baserom.gbc", $C5CDC, $C5CE4 - $C5CDC
 
-UnknownData_0xC5CE4:
+Unknown_0xC5CE4:
 INCBIN "baserom.gbc", $C5CE4, $C5D14 - $C5CE4
 
 LoggedData_0xC5D14:
 INCBIN "baserom.gbc", $C5D14, $C5D1C - $C5D14
 
-UnknownData_0xC5D1C:
+Unknown_0xC5D1C:
 INCBIN "baserom.gbc", $C5D1C, $C5D5C - $C5D1C
 
 LoggedData_0xC5D5C:
 INCBIN "baserom.gbc", $C5D5C, $C5D5E - $C5D5C
 
-UnknownData_0xC5D5E:
+Unknown_0xC5D5E:
 INCBIN "baserom.gbc", $C5D5E, $C5D64 - $C5D5E
 
 LoggedData_0xC5D64:
 INCBIN "baserom.gbc", $C5D64, $C5D66 - $C5D64
 
-UnknownData_0xC5D66:
+Unknown_0xC5D66:
 INCBIN "baserom.gbc", $C5D66, $C5D72 - $C5D66
 
 LoggedData_0xC5D72:
 INCBIN "baserom.gbc", $C5D72, $C5D74 - $C5D72
 
-UnknownData_0xC5D74:
+Unknown_0xC5D74:
 INCBIN "baserom.gbc", $C5D74, $C5D7C - $C5D74
 
 LoggedData_0xC5D7C:
 INCBIN "baserom.gbc", $C5D7C, $C5D7E - $C5D7C
 
-UnknownData_0xC5D7E:
+Unknown_0xC5D7E:
 INCBIN "baserom.gbc", $C5D7E, $C5D84 - $C5D7E
 
 LoggedData_0xC5D84:
 INCBIN "baserom.gbc", $C5D84, $C5D86 - $C5D84
 
-UnknownData_0xC5D86:
+Unknown_0xC5D86:
 INCBIN "baserom.gbc", $C5D86, $C5D88 - $C5D86
 
 LoggedData_0xC5D88:
 INCBIN "baserom.gbc", $C5D88, $C5D8A - $C5D88
 
-UnknownData_0xC5D8A:
+Unknown_0xC5D8A:
 INCBIN "baserom.gbc", $C5D8A, $C5D90 - $C5D8A
 
 LoggedData_0xC5D90:
 INCBIN "baserom.gbc", $C5D90, $C5D92 - $C5D90
 
-UnknownData_0xC5D92:
+Unknown_0xC5D92:
 INCBIN "baserom.gbc", $C5D92, $C5D98 - $C5D92
 
 LoggedData_0xC5D98:
 INCBIN "baserom.gbc", $C5D98, $C5DA0 - $C5D98
 
-UnknownData_0xC5DA0:
+Unknown_0xC5DA0:
 INCBIN "baserom.gbc", $C5DA0, $C5DA8 - $C5DA0
 
 LoggedData_0xC5DA8:
 INCBIN "baserom.gbc", $C5DA8, $C5DB0 - $C5DA8
 
-UnknownData_0xC5DB0:
+Unknown_0xC5DB0:
 INCBIN "baserom.gbc", $C5DB0, $C5DC8 - $C5DB0
 
 LoggedData_0xC5DC8:
 INCBIN "baserom.gbc", $C5DC8, $C5DD0 - $C5DC8
 
-UnknownData_0xC5DD0:
+Unknown_0xC5DD0:
 INCBIN "baserom.gbc", $C5DD0, $C5DD8 - $C5DD0
 
 LoggedData_0xC5DD8:
 INCBIN "baserom.gbc", $C5DD8, $C5DE0 - $C5DD8
 
-UnknownData_0xC5DE0:
+Unknown_0xC5DE0:
 INCBIN "baserom.gbc", $C5DE0, $C5DE8 - $C5DE0
 
 LoggedData_0xC5DE8:
 INCBIN "baserom.gbc", $C5DE8, $C5DF0 - $C5DE8
 
-UnknownData_0xC5DF0:
+Unknown_0xC5DF0:
 INCBIN "baserom.gbc", $C5DF0, $C5DF8 - $C5DF0
 
 LoggedData_0xC5DF8:
 INCBIN "baserom.gbc", $C5DF8, $C5E00 - $C5DF8
 
-UnknownData_0xC5E00:
+Unknown_0xC5E00:
 INCBIN "baserom.gbc", $C5E00, $C5E08 - $C5E00
 
 LoggedData_0xC5E08:
 INCBIN "baserom.gbc", $C5E08, $C5E10 - $C5E08
 
-UnknownData_0xC5E10:
+Unknown_0xC5E10:
 INCBIN "baserom.gbc", $C5E10, $C5E18 - $C5E10
 
 LoggedData_0xC5E18:
 INCBIN "baserom.gbc", $C5E18, $C5E1A - $C5E18
 
-UnknownData_0xC5E1A:
+Unknown_0xC5E1A:
 INCBIN "baserom.gbc", $C5E1A, $C5E20 - $C5E1A
 
 LoggedData_0xC5E20:
 INCBIN "baserom.gbc", $C5E20, $C5E24 - $C5E20
 
-UnknownData_0xC5E24:
+Unknown_0xC5E24:
 INCBIN "baserom.gbc", $C5E24, $C5E44 - $C5E24
 
 LoggedData_0xC5E44:
 INCBIN "baserom.gbc", $C5E44, $C5E46 - $C5E44
 
-UnknownData_0xC5E46:
+Unknown_0xC5E46:
 INCBIN "baserom.gbc", $C5E46, $C5E54 - $C5E46
 
 LoggedData_0xC5E54:
 INCBIN "baserom.gbc", $C5E54, $C5E5C - $C5E54
 
-UnknownData_0xC5E5C:
+Unknown_0xC5E5C:
 INCBIN "baserom.gbc", $C5E5C, $C5E64 - $C5E5C
 
 LoggedData_0xC5E64:
 INCBIN "baserom.gbc", $C5E64, $C5E74 - $C5E64
 
-UnknownData_0xC5E74:
+Unknown_0xC5E74:
 INCBIN "baserom.gbc", $C5E74, $C5EB4 - $C5E74
 
 LoggedData_0xC5EB4:
 INCBIN "baserom.gbc", $C5EB4, $C5EBC - $C5EB4
 
-UnknownData_0xC5EBC:
+Unknown_0xC5EBC:
 INCBIN "baserom.gbc", $C5EBC, $C5ED4 - $C5EBC
 
 LoggedData_0xC5ED4:
 INCBIN "baserom.gbc", $C5ED4, $C5ED6 - $C5ED4
 
-UnknownData_0xC5ED6:
+Unknown_0xC5ED6:
 INCBIN "baserom.gbc", $C5ED6, $C5EDA - $C5ED6
 
 LoggedData_0xC5EDA:
 INCBIN "baserom.gbc", $C5EDA, $C5EDC - $C5EDA
 
-UnknownData_0xC5EDC:
+Unknown_0xC5EDC:
 INCBIN "baserom.gbc", $C5EDC, $C5F10 - $C5EDC
 
 LoggedData_0xC5F10:
 INCBIN "baserom.gbc", $C5F10, $C5F20 - $C5F10
 
-UnknownData_0xC5F20:
+Unknown_0xC5F20:
 INCBIN "baserom.gbc", $C5F20, $C5F90 - $C5F20
 
 LoggedData_0xC5F90:
 INCBIN "baserom.gbc", $C5F90, $C5F92 - $C5F90
 
-UnknownData_0xC5F92:
+Unknown_0xC5F92:
 INCBIN "baserom.gbc", $C5F92, $C5FAA - $C5F92
 
 LoggedData_0xC5FAA:
 INCBIN "baserom.gbc", $C5FAA, $C5FAC - $C5FAA
 
-UnknownData_0xC5FAC:
+Unknown_0xC5FAC:
 INCBIN "baserom.gbc", $C5FAC, $C5FAE - $C5FAC
 
 LoggedData_0xC5FAE:
 INCBIN "baserom.gbc", $C5FAE, $C5FB0 - $C5FAE
 
-UnknownData_0xC5FB0:
+Unknown_0xC5FB0:
 INCBIN "baserom.gbc", $C5FB0, $C5FC2 - $C5FB0
 
 LoggedData_0xC5FC2:
 INCBIN "baserom.gbc", $C5FC2, $C5FC4 - $C5FC2
 
-UnknownData_0xC5FC4:
+Unknown_0xC5FC4:
 INCBIN "baserom.gbc", $C5FC4, $C5FC6 - $C5FC4
 
 LoggedData_0xC5FC6:
 INCBIN "baserom.gbc", $C5FC6, $C5FCA - $C5FC6
 
-UnknownData_0xC5FCA:
+Unknown_0xC5FCA:
 INCBIN "baserom.gbc", $C5FCA, $C5FCC - $C5FCA
 
 LoggedData_0xC5FCC:
 INCBIN "baserom.gbc", $C5FCC, $C5FD4 - $C5FCC
 
-UnknownData_0xC5FD4:
+Unknown_0xC5FD4:
 INCBIN "baserom.gbc", $C5FD4, $C602C - $C5FD4
 
 LoggedData_0xC602C:
 INCBIN "baserom.gbc", $C602C, $C6034 - $C602C
 
-UnknownData_0xC6034:
+Unknown_0xC6034:
 INCBIN "baserom.gbc", $C6034, $C6044 - $C6034
 
 LoggedData_0xC6044:
 INCBIN "baserom.gbc", $C6044, $C604C - $C6044
 
-UnknownData_0xC604C:
+Unknown_0xC604C:
 INCBIN "baserom.gbc", $C604C, $C6054 - $C604C
 
 LoggedData_0xC6054:
 INCBIN "baserom.gbc", $C6054, $C605E - $C6054
 
-UnknownData_0xC605E:
+Unknown_0xC605E:
 INCBIN "baserom.gbc", $C605E, $C606A - $C605E
 
 LoggedData_0xC606A:
 INCBIN "baserom.gbc", $C606A, $C606E - $C606A
 
-UnknownData_0xC606E:
+Unknown_0xC606E:
 INCBIN "baserom.gbc", $C606E, $C6074 - $C606E
 
 LoggedData_0xC6074:
 INCBIN "baserom.gbc", $C6074, $C6076 - $C6074
 
-UnknownData_0xC6076:
+Unknown_0xC6076:
 INCBIN "baserom.gbc", $C6076, $C607C - $C6076
 
 LoggedData_0xC607C:
 INCBIN "baserom.gbc", $C607C, $C6080 - $C607C
 
-UnknownData_0xC6080:
+Unknown_0xC6080:
 INCBIN "baserom.gbc", $C6080, $C6098 - $C6080
 
 LoggedData_0xC6098:
 INCBIN "baserom.gbc", $C6098, $C60A0 - $C6098
 
-UnknownData_0xC60A0:
+Unknown_0xC60A0:
 INCBIN "baserom.gbc", $C60A0, $C60C8 - $C60A0
 
 LoggedData_0xC60C8:
 INCBIN "baserom.gbc", $C60C8, $C60E0 - $C60C8
 
-UnknownData_0xC60E0:
+Unknown_0xC60E0:
 INCBIN "baserom.gbc", $C60E0, $C60F0 - $C60E0
 
 LoggedData_0xC60F0:
 INCBIN "baserom.gbc", $C60F0, $C60F8 - $C60F0
 
-UnknownData_0xC60F8:
+Unknown_0xC60F8:
 INCBIN "baserom.gbc", $C60F8, $C6128 - $C60F8
 
 LoggedData_0xC6128:
 INCBIN "baserom.gbc", $C6128, $C6132 - $C6128
 
-UnknownData_0xC6132:
+Unknown_0xC6132:
 INCBIN "baserom.gbc", $C6132, $C613C - $C6132
 
 LoggedData_0xC613C:
 INCBIN "baserom.gbc", $C613C, $C6140 - $C613C
 
-UnknownData_0xC6140:
+Unknown_0xC6140:
 INCBIN "baserom.gbc", $C6140, $C6144 - $C6140
 
 LoggedData_0xC6144:
 INCBIN "baserom.gbc", $C6144, $C6148 - $C6144
 
-UnknownData_0xC6148:
+Unknown_0xC6148:
 INCBIN "baserom.gbc", $C6148, $C614E - $C6148
 
 LoggedData_0xC614E:
 INCBIN "baserom.gbc", $C614E, $C6150 - $C614E
 
-UnknownData_0xC6150:
+Unknown_0xC6150:
 INCBIN "baserom.gbc", $C6150, $C6158 - $C6150
 
 LoggedData_0xC6158:
 INCBIN "baserom.gbc", $C6158, $C615E - $C6158
 
-UnknownData_0xC615E:
+Unknown_0xC615E:
 INCBIN "baserom.gbc", $C615E, $C6160 - $C615E
 
 LoggedData_0xC6160:
 INCBIN "baserom.gbc", $C6160, $C618C - $C6160
 
-UnknownData_0xC618C:
+Unknown_0xC618C:
 INCBIN "baserom.gbc", $C618C, $C61AC - $C618C
 
 LoggedData_0xC61AC:
 INCBIN "baserom.gbc", $C61AC, $C61BC - $C61AC
 
-UnknownData_0xC61BC:
+Unknown_0xC61BC:
 INCBIN "baserom.gbc", $C61BC, $C61C4 - $C61BC
 
 LoggedData_0xC61C4:
 INCBIN "baserom.gbc", $C61C4, $C61CC - $C61C4
 
-UnknownData_0xC61CC:
+Unknown_0xC61CC:
 INCBIN "baserom.gbc", $C61CC, $C61D4 - $C61CC
 
 LoggedData_0xC61D4:
 INCBIN "baserom.gbc", $C61D4, $C61F6 - $C61D4
 
-UnknownData_0xC61F6:
+Unknown_0xC61F6:
 INCBIN "baserom.gbc", $C61F6, $C620E - $C61F6
 
 LoggedData_0xC620E:
 INCBIN "baserom.gbc", $C620E, $C6212 - $C620E
 
-UnknownData_0xC6212:
+Unknown_0xC6212:
 INCBIN "baserom.gbc", $C6212, $C621C - $C6212
 
 LoggedData_0xC621C:
 INCBIN "baserom.gbc", $C621C, $C6220 - $C621C
 
-UnknownData_0xC6220:
+Unknown_0xC6220:
 INCBIN "baserom.gbc", $C6220, $C6230 - $C6220
 
 LoggedData_0xC6230:
 INCBIN "baserom.gbc", $C6230, $C6238 - $C6230
 
-UnknownData_0xC6238:
+Unknown_0xC6238:
 INCBIN "baserom.gbc", $C6238, $C6258 - $C6238
 
 LoggedData_0xC6258:
 INCBIN "baserom.gbc", $C6258, $C6268 - $C6258
 
-UnknownData_0xC6268:
+Unknown_0xC6268:
 INCBIN "baserom.gbc", $C6268, $C6278 - $C6268
 
 LoggedData_0xC6278:
 INCBIN "baserom.gbc", $C6278, $C6288 - $C6278
 
-UnknownData_0xC6288:
+Unknown_0xC6288:
 INCBIN "baserom.gbc", $C6288, $C6298 - $C6288
 
 LoggedData_0xC6298:
 INCBIN "baserom.gbc", $C6298, $C629A - $C6298
 
-UnknownData_0xC629A:
+Unknown_0xC629A:
 INCBIN "baserom.gbc", $C629A, $C62C0 - $C629A
 
 LoggedData_0xC62C0:
 INCBIN "baserom.gbc", $C62C0, $C62C4 - $C62C0
 
-UnknownData_0xC62C4:
+Unknown_0xC62C4:
 INCBIN "baserom.gbc", $C62C4, $C62D4 - $C62C4
 
 LoggedData_0xC62D4:
 INCBIN "baserom.gbc", $C62D4, $C62DC - $C62D4
 
-UnknownData_0xC62DC:
+Unknown_0xC62DC:
 INCBIN "baserom.gbc", $C62DC, $C631C - $C62DC
 
 LoggedData_0xC631C:
 INCBIN "baserom.gbc", $C631C, $C632C - $C631C
 
-UnknownData_0xC632C:
+Unknown_0xC632C:
 INCBIN "baserom.gbc", $C632C, $C63E0 - $C632C
 
 LoggedData_0xC63E0:
 INCBIN "baserom.gbc", $C63E0, $C63E2 - $C63E0
 
-UnknownData_0xC63E2:
+Unknown_0xC63E2:
 INCBIN "baserom.gbc", $C63E2, $C63F6 - $C63E2
 
 LoggedData_0xC63F6:
 INCBIN "baserom.gbc", $C63F6, $C63F8 - $C63F6
 
-UnknownData_0xC63F8:
+Unknown_0xC63F8:
 INCBIN "baserom.gbc", $C63F8, $C641C - $C63F8
 
 LoggedData_0xC641C:
 INCBIN "baserom.gbc", $C641C, $C6424 - $C641C
 
-UnknownData_0xC6424:
+Unknown_0xC6424:
 INCBIN "baserom.gbc", $C6424, $C643C - $C6424
 
 LoggedData_0xC643C:
 INCBIN "baserom.gbc", $C643C, $C6444 - $C643C
 
-UnknownData_0xC6444:
+Unknown_0xC6444:
 INCBIN "baserom.gbc", $C6444, $C6528 - $C6444
 
 LoggedData_0xC6528:
 INCBIN "baserom.gbc", $C6528, $C652A - $C6528
 
-UnknownData_0xC652A:
+Unknown_0xC652A:
 INCBIN "baserom.gbc", $C652A, $C6538 - $C652A
 
 LoggedData_0xC6538:
 INCBIN "baserom.gbc", $C6538, $C653C - $C6538
 
-UnknownData_0xC653C:
+Unknown_0xC653C:
 INCBIN "baserom.gbc", $C653C, $C6542 - $C653C
 
 LoggedData_0xC6542:
 INCBIN "baserom.gbc", $C6542, $C6546 - $C6542
 
-UnknownData_0xC6546:
+Unknown_0xC6546:
 INCBIN "baserom.gbc", $C6546, $C654A - $C6546
 
 LoggedData_0xC654A:
 INCBIN "baserom.gbc", $C654A, $C654E - $C654A
 
-UnknownData_0xC654E:
+Unknown_0xC654E:
 INCBIN "baserom.gbc", $C654E, $C6556 - $C654E
 
 LoggedData_0xC6556:
 INCBIN "baserom.gbc", $C6556, $C6558 - $C6556
 
-UnknownData_0xC6558:
+Unknown_0xC6558:
 INCBIN "baserom.gbc", $C6558, $C6564 - $C6558
 
 LoggedData_0xC6564:
 INCBIN "baserom.gbc", $C6564, $C656C - $C6564
 
-UnknownData_0xC656C:
+Unknown_0xC656C:
 INCBIN "baserom.gbc", $C656C, $C6574 - $C656C
 
 LoggedData_0xC6574:
 INCBIN "baserom.gbc", $C6574, $C6584 - $C6574
 
-UnknownData_0xC6584:
+Unknown_0xC6584:
 INCBIN "baserom.gbc", $C6584, $C658C - $C6584
 
 LoggedData_0xC658C:
 INCBIN "baserom.gbc", $C658C, $C65AC - $C658C
 
-UnknownData_0xC65AC:
+Unknown_0xC65AC:
 INCBIN "baserom.gbc", $C65AC, $C65BC - $C65AC
 
 LoggedData_0xC65BC:
 INCBIN "baserom.gbc", $C65BC, $C65C4 - $C65BC
 
-UnknownData_0xC65C4:
+Unknown_0xC65C4:
 INCBIN "baserom.gbc", $C65C4, $C65CC - $C65C4
 
 LoggedData_0xC65CC:
 INCBIN "baserom.gbc", $C65CC, $C65CE - $C65CC
 
-UnknownData_0xC65CE:
+Unknown_0xC65CE:
 INCBIN "baserom.gbc", $C65CE, $C65E6 - $C65CE
 
 LoggedData_0xC65E6:
 INCBIN "baserom.gbc", $C65E6, $C65E8 - $C65E6
 
-UnknownData_0xC65E8:
+Unknown_0xC65E8:
 INCBIN "baserom.gbc", $C65E8, $C6608 - $C65E8
 
 LoggedData_0xC6608:
 INCBIN "baserom.gbc", $C6608, $C6610 - $C6608
 
-UnknownData_0xC6610:
+Unknown_0xC6610:
 INCBIN "baserom.gbc", $C6610, $C6630 - $C6610
 
 LoggedData_0xC6630:
 INCBIN "baserom.gbc", $C6630, $C6638 - $C6630
 
-UnknownData_0xC6638:
+Unknown_0xC6638:
 INCBIN "baserom.gbc", $C6638, $C6714 - $C6638
 
 LoggedData_0xC6714:
 INCBIN "baserom.gbc", $C6714, $C6718 - $C6714
 
-UnknownData_0xC6718:
+Unknown_0xC6718:
 INCBIN "baserom.gbc", $C6718, $C6728 - $C6718
 
 LoggedData_0xC6728:
 INCBIN "baserom.gbc", $C6728, $C672C - $C6728
 
-UnknownData_0xC672C:
+Unknown_0xC672C:
 INCBIN "baserom.gbc", $C672C, $C673E - $C672C
 
 LoggedData_0xC673E:
 INCBIN "baserom.gbc", $C673E, $C6740 - $C673E
 
-UnknownData_0xC6740:
+Unknown_0xC6740:
 INCBIN "baserom.gbc", $C6740, $C6750 - $C6740
 
 LoggedData_0xC6750:
 INCBIN "baserom.gbc", $C6750, $C6760 - $C6750
 
-UnknownData_0xC6760:
+Unknown_0xC6760:
 INCBIN "baserom.gbc", $C6760, $C6770 - $C6760
 
 LoggedData_0xC6770:
 INCBIN "baserom.gbc", $C6770, $C6780 - $C6770
 
-UnknownData_0xC6780:
+Unknown_0xC6780:
 INCBIN "baserom.gbc", $C6780, $C6798 - $C6780
 
 LoggedData_0xC6798:
 INCBIN "baserom.gbc", $C6798, $C67A0 - $C6798
 
-UnknownData_0xC67A0:
+Unknown_0xC67A0:
 INCBIN "baserom.gbc", $C67A0, $C67A8 - $C67A0
 
 LoggedData_0xC67A8:
 INCBIN "baserom.gbc", $C67A8, $C67AA - $C67A8
 
-UnknownData_0xC67AA:
+Unknown_0xC67AA:
 INCBIN "baserom.gbc", $C67AA, $C67B2 - $C67AA
 
 LoggedData_0xC67B2:
 INCBIN "baserom.gbc", $C67B2, $C67B4 - $C67B2
 
-UnknownData_0xC67B4:
+Unknown_0xC67B4:
 INCBIN "baserom.gbc", $C67B4, $C67BA - $C67B4
 
 LoggedData_0xC67BA:
 INCBIN "baserom.gbc", $C67BA, $C67BC - $C67BA
 
-UnknownData_0xC67BC:
+Unknown_0xC67BC:
 INCBIN "baserom.gbc", $C67BC, $C67C2 - $C67BC
 
 LoggedData_0xC67C2:
 INCBIN "baserom.gbc", $C67C2, $C67C4 - $C67C2
 
-UnknownData_0xC67C4:
+Unknown_0xC67C4:
 INCBIN "baserom.gbc", $C67C4, $C67D8 - $C67C4
 
 LoggedData_0xC67D8:
 INCBIN "baserom.gbc", $C67D8, $C67DA - $C67D8
 
-UnknownData_0xC67DA:
+Unknown_0xC67DA:
 INCBIN "baserom.gbc", $C67DA, $C67E4 - $C67DA
 
 LoggedData_0xC67E4:
 INCBIN "baserom.gbc", $C67E4, $C67EC - $C67E4
 
-UnknownData_0xC67EC:
+Unknown_0xC67EC:
 INCBIN "baserom.gbc", $C67EC, $C67F4 - $C67EC
 
 LoggedData_0xC67F4:
 INCBIN "baserom.gbc", $C67F4, $C6804 - $C67F4
 
-UnknownData_0xC6804:
+Unknown_0xC6804:
 INCBIN "baserom.gbc", $C6804, $C6814 - $C6804
 
 LoggedData_0xC6814:
 INCBIN "baserom.gbc", $C6814, $C681C - $C6814
 
-UnknownData_0xC681C:
+Unknown_0xC681C:
 INCBIN "baserom.gbc", $C681C, $C6834 - $C681C
 
 LoggedData_0xC6834:
 INCBIN "baserom.gbc", $C6834, $C683C - $C6834
 
-UnknownData_0xC683C:
+Unknown_0xC683C:
 INCBIN "baserom.gbc", $C683C, $C6964 - $C683C
 
 LoggedData_0xC6964:
 INCBIN "baserom.gbc", $C6964, $C6966 - $C6964
 
-UnknownData_0xC6966:
+Unknown_0xC6966:
 INCBIN "baserom.gbc", $C6966, $C696E - $C6966
 
 LoggedData_0xC696E:
 INCBIN "baserom.gbc", $C696E, $C6970 - $C696E
 
-UnknownData_0xC6970:
+Unknown_0xC6970:
 INCBIN "baserom.gbc", $C6970, $C6978 - $C6970
 
 LoggedData_0xC6978:
 INCBIN "baserom.gbc", $C6978, $C697C - $C6978
 
-UnknownData_0xC697C:
+Unknown_0xC697C:
 INCBIN "baserom.gbc", $C697C, $C697E - $C697C
 
 LoggedData_0xC697E:
 INCBIN "baserom.gbc", $C697E, $C6980 - $C697E
 
-UnknownData_0xC6980:
+Unknown_0xC6980:
 INCBIN "baserom.gbc", $C6980, $C6986 - $C6980
 
 LoggedData_0xC6986:
 INCBIN "baserom.gbc", $C6986, $C6988 - $C6986
 
-UnknownData_0xC6988:
+Unknown_0xC6988:
 INCBIN "baserom.gbc", $C6988, $C69A0 - $C6988
 
 LoggedData_0xC69A0:
 INCBIN "baserom.gbc", $C69A0, $C69A8 - $C69A0
 
-UnknownData_0xC69A8:
+Unknown_0xC69A8:
 INCBIN "baserom.gbc", $C69A8, $C69B0 - $C69A8
 
 LoggedData_0xC69B0:
 INCBIN "baserom.gbc", $C69B0, $C69B8 - $C69B0
 
-UnknownData_0xC69B8:
+Unknown_0xC69B8:
 INCBIN "baserom.gbc", $C69B8, $C69C0 - $C69B8
 
 LoggedData_0xC69C0:
 INCBIN "baserom.gbc", $C69C0, $C69D8 - $C69C0
 
-UnknownData_0xC69D8:
+Unknown_0xC69D8:
 INCBIN "baserom.gbc", $C69D8, $C69E0 - $C69D8
 
 LoggedData_0xC69E0:
 INCBIN "baserom.gbc", $C69E0, $C69E8 - $C69E0
 
-UnknownData_0xC69E8:
+Unknown_0xC69E8:
 INCBIN "baserom.gbc", $C69E8, $C69F8 - $C69E8
 
 LoggedData_0xC69F8:
 INCBIN "baserom.gbc", $C69F8, $C69FC - $C69F8
 
-UnknownData_0xC69FC:
+Unknown_0xC69FC:
 INCBIN "baserom.gbc", $C69FC, $C6A34 - $C69FC
 
 LoggedData_0xC6A34:
 INCBIN "baserom.gbc", $C6A34, $C6A44 - $C6A34
 
-UnknownData_0xC6A44:
+Unknown_0xC6A44:
 INCBIN "baserom.gbc", $C6A44, $C6A8C - $C6A44
 
 LoggedData_0xC6A8C:
 INCBIN "baserom.gbc", $C6A8C, $C6A8E - $C6A8C
 
-UnknownData_0xC6A8E:
+Unknown_0xC6A8E:
 INCBIN "baserom.gbc", $C6A8E, $C6AC8 - $C6A8E
 
 LoggedData_0xC6AC8:
 INCBIN "baserom.gbc", $C6AC8, $C6AD0 - $C6AC8
 
-UnknownData_0xC6AD0:
+Unknown_0xC6AD0:
 INCBIN "baserom.gbc", $C6AD0, $C8000 - $C6AD0
 
 SECTION "Bank32", ROMX, BANK[$32]
@@ -148337,25 +148337,25 @@ SECTION "Bank32", ROMX, BANK[$32]
 LoggedData_0xC8000:
 INCBIN "baserom.gbc", $C8000, $C807E - $C8000
 
-UnknownData_0xC807E:
+Unknown_0xC807E:
 INCBIN "baserom.gbc", $C807E, $C8080 - $C807E
 
 LoggedData_0xC8080:
 INCBIN "baserom.gbc", $C8080, $C8098 - $C8080
 
-UnknownData_0xC8098:
+Unknown_0xC8098:
 INCBIN "baserom.gbc", $C8098, $C809A - $C8098
 
 LoggedData_0xC809A:
 INCBIN "baserom.gbc", $C809A, $C80B0 - $C809A
 
-UnknownData_0xC80B0:
+Unknown_0xC80B0:
 INCBIN "baserom.gbc", $C80B0, $C80C4 - $C80B0
 
 LoggedData_0xC80C4:
 INCBIN "baserom.gbc", $C80C4, $CBFC4 - $C80C4
 
-UnknownData_0xCBFC4:
+Unknown_0xCBFC4:
 INCBIN "baserom.gbc", $CBFC4, $CC000 - $CBFC4
 
 SECTION "Bank33", ROMX, BANK[$33]
@@ -148363,31 +148363,31 @@ SECTION "Bank33", ROMX, BANK[$33]
 LoggedData_0xCC000:
 INCBIN "baserom.gbc", $CC000, $CC800 - $CC000
 
-UnknownData_0xCC800:
+Unknown_0xCC800:
 INCBIN "baserom.gbc", $CC800, $CC840 - $CC800
 
 LoggedData_0xCC840:
 INCBIN "baserom.gbc", $CC840, $CCD40 - $CC840
 
-UnknownData_0xCCD40:
+Unknown_0xCCD40:
 INCBIN "baserom.gbc", $CCD40, $CCD80 - $CCD40
 
 LoggedData_0xCCD80:
 INCBIN "baserom.gbc", $CCD80, $CD280 - $CCD80
 
-UnknownData_0xCD280:
+Unknown_0xCD280:
 INCBIN "baserom.gbc", $CD280, $CD2C0 - $CD280
 
 LoggedData_0xCD2C0:
 INCBIN "baserom.gbc", $CD2C0, $CDB00 - $CD2C0
 
-UnknownData_0xCDB00:
+Unknown_0xCDB00:
 INCBIN "baserom.gbc", $CDB00, $CDB40 - $CDB00
 
 LoggedData_0xCDB40:
 INCBIN "baserom.gbc", $CDB40, $CE480 - $CDB40
 
-UnknownData_0xCE480:
+Unknown_0xCE480:
 INCBIN "baserom.gbc", $CE480, $D0000 - $CE480
 
 SECTION "Bank34", ROMX, BANK[$34]
@@ -148478,7 +148478,7 @@ Logged_0xD0070:
 LoggedData_0xD0071:
 INCBIN "baserom.gbc", $D0071, $D2871 - $D0071
 
-UnknownData_0xD2871:
+Unknown_0xD2871:
 INCBIN "baserom.gbc", $D2871, $D4000 - $D2871
 
 SECTION "Bank35", ROMX, BANK[$35]
@@ -149880,91 +149880,91 @@ Unknown_0xD492E:
 	ld [$D524],a
 	ret
 
-UnknownData_0xD494B:
+Unknown_0xD494B:
 INCBIN "baserom.gbc", $D494B, $D49CC - $D494B
 
 LoggedData_0xD49CC:
 INCBIN "baserom.gbc", $D49CC, $D4DDD - $D49CC
 
-UnknownData_0xD4DDD:
+Unknown_0xD4DDD:
 INCBIN "baserom.gbc", $D4DDD, $D4DE4 - $D4DDD
 
 LoggedData_0xD4DE4:
 INCBIN "baserom.gbc", $D4DE4, $D4E23 - $D4DE4
 
-UnknownData_0xD4E23:
+Unknown_0xD4E23:
 INCBIN "baserom.gbc", $D4E23, $D4E26 - $D4E23
 
 LoggedData_0xD4E26:
 INCBIN "baserom.gbc", $D4E26, $D505B - $D4E26
 
-UnknownData_0xD505B:
+Unknown_0xD505B:
 INCBIN "baserom.gbc", $D505B, $D505C - $D505B
 
 LoggedData_0xD505C:
 INCBIN "baserom.gbc", $D505C, $D505E - $D505C
 
-UnknownData_0xD505E:
+Unknown_0xD505E:
 INCBIN "baserom.gbc", $D505E, $D505F - $D505E
 
 LoggedData_0xD505F:
 INCBIN "baserom.gbc", $D505F, $D5061 - $D505F
 
-UnknownData_0xD5061:
+Unknown_0xD5061:
 INCBIN "baserom.gbc", $D5061, $D5062 - $D5061
 
 LoggedData_0xD5062:
 INCBIN "baserom.gbc", $D5062, $D5064 - $D5062
 
-UnknownData_0xD5064:
+Unknown_0xD5064:
 INCBIN "baserom.gbc", $D5064, $D5065 - $D5064
 
 LoggedData_0xD5065:
 INCBIN "baserom.gbc", $D5065, $D5067 - $D5065
 
-UnknownData_0xD5067:
+Unknown_0xD5067:
 INCBIN "baserom.gbc", $D5067, $D5068 - $D5067
 
 LoggedData_0xD5068:
 INCBIN "baserom.gbc", $D5068, $D506A - $D5068
 
-UnknownData_0xD506A:
+Unknown_0xD506A:
 INCBIN "baserom.gbc", $D506A, $D506B - $D506A
 
 LoggedData_0xD506B:
 INCBIN "baserom.gbc", $D506B, $D5097 - $D506B
 
-UnknownData_0xD5097:
+Unknown_0xD5097:
 INCBIN "baserom.gbc", $D5097, $D5098 - $D5097
 
 LoggedData_0xD5098:
 INCBIN "baserom.gbc", $D5098, $D509A - $D5098
 
-UnknownData_0xD509A:
+Unknown_0xD509A:
 INCBIN "baserom.gbc", $D509A, $D509B - $D509A
 
 LoggedData_0xD509B:
 INCBIN "baserom.gbc", $D509B, $D509D - $D509B
 
-UnknownData_0xD509D:
+Unknown_0xD509D:
 INCBIN "baserom.gbc", $D509D, $D509E - $D509D
 
 LoggedData_0xD509E:
 INCBIN "baserom.gbc", $D509E, $D50A0 - $D509E
 
-UnknownData_0xD50A0:
+Unknown_0xD50A0:
 INCBIN "baserom.gbc", $D50A0, $D50A1 - $D50A0
 
 LoggedData_0xD50A1:
 INCBIN "baserom.gbc", $D50A1, $D50A3 - $D50A1
 
-UnknownData_0xD50A3:
+Unknown_0xD50A3:
 INCBIN "baserom.gbc", $D50A3, $D50A4 - $D50A3
 
 LoggedData_0xD50A4:
 INCBIN "baserom.gbc", $D50A4, $D65E1 - $D50A4
 
-UnknownData_0xD65E1:
+Unknown_0xD65E1:
 INCBIN "baserom.gbc", $D65E1, $D8000 - $D65E1
 
 SECTION "Bank36", ROMX, BANK[$36]
@@ -150314,7 +150314,7 @@ Logged_0xDB4E9:
 LoggedData_0xDB509:
 INCBIN "baserom.gbc", $DB509, $DBBF8 - $DB509
 
-UnknownData_0xDBBF8:
+Unknown_0xDBBF8:
 INCBIN "baserom.gbc", $DBBF8, $DC000 - $DBBF8
 
 SECTION "Bank37", ROMX, BANK[$37]
@@ -150446,7 +150446,7 @@ Logged_0xDC0CF:
 	ld hl,$CA3D
 	set 1,[hl]
 	ld a,$04
-	ld [$C09B],a
+	ld [wGameState],a
 	ld a,$28
 	ld [$C09C],a
 	ret
@@ -150525,7 +150525,7 @@ Logged_0xDC158:
 LoggedData_0xDC173:
 INCBIN "baserom.gbc", $DC173, $DD859 - $DC173
 
-UnknownData_0xDD859:
+Unknown_0xDD859:
 INCBIN "baserom.gbc", $DD859, $E0000 - $DD859
 
 SECTION "Bank38", ROMX, BANK[$38]
@@ -150533,7 +150533,7 @@ SECTION "Bank38", ROMX, BANK[$38]
 LoggedData_0xE0000:
 INCBIN "baserom.gbc", $E0000, $E3D04 - $E0000
 
-UnknownData_0xE3D04:
+Unknown_0xE3D04:
 INCBIN "baserom.gbc", $E3D04, $E4000 - $E3D04
 
 SECTION "Bank39", ROMX, BANK[$39]
@@ -150541,7 +150541,7 @@ SECTION "Bank39", ROMX, BANK[$39]
 LoggedData_0xE4000:
 INCBIN "baserom.gbc", $E4000, $E7E76 - $E4000
 
-UnknownData_0xE7E76:
+Unknown_0xE7E76:
 INCBIN "baserom.gbc", $E7E76, $E8000 - $E7E76
 
 SECTION "Bank3A", ROMX, BANK[$3A]
@@ -150549,7 +150549,7 @@ SECTION "Bank3A", ROMX, BANK[$3A]
 LoggedData_0xE8000:
 INCBIN "baserom.gbc", $E8000, $EB478 - $E8000
 
-UnknownData_0xEB478:
+Unknown_0xEB478:
 INCBIN "baserom.gbc", $EB478, $EC000 - $EB478
 
 SECTION "Bank3B", ROMX, BANK[$3B]
@@ -150557,7 +150557,7 @@ SECTION "Bank3B", ROMX, BANK[$3B]
 LoggedData_0xEC000:
 INCBIN "baserom.gbc", $EC000, $EFF0D - $EC000
 
-UnknownData_0xEFF0D:
+Unknown_0xEFF0D:
 INCBIN "baserom.gbc", $EFF0D, $F0000 - $EFF0D
 
 SECTION "Bank3C", ROMX, BANK[$3C]
@@ -150565,7 +150565,7 @@ SECTION "Bank3C", ROMX, BANK[$3C]
 LoggedData_0xF0000:
 INCBIN "baserom.gbc", $F0000, $F3C16 - $F0000
 
-UnknownData_0xF3C16:
+Unknown_0xF3C16:
 INCBIN "baserom.gbc", $F3C16, $F4000 - $F3C16
 
 SECTION "Bank3D", ROMX, BANK[$3D]
@@ -150573,7 +150573,7 @@ SECTION "Bank3D", ROMX, BANK[$3D]
 LoggedData_0xF4000:
 INCBIN "baserom.gbc", $F4000, $F78B4 - $F4000
 
-UnknownData_0xF78B4:
+Unknown_0xF78B4:
 INCBIN "baserom.gbc", $F78B4, $F8000 - $F78B4
 
 SECTION "Bank3E", ROMX, BANK[$3E]
@@ -150581,7 +150581,7 @@ SECTION "Bank3E", ROMX, BANK[$3E]
 LoggedData_0xF8000:
 INCBIN "baserom.gbc", $F8000, $FB5B0 - $F8000
 
-UnknownData_0xFB5B0:
+Unknown_0xFB5B0:
 INCBIN "baserom.gbc", $FB5B0, $FC000 - $FB5B0
 
 SECTION "Bank3F", ROMX, BANK[$3F]
@@ -150589,7 +150589,7 @@ SECTION "Bank3F", ROMX, BANK[$3F]
 LoggedData_0xFC000:
 INCBIN "baserom.gbc", $FC000, $FFB97 - $FC000
 
-UnknownData_0xFFB97:
+Unknown_0xFFB97:
 INCBIN "baserom.gbc", $FFB97, $100000 - $FFB97
 
 SECTION "Bank40", ROMX, BANK[$40]
@@ -150597,7 +150597,7 @@ SECTION "Bank40", ROMX, BANK[$40]
 LoggedData_0x100000:
 INCBIN "baserom.gbc", $100000, $103E21 - $100000
 
-UnknownData_0x103E21:
+Unknown_0x103E21:
 INCBIN "baserom.gbc", $103E21, $104000 - $103E21
 
 SECTION "Bank41", ROMX, BANK[$41]
@@ -150605,7 +150605,7 @@ SECTION "Bank41", ROMX, BANK[$41]
 LoggedData_0x104000:
 INCBIN "baserom.gbc", $104000, $107322 - $104000
 
-UnknownData_0x107322:
+Unknown_0x107322:
 INCBIN "baserom.gbc", $107322, $108000 - $107322
 
 SECTION "Bank42", ROMX, BANK[$42]
@@ -150613,13 +150613,13 @@ SECTION "Bank42", ROMX, BANK[$42]
 LoggedData_0x108000:
 INCBIN "baserom.gbc", $108000, $10B93D - $108000
 
-UnknownData_0x10B93D:
+Unknown_0x10B93D:
 INCBIN "baserom.gbc", $10B93D, $10BC28 - $10B93D
 
 LoggedData_0x10BC28:
 INCBIN "baserom.gbc", $10BC28, $10BF09 - $10BC28
 
-UnknownData_0x10BF09:
+Unknown_0x10BF09:
 INCBIN "baserom.gbc", $10BF09, $10C000 - $10BF09
 
 SECTION "Bank43", ROMX, BANK[$43]
@@ -150627,7 +150627,7 @@ SECTION "Bank43", ROMX, BANK[$43]
 LoggedData_0x10C000:
 INCBIN "baserom.gbc", $10C000, $10F437 - $10C000
 
-UnknownData_0x10F437:
+Unknown_0x10F437:
 INCBIN "baserom.gbc", $10F437, $110000 - $10F437
 
 SECTION "Bank44", ROMX, BANK[$44]
@@ -150635,13 +150635,13 @@ SECTION "Bank44", ROMX, BANK[$44]
 LoggedData_0x110000:
 INCBIN "baserom.gbc", $110000, $1121DD - $110000
 
-UnknownData_0x1121DD:
+Unknown_0x1121DD:
 INCBIN "baserom.gbc", $1121DD, $1124A3 - $1121DD
 
 LoggedData_0x1124A3:
 INCBIN "baserom.gbc", $1124A3, $112757 - $1124A3
 
-UnknownData_0x112757:
+Unknown_0x112757:
 INCBIN "baserom.gbc", $112757, $114000 - $112757
 
 SECTION "Bank45", ROMX, BANK[$45]
@@ -150649,7 +150649,7 @@ SECTION "Bank45", ROMX, BANK[$45]
 LoggedData_0x114000:
 INCBIN "baserom.gbc", $114000, $117AA6 - $114000
 
-UnknownData_0x117AA6:
+Unknown_0x117AA6:
 INCBIN "baserom.gbc", $117AA6, $118000 - $117AA6
 
 SECTION "Bank46", ROMX, BANK[$46]
@@ -150657,7 +150657,7 @@ SECTION "Bank46", ROMX, BANK[$46]
 LoggedData_0x118000:
 INCBIN "baserom.gbc", $118000, $11B424 - $118000
 
-UnknownData_0x11B424:
+Unknown_0x11B424:
 INCBIN "baserom.gbc", $11B424, $11C000 - $11B424
 
 SECTION "Bank47", ROMX, BANK[$47]
@@ -150665,7 +150665,7 @@ SECTION "Bank47", ROMX, BANK[$47]
 LoggedData_0x11C000:
 INCBIN "baserom.gbc", $11C000, $11E4F9 - $11C000
 
-UnknownData_0x11E4F9:
+Unknown_0x11E4F9:
 INCBIN "baserom.gbc", $11E4F9, $120000 - $11E4F9
 
 SECTION "Bank48", ROMX, BANK[$48]
@@ -150673,32 +150673,32 @@ SECTION "Bank48", ROMX, BANK[$48]
 LoggedData_0x120000:
 INCBIN "baserom.gbc", $120000, $12315D - $120000
 
-UnknownData_0x12315D:
+Unknown_0x12315D:
 INCBIN "baserom.gbc", $12315D, $124000 - $12315D
 
 SECTION "Bank49", ROMX, BANK[$49]
 
-UnknownData_0x124000:
+Unknown_0x124000:
 INCBIN "baserom.gbc", $124000, $128000 - $124000
 
 SECTION "Bank4A", ROMX, BANK[$4A]
 
-UnknownData_0x128000:
+Unknown_0x128000:
 INCBIN "baserom.gbc", $128000, $12C000 - $128000
 
 SECTION "Bank4B", ROMX, BANK[$4B]
 
-UnknownData_0x12C000:
+Unknown_0x12C000:
 INCBIN "baserom.gbc", $12C000, $130000 - $12C000
 
 SECTION "Bank4C", ROMX, BANK[$4C]
 
-UnknownData_0x130000:
+Unknown_0x130000:
 INCBIN "baserom.gbc", $130000, $134000 - $130000
 
 SECTION "Bank4D", ROMX, BANK[$4D]
 
-UnknownData_0x134000:
+Unknown_0x134000:
 INCBIN "baserom.gbc", $134000, $138000 - $134000
 
 SECTION "Bank4E", ROMX, BANK[$4E]
@@ -150711,24 +150711,24 @@ SECTION "Bank4F", ROMX, BANK[$4F]
 LoggedData_0x13C000:
 INCBIN "baserom.gbc", $13C000, $13C800 - $13C000
 
-UnknownData_0x13C800:
+Unknown_0x13C800:
 INCBIN "baserom.gbc", $13C800, $140000 - $13C800
 
 SECTION "Bank50", ROMX, BANK[$50]
 
-UnknownData_0x140000:
+Unknown_0x140000:
 INCBIN "baserom.gbc", $140000, $140100 - $140000
 
 LoggedData_0x140100:
 INCBIN "baserom.gbc", $140100, $140D00 - $140100
 
-UnknownData_0x140D00:
+Unknown_0x140D00:
 INCBIN "baserom.gbc", $140D00, $140E00 - $140D00
 
 LoggedData_0x140E00:
 INCBIN "baserom.gbc", $140E00, $141900 - $140E00
 
-UnknownData_0x141900:
+Unknown_0x141900:
 INCBIN "baserom.gbc", $141900, $144000 - $141900
 
 SECTION "Bank51", ROMX, BANK[$51]
@@ -151311,7 +151311,7 @@ Logged_0x158323:
 	ld a,[hl]
 	ret
 
-UnknownData_0x15832C:
+Unknown_0x15832C:
 INCBIN "baserom.gbc", $15832C, $15832D - $15832C
 
 LoggedData_0x15832D:
@@ -151835,7 +151835,7 @@ Logged_0x15864A:
 	cp $80
 	ret
 
-UnknownData_0x158659:
+Unknown_0x158659:
 INCBIN "baserom.gbc", $158659, $15865A - $158659
 
 LoggedData_0x15865A:
@@ -151852,7 +151852,7 @@ Logged_0x15866E:
 	cp $80
 	ret
 
-UnknownData_0x15867D:
+Unknown_0x15867D:
 INCBIN "baserom.gbc", $15867D, $15867E - $15867D
 
 LoggedData_0x15867E:
@@ -152242,168 +152242,168 @@ Logged_0x158890:
 LoggedData_0x158897:
 INCBIN "baserom.gbc", $158897, $15896C - $158897
 
-UnknownData_0x15896C:
+Unknown_0x15896C:
 INCBIN "baserom.gbc", $15896C, $15C000 - $15896C
 
 SECTION "Bank57", ROMX, BANK[$57]
 
-UnknownData_0x15C000:
+Unknown_0x15C000:
 INCBIN "baserom.gbc", $15C000, $15C800 - $15C000
 
 LoggedData_0x15C800:
 INCBIN "baserom.gbc", $15C800, $15C900 - $15C800
 
-UnknownData_0x15C900:
+Unknown_0x15C900:
 INCBIN "baserom.gbc", $15C900, $15D180 - $15C900
 
 LoggedData_0x15D180:
 INCBIN "baserom.gbc", $15D180, $15E06B - $15D180
 
-UnknownData_0x15E06B:
+Unknown_0x15E06B:
 INCBIN "baserom.gbc", $15E06B, $15E225 - $15E06B
 
 LoggedData_0x15E225:
 INCBIN "baserom.gbc", $15E225, $15E437 - $15E225
 
-UnknownData_0x15E437:
+Unknown_0x15E437:
 INCBIN "baserom.gbc", $15E437, $15E44A - $15E437
 
 LoggedData_0x15E44A:
 INCBIN "baserom.gbc", $15E44A, $15E763 - $15E44A
 
-UnknownData_0x15E763:
+Unknown_0x15E763:
 INCBIN "baserom.gbc", $15E763, $15E774 - $15E763
 
 LoggedData_0x15E774:
 INCBIN "baserom.gbc", $15E774, $15E813 - $15E774
 
-UnknownData_0x15E813:
+Unknown_0x15E813:
 INCBIN "baserom.gbc", $15E813, $15E815 - $15E813
 
 LoggedData_0x15E815:
 INCBIN "baserom.gbc", $15E815, $15E81B - $15E815
 
-UnknownData_0x15E81B:
+Unknown_0x15E81B:
 INCBIN "baserom.gbc", $15E81B, $15E81D - $15E81B
 
 LoggedData_0x15E81D:
 INCBIN "baserom.gbc", $15E81D, $15E827 - $15E81D
 
-UnknownData_0x15E827:
+Unknown_0x15E827:
 INCBIN "baserom.gbc", $15E827, $15E830 - $15E827
 
 LoggedData_0x15E830:
 INCBIN "baserom.gbc", $15E830, $15E847 - $15E830
 
-UnknownData_0x15E847:
+Unknown_0x15E847:
 INCBIN "baserom.gbc", $15E847, $15E84C - $15E847
 
 LoggedData_0x15E84C:
 INCBIN "baserom.gbc", $15E84C, $15E88D - $15E84C
 
-UnknownData_0x15E88D:
+Unknown_0x15E88D:
 INCBIN "baserom.gbc", $15E88D, $15E890 - $15E88D
 
 LoggedData_0x15E890:
 INCBIN "baserom.gbc", $15E890, $15E899 - $15E890
 
-UnknownData_0x15E899:
+Unknown_0x15E899:
 INCBIN "baserom.gbc", $15E899, $15E89C - $15E899
 
 LoggedData_0x15E89C:
 INCBIN "baserom.gbc", $15E89C, $15E8B9 - $15E89C
 
-UnknownData_0x15E8B9:
+Unknown_0x15E8B9:
 INCBIN "baserom.gbc", $15E8B9, $15E932 - $15E8B9
 
 LoggedData_0x15E932:
 INCBIN "baserom.gbc", $15E932, $15E935 - $15E932
 
-UnknownData_0x15E935:
+Unknown_0x15E935:
 INCBIN "baserom.gbc", $15E935, $15E95C - $15E935
 
 LoggedData_0x15E95C:
 INCBIN "baserom.gbc", $15E95C, $15E95F - $15E95C
 
-UnknownData_0x15E95F:
+Unknown_0x15E95F:
 INCBIN "baserom.gbc", $15E95F, $15E97D - $15E95F
 
 LoggedData_0x15E97D:
 INCBIN "baserom.gbc", $15E97D, $15E9BD - $15E97D
 
-UnknownData_0x15E9BD:
+Unknown_0x15E9BD:
 INCBIN "baserom.gbc", $15E9BD, $15E9BF - $15E9BD
 
 LoggedData_0x15E9BF:
 INCBIN "baserom.gbc", $15E9BF, $15E9C5 - $15E9BF
 
-UnknownData_0x15E9C5:
+Unknown_0x15E9C5:
 INCBIN "baserom.gbc", $15E9C5, $15E9C7 - $15E9C5
 
 LoggedData_0x15E9C7:
 INCBIN "baserom.gbc", $15E9C7, $15E9CD - $15E9C7
 
-UnknownData_0x15E9CD:
+Unknown_0x15E9CD:
 INCBIN "baserom.gbc", $15E9CD, $15E9CF - $15E9CD
 
 LoggedData_0x15E9CF:
 INCBIN "baserom.gbc", $15E9CF, $15E9DB - $15E9CF
 
-UnknownData_0x15E9DB:
+Unknown_0x15E9DB:
 INCBIN "baserom.gbc", $15E9DB, $15E9E1 - $15E9DB
 
 LoggedData_0x15E9E1:
 INCBIN "baserom.gbc", $15E9E1, $15ECD1 - $15E9E1
 
-UnknownData_0x15ECD1:
+Unknown_0x15ECD1:
 INCBIN "baserom.gbc", $15ECD1, $15ECD6 - $15ECD1
 
 LoggedData_0x15ECD6:
 INCBIN "baserom.gbc", $15ECD6, $15ECED - $15ECD6
 
-UnknownData_0x15ECED:
+Unknown_0x15ECED:
 INCBIN "baserom.gbc", $15ECED, $15ECF2 - $15ECED
 
 LoggedData_0x15ECF2:
 INCBIN "baserom.gbc", $15ECF2, $15ED09 - $15ECF2
 
-UnknownData_0x15ED09:
+Unknown_0x15ED09:
 INCBIN "baserom.gbc", $15ED09, $15ED0E - $15ED09
 
 LoggedData_0x15ED0E:
 INCBIN "baserom.gbc", $15ED0E, $15ED44 - $15ED0E
 
-UnknownData_0x15ED44:
+Unknown_0x15ED44:
 INCBIN "baserom.gbc", $15ED44, $15ED5F - $15ED44
 
 LoggedData_0x15ED5F:
 INCBIN "baserom.gbc", $15ED5F, $15ED9A - $15ED5F
 
-UnknownData_0x15ED9A:
+Unknown_0x15ED9A:
 INCBIN "baserom.gbc", $15ED9A, $15ED9D - $15ED9A
 
 LoggedData_0x15ED9D:
 INCBIN "baserom.gbc", $15ED9D, $15EDB3 - $15ED9D
 
-UnknownData_0x15EDB3:
+Unknown_0x15EDB3:
 INCBIN "baserom.gbc", $15EDB3, $15EDC0 - $15EDB3
 
 LoggedData_0x15EDC0:
 INCBIN "baserom.gbc", $15EDC0, $15EDE8 - $15EDC0
 
-UnknownData_0x15EDE8:
+Unknown_0x15EDE8:
 INCBIN "baserom.gbc", $15EDE8, $15EDE9 - $15EDE8
 
 LoggedData_0x15EDE9:
 INCBIN "baserom.gbc", $15EDE9, $15EE72 - $15EDE9
 
-UnknownData_0x15EE72:
+Unknown_0x15EE72:
 INCBIN "baserom.gbc", $15EE72, $15EE79 - $15EE72
 
 LoggedData_0x15EE79:
 INCBIN "baserom.gbc", $15EE79, $15EE8D - $15EE79
 
-UnknownData_0x15EE8D:
+Unknown_0x15EE8D:
 INCBIN "baserom.gbc", $15EE8D, $160000 - $15EE8D
 
 SECTION "Bank58", ROMX, BANK[$58]
@@ -153073,353 +153073,353 @@ Logged_0x1604B1:
 LoggedData_0x1604CC:
 INCBIN "baserom.gbc", $1604CC, $161CEA - $1604CC
 
-UnknownData_0x161CEA:
+Unknown_0x161CEA:
 INCBIN "baserom.gbc", $161CEA, $161CEB - $161CEA
 
 LoggedData_0x161CEB:
 INCBIN "baserom.gbc", $161CEB, $161CED - $161CEB
 
-UnknownData_0x161CED:
+Unknown_0x161CED:
 INCBIN "baserom.gbc", $161CED, $161CEE - $161CED
 
 LoggedData_0x161CEE:
 INCBIN "baserom.gbc", $161CEE, $162F85 - $161CEE
 
-UnknownData_0x162F85:
+Unknown_0x162F85:
 INCBIN "baserom.gbc", $162F85, $164000 - $162F85
 
 SECTION "Bank59", ROMX, BANK[$59]
 
-UnknownData_0x164000:
+Unknown_0x164000:
 INCBIN "baserom.gbc", $164000, $168000 - $164000
 
 SECTION "Bank5A", ROMX, BANK[$5A]
 
-UnknownData_0x168000:
+Unknown_0x168000:
 INCBIN "baserom.gbc", $168000, $16C000 - $168000
 
 SECTION "Bank5B", ROMX, BANK[$5B]
 
-UnknownData_0x16C000:
+Unknown_0x16C000:
 INCBIN "baserom.gbc", $16C000, $170000 - $16C000
 
 SECTION "Bank5C", ROMX, BANK[$5C]
 
-UnknownData_0x170000:
+Unknown_0x170000:
 INCBIN "baserom.gbc", $170000, $174000 - $170000
 
 SECTION "Bank5D", ROMX, BANK[$5D]
 
-UnknownData_0x174000:
+Unknown_0x174000:
 INCBIN "baserom.gbc", $174000, $178000 - $174000
 
 SECTION "Bank5E", ROMX, BANK[$5E]
 
-UnknownData_0x178000:
+Unknown_0x178000:
 INCBIN "baserom.gbc", $178000, $17C000 - $178000
 
 SECTION "Bank5F", ROMX, BANK[$5F]
 
-UnknownData_0x17C000:
+Unknown_0x17C000:
 INCBIN "baserom.gbc", $17C000, $180000 - $17C000
 
 SECTION "Bank60", ROMX, BANK[$60]
 
-UnknownData_0x180000:
+Unknown_0x180000:
 INCBIN "baserom.gbc", $180000, $180003 - $180000
 
 LoggedData_0x180003:
 INCBIN "baserom.gbc", $180003, $180246 - $180003
 
-UnknownData_0x180246:
+Unknown_0x180246:
 INCBIN "baserom.gbc", $180246, $180248 - $180246
 
 LoggedData_0x180248:
 INCBIN "baserom.gbc", $180248, $18024E - $180248
 
-UnknownData_0x18024E:
+Unknown_0x18024E:
 INCBIN "baserom.gbc", $18024E, $180252 - $18024E
 
 LoggedData_0x180252:
 INCBIN "baserom.gbc", $180252, $18025A - $180252
 
-UnknownData_0x18025A:
+Unknown_0x18025A:
 INCBIN "baserom.gbc", $18025A, $18025E - $18025A
 
 LoggedData_0x18025E:
 INCBIN "baserom.gbc", $18025E, $180264 - $18025E
 
-UnknownData_0x180264:
+Unknown_0x180264:
 INCBIN "baserom.gbc", $180264, $180268 - $180264
 
 LoggedData_0x180268:
 INCBIN "baserom.gbc", $180268, $1802B0 - $180268
 
-UnknownData_0x1802B0:
+Unknown_0x1802B0:
 INCBIN "baserom.gbc", $1802B0, $1802BD - $1802B0
 
 LoggedData_0x1802BD:
 INCBIN "baserom.gbc", $1802BD, $1802E8 - $1802BD
 
-UnknownData_0x1802E8:
+Unknown_0x1802E8:
 INCBIN "baserom.gbc", $1802E8, $180306 - $1802E8
 
 LoggedData_0x180306:
 INCBIN "baserom.gbc", $180306, $18032A - $180306
 
-UnknownData_0x18032A:
+Unknown_0x18032A:
 INCBIN "baserom.gbc", $18032A, $180354 - $18032A
 
 LoggedData_0x180354:
 INCBIN "baserom.gbc", $180354, $18036F - $180354
 
-UnknownData_0x18036F:
+Unknown_0x18036F:
 INCBIN "baserom.gbc", $18036F, $180389 - $18036F
 
 LoggedData_0x180389:
 INCBIN "baserom.gbc", $180389, $18056E - $180389
 
-UnknownData_0x18056E:
+Unknown_0x18056E:
 INCBIN "baserom.gbc", $18056E, $180570 - $18056E
 
 LoggedData_0x180570:
 INCBIN "baserom.gbc", $180570, $180572 - $180570
 
-UnknownData_0x180572:
+Unknown_0x180572:
 INCBIN "baserom.gbc", $180572, $180574 - $180572
 
 LoggedData_0x180574:
 INCBIN "baserom.gbc", $180574, $180631 - $180574
 
-UnknownData_0x180631:
+Unknown_0x180631:
 INCBIN "baserom.gbc", $180631, $180652 - $180631
 
 LoggedData_0x180652:
 INCBIN "baserom.gbc", $180652, $180673 - $180652
 
-UnknownData_0x180673:
+Unknown_0x180673:
 INCBIN "baserom.gbc", $180673, $180694 - $180673
 
 LoggedData_0x180694:
 INCBIN "baserom.gbc", $180694, $180916 - $180694
 
-UnknownData_0x180916:
+Unknown_0x180916:
 INCBIN "baserom.gbc", $180916, $1809FF - $180916
 
 LoggedData_0x1809FF:
 INCBIN "baserom.gbc", $1809FF, $180A09 - $1809FF
 
-UnknownData_0x180A09:
+Unknown_0x180A09:
 INCBIN "baserom.gbc", $180A09, $180A0B - $180A09
 
 LoggedData_0x180A0B:
 INCBIN "baserom.gbc", $180A0B, $180A13 - $180A0B
 
-UnknownData_0x180A13:
+Unknown_0x180A13:
 INCBIN "baserom.gbc", $180A13, $180A15 - $180A13
 
 LoggedData_0x180A15:
 INCBIN "baserom.gbc", $180A15, $180A94 - $180A15
 
-UnknownData_0x180A94:
+Unknown_0x180A94:
 INCBIN "baserom.gbc", $180A94, $180AAD - $180A94
 
 LoggedData_0x180AAD:
 INCBIN "baserom.gbc", $180AAD, $180B11 - $180AAD
 
-UnknownData_0x180B11:
+Unknown_0x180B11:
 INCBIN "baserom.gbc", $180B11, $180B2A - $180B11
 
 LoggedData_0x180B2A:
 INCBIN "baserom.gbc", $180B2A, $180B59 - $180B2A
 
-UnknownData_0x180B59:
+Unknown_0x180B59:
 INCBIN "baserom.gbc", $180B59, $180B5B - $180B59
 
 LoggedData_0x180B5B:
 INCBIN "baserom.gbc", $180B5B, $180B5F - $180B5B
 
-UnknownData_0x180B5F:
+Unknown_0x180B5F:
 INCBIN "baserom.gbc", $180B5F, $180B63 - $180B5F
 
 LoggedData_0x180B63:
 INCBIN "baserom.gbc", $180B63, $180B6B - $180B63
 
-UnknownData_0x180B6B:
+Unknown_0x180B6B:
 INCBIN "baserom.gbc", $180B6B, $180B6D - $180B6B
 
 LoggedData_0x180B6D:
 INCBIN "baserom.gbc", $180B6D, $180B75 - $180B6D
 
-UnknownData_0x180B75:
+Unknown_0x180B75:
 INCBIN "baserom.gbc", $180B75, $180B77 - $180B75
 
 LoggedData_0x180B77:
 INCBIN "baserom.gbc", $180B77, $180B8B - $180B77
 
-UnknownData_0x180B8B:
+Unknown_0x180B8B:
 INCBIN "baserom.gbc", $180B8B, $180B93 - $180B8B
 
 LoggedData_0x180B93:
 INCBIN "baserom.gbc", $180B93, $180C46 - $180B93
 
-UnknownData_0x180C46:
+Unknown_0x180C46:
 INCBIN "baserom.gbc", $180C46, $180C57 - $180C46
 
 LoggedData_0x180C57:
 INCBIN "baserom.gbc", $180C57, $180C79 - $180C57
 
-UnknownData_0x180C79:
+Unknown_0x180C79:
 INCBIN "baserom.gbc", $180C79, $180C9B - $180C79
 
 LoggedData_0x180C9B:
 INCBIN "baserom.gbc", $180C9B, $180CCF - $180C9B
 
-UnknownData_0x180CCF:
+Unknown_0x180CCF:
 INCBIN "baserom.gbc", $180CCF, $180CDC - $180CCF
 
 LoggedData_0x180CDC:
 INCBIN "baserom.gbc", $180CDC, $180D10 - $180CDC
 
-UnknownData_0x180D10:
+Unknown_0x180D10:
 INCBIN "baserom.gbc", $180D10, $180D1D - $180D10
 
 LoggedData_0x180D1D:
 INCBIN "baserom.gbc", $180D1D, $180DB7 - $180D1D
 
-UnknownData_0x180DB7:
+Unknown_0x180DB7:
 INCBIN "baserom.gbc", $180DB7, $180DEB - $180DB7
 
 LoggedData_0x180DEB:
 INCBIN "baserom.gbc", $180DEB, $181189 - $180DEB
 
-UnknownData_0x181189:
+Unknown_0x181189:
 INCBIN "baserom.gbc", $181189, $18118D - $181189
 
 LoggedData_0x18118D:
 INCBIN "baserom.gbc", $18118D, $181197 - $18118D
 
-UnknownData_0x181197:
+Unknown_0x181197:
 INCBIN "baserom.gbc", $181197, $18119D - $181197
 
 LoggedData_0x18119D:
 INCBIN "baserom.gbc", $18119D, $1811AF - $18119D
 
-UnknownData_0x1811AF:
+Unknown_0x1811AF:
 INCBIN "baserom.gbc", $1811AF, $1811DD - $1811AF
 
 LoggedData_0x1811DD:
 INCBIN "baserom.gbc", $1811DD, $181246 - $1811DD
 
-UnknownData_0x181246:
+Unknown_0x181246:
 INCBIN "baserom.gbc", $181246, $181285 - $181246
 
 LoggedData_0x181285:
 INCBIN "baserom.gbc", $181285, $181342 - $181285
 
-UnknownData_0x181342:
+Unknown_0x181342:
 INCBIN "baserom.gbc", $181342, $18136C - $181342
 
 LoggedData_0x18136C:
 INCBIN "baserom.gbc", $18136C, $181380 - $18136C
 
-UnknownData_0x181380:
+Unknown_0x181380:
 INCBIN "baserom.gbc", $181380, $181382 - $181380
 
 LoggedData_0x181382:
 INCBIN "baserom.gbc", $181382, $181392 - $181382
 
-UnknownData_0x181392:
+Unknown_0x181392:
 INCBIN "baserom.gbc", $181392, $181396 - $181392
 
 LoggedData_0x181396:
 INCBIN "baserom.gbc", $181396, $181468 - $181396
 
-UnknownData_0x181468:
+Unknown_0x181468:
 INCBIN "baserom.gbc", $181468, $18147D - $181468
 
 LoggedData_0x18147D:
 INCBIN "baserom.gbc", $18147D, $181525 - $18147D
 
-UnknownData_0x181525:
+Unknown_0x181525:
 INCBIN "baserom.gbc", $181525, $18154F - $181525
 
 LoggedData_0x18154F:
 INCBIN "baserom.gbc", $18154F, $181620 - $18154F
 
-UnknownData_0x181620:
+Unknown_0x181620:
 INCBIN "baserom.gbc", $181620, $18162C - $181620
 
 LoggedData_0x18162C:
 INCBIN "baserom.gbc", $18162C, $18163E - $18162C
 
-UnknownData_0x18163E:
+Unknown_0x18163E:
 INCBIN "baserom.gbc", $18163E, $181644 - $18163E
 
 LoggedData_0x181644:
 INCBIN "baserom.gbc", $181644, $1816D6 - $181644
 
-UnknownData_0x1816D6:
+Unknown_0x1816D6:
 INCBIN "baserom.gbc", $1816D6, $181734 - $1816D6
 
 LoggedData_0x181734:
 INCBIN "baserom.gbc", $181734, $18178D - $181734
 
-UnknownData_0x18178D:
+Unknown_0x18178D:
 INCBIN "baserom.gbc", $18178D, $1817B4 - $18178D
 
 LoggedData_0x1817B4:
 INCBIN "baserom.gbc", $1817B4, $181B23 - $1817B4
 
-UnknownData_0x181B23:
+Unknown_0x181B23:
 INCBIN "baserom.gbc", $181B23, $181B2D - $181B23
 
 LoggedData_0x181B2D:
 INCBIN "baserom.gbc", $181B2D, $181BB7 - $181B2D
 
-UnknownData_0x181BB7:
+Unknown_0x181BB7:
 INCBIN "baserom.gbc", $181BB7, $181BE4 - $181BB7
 
 LoggedData_0x181BE4:
 INCBIN "baserom.gbc", $181BE4, $181BE6 - $181BE4
 
-UnknownData_0x181BE6:
+Unknown_0x181BE6:
 INCBIN "baserom.gbc", $181BE6, $181BF2 - $181BE6
 
 LoggedData_0x181BF2:
 INCBIN "baserom.gbc", $181BF2, $181BFF - $181BF2
 
-UnknownData_0x181BFF:
+Unknown_0x181BFF:
 INCBIN "baserom.gbc", $181BFF, $181C35 - $181BFF
 
 LoggedData_0x181C35:
 INCBIN "baserom.gbc", $181C35, $181C47 - $181C35
 
-UnknownData_0x181C47:
+Unknown_0x181C47:
 INCBIN "baserom.gbc", $181C47, $181C49 - $181C47
 
 LoggedData_0x181C49:
 INCBIN "baserom.gbc", $181C49, $181C4F - $181C49
 
-UnknownData_0x181C4F:
+Unknown_0x181C4F:
 INCBIN "baserom.gbc", $181C4F, $181C70 - $181C4F
 
 LoggedData_0x181C70:
 INCBIN "baserom.gbc", $181C70, $181CF5 - $181C70
 
-UnknownData_0x181CF5:
+Unknown_0x181CF5:
 INCBIN "baserom.gbc", $181CF5, $181CF7 - $181CF5
 
 LoggedData_0x181CF7:
 INCBIN "baserom.gbc", $181CF7, $181E06 - $181CF7
 
-UnknownData_0x181E06:
+Unknown_0x181E06:
 INCBIN "baserom.gbc", $181E06, $181E1B - $181E06
 
 LoggedData_0x181E1B:
 INCBIN "baserom.gbc", $181E1B, $181EB6 - $181E1B
 
-UnknownData_0x181EB6:
+Unknown_0x181EB6:
 INCBIN "baserom.gbc", $181EB6, $184000 - $181EB6
 
 SECTION "Bank61", ROMX, BANK[$61]
@@ -153427,187 +153427,187 @@ SECTION "Bank61", ROMX, BANK[$61]
 LoggedData_0x184000:
 INCBIN "baserom.gbc", $184000, $184006 - $184000
 
-UnknownData_0x184006:
+Unknown_0x184006:
 INCBIN "baserom.gbc", $184006, $184008 - $184006
 
 LoggedData_0x184008:
 INCBIN "baserom.gbc", $184008, $184095 - $184008
 
-UnknownData_0x184095:
+Unknown_0x184095:
 INCBIN "baserom.gbc", $184095, $1840BE - $184095
 
 LoggedData_0x1840BE:
 INCBIN "baserom.gbc", $1840BE, $184245 - $1840BE
 
-UnknownData_0x184245:
+Unknown_0x184245:
 INCBIN "baserom.gbc", $184245, $184247 - $184245
 
 LoggedData_0x184247:
 INCBIN "baserom.gbc", $184247, $184249 - $184247
 
-UnknownData_0x184249:
+Unknown_0x184249:
 INCBIN "baserom.gbc", $184249, $18424B - $184249
 
 LoggedData_0x18424B:
 INCBIN "baserom.gbc", $18424B, $184374 - $18424B
 
-UnknownData_0x184374:
+Unknown_0x184374:
 INCBIN "baserom.gbc", $184374, $18438D - $184374
 
 LoggedData_0x18438D:
 INCBIN "baserom.gbc", $18438D, $1843A6 - $18438D
 
-UnknownData_0x1843A6:
+Unknown_0x1843A6:
 INCBIN "baserom.gbc", $1843A6, $1843BF - $1843A6
 
 LoggedData_0x1843BF:
 INCBIN "baserom.gbc", $1843BF, $184438 - $1843BF
 
-UnknownData_0x184438:
+Unknown_0x184438:
 INCBIN "baserom.gbc", $184438, $18443C - $184438
 
 LoggedData_0x18443C:
 INCBIN "baserom.gbc", $18443C, $184535 - $18443C
 
-UnknownData_0x184535:
+Unknown_0x184535:
 INCBIN "baserom.gbc", $184535, $184557 - $184535
 
 LoggedData_0x184557:
 INCBIN "baserom.gbc", $184557, $184AD6 - $184557
 
-UnknownData_0x184AD6:
+Unknown_0x184AD6:
 INCBIN "baserom.gbc", $184AD6, $184ADA - $184AD6
 
 LoggedData_0x184ADA:
 INCBIN "baserom.gbc", $184ADA, $184ADE - $184ADA
 
-UnknownData_0x184ADE:
+Unknown_0x184ADE:
 INCBIN "baserom.gbc", $184ADE, $184AE2 - $184ADE
 
 LoggedData_0x184AE2:
 INCBIN "baserom.gbc", $184AE2, $184AFC - $184AE2
 
-UnknownData_0x184AFC:
+Unknown_0x184AFC:
 INCBIN "baserom.gbc", $184AFC, $184AFE - $184AFC
 
 LoggedData_0x184AFE:
 INCBIN "baserom.gbc", $184AFE, $184B00 - $184AFE
 
-UnknownData_0x184B00:
+Unknown_0x184B00:
 INCBIN "baserom.gbc", $184B00, $184B02 - $184B00
 
 LoggedData_0x184B02:
 INCBIN "baserom.gbc", $184B02, $184C66 - $184B02
 
-UnknownData_0x184C66:
+Unknown_0x184C66:
 INCBIN "baserom.gbc", $184C66, $184C88 - $184C66
 
 LoggedData_0x184C88:
 INCBIN "baserom.gbc", $184C88, $184CB2 - $184C88
 
-UnknownData_0x184CB2:
+Unknown_0x184CB2:
 INCBIN "baserom.gbc", $184CB2, $184CD4 - $184CB2
 
 LoggedData_0x184CD4:
 INCBIN "baserom.gbc", $184CD4, $184D79 - $184CD4
 
-UnknownData_0x184D79:
+Unknown_0x184D79:
 INCBIN "baserom.gbc", $184D79, $184D8A - $184D79
 
 LoggedData_0x184D8A:
 INCBIN "baserom.gbc", $184D8A, $184D9B - $184D8A
 
-UnknownData_0x184D9B:
+Unknown_0x184D9B:
 INCBIN "baserom.gbc", $184D9B, $184DAC - $184D9B
 
 LoggedData_0x184DAC:
 INCBIN "baserom.gbc", $184DAC, $184EFB - $184DAC
 
-UnknownData_0x184EFB:
+Unknown_0x184EFB:
 INCBIN "baserom.gbc", $184EFB, $184F0B - $184EFB
 
 LoggedData_0x184F0B:
 INCBIN "baserom.gbc", $184F0B, $184F7D - $184F0B
 
-UnknownData_0x184F7D:
+Unknown_0x184F7D:
 INCBIN "baserom.gbc", $184F7D, $184FCD - $184F7D
 
 LoggedData_0x184FCD:
 INCBIN "baserom.gbc", $184FCD, $18501A - $184FCD
 
-UnknownData_0x18501A:
+Unknown_0x18501A:
 INCBIN "baserom.gbc", $18501A, $18501E - $18501A
 
 LoggedData_0x18501E:
 INCBIN "baserom.gbc", $18501E, $18502E - $18501E
 
-UnknownData_0x18502E:
+Unknown_0x18502E:
 INCBIN "baserom.gbc", $18502E, $185038 - $18502E
 
 LoggedData_0x185038:
 INCBIN "baserom.gbc", $185038, $185118 - $185038
 
-UnknownData_0x185118:
+Unknown_0x185118:
 INCBIN "baserom.gbc", $185118, $18514A - $185118
 
 LoggedData_0x18514A:
 INCBIN "baserom.gbc", $18514A, $1851BA - $18514A
 
-UnknownData_0x1851BA:
+Unknown_0x1851BA:
 INCBIN "baserom.gbc", $1851BA, $1851E1 - $1851BA
 
 LoggedData_0x1851E1:
 INCBIN "baserom.gbc", $1851E1, $1851E3 - $1851E1
 
-UnknownData_0x1851E3:
+Unknown_0x1851E3:
 INCBIN "baserom.gbc", $1851E3, $1851E5 - $1851E3
 
 LoggedData_0x1851E5:
 INCBIN "baserom.gbc", $1851E5, $1851F7 - $1851E5
 
-UnknownData_0x1851F7:
+Unknown_0x1851F7:
 INCBIN "baserom.gbc", $1851F7, $1851F9 - $1851F7
 
 LoggedData_0x1851F9:
 INCBIN "baserom.gbc", $1851F9, $1851FD - $1851F9
 
-UnknownData_0x1851FD:
+Unknown_0x1851FD:
 INCBIN "baserom.gbc", $1851FD, $185201 - $1851FD
 
 LoggedData_0x185201:
 INCBIN "baserom.gbc", $185201, $185211 - $185201
 
-UnknownData_0x185211:
+Unknown_0x185211:
 INCBIN "baserom.gbc", $185211, $185232 - $185211
 
 LoggedData_0x185232:
 INCBIN "baserom.gbc", $185232, $185253 - $185232
 
-UnknownData_0x185253:
+Unknown_0x185253:
 INCBIN "baserom.gbc", $185253, $185274 - $185253
 
 LoggedData_0x185274:
 INCBIN "baserom.gbc", $185274, $18533D - $185274
 
-UnknownData_0x18533D:
+Unknown_0x18533D:
 INCBIN "baserom.gbc", $18533D, $185346 - $18533D
 
 LoggedData_0x185346:
 INCBIN "baserom.gbc", $185346, $185388 - $185346
 
-UnknownData_0x185388:
+Unknown_0x185388:
 INCBIN "baserom.gbc", $185388, $1853CA - $185388
 
 LoggedData_0x1853CA:
 INCBIN "baserom.gbc", $1853CA, $1854A2 - $1853CA
 
-UnknownData_0x1854A2:
+Unknown_0x1854A2:
 INCBIN "baserom.gbc", $1854A2, $185788 - $1854A2
 
 LoggedData_0x185788:
 INCBIN "baserom.gbc", $185788, $185CE5 - $185788
 
-UnknownData_0x185CE5:
+Unknown_0x185CE5:
 INCBIN "baserom.gbc", $185CE5, $188000 - $185CE5
 
 SECTION "Bank62", ROMX, BANK[$62]
@@ -153615,379 +153615,379 @@ SECTION "Bank62", ROMX, BANK[$62]
 LoggedData_0x188000:
 INCBIN "baserom.gbc", $188000, $188395 - $188000
 
-UnknownData_0x188395:
+Unknown_0x188395:
 INCBIN "baserom.gbc", $188395, $188399 - $188395
 
 LoggedData_0x188399:
 INCBIN "baserom.gbc", $188399, $18839D - $188399
 
-UnknownData_0x18839D:
+Unknown_0x18839D:
 INCBIN "baserom.gbc", $18839D, $18839F - $18839D
 
 LoggedData_0x18839F:
 INCBIN "baserom.gbc", $18839F, $1883A1 - $18839F
 
-UnknownData_0x1883A1:
+Unknown_0x1883A1:
 INCBIN "baserom.gbc", $1883A1, $1883A3 - $1883A1
 
 LoggedData_0x1883A3:
 INCBIN "baserom.gbc", $1883A3, $1883A5 - $1883A3
 
-UnknownData_0x1883A5:
+Unknown_0x1883A5:
 INCBIN "baserom.gbc", $1883A5, $1883A7 - $1883A5
 
 LoggedData_0x1883A7:
 INCBIN "baserom.gbc", $1883A7, $1883A9 - $1883A7
 
-UnknownData_0x1883A9:
+Unknown_0x1883A9:
 INCBIN "baserom.gbc", $1883A9, $1883AF - $1883A9
 
 LoggedData_0x1883AF:
 INCBIN "baserom.gbc", $1883AF, $1883B9 - $1883AF
 
-UnknownData_0x1883B9:
+Unknown_0x1883B9:
 INCBIN "baserom.gbc", $1883B9, $1883BD - $1883B9
 
 LoggedData_0x1883BD:
 INCBIN "baserom.gbc", $1883BD, $1883C1 - $1883BD
 
-UnknownData_0x1883C1:
+Unknown_0x1883C1:
 INCBIN "baserom.gbc", $1883C1, $1883C5 - $1883C1
 
 LoggedData_0x1883C5:
 INCBIN "baserom.gbc", $1883C5, $1883C9 - $1883C5
 
-UnknownData_0x1883C9:
+Unknown_0x1883C9:
 INCBIN "baserom.gbc", $1883C9, $1883CB - $1883C9
 
 LoggedData_0x1883CB:
 INCBIN "baserom.gbc", $1883CB, $1883CD - $1883CB
 
-UnknownData_0x1883CD:
+Unknown_0x1883CD:
 INCBIN "baserom.gbc", $1883CD, $1883CF - $1883CD
 
 LoggedData_0x1883CF:
 INCBIN "baserom.gbc", $1883CF, $1883D5 - $1883CF
 
-UnknownData_0x1883D5:
+Unknown_0x1883D5:
 INCBIN "baserom.gbc", $1883D5, $1883EF - $1883D5
 
 LoggedData_0x1883EF:
 INCBIN "baserom.gbc", $1883EF, $188409 - $1883EF
 
-UnknownData_0x188409:
+Unknown_0x188409:
 INCBIN "baserom.gbc", $188409, $188416 - $188409
 
 LoggedData_0x188416:
 INCBIN "baserom.gbc", $188416, $188423 - $188416
 
-UnknownData_0x188423:
+Unknown_0x188423:
 INCBIN "baserom.gbc", $188423, $18842C - $188423
 
 LoggedData_0x18842C:
 INCBIN "baserom.gbc", $18842C, $188435 - $18842C
 
-UnknownData_0x188435:
+Unknown_0x188435:
 INCBIN "baserom.gbc", $188435, $18843E - $188435
 
 LoggedData_0x18843E:
 INCBIN "baserom.gbc", $18843E, $188447 - $18843E
 
-UnknownData_0x188447:
+Unknown_0x188447:
 INCBIN "baserom.gbc", $188447, $188472 - $188447
 
 LoggedData_0x188472:
 INCBIN "baserom.gbc", $188472, $1884AF - $188472
 
-UnknownData_0x1884AF:
+Unknown_0x1884AF:
 INCBIN "baserom.gbc", $1884AF, $1884C9 - $1884AF
 
 LoggedData_0x1884C9:
 INCBIN "baserom.gbc", $1884C9, $1884E3 - $1884C9
 
-UnknownData_0x1884E3:
+Unknown_0x1884E3:
 INCBIN "baserom.gbc", $1884E3, $1884FD - $1884E3
 
 LoggedData_0x1884FD:
 INCBIN "baserom.gbc", $1884FD, $188517 - $1884FD
 
-UnknownData_0x188517:
+Unknown_0x188517:
 INCBIN "baserom.gbc", $188517, $188520 - $188517
 
 LoggedData_0x188520:
 INCBIN "baserom.gbc", $188520, $188529 - $188520
 
-UnknownData_0x188529:
+Unknown_0x188529:
 INCBIN "baserom.gbc", $188529, $188536 - $188529
 
 LoggedData_0x188536:
 INCBIN "baserom.gbc", $188536, $188573 - $188536
 
-UnknownData_0x188573:
+Unknown_0x188573:
 INCBIN "baserom.gbc", $188573, $188575 - $188573
 
 LoggedData_0x188575:
 INCBIN "baserom.gbc", $188575, $18857F - $188575
 
-UnknownData_0x18857F:
+Unknown_0x18857F:
 INCBIN "baserom.gbc", $18857F, $188583 - $18857F
 
 LoggedData_0x188583:
 INCBIN "baserom.gbc", $188583, $188587 - $188583
 
-UnknownData_0x188587:
+Unknown_0x188587:
 INCBIN "baserom.gbc", $188587, $18858B - $188587
 
 LoggedData_0x18858B:
 INCBIN "baserom.gbc", $18858B, $1888AE - $18858B
 
-UnknownData_0x1888AE:
+Unknown_0x1888AE:
 INCBIN "baserom.gbc", $1888AE, $1888EB - $1888AE
 
 LoggedData_0x1888EB:
 INCBIN "baserom.gbc", $1888EB, $188A10 - $1888EB
 
-UnknownData_0x188A10:
+Unknown_0x188A10:
 INCBIN "baserom.gbc", $188A10, $188A82 - $188A10
 
 LoggedData_0x188A82:
 INCBIN "baserom.gbc", $188A82, $188AEC - $188A82
 
-UnknownData_0x188AEC:
+Unknown_0x188AEC:
 INCBIN "baserom.gbc", $188AEC, $188B56 - $188AEC
 
 LoggedData_0x188B56:
 INCBIN "baserom.gbc", $188B56, $188B6C - $188B56
 
-UnknownData_0x188B6C:
+Unknown_0x188B6C:
 INCBIN "baserom.gbc", $188B6C, $188B70 - $188B6C
 
 LoggedData_0x188B70:
 INCBIN "baserom.gbc", $188B70, $188C39 - $188B70
 
-UnknownData_0x188C39:
+Unknown_0x188C39:
 INCBIN "baserom.gbc", $188C39, $188C5B - $188C39
 
 LoggedData_0x188C5B:
 INCBIN "baserom.gbc", $188C5B, $188E30 - $188C5B
 
-UnknownData_0x188E30:
+Unknown_0x188E30:
 INCBIN "baserom.gbc", $188E30, $188E4A - $188E30
 
 LoggedData_0x188E4A:
 INCBIN "baserom.gbc", $188E4A, $188E5E - $188E4A
 
-UnknownData_0x188E5E:
+Unknown_0x188E5E:
 INCBIN "baserom.gbc", $188E5E, $188E86 - $188E5E
 
 LoggedData_0x188E86:
 INCBIN "baserom.gbc", $188E86, $188FCB - $188E86
 
-UnknownData_0x188FCB:
+Unknown_0x188FCB:
 INCBIN "baserom.gbc", $188FCB, $189110 - $188FCB
 
 LoggedData_0x189110:
 INCBIN "baserom.gbc", $189110, $18920A - $189110
 
-UnknownData_0x18920A:
+Unknown_0x18920A:
 INCBIN "baserom.gbc", $18920A, $1893FE - $18920A
 
 LoggedData_0x1893FE:
 INCBIN "baserom.gbc", $1893FE, $18942A - $1893FE
 
-UnknownData_0x18942A:
+Unknown_0x18942A:
 INCBIN "baserom.gbc", $18942A, $18942C - $18942A
 
 LoggedData_0x18942C:
 INCBIN "baserom.gbc", $18942C, $189434 - $18942C
 
-UnknownData_0x189434:
+Unknown_0x189434:
 INCBIN "baserom.gbc", $189434, $189436 - $189434
 
 LoggedData_0x189436:
 INCBIN "baserom.gbc", $189436, $189578 - $189436
 
-UnknownData_0x189578:
+Unknown_0x189578:
 INCBIN "baserom.gbc", $189578, $18957D - $189578
 
 LoggedData_0x18957D:
 INCBIN "baserom.gbc", $18957D, $189599 - $18957D
 
-UnknownData_0x189599:
+Unknown_0x189599:
 INCBIN "baserom.gbc", $189599, $1895A6 - $189599
 
 LoggedData_0x1895A6:
 INCBIN "baserom.gbc", $1895A6, $1895F2 - $1895A6
 
-UnknownData_0x1895F2:
+Unknown_0x1895F2:
 INCBIN "baserom.gbc", $1895F2, $1895F4 - $1895F2
 
 LoggedData_0x1895F4:
 INCBIN "baserom.gbc", $1895F4, $18965D - $1895F4
 
-UnknownData_0x18965D:
+Unknown_0x18965D:
 INCBIN "baserom.gbc", $18965D, $18967E - $18965D
 
 LoggedData_0x18967E:
 INCBIN "baserom.gbc", $18967E, $1897A7 - $18967E
 
-UnknownData_0x1897A7:
+Unknown_0x1897A7:
 INCBIN "baserom.gbc", $1897A7, $1897A9 - $1897A7
 
 LoggedData_0x1897A9:
 INCBIN "baserom.gbc", $1897A9, $1897AB - $1897A9
 
-UnknownData_0x1897AB:
+Unknown_0x1897AB:
 INCBIN "baserom.gbc", $1897AB, $1897AD - $1897AB
 
 LoggedData_0x1897AD:
 INCBIN "baserom.gbc", $1897AD, $18983B - $1897AD
 
-UnknownData_0x18983B:
+Unknown_0x18983B:
 INCBIN "baserom.gbc", $18983B, $18983D - $18983B
 
 LoggedData_0x18983D:
 INCBIN "baserom.gbc", $18983D, $189A47 - $18983D
 
-UnknownData_0x189A47:
+Unknown_0x189A47:
 INCBIN "baserom.gbc", $189A47, $189A64 - $189A47
 
 LoggedData_0x189A64:
 INCBIN "baserom.gbc", $189A64, $189A81 - $189A64
 
-UnknownData_0x189A81:
+Unknown_0x189A81:
 INCBIN "baserom.gbc", $189A81, $189A9E - $189A81
 
 LoggedData_0x189A9E:
 INCBIN "baserom.gbc", $189A9E, $18A5A9 - $189A9E
 
-UnknownData_0x18A5A9:
+Unknown_0x18A5A9:
 INCBIN "baserom.gbc", $18A5A9, $18A5AE - $18A5A9
 
 LoggedData_0x18A5AE:
 INCBIN "baserom.gbc", $18A5AE, $18A646 - $18A5AE
 
-UnknownData_0x18A646:
+Unknown_0x18A646:
 INCBIN "baserom.gbc", $18A646, $18A64A - $18A646
 
 LoggedData_0x18A64A:
 INCBIN "baserom.gbc", $18A64A, $18A64C - $18A64A
 
-UnknownData_0x18A64C:
+Unknown_0x18A64C:
 INCBIN "baserom.gbc", $18A64C, $18A652 - $18A64C
 
 LoggedData_0x18A652:
 INCBIN "baserom.gbc", $18A652, $18A656 - $18A652
 
-UnknownData_0x18A656:
+Unknown_0x18A656:
 INCBIN "baserom.gbc", $18A656, $18A660 - $18A656
 
 LoggedData_0x18A660:
 INCBIN "baserom.gbc", $18A660, $18A67A - $18A660
 
-UnknownData_0x18A67A:
+Unknown_0x18A67A:
 INCBIN "baserom.gbc", $18A67A, $18A694 - $18A67A
 
 LoggedData_0x18A694:
 INCBIN "baserom.gbc", $18A694, $18A6A1 - $18A694
 
-UnknownData_0x18A6A1:
+Unknown_0x18A6A1:
 INCBIN "baserom.gbc", $18A6A1, $18A6C4 - $18A6A1
 
 LoggedData_0x18A6C4:
 INCBIN "baserom.gbc", $18A6C4, $18A6D6 - $18A6C4
 
-UnknownData_0x18A6D6:
+Unknown_0x18A6D6:
 INCBIN "baserom.gbc", $18A6D6, $18A703 - $18A6D6
 
 LoggedData_0x18A703:
 INCBIN "baserom.gbc", $18A703, $18A71F - $18A703
 
-UnknownData_0x18A71F:
+Unknown_0x18A71F:
 INCBIN "baserom.gbc", $18A71F, $18A721 - $18A71F
 
 LoggedData_0x18A721:
 INCBIN "baserom.gbc", $18A721, $18A723 - $18A721
 
-UnknownData_0x18A723:
+Unknown_0x18A723:
 INCBIN "baserom.gbc", $18A723, $18A729 - $18A723
 
 LoggedData_0x18A729:
 INCBIN "baserom.gbc", $18A729, $18A7A9 - $18A729
 
-UnknownData_0x18A7A9:
+Unknown_0x18A7A9:
 INCBIN "baserom.gbc", $18A7A9, $18A7BA - $18A7A9
 
 LoggedData_0x18A7BA:
 INCBIN "baserom.gbc", $18A7BA, $18A7CB - $18A7BA
 
-UnknownData_0x18A7CB:
+Unknown_0x18A7CB:
 INCBIN "baserom.gbc", $18A7CB, $18A7E6 - $18A7CB
 
 LoggedData_0x18A7E6:
 INCBIN "baserom.gbc", $18A7E6, $18A803 - $18A7E6
 
-UnknownData_0x18A803:
+Unknown_0x18A803:
 INCBIN "baserom.gbc", $18A803, $18A805 - $18A803
 
 LoggedData_0x18A805:
 INCBIN "baserom.gbc", $18A805, $18A828 - $18A805
 
-UnknownData_0x18A828:
+Unknown_0x18A828:
 INCBIN "baserom.gbc", $18A828, $18A831 - $18A828
 
 LoggedData_0x18A831:
 INCBIN "baserom.gbc", $18A831, $18A8B9 - $18A831
 
-UnknownData_0x18A8B9:
+Unknown_0x18A8B9:
 INCBIN "baserom.gbc", $18A8B9, $18A8BD - $18A8B9
 
 LoggedData_0x18A8BD:
 INCBIN "baserom.gbc", $18A8BD, $18A8C1 - $18A8BD
 
-UnknownData_0x18A8C1:
+Unknown_0x18A8C1:
 INCBIN "baserom.gbc", $18A8C1, $18A8C3 - $18A8C1
 
 LoggedData_0x18A8C3:
 INCBIN "baserom.gbc", $18A8C3, $18A8C5 - $18A8C3
 
-UnknownData_0x18A8C5:
+Unknown_0x18A8C5:
 INCBIN "baserom.gbc", $18A8C5, $18A8C7 - $18A8C5
 
 LoggedData_0x18A8C7:
 INCBIN "baserom.gbc", $18A8C7, $18AA01 - $18A8C7
 
-UnknownData_0x18AA01:
+Unknown_0x18AA01:
 INCBIN "baserom.gbc", $18AA01, $18AA33 - $18AA01
 
 LoggedData_0x18AA33:
 INCBIN "baserom.gbc", $18AA33, $18AA65 - $18AA33
 
-UnknownData_0x18AA65:
+Unknown_0x18AA65:
 INCBIN "baserom.gbc", $18AA65, $18AA7E - $18AA65
 
 LoggedData_0x18AA7E:
 INCBIN "baserom.gbc", $18AA7E, $18AA97 - $18AA7E
 
-UnknownData_0x18AA97:
+Unknown_0x18AA97:
 INCBIN "baserom.gbc", $18AA97, $18AAB0 - $18AA97
 
 LoggedData_0x18AAB0:
 INCBIN "baserom.gbc", $18AAB0, $18AB0A - $18AAB0
 
-UnknownData_0x18AB0A:
+Unknown_0x18AB0A:
 INCBIN "baserom.gbc", $18AB0A, $18AB14 - $18AB0A
 
 LoggedData_0x18AB14:
 INCBIN "baserom.gbc", $18AB14, $18AB2F - $18AB14
 
-UnknownData_0x18AB2F:
+Unknown_0x18AB2F:
 INCBIN "baserom.gbc", $18AB2F, $18AB5C - $18AB2F
 
 LoggedData_0x18AB5C:
 INCBIN "baserom.gbc", $18AB5C, $18AC38 - $18AB5C
 
-UnknownData_0x18AC38:
+Unknown_0x18AC38:
 INCBIN "baserom.gbc", $18AC38, $18C000 - $18AC38
 
 SECTION "Bank63", ROMX, BANK[$63]
@@ -153995,103 +153995,103 @@ SECTION "Bank63", ROMX, BANK[$63]
 LoggedData_0x18C000:
 INCBIN "baserom.gbc", $18C000, $18C024 - $18C000
 
-UnknownData_0x18C024:
+Unknown_0x18C024:
 INCBIN "baserom.gbc", $18C024, $18C03C - $18C024
 
 LoggedData_0x18C03C:
 INCBIN "baserom.gbc", $18C03C, $18C044 - $18C03C
 
-UnknownData_0x18C044:
+Unknown_0x18C044:
 INCBIN "baserom.gbc", $18C044, $18C04A - $18C044
 
 LoggedData_0x18C04A:
 INCBIN "baserom.gbc", $18C04A, $18C056 - $18C04A
 
-UnknownData_0x18C056:
+Unknown_0x18C056:
 INCBIN "baserom.gbc", $18C056, $18C058 - $18C056
 
 LoggedData_0x18C058:
 INCBIN "baserom.gbc", $18C058, $18C25E - $18C058
 
-UnknownData_0x18C25E:
+Unknown_0x18C25E:
 INCBIN "baserom.gbc", $18C25E, $18C2E2 - $18C25E
 
 LoggedData_0x18C2E2:
 INCBIN "baserom.gbc", $18C2E2, $18C316 - $18C2E2
 
-UnknownData_0x18C316:
+Unknown_0x18C316:
 INCBIN "baserom.gbc", $18C316, $18C355 - $18C316
 
 LoggedData_0x18C355:
 INCBIN "baserom.gbc", $18C355, $18C3B3 - $18C355
 
-UnknownData_0x18C3B3:
+Unknown_0x18C3B3:
 INCBIN "baserom.gbc", $18C3B3, $18C3C8 - $18C3B3
 
 LoggedData_0x18C3C8:
 INCBIN "baserom.gbc", $18C3C8, $18C8AA - $18C3C8
 
-UnknownData_0x18C8AA:
+Unknown_0x18C8AA:
 INCBIN "baserom.gbc", $18C8AA, $18C8AE - $18C8AA
 
 LoggedData_0x18C8AE:
 INCBIN "baserom.gbc", $18C8AE, $18C8B4 - $18C8AE
 
-UnknownData_0x18C8B4:
+Unknown_0x18C8B4:
 INCBIN "baserom.gbc", $18C8B4, $18C8C0 - $18C8B4
 
 LoggedData_0x18C8C0:
 INCBIN "baserom.gbc", $18C8C0, $18C8C4 - $18C8C0
 
-UnknownData_0x18C8C4:
+Unknown_0x18C8C4:
 INCBIN "baserom.gbc", $18C8C4, $18C8C8 - $18C8C4
 
 LoggedData_0x18C8C8:
 INCBIN "baserom.gbc", $18C8C8, $18C8D6 - $18C8C8
 
-UnknownData_0x18C8D6:
+Unknown_0x18C8D6:
 INCBIN "baserom.gbc", $18C8D6, $18C8DE - $18C8D6
 
 LoggedData_0x18C8DE:
 INCBIN "baserom.gbc", $18C8DE, $18C8E2 - $18C8DE
 
-UnknownData_0x18C8E2:
+Unknown_0x18C8E2:
 INCBIN "baserom.gbc", $18C8E2, $18C8E6 - $18C8E2
 
 LoggedData_0x18C8E6:
 INCBIN "baserom.gbc", $18C8E6, $18CBD6 - $18C8E6
 
-UnknownData_0x18CBD6:
+Unknown_0x18CBD6:
 INCBIN "baserom.gbc", $18CBD6, $18CC28 - $18CBD6
 
 LoggedData_0x18CC28:
 INCBIN "baserom.gbc", $18CC28, $18CC83 - $18CC28
 
-UnknownData_0x18CC83:
+Unknown_0x18CC83:
 INCBIN "baserom.gbc", $18CC83, $18CD49 - $18CC83
 
 LoggedData_0x18CD49:
 INCBIN "baserom.gbc", $18CD49, $18CD8B - $18CD49
 
-UnknownData_0x18CD8B:
+Unknown_0x18CD8B:
 INCBIN "baserom.gbc", $18CD8B, $18CDBD - $18CD8B
 
 LoggedData_0x18CDBD:
 INCBIN "baserom.gbc", $18CDBD, $18CE9C - $18CDBD
 
-UnknownData_0x18CE9C:
+Unknown_0x18CE9C:
 INCBIN "baserom.gbc", $18CE9C, $18CF20 - $18CE9C
 
 LoggedData_0x18CF20:
 INCBIN "baserom.gbc", $18CF20, $18CF62 - $18CF20
 
-UnknownData_0x18CF62:
+Unknown_0x18CF62:
 INCBIN "baserom.gbc", $18CF62, $18CF94 - $18CF62
 
 LoggedData_0x18CF94:
 INCBIN "baserom.gbc", $18CF94, $18D07C - $18CF94
 
-UnknownData_0x18D07C:
+Unknown_0x18D07C:
 INCBIN "baserom.gbc", $18D07C, $190000 - $18D07C
 
 SECTION "Bank64", ROMX, BANK[$64]
@@ -154099,361 +154099,361 @@ SECTION "Bank64", ROMX, BANK[$64]
 LoggedData_0x190000:
 INCBIN "baserom.gbc", $190000, $19000C - $190000
 
-UnknownData_0x19000C:
+Unknown_0x19000C:
 INCBIN "baserom.gbc", $19000C, $190010 - $19000C
 
 LoggedData_0x190010:
 INCBIN "baserom.gbc", $190010, $190024 - $190010
 
-UnknownData_0x190024:
+Unknown_0x190024:
 INCBIN "baserom.gbc", $190024, $190028 - $190024
 
 LoggedData_0x190028:
 INCBIN "baserom.gbc", $190028, $190032 - $190028
 
-UnknownData_0x190032:
+Unknown_0x190032:
 INCBIN "baserom.gbc", $190032, $190034 - $190032
 
 LoggedData_0x190034:
 INCBIN "baserom.gbc", $190034, $190042 - $190034
 
-UnknownData_0x190042:
+Unknown_0x190042:
 INCBIN "baserom.gbc", $190042, $190048 - $190042
 
 LoggedData_0x190048:
 INCBIN "baserom.gbc", $190048, $19005C - $190048
 
-UnknownData_0x19005C:
+Unknown_0x19005C:
 INCBIN "baserom.gbc", $19005C, $190068 - $19005C
 
 LoggedData_0x190068:
 INCBIN "baserom.gbc", $190068, $19006C - $190068
 
-UnknownData_0x19006C:
+Unknown_0x19006C:
 INCBIN "baserom.gbc", $19006C, $190074 - $19006C
 
 LoggedData_0x190074:
 INCBIN "baserom.gbc", $190074, $19009E - $190074
 
-UnknownData_0x19009E:
+Unknown_0x19009E:
 INCBIN "baserom.gbc", $19009E, $1900A2 - $19009E
 
 LoggedData_0x1900A2:
 INCBIN "baserom.gbc", $1900A2, $1900AA - $1900A2
 
-UnknownData_0x1900AA:
+Unknown_0x1900AA:
 INCBIN "baserom.gbc", $1900AA, $1900AC - $1900AA
 
 LoggedData_0x1900AC:
 INCBIN "baserom.gbc", $1900AC, $19024E - $1900AC
 
-UnknownData_0x19024E:
+Unknown_0x19024E:
 INCBIN "baserom.gbc", $19024E, $1902D8 - $19024E
 
 LoggedData_0x1902D8:
 INCBIN "baserom.gbc", $1902D8, $19056E - $1902D8
 
-UnknownData_0x19056E:
+Unknown_0x19056E:
 INCBIN "baserom.gbc", $19056E, $1905F8 - $19056E
 
 LoggedData_0x1905F8:
 INCBIN "baserom.gbc", $1905F8, $19073D - $1905F8
 
-UnknownData_0x19073D:
+Unknown_0x19073D:
 INCBIN "baserom.gbc", $19073D, $190776 - $19073D
 
 LoggedData_0x190776:
 INCBIN "baserom.gbc", $190776, $1908CD - $190776
 
-UnknownData_0x1908CD:
+Unknown_0x1908CD:
 INCBIN "baserom.gbc", $1908CD, $190960 - $1908CD
 
 LoggedData_0x190960:
 INCBIN "baserom.gbc", $190960, $190B0A - $190960
 
-UnknownData_0x190B0A:
+Unknown_0x190B0A:
 INCBIN "baserom.gbc", $190B0A, $190C30 - $190B0A
 
 LoggedData_0x190C30:
 INCBIN "baserom.gbc", $190C30, $190C82 - $190C30
 
-UnknownData_0x190C82:
+Unknown_0x190C82:
 INCBIN "baserom.gbc", $190C82, $190D16 - $190C82
 
 LoggedData_0x190D16:
 INCBIN "baserom.gbc", $190D16, $190EF7 - $190D16
 
-UnknownData_0x190EF7:
+Unknown_0x190EF7:
 INCBIN "baserom.gbc", $190EF7, $190F59 - $190EF7
 
 LoggedData_0x190F59:
 INCBIN "baserom.gbc", $190F59, $190FF5 - $190F59
 
-UnknownData_0x190FF5:
+Unknown_0x190FF5:
 INCBIN "baserom.gbc", $190FF5, $191026 - $190FF5
 
 LoggedData_0x191026:
 INCBIN "baserom.gbc", $191026, $191072 - $191026
 
-UnknownData_0x191072:
+Unknown_0x191072:
 INCBIN "baserom.gbc", $191072, $19107E - $191072
 
 LoggedData_0x19107E:
 INCBIN "baserom.gbc", $19107E, $191082 - $19107E
 
-UnknownData_0x191082:
+Unknown_0x191082:
 INCBIN "baserom.gbc", $191082, $191086 - $191082
 
 LoggedData_0x191086:
 INCBIN "baserom.gbc", $191086, $19109A - $191086
 
-UnknownData_0x19109A:
+Unknown_0x19109A:
 INCBIN "baserom.gbc", $19109A, $19109E - $19109A
 
 LoggedData_0x19109E:
 INCBIN "baserom.gbc", $19109E, $1910A4 - $19109E
 
-UnknownData_0x1910A4:
+Unknown_0x1910A4:
 INCBIN "baserom.gbc", $1910A4, $1910AC - $1910A4
 
 LoggedData_0x1910AC:
 INCBIN "baserom.gbc", $1910AC, $19120B - $1910AC
 
-UnknownData_0x19120B:
+Unknown_0x19120B:
 INCBIN "baserom.gbc", $19120B, $1912D1 - $19120B
 
 LoggedData_0x1912D1:
 INCBIN "baserom.gbc", $1912D1, $191313 - $1912D1
 
-UnknownData_0x191313:
+Unknown_0x191313:
 INCBIN "baserom.gbc", $191313, $191355 - $191313
 
 LoggedData_0x191355:
 INCBIN "baserom.gbc", $191355, $1913DF - $191355
 
-UnknownData_0x1913DF:
+Unknown_0x1913DF:
 INCBIN "baserom.gbc", $1913DF, $191421 - $1913DF
 
 LoggedData_0x191421:
 INCBIN "baserom.gbc", $191421, $19146C - $191421
 
-UnknownData_0x19146C:
+Unknown_0x19146C:
 INCBIN "baserom.gbc", $19146C, $1914F0 - $19146C
 
 LoggedData_0x1914F0:
 INCBIN "baserom.gbc", $1914F0, $191544 - $1914F0
 
-UnknownData_0x191544:
+Unknown_0x191544:
 INCBIN "baserom.gbc", $191544, $191558 - $191544
 
 LoggedData_0x191558:
 INCBIN "baserom.gbc", $191558, $191562 - $191558
 
-UnknownData_0x191562:
+Unknown_0x191562:
 INCBIN "baserom.gbc", $191562, $191564 - $191562
 
 LoggedData_0x191564:
 INCBIN "baserom.gbc", $191564, $1915F8 - $191564
 
-UnknownData_0x1915F8:
+Unknown_0x1915F8:
 INCBIN "baserom.gbc", $1915F8, $19173A - $1915F8
 
 LoggedData_0x19173A:
 INCBIN "baserom.gbc", $19173A, $1917DF - $19173A
 
-UnknownData_0x1917DF:
+Unknown_0x1917DF:
 INCBIN "baserom.gbc", $1917DF, $191808 - $1917DF
 
 LoggedData_0x191808:
 INCBIN "baserom.gbc", $191808, $191940 - $191808
 
-UnknownData_0x191940:
+Unknown_0x191940:
 INCBIN "baserom.gbc", $191940, $191946 - $191940
 
 LoggedData_0x191946:
 INCBIN "baserom.gbc", $191946, $19194A - $191946
 
-UnknownData_0x19194A:
+Unknown_0x19194A:
 INCBIN "baserom.gbc", $19194A, $19195E - $19194A
 
 LoggedData_0x19195E:
 INCBIN "baserom.gbc", $19195E, $191966 - $19195E
 
-UnknownData_0x191966:
+Unknown_0x191966:
 INCBIN "baserom.gbc", $191966, $191968 - $191966
 
 LoggedData_0x191968:
 INCBIN "baserom.gbc", $191968, $19196A - $191968
 
-UnknownData_0x19196A:
+Unknown_0x19196A:
 INCBIN "baserom.gbc", $19196A, $19196E - $19196A
 
 LoggedData_0x19196E:
 INCBIN "baserom.gbc", $19196E, $191978 - $19196E
 
-UnknownData_0x191978:
+Unknown_0x191978:
 INCBIN "baserom.gbc", $191978, $191A0B - $191978
 
 LoggedData_0x191A0B:
 INCBIN "baserom.gbc", $191A0B, $191A6D - $191A0B
 
-UnknownData_0x191A6D:
+Unknown_0x191A6D:
 INCBIN "baserom.gbc", $191A6D, $191C4F - $191A6D
 
 LoggedData_0x191C4F:
 INCBIN "baserom.gbc", $191C4F, $191D13 - $191C4F
 
-UnknownData_0x191D13:
+Unknown_0x191D13:
 INCBIN "baserom.gbc", $191D13, $191D50 - $191D13
 
 LoggedData_0x191D50:
 INCBIN "baserom.gbc", $191D50, $191D8D - $191D50
 
-UnknownData_0x191D8D:
+Unknown_0x191D8D:
 INCBIN "baserom.gbc", $191D8D, $191DEF - $191D8D
 
 LoggedData_0x191DEF:
 INCBIN "baserom.gbc", $191DEF, $191F06 - $191DEF
 
-UnknownData_0x191F06:
+Unknown_0x191F06:
 INCBIN "baserom.gbc", $191F06, $191F0A - $191F06
 
 LoggedData_0x191F0A:
 INCBIN "baserom.gbc", $191F0A, $191F10 - $191F0A
 
-UnknownData_0x191F10:
+Unknown_0x191F10:
 INCBIN "baserom.gbc", $191F10, $191F20 - $191F10
 
 LoggedData_0x191F20:
 INCBIN "baserom.gbc", $191F20, $191F2C - $191F20
 
-UnknownData_0x191F2C:
+Unknown_0x191F2C:
 INCBIN "baserom.gbc", $191F2C, $191F2E - $191F2C
 
 LoggedData_0x191F2E:
 INCBIN "baserom.gbc", $191F2E, $191F81 - $191F2E
 
-UnknownData_0x191F81:
+Unknown_0x191F81:
 INCBIN "baserom.gbc", $191F81, $191FFB - $191F81
 
 LoggedData_0x191FFB:
 INCBIN "baserom.gbc", $191FFB, $1920B2 - $191FFB
 
-UnknownData_0x1920B2:
+Unknown_0x1920B2:
 INCBIN "baserom.gbc", $1920B2, $192292 - $1920B2
 
 LoggedData_0x192292:
 INCBIN "baserom.gbc", $192292, $192400 - $192292
 
-UnknownData_0x192400:
+Unknown_0x192400:
 INCBIN "baserom.gbc", $192400, $19243D - $192400
 
 LoggedData_0x19243D:
 INCBIN "baserom.gbc", $19243D, $1926DC - $19243D
 
-UnknownData_0x1926DC:
+Unknown_0x1926DC:
 INCBIN "baserom.gbc", $1926DC, $1926E4 - $1926DC
 
 LoggedData_0x1926E4:
 INCBIN "baserom.gbc", $1926E4, $192702 - $1926E4
 
-UnknownData_0x192702:
+Unknown_0x192702:
 INCBIN "baserom.gbc", $192702, $192736 - $192702
 
 LoggedData_0x192736:
 INCBIN "baserom.gbc", $192736, $1927DB - $192736
 
-UnknownData_0x1927DB:
+Unknown_0x1927DB:
 INCBIN "baserom.gbc", $1927DB, $1927DF - $1927DB
 
 LoggedData_0x1927DF:
 INCBIN "baserom.gbc", $1927DF, $1927EB - $1927DF
 
-UnknownData_0x1927EB:
+Unknown_0x1927EB:
 INCBIN "baserom.gbc", $1927EB, $1927F1 - $1927EB
 
 LoggedData_0x1927F1:
 INCBIN "baserom.gbc", $1927F1, $1927FD - $1927F1
 
-UnknownData_0x1927FD:
+Unknown_0x1927FD:
 INCBIN "baserom.gbc", $1927FD, $19280D - $1927FD
 
 LoggedData_0x19280D:
 INCBIN "baserom.gbc", $19280D, $192815 - $19280D
 
-UnknownData_0x192815:
+Unknown_0x192815:
 INCBIN "baserom.gbc", $192815, $192817 - $192815
 
 LoggedData_0x192817:
 INCBIN "baserom.gbc", $192817, $192831 - $192817
 
-UnknownData_0x192831:
+Unknown_0x192831:
 INCBIN "baserom.gbc", $192831, $192833 - $192831
 
 LoggedData_0x192833:
 INCBIN "baserom.gbc", $192833, $192835 - $192833
 
-UnknownData_0x192835:
+Unknown_0x192835:
 INCBIN "baserom.gbc", $192835, $192837 - $192835
 
 LoggedData_0x192837:
 INCBIN "baserom.gbc", $192837, $192849 - $192837
 
-UnknownData_0x192849:
+Unknown_0x192849:
 INCBIN "baserom.gbc", $192849, $192851 - $192849
 
 LoggedData_0x192851:
 INCBIN "baserom.gbc", $192851, $192853 - $192851
 
-UnknownData_0x192853:
+Unknown_0x192853:
 INCBIN "baserom.gbc", $192853, $19285F - $192853
 
 LoggedData_0x19285F:
 INCBIN "baserom.gbc", $19285F, $1928C2 - $19285F
 
-UnknownData_0x1928C2:
+Unknown_0x1928C2:
 INCBIN "baserom.gbc", $1928C2, $192908 - $1928C2
 
 LoggedData_0x192908:
 INCBIN "baserom.gbc", $192908, $1929EA - $192908
 
-UnknownData_0x1929EA:
+Unknown_0x1929EA:
 INCBIN "baserom.gbc", $1929EA, $192A89 - $1929EA
 
 LoggedData_0x192A89:
 INCBIN "baserom.gbc", $192A89, $192B67 - $192A89
 
-UnknownData_0x192B67:
+Unknown_0x192B67:
 INCBIN "baserom.gbc", $192B67, $192CDB - $192B67
 
 LoggedData_0x192CDB:
 INCBIN "baserom.gbc", $192CDB, $192D6B - $192CDB
 
-UnknownData_0x192D6B:
+Unknown_0x192D6B:
 INCBIN "baserom.gbc", $192D6B, $192D8C - $192D6B
 
 LoggedData_0x192D8C:
 INCBIN "baserom.gbc", $192D8C, $192FD5 - $192D8C
 
-UnknownData_0x192FD5:
+Unknown_0x192FD5:
 INCBIN "baserom.gbc", $192FD5, $192FF6 - $192FD5
 
 LoggedData_0x192FF6:
 INCBIN "baserom.gbc", $192FF6, $19301B - $192FF6
 
-UnknownData_0x19301B:
+Unknown_0x19301B:
 INCBIN "baserom.gbc", $19301B, $193044 - $19301B
 
 LoggedData_0x193044:
 INCBIN "baserom.gbc", $193044, $1930C9 - $193044
 
-UnknownData_0x1930C9:
+Unknown_0x1930C9:
 INCBIN "baserom.gbc", $1930C9, $1930ED - $1930C9
 
 LoggedData_0x1930ED:
 INCBIN "baserom.gbc", $1930ED, $1930F6 - $1930ED
 
-UnknownData_0x1930F6:
+Unknown_0x1930F6:
 INCBIN "baserom.gbc", $1930F6, $194000 - $1930F6
 
 SECTION "Bank65", ROMX, BANK[$65]
@@ -154461,233 +154461,233 @@ SECTION "Bank65", ROMX, BANK[$65]
 LoggedData_0x194000:
 INCBIN "baserom.gbc", $194000, $194016 - $194000
 
-UnknownData_0x194016:
+Unknown_0x194016:
 INCBIN "baserom.gbc", $194016, $194018 - $194016
 
 LoggedData_0x194018:
 INCBIN "baserom.gbc", $194018, $194034 - $194018
 
-UnknownData_0x194034:
+Unknown_0x194034:
 INCBIN "baserom.gbc", $194034, $194036 - $194034
 
 LoggedData_0x194036:
 INCBIN "baserom.gbc", $194036, $194042 - $194036
 
-UnknownData_0x194042:
+Unknown_0x194042:
 INCBIN "baserom.gbc", $194042, $194046 - $194042
 
 LoggedData_0x194046:
 INCBIN "baserom.gbc", $194046, $1942C5 - $194046
 
-UnknownData_0x1942C5:
+Unknown_0x1942C5:
 INCBIN "baserom.gbc", $1942C5, $1942FA - $1942C5
 
 LoggedData_0x1942FA:
 INCBIN "baserom.gbc", $1942FA, $194554 - $1942FA
 
-UnknownData_0x194554:
+Unknown_0x194554:
 INCBIN "baserom.gbc", $194554, $194589 - $194554
 
 LoggedData_0x194589:
 INCBIN "baserom.gbc", $194589, $1946DB - $194589
 
-UnknownData_0x1946DB:
+Unknown_0x1946DB:
 INCBIN "baserom.gbc", $1946DB, $194751 - $1946DB
 
 LoggedData_0x194751:
 INCBIN "baserom.gbc", $194751, $1948C9 - $194751
 
-UnknownData_0x1948C9:
+Unknown_0x1948C9:
 INCBIN "baserom.gbc", $1948C9, $1948D5 - $1948C9
 
 LoggedData_0x1948D5:
 INCBIN "baserom.gbc", $1948D5, $1948E1 - $1948D5
 
-UnknownData_0x1948E1:
+Unknown_0x1948E1:
 INCBIN "baserom.gbc", $1948E1, $1948E7 - $1948E1
 
 LoggedData_0x1948E7:
 INCBIN "baserom.gbc", $1948E7, $1948EB - $1948E7
 
-UnknownData_0x1948EB:
+Unknown_0x1948EB:
 INCBIN "baserom.gbc", $1948EB, $1948EF - $1948EB
 
 LoggedData_0x1948EF:
 INCBIN "baserom.gbc", $1948EF, $1948F3 - $1948EF
 
-UnknownData_0x1948F3:
+Unknown_0x1948F3:
 INCBIN "baserom.gbc", $1948F3, $1948F7 - $1948F3
 
 LoggedData_0x1948F7:
 INCBIN "baserom.gbc", $1948F7, $194DC5 - $1948F7
 
-UnknownData_0x194DC5:
+Unknown_0x194DC5:
 INCBIN "baserom.gbc", $194DC5, $194DFB - $194DC5
 
 LoggedData_0x194DFB:
 INCBIN "baserom.gbc", $194DFB, $194E9D - $194DFB
 
-UnknownData_0x194E9D:
+Unknown_0x194E9D:
 INCBIN "baserom.gbc", $194E9D, $194EB8 - $194E9D
 
 LoggedData_0x194EB8:
 INCBIN "baserom.gbc", $194EB8, $194EC2 - $194EB8
 
-UnknownData_0x194EC2:
+Unknown_0x194EC2:
 INCBIN "baserom.gbc", $194EC2, $194ED4 - $194EC2
 
 LoggedData_0x194ED4:
 INCBIN "baserom.gbc", $194ED4, $194F36 - $194ED4
 
-UnknownData_0x194F36:
+Unknown_0x194F36:
 INCBIN "baserom.gbc", $194F36, $194FA0 - $194F36
 
 LoggedData_0x194FA0:
 INCBIN "baserom.gbc", $194FA0, $19501E - $194FA0
 
-UnknownData_0x19501E:
+Unknown_0x19501E:
 INCBIN "baserom.gbc", $19501E, $195022 - $19501E
 
 LoggedData_0x195022:
 INCBIN "baserom.gbc", $195022, $195030 - $195022
 
-UnknownData_0x195030:
+Unknown_0x195030:
 INCBIN "baserom.gbc", $195030, $195032 - $195030
 
 LoggedData_0x195032:
 INCBIN "baserom.gbc", $195032, $195044 - $195032
 
-UnknownData_0x195044:
+Unknown_0x195044:
 INCBIN "baserom.gbc", $195044, $195048 - $195044
 
 LoggedData_0x195048:
 INCBIN "baserom.gbc", $195048, $19504A - $195048
 
-UnknownData_0x19504A:
+Unknown_0x19504A:
 INCBIN "baserom.gbc", $19504A, $19504E - $19504A
 
 LoggedData_0x19504E:
 INCBIN "baserom.gbc", $19504E, $19506C - $19504E
 
-UnknownData_0x19506C:
+Unknown_0x19506C:
 INCBIN "baserom.gbc", $19506C, $195070 - $19506C
 
 LoggedData_0x195070:
 INCBIN "baserom.gbc", $195070, $1950AB - $195070
 
-UnknownData_0x1950AB:
+Unknown_0x1950AB:
 INCBIN "baserom.gbc", $1950AB, $1950F1 - $1950AB
 
 LoggedData_0x1950F1:
 INCBIN "baserom.gbc", $1950F1, $1951EC - $1950F1
 
-UnknownData_0x1951EC:
+Unknown_0x1951EC:
 INCBIN "baserom.gbc", $1951EC, $195211 - $1951EC
 
 LoggedData_0x195211:
 INCBIN "baserom.gbc", $195211, $195352 - $195211
 
-UnknownData_0x195352:
+Unknown_0x195352:
 INCBIN "baserom.gbc", $195352, $19536C - $195352
 
 LoggedData_0x19536C:
 INCBIN "baserom.gbc", $19536C, $195379 - $19536C
 
-UnknownData_0x195379:
+Unknown_0x195379:
 INCBIN "baserom.gbc", $195379, $195393 - $195379
 
 LoggedData_0x195393:
 INCBIN "baserom.gbc", $195393, $1954BA - $195393
 
-UnknownData_0x1954BA:
+Unknown_0x1954BA:
 INCBIN "baserom.gbc", $1954BA, $195504 - $1954BA
 
 LoggedData_0x195504:
 INCBIN "baserom.gbc", $195504, $1956BD - $195504
 
-UnknownData_0x1956BD:
+Unknown_0x1956BD:
 INCBIN "baserom.gbc", $1956BD, $1956C1 - $1956BD
 
 LoggedData_0x1956C1:
 INCBIN "baserom.gbc", $1956C1, $1956DF - $1956C1
 
-UnknownData_0x1956DF:
+Unknown_0x1956DF:
 INCBIN "baserom.gbc", $1956DF, $1956E5 - $1956DF
 
 LoggedData_0x1956E5:
 INCBIN "baserom.gbc", $1956E5, $1956E7 - $1956E5
 
-UnknownData_0x1956E7:
+Unknown_0x1956E7:
 INCBIN "baserom.gbc", $1956E7, $1956F1 - $1956E7
 
 LoggedData_0x1956F1:
 INCBIN "baserom.gbc", $1956F1, $195A69 - $1956F1
 
-UnknownData_0x195A69:
+Unknown_0x195A69:
 INCBIN "baserom.gbc", $195A69, $195ADB - $195A69
 
 LoggedData_0x195ADB:
 INCBIN "baserom.gbc", $195ADB, $195D12 - $195ADB
 
-UnknownData_0x195D12:
+Unknown_0x195D12:
 INCBIN "baserom.gbc", $195D12, $195D5D - $195D12
 
 LoggedData_0x195D5D:
 INCBIN "baserom.gbc", $195D5D, $195D76 - $195D5D
 
-UnknownData_0x195D76:
+Unknown_0x195D76:
 INCBIN "baserom.gbc", $195D76, $195DE3 - $195D76
 
 LoggedData_0x195DE3:
 INCBIN "baserom.gbc", $195DE3, $195E58 - $195DE3
 
-UnknownData_0x195E58:
+Unknown_0x195E58:
 INCBIN "baserom.gbc", $195E58, $195E5C - $195E58
 
 LoggedData_0x195E5C:
 INCBIN "baserom.gbc", $195E5C, $19631D - $195E5C
 
-UnknownData_0x19631D:
+Unknown_0x19631D:
 INCBIN "baserom.gbc", $19631D, $196337 - $19631D
 
 LoggedData_0x196337:
 INCBIN "baserom.gbc", $196337, $1965A7 - $196337
 
-UnknownData_0x1965A7:
+Unknown_0x1965A7:
 INCBIN "baserom.gbc", $1965A7, $1965AD - $1965A7
 
 LoggedData_0x1965AD:
 INCBIN "baserom.gbc", $1965AD, $1965E9 - $1965AD
 
-UnknownData_0x1965E9:
+Unknown_0x1965E9:
 INCBIN "baserom.gbc", $1965E9, $1965ED - $1965E9
 
 LoggedData_0x1965ED:
 INCBIN "baserom.gbc", $1965ED, $19693F - $1965ED
 
-UnknownData_0x19693F:
+Unknown_0x19693F:
 INCBIN "baserom.gbc", $19693F, $1969BE - $19693F
 
 LoggedData_0x1969BE:
 INCBIN "baserom.gbc", $1969BE, $196E80 - $1969BE
 
-UnknownData_0x196E80:
+Unknown_0x196E80:
 INCBIN "baserom.gbc", $196E80, $196EA2 - $196E80
 
 LoggedData_0x196EA2:
 INCBIN "baserom.gbc", $196EA2, $196FA6 - $196EA2
 
-UnknownData_0x196FA6:
+Unknown_0x196FA6:
 INCBIN "baserom.gbc", $196FA6, $198000 - $196FA6
 
 SECTION "Bank66", ROMX, BANK[$66]
 
-UnknownData_0x198000:
+Unknown_0x198000:
 INCBIN "baserom.gbc", $198000, $19C000 - $198000
 
 SECTION "Bank67", ROMX, BANK[$67]
 
-UnknownData_0x19C000:
+Unknown_0x19C000:
 INCBIN "baserom.gbc", $19C000, $1A0000 - $19C000
 
 SECTION "Bank68", ROMX, BANK[$68]
@@ -154695,13 +154695,13 @@ SECTION "Bank68", ROMX, BANK[$68]
 LoggedData_0x1A0000:
 INCBIN "baserom.gbc", $1A0000, $1A1B1C - $1A0000
 
-UnknownData_0x1A1B1C:
+Unknown_0x1A1B1C:
 INCBIN "baserom.gbc", $1A1B1C, $1A1EAC - $1A1B1C
 
 LoggedData_0x1A1EAC:
 INCBIN "baserom.gbc", $1A1EAC, $1A2B7E - $1A1EAC
 
-UnknownData_0x1A2B7E:
+Unknown_0x1A2B7E:
 INCBIN "baserom.gbc", $1A2B7E, $1A4000 - $1A2B7E
 
 SECTION "Bank69", ROMX, BANK[$69]
@@ -154709,13 +154709,13 @@ SECTION "Bank69", ROMX, BANK[$69]
 LoggedData_0x1A4000:
 INCBIN "baserom.gbc", $1A4000, $1A5B1F - $1A4000
 
-UnknownData_0x1A5B1F:
+Unknown_0x1A5B1F:
 INCBIN "baserom.gbc", $1A5B1F, $1A5DE3 - $1A5B1F
 
 LoggedData_0x1A5DE3:
 INCBIN "baserom.gbc", $1A5DE3, $1A6243 - $1A5DE3
 
-UnknownData_0x1A6243:
+Unknown_0x1A6243:
 INCBIN "baserom.gbc", $1A6243, $1A8000 - $1A6243
 
 SECTION "Bank6A", ROMX, BANK[$6A]
@@ -154723,7 +154723,7 @@ SECTION "Bank6A", ROMX, BANK[$6A]
 LoggedData_0x1A8000:
 INCBIN "baserom.gbc", $1A8000, $1AABDA - $1A8000
 
-UnknownData_0x1AABDA:
+Unknown_0x1AABDA:
 INCBIN "baserom.gbc", $1AABDA, $1AC000 - $1AABDA
 
 SECTION "Bank6B", ROMX, BANK[$6B]
@@ -154731,7 +154731,7 @@ SECTION "Bank6B", ROMX, BANK[$6B]
 LoggedData_0x1AC000:
 INCBIN "baserom.gbc", $1AC000, $1AE4C9 - $1AC000
 
-UnknownData_0x1AE4C9:
+Unknown_0x1AE4C9:
 INCBIN "baserom.gbc", $1AE4C9, $1B0000 - $1AE4C9
 
 SECTION "Bank6C", ROMX, BANK[$6C]
@@ -154739,7 +154739,7 @@ SECTION "Bank6C", ROMX, BANK[$6C]
 LoggedData_0x1B0000:
 INCBIN "baserom.gbc", $1B0000, $1B2305 - $1B0000
 
-UnknownData_0x1B2305:
+Unknown_0x1B2305:
 INCBIN "baserom.gbc", $1B2305, $1B4000 - $1B2305
 
 SECTION "Bank6D", ROMX, BANK[$6D]
@@ -154747,7 +154747,7 @@ SECTION "Bank6D", ROMX, BANK[$6D]
 LoggedData_0x1B4000:
 INCBIN "baserom.gbc", $1B4000, $1B61B7 - $1B4000
 
-UnknownData_0x1B61B7:
+Unknown_0x1B61B7:
 INCBIN "baserom.gbc", $1B61B7, $1B8000 - $1B61B7
 
 SECTION "Bank6E", ROMX, BANK[$6E]
@@ -154755,7 +154755,7 @@ SECTION "Bank6E", ROMX, BANK[$6E]
 LoggedData_0x1B8000:
 INCBIN "baserom.gbc", $1B8000, $1BA299 - $1B8000
 
-UnknownData_0x1BA299:
+Unknown_0x1BA299:
 INCBIN "baserom.gbc", $1BA299, $1BC000 - $1BA299
 
 SECTION "Bank6F", ROMX, BANK[$6F]
@@ -154763,7 +154763,7 @@ SECTION "Bank6F", ROMX, BANK[$6F]
 LoggedData_0x1BC000:
 INCBIN "baserom.gbc", $1BC000, $1BDFE9 - $1BC000
 
-UnknownData_0x1BDFE9:
+Unknown_0x1BDFE9:
 INCBIN "baserom.gbc", $1BDFE9, $1C0000 - $1BDFE9
 
 SECTION "Bank70", ROMX, BANK[$70]
@@ -154771,96 +154771,96 @@ SECTION "Bank70", ROMX, BANK[$70]
 LoggedData_0x1C0000:
 INCBIN "baserom.gbc", $1C0000, $1C1869 - $1C0000
 
-UnknownData_0x1C1869:
+Unknown_0x1C1869:
 INCBIN "baserom.gbc", $1C1869, $1C19C5 - $1C1869
 
 LoggedData_0x1C19C5:
 INCBIN "baserom.gbc", $1C19C5, $1C1C82 - $1C19C5
 
-UnknownData_0x1C1C82:
+Unknown_0x1C1C82:
 INCBIN "baserom.gbc", $1C1C82, $1C1DD0 - $1C1C82
 
 LoggedData_0x1C1DD0:
 INCBIN "baserom.gbc", $1C1DD0, $1C1F18 - $1C1DD0
 
-UnknownData_0x1C1F18:
+Unknown_0x1C1F18:
 INCBIN "baserom.gbc", $1C1F18, $1C2084 - $1C1F18
 
 LoggedData_0x1C2084:
 INCBIN "baserom.gbc", $1C2084, $1C2361 - $1C2084
 
-UnknownData_0x1C2361:
+Unknown_0x1C2361:
 INCBIN "baserom.gbc", $1C2361, $1C25F8 - $1C2361
 
 LoggedData_0x1C25F8:
 INCBIN "baserom.gbc", $1C25F8, $1C2B55 - $1C25F8
 
-UnknownData_0x1C2B55:
+Unknown_0x1C2B55:
 INCBIN "baserom.gbc", $1C2B55, $1C2DDC - $1C2B55
 
 LoggedData_0x1C2DDC:
 INCBIN "baserom.gbc", $1C2DDC, $1C2F55 - $1C2DDC
 
-UnknownData_0x1C2F55:
+Unknown_0x1C2F55:
 INCBIN "baserom.gbc", $1C2F55, $1C3254 - $1C2F55
 
 LoggedData_0x1C3254:
 INCBIN "baserom.gbc", $1C3254, $1C329A - $1C3254
 
-UnknownData_0x1C329A:
+Unknown_0x1C329A:
 INCBIN "baserom.gbc", $1C329A, $1C32E0 - $1C329A
 
 LoggedData_0x1C32E0:
 INCBIN "baserom.gbc", $1C32E0, $1C336C - $1C32E0
 
-UnknownData_0x1C336C:
+Unknown_0x1C336C:
 INCBIN "baserom.gbc", $1C336C, $1C33B2 - $1C336C
 
 LoggedData_0x1C33B2:
 INCBIN "baserom.gbc", $1C33B2, $1C33F8 - $1C33B2
 
-UnknownData_0x1C33F8:
+Unknown_0x1C33F8:
 INCBIN "baserom.gbc", $1C33F8, $1C343E - $1C33F8
 
 LoggedData_0x1C343E:
 INCBIN "baserom.gbc", $1C343E, $1C34CA - $1C343E
 
-UnknownData_0x1C34CA:
+Unknown_0x1C34CA:
 INCBIN "baserom.gbc", $1C34CA, $1C3556 - $1C34CA
 
 LoggedData_0x1C3556:
 INCBIN "baserom.gbc", $1C3556, $1C366E - $1C3556
 
-UnknownData_0x1C366E:
+Unknown_0x1C366E:
 INCBIN "baserom.gbc", $1C366E, $1C36FA - $1C366E
 
 LoggedData_0x1C36FA:
 INCBIN "baserom.gbc", $1C36FA, $1C3740 - $1C36FA
 
-UnknownData_0x1C3740:
+Unknown_0x1C3740:
 INCBIN "baserom.gbc", $1C3740, $1C4000 - $1C3740
 
 SECTION "Bank71", ROMX, BANK[$71]
 
-UnknownData_0x1C4000:
+Unknown_0x1C4000:
 INCBIN "baserom.gbc", $1C4000, $1C4800 - $1C4000
 
 LoggedData_0x1C4800:
 INCBIN "baserom.gbc", $1C4800, $1C4B80 - $1C4800
 
-UnknownData_0x1C4B80:
+Unknown_0x1C4B80:
 INCBIN "baserom.gbc", $1C4B80, $1C4C60 - $1C4B80
 
 LoggedData_0x1C4C60:
 INCBIN "baserom.gbc", $1C4C60, $1C4D83 - $1C4C60
 
-UnknownData_0x1C4D83:
+Unknown_0x1C4D83:
 INCBIN "baserom.gbc", $1C4D83, $1C4EA8 - $1C4D83
 
 LoggedData_0x1C4EA8:
 INCBIN "baserom.gbc", $1C4EA8, $1C5E07 - $1C4EA8
 
-UnknownData_0x1C5E07:
+Unknown_0x1C5E07:
 INCBIN "baserom.gbc", $1C5E07, $1C8000 - $1C5E07
 
 SECTION "Bank72", ROMX, BANK[$72]
@@ -155920,7 +155920,7 @@ Logged_0x1C86F8:
 LoggedData_0x1C87D3:
 INCBIN "baserom.gbc", $1C87D3, $1C87D9 - $1C87D3
 
-UnknownData_0x1C87D9:
+Unknown_0x1C87D9:
 INCBIN "baserom.gbc", $1C87D9, $1C87DB - $1C87D9
 
 Logged_0x1C87DB:
@@ -155954,7 +155954,7 @@ Logged_0x1C87DB:
 LoggedData_0x1C8808:
 INCBIN "baserom.gbc", $1C8808, $1C8814 - $1C8808
 
-UnknownData_0x1C8814:
+Unknown_0x1C8814:
 INCBIN "baserom.gbc", $1C8814, $1C8818 - $1C8814
 
 Logged_0x1C8818:
@@ -155970,7 +155970,7 @@ Logged_0x1C8818:
 LoggedData_0x1C8827:
 INCBIN "baserom.gbc", $1C8827, $1C882A - $1C8827
 
-UnknownData_0x1C882A:
+Unknown_0x1C882A:
 INCBIN "baserom.gbc", $1C882A, $1C882B - $1C882A
 
 Logged_0x1C882B:
@@ -156159,7 +156159,7 @@ Unknown_0x1C8944:
 	ld [$D802],a
 	ret
 
-UnknownData_0x1C8953:
+Unknown_0x1C8953:
 INCBIN "baserom.gbc", $1C8953, $1C8965 - $1C8953
 
 Logged_0x1C8965:
@@ -156233,7 +156233,7 @@ Logged_0x1C8976:
 LoggedData_0x1C89F2:
 INCBIN "baserom.gbc", $1C89F2, $1C89F4 - $1C89F2
 
-UnknownData_0x1C89F4:
+Unknown_0x1C89F4:
 INCBIN "baserom.gbc", $1C89F4, $1C89FA - $1C89F4
 
 Logged_0x1C89FA:
@@ -156355,31 +156355,31 @@ Logged_0x1C8A4F:
 	ld [$DC39],a
 	ret
 
-UnknownData_0x1C8AC3:
+Unknown_0x1C8AC3:
 INCBIN "baserom.gbc", $1C8AC3, $1C8ACD - $1C8AC3
 
 LoggedData_0x1C8ACD:
 INCBIN "baserom.gbc", $1C8ACD, $1C8AF5 - $1C8ACD
 
-UnknownData_0x1C8AF5:
+Unknown_0x1C8AF5:
 INCBIN "baserom.gbc", $1C8AF5, $1C8AFF - $1C8AF5
 
 LoggedData_0x1C8AFF:
 INCBIN "baserom.gbc", $1C8AFF, $1C8B13 - $1C8AFF
 
-UnknownData_0x1C8B13:
+Unknown_0x1C8B13:
 INCBIN "baserom.gbc", $1C8B13, $1C8B1D - $1C8B13
 
 LoggedData_0x1C8B1D:
 INCBIN "baserom.gbc", $1C8B1D, $1C8B3B - $1C8B1D
 
-UnknownData_0x1C8B3B:
+Unknown_0x1C8B3B:
 INCBIN "baserom.gbc", $1C8B3B, $1C8B45 - $1C8B3B
 
 LoggedData_0x1C8B45:
 INCBIN "baserom.gbc", $1C8B45, $1C8B59 - $1C8B45
 
-UnknownData_0x1C8B59:
+Unknown_0x1C8B59:
 INCBIN "baserom.gbc", $1C8B59, $1C8B8B - $1C8B59
 
 Logged_0x1C8B8B:
@@ -156951,19 +156951,19 @@ Logged_0x1C8F76:
 LoggedData_0x1C8F93:
 INCBIN "baserom.gbc", $1C8F93, $1C8F9C - $1C8F93
 
-UnknownData_0x1C8F9C:
+Unknown_0x1C8F9C:
 INCBIN "baserom.gbc", $1C8F9C, $1C8F9D - $1C8F9C
 
 LoggedData_0x1C8F9D:
 INCBIN "baserom.gbc", $1C8F9D, $1C8FB1 - $1C8F9D
 
-UnknownData_0x1C8FB1:
+Unknown_0x1C8FB1:
 INCBIN "baserom.gbc", $1C8FB1, $1C8FB3 - $1C8FB1
 
 LoggedData_0x1C8FB3:
 INCBIN "baserom.gbc", $1C8FB3, $1C8FB7 - $1C8FB3
 
-UnknownData_0x1C8FB7:
+Unknown_0x1C8FB7:
 INCBIN "baserom.gbc", $1C8FB7, $1C8FB8 - $1C8FB7
 
 Logged_0x1C8FB8:
@@ -157410,7 +157410,7 @@ Logged_0x1C9263:
 	ld [$DC46],a
 	ret
 
-UnknownData_0x1C9272:
+Unknown_0x1C9272:
 INCBIN "baserom.gbc", $1C9272, $1C9274 - $1C9272
 
 LoggedData_0x1C9274:
@@ -157652,25 +157652,25 @@ Logged_0x1C9407:
 	ld [hli],a
 	ret
 
-UnknownData_0x1C9410:
+Unknown_0x1C9410:
 INCBIN "baserom.gbc", $1C9410, $1C9412 - $1C9410
 
 LoggedData_0x1C9412:
 INCBIN "baserom.gbc", $1C9412, $1C9424 - $1C9412
 
-UnknownData_0x1C9424:
+Unknown_0x1C9424:
 INCBIN "baserom.gbc", $1C9424, $1C9426 - $1C9424
 
 LoggedData_0x1C9426:
 INCBIN "baserom.gbc", $1C9426, $1C9428 - $1C9426
 
-UnknownData_0x1C9428:
+Unknown_0x1C9428:
 INCBIN "baserom.gbc", $1C9428, $1C942A - $1C9428
 
 LoggedData_0x1C942A:
 INCBIN "baserom.gbc", $1C942A, $1C9432 - $1C942A
 
-UnknownData_0x1C9432:
+Unknown_0x1C9432:
 INCBIN "baserom.gbc", $1C9432, $1C9434 - $1C9432
 
 LoggedData_0x1C9434:
@@ -158726,7 +158726,7 @@ Unknown_0x1C9B53:
 	ld hl,$DC90
 	jp Logged_0x2CA7
 
-UnknownData_0x1C9B7D:
+Unknown_0x1C9B7D:
 INCBIN "baserom.gbc", $1C9B7D, $1C9B8D - $1C9B7D
 
 Unknown_0x1C9B8D:
@@ -159331,184 +159331,184 @@ RAMCode_0x1CA070:
 LoggedData_0x1CA08F:
 INCBIN "baserom.gbc", $1CA08F, $1CA0CF - $1CA08F
 
-UnknownData_0x1CA0CF:
+Unknown_0x1CA0CF:
 INCBIN "baserom.gbc", $1CA0CF, $1CA18F - $1CA0CF
 
 LoggedData_0x1CA18F:
 INCBIN "baserom.gbc", $1CA18F, $1CA30F - $1CA18F
 
-UnknownData_0x1CA30F:
+Unknown_0x1CA30F:
 INCBIN "baserom.gbc", $1CA30F, $1CA34F - $1CA30F
 
 LoggedData_0x1CA34F:
 INCBIN "baserom.gbc", $1CA34F, $1CA38F - $1CA34F
 
-UnknownData_0x1CA38F:
+Unknown_0x1CA38F:
 INCBIN "baserom.gbc", $1CA38F, $1CA3AF - $1CA38F
 
 LoggedData_0x1CA3AF:
 INCBIN "baserom.gbc", $1CA3AF, $1CA4CF - $1CA3AF
 
-UnknownData_0x1CA4CF:
+Unknown_0x1CA4CF:
 INCBIN "baserom.gbc", $1CA4CF, $1CA6CF - $1CA4CF
 
 LoggedData_0x1CA6CF:
 INCBIN "baserom.gbc", $1CA6CF, $1CA6D7 - $1CA6CF
 
-UnknownData_0x1CA6D7:
+Unknown_0x1CA6D7:
 INCBIN "baserom.gbc", $1CA6D7, $1CA6DF - $1CA6D7
 
 LoggedData_0x1CA6DF:
 INCBIN "baserom.gbc", $1CA6DF, $1CA791 - $1CA6DF
 
-UnknownData_0x1CA791:
+Unknown_0x1CA791:
 INCBIN "baserom.gbc", $1CA791, $1CA799 - $1CA791
 
 LoggedData_0x1CA799:
 INCBIN "baserom.gbc", $1CA799, $1CA79D - $1CA799
 
-UnknownData_0x1CA79D:
+Unknown_0x1CA79D:
 INCBIN "baserom.gbc", $1CA79D, $1CA7BD - $1CA79D
 
 LoggedData_0x1CA7BD:
 INCBIN "baserom.gbc", $1CA7BD, $1CA833 - $1CA7BD
 
-UnknownData_0x1CA833:
+Unknown_0x1CA833:
 INCBIN "baserom.gbc", $1CA833, $1CA8A7 - $1CA833
 
 LoggedData_0x1CA8A7:
 INCBIN "baserom.gbc", $1CA8A7, $1CAE2C - $1CA8A7
 
-UnknownData_0x1CAE2C:
+Unknown_0x1CAE2C:
 INCBIN "baserom.gbc", $1CAE2C, $1CAE60 - $1CAE2C
 
 LoggedData_0x1CAE60:
 INCBIN "baserom.gbc", $1CAE60, $1CAE6E - $1CAE60
 
-UnknownData_0x1CAE6E:
+Unknown_0x1CAE6E:
 INCBIN "baserom.gbc", $1CAE6E, $1CAF46 - $1CAE6E
 
 LoggedData_0x1CAF46:
 INCBIN "baserom.gbc", $1CAF46, $1CAF78 - $1CAF46
 
-UnknownData_0x1CAF78:
+Unknown_0x1CAF78:
 INCBIN "baserom.gbc", $1CAF78, $1CAF81 - $1CAF78
 
 LoggedData_0x1CAF81:
 INCBIN "baserom.gbc", $1CAF81, $1CB089 - $1CAF81
 
-UnknownData_0x1CB089:
+Unknown_0x1CB089:
 INCBIN "baserom.gbc", $1CB089, $1CB0A4 - $1CB089
 
 LoggedData_0x1CB0A4:
 INCBIN "baserom.gbc", $1CB0A4, $1CB0A9 - $1CB0A4
 
-UnknownData_0x1CB0A9:
+Unknown_0x1CB0A9:
 INCBIN "baserom.gbc", $1CB0A9, $1CB0DA - $1CB0A9
 
 LoggedData_0x1CB0DA:
 INCBIN "baserom.gbc", $1CB0DA, $1CB0ED - $1CB0DA
 
-UnknownData_0x1CB0ED:
+Unknown_0x1CB0ED:
 INCBIN "baserom.gbc", $1CB0ED, $1CB0FD - $1CB0ED
 
 LoggedData_0x1CB0FD:
 INCBIN "baserom.gbc", $1CB0FD, $1CB1C1 - $1CB0FD
 
-UnknownData_0x1CB1C1:
+Unknown_0x1CB1C1:
 INCBIN "baserom.gbc", $1CB1C1, $1CB285 - $1CB1C1
 
 LoggedData_0x1CB285:
 INCBIN "baserom.gbc", $1CB285, $1CB2AC - $1CB285
 
-UnknownData_0x1CB2AC:
+Unknown_0x1CB2AC:
 INCBIN "baserom.gbc", $1CB2AC, $1CB2D3 - $1CB2AC
 
 LoggedData_0x1CB2D3:
 INCBIN "baserom.gbc", $1CB2D3, $1CB2E7 - $1CB2D3
 
-UnknownData_0x1CB2E7:
+Unknown_0x1CB2E7:
 INCBIN "baserom.gbc", $1CB2E7, $1CB2EB - $1CB2E7
 
 LoggedData_0x1CB2EB:
 INCBIN "baserom.gbc", $1CB2EB, $1CB345 - $1CB2EB
 
-UnknownData_0x1CB345:
+Unknown_0x1CB345:
 INCBIN "baserom.gbc", $1CB345, $1CB39B - $1CB345
 
 LoggedData_0x1CB39B:
 INCBIN "baserom.gbc", $1CB39B, $1CB3D1 - $1CB39B
 
-UnknownData_0x1CB3D1:
+Unknown_0x1CB3D1:
 INCBIN "baserom.gbc", $1CB3D1, $1CB3D7 - $1CB3D1
 
 LoggedData_0x1CB3D7:
 INCBIN "baserom.gbc", $1CB3D7, $1CB406 - $1CB3D7
 
-UnknownData_0x1CB406:
+Unknown_0x1CB406:
 INCBIN "baserom.gbc", $1CB406, $1CB408 - $1CB406
 
 LoggedData_0x1CB408:
 INCBIN "baserom.gbc", $1CB408, $1CB4C7 - $1CB408
 
-UnknownData_0x1CB4C7:
+Unknown_0x1CB4C7:
 INCBIN "baserom.gbc", $1CB4C7, $1CB4C8 - $1CB4C7
 
 LoggedData_0x1CB4C8:
 INCBIN "baserom.gbc", $1CB4C8, $1CB4D0 - $1CB4C8
 
-UnknownData_0x1CB4D0:
+Unknown_0x1CB4D0:
 INCBIN "baserom.gbc", $1CB4D0, $1CB4D1 - $1CB4D0
 
 LoggedData_0x1CB4D1:
 INCBIN "baserom.gbc", $1CB4D1, $1CB4D9 - $1CB4D1
 
-UnknownData_0x1CB4D9:
+Unknown_0x1CB4D9:
 INCBIN "baserom.gbc", $1CB4D9, $1CB4DA - $1CB4D9
 
 LoggedData_0x1CB4DA:
 INCBIN "baserom.gbc", $1CB4DA, $1CB58B - $1CB4DA
 
-UnknownData_0x1CB58B:
+Unknown_0x1CB58B:
 INCBIN "baserom.gbc", $1CB58B, $1CB598 - $1CB58B
 
 LoggedData_0x1CB598:
 INCBIN "baserom.gbc", $1CB598, $1CB5BA - $1CB598
 
-UnknownData_0x1CB5BA:
+Unknown_0x1CB5BA:
 INCBIN "baserom.gbc", $1CB5BA, $1CB5C3 - $1CB5BA
 
 LoggedData_0x1CB5C3:
 INCBIN "baserom.gbc", $1CB5C3, $1CB5DA - $1CB5C3
 
-UnknownData_0x1CB5DA:
+Unknown_0x1CB5DA:
 INCBIN "baserom.gbc", $1CB5DA, $1CB5DB - $1CB5DA
 
 LoggedData_0x1CB5DB:
 INCBIN "baserom.gbc", $1CB5DB, $1CB5DD - $1CB5DB
 
-UnknownData_0x1CB5DD:
+Unknown_0x1CB5DD:
 INCBIN "baserom.gbc", $1CB5DD, $1CB5DE - $1CB5DD
 
 LoggedData_0x1CB5DE:
 INCBIN "baserom.gbc", $1CB5DE, $1CB5E0 - $1CB5DE
 
-UnknownData_0x1CB5E0:
+Unknown_0x1CB5E0:
 INCBIN "baserom.gbc", $1CB5E0, $1CC000 - $1CB5E0
 
 SECTION "Bank73", ROMX, BANK[$73]
 
-UnknownData_0x1CC000:
+Unknown_0x1CC000:
 INCBIN "baserom.gbc", $1CC000, $1D0000 - $1CC000
 
 SECTION "Bank74", ROMX, BANK[$74]
 
-UnknownData_0x1D0000:
+Unknown_0x1D0000:
 INCBIN "baserom.gbc", $1D0000, $1D4000 - $1D0000
 
 SECTION "Bank75", ROMX, BANK[$75]
 
-UnknownData_0x1D4000:
+Unknown_0x1D4000:
 INCBIN "baserom.gbc", $1D4000, $1D8000 - $1D4000
 
 SECTION "Bank76", ROMX, BANK[$76]
@@ -159516,7 +159516,7 @@ SECTION "Bank76", ROMX, BANK[$76]
 LoggedData_0x1D8000:
 INCBIN "baserom.gbc", $1D8000, $1D8600 - $1D8000
 
-UnknownData_0x1D8600:
+Unknown_0x1D8600:
 INCBIN "baserom.gbc", $1D8600, $1D8B00 - $1D8600
 	xor a
 	ld [$D031],a
@@ -159751,13 +159751,13 @@ Logged_0x1D8C5E:
 	ld [rVBK],a
 	ret
 
-UnknownData_0x1D8C62:
+Unknown_0x1D8C62:
 INCBIN "baserom.gbc", $1D8C62, $1DA800 - $1D8C62
 
 LoggedData_0x1DA800:
 INCBIN "baserom.gbc", $1DA800, $1DB000 - $1DA800
 
-UnknownData_0x1DB000:
+Unknown_0x1DB000:
 INCBIN "baserom.gbc", $1DB000, $1DC000 - $1DB000
 
 SECTION "Bank77", ROMX, BANK[$77]
@@ -159765,121 +159765,121 @@ SECTION "Bank77", ROMX, BANK[$77]
 LoggedData_0x1DC000:
 INCBIN "baserom.gbc", $1DC000, $1DC3CD - $1DC000
 
-UnknownData_0x1DC3CD:
+Unknown_0x1DC3CD:
 INCBIN "baserom.gbc", $1DC3CD, $1DC449 - $1DC3CD
 
 LoggedData_0x1DC449:
 INCBIN "baserom.gbc", $1DC449, $1DC451 - $1DC449
 
-UnknownData_0x1DC451:
+Unknown_0x1DC451:
 INCBIN "baserom.gbc", $1DC451, $1DC459 - $1DC451
 
 LoggedData_0x1DC459:
 INCBIN "baserom.gbc", $1DC459, $1DC46F - $1DC459
 
-UnknownData_0x1DC46F:
+Unknown_0x1DC46F:
 INCBIN "baserom.gbc", $1DC46F, $1DC485 - $1DC46F
 
 LoggedData_0x1DC485:
 INCBIN "baserom.gbc", $1DC485, $1DC509 - $1DC485
 
-UnknownData_0x1DC509:
+Unknown_0x1DC509:
 INCBIN "baserom.gbc", $1DC509, $1DC58D - $1DC509
 
 LoggedData_0x1DC58D:
 INCBIN "baserom.gbc", $1DC58D, $1DC744 - $1DC58D
 
-UnknownData_0x1DC744:
+Unknown_0x1DC744:
 INCBIN "baserom.gbc", $1DC744, $1DC8FB - $1DC744
 
 LoggedData_0x1DC8FB:
 INCBIN "baserom.gbc", $1DC8FB, $1DC904 - $1DC8FB
 
-UnknownData_0x1DC904:
+Unknown_0x1DC904:
 INCBIN "baserom.gbc", $1DC904, $1DC90D - $1DC904
 
 LoggedData_0x1DC90D:
 INCBIN "baserom.gbc", $1DC90D, $1DC926 - $1DC90D
 
-UnknownData_0x1DC926:
+Unknown_0x1DC926:
 INCBIN "baserom.gbc", $1DC926, $1DC93F - $1DC926
 
 LoggedData_0x1DC93F:
 INCBIN "baserom.gbc", $1DC93F, $1DCCD2 - $1DC93F
 
-UnknownData_0x1DCCD2:
+Unknown_0x1DCCD2:
 INCBIN "baserom.gbc", $1DCCD2, $1DCCD8 - $1DCCD2
 
 LoggedData_0x1DCCD8:
 INCBIN "baserom.gbc", $1DCCD8, $1DCFF1 - $1DCCD8
 
-UnknownData_0x1DCFF1:
+Unknown_0x1DCFF1:
 INCBIN "baserom.gbc", $1DCFF1, $1DCFF5 - $1DCFF1
 
 LoggedData_0x1DCFF5:
 INCBIN "baserom.gbc", $1DCFF5, $1DCFFD - $1DCFF5
 
-UnknownData_0x1DCFFD:
+Unknown_0x1DCFFD:
 INCBIN "baserom.gbc", $1DCFFD, $1DD001 - $1DCFFD
 
 LoggedData_0x1DD001:
 INCBIN "baserom.gbc", $1DD001, $1DD019 - $1DD001
 
-UnknownData_0x1DD019:
+Unknown_0x1DD019:
 INCBIN "baserom.gbc", $1DD019, $1DD01D - $1DD019
 
 LoggedData_0x1DD01D:
 INCBIN "baserom.gbc", $1DD01D, $1DD023 - $1DD01D
 
-UnknownData_0x1DD023:
+Unknown_0x1DD023:
 INCBIN "baserom.gbc", $1DD023, $1DD04D - $1DD023
 
 LoggedData_0x1DD04D:
 INCBIN "baserom.gbc", $1DD04D, $1DD095 - $1DD04D
 
-UnknownData_0x1DD095:
+Unknown_0x1DD095:
 INCBIN "baserom.gbc", $1DD095, $1DD0B7 - $1DD095
 
 LoggedData_0x1DD0B7:
 INCBIN "baserom.gbc", $1DD0B7, $1DD1AF - $1DD0B7
 
-UnknownData_0x1DD1AF:
+Unknown_0x1DD1AF:
 INCBIN "baserom.gbc", $1DD1AF, $1DD1E1 - $1DD1AF
 
 LoggedData_0x1DD1E1:
 INCBIN "baserom.gbc", $1DD1E1, $1DD23B - $1DD1E1
 
-UnknownData_0x1DD23B:
+Unknown_0x1DD23B:
 INCBIN "baserom.gbc", $1DD23B, $1DD26C - $1DD23B
 
 LoggedData_0x1DD26C:
 INCBIN "baserom.gbc", $1DD26C, $1DD26F - $1DD26C
 
-UnknownData_0x1DD26F:
+Unknown_0x1DD26F:
 INCBIN "baserom.gbc", $1DD26F, $1DD27A - $1DD26F
 
 LoggedData_0x1DD27A:
 INCBIN "baserom.gbc", $1DD27A, $1DD295 - $1DD27A
 
-UnknownData_0x1DD295:
+Unknown_0x1DD295:
 INCBIN "baserom.gbc", $1DD295, $1DD2D1 - $1DD295
 
 LoggedData_0x1DD2D1:
 INCBIN "baserom.gbc", $1DD2D1, $1DD2DC - $1DD2D1
 
-UnknownData_0x1DD2DC:
+Unknown_0x1DD2DC:
 INCBIN "baserom.gbc", $1DD2DC, $1DD2EE - $1DD2DC
 
 LoggedData_0x1DD2EE:
 INCBIN "baserom.gbc", $1DD2EE, $1DD2F9 - $1DD2EE
 
-UnknownData_0x1DD2F9:
+Unknown_0x1DD2F9:
 INCBIN "baserom.gbc", $1DD2F9, $1DD323 - $1DD2F9
 
 LoggedData_0x1DD323:
 INCBIN "baserom.gbc", $1DD323, $1DD330 - $1DD323
 
-UnknownData_0x1DD330:
+Unknown_0x1DD330:
 INCBIN "baserom.gbc", $1DD330, $1E0000 - $1DD330
 
 SECTION "Bank78", ROMX, BANK[$78]
@@ -160454,7 +160454,7 @@ Logged_0x1E0377:
 LoggedData_0x1E0378:
 INCBIN "baserom.gbc", $1E0378, $1E1DD1 - $1E0378
 
-UnknownData_0x1E1DD1:
+Unknown_0x1E1DD1:
 INCBIN "baserom.gbc", $1E1DD1, $1E4000 - $1E1DD1
 
 SECTION "Bank79", ROMX, BANK[$79]
@@ -162156,7 +162156,7 @@ Logged_0x1E4B15:
 	call Logged_0x0DF4
 	ret
 
-UnknownData_0x1E4B6D:
+Unknown_0x1E4B6D:
 INCBIN "baserom.gbc", $1E4B6D, $1E4B8D - $1E4B6D
 
 Logged_0x1E4B8D:
@@ -162623,120 +162623,120 @@ Logged_0x1E4E49:
 LoggedData_0x1E4E6F:
 INCBIN "baserom.gbc", $1E4E6F, $1E69A4 - $1E4E6F
 
-UnknownData_0x1E69A4:
+Unknown_0x1E69A4:
 INCBIN "baserom.gbc", $1E69A4, $1E69A6 - $1E69A4
 
 LoggedData_0x1E69A6:
 INCBIN "baserom.gbc", $1E69A6, $1E69A8 - $1E69A6
 
-UnknownData_0x1E69A8:
+Unknown_0x1E69A8:
 INCBIN "baserom.gbc", $1E69A8, $1E69AA - $1E69A8
 
 LoggedData_0x1E69AA:
 INCBIN "baserom.gbc", $1E69AA, $1E6B1C - $1E69AA
 
-UnknownData_0x1E6B1C:
+Unknown_0x1E6B1C:
 INCBIN "baserom.gbc", $1E6B1C, $1E6B2D - $1E6B1C
 
 LoggedData_0x1E6B2D:
 INCBIN "baserom.gbc", $1E6B2D, $1E6B3E - $1E6B2D
 
-UnknownData_0x1E6B3E:
+Unknown_0x1E6B3E:
 INCBIN "baserom.gbc", $1E6B3E, $1E6B4F - $1E6B3E
 
 LoggedData_0x1E6B4F:
 INCBIN "baserom.gbc", $1E6B4F, $1E6B9F - $1E6B4F
 
-UnknownData_0x1E6B9F:
+Unknown_0x1E6B9F:
 INCBIN "baserom.gbc", $1E6B9F, $1E6BA2 - $1E6B9F
 
 LoggedData_0x1E6BA2:
 INCBIN "baserom.gbc", $1E6BA2, $1E6BA5 - $1E6BA2
 
-UnknownData_0x1E6BA5:
+Unknown_0x1E6BA5:
 INCBIN "baserom.gbc", $1E6BA5, $1E6BA8 - $1E6BA5
 
 LoggedData_0x1E6BA8:
 INCBIN "baserom.gbc", $1E6BA8, $1E6BC3 - $1E6BA8
 
-UnknownData_0x1E6BC3:
+Unknown_0x1E6BC3:
 INCBIN "baserom.gbc", $1E6BC3, $1E6BC5 - $1E6BC3
 
 LoggedData_0x1E6BC5:
 INCBIN "baserom.gbc", $1E6BC5, $1E6BCF - $1E6BC5
 
-UnknownData_0x1E6BCF:
+Unknown_0x1E6BCF:
 INCBIN "baserom.gbc", $1E6BCF, $1E6BD1 - $1E6BCF
 
 LoggedData_0x1E6BD1:
 INCBIN "baserom.gbc", $1E6BD1, $1E6BD7 - $1E6BD1
 
-UnknownData_0x1E6BD7:
+Unknown_0x1E6BD7:
 INCBIN "baserom.gbc", $1E6BD7, $1E6BD9 - $1E6BD7
 
 LoggedData_0x1E6BD9:
 INCBIN "baserom.gbc", $1E6BD9, $1E6BE5 - $1E6BD9
 
-UnknownData_0x1E6BE5:
+Unknown_0x1E6BE5:
 INCBIN "baserom.gbc", $1E6BE5, $1E6BED - $1E6BE5
 
 LoggedData_0x1E6BED:
 INCBIN "baserom.gbc", $1E6BED, $1E6CA9 - $1E6BED
 
-UnknownData_0x1E6CA9:
+Unknown_0x1E6CA9:
 INCBIN "baserom.gbc", $1E6CA9, $1E6CC2 - $1E6CA9
 
 LoggedData_0x1E6CC2:
 INCBIN "baserom.gbc", $1E6CC2, $1E6D3F - $1E6CC2
 
-UnknownData_0x1E6D3F:
+Unknown_0x1E6D3F:
 INCBIN "baserom.gbc", $1E6D3F, $1E6D58 - $1E6D3F
 
 LoggedData_0x1E6D58:
 INCBIN "baserom.gbc", $1E6D58, $1E6DBB - $1E6D58
 
-UnknownData_0x1E6DBB:
+Unknown_0x1E6DBB:
 INCBIN "baserom.gbc", $1E6DBB, $1E6DDC - $1E6DBB
 
 LoggedData_0x1E6DDC:
 INCBIN "baserom.gbc", $1E6DDC, $1E6EB2 - $1E6DDC
 
-UnknownData_0x1E6EB2:
+Unknown_0x1E6EB2:
 INCBIN "baserom.gbc", $1E6EB2, $1E6F36 - $1E6EB2
 
 LoggedData_0x1E6F36:
 INCBIN "baserom.gbc", $1E6F36, $1E6F52 - $1E6F36
 
-UnknownData_0x1E6F52:
+Unknown_0x1E6F52:
 INCBIN "baserom.gbc", $1E6F52, $1E6F55 - $1E6F52
 
 LoggedData_0x1E6F55:
 INCBIN "baserom.gbc", $1E6F55, $1E6F63 - $1E6F55
 
-UnknownData_0x1E6F63:
+Unknown_0x1E6F63:
 INCBIN "baserom.gbc", $1E6F63, $1E6F66 - $1E6F63
 
 LoggedData_0x1E6F66:
 INCBIN "baserom.gbc", $1E6F66, $1E6F6D - $1E6F66
 
-UnknownData_0x1E6F6D:
+Unknown_0x1E6F6D:
 INCBIN "baserom.gbc", $1E6F6D, $1E6F78 - $1E6F6D
 
 LoggedData_0x1E6F78:
 INCBIN "baserom.gbc", $1E6F78, $1E6F7C - $1E6F78
 
-UnknownData_0x1E6F7C:
+Unknown_0x1E6F7C:
 INCBIN "baserom.gbc", $1E6F7C, $1E6F7D - $1E6F7C
 
 LoggedData_0x1E6F7D:
 INCBIN "baserom.gbc", $1E6F7D, $1E6F86 - $1E6F7D
 
-UnknownData_0x1E6F86:
+Unknown_0x1E6F86:
 INCBIN "baserom.gbc", $1E6F86, $1E8000 - $1E6F86
 
 SECTION "Bank7A", ROMX, BANK[$7A]
 
-UnknownData_0x1E8000:
+Unknown_0x1E8000:
 INCBIN "baserom.gbc", $1E8000, $1EC000 - $1E8000
 
 SECTION "Bank7B", ROMX, BANK[$7B]
@@ -164306,7 +164306,7 @@ Logged_0x1ECB9B:
 	ret nz
 	jp Logged_0x1EC845
 
-UnknownData_0x1ECBB2:
+Unknown_0x1ECBB2:
 INCBIN "baserom.gbc", $1ECBB2, $1ECBF1 - $1ECBB2
 
 Unknown_0x1ECBF1:
@@ -165661,7 +165661,7 @@ Logged_0x1ED65A:
 	call Logged_0x14F6
 	jp Logged_0x1ED331
 
-UnknownData_0x1ED660:
+Unknown_0x1ED660:
 INCBIN "baserom.gbc", $1ED660, $1ED6EE - $1ED660
 
 Unknown_0x1ED6EE:
@@ -166905,7 +166905,7 @@ Logged_0x1EE02E:
 Logged_0x1EE04C:
 	ret
 
-UnknownData_0x1EE04D:
+Unknown_0x1EE04D:
 INCBIN "baserom.gbc", $1EE04D, $1F0000 - $1EE04D
 
 SECTION "Bank7C", ROMX, BANK[$7C]
@@ -166971,7 +166971,7 @@ SECTION "Bank7C", ROMX, BANK[$7C]
 	dw Unknown_0x028D
 	dw Unknown_0x028D
 	call Logged_0x08E6
-	ld hl,$C09B
+	ld hl,wGameState
 	ld a,$04
 	ld [hli],a
 	ld [hl],$01
@@ -168040,7 +168040,7 @@ Logged_0x1F08AF:
 	ld a,$E7
 	ld [rLCDC],a
 	ld a,$01
-	ld [$C09B],a
+	ld [wGameState],a
 	ld a,[$CED5]
 	ld [$C09C],a
 	ret
@@ -168048,7 +168048,7 @@ Logged_0x1F08AF:
 Logged_0x1F08D8:
 	xor a
 	ld [$C09A],a
-	ld hl,$C09B
+	ld hl,wGameState
 	ld [hl],$09
 	xor a
 	ld [$C09C],a
@@ -168057,7 +168057,7 @@ Logged_0x1F08D8:
 Logged_0x1F08E6:
 	xor a
 	ld [$C09A],a
-	ld hl,$C09B
+	ld hl,wGameState
 	ld [hl],$0C
 	xor a
 	ld [$C09C],a
@@ -168070,7 +168070,7 @@ Logged_0x1F08F4:
 	call Decompress_BC_HL
 	ret
 
-UnknownData_0x1F0901:
+Unknown_0x1F0901:
 INCBIN "baserom.gbc", $1F0901, $1F0919 - $1F0901
 	ld hl,$7610
 	call Logged_0x1A15
@@ -169871,145 +169871,145 @@ Logged_0x1F14F6:
 LoggedData_0x1F156C:
 INCBIN "baserom.gbc", $1F156C, $1F157A - $1F156C
 
-UnknownData_0x1F157A:
+Unknown_0x1F157A:
 INCBIN "baserom.gbc", $1F157A, $1F157E - $1F157A
 
 LoggedData_0x1F157E:
 INCBIN "baserom.gbc", $1F157E, $1F158C - $1F157E
 
-UnknownData_0x1F158C:
+Unknown_0x1F158C:
 INCBIN "baserom.gbc", $1F158C, $1F158E - $1F158C
 
 LoggedData_0x1F158E:
 INCBIN "baserom.gbc", $1F158E, $1F15B4 - $1F158E
 
-UnknownData_0x1F15B4:
+Unknown_0x1F15B4:
 INCBIN "baserom.gbc", $1F15B4, $1F15BA - $1F15B4
 
 LoggedData_0x1F15BA:
 INCBIN "baserom.gbc", $1F15BA, $1F15BC - $1F15BA
 
-UnknownData_0x1F15BC:
+Unknown_0x1F15BC:
 INCBIN "baserom.gbc", $1F15BC, $1F15C0 - $1F15BC
 
 LoggedData_0x1F15C0:
 INCBIN "baserom.gbc", $1F15C0, $1F15C4 - $1F15C0
 
-UnknownData_0x1F15C4:
+Unknown_0x1F15C4:
 INCBIN "baserom.gbc", $1F15C4, $1F15CE - $1F15C4
 
 LoggedData_0x1F15CE:
 INCBIN "baserom.gbc", $1F15CE, $1F15D0 - $1F15CE
 
-UnknownData_0x1F15D0:
+Unknown_0x1F15D0:
 INCBIN "baserom.gbc", $1F15D0, $1F15D2 - $1F15D0
 
 LoggedData_0x1F15D2:
 INCBIN "baserom.gbc", $1F15D2, $1F163D - $1F15D2
 
-UnknownData_0x1F163D:
+Unknown_0x1F163D:
 INCBIN "baserom.gbc", $1F163D, $1F169F - $1F163D
 
 LoggedData_0x1F169F:
 INCBIN "baserom.gbc", $1F169F, $1F1915 - $1F169F
 
-UnknownData_0x1F1915:
+Unknown_0x1F1915:
 INCBIN "baserom.gbc", $1F1915, $1F1954 - $1F1915
 
 LoggedData_0x1F1954:
 INCBIN "baserom.gbc", $1F1954, $1F1989 - $1F1954
 
-UnknownData_0x1F1989:
+Unknown_0x1F1989:
 INCBIN "baserom.gbc", $1F1989, $1F19FB - $1F1989
 
 LoggedData_0x1F19FB:
 INCBIN "baserom.gbc", $1F19FB, $1F1A75 - $1F19FB
 
-UnknownData_0x1F1A75:
+Unknown_0x1F1A75:
 INCBIN "baserom.gbc", $1F1A75, $1F1B7E - $1F1A75
 
 LoggedData_0x1F1B7E:
 INCBIN "baserom.gbc", $1F1B7E, $1F1BAB - $1F1B7E
 
-UnknownData_0x1F1BAB:
+Unknown_0x1F1BAB:
 INCBIN "baserom.gbc", $1F1BAB, $1F1BD8 - $1F1BAB
 
 LoggedData_0x1F1BD8:
 INCBIN "baserom.gbc", $1F1BD8, $1F1C4C - $1F1BD8
 
-UnknownData_0x1F1C4C:
+Unknown_0x1F1C4C:
 INCBIN "baserom.gbc", $1F1C4C, $1F1C4D - $1F1C4C
 
 LoggedData_0x1F1C4D:
 INCBIN "baserom.gbc", $1F1C4D, $1F1C4F - $1F1C4D
 
-UnknownData_0x1F1C4F:
+Unknown_0x1F1C4F:
 INCBIN "baserom.gbc", $1F1C4F, $1F1C50 - $1F1C4F
 
 LoggedData_0x1F1C50:
 INCBIN "baserom.gbc", $1F1C50, $1F1C52 - $1F1C50
 
-UnknownData_0x1F1C52:
+Unknown_0x1F1C52:
 INCBIN "baserom.gbc", $1F1C52, $1F1C69 - $1F1C52
 
 LoggedData_0x1F1C69:
 INCBIN "baserom.gbc", $1F1C69, $1F1C9E - $1F1C69
 
-UnknownData_0x1F1C9E:
+Unknown_0x1F1C9E:
 INCBIN "baserom.gbc", $1F1C9E, $1F1C9F - $1F1C9E
 
 LoggedData_0x1F1C9F:
 INCBIN "baserom.gbc", $1F1C9F, $1F1CEF - $1F1C9F
 
-UnknownData_0x1F1CEF:
+Unknown_0x1F1CEF:
 INCBIN "baserom.gbc", $1F1CEF, $1F1CF0 - $1F1CEF
 
 LoggedData_0x1F1CF0:
 INCBIN "baserom.gbc", $1F1CF0, $1F1CF2 - $1F1CF0
 
-UnknownData_0x1F1CF2:
+Unknown_0x1F1CF2:
 INCBIN "baserom.gbc", $1F1CF2, $1F1CF3 - $1F1CF2
 
 LoggedData_0x1F1CF3:
 INCBIN "baserom.gbc", $1F1CF3, $1F1CF5 - $1F1CF3
 
-UnknownData_0x1F1CF5:
+Unknown_0x1F1CF5:
 INCBIN "baserom.gbc", $1F1CF5, $1F1CF6 - $1F1CF5
 
 LoggedData_0x1F1CF6:
 INCBIN "baserom.gbc", $1F1CF6, $1F1CF8 - $1F1CF6
 
-UnknownData_0x1F1CF8:
+Unknown_0x1F1CF8:
 INCBIN "baserom.gbc", $1F1CF8, $1F1CF9 - $1F1CF8
 
 LoggedData_0x1F1CF9:
 INCBIN "baserom.gbc", $1F1CF9, $1F1CFB - $1F1CF9
 
-UnknownData_0x1F1CFB:
+Unknown_0x1F1CFB:
 INCBIN "baserom.gbc", $1F1CFB, $1F1D0A - $1F1CFB
 
 LoggedData_0x1F1D0A:
 INCBIN "baserom.gbc", $1F1D0A, $1F1D1B - $1F1D0A
 
-UnknownData_0x1F1D1B:
+Unknown_0x1F1D1B:
 INCBIN "baserom.gbc", $1F1D1B, $1F1D41 - $1F1D1B
 
 LoggedData_0x1F1D41:
 INCBIN "baserom.gbc", $1F1D41, $1F1D43 - $1F1D41
 
-UnknownData_0x1F1D43:
+Unknown_0x1F1D43:
 INCBIN "baserom.gbc", $1F1D43, $1F1D4C - $1F1D43
 
 LoggedData_0x1F1D4C:
 INCBIN "baserom.gbc", $1F1D4C, $1F2BC2 - $1F1D4C
 
-UnknownData_0x1F2BC2:
+Unknown_0x1F2BC2:
 INCBIN "baserom.gbc", $1F2BC2, $1F3610 - $1F2BC2
 
 LoggedData_0x1F3610:
 INCBIN "baserom.gbc", $1F3610, $1F369E - $1F3610
 
-UnknownData_0x1F369E:
+Unknown_0x1F369E:
 INCBIN "baserom.gbc", $1F369E, $1F4000 - $1F369E
 
 SECTION "Bank7D", ROMX, BANK[$7D]
@@ -170226,13 +170226,13 @@ Unknown_0x1F4060:
 LoggedData_0x1F4182:
 INCBIN "baserom.gbc", $1F4182, $1F603A - $1F4182
 
-UnknownData_0x1F603A:
+Unknown_0x1F603A:
 INCBIN "baserom.gbc", $1F603A, $1F628C - $1F603A
 
 LoggedData_0x1F628C:
 INCBIN "baserom.gbc", $1F628C, $1F6AF3 - $1F628C
 
-UnknownData_0x1F6AF3:
+Unknown_0x1F6AF3:
 INCBIN "baserom.gbc", $1F6AF3, $1F8000 - $1F6AF3
 
 SECTION "Bank7E", ROMX, BANK[$7E]
@@ -178517,7 +178517,7 @@ Unknown_0x1FB774:
 	ld [$FF00+$B6],a
 	ret
 
-UnknownData_0x1FB780:
+Unknown_0x1FB780:
 INCBIN "baserom.gbc", $1FB780, $1FB78A - $1FB780
 
 Logged_0x1FB78A:
@@ -179542,7 +179542,7 @@ Logged_0x1FBDC5:
 	ld [hli],a
 	ret
 
-UnknownData_0x1FBDE3:
+Unknown_0x1FBDE3:
 INCBIN "baserom.gbc", $1FBDE3, $1FC000 - $1FBDE3
 
 SECTION "Bank7F", ROMX, BANK[$7F]
@@ -179550,209 +179550,209 @@ SECTION "Bank7F", ROMX, BANK[$7F]
 LoggedData_0x1FC000:
 INCBIN "baserom.gbc", $1FC000, $1FC006 - $1FC000
 
-UnknownData_0x1FC006:
+Unknown_0x1FC006:
 INCBIN "baserom.gbc", $1FC006, $1FC008 - $1FC006
 
 LoggedData_0x1FC008:
 INCBIN "baserom.gbc", $1FC008, $1FC085 - $1FC008
 
-UnknownData_0x1FC085:
+Unknown_0x1FC085:
 INCBIN "baserom.gbc", $1FC085, $1FC0A2 - $1FC085
 
 LoggedData_0x1FC0A2:
 INCBIN "baserom.gbc", $1FC0A2, $1FC31A - $1FC0A2
 
-UnknownData_0x1FC31A:
+Unknown_0x1FC31A:
 INCBIN "baserom.gbc", $1FC31A, $1FC31B - $1FC31A
 
 LoggedData_0x1FC31B:
 INCBIN "baserom.gbc", $1FC31B, $1FC882 - $1FC31B
 
-UnknownData_0x1FC882:
+Unknown_0x1FC882:
 INCBIN "baserom.gbc", $1FC882, $1FC894 - $1FC882
 
 LoggedData_0x1FC894:
 INCBIN "baserom.gbc", $1FC894, $1FCC84 - $1FC894
 
-UnknownData_0x1FCC84:
+Unknown_0x1FCC84:
 INCBIN "baserom.gbc", $1FCC84, $1FCC85 - $1FCC84
 
 LoggedData_0x1FCC85:
 INCBIN "baserom.gbc", $1FCC85, $1FCC98 - $1FCC85
 
-UnknownData_0x1FCC98:
+Unknown_0x1FCC98:
 INCBIN "baserom.gbc", $1FCC98, $1FCCB2 - $1FCC98
 
 LoggedData_0x1FCCB2:
 INCBIN "baserom.gbc", $1FCCB2, $1FCCCC - $1FCCB2
 
-UnknownData_0x1FCCCC:
+Unknown_0x1FCCCC:
 INCBIN "baserom.gbc", $1FCCCC, $1FCCD5 - $1FCCCC
 
 LoggedData_0x1FCCD5:
 INCBIN "baserom.gbc", $1FCCD5, $1FCCE1 - $1FCCD5
 
-UnknownData_0x1FCCE1:
+Unknown_0x1FCCE1:
 INCBIN "baserom.gbc", $1FCCE1, $1FCCE5 - $1FCCE1
 
 LoggedData_0x1FCCE5:
 INCBIN "baserom.gbc", $1FCCE5, $1FCCEF - $1FCCE5
 
-UnknownData_0x1FCCEF:
+Unknown_0x1FCCEF:
 INCBIN "baserom.gbc", $1FCCEF, $1FCCF7 - $1FCCEF
 
 LoggedData_0x1FCCF7:
 INCBIN "baserom.gbc", $1FCCF7, $1FCDC1 - $1FCCF7
 
-UnknownData_0x1FCDC1:
+Unknown_0x1FCDC1:
 INCBIN "baserom.gbc", $1FCDC1, $1FCE03 - $1FCDC1
 
 LoggedData_0x1FCE03:
 INCBIN "baserom.gbc", $1FCE03, $1FCEA8 - $1FCE03
 
-UnknownData_0x1FCEA8:
+Unknown_0x1FCEA8:
 INCBIN "baserom.gbc", $1FCEA8, $1FCF2C - $1FCEA8
 
 LoggedData_0x1FCF2C:
 INCBIN "baserom.gbc", $1FCF2C, $1FCF86 - $1FCF2C
 
-UnknownData_0x1FCF86:
+Unknown_0x1FCF86:
 INCBIN "baserom.gbc", $1FCF86, $1FCF9F - $1FCF86
 
 LoggedData_0x1FCF9F:
 INCBIN "baserom.gbc", $1FCF9F, $1FCFAB - $1FCF9F
 
-UnknownData_0x1FCFAB:
+Unknown_0x1FCFAB:
 INCBIN "baserom.gbc", $1FCFAB, $1FCFD7 - $1FCFAB
 
 LoggedData_0x1FCFD7:
 INCBIN "baserom.gbc", $1FCFD7, $1FCFDE - $1FCFD7
 
-UnknownData_0x1FCFDE:
+Unknown_0x1FCFDE:
 INCBIN "baserom.gbc", $1FCFDE, $1FD031 - $1FCFDE
 
 LoggedData_0x1FD031:
 INCBIN "baserom.gbc", $1FD031, $1FD055 - $1FD031
 
-UnknownData_0x1FD055:
+Unknown_0x1FD055:
 INCBIN "baserom.gbc", $1FD055, $1FD057 - $1FD055
 
 LoggedData_0x1FD057:
 INCBIN "baserom.gbc", $1FD057, $1FD2A9 - $1FD057
 
-UnknownData_0x1FD2A9:
+Unknown_0x1FD2A9:
 INCBIN "baserom.gbc", $1FD2A9, $1FD2B2 - $1FD2A9
 
 LoggedData_0x1FD2B2:
 INCBIN "baserom.gbc", $1FD2B2, $1FD429 - $1FD2B2
 
-UnknownData_0x1FD429:
+Unknown_0x1FD429:
 INCBIN "baserom.gbc", $1FD429, $1FD42C - $1FD429
 
 LoggedData_0x1FD42C:
 INCBIN "baserom.gbc", $1FD42C, $1FD431 - $1FD42C
 
-UnknownData_0x1FD431:
+Unknown_0x1FD431:
 INCBIN "baserom.gbc", $1FD431, $1FD434 - $1FD431
 
 LoggedData_0x1FD434:
 INCBIN "baserom.gbc", $1FD434, $1FD45C - $1FD434
 
-UnknownData_0x1FD45C:
+Unknown_0x1FD45C:
 INCBIN "baserom.gbc", $1FD45C, $1FD45F - $1FD45C
 
 LoggedData_0x1FD45F:
 INCBIN "baserom.gbc", $1FD45F, $1FD46B - $1FD45F
 
-UnknownData_0x1FD46B:
+Unknown_0x1FD46B:
 INCBIN "baserom.gbc", $1FD46B, $1FD46C - $1FD46B
 
 LoggedData_0x1FD46C:
 INCBIN "baserom.gbc", $1FD46C, $1FD4B4 - $1FD46C
 
-UnknownData_0x1FD4B4:
+Unknown_0x1FD4B4:
 INCBIN "baserom.gbc", $1FD4B4, $1FD4D0 - $1FD4B4
 
 LoggedData_0x1FD4D0:
 INCBIN "baserom.gbc", $1FD4D0, $1FD67E - $1FD4D0
 
-UnknownData_0x1FD67E:
+Unknown_0x1FD67E:
 INCBIN "baserom.gbc", $1FD67E, $1FD81C - $1FD67E
 
 LoggedData_0x1FD81C:
 INCBIN "baserom.gbc", $1FD81C, $1FD837 - $1FD81C
 
-UnknownData_0x1FD837:
+Unknown_0x1FD837:
 INCBIN "baserom.gbc", $1FD837, $1FD841 - $1FD837
 
 LoggedData_0x1FD841:
 INCBIN "baserom.gbc", $1FD841, $1FD848 - $1FD841
 
-UnknownData_0x1FD848:
+Unknown_0x1FD848:
 INCBIN "baserom.gbc", $1FD848, $1FD87C - $1FD848
 
 LoggedData_0x1FD87C:
 INCBIN "baserom.gbc", $1FD87C, $1FEE0B - $1FD87C
 
-UnknownData_0x1FEE0B:
+Unknown_0x1FEE0B:
 INCBIN "baserom.gbc", $1FEE0B, $1FEE0F - $1FEE0B
 
 LoggedData_0x1FEE0F:
 INCBIN "baserom.gbc", $1FEE0F, $1FEE72 - $1FEE0F
 
-UnknownData_0x1FEE72:
+Unknown_0x1FEE72:
 INCBIN "baserom.gbc", $1FEE72, $1FEEB4 - $1FEE72
 
 LoggedData_0x1FEEB4:
 INCBIN "baserom.gbc", $1FEEB4, $1FEEBD - $1FEEB4
 
-UnknownData_0x1FEEBD:
+Unknown_0x1FEEBD:
 INCBIN "baserom.gbc", $1FEEBD, $1FEEC4 - $1FEEBD
 
 LoggedData_0x1FEEC4:
 INCBIN "baserom.gbc", $1FEEC4, $1FEF31 - $1FEEC4
 
-UnknownData_0x1FEF31:
+Unknown_0x1FEF31:
 INCBIN "baserom.gbc", $1FEF31, $1FEF3D - $1FEF31
 
 LoggedData_0x1FEF3D:
 INCBIN "baserom.gbc", $1FEF3D, $1FF4CA - $1FEF3D
 
-UnknownData_0x1FF4CA:
+Unknown_0x1FF4CA:
 INCBIN "baserom.gbc", $1FF4CA, $1FF560 - $1FF4CA
 
 LoggedData_0x1FF560:
 INCBIN "baserom.gbc", $1FF560, $1FF5FA - $1FF560
 
-UnknownData_0x1FF5FA:
+Unknown_0x1FF5FA:
 INCBIN "baserom.gbc", $1FF5FA, $1FF5FB - $1FF5FA
 
 LoggedData_0x1FF5FB:
 INCBIN "baserom.gbc", $1FF5FB, $1FF5FD - $1FF5FB
 
-UnknownData_0x1FF5FD:
+Unknown_0x1FF5FD:
 INCBIN "baserom.gbc", $1FF5FD, $1FF5FE - $1FF5FD
 
 LoggedData_0x1FF5FE:
 INCBIN "baserom.gbc", $1FF5FE, $1FF628 - $1FF5FE
 
-UnknownData_0x1FF628:
+Unknown_0x1FF628:
 INCBIN "baserom.gbc", $1FF628, $1FF64A - $1FF628
 
 LoggedData_0x1FF64A:
 INCBIN "baserom.gbc", $1FF64A, $1FF988 - $1FF64A
 
-UnknownData_0x1FF988:
+Unknown_0x1FF988:
 INCBIN "baserom.gbc", $1FF988, $1FFA12 - $1FF988
 
 LoggedData_0x1FFA12:
 INCBIN "baserom.gbc", $1FFA12, $1FFD15 - $1FFA12
 
-UnknownData_0x1FFD15:
+Unknown_0x1FFD15:
 INCBIN "baserom.gbc", $1FFD15, $1FFD16 - $1FFD15
 
 LoggedData_0x1FFD16:
 INCBIN "baserom.gbc", $1FFD16, $1FFD1B - $1FFD16
 
-UnknownData_0x1FFD1B:
+Unknown_0x1FFD1B:
 INCBIN "baserom.gbc", $1FFD1B, $200000 - $1FFD1B

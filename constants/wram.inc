@@ -1,0 +1,1 @@
+wGameState EQU $C09B;1 = map, 2 = level, 4 = pause
