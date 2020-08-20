@@ -1317,13 +1317,13 @@ Logged_0x096D:
 	ld [$C186],a
 	ld [$D506],a
 	ld a,$FF
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,wGameSubState
 	inc [hl]
 	jr Logged_0x095A
@@ -2447,9 +2447,9 @@ Logged_0x1062:
 
 Logged_0x1070:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$12
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1079:
@@ -2621,9 +2621,9 @@ Logged_0x11BA:
 Logged_0x11BC:
 	ld [$C1A9],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$08
 	ld [$C1AA],a
 	ld a,$01
@@ -2636,9 +2636,9 @@ Logged_0x11D6:
 	ld a,c
 	ld [$CA78],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$04
 	ld [$C1AA],a
 	ld a,$01
@@ -2692,13 +2692,13 @@ Logged_0x1246:
 	inc [hl]
 	inc [hl]
 	ld a,$FF
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1259:
@@ -3281,9 +3281,9 @@ Logged_0x1632:
 	ld hl,$7E40
 	add hl,de
 	ld a,[hli]
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,[hl]
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	pop af
 	ld [$C5FF],a
 	ld [rROMB0+$100],a
@@ -3297,9 +3297,9 @@ Logged_0x164D:
 	ld hl,$168A
 	add hl,de
 	ld a,[hli]
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,[hl]
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ret
 
 Logged_0x165D:
@@ -3319,9 +3319,9 @@ Logged_0x165D:
 	ld a,[hli]
 	cp $FF
 	jr z,Logged_0x1632
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,[hl]
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	pop af
 	ld [$C5FF],a
 	ld [rROMB0+$100],a
@@ -5710,19 +5710,19 @@ Logged_0x3B98:
 	jr nz,Logged_0x3BAB
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$21
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 Logged_0x3BAB:
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$22
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 Logged_0x3BB8:
@@ -6344,9 +6344,9 @@ Logged_0x41CF:
 	jp c,Logged_0x42CC
 	ld [hl],$00
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$34
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld hl,$D51D
 	inc [hl]
 	jp Logged_0x42CC
@@ -6561,18 +6561,18 @@ Logged_0x4357:
 	and a
 	jr nz,Logged_0x436C
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$23
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x436C:
 	ld hl,$CEE5
 	dec [hl]
 	jr nz,Logged_0x4394
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D519
 	xor a
 	ld [hli],a
@@ -6617,9 +6617,9 @@ Logged_0x43B5:
 	and a
 	jp z,Logged_0x4497
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$19
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D519
 	xor a
 	ld [hli],a
@@ -6693,9 +6693,9 @@ Logged_0x443A:
 	cp $70
 	jr c,Logged_0x4497
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$61
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D519
 	xor a
 	ld [hli],a
@@ -6735,9 +6735,9 @@ Logged_0x4466:
 	ld hl,$5042
 	call Logged_0x1A21
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$33
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld hl,wGameSubState
 	inc [hl]
 	jr Logged_0x449C
@@ -6789,9 +6789,9 @@ Logged_0x44E2:
 
 Logged_0x44F0:
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$33
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$08
 	ld [$CEE6],a
 	ld a,$44
@@ -7023,9 +7023,9 @@ Logged_0x4686:
 	cp GAME_STATE_LEVEL
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x4AE7
 	ld a,[$CA06]
 	cp $FF
@@ -7041,9 +7041,9 @@ Logged_0x46BD:
 
 Logged_0x46C3:
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x46CC:
@@ -7377,9 +7377,9 @@ Logged_0x48F7:
 	add a,$80
 	ld [$CEE4],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4907:
 	ld hl,$D52A
@@ -7815,9 +7815,9 @@ Logged_0x4BB3:
 
 Logged_0x4BDD:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D513
 	ld a,[hl]
 	and $0F
@@ -7857,9 +7857,9 @@ Logged_0x4C15:
 
 Logged_0x4C20:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x4C29:
@@ -8244,9 +8244,9 @@ Logged_0x4E5E:
 	ld a,$0C
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F6
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4E80:
 	ret
@@ -8259,9 +8259,9 @@ Logged_0x4E81:
 	ld a,$0C
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F7
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4E98:
 	ret
@@ -8274,9 +8274,9 @@ Logged_0x4E99:
 	ld a,$0C
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F8
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4EB0:
 	ret
@@ -8921,20 +8921,20 @@ Logged_0x82D8:
 
 Unknown_0x82FF:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x8308:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E4
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$FF
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld [$CED9],a
 	ld a,$01
@@ -18337,9 +18337,9 @@ Logged_0xCA87:
 	inc c
 	ld [bc],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$05
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	dec c
 	jr Logged_0xCAA8
 
@@ -20449,9 +20449,9 @@ Logged_0x1825A:
 	xor $01
 	ld [$CA6A],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$10
 	call Logged_0x12B5
 	jp Logged_0x18032
@@ -20669,9 +20669,9 @@ Logged_0x1848E:
 	ld a,$C1
 	ld [$C0D7],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$30
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$17
 	ld [$CA83],a
 	xor a
@@ -20759,9 +20759,9 @@ Logged_0x18560:
 	ld a,$C1
 	ld [$C0D7],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$30
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$18
 	ld [$CA83],a
 	xor a
@@ -20849,9 +20849,9 @@ Logged_0x18676:
 	add a,$08
 	ld [$CA64],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E6
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$2C
 	ld [$CA83],a
 	xor a
@@ -22529,9 +22529,9 @@ Logged_0x19423:
 
 Logged_0x19440:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$05
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x18020
 	ld b,$78
 	jr Logged_0x19469
@@ -24331,9 +24331,9 @@ Logged_0x1A077:
 
 Logged_0x1A0AB:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$82
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x1A0B4:
@@ -24459,9 +24459,9 @@ Logged_0x1A17E:
 
 Logged_0x1A1A7:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$36
 	ld [$CA83],a
 	xor a
@@ -24626,9 +24626,9 @@ Unknown_0x1A2D6:
 	ld a,$24
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$04
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1A2ED:
 	ld a,$05
@@ -24801,9 +24801,9 @@ Logged_0x1A436:
 	ld a,$20
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$38
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1A463:
 	ld a,$05
@@ -25044,9 +25044,9 @@ Logged_0x1A617:
 	ld a,$20
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$38
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1A62E:
 	ld a,[$CA69]
@@ -25087,9 +25087,9 @@ Logged_0x1A66B:
 	ld a,$3E
 	ld [$CA83],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CEED],a
 	ld [$CA84],a
@@ -25629,9 +25629,9 @@ Logged_0x1AA5C:
 	ld a,$45
 	ld [$CA83],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CEED],a
 	ld [$CA84],a
@@ -25853,9 +25853,9 @@ Unknown_0x1AC73:
 	and a
 	ret z
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$36
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA67],a
 	ld [$CA68],a
@@ -25891,9 +25891,9 @@ Unknown_0x1ACD0:
 	and a
 	jr z,Unknown_0x1ACDE
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$36
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1ACDE:
 	ld a,[$C093]
@@ -26154,9 +26154,9 @@ Logged_0x1AED0:
 	ld a,$20
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$38
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1AEE7:
 	ld a,$05
@@ -26340,9 +26340,9 @@ Logged_0x1B034:
 	ld a,$20
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$38
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1B04B:
 	ld a,$05
@@ -26359,9 +26359,9 @@ Logged_0x1B05E:
 	ld a,$51
 	ld [$CA83],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CEED],a
 	ld [$CA84],a
@@ -27245,9 +27245,9 @@ Logged_0x1C1AB:
 	ld a,$24
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$04
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1C1C2:
 	ld a,$05
@@ -27345,9 +27345,9 @@ Logged_0x1C244:
 
 Logged_0x1C270:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$CA75],a
 	ld a,$01
@@ -27385,9 +27385,9 @@ Logged_0x1C2B2:
 
 Logged_0x1C2B9:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA75],a
 	ld [$CA96],a
@@ -27785,9 +27785,9 @@ Logged_0x1C5AD:
 	and $80
 	jp nz,Logged_0x1E855
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$10
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$05
 	ld [$CA83],a
 	ld a,$05
@@ -27835,9 +27835,9 @@ Logged_0x1C60D:
 	and a
 	jr nz,Logged_0x1C61B
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$02
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1C61B:
 	xor a
@@ -27881,9 +27881,9 @@ Logged_0x1C65A:
 
 Logged_0x1C66B:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$33
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA67],a
 	ld [$CA68],a
@@ -27992,9 +27992,9 @@ Logged_0x1C73B:
 	ld [$CEED],a
 	ld [$CA89],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$06
 	ld [$CA83],a
 	ld a,$01
@@ -28224,9 +28224,9 @@ Logged_0x1C8DF:
 	ld a,$06
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$07
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1C8FD:
 	jr Logged_0x1C916
@@ -28239,9 +28239,9 @@ Logged_0x1C8FF:
 	ld a,$06
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$08
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1C916:
 	ld a,$05
@@ -28390,9 +28390,9 @@ Logged_0x1CA1B:
 
 Logged_0x1CA20:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA74]
 	and a
 	jr nz,Logged_0x1CA32
@@ -28406,9 +28406,9 @@ Logged_0x1CA34:
 	ld [$CA75],a
 	jr Logged_0x1CA46
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0A
 	ld [$CA75],a
 
@@ -28644,9 +28644,9 @@ Logged_0x1CBEC:
 	ld a,$06
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$07
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1CC09:
 	ld a,$05
@@ -28854,9 +28854,9 @@ Logged_0x1CD48:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$E5
 	ld [$CA6F],a
 	ld a,$05
@@ -29211,9 +29211,9 @@ Logged_0x1D008:
 	ld a,$1C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$37
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1D03F:
 	ld a,$05
@@ -29296,9 +29296,9 @@ Logged_0x1D0BA:
 	ld a,$1C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$37
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1D0EB:
 	ld a,$05
@@ -29561,9 +29561,9 @@ Logged_0x1D297:
 	ld a,$0F
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1D2CE:
 	ld a,$05
@@ -29585,9 +29585,9 @@ Logged_0x1D2EA:
 	xor $01
 	ld [$CA69],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0F
 	ld [$CA83],a
 	xor a
@@ -29829,9 +29829,9 @@ Logged_0x1D4A7:
 	ld a,$15
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$4A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1D4BE:
 	ld a,$05
@@ -30295,9 +30295,9 @@ Logged_0x1D7F9:
 
 Logged_0x1D804:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1D80D:
@@ -30337,9 +30337,9 @@ Logged_0x1D848:
 
 Logged_0x1D853:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1D85C:
@@ -30532,9 +30532,9 @@ Logged_0x1D995:
 	ld a,$24
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$04
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1D9CF:
 	ld a,$05
@@ -30794,9 +30794,9 @@ Logged_0x1DBA6:
 	and a
 	jr nz,Logged_0x1DBB7
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$10
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1DBB7:
 	xor a
@@ -30828,9 +30828,9 @@ Logged_0x1DBE3:
 	and a
 	jr nz,Logged_0x1DBF1
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$02
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1DBF1:
 	xor a
@@ -30863,9 +30863,9 @@ Logged_0x1DC14:
 
 Unknown_0x1DC25:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$33
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA67],a
 	ld [$CA68],a
@@ -30915,9 +30915,9 @@ Logged_0x1DC5F:
 
 Logged_0x1DC8B:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA67],a
 	ld [$CA68],a
@@ -31046,9 +31046,9 @@ Logged_0x1DD7F:
 	ld a,$1E
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1DD96:
 	ld a,[$CA9A]
@@ -31355,9 +31355,9 @@ Logged_0x1DFD4:
 	ld a,$0C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1DFEB:
 	ld a,$05
@@ -31471,9 +31471,9 @@ Logged_0x1E09D:
 	ld a,$0C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E0CA:
 	ld a,$05
@@ -31918,9 +31918,9 @@ Logged_0x1E3E8:
 	ld a,$24
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$04
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E3FF:
 	ld a,$05
@@ -33171,9 +33171,9 @@ Logged_0x1ED34:
 
 Logged_0x1ED3F:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA75],a
 
@@ -33253,9 +33253,9 @@ Logged_0x1EDD3:
 
 Logged_0x1EDE9:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA75],a
 	ld [$CA96],a
@@ -33863,9 +33863,9 @@ Logged_0x1F24C:
 	ld a,$25
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F263:
 	ld a,[$CA85]
@@ -34656,9 +34656,9 @@ Logged_0x1F7E6:
 	ld a,$3C
 	ld [$CA83],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CEED],a
 	ld [$CA84],a
@@ -35158,9 +35158,9 @@ Logged_0x202A5:
 
 Logged_0x202B5:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0E
 	ld [$CA75],a
 	ld a,$01
@@ -35234,9 +35234,9 @@ Logged_0x20344:
 
 Logged_0x20350:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$17
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA88]
 	ld b,a
 	ld a,[$C1BF]
@@ -35545,9 +35545,9 @@ Logged_0x20575:
 
 Logged_0x20578:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$04
 	jp Logged_0x20657
 
@@ -35580,9 +35580,9 @@ Logged_0x205AF:
 
 Logged_0x205B7:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$04
 	call Logged_0x20657
 	ld a,[$CA8E]
@@ -35767,9 +35767,9 @@ Logged_0x206F9:
 	ld a,$01
 	ld [$CA8C],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$13
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$15
 	ld [$CA83],a
 	xor a
@@ -35906,9 +35906,9 @@ Logged_0x20808:
 
 Logged_0x2080D:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$13
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$CA8C],a
 	ld a,$10
@@ -36000,9 +36000,9 @@ Logged_0x208C2:
 
 Logged_0x208CA:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$04
 	call Logged_0x20657
 	ld a,[$CA8E]
@@ -36499,9 +36499,9 @@ INCBIN "baserom.gbc", $20C44, $20C5E - $20C44
 
 Logged_0x20C5E:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$15
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA67],a
 	ld [$CA68],a
@@ -36793,9 +36793,9 @@ Logged_0x20E82:
 	jp nc,Logged_0x20028
 	inc [hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$31
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x21DDB
 
 Logged_0x20E97:
@@ -36981,9 +36981,9 @@ Logged_0x21002:
 
 Logged_0x21007:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$32
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x20A63
 	ld a,GAME_STATE_LEVEL_SLOW
 	ld [wGameState],a
@@ -37052,9 +37052,9 @@ Logged_0x2107C:
 
 Logged_0x2109A:
 	ld a,$FF
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	call Logged_0x20A63
 	call Logged_0x20203
 	ld hl,$CED4
@@ -37309,9 +37309,9 @@ Logged_0x212B3:
 
 Logged_0x212B8:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$39
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$C3
 	ld [$CA8E],a
 	xor a
@@ -37420,9 +37420,9 @@ Logged_0x21373:
 
 Logged_0x213BB:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x161A
 	ld a,$77
 	ld [$CA83],a
@@ -37494,9 +37494,9 @@ Logged_0x21433:
 
 Logged_0x2144A:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$09
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x20A63
 
 Logged_0x21455:
@@ -37539,9 +37539,9 @@ Logged_0x21492:
 
 Logged_0x21497:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$40
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA84],a
 	ld [$CA85],a
@@ -37675,9 +37675,9 @@ Logged_0x215A2:
 	ld b,$06
 	call Logged_0x20657
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$28
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$48
 	ld [$CA8E],a
 	ld a,$04
@@ -38085,9 +38085,9 @@ Logged_0x218B6:
 	ld b,$07
 	call Logged_0x20657
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$28
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$4D
 	ld [$CA8E],a
 	ld a,$03
@@ -38119,9 +38119,9 @@ Logged_0x218F1:
 	ret z
 	call Logged_0x20A63
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$21
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0E
 	ld [$CA8E],a
 	ld a,$02
@@ -38191,9 +38191,9 @@ Logged_0x21999:
 	ld b,$06
 	call Logged_0x20657
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$21
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0F
 	ld [$CA8E],a
 	ld a,$02
@@ -38612,9 +38612,9 @@ Logged_0x21CA8:
 	and a
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$06
 	ld [$FF00+$85],a
 	ld a,$B6
@@ -38633,9 +38633,9 @@ Unknown_0x21CCF:
 	ld [$C0D7],a
 	call Logged_0x2080D
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$34
 	ld [$CA83],a
 	ld b,$10
@@ -38658,9 +38658,9 @@ Logged_0x21CFD:
 	ld [$C0D7],a
 	call Logged_0x206EB
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$33
 	ld [$CA83],a
 	ld b,$10
@@ -38764,9 +38764,9 @@ Logged_0x21DAC:
 
 Logged_0x21DD3:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$4B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x21DDB:
 	ld hl,$CA05
@@ -38918,9 +38918,9 @@ Logged_0x21EDD:
 
 Logged_0x21EE7:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$06
 	ld [$FF00+$85],a
 	ld a,$B6
@@ -39608,9 +39608,9 @@ Logged_0x280A6:
 	ld a,$0E
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x280D3:
 	ld a,[$CA84]
@@ -39856,9 +39856,9 @@ Logged_0x2827A:
 	ld a,$10
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x282A7:
 	ld a,$05
@@ -39924,9 +39924,9 @@ Logged_0x282EA:
 
 Logged_0x28313:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$22
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$64
 	ld [$CA83],a
 	xor a
@@ -40110,9 +40110,9 @@ Logged_0x2846D:
 	ld a,$42
 	ld [$CA8E],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x161A
 	ld a,$02
 	ld [$CA93],a
@@ -40355,9 +40355,9 @@ Logged_0x28672:
 	ld a,$0A
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x2869F:
 	ld a,$05
@@ -40389,9 +40389,9 @@ Logged_0x2869F:
 
 Logged_0x286D1:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$69
 	ld [$CA83],a
 	xor a
@@ -40566,9 +40566,9 @@ Logged_0x28816:
 	and a
 	jp z,Logged_0x288B8
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA69]
 	xor $01
 	ld [$CA69],a
@@ -40667,9 +40667,9 @@ Logged_0x288B8:
 
 Logged_0x288D7:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$20
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x14F6
 	jp Logged_0x285B8
 
@@ -40998,9 +40998,9 @@ Logged_0x28B36:
 	ld a,$0C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x28B63:
 	ld a,$05
@@ -41173,9 +41173,9 @@ Logged_0x28C94:
 	xor a
 	ld [$CA8F],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$73
 	ld [$CA83],a
 	ld a,$0A
@@ -41255,9 +41255,9 @@ Logged_0x28D38:
 	ld [$CA69],a
 	call Logged_0x14F6
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$74
 	ld [$CA83],a
 	ld a,$FF
@@ -41301,9 +41301,9 @@ Logged_0x28D92:
 	and a
 	ret z
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$75
 	ld [$CA83],a
 	ld a,$FF
@@ -41590,9 +41590,9 @@ Logged_0x28FC0:
 	ld a,$1C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x28FED:
 	ld a,$05
@@ -41691,9 +41691,9 @@ Logged_0x2906D:
 
 Logged_0x290A1:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA75],a
 	ld [$CA96],a
@@ -41872,9 +41872,9 @@ Logged_0x291F1:
 	and a
 	jr nz,Logged_0x291FF
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$24
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x291FF:
 	ld a,$7C
@@ -41957,9 +41957,9 @@ Logged_0x2926A:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$7D
 	ld [$CA83],a
 	xor a
@@ -42421,9 +42421,9 @@ Logged_0x295D2:
 
 Logged_0x295D8:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$41
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA69]
 	and a
 	jr nz,Logged_0x29601
@@ -42523,9 +42523,9 @@ Logged_0x29672:
 	ret z
 	jp Logged_0x1570
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA84],a
 	ld [$CA85],a
@@ -42629,9 +42629,9 @@ Logged_0x2972E:
 	ld a,$01
 	ld [$CA94],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$25
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$83
 	ld [$CA83],a
 	ld a,$FF
@@ -42765,9 +42765,9 @@ Logged_0x29871:
 	ld a,$20
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$26
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x2989E:
 	ld a,[$CA7E]
@@ -42846,9 +42846,9 @@ Logged_0x29922:
 
 Logged_0x2992A:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$27
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$86
 	ld [$CA83],a
 	xor a
@@ -43097,9 +43097,9 @@ Logged_0x29B06:
 	ld a,$24
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$29
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x29B33:
 	ld a,$7F
@@ -43336,9 +43336,9 @@ Logged_0x29CD5:
 
 Logged_0x29CDE:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$02
 	ld [$CA93],a
 	ld a,$02
@@ -43859,9 +43859,9 @@ Logged_0x2A0CB:
 	ld a,$92
 	ld [$CA83],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA67],a
 	ld [$CA68],a
@@ -44255,9 +44255,9 @@ Logged_0x2A3E1:
 	ret nz
 	jp Logged_0x1570
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$42
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$97
 	ld [$CA83],a
 	ld a,$FF
@@ -44377,9 +44377,9 @@ Logged_0x2A4CF:
 	ret c
 	ld [hl],$00
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$43
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$98
 	ld [$CA83],a
 	xor a
@@ -44430,9 +44430,9 @@ Logged_0x2A544:
 
 Logged_0x2A558:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$43
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$99
 	ld [$CA83],a
 	ld a,$02
@@ -44872,9 +44872,9 @@ Logged_0x2A8A7:
 
 Logged_0x2A8AE:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA75],a
 
@@ -44958,9 +44958,9 @@ Logged_0x2A945:
 
 Logged_0x2A951:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$46
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$A0
 	ld [$CA83],a
 	ld a,$F1
@@ -45072,9 +45072,9 @@ Logged_0x2AA08:
 	ld a,$20
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x2AA39:
 	ld a,$7F
@@ -45110,16 +45110,16 @@ Logged_0x2AA55:
 	ld a,$F1
 	ld [$CA6F],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x2AA81:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$45
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$A2
 	ld [$CA83],a
 	ld a,$04
@@ -45225,9 +45225,9 @@ Logged_0x2AB42:
 	ld a,$10
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x2AB7C:
 	ld a,$7F
@@ -45437,9 +45437,9 @@ Logged_0x2AD06:
 	ld a,$0E
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$23
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x2AD32:
 	ld a,$7F
@@ -45563,9 +45563,9 @@ Logged_0x2ADE4:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$07
 	ld [$FF00+$85],a
 	ld a,$7C
@@ -45781,9 +45781,9 @@ Logged_0x2AF75:
 
 Logged_0x2AF81:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA75],a
 	ld a,$02
@@ -47346,7 +47346,7 @@ Logged_0x30315:
 	add hl,hl
 	add hl,hl
 	add hl,hl
-	ld bc,$555E
+	ld bc,MusicPointers - 8
 	add hl,bc
 	ld a,[hli]
 	ld e,a
@@ -49918,3664 +49918,10 @@ Unknown_0x31526:
 INCBIN "baserom.gbc", $31526, $31546 - $31526
 
 LoggedData_0x31546:
-INCBIN "baserom.gbc", $31546, $31569 - $31546
+INCBIN "baserom.gbc", $31546, $31566 - $31546
 
-Unknown_0x31569:
-INCBIN "baserom.gbc", $31569, $3156A - $31569
-
-LoggedData_0x3156A:
-INCBIN "baserom.gbc", $3156A, $3156D - $3156A
-
-Unknown_0x3156D:
-INCBIN "baserom.gbc", $3156D, $3156E - $3156D
-
-LoggedData_0x3156E:
-INCBIN "baserom.gbc", $3156E, $31571 - $3156E
-
-Unknown_0x31571:
-INCBIN "baserom.gbc", $31571, $31572 - $31571
-
-LoggedData_0x31572:
-INCBIN "baserom.gbc", $31572, $31575 - $31572
-
-Unknown_0x31575:
-INCBIN "baserom.gbc", $31575, $31576 - $31575
-
-LoggedData_0x31576:
-INCBIN "baserom.gbc", $31576, $31579 - $31576
-
-Unknown_0x31579:
-INCBIN "baserom.gbc", $31579, $3157A - $31579
-
-LoggedData_0x3157A:
-INCBIN "baserom.gbc", $3157A, $3157D - $3157A
-
-Unknown_0x3157D:
-INCBIN "baserom.gbc", $3157D, $3157E - $3157D
-
-LoggedData_0x3157E:
-INCBIN "baserom.gbc", $3157E, $31581 - $3157E
-
-Unknown_0x31581:
-INCBIN "baserom.gbc", $31581, $31582 - $31581
-
-LoggedData_0x31582:
-INCBIN "baserom.gbc", $31582, $31585 - $31582
-
-Unknown_0x31585:
-INCBIN "baserom.gbc", $31585, $31586 - $31585
-
-LoggedData_0x31586:
-INCBIN "baserom.gbc", $31586, $31589 - $31586
-
-Unknown_0x31589:
-INCBIN "baserom.gbc", $31589, $3158A - $31589
-
-LoggedData_0x3158A:
-INCBIN "baserom.gbc", $3158A, $3158D - $3158A
-
-Unknown_0x3158D:
-INCBIN "baserom.gbc", $3158D, $3158E - $3158D
-
-LoggedData_0x3158E:
-INCBIN "baserom.gbc", $3158E, $31591 - $3158E
-
-Unknown_0x31591:
-INCBIN "baserom.gbc", $31591, $31592 - $31591
-
-LoggedData_0x31592:
-INCBIN "baserom.gbc", $31592, $31595 - $31592
-
-Unknown_0x31595:
-INCBIN "baserom.gbc", $31595, $31596 - $31595
-
-LoggedData_0x31596:
-INCBIN "baserom.gbc", $31596, $31599 - $31596
-
-Unknown_0x31599:
-INCBIN "baserom.gbc", $31599, $3159A - $31599
-
-LoggedData_0x3159A:
-INCBIN "baserom.gbc", $3159A, $3159D - $3159A
-
-Unknown_0x3159D:
-INCBIN "baserom.gbc", $3159D, $3159E - $3159D
-
-LoggedData_0x3159E:
-INCBIN "baserom.gbc", $3159E, $315A1 - $3159E
-
-Unknown_0x315A1:
-INCBIN "baserom.gbc", $315A1, $315A2 - $315A1
-
-LoggedData_0x315A2:
-INCBIN "baserom.gbc", $315A2, $315A5 - $315A2
-
-Unknown_0x315A5:
-INCBIN "baserom.gbc", $315A5, $315A6 - $315A5
-
-LoggedData_0x315A6:
-INCBIN "baserom.gbc", $315A6, $315A9 - $315A6
-
-Unknown_0x315A9:
-INCBIN "baserom.gbc", $315A9, $315AA - $315A9
-
-LoggedData_0x315AA:
-INCBIN "baserom.gbc", $315AA, $315AD - $315AA
-
-Unknown_0x315AD:
-INCBIN "baserom.gbc", $315AD, $315AE - $315AD
-
-LoggedData_0x315AE:
-INCBIN "baserom.gbc", $315AE, $315B1 - $315AE
-
-Unknown_0x315B1:
-INCBIN "baserom.gbc", $315B1, $315B2 - $315B1
-
-LoggedData_0x315B2:
-INCBIN "baserom.gbc", $315B2, $315B5 - $315B2
-
-Unknown_0x315B5:
-INCBIN "baserom.gbc", $315B5, $315B6 - $315B5
-
-LoggedData_0x315B6:
-INCBIN "baserom.gbc", $315B6, $315B9 - $315B6
-
-Unknown_0x315B9:
-INCBIN "baserom.gbc", $315B9, $315BA - $315B9
-
-LoggedData_0x315BA:
-INCBIN "baserom.gbc", $315BA, $315BD - $315BA
-
-Unknown_0x315BD:
-INCBIN "baserom.gbc", $315BD, $315BE - $315BD
-
-LoggedData_0x315BE:
-INCBIN "baserom.gbc", $315BE, $315C1 - $315BE
-
-Unknown_0x315C1:
-INCBIN "baserom.gbc", $315C1, $315C2 - $315C1
-
-LoggedData_0x315C2:
-INCBIN "baserom.gbc", $315C2, $315C5 - $315C2
-
-Unknown_0x315C5:
-INCBIN "baserom.gbc", $315C5, $315C6 - $315C5
-
-LoggedData_0x315C6:
-INCBIN "baserom.gbc", $315C6, $315C9 - $315C6
-
-Unknown_0x315C9:
-INCBIN "baserom.gbc", $315C9, $315CA - $315C9
-
-LoggedData_0x315CA:
-INCBIN "baserom.gbc", $315CA, $315CD - $315CA
-
-Unknown_0x315CD:
-INCBIN "baserom.gbc", $315CD, $315CE - $315CD
-
-LoggedData_0x315CE:
-INCBIN "baserom.gbc", $315CE, $315D1 - $315CE
-
-Unknown_0x315D1:
-INCBIN "baserom.gbc", $315D1, $315D2 - $315D1
-
-LoggedData_0x315D2:
-INCBIN "baserom.gbc", $315D2, $315D5 - $315D2
-
-Unknown_0x315D5:
-INCBIN "baserom.gbc", $315D5, $315D6 - $315D5
-
-LoggedData_0x315D6:
-INCBIN "baserom.gbc", $315D6, $315D9 - $315D6
-
-Unknown_0x315D9:
-INCBIN "baserom.gbc", $315D9, $315DA - $315D9
-
-LoggedData_0x315DA:
-INCBIN "baserom.gbc", $315DA, $315DD - $315DA
-
-Unknown_0x315DD:
-INCBIN "baserom.gbc", $315DD, $315DE - $315DD
-
-LoggedData_0x315DE:
-INCBIN "baserom.gbc", $315DE, $315E1 - $315DE
-
-Unknown_0x315E1:
-INCBIN "baserom.gbc", $315E1, $315E2 - $315E1
-
-LoggedData_0x315E2:
-INCBIN "baserom.gbc", $315E2, $315E5 - $315E2
-
-Unknown_0x315E5:
-INCBIN "baserom.gbc", $315E5, $315E6 - $315E5
-
-LoggedData_0x315E6:
-INCBIN "baserom.gbc", $315E6, $315E9 - $315E6
-
-Unknown_0x315E9:
-INCBIN "baserom.gbc", $315E9, $315EA - $315E9
-
-LoggedData_0x315EA:
-INCBIN "baserom.gbc", $315EA, $315ED - $315EA
-
-Unknown_0x315ED:
-INCBIN "baserom.gbc", $315ED, $315EE - $315ED
-
-LoggedData_0x315EE:
-INCBIN "baserom.gbc", $315EE, $315F1 - $315EE
-
-Unknown_0x315F1:
-INCBIN "baserom.gbc", $315F1, $315F2 - $315F1
-
-LoggedData_0x315F2:
-INCBIN "baserom.gbc", $315F2, $315F5 - $315F2
-
-Unknown_0x315F5:
-INCBIN "baserom.gbc", $315F5, $315F6 - $315F5
-
-LoggedData_0x315F6:
-INCBIN "baserom.gbc", $315F6, $315F9 - $315F6
-
-Unknown_0x315F9:
-INCBIN "baserom.gbc", $315F9, $315FA - $315F9
-
-LoggedData_0x315FA:
-INCBIN "baserom.gbc", $315FA, $315FD - $315FA
-
-Unknown_0x315FD:
-INCBIN "baserom.gbc", $315FD, $315FE - $315FD
-
-LoggedData_0x315FE:
-INCBIN "baserom.gbc", $315FE, $31601 - $315FE
-
-Unknown_0x31601:
-INCBIN "baserom.gbc", $31601, $31602 - $31601
-
-LoggedData_0x31602:
-INCBIN "baserom.gbc", $31602, $31605 - $31602
-
-Unknown_0x31605:
-INCBIN "baserom.gbc", $31605, $31606 - $31605
-
-LoggedData_0x31606:
-INCBIN "baserom.gbc", $31606, $31609 - $31606
-
-Unknown_0x31609:
-INCBIN "baserom.gbc", $31609, $3160A - $31609
-
-LoggedData_0x3160A:
-INCBIN "baserom.gbc", $3160A, $3160D - $3160A
-
-Unknown_0x3160D:
-INCBIN "baserom.gbc", $3160D, $3160E - $3160D
-
-LoggedData_0x3160E:
-INCBIN "baserom.gbc", $3160E, $31611 - $3160E
-
-Unknown_0x31611:
-INCBIN "baserom.gbc", $31611, $31612 - $31611
-
-LoggedData_0x31612:
-INCBIN "baserom.gbc", $31612, $31615 - $31612
-
-Unknown_0x31615:
-INCBIN "baserom.gbc", $31615, $31616 - $31615
-
-LoggedData_0x31616:
-INCBIN "baserom.gbc", $31616, $31619 - $31616
-
-Unknown_0x31619:
-INCBIN "baserom.gbc", $31619, $3161A - $31619
-
-LoggedData_0x3161A:
-INCBIN "baserom.gbc", $3161A, $3161D - $3161A
-
-Unknown_0x3161D:
-INCBIN "baserom.gbc", $3161D, $3161E - $3161D
-
-LoggedData_0x3161E:
-INCBIN "baserom.gbc", $3161E, $31621 - $3161E
-
-Unknown_0x31621:
-INCBIN "baserom.gbc", $31621, $31622 - $31621
-
-LoggedData_0x31622:
-INCBIN "baserom.gbc", $31622, $31625 - $31622
-
-Unknown_0x31625:
-INCBIN "baserom.gbc", $31625, $31626 - $31625
-
-LoggedData_0x31626:
-INCBIN "baserom.gbc", $31626, $31629 - $31626
-
-Unknown_0x31629:
-INCBIN "baserom.gbc", $31629, $3162A - $31629
-
-LoggedData_0x3162A:
-INCBIN "baserom.gbc", $3162A, $3162D - $3162A
-
-Unknown_0x3162D:
-INCBIN "baserom.gbc", $3162D, $3162E - $3162D
-
-LoggedData_0x3162E:
-INCBIN "baserom.gbc", $3162E, $31631 - $3162E
-
-Unknown_0x31631:
-INCBIN "baserom.gbc", $31631, $31632 - $31631
-
-LoggedData_0x31632:
-INCBIN "baserom.gbc", $31632, $31635 - $31632
-
-Unknown_0x31635:
-INCBIN "baserom.gbc", $31635, $31636 - $31635
-
-LoggedData_0x31636:
-INCBIN "baserom.gbc", $31636, $31639 - $31636
-
-Unknown_0x31639:
-INCBIN "baserom.gbc", $31639, $3163A - $31639
-
-LoggedData_0x3163A:
-INCBIN "baserom.gbc", $3163A, $3163D - $3163A
-
-Unknown_0x3163D:
-INCBIN "baserom.gbc", $3163D, $3163E - $3163D
-
-LoggedData_0x3163E:
-INCBIN "baserom.gbc", $3163E, $31641 - $3163E
-
-Unknown_0x31641:
-INCBIN "baserom.gbc", $31641, $31642 - $31641
-
-LoggedData_0x31642:
-INCBIN "baserom.gbc", $31642, $31645 - $31642
-
-Unknown_0x31645:
-INCBIN "baserom.gbc", $31645, $31646 - $31645
-
-LoggedData_0x31646:
-INCBIN "baserom.gbc", $31646, $31649 - $31646
-
-Unknown_0x31649:
-INCBIN "baserom.gbc", $31649, $3164A - $31649
-
-LoggedData_0x3164A:
-INCBIN "baserom.gbc", $3164A, $3164D - $3164A
-
-Unknown_0x3164D:
-INCBIN "baserom.gbc", $3164D, $3164E - $3164D
-
-LoggedData_0x3164E:
-INCBIN "baserom.gbc", $3164E, $31651 - $3164E
-
-Unknown_0x31651:
-INCBIN "baserom.gbc", $31651, $31652 - $31651
-
-LoggedData_0x31652:
-INCBIN "baserom.gbc", $31652, $31655 - $31652
-
-Unknown_0x31655:
-INCBIN "baserom.gbc", $31655, $31656 - $31655
-
-LoggedData_0x31656:
-INCBIN "baserom.gbc", $31656, $31659 - $31656
-
-Unknown_0x31659:
-INCBIN "baserom.gbc", $31659, $3165A - $31659
-
-LoggedData_0x3165A:
-INCBIN "baserom.gbc", $3165A, $3165D - $3165A
-
-Unknown_0x3165D:
-INCBIN "baserom.gbc", $3165D, $3165E - $3165D
-
-LoggedData_0x3165E:
-INCBIN "baserom.gbc", $3165E, $31661 - $3165E
-
-Unknown_0x31661:
-INCBIN "baserom.gbc", $31661, $31662 - $31661
-
-LoggedData_0x31662:
-INCBIN "baserom.gbc", $31662, $31665 - $31662
-
-Unknown_0x31665:
-INCBIN "baserom.gbc", $31665, $31666 - $31665
-
-LoggedData_0x31666:
-INCBIN "baserom.gbc", $31666, $31669 - $31666
-
-Unknown_0x31669:
-INCBIN "baserom.gbc", $31669, $3166A - $31669
-
-LoggedData_0x3166A:
-INCBIN "baserom.gbc", $3166A, $3166D - $3166A
-
-Unknown_0x3166D:
-INCBIN "baserom.gbc", $3166D, $3166E - $3166D
-
-LoggedData_0x3166E:
-INCBIN "baserom.gbc", $3166E, $31671 - $3166E
-
-Unknown_0x31671:
-INCBIN "baserom.gbc", $31671, $31672 - $31671
-
-LoggedData_0x31672:
-INCBIN "baserom.gbc", $31672, $31675 - $31672
-
-Unknown_0x31675:
-INCBIN "baserom.gbc", $31675, $31676 - $31675
-
-LoggedData_0x31676:
-INCBIN "baserom.gbc", $31676, $31679 - $31676
-
-Unknown_0x31679:
-INCBIN "baserom.gbc", $31679, $3167A - $31679
-
-LoggedData_0x3167A:
-INCBIN "baserom.gbc", $3167A, $3167D - $3167A
-
-Unknown_0x3167D:
-INCBIN "baserom.gbc", $3167D, $3167E - $3167D
-
-LoggedData_0x3167E:
-INCBIN "baserom.gbc", $3167E, $31681 - $3167E
-
-Unknown_0x31681:
-INCBIN "baserom.gbc", $31681, $31682 - $31681
-
-LoggedData_0x31682:
-INCBIN "baserom.gbc", $31682, $31685 - $31682
-
-Unknown_0x31685:
-INCBIN "baserom.gbc", $31685, $31686 - $31685
-
-LoggedData_0x31686:
-INCBIN "baserom.gbc", $31686, $31689 - $31686
-
-Unknown_0x31689:
-INCBIN "baserom.gbc", $31689, $3168A - $31689
-
-LoggedData_0x3168A:
-INCBIN "baserom.gbc", $3168A, $3168D - $3168A
-
-Unknown_0x3168D:
-INCBIN "baserom.gbc", $3168D, $3168E - $3168D
-
-LoggedData_0x3168E:
-INCBIN "baserom.gbc", $3168E, $31691 - $3168E
-
-Unknown_0x31691:
-INCBIN "baserom.gbc", $31691, $31692 - $31691
-
-LoggedData_0x31692:
-INCBIN "baserom.gbc", $31692, $31695 - $31692
-
-Unknown_0x31695:
-INCBIN "baserom.gbc", $31695, $31696 - $31695
-
-LoggedData_0x31696:
-INCBIN "baserom.gbc", $31696, $31699 - $31696
-
-Unknown_0x31699:
-INCBIN "baserom.gbc", $31699, $3169A - $31699
-
-LoggedData_0x3169A:
-INCBIN "baserom.gbc", $3169A, $3169D - $3169A
-
-Unknown_0x3169D:
-INCBIN "baserom.gbc", $3169D, $3169E - $3169D
-
-LoggedData_0x3169E:
-INCBIN "baserom.gbc", $3169E, $316A1 - $3169E
-
-Unknown_0x316A1:
-INCBIN "baserom.gbc", $316A1, $316A2 - $316A1
-
-LoggedData_0x316A2:
-INCBIN "baserom.gbc", $316A2, $316A5 - $316A2
-
-Unknown_0x316A5:
-INCBIN "baserom.gbc", $316A5, $316A6 - $316A5
-
-LoggedData_0x316A6:
-INCBIN "baserom.gbc", $316A6, $316A9 - $316A6
-
-Unknown_0x316A9:
-INCBIN "baserom.gbc", $316A9, $316AA - $316A9
-
-LoggedData_0x316AA:
-INCBIN "baserom.gbc", $316AA, $316AD - $316AA
-
-Unknown_0x316AD:
-INCBIN "baserom.gbc", $316AD, $316AE - $316AD
-
-LoggedData_0x316AE:
-INCBIN "baserom.gbc", $316AE, $316B1 - $316AE
-
-Unknown_0x316B1:
-INCBIN "baserom.gbc", $316B1, $316B2 - $316B1
-
-LoggedData_0x316B2:
-INCBIN "baserom.gbc", $316B2, $316B5 - $316B2
-
-Unknown_0x316B5:
-INCBIN "baserom.gbc", $316B5, $316B6 - $316B5
-
-LoggedData_0x316B6:
-INCBIN "baserom.gbc", $316B6, $316B9 - $316B6
-
-Unknown_0x316B9:
-INCBIN "baserom.gbc", $316B9, $316BA - $316B9
-
-LoggedData_0x316BA:
-INCBIN "baserom.gbc", $316BA, $316BD - $316BA
-
-Unknown_0x316BD:
-INCBIN "baserom.gbc", $316BD, $316BE - $316BD
-
-LoggedData_0x316BE:
-INCBIN "baserom.gbc", $316BE, $316C1 - $316BE
-
-Unknown_0x316C1:
-INCBIN "baserom.gbc", $316C1, $316C2 - $316C1
-
-LoggedData_0x316C2:
-INCBIN "baserom.gbc", $316C2, $316C5 - $316C2
-
-Unknown_0x316C5:
-INCBIN "baserom.gbc", $316C5, $316C6 - $316C5
-
-LoggedData_0x316C6:
-INCBIN "baserom.gbc", $316C6, $316C9 - $316C6
-
-Unknown_0x316C9:
-INCBIN "baserom.gbc", $316C9, $316CA - $316C9
-
-LoggedData_0x316CA:
-INCBIN "baserom.gbc", $316CA, $316CD - $316CA
-
-Unknown_0x316CD:
-INCBIN "baserom.gbc", $316CD, $316CE - $316CD
-
-LoggedData_0x316CE:
-INCBIN "baserom.gbc", $316CE, $316D1 - $316CE
-
-Unknown_0x316D1:
-INCBIN "baserom.gbc", $316D1, $316D2 - $316D1
-
-LoggedData_0x316D2:
-INCBIN "baserom.gbc", $316D2, $316D5 - $316D2
-
-Unknown_0x316D5:
-INCBIN "baserom.gbc", $316D5, $316D6 - $316D5
-
-LoggedData_0x316D6:
-INCBIN "baserom.gbc", $316D6, $316D9 - $316D6
-
-Unknown_0x316D9:
-INCBIN "baserom.gbc", $316D9, $316DA - $316D9
-
-LoggedData_0x316DA:
-INCBIN "baserom.gbc", $316DA, $316DD - $316DA
-
-Unknown_0x316DD:
-INCBIN "baserom.gbc", $316DD, $316DE - $316DD
-
-LoggedData_0x316DE:
-INCBIN "baserom.gbc", $316DE, $316E1 - $316DE
-
-Unknown_0x316E1:
-INCBIN "baserom.gbc", $316E1, $316E2 - $316E1
-
-LoggedData_0x316E2:
-INCBIN "baserom.gbc", $316E2, $316E5 - $316E2
-
-Unknown_0x316E5:
-INCBIN "baserom.gbc", $316E5, $316E6 - $316E5
-
-LoggedData_0x316E6:
-INCBIN "baserom.gbc", $316E6, $316E9 - $316E6
-
-Unknown_0x316E9:
-INCBIN "baserom.gbc", $316E9, $316EA - $316E9
-
-LoggedData_0x316EA:
-INCBIN "baserom.gbc", $316EA, $316ED - $316EA
-
-Unknown_0x316ED:
-INCBIN "baserom.gbc", $316ED, $316EE - $316ED
-
-LoggedData_0x316EE:
-INCBIN "baserom.gbc", $316EE, $316F1 - $316EE
-
-Unknown_0x316F1:
-INCBIN "baserom.gbc", $316F1, $316F2 - $316F1
-
-LoggedData_0x316F2:
-INCBIN "baserom.gbc", $316F2, $316F5 - $316F2
-
-Unknown_0x316F5:
-INCBIN "baserom.gbc", $316F5, $316F6 - $316F5
-
-LoggedData_0x316F6:
-INCBIN "baserom.gbc", $316F6, $316F9 - $316F6
-
-Unknown_0x316F9:
-INCBIN "baserom.gbc", $316F9, $316FA - $316F9
-
-LoggedData_0x316FA:
-INCBIN "baserom.gbc", $316FA, $316FD - $316FA
-
-Unknown_0x316FD:
-INCBIN "baserom.gbc", $316FD, $316FE - $316FD
-
-LoggedData_0x316FE:
-INCBIN "baserom.gbc", $316FE, $31701 - $316FE
-
-Unknown_0x31701:
-INCBIN "baserom.gbc", $31701, $31702 - $31701
-
-LoggedData_0x31702:
-INCBIN "baserom.gbc", $31702, $31705 - $31702
-
-Unknown_0x31705:
-INCBIN "baserom.gbc", $31705, $31706 - $31705
-
-LoggedData_0x31706:
-INCBIN "baserom.gbc", $31706, $31709 - $31706
-
-Unknown_0x31709:
-INCBIN "baserom.gbc", $31709, $3170A - $31709
-
-LoggedData_0x3170A:
-INCBIN "baserom.gbc", $3170A, $3170D - $3170A
-
-Unknown_0x3170D:
-INCBIN "baserom.gbc", $3170D, $3170E - $3170D
-
-LoggedData_0x3170E:
-INCBIN "baserom.gbc", $3170E, $31711 - $3170E
-
-Unknown_0x31711:
-INCBIN "baserom.gbc", $31711, $31712 - $31711
-
-LoggedData_0x31712:
-INCBIN "baserom.gbc", $31712, $31715 - $31712
-
-Unknown_0x31715:
-INCBIN "baserom.gbc", $31715, $31716 - $31715
-
-LoggedData_0x31716:
-INCBIN "baserom.gbc", $31716, $31719 - $31716
-
-Unknown_0x31719:
-INCBIN "baserom.gbc", $31719, $3171A - $31719
-
-LoggedData_0x3171A:
-INCBIN "baserom.gbc", $3171A, $3171D - $3171A
-
-Unknown_0x3171D:
-INCBIN "baserom.gbc", $3171D, $3171E - $3171D
-
-LoggedData_0x3171E:
-INCBIN "baserom.gbc", $3171E, $31721 - $3171E
-
-Unknown_0x31721:
-INCBIN "baserom.gbc", $31721, $31722 - $31721
-
-LoggedData_0x31722:
-INCBIN "baserom.gbc", $31722, $31725 - $31722
-
-Unknown_0x31725:
-INCBIN "baserom.gbc", $31725, $31726 - $31725
-
-LoggedData_0x31726:
-INCBIN "baserom.gbc", $31726, $31729 - $31726
-
-Unknown_0x31729:
-INCBIN "baserom.gbc", $31729, $3172A - $31729
-
-LoggedData_0x3172A:
-INCBIN "baserom.gbc", $3172A, $3172D - $3172A
-
-Unknown_0x3172D:
-INCBIN "baserom.gbc", $3172D, $3172E - $3172D
-
-LoggedData_0x3172E:
-INCBIN "baserom.gbc", $3172E, $31731 - $3172E
-
-Unknown_0x31731:
-INCBIN "baserom.gbc", $31731, $31732 - $31731
-
-LoggedData_0x31732:
-INCBIN "baserom.gbc", $31732, $31735 - $31732
-
-Unknown_0x31735:
-INCBIN "baserom.gbc", $31735, $31D66 - $31735
-
-LoggedData_0x31D66:
-INCBIN "baserom.gbc", $31D66, $31D69 - $31D66
-
-Unknown_0x31D69:
-INCBIN "baserom.gbc", $31D69, $31D6A - $31D69
-
-LoggedData_0x31D6A:
-INCBIN "baserom.gbc", $31D6A, $31D6D - $31D6A
-
-Unknown_0x31D6D:
-INCBIN "baserom.gbc", $31D6D, $31D6E - $31D6D
-
-LoggedData_0x31D6E:
-INCBIN "baserom.gbc", $31D6E, $31D71 - $31D6E
-
-Unknown_0x31D71:
-INCBIN "baserom.gbc", $31D71, $31D72 - $31D71
-
-LoggedData_0x31D72:
-INCBIN "baserom.gbc", $31D72, $31D75 - $31D72
-
-Unknown_0x31D75:
-INCBIN "baserom.gbc", $31D75, $31D76 - $31D75
-
-LoggedData_0x31D76:
-INCBIN "baserom.gbc", $31D76, $31D79 - $31D76
-
-Unknown_0x31D79:
-INCBIN "baserom.gbc", $31D79, $31D7A - $31D79
-
-LoggedData_0x31D7A:
-INCBIN "baserom.gbc", $31D7A, $31D7D - $31D7A
-
-Unknown_0x31D7D:
-INCBIN "baserom.gbc", $31D7D, $31D7E - $31D7D
-
-LoggedData_0x31D7E:
-INCBIN "baserom.gbc", $31D7E, $31D81 - $31D7E
-
-Unknown_0x31D81:
-INCBIN "baserom.gbc", $31D81, $31D82 - $31D81
-
-LoggedData_0x31D82:
-INCBIN "baserom.gbc", $31D82, $31D85 - $31D82
-
-Unknown_0x31D85:
-INCBIN "baserom.gbc", $31D85, $31D86 - $31D85
-
-LoggedData_0x31D86:
-INCBIN "baserom.gbc", $31D86, $31D89 - $31D86
-
-Unknown_0x31D89:
-INCBIN "baserom.gbc", $31D89, $31D8A - $31D89
-
-LoggedData_0x31D8A:
-INCBIN "baserom.gbc", $31D8A, $31D8D - $31D8A
-
-Unknown_0x31D8D:
-INCBIN "baserom.gbc", $31D8D, $31D8E - $31D8D
-
-LoggedData_0x31D8E:
-INCBIN "baserom.gbc", $31D8E, $31D91 - $31D8E
-
-Unknown_0x31D91:
-INCBIN "baserom.gbc", $31D91, $31D92 - $31D91
-
-LoggedData_0x31D92:
-INCBIN "baserom.gbc", $31D92, $31D95 - $31D92
-
-Unknown_0x31D95:
-INCBIN "baserom.gbc", $31D95, $31D96 - $31D95
-
-LoggedData_0x31D96:
-INCBIN "baserom.gbc", $31D96, $31D99 - $31D96
-
-Unknown_0x31D99:
-INCBIN "baserom.gbc", $31D99, $31D9A - $31D99
-
-LoggedData_0x31D9A:
-INCBIN "baserom.gbc", $31D9A, $31D9D - $31D9A
-
-Unknown_0x31D9D:
-INCBIN "baserom.gbc", $31D9D, $31D9E - $31D9D
-
-LoggedData_0x31D9E:
-INCBIN "baserom.gbc", $31D9E, $31DA1 - $31D9E
-
-Unknown_0x31DA1:
-INCBIN "baserom.gbc", $31DA1, $31DA2 - $31DA1
-
-LoggedData_0x31DA2:
-INCBIN "baserom.gbc", $31DA2, $31DA5 - $31DA2
-
-Unknown_0x31DA5:
-INCBIN "baserom.gbc", $31DA5, $31DA6 - $31DA5
-
-LoggedData_0x31DA6:
-INCBIN "baserom.gbc", $31DA6, $31DA9 - $31DA6
-
-Unknown_0x31DA9:
-INCBIN "baserom.gbc", $31DA9, $31DAA - $31DA9
-
-LoggedData_0x31DAA:
-INCBIN "baserom.gbc", $31DAA, $31DAD - $31DAA
-
-Unknown_0x31DAD:
-INCBIN "baserom.gbc", $31DAD, $31DAE - $31DAD
-
-LoggedData_0x31DAE:
-INCBIN "baserom.gbc", $31DAE, $31DB1 - $31DAE
-
-Unknown_0x31DB1:
-INCBIN "baserom.gbc", $31DB1, $31DB2 - $31DB1
-
-LoggedData_0x31DB2:
-INCBIN "baserom.gbc", $31DB2, $31DB5 - $31DB2
-
-Unknown_0x31DB5:
-INCBIN "baserom.gbc", $31DB5, $31DB6 - $31DB5
-
-LoggedData_0x31DB6:
-INCBIN "baserom.gbc", $31DB6, $31DB9 - $31DB6
-
-Unknown_0x31DB9:
-INCBIN "baserom.gbc", $31DB9, $31DBA - $31DB9
-
-LoggedData_0x31DBA:
-INCBIN "baserom.gbc", $31DBA, $31DBD - $31DBA
-
-Unknown_0x31DBD:
-INCBIN "baserom.gbc", $31DBD, $31DBE - $31DBD
-
-LoggedData_0x31DBE:
-INCBIN "baserom.gbc", $31DBE, $31DC1 - $31DBE
-
-Unknown_0x31DC1:
-INCBIN "baserom.gbc", $31DC1, $31DC2 - $31DC1
-
-LoggedData_0x31DC2:
-INCBIN "baserom.gbc", $31DC2, $31DC5 - $31DC2
-
-Unknown_0x31DC5:
-INCBIN "baserom.gbc", $31DC5, $31DC6 - $31DC5
-
-LoggedData_0x31DC6:
-INCBIN "baserom.gbc", $31DC6, $31DC9 - $31DC6
-
-Unknown_0x31DC9:
-INCBIN "baserom.gbc", $31DC9, $31DCA - $31DC9
-
-LoggedData_0x31DCA:
-INCBIN "baserom.gbc", $31DCA, $31DCD - $31DCA
-
-Unknown_0x31DCD:
-INCBIN "baserom.gbc", $31DCD, $31DCE - $31DCD
-
-LoggedData_0x31DCE:
-INCBIN "baserom.gbc", $31DCE, $31DD1 - $31DCE
-
-Unknown_0x31DD1:
-INCBIN "baserom.gbc", $31DD1, $31DD2 - $31DD1
-
-LoggedData_0x31DD2:
-INCBIN "baserom.gbc", $31DD2, $31DD5 - $31DD2
-
-Unknown_0x31DD5:
-INCBIN "baserom.gbc", $31DD5, $31DD6 - $31DD5
-
-LoggedData_0x31DD6:
-INCBIN "baserom.gbc", $31DD6, $31DD9 - $31DD6
-
-Unknown_0x31DD9:
-INCBIN "baserom.gbc", $31DD9, $31DDA - $31DD9
-
-LoggedData_0x31DDA:
-INCBIN "baserom.gbc", $31DDA, $31DDD - $31DDA
-
-Unknown_0x31DDD:
-INCBIN "baserom.gbc", $31DDD, $31DDE - $31DDD
-
-LoggedData_0x31DDE:
-INCBIN "baserom.gbc", $31DDE, $31DE1 - $31DDE
-
-Unknown_0x31DE1:
-INCBIN "baserom.gbc", $31DE1, $31DE2 - $31DE1
-
-LoggedData_0x31DE2:
-INCBIN "baserom.gbc", $31DE2, $31DE5 - $31DE2
-
-Unknown_0x31DE5:
-INCBIN "baserom.gbc", $31DE5, $31DE6 - $31DE5
-
-LoggedData_0x31DE6:
-INCBIN "baserom.gbc", $31DE6, $31DE9 - $31DE6
-
-Unknown_0x31DE9:
-INCBIN "baserom.gbc", $31DE9, $31DEA - $31DE9
-
-LoggedData_0x31DEA:
-INCBIN "baserom.gbc", $31DEA, $31DED - $31DEA
-
-Unknown_0x31DED:
-INCBIN "baserom.gbc", $31DED, $31DEE - $31DED
-
-LoggedData_0x31DEE:
-INCBIN "baserom.gbc", $31DEE, $31DF1 - $31DEE
-
-Unknown_0x31DF1:
-INCBIN "baserom.gbc", $31DF1, $31DF2 - $31DF1
-
-LoggedData_0x31DF2:
-INCBIN "baserom.gbc", $31DF2, $31DF5 - $31DF2
-
-Unknown_0x31DF5:
-INCBIN "baserom.gbc", $31DF5, $31DF6 - $31DF5
-
-LoggedData_0x31DF6:
-INCBIN "baserom.gbc", $31DF6, $31DF9 - $31DF6
-
-Unknown_0x31DF9:
-INCBIN "baserom.gbc", $31DF9, $31DFA - $31DF9
-
-LoggedData_0x31DFA:
-INCBIN "baserom.gbc", $31DFA, $31DFD - $31DFA
-
-Unknown_0x31DFD:
-INCBIN "baserom.gbc", $31DFD, $31DFE - $31DFD
-
-LoggedData_0x31DFE:
-INCBIN "baserom.gbc", $31DFE, $31E01 - $31DFE
-
-Unknown_0x31E01:
-INCBIN "baserom.gbc", $31E01, $31E02 - $31E01
-
-LoggedData_0x31E02:
-INCBIN "baserom.gbc", $31E02, $31E05 - $31E02
-
-Unknown_0x31E05:
-INCBIN "baserom.gbc", $31E05, $31E06 - $31E05
-
-LoggedData_0x31E06:
-INCBIN "baserom.gbc", $31E06, $31E09 - $31E06
-
-Unknown_0x31E09:
-INCBIN "baserom.gbc", $31E09, $31E0A - $31E09
-
-LoggedData_0x31E0A:
-INCBIN "baserom.gbc", $31E0A, $31E0D - $31E0A
-
-Unknown_0x31E0D:
-INCBIN "baserom.gbc", $31E0D, $31E0E - $31E0D
-
-LoggedData_0x31E0E:
-INCBIN "baserom.gbc", $31E0E, $31E11 - $31E0E
-
-Unknown_0x31E11:
-INCBIN "baserom.gbc", $31E11, $31E12 - $31E11
-
-LoggedData_0x31E12:
-INCBIN "baserom.gbc", $31E12, $31E15 - $31E12
-
-Unknown_0x31E15:
-INCBIN "baserom.gbc", $31E15, $31E16 - $31E15
-
-LoggedData_0x31E16:
-INCBIN "baserom.gbc", $31E16, $31E19 - $31E16
-
-Unknown_0x31E19:
-INCBIN "baserom.gbc", $31E19, $31E1A - $31E19
-
-LoggedData_0x31E1A:
-INCBIN "baserom.gbc", $31E1A, $31E1D - $31E1A
-
-Unknown_0x31E1D:
-INCBIN "baserom.gbc", $31E1D, $31E1E - $31E1D
-
-LoggedData_0x31E1E:
-INCBIN "baserom.gbc", $31E1E, $31E21 - $31E1E
-
-Unknown_0x31E21:
-INCBIN "baserom.gbc", $31E21, $31E22 - $31E21
-
-LoggedData_0x31E22:
-INCBIN "baserom.gbc", $31E22, $31E25 - $31E22
-
-Unknown_0x31E25:
-INCBIN "baserom.gbc", $31E25, $31E26 - $31E25
-
-LoggedData_0x31E26:
-INCBIN "baserom.gbc", $31E26, $31E29 - $31E26
-
-Unknown_0x31E29:
-INCBIN "baserom.gbc", $31E29, $31E2A - $31E29
-
-LoggedData_0x31E2A:
-INCBIN "baserom.gbc", $31E2A, $31E2D - $31E2A
-
-Unknown_0x31E2D:
-INCBIN "baserom.gbc", $31E2D, $31E2E - $31E2D
-
-LoggedData_0x31E2E:
-INCBIN "baserom.gbc", $31E2E, $31E31 - $31E2E
-
-Unknown_0x31E31:
-INCBIN "baserom.gbc", $31E31, $31E32 - $31E31
-
-LoggedData_0x31E32:
-INCBIN "baserom.gbc", $31E32, $31E35 - $31E32
-
-Unknown_0x31E35:
-INCBIN "baserom.gbc", $31E35, $31E36 - $31E35
-
-LoggedData_0x31E36:
-INCBIN "baserom.gbc", $31E36, $31E39 - $31E36
-
-Unknown_0x31E39:
-INCBIN "baserom.gbc", $31E39, $31E3A - $31E39
-
-LoggedData_0x31E3A:
-INCBIN "baserom.gbc", $31E3A, $31E3D - $31E3A
-
-Unknown_0x31E3D:
-INCBIN "baserom.gbc", $31E3D, $31E3E - $31E3D
-
-LoggedData_0x31E3E:
-INCBIN "baserom.gbc", $31E3E, $31E41 - $31E3E
-
-Unknown_0x31E41:
-INCBIN "baserom.gbc", $31E41, $31E42 - $31E41
-
-LoggedData_0x31E42:
-INCBIN "baserom.gbc", $31E42, $31E45 - $31E42
-
-Unknown_0x31E45:
-INCBIN "baserom.gbc", $31E45, $31E46 - $31E45
-
-LoggedData_0x31E46:
-INCBIN "baserom.gbc", $31E46, $31E49 - $31E46
-
-Unknown_0x31E49:
-INCBIN "baserom.gbc", $31E49, $31E4A - $31E49
-
-LoggedData_0x31E4A:
-INCBIN "baserom.gbc", $31E4A, $31E4D - $31E4A
-
-Unknown_0x31E4D:
-INCBIN "baserom.gbc", $31E4D, $31E4E - $31E4D
-
-LoggedData_0x31E4E:
-INCBIN "baserom.gbc", $31E4E, $31E51 - $31E4E
-
-Unknown_0x31E51:
-INCBIN "baserom.gbc", $31E51, $31E52 - $31E51
-
-LoggedData_0x31E52:
-INCBIN "baserom.gbc", $31E52, $31E55 - $31E52
-
-Unknown_0x31E55:
-INCBIN "baserom.gbc", $31E55, $31E56 - $31E55
-
-LoggedData_0x31E56:
-INCBIN "baserom.gbc", $31E56, $31E59 - $31E56
-
-Unknown_0x31E59:
-INCBIN "baserom.gbc", $31E59, $31E5A - $31E59
-
-LoggedData_0x31E5A:
-INCBIN "baserom.gbc", $31E5A, $31E5D - $31E5A
-
-Unknown_0x31E5D:
-INCBIN "baserom.gbc", $31E5D, $31E5E - $31E5D
-
-LoggedData_0x31E5E:
-INCBIN "baserom.gbc", $31E5E, $31E61 - $31E5E
-
-Unknown_0x31E61:
-INCBIN "baserom.gbc", $31E61, $31E62 - $31E61
-
-LoggedData_0x31E62:
-INCBIN "baserom.gbc", $31E62, $31E65 - $31E62
-
-Unknown_0x31E65:
-INCBIN "baserom.gbc", $31E65, $31E66 - $31E65
-
-LoggedData_0x31E66:
-INCBIN "baserom.gbc", $31E66, $31E69 - $31E66
-
-Unknown_0x31E69:
-INCBIN "baserom.gbc", $31E69, $31E6A - $31E69
-
-LoggedData_0x31E6A:
-INCBIN "baserom.gbc", $31E6A, $31E6D - $31E6A
-
-Unknown_0x31E6D:
-INCBIN "baserom.gbc", $31E6D, $31E6E - $31E6D
-
-LoggedData_0x31E6E:
-INCBIN "baserom.gbc", $31E6E, $31E71 - $31E6E
-
-Unknown_0x31E71:
-INCBIN "baserom.gbc", $31E71, $31E72 - $31E71
-
-LoggedData_0x31E72:
-INCBIN "baserom.gbc", $31E72, $31E75 - $31E72
-
-Unknown_0x31E75:
-INCBIN "baserom.gbc", $31E75, $31E76 - $31E75
-
-LoggedData_0x31E76:
-INCBIN "baserom.gbc", $31E76, $31E79 - $31E76
-
-Unknown_0x31E79:
-INCBIN "baserom.gbc", $31E79, $31E7A - $31E79
-
-LoggedData_0x31E7A:
-INCBIN "baserom.gbc", $31E7A, $31E7D - $31E7A
-
-Unknown_0x31E7D:
-INCBIN "baserom.gbc", $31E7D, $31E7E - $31E7D
-
-LoggedData_0x31E7E:
-INCBIN "baserom.gbc", $31E7E, $31E81 - $31E7E
-
-Unknown_0x31E81:
-INCBIN "baserom.gbc", $31E81, $31E82 - $31E81
-
-LoggedData_0x31E82:
-INCBIN "baserom.gbc", $31E82, $31E85 - $31E82
-
-Unknown_0x31E85:
-INCBIN "baserom.gbc", $31E85, $31E86 - $31E85
-
-LoggedData_0x31E86:
-INCBIN "baserom.gbc", $31E86, $31E89 - $31E86
-
-Unknown_0x31E89:
-INCBIN "baserom.gbc", $31E89, $31E8A - $31E89
-
-LoggedData_0x31E8A:
-INCBIN "baserom.gbc", $31E8A, $31E8D - $31E8A
-
-Unknown_0x31E8D:
-INCBIN "baserom.gbc", $31E8D, $31E8E - $31E8D
-
-LoggedData_0x31E8E:
-INCBIN "baserom.gbc", $31E8E, $31E91 - $31E8E
-
-Unknown_0x31E91:
-INCBIN "baserom.gbc", $31E91, $31E92 - $31E91
-
-LoggedData_0x31E92:
-INCBIN "baserom.gbc", $31E92, $31E95 - $31E92
-
-Unknown_0x31E95:
-INCBIN "baserom.gbc", $31E95, $31E96 - $31E95
-
-LoggedData_0x31E96:
-INCBIN "baserom.gbc", $31E96, $31E99 - $31E96
-
-Unknown_0x31E99:
-INCBIN "baserom.gbc", $31E99, $31E9A - $31E99
-
-LoggedData_0x31E9A:
-INCBIN "baserom.gbc", $31E9A, $31E9D - $31E9A
-
-Unknown_0x31E9D:
-INCBIN "baserom.gbc", $31E9D, $31E9E - $31E9D
-
-LoggedData_0x31E9E:
-INCBIN "baserom.gbc", $31E9E, $31EA1 - $31E9E
-
-Unknown_0x31EA1:
-INCBIN "baserom.gbc", $31EA1, $31EA2 - $31EA1
-
-LoggedData_0x31EA2:
-INCBIN "baserom.gbc", $31EA2, $31EA5 - $31EA2
-
-Unknown_0x31EA5:
-INCBIN "baserom.gbc", $31EA5, $31EA6 - $31EA5
-
-LoggedData_0x31EA6:
-INCBIN "baserom.gbc", $31EA6, $31EA9 - $31EA6
-
-Unknown_0x31EA9:
-INCBIN "baserom.gbc", $31EA9, $31EAA - $31EA9
-
-LoggedData_0x31EAA:
-INCBIN "baserom.gbc", $31EAA, $31EAD - $31EAA
-
-Unknown_0x31EAD:
-INCBIN "baserom.gbc", $31EAD, $31EAE - $31EAD
-
-LoggedData_0x31EAE:
-INCBIN "baserom.gbc", $31EAE, $31EB1 - $31EAE
-
-Unknown_0x31EB1:
-INCBIN "baserom.gbc", $31EB1, $31EB2 - $31EB1
-
-LoggedData_0x31EB2:
-INCBIN "baserom.gbc", $31EB2, $31EB5 - $31EB2
-
-Unknown_0x31EB5:
-INCBIN "baserom.gbc", $31EB5, $31EB6 - $31EB5
-
-LoggedData_0x31EB6:
-INCBIN "baserom.gbc", $31EB6, $31EB9 - $31EB6
-
-Unknown_0x31EB9:
-INCBIN "baserom.gbc", $31EB9, $31EBA - $31EB9
-
-LoggedData_0x31EBA:
-INCBIN "baserom.gbc", $31EBA, $31EBD - $31EBA
-
-Unknown_0x31EBD:
-INCBIN "baserom.gbc", $31EBD, $31EBE - $31EBD
-
-LoggedData_0x31EBE:
-INCBIN "baserom.gbc", $31EBE, $31EC1 - $31EBE
-
-Unknown_0x31EC1:
-INCBIN "baserom.gbc", $31EC1, $31EC2 - $31EC1
-
-LoggedData_0x31EC2:
-INCBIN "baserom.gbc", $31EC2, $31EC5 - $31EC2
-
-Unknown_0x31EC5:
-INCBIN "baserom.gbc", $31EC5, $31EC6 - $31EC5
-
-LoggedData_0x31EC6:
-INCBIN "baserom.gbc", $31EC6, $31EC9 - $31EC6
-
-Unknown_0x31EC9:
-INCBIN "baserom.gbc", $31EC9, $31ECA - $31EC9
-
-LoggedData_0x31ECA:
-INCBIN "baserom.gbc", $31ECA, $31ECD - $31ECA
-
-Unknown_0x31ECD:
-INCBIN "baserom.gbc", $31ECD, $31ECE - $31ECD
-
-LoggedData_0x31ECE:
-INCBIN "baserom.gbc", $31ECE, $31ED1 - $31ECE
-
-Unknown_0x31ED1:
-INCBIN "baserom.gbc", $31ED1, $31ED2 - $31ED1
-
-LoggedData_0x31ED2:
-INCBIN "baserom.gbc", $31ED2, $31ED5 - $31ED2
-
-Unknown_0x31ED5:
-INCBIN "baserom.gbc", $31ED5, $31ED6 - $31ED5
-
-LoggedData_0x31ED6:
-INCBIN "baserom.gbc", $31ED6, $31ED9 - $31ED6
-
-Unknown_0x31ED9:
-INCBIN "baserom.gbc", $31ED9, $31EDA - $31ED9
-
-LoggedData_0x31EDA:
-INCBIN "baserom.gbc", $31EDA, $31EDD - $31EDA
-
-Unknown_0x31EDD:
-INCBIN "baserom.gbc", $31EDD, $31EDE - $31EDD
-
-LoggedData_0x31EDE:
-INCBIN "baserom.gbc", $31EDE, $31EE1 - $31EDE
-
-Unknown_0x31EE1:
-INCBIN "baserom.gbc", $31EE1, $31EE2 - $31EE1
-
-LoggedData_0x31EE2:
-INCBIN "baserom.gbc", $31EE2, $31EE5 - $31EE2
-
-Unknown_0x31EE5:
-INCBIN "baserom.gbc", $31EE5, $31EE6 - $31EE5
-
-LoggedData_0x31EE6:
-INCBIN "baserom.gbc", $31EE6, $31EE9 - $31EE6
-
-Unknown_0x31EE9:
-INCBIN "baserom.gbc", $31EE9, $31EEA - $31EE9
-
-LoggedData_0x31EEA:
-INCBIN "baserom.gbc", $31EEA, $31EED - $31EEA
-
-Unknown_0x31EED:
-INCBIN "baserom.gbc", $31EED, $31EEE - $31EED
-
-LoggedData_0x31EEE:
-INCBIN "baserom.gbc", $31EEE, $31EF1 - $31EEE
-
-Unknown_0x31EF1:
-INCBIN "baserom.gbc", $31EF1, $31EF2 - $31EF1
-
-LoggedData_0x31EF2:
-INCBIN "baserom.gbc", $31EF2, $31EF5 - $31EF2
-
-Unknown_0x31EF5:
-INCBIN "baserom.gbc", $31EF5, $31EF6 - $31EF5
-
-LoggedData_0x31EF6:
-INCBIN "baserom.gbc", $31EF6, $31EF9 - $31EF6
-
-Unknown_0x31EF9:
-INCBIN "baserom.gbc", $31EF9, $31EFA - $31EF9
-
-LoggedData_0x31EFA:
-INCBIN "baserom.gbc", $31EFA, $31EFD - $31EFA
-
-Unknown_0x31EFD:
-INCBIN "baserom.gbc", $31EFD, $31EFE - $31EFD
-
-LoggedData_0x31EFE:
-INCBIN "baserom.gbc", $31EFE, $31F01 - $31EFE
-
-Unknown_0x31F01:
-INCBIN "baserom.gbc", $31F01, $31F02 - $31F01
-
-LoggedData_0x31F02:
-INCBIN "baserom.gbc", $31F02, $31F05 - $31F02
-
-Unknown_0x31F05:
-INCBIN "baserom.gbc", $31F05, $31F06 - $31F05
-
-LoggedData_0x31F06:
-INCBIN "baserom.gbc", $31F06, $31F09 - $31F06
-
-Unknown_0x31F09:
-INCBIN "baserom.gbc", $31F09, $31F0A - $31F09
-
-LoggedData_0x31F0A:
-INCBIN "baserom.gbc", $31F0A, $31F0D - $31F0A
-
-Unknown_0x31F0D:
-INCBIN "baserom.gbc", $31F0D, $31F16 - $31F0D
-
-LoggedData_0x31F16:
-INCBIN "baserom.gbc", $31F16, $31F19 - $31F16
-
-Unknown_0x31F19:
-INCBIN "baserom.gbc", $31F19, $31F1A - $31F19
-
-LoggedData_0x31F1A:
-INCBIN "baserom.gbc", $31F1A, $31F1D - $31F1A
-
-Unknown_0x31F1D:
-INCBIN "baserom.gbc", $31F1D, $31F1E - $31F1D
-
-LoggedData_0x31F1E:
-INCBIN "baserom.gbc", $31F1E, $31F21 - $31F1E
-
-Unknown_0x31F21:
-INCBIN "baserom.gbc", $31F21, $31F22 - $31F21
-
-LoggedData_0x31F22:
-INCBIN "baserom.gbc", $31F22, $31F25 - $31F22
-
-Unknown_0x31F25:
-INCBIN "baserom.gbc", $31F25, $31F26 - $31F25
-
-LoggedData_0x31F26:
-INCBIN "baserom.gbc", $31F26, $31F29 - $31F26
-
-Unknown_0x31F29:
-INCBIN "baserom.gbc", $31F29, $31F2A - $31F29
-
-LoggedData_0x31F2A:
-INCBIN "baserom.gbc", $31F2A, $31F2D - $31F2A
-
-Unknown_0x31F2D:
-INCBIN "baserom.gbc", $31F2D, $31F2E - $31F2D
-
-LoggedData_0x31F2E:
-INCBIN "baserom.gbc", $31F2E, $31F31 - $31F2E
-
-Unknown_0x31F31:
-INCBIN "baserom.gbc", $31F31, $31F32 - $31F31
-
-LoggedData_0x31F32:
-INCBIN "baserom.gbc", $31F32, $31F35 - $31F32
-
-Unknown_0x31F35:
-INCBIN "baserom.gbc", $31F35, $31F36 - $31F35
-
-LoggedData_0x31F36:
-INCBIN "baserom.gbc", $31F36, $31F39 - $31F36
-
-Unknown_0x31F39:
-INCBIN "baserom.gbc", $31F39, $31F3A - $31F39
-
-LoggedData_0x31F3A:
-INCBIN "baserom.gbc", $31F3A, $31F3D - $31F3A
-
-Unknown_0x31F3D:
-INCBIN "baserom.gbc", $31F3D, $31F3E - $31F3D
-
-LoggedData_0x31F3E:
-INCBIN "baserom.gbc", $31F3E, $31F41 - $31F3E
-
-Unknown_0x31F41:
-INCBIN "baserom.gbc", $31F41, $31F42 - $31F41
-
-LoggedData_0x31F42:
-INCBIN "baserom.gbc", $31F42, $31F45 - $31F42
-
-Unknown_0x31F45:
-INCBIN "baserom.gbc", $31F45, $31F46 - $31F45
-
-LoggedData_0x31F46:
-INCBIN "baserom.gbc", $31F46, $31F49 - $31F46
-
-Unknown_0x31F49:
-INCBIN "baserom.gbc", $31F49, $31F4A - $31F49
-
-LoggedData_0x31F4A:
-INCBIN "baserom.gbc", $31F4A, $31F4D - $31F4A
-
-Unknown_0x31F4D:
-INCBIN "baserom.gbc", $31F4D, $31F4E - $31F4D
-
-LoggedData_0x31F4E:
-INCBIN "baserom.gbc", $31F4E, $31F51 - $31F4E
-
-Unknown_0x31F51:
-INCBIN "baserom.gbc", $31F51, $31F52 - $31F51
-
-LoggedData_0x31F52:
-INCBIN "baserom.gbc", $31F52, $31F55 - $31F52
-
-Unknown_0x31F55:
-INCBIN "baserom.gbc", $31F55, $31F56 - $31F55
-
-LoggedData_0x31F56:
-INCBIN "baserom.gbc", $31F56, $31F59 - $31F56
-
-Unknown_0x31F59:
-INCBIN "baserom.gbc", $31F59, $31F5A - $31F59
-
-LoggedData_0x31F5A:
-INCBIN "baserom.gbc", $31F5A, $31F5D - $31F5A
-
-Unknown_0x31F5D:
-INCBIN "baserom.gbc", $31F5D, $31F5E - $31F5D
-
-LoggedData_0x31F5E:
-INCBIN "baserom.gbc", $31F5E, $31F61 - $31F5E
-
-Unknown_0x31F61:
-INCBIN "baserom.gbc", $31F61, $31F62 - $31F61
-
-LoggedData_0x31F62:
-INCBIN "baserom.gbc", $31F62, $31F65 - $31F62
-
-Unknown_0x31F65:
-INCBIN "baserom.gbc", $31F65, $31F66 - $31F65
-
-LoggedData_0x31F66:
-INCBIN "baserom.gbc", $31F66, $31F69 - $31F66
-
-Unknown_0x31F69:
-INCBIN "baserom.gbc", $31F69, $31F6A - $31F69
-
-LoggedData_0x31F6A:
-INCBIN "baserom.gbc", $31F6A, $31F6D - $31F6A
-
-Unknown_0x31F6D:
-INCBIN "baserom.gbc", $31F6D, $31F6E - $31F6D
-
-LoggedData_0x31F6E:
-INCBIN "baserom.gbc", $31F6E, $31F71 - $31F6E
-
-Unknown_0x31F71:
-INCBIN "baserom.gbc", $31F71, $31F72 - $31F71
-
-LoggedData_0x31F72:
-INCBIN "baserom.gbc", $31F72, $31F75 - $31F72
-
-Unknown_0x31F75:
-INCBIN "baserom.gbc", $31F75, $31F76 - $31F75
-
-LoggedData_0x31F76:
-INCBIN "baserom.gbc", $31F76, $31F79 - $31F76
-
-Unknown_0x31F79:
-INCBIN "baserom.gbc", $31F79, $31F7A - $31F79
-
-LoggedData_0x31F7A:
-INCBIN "baserom.gbc", $31F7A, $31F7D - $31F7A
-
-Unknown_0x31F7D:
-INCBIN "baserom.gbc", $31F7D, $31F7E - $31F7D
-
-LoggedData_0x31F7E:
-INCBIN "baserom.gbc", $31F7E, $31F81 - $31F7E
-
-Unknown_0x31F81:
-INCBIN "baserom.gbc", $31F81, $31F82 - $31F81
-
-LoggedData_0x31F82:
-INCBIN "baserom.gbc", $31F82, $31F85 - $31F82
-
-Unknown_0x31F85:
-INCBIN "baserom.gbc", $31F85, $31F86 - $31F85
-
-LoggedData_0x31F86:
-INCBIN "baserom.gbc", $31F86, $31F89 - $31F86
-
-Unknown_0x31F89:
-INCBIN "baserom.gbc", $31F89, $31F8A - $31F89
-
-LoggedData_0x31F8A:
-INCBIN "baserom.gbc", $31F8A, $31F8D - $31F8A
-
-Unknown_0x31F8D:
-INCBIN "baserom.gbc", $31F8D, $31F8E - $31F8D
-
-LoggedData_0x31F8E:
-INCBIN "baserom.gbc", $31F8E, $31F91 - $31F8E
-
-Unknown_0x31F91:
-INCBIN "baserom.gbc", $31F91, $31F92 - $31F91
-
-LoggedData_0x31F92:
-INCBIN "baserom.gbc", $31F92, $31F95 - $31F92
-
-Unknown_0x31F95:
-INCBIN "baserom.gbc", $31F95, $31F96 - $31F95
-
-LoggedData_0x31F96:
-INCBIN "baserom.gbc", $31F96, $31F99 - $31F96
-
-Unknown_0x31F99:
-INCBIN "baserom.gbc", $31F99, $31F9A - $31F99
-
-LoggedData_0x31F9A:
-INCBIN "baserom.gbc", $31F9A, $31F9D - $31F9A
-
-Unknown_0x31F9D:
-INCBIN "baserom.gbc", $31F9D, $31F9E - $31F9D
-
-LoggedData_0x31F9E:
-INCBIN "baserom.gbc", $31F9E, $31FA1 - $31F9E
-
-Unknown_0x31FA1:
-INCBIN "baserom.gbc", $31FA1, $31FA2 - $31FA1
-
-LoggedData_0x31FA2:
-INCBIN "baserom.gbc", $31FA2, $31FA5 - $31FA2
-
-Unknown_0x31FA5:
-INCBIN "baserom.gbc", $31FA5, $31FA6 - $31FA5
-
-LoggedData_0x31FA6:
-INCBIN "baserom.gbc", $31FA6, $31FA9 - $31FA6
-
-Unknown_0x31FA9:
-INCBIN "baserom.gbc", $31FA9, $31FAA - $31FA9
-
-LoggedData_0x31FAA:
-INCBIN "baserom.gbc", $31FAA, $31FAD - $31FAA
-
-Unknown_0x31FAD:
-INCBIN "baserom.gbc", $31FAD, $31FAE - $31FAD
-
-LoggedData_0x31FAE:
-INCBIN "baserom.gbc", $31FAE, $31FB1 - $31FAE
-
-Unknown_0x31FB1:
-INCBIN "baserom.gbc", $31FB1, $31FB2 - $31FB1
-
-LoggedData_0x31FB2:
-INCBIN "baserom.gbc", $31FB2, $31FB5 - $31FB2
-
-Unknown_0x31FB5:
-INCBIN "baserom.gbc", $31FB5, $31FB6 - $31FB5
-
-LoggedData_0x31FB6:
-INCBIN "baserom.gbc", $31FB6, $31FB9 - $31FB6
-
-Unknown_0x31FB9:
-INCBIN "baserom.gbc", $31FB9, $31FBA - $31FB9
-
-LoggedData_0x31FBA:
-INCBIN "baserom.gbc", $31FBA, $31FBD - $31FBA
-
-Unknown_0x31FBD:
-INCBIN "baserom.gbc", $31FBD, $31FBE - $31FBD
-
-LoggedData_0x31FBE:
-INCBIN "baserom.gbc", $31FBE, $31FC1 - $31FBE
-
-Unknown_0x31FC1:
-INCBIN "baserom.gbc", $31FC1, $31FC2 - $31FC1
-
-LoggedData_0x31FC2:
-INCBIN "baserom.gbc", $31FC2, $31FC5 - $31FC2
-
-Unknown_0x31FC5:
-INCBIN "baserom.gbc", $31FC5, $32066 - $31FC5
-
-LoggedData_0x32066:
-INCBIN "baserom.gbc", $32066, $32069 - $32066
-
-Unknown_0x32069:
-INCBIN "baserom.gbc", $32069, $3206A - $32069
-
-LoggedData_0x3206A:
-INCBIN "baserom.gbc", $3206A, $3206D - $3206A
-
-Unknown_0x3206D:
-INCBIN "baserom.gbc", $3206D, $3206E - $3206D
-
-LoggedData_0x3206E:
-INCBIN "baserom.gbc", $3206E, $32071 - $3206E
-
-Unknown_0x32071:
-INCBIN "baserom.gbc", $32071, $32072 - $32071
-
-LoggedData_0x32072:
-INCBIN "baserom.gbc", $32072, $32075 - $32072
-
-Unknown_0x32075:
-INCBIN "baserom.gbc", $32075, $32076 - $32075
-
-LoggedData_0x32076:
-INCBIN "baserom.gbc", $32076, $32079 - $32076
-
-Unknown_0x32079:
-INCBIN "baserom.gbc", $32079, $3207A - $32079
-
-LoggedData_0x3207A:
-INCBIN "baserom.gbc", $3207A, $3207D - $3207A
-
-Unknown_0x3207D:
-INCBIN "baserom.gbc", $3207D, $3207E - $3207D
-
-LoggedData_0x3207E:
-INCBIN "baserom.gbc", $3207E, $32081 - $3207E
-
-Unknown_0x32081:
-INCBIN "baserom.gbc", $32081, $32082 - $32081
-
-LoggedData_0x32082:
-INCBIN "baserom.gbc", $32082, $32085 - $32082
-
-Unknown_0x32085:
-INCBIN "baserom.gbc", $32085, $32086 - $32085
-
-LoggedData_0x32086:
-INCBIN "baserom.gbc", $32086, $32089 - $32086
-
-Unknown_0x32089:
-INCBIN "baserom.gbc", $32089, $3208A - $32089
-
-LoggedData_0x3208A:
-INCBIN "baserom.gbc", $3208A, $3208D - $3208A
-
-Unknown_0x3208D:
-INCBIN "baserom.gbc", $3208D, $3208E - $3208D
-
-LoggedData_0x3208E:
-INCBIN "baserom.gbc", $3208E, $32091 - $3208E
-
-Unknown_0x32091:
-INCBIN "baserom.gbc", $32091, $32092 - $32091
-
-LoggedData_0x32092:
-INCBIN "baserom.gbc", $32092, $32095 - $32092
-
-Unknown_0x32095:
-INCBIN "baserom.gbc", $32095, $32096 - $32095
-
-LoggedData_0x32096:
-INCBIN "baserom.gbc", $32096, $32099 - $32096
-
-Unknown_0x32099:
-INCBIN "baserom.gbc", $32099, $3209A - $32099
-
-LoggedData_0x3209A:
-INCBIN "baserom.gbc", $3209A, $3209D - $3209A
-
-Unknown_0x3209D:
-INCBIN "baserom.gbc", $3209D, $3209E - $3209D
-
-LoggedData_0x3209E:
-INCBIN "baserom.gbc", $3209E, $320A1 - $3209E
-
-Unknown_0x320A1:
-INCBIN "baserom.gbc", $320A1, $320A2 - $320A1
-
-LoggedData_0x320A2:
-INCBIN "baserom.gbc", $320A2, $320A5 - $320A2
-
-Unknown_0x320A5:
-INCBIN "baserom.gbc", $320A5, $320A6 - $320A5
-
-LoggedData_0x320A6:
-INCBIN "baserom.gbc", $320A6, $320A9 - $320A6
-
-Unknown_0x320A9:
-INCBIN "baserom.gbc", $320A9, $320AA - $320A9
-
-LoggedData_0x320AA:
-INCBIN "baserom.gbc", $320AA, $320AD - $320AA
-
-Unknown_0x320AD:
-INCBIN "baserom.gbc", $320AD, $320AE - $320AD
-
-LoggedData_0x320AE:
-INCBIN "baserom.gbc", $320AE, $320B1 - $320AE
-
-Unknown_0x320B1:
-INCBIN "baserom.gbc", $320B1, $320B2 - $320B1
-
-LoggedData_0x320B2:
-INCBIN "baserom.gbc", $320B2, $320B5 - $320B2
-
-Unknown_0x320B5:
-INCBIN "baserom.gbc", $320B5, $320B6 - $320B5
-
-LoggedData_0x320B6:
-INCBIN "baserom.gbc", $320B6, $320B9 - $320B6
-
-Unknown_0x320B9:
-INCBIN "baserom.gbc", $320B9, $320BA - $320B9
-
-LoggedData_0x320BA:
-INCBIN "baserom.gbc", $320BA, $320BD - $320BA
-
-Unknown_0x320BD:
-INCBIN "baserom.gbc", $320BD, $320BE - $320BD
-
-LoggedData_0x320BE:
-INCBIN "baserom.gbc", $320BE, $320C1 - $320BE
-
-Unknown_0x320C1:
-INCBIN "baserom.gbc", $320C1, $320C2 - $320C1
-
-LoggedData_0x320C2:
-INCBIN "baserom.gbc", $320C2, $320C5 - $320C2
-
-Unknown_0x320C5:
-INCBIN "baserom.gbc", $320C5, $320C6 - $320C5
-
-LoggedData_0x320C6:
-INCBIN "baserom.gbc", $320C6, $320C9 - $320C6
-
-Unknown_0x320C9:
-INCBIN "baserom.gbc", $320C9, $320CA - $320C9
-
-LoggedData_0x320CA:
-INCBIN "baserom.gbc", $320CA, $320CD - $320CA
-
-Unknown_0x320CD:
-INCBIN "baserom.gbc", $320CD, $320D6 - $320CD
-
-LoggedData_0x320D6:
-INCBIN "baserom.gbc", $320D6, $320D9 - $320D6
-
-Unknown_0x320D9:
-INCBIN "baserom.gbc", $320D9, $320DA - $320D9
-
-LoggedData_0x320DA:
-INCBIN "baserom.gbc", $320DA, $320DD - $320DA
-
-Unknown_0x320DD:
-INCBIN "baserom.gbc", $320DD, $320DE - $320DD
-
-LoggedData_0x320DE:
-INCBIN "baserom.gbc", $320DE, $320E1 - $320DE
-
-Unknown_0x320E1:
-INCBIN "baserom.gbc", $320E1, $320E2 - $320E1
-
-LoggedData_0x320E2:
-INCBIN "baserom.gbc", $320E2, $320E5 - $320E2
-
-Unknown_0x320E5:
-INCBIN "baserom.gbc", $320E5, $320E6 - $320E5
-
-LoggedData_0x320E6:
-INCBIN "baserom.gbc", $320E6, $320E9 - $320E6
-
-Unknown_0x320E9:
-INCBIN "baserom.gbc", $320E9, $320EA - $320E9
-
-LoggedData_0x320EA:
-INCBIN "baserom.gbc", $320EA, $320ED - $320EA
-
-Unknown_0x320ED:
-INCBIN "baserom.gbc", $320ED, $320EE - $320ED
-
-LoggedData_0x320EE:
-INCBIN "baserom.gbc", $320EE, $320F1 - $320EE
-
-Unknown_0x320F1:
-INCBIN "baserom.gbc", $320F1, $320F2 - $320F1
-
-LoggedData_0x320F2:
-INCBIN "baserom.gbc", $320F2, $320F5 - $320F2
-
-Unknown_0x320F5:
-INCBIN "baserom.gbc", $320F5, $320F6 - $320F5
-
-LoggedData_0x320F6:
-INCBIN "baserom.gbc", $320F6, $320F9 - $320F6
-
-Unknown_0x320F9:
-INCBIN "baserom.gbc", $320F9, $320FA - $320F9
-
-LoggedData_0x320FA:
-INCBIN "baserom.gbc", $320FA, $320FD - $320FA
-
-Unknown_0x320FD:
-INCBIN "baserom.gbc", $320FD, $320FE - $320FD
-
-LoggedData_0x320FE:
-INCBIN "baserom.gbc", $320FE, $32101 - $320FE
-
-Unknown_0x32101:
-INCBIN "baserom.gbc", $32101, $32102 - $32101
-
-LoggedData_0x32102:
-INCBIN "baserom.gbc", $32102, $32105 - $32102
-
-Unknown_0x32105:
-INCBIN "baserom.gbc", $32105, $32106 - $32105
-
-LoggedData_0x32106:
-INCBIN "baserom.gbc", $32106, $32109 - $32106
-
-Unknown_0x32109:
-INCBIN "baserom.gbc", $32109, $3210A - $32109
-
-LoggedData_0x3210A:
-INCBIN "baserom.gbc", $3210A, $3210D - $3210A
-
-Unknown_0x3210D:
-INCBIN "baserom.gbc", $3210D, $3210E - $3210D
-
-LoggedData_0x3210E:
-INCBIN "baserom.gbc", $3210E, $32111 - $3210E
-
-Unknown_0x32111:
-INCBIN "baserom.gbc", $32111, $32112 - $32111
-
-LoggedData_0x32112:
-INCBIN "baserom.gbc", $32112, $32115 - $32112
-
-Unknown_0x32115:
-INCBIN "baserom.gbc", $32115, $32116 - $32115
-
-LoggedData_0x32116:
-INCBIN "baserom.gbc", $32116, $32119 - $32116
-
-Unknown_0x32119:
-INCBIN "baserom.gbc", $32119, $3211A - $32119
-
-LoggedData_0x3211A:
-INCBIN "baserom.gbc", $3211A, $3211D - $3211A
-
-Unknown_0x3211D:
-INCBIN "baserom.gbc", $3211D, $3211E - $3211D
-
-LoggedData_0x3211E:
-INCBIN "baserom.gbc", $3211E, $32121 - $3211E
-
-Unknown_0x32121:
-INCBIN "baserom.gbc", $32121, $32122 - $32121
-
-LoggedData_0x32122:
-INCBIN "baserom.gbc", $32122, $32125 - $32122
-
-Unknown_0x32125:
-INCBIN "baserom.gbc", $32125, $32126 - $32125
-
-LoggedData_0x32126:
-INCBIN "baserom.gbc", $32126, $32129 - $32126
-
-Unknown_0x32129:
-INCBIN "baserom.gbc", $32129, $3212A - $32129
-
-LoggedData_0x3212A:
-INCBIN "baserom.gbc", $3212A, $3212D - $3212A
-
-Unknown_0x3212D:
-INCBIN "baserom.gbc", $3212D, $3212E - $3212D
-
-LoggedData_0x3212E:
-INCBIN "baserom.gbc", $3212E, $32131 - $3212E
-
-Unknown_0x32131:
-INCBIN "baserom.gbc", $32131, $32132 - $32131
-
-LoggedData_0x32132:
-INCBIN "baserom.gbc", $32132, $32135 - $32132
-
-Unknown_0x32135:
-INCBIN "baserom.gbc", $32135, $32136 - $32135
-
-LoggedData_0x32136:
-INCBIN "baserom.gbc", $32136, $32139 - $32136
-
-Unknown_0x32139:
-INCBIN "baserom.gbc", $32139, $3213A - $32139
-
-LoggedData_0x3213A:
-INCBIN "baserom.gbc", $3213A, $3213D - $3213A
-
-Unknown_0x3213D:
-INCBIN "baserom.gbc", $3213D, $3213E - $3213D
-
-LoggedData_0x3213E:
-INCBIN "baserom.gbc", $3213E, $32141 - $3213E
-
-Unknown_0x32141:
-INCBIN "baserom.gbc", $32141, $32142 - $32141
-
-LoggedData_0x32142:
-INCBIN "baserom.gbc", $32142, $32145 - $32142
-
-Unknown_0x32145:
-INCBIN "baserom.gbc", $32145, $32146 - $32145
-
-LoggedData_0x32146:
-INCBIN "baserom.gbc", $32146, $32149 - $32146
-
-Unknown_0x32149:
-INCBIN "baserom.gbc", $32149, $3214A - $32149
-
-LoggedData_0x3214A:
-INCBIN "baserom.gbc", $3214A, $3214D - $3214A
-
-Unknown_0x3214D:
-INCBIN "baserom.gbc", $3214D, $3214E - $3214D
-
-LoggedData_0x3214E:
-INCBIN "baserom.gbc", $3214E, $32151 - $3214E
-
-Unknown_0x32151:
-INCBIN "baserom.gbc", $32151, $32152 - $32151
-
-LoggedData_0x32152:
-INCBIN "baserom.gbc", $32152, $32155 - $32152
-
-Unknown_0x32155:
-INCBIN "baserom.gbc", $32155, $32156 - $32155
-
-LoggedData_0x32156:
-INCBIN "baserom.gbc", $32156, $32159 - $32156
-
-Unknown_0x32159:
-INCBIN "baserom.gbc", $32159, $3215A - $32159
-
-LoggedData_0x3215A:
-INCBIN "baserom.gbc", $3215A, $3215D - $3215A
-
-Unknown_0x3215D:
-INCBIN "baserom.gbc", $3215D, $3215E - $3215D
-
-LoggedData_0x3215E:
-INCBIN "baserom.gbc", $3215E, $32161 - $3215E
-
-Unknown_0x32161:
-INCBIN "baserom.gbc", $32161, $32162 - $32161
-
-LoggedData_0x32162:
-INCBIN "baserom.gbc", $32162, $32165 - $32162
-
-Unknown_0x32165:
-INCBIN "baserom.gbc", $32165, $32166 - $32165
-
-LoggedData_0x32166:
-INCBIN "baserom.gbc", $32166, $32169 - $32166
-
-Unknown_0x32169:
-INCBIN "baserom.gbc", $32169, $3216A - $32169
-
-LoggedData_0x3216A:
-INCBIN "baserom.gbc", $3216A, $3216D - $3216A
-
-Unknown_0x3216D:
-INCBIN "baserom.gbc", $3216D, $3216E - $3216D
-
-LoggedData_0x3216E:
-INCBIN "baserom.gbc", $3216E, $32171 - $3216E
-
-Unknown_0x32171:
-INCBIN "baserom.gbc", $32171, $32172 - $32171
-
-LoggedData_0x32172:
-INCBIN "baserom.gbc", $32172, $32175 - $32172
-
-Unknown_0x32175:
-INCBIN "baserom.gbc", $32175, $32176 - $32175
-
-LoggedData_0x32176:
-INCBIN "baserom.gbc", $32176, $32179 - $32176
-
-Unknown_0x32179:
-INCBIN "baserom.gbc", $32179, $3217A - $32179
-
-LoggedData_0x3217A:
-INCBIN "baserom.gbc", $3217A, $3217D - $3217A
-
-Unknown_0x3217D:
-INCBIN "baserom.gbc", $3217D, $3217E - $3217D
-
-LoggedData_0x3217E:
-INCBIN "baserom.gbc", $3217E, $32181 - $3217E
-
-Unknown_0x32181:
-INCBIN "baserom.gbc", $32181, $32182 - $32181
-
-LoggedData_0x32182:
-INCBIN "baserom.gbc", $32182, $32185 - $32182
-
-Unknown_0x32185:
-INCBIN "baserom.gbc", $32185, $32186 - $32185
-
-LoggedData_0x32186:
-INCBIN "baserom.gbc", $32186, $32189 - $32186
-
-Unknown_0x32189:
-INCBIN "baserom.gbc", $32189, $3218A - $32189
-
-LoggedData_0x3218A:
-INCBIN "baserom.gbc", $3218A, $3218D - $3218A
-
-Unknown_0x3218D:
-INCBIN "baserom.gbc", $3218D, $3218E - $3218D
-
-LoggedData_0x3218E:
-INCBIN "baserom.gbc", $3218E, $32191 - $3218E
-
-Unknown_0x32191:
-INCBIN "baserom.gbc", $32191, $32192 - $32191
-
-LoggedData_0x32192:
-INCBIN "baserom.gbc", $32192, $32195 - $32192
-
-Unknown_0x32195:
-INCBIN "baserom.gbc", $32195, $32196 - $32195
-
-LoggedData_0x32196:
-INCBIN "baserom.gbc", $32196, $32199 - $32196
-
-Unknown_0x32199:
-INCBIN "baserom.gbc", $32199, $3219A - $32199
-
-LoggedData_0x3219A:
-INCBIN "baserom.gbc", $3219A, $3219D - $3219A
-
-Unknown_0x3219D:
-INCBIN "baserom.gbc", $3219D, $3219E - $3219D
-
-LoggedData_0x3219E:
-INCBIN "baserom.gbc", $3219E, $321A1 - $3219E
-
-Unknown_0x321A1:
-INCBIN "baserom.gbc", $321A1, $321A2 - $321A1
-
-LoggedData_0x321A2:
-INCBIN "baserom.gbc", $321A2, $321A5 - $321A2
-
-Unknown_0x321A5:
-INCBIN "baserom.gbc", $321A5, $321A6 - $321A5
-
-LoggedData_0x321A6:
-INCBIN "baserom.gbc", $321A6, $321A9 - $321A6
-
-Unknown_0x321A9:
-INCBIN "baserom.gbc", $321A9, $321AA - $321A9
-
-LoggedData_0x321AA:
-INCBIN "baserom.gbc", $321AA, $321AD - $321AA
-
-Unknown_0x321AD:
-INCBIN "baserom.gbc", $321AD, $321AE - $321AD
-
-LoggedData_0x321AE:
-INCBIN "baserom.gbc", $321AE, $321B1 - $321AE
-
-Unknown_0x321B1:
-INCBIN "baserom.gbc", $321B1, $321B2 - $321B1
-
-LoggedData_0x321B2:
-INCBIN "baserom.gbc", $321B2, $321B5 - $321B2
-
-Unknown_0x321B5:
-INCBIN "baserom.gbc", $321B5, $321B6 - $321B5
-
-LoggedData_0x321B6:
-INCBIN "baserom.gbc", $321B6, $321B9 - $321B6
-
-Unknown_0x321B9:
-INCBIN "baserom.gbc", $321B9, $321BA - $321B9
-
-LoggedData_0x321BA:
-INCBIN "baserom.gbc", $321BA, $321BD - $321BA
-
-Unknown_0x321BD:
-INCBIN "baserom.gbc", $321BD, $321BE - $321BD
-
-LoggedData_0x321BE:
-INCBIN "baserom.gbc", $321BE, $321C1 - $321BE
-
-Unknown_0x321C1:
-INCBIN "baserom.gbc", $321C1, $321C2 - $321C1
-
-LoggedData_0x321C2:
-INCBIN "baserom.gbc", $321C2, $321C5 - $321C2
-
-Unknown_0x321C5:
-INCBIN "baserom.gbc", $321C5, $321C6 - $321C5
-
-LoggedData_0x321C6:
-INCBIN "baserom.gbc", $321C6, $321C9 - $321C6
-
-Unknown_0x321C9:
-INCBIN "baserom.gbc", $321C9, $321CA - $321C9
-
-LoggedData_0x321CA:
-INCBIN "baserom.gbc", $321CA, $321CD - $321CA
-
-Unknown_0x321CD:
-INCBIN "baserom.gbc", $321CD, $321CE - $321CD
-
-LoggedData_0x321CE:
-INCBIN "baserom.gbc", $321CE, $321D1 - $321CE
-
-Unknown_0x321D1:
-INCBIN "baserom.gbc", $321D1, $321D2 - $321D1
-
-LoggedData_0x321D2:
-INCBIN "baserom.gbc", $321D2, $321D5 - $321D2
-
-Unknown_0x321D5:
-INCBIN "baserom.gbc", $321D5, $321D6 - $321D5
-
-LoggedData_0x321D6:
-INCBIN "baserom.gbc", $321D6, $321D9 - $321D6
-
-Unknown_0x321D9:
-INCBIN "baserom.gbc", $321D9, $321DA - $321D9
-
-LoggedData_0x321DA:
-INCBIN "baserom.gbc", $321DA, $321DD - $321DA
-
-Unknown_0x321DD:
-INCBIN "baserom.gbc", $321DD, $32266 - $321DD
-
-LoggedData_0x32266:
-INCBIN "baserom.gbc", $32266, $32269 - $32266
-
-Unknown_0x32269:
-INCBIN "baserom.gbc", $32269, $3226A - $32269
-
-LoggedData_0x3226A:
-INCBIN "baserom.gbc", $3226A, $3226D - $3226A
-
-Unknown_0x3226D:
-INCBIN "baserom.gbc", $3226D, $3226E - $3226D
-
-LoggedData_0x3226E:
-INCBIN "baserom.gbc", $3226E, $32271 - $3226E
-
-Unknown_0x32271:
-INCBIN "baserom.gbc", $32271, $32272 - $32271
-
-LoggedData_0x32272:
-INCBIN "baserom.gbc", $32272, $32275 - $32272
-
-Unknown_0x32275:
-INCBIN "baserom.gbc", $32275, $32276 - $32275
-
-LoggedData_0x32276:
-INCBIN "baserom.gbc", $32276, $32279 - $32276
-
-Unknown_0x32279:
-INCBIN "baserom.gbc", $32279, $3227A - $32279
-
-LoggedData_0x3227A:
-INCBIN "baserom.gbc", $3227A, $3227D - $3227A
-
-Unknown_0x3227D:
-INCBIN "baserom.gbc", $3227D, $3227E - $3227D
-
-LoggedData_0x3227E:
-INCBIN "baserom.gbc", $3227E, $32281 - $3227E
-
-Unknown_0x32281:
-INCBIN "baserom.gbc", $32281, $32282 - $32281
-
-LoggedData_0x32282:
-INCBIN "baserom.gbc", $32282, $32285 - $32282
-
-Unknown_0x32285:
-INCBIN "baserom.gbc", $32285, $32286 - $32285
-
-LoggedData_0x32286:
-INCBIN "baserom.gbc", $32286, $32289 - $32286
-
-Unknown_0x32289:
-INCBIN "baserom.gbc", $32289, $3228A - $32289
-
-LoggedData_0x3228A:
-INCBIN "baserom.gbc", $3228A, $3228D - $3228A
-
-Unknown_0x3228D:
-INCBIN "baserom.gbc", $3228D, $3228E - $3228D
-
-LoggedData_0x3228E:
-INCBIN "baserom.gbc", $3228E, $32291 - $3228E
-
-Unknown_0x32291:
-INCBIN "baserom.gbc", $32291, $32292 - $32291
-
-LoggedData_0x32292:
-INCBIN "baserom.gbc", $32292, $32295 - $32292
-
-Unknown_0x32295:
-INCBIN "baserom.gbc", $32295, $32296 - $32295
-
-LoggedData_0x32296:
-INCBIN "baserom.gbc", $32296, $32299 - $32296
-
-Unknown_0x32299:
-INCBIN "baserom.gbc", $32299, $3229A - $32299
-
-LoggedData_0x3229A:
-INCBIN "baserom.gbc", $3229A, $3229D - $3229A
-
-Unknown_0x3229D:
-INCBIN "baserom.gbc", $3229D, $3229E - $3229D
-
-LoggedData_0x3229E:
-INCBIN "baserom.gbc", $3229E, $322A1 - $3229E
-
-Unknown_0x322A1:
-INCBIN "baserom.gbc", $322A1, $322A2 - $322A1
-
-LoggedData_0x322A2:
-INCBIN "baserom.gbc", $322A2, $322A5 - $322A2
-
-Unknown_0x322A5:
-INCBIN "baserom.gbc", $322A5, $322A6 - $322A5
-
-LoggedData_0x322A6:
-INCBIN "baserom.gbc", $322A6, $322A9 - $322A6
-
-Unknown_0x322A9:
-INCBIN "baserom.gbc", $322A9, $322AA - $322A9
-
-LoggedData_0x322AA:
-INCBIN "baserom.gbc", $322AA, $322AD - $322AA
-
-Unknown_0x322AD:
-INCBIN "baserom.gbc", $322AD, $322AE - $322AD
-
-LoggedData_0x322AE:
-INCBIN "baserom.gbc", $322AE, $322B1 - $322AE
-
-Unknown_0x322B1:
-INCBIN "baserom.gbc", $322B1, $322B2 - $322B1
-
-LoggedData_0x322B2:
-INCBIN "baserom.gbc", $322B2, $322B5 - $322B2
-
-Unknown_0x322B5:
-INCBIN "baserom.gbc", $322B5, $322B6 - $322B5
-
-LoggedData_0x322B6:
-INCBIN "baserom.gbc", $322B6, $322B9 - $322B6
-
-Unknown_0x322B9:
-INCBIN "baserom.gbc", $322B9, $322BA - $322B9
-
-LoggedData_0x322BA:
-INCBIN "baserom.gbc", $322BA, $322BD - $322BA
-
-Unknown_0x322BD:
-INCBIN "baserom.gbc", $322BD, $322BE - $322BD
-
-LoggedData_0x322BE:
-INCBIN "baserom.gbc", $322BE, $322C1 - $322BE
-
-Unknown_0x322C1:
-INCBIN "baserom.gbc", $322C1, $322C2 - $322C1
-
-LoggedData_0x322C2:
-INCBIN "baserom.gbc", $322C2, $322C5 - $322C2
-
-Unknown_0x322C5:
-INCBIN "baserom.gbc", $322C5, $322C6 - $322C5
-
-LoggedData_0x322C6:
-INCBIN "baserom.gbc", $322C6, $322C9 - $322C6
-
-Unknown_0x322C9:
-INCBIN "baserom.gbc", $322C9, $322CA - $322C9
-
-LoggedData_0x322CA:
-INCBIN "baserom.gbc", $322CA, $322CD - $322CA
-
-Unknown_0x322CD:
-INCBIN "baserom.gbc", $322CD, $322D6 - $322CD
-
-LoggedData_0x322D6:
-INCBIN "baserom.gbc", $322D6, $322D9 - $322D6
-
-Unknown_0x322D9:
-INCBIN "baserom.gbc", $322D9, $322DA - $322D9
-
-LoggedData_0x322DA:
-INCBIN "baserom.gbc", $322DA, $322DD - $322DA
-
-Unknown_0x322DD:
-INCBIN "baserom.gbc", $322DD, $322DE - $322DD
-
-LoggedData_0x322DE:
-INCBIN "baserom.gbc", $322DE, $322E1 - $322DE
-
-Unknown_0x322E1:
-INCBIN "baserom.gbc", $322E1, $322E2 - $322E1
-
-LoggedData_0x322E2:
-INCBIN "baserom.gbc", $322E2, $322E5 - $322E2
-
-Unknown_0x322E5:
-INCBIN "baserom.gbc", $322E5, $322E6 - $322E5
-
-LoggedData_0x322E6:
-INCBIN "baserom.gbc", $322E6, $322E9 - $322E6
-
-Unknown_0x322E9:
-INCBIN "baserom.gbc", $322E9, $322EA - $322E9
-
-LoggedData_0x322EA:
-INCBIN "baserom.gbc", $322EA, $322ED - $322EA
-
-Unknown_0x322ED:
-INCBIN "baserom.gbc", $322ED, $322EE - $322ED
-
-LoggedData_0x322EE:
-INCBIN "baserom.gbc", $322EE, $322F1 - $322EE
-
-Unknown_0x322F1:
-INCBIN "baserom.gbc", $322F1, $322F2 - $322F1
-
-LoggedData_0x322F2:
-INCBIN "baserom.gbc", $322F2, $322F5 - $322F2
-
-Unknown_0x322F5:
-INCBIN "baserom.gbc", $322F5, $322F6 - $322F5
-
-LoggedData_0x322F6:
-INCBIN "baserom.gbc", $322F6, $322F9 - $322F6
-
-Unknown_0x322F9:
-INCBIN "baserom.gbc", $322F9, $322FA - $322F9
-
-LoggedData_0x322FA:
-INCBIN "baserom.gbc", $322FA, $322FD - $322FA
-
-Unknown_0x322FD:
-INCBIN "baserom.gbc", $322FD, $322FE - $322FD
-
-LoggedData_0x322FE:
-INCBIN "baserom.gbc", $322FE, $32301 - $322FE
-
-Unknown_0x32301:
-INCBIN "baserom.gbc", $32301, $32302 - $32301
-
-LoggedData_0x32302:
-INCBIN "baserom.gbc", $32302, $32305 - $32302
-
-Unknown_0x32305:
-INCBIN "baserom.gbc", $32305, $32306 - $32305
-
-LoggedData_0x32306:
-INCBIN "baserom.gbc", $32306, $32309 - $32306
-
-Unknown_0x32309:
-INCBIN "baserom.gbc", $32309, $3230A - $32309
-
-LoggedData_0x3230A:
-INCBIN "baserom.gbc", $3230A, $3230D - $3230A
-
-Unknown_0x3230D:
-INCBIN "baserom.gbc", $3230D, $3230E - $3230D
-
-LoggedData_0x3230E:
-INCBIN "baserom.gbc", $3230E, $32311 - $3230E
-
-Unknown_0x32311:
-INCBIN "baserom.gbc", $32311, $32312 - $32311
-
-LoggedData_0x32312:
-INCBIN "baserom.gbc", $32312, $32315 - $32312
-
-Unknown_0x32315:
-INCBIN "baserom.gbc", $32315, $3231E - $32315
-
-LoggedData_0x3231E:
-INCBIN "baserom.gbc", $3231E, $32321 - $3231E
-
-Unknown_0x32321:
-INCBIN "baserom.gbc", $32321, $32322 - $32321
-
-LoggedData_0x32322:
-INCBIN "baserom.gbc", $32322, $32325 - $32322
-
-Unknown_0x32325:
-INCBIN "baserom.gbc", $32325, $32326 - $32325
-
-LoggedData_0x32326:
-INCBIN "baserom.gbc", $32326, $32329 - $32326
-
-Unknown_0x32329:
-INCBIN "baserom.gbc", $32329, $3232A - $32329
-
-LoggedData_0x3232A:
-INCBIN "baserom.gbc", $3232A, $3232D - $3232A
-
-Unknown_0x3232D:
-INCBIN "baserom.gbc", $3232D, $3232E - $3232D
-
-LoggedData_0x3232E:
-INCBIN "baserom.gbc", $3232E, $32331 - $3232E
-
-Unknown_0x32331:
-INCBIN "baserom.gbc", $32331, $32332 - $32331
-
-LoggedData_0x32332:
-INCBIN "baserom.gbc", $32332, $32335 - $32332
-
-Unknown_0x32335:
-INCBIN "baserom.gbc", $32335, $32336 - $32335
-
-LoggedData_0x32336:
-INCBIN "baserom.gbc", $32336, $32339 - $32336
-
-Unknown_0x32339:
-INCBIN "baserom.gbc", $32339, $3233A - $32339
-
-LoggedData_0x3233A:
-INCBIN "baserom.gbc", $3233A, $3233D - $3233A
-
-Unknown_0x3233D:
-INCBIN "baserom.gbc", $3233D, $3233E - $3233D
-
-LoggedData_0x3233E:
-INCBIN "baserom.gbc", $3233E, $32341 - $3233E
-
-Unknown_0x32341:
-INCBIN "baserom.gbc", $32341, $32342 - $32341
-
-LoggedData_0x32342:
-INCBIN "baserom.gbc", $32342, $32345 - $32342
-
-Unknown_0x32345:
-INCBIN "baserom.gbc", $32345, $32346 - $32345
-
-LoggedData_0x32346:
-INCBIN "baserom.gbc", $32346, $32349 - $32346
-
-Unknown_0x32349:
-INCBIN "baserom.gbc", $32349, $3234A - $32349
-
-LoggedData_0x3234A:
-INCBIN "baserom.gbc", $3234A, $3234D - $3234A
-
-Unknown_0x3234D:
-INCBIN "baserom.gbc", $3234D, $3234E - $3234D
-
-LoggedData_0x3234E:
-INCBIN "baserom.gbc", $3234E, $32351 - $3234E
-
-Unknown_0x32351:
-INCBIN "baserom.gbc", $32351, $32352 - $32351
-
-LoggedData_0x32352:
-INCBIN "baserom.gbc", $32352, $32355 - $32352
-
-Unknown_0x32355:
-INCBIN "baserom.gbc", $32355, $32356 - $32355
-
-LoggedData_0x32356:
-INCBIN "baserom.gbc", $32356, $32359 - $32356
-
-Unknown_0x32359:
-INCBIN "baserom.gbc", $32359, $3235A - $32359
-
-LoggedData_0x3235A:
-INCBIN "baserom.gbc", $3235A, $3235D - $3235A
-
-Unknown_0x3235D:
-INCBIN "baserom.gbc", $3235D, $3235E - $3235D
-
-LoggedData_0x3235E:
-INCBIN "baserom.gbc", $3235E, $32361 - $3235E
-
-Unknown_0x32361:
-INCBIN "baserom.gbc", $32361, $32362 - $32361
-
-LoggedData_0x32362:
-INCBIN "baserom.gbc", $32362, $32365 - $32362
-
-Unknown_0x32365:
-INCBIN "baserom.gbc", $32365, $32366 - $32365
-
-LoggedData_0x32366:
-INCBIN "baserom.gbc", $32366, $32369 - $32366
-
-Unknown_0x32369:
-INCBIN "baserom.gbc", $32369, $3236A - $32369
-
-LoggedData_0x3236A:
-INCBIN "baserom.gbc", $3236A, $3236D - $3236A
-
-Unknown_0x3236D:
-INCBIN "baserom.gbc", $3236D, $3236E - $3236D
-
-LoggedData_0x3236E:
-INCBIN "baserom.gbc", $3236E, $32371 - $3236E
-
-Unknown_0x32371:
-INCBIN "baserom.gbc", $32371, $32372 - $32371
-
-LoggedData_0x32372:
-INCBIN "baserom.gbc", $32372, $32375 - $32372
-
-Unknown_0x32375:
-INCBIN "baserom.gbc", $32375, $32376 - $32375
-
-LoggedData_0x32376:
-INCBIN "baserom.gbc", $32376, $32379 - $32376
-
-Unknown_0x32379:
-INCBIN "baserom.gbc", $32379, $3237A - $32379
-
-LoggedData_0x3237A:
-INCBIN "baserom.gbc", $3237A, $3237D - $3237A
-
-Unknown_0x3237D:
-INCBIN "baserom.gbc", $3237D, $3237E - $3237D
-
-LoggedData_0x3237E:
-INCBIN "baserom.gbc", $3237E, $32381 - $3237E
-
-Unknown_0x32381:
-INCBIN "baserom.gbc", $32381, $32382 - $32381
-
-LoggedData_0x32382:
-INCBIN "baserom.gbc", $32382, $32385 - $32382
-
-Unknown_0x32385:
-INCBIN "baserom.gbc", $32385, $32386 - $32385
-
-LoggedData_0x32386:
-INCBIN "baserom.gbc", $32386, $32389 - $32386
-
-Unknown_0x32389:
-INCBIN "baserom.gbc", $32389, $3238A - $32389
-
-LoggedData_0x3238A:
-INCBIN "baserom.gbc", $3238A, $3238D - $3238A
-
-Unknown_0x3238D:
-INCBIN "baserom.gbc", $3238D, $3238E - $3238D
-
-LoggedData_0x3238E:
-INCBIN "baserom.gbc", $3238E, $32391 - $3238E
-
-Unknown_0x32391:
-INCBIN "baserom.gbc", $32391, $32392 - $32391
-
-LoggedData_0x32392:
-INCBIN "baserom.gbc", $32392, $32395 - $32392
-
-Unknown_0x32395:
-INCBIN "baserom.gbc", $32395, $32396 - $32395
-
-LoggedData_0x32396:
-INCBIN "baserom.gbc", $32396, $32399 - $32396
-
-Unknown_0x32399:
-INCBIN "baserom.gbc", $32399, $3239A - $32399
-
-LoggedData_0x3239A:
-INCBIN "baserom.gbc", $3239A, $3239D - $3239A
-
-Unknown_0x3239D:
-INCBIN "baserom.gbc", $3239D, $3239E - $3239D
-
-LoggedData_0x3239E:
-INCBIN "baserom.gbc", $3239E, $323A1 - $3239E
-
-Unknown_0x323A1:
-INCBIN "baserom.gbc", $323A1, $323A2 - $323A1
-
-LoggedData_0x323A2:
-INCBIN "baserom.gbc", $323A2, $323A5 - $323A2
-
-Unknown_0x323A5:
-INCBIN "baserom.gbc", $323A5, $323AE - $323A5
-
-LoggedData_0x323AE:
-INCBIN "baserom.gbc", $323AE, $323B1 - $323AE
-
-Unknown_0x323B1:
-INCBIN "baserom.gbc", $323B1, $323B2 - $323B1
-
-LoggedData_0x323B2:
-INCBIN "baserom.gbc", $323B2, $323B5 - $323B2
-
-Unknown_0x323B5:
-INCBIN "baserom.gbc", $323B5, $323B6 - $323B5
-
-LoggedData_0x323B6:
-INCBIN "baserom.gbc", $323B6, $323B9 - $323B6
-
-Unknown_0x323B9:
-INCBIN "baserom.gbc", $323B9, $323BA - $323B9
-
-LoggedData_0x323BA:
-INCBIN "baserom.gbc", $323BA, $323BD - $323BA
-
-Unknown_0x323BD:
-INCBIN "baserom.gbc", $323BD, $323BE - $323BD
-
-LoggedData_0x323BE:
-INCBIN "baserom.gbc", $323BE, $323C1 - $323BE
-
-Unknown_0x323C1:
-INCBIN "baserom.gbc", $323C1, $323C2 - $323C1
-
-LoggedData_0x323C2:
-INCBIN "baserom.gbc", $323C2, $323C5 - $323C2
-
-Unknown_0x323C5:
-INCBIN "baserom.gbc", $323C5, $323C6 - $323C5
-
-LoggedData_0x323C6:
-INCBIN "baserom.gbc", $323C6, $323C9 - $323C6
-
-Unknown_0x323C9:
-INCBIN "baserom.gbc", $323C9, $323CA - $323C9
-
-LoggedData_0x323CA:
-INCBIN "baserom.gbc", $323CA, $323CD - $323CA
-
-Unknown_0x323CD:
-INCBIN "baserom.gbc", $323CD, $323CE - $323CD
-
-LoggedData_0x323CE:
-INCBIN "baserom.gbc", $323CE, $323D1 - $323CE
-
-Unknown_0x323D1:
-INCBIN "baserom.gbc", $323D1, $323D2 - $323D1
-
-LoggedData_0x323D2:
-INCBIN "baserom.gbc", $323D2, $323D5 - $323D2
-
-Unknown_0x323D5:
-INCBIN "baserom.gbc", $323D5, $323D6 - $323D5
-
-LoggedData_0x323D6:
-INCBIN "baserom.gbc", $323D6, $323D9 - $323D6
-
-Unknown_0x323D9:
-INCBIN "baserom.gbc", $323D9, $323DA - $323D9
-
-LoggedData_0x323DA:
-INCBIN "baserom.gbc", $323DA, $323DD - $323DA
-
-Unknown_0x323DD:
-INCBIN "baserom.gbc", $323DD, $323DE - $323DD
-
-LoggedData_0x323DE:
-INCBIN "baserom.gbc", $323DE, $323E1 - $323DE
-
-Unknown_0x323E1:
-INCBIN "baserom.gbc", $323E1, $323E2 - $323E1
-
-LoggedData_0x323E2:
-INCBIN "baserom.gbc", $323E2, $323E5 - $323E2
-
-Unknown_0x323E5:
-INCBIN "baserom.gbc", $323E5, $323E6 - $323E5
-
-LoggedData_0x323E6:
-INCBIN "baserom.gbc", $323E6, $323E9 - $323E6
-
-Unknown_0x323E9:
-INCBIN "baserom.gbc", $323E9, $323EA - $323E9
-
-LoggedData_0x323EA:
-INCBIN "baserom.gbc", $323EA, $323ED - $323EA
-
-Unknown_0x323ED:
-INCBIN "baserom.gbc", $323ED, $32466 - $323ED
-
-LoggedData_0x32466:
-INCBIN "baserom.gbc", $32466, $32469 - $32466
-
-Unknown_0x32469:
-INCBIN "baserom.gbc", $32469, $3246A - $32469
-
-LoggedData_0x3246A:
-INCBIN "baserom.gbc", $3246A, $3246D - $3246A
-
-Unknown_0x3246D:
-INCBIN "baserom.gbc", $3246D, $3246E - $3246D
-
-LoggedData_0x3246E:
-INCBIN "baserom.gbc", $3246E, $32471 - $3246E
-
-Unknown_0x32471:
-INCBIN "baserom.gbc", $32471, $32472 - $32471
-
-LoggedData_0x32472:
-INCBIN "baserom.gbc", $32472, $32475 - $32472
-
-Unknown_0x32475:
-INCBIN "baserom.gbc", $32475, $32476 - $32475
-
-LoggedData_0x32476:
-INCBIN "baserom.gbc", $32476, $32479 - $32476
-
-Unknown_0x32479:
-INCBIN "baserom.gbc", $32479, $3247A - $32479
-
-LoggedData_0x3247A:
-INCBIN "baserom.gbc", $3247A, $3247D - $3247A
-
-Unknown_0x3247D:
-INCBIN "baserom.gbc", $3247D, $3247E - $3247D
-
-LoggedData_0x3247E:
-INCBIN "baserom.gbc", $3247E, $32481 - $3247E
-
-Unknown_0x32481:
-INCBIN "baserom.gbc", $32481, $32482 - $32481
-
-LoggedData_0x32482:
-INCBIN "baserom.gbc", $32482, $32485 - $32482
-
-Unknown_0x32485:
-INCBIN "baserom.gbc", $32485, $32486 - $32485
-
-LoggedData_0x32486:
-INCBIN "baserom.gbc", $32486, $32489 - $32486
-
-Unknown_0x32489:
-INCBIN "baserom.gbc", $32489, $3248A - $32489
-
-LoggedData_0x3248A:
-INCBIN "baserom.gbc", $3248A, $3248D - $3248A
-
-Unknown_0x3248D:
-INCBIN "baserom.gbc", $3248D, $3248E - $3248D
-
-LoggedData_0x3248E:
-INCBIN "baserom.gbc", $3248E, $32491 - $3248E
-
-Unknown_0x32491:
-INCBIN "baserom.gbc", $32491, $32492 - $32491
-
-LoggedData_0x32492:
-INCBIN "baserom.gbc", $32492, $32495 - $32492
-
-Unknown_0x32495:
-INCBIN "baserom.gbc", $32495, $32496 - $32495
-
-LoggedData_0x32496:
-INCBIN "baserom.gbc", $32496, $32499 - $32496
-
-Unknown_0x32499:
-INCBIN "baserom.gbc", $32499, $3249A - $32499
-
-LoggedData_0x3249A:
-INCBIN "baserom.gbc", $3249A, $3249D - $3249A
-
-Unknown_0x3249D:
-INCBIN "baserom.gbc", $3249D, $3249E - $3249D
-
-LoggedData_0x3249E:
-INCBIN "baserom.gbc", $3249E, $324A1 - $3249E
-
-Unknown_0x324A1:
-INCBIN "baserom.gbc", $324A1, $324A2 - $324A1
-
-LoggedData_0x324A2:
-INCBIN "baserom.gbc", $324A2, $324A5 - $324A2
-
-Unknown_0x324A5:
-INCBIN "baserom.gbc", $324A5, $324A6 - $324A5
-
-LoggedData_0x324A6:
-INCBIN "baserom.gbc", $324A6, $324A9 - $324A6
-
-Unknown_0x324A9:
-INCBIN "baserom.gbc", $324A9, $324AA - $324A9
-
-LoggedData_0x324AA:
-INCBIN "baserom.gbc", $324AA, $324AD - $324AA
-
-Unknown_0x324AD:
-INCBIN "baserom.gbc", $324AD, $324AE - $324AD
-
-LoggedData_0x324AE:
-INCBIN "baserom.gbc", $324AE, $324B1 - $324AE
-
-Unknown_0x324B1:
-INCBIN "baserom.gbc", $324B1, $324B2 - $324B1
-
-LoggedData_0x324B2:
-INCBIN "baserom.gbc", $324B2, $324B5 - $324B2
-
-Unknown_0x324B5:
-INCBIN "baserom.gbc", $324B5, $324B6 - $324B5
-
-LoggedData_0x324B6:
-INCBIN "baserom.gbc", $324B6, $324B9 - $324B6
-
-Unknown_0x324B9:
-INCBIN "baserom.gbc", $324B9, $324BA - $324B9
-
-LoggedData_0x324BA:
-INCBIN "baserom.gbc", $324BA, $324BD - $324BA
-
-Unknown_0x324BD:
-INCBIN "baserom.gbc", $324BD, $324BE - $324BD
-
-LoggedData_0x324BE:
-INCBIN "baserom.gbc", $324BE, $324C1 - $324BE
-
-Unknown_0x324C1:
-INCBIN "baserom.gbc", $324C1, $324C2 - $324C1
-
-LoggedData_0x324C2:
-INCBIN "baserom.gbc", $324C2, $324C5 - $324C2
-
-Unknown_0x324C5:
-INCBIN "baserom.gbc", $324C5, $324C6 - $324C5
-
-LoggedData_0x324C6:
-INCBIN "baserom.gbc", $324C6, $324C9 - $324C6
-
-Unknown_0x324C9:
-INCBIN "baserom.gbc", $324C9, $324CA - $324C9
-
-LoggedData_0x324CA:
-INCBIN "baserom.gbc", $324CA, $324CD - $324CA
-
-Unknown_0x324CD:
-INCBIN "baserom.gbc", $324CD, $324CE - $324CD
-
-LoggedData_0x324CE:
-INCBIN "baserom.gbc", $324CE, $324D1 - $324CE
-
-Unknown_0x324D1:
-INCBIN "baserom.gbc", $324D1, $324D2 - $324D1
-
-LoggedData_0x324D2:
-INCBIN "baserom.gbc", $324D2, $324D5 - $324D2
-
-Unknown_0x324D5:
-INCBIN "baserom.gbc", $324D5, $324D6 - $324D5
-
-LoggedData_0x324D6:
-INCBIN "baserom.gbc", $324D6, $324D9 - $324D6
-
-Unknown_0x324D9:
-INCBIN "baserom.gbc", $324D9, $324DA - $324D9
-
-LoggedData_0x324DA:
-INCBIN "baserom.gbc", $324DA, $324DD - $324DA
-
-Unknown_0x324DD:
-INCBIN "baserom.gbc", $324DD, $324DE - $324DD
-
-LoggedData_0x324DE:
-INCBIN "baserom.gbc", $324DE, $324E1 - $324DE
-
-Unknown_0x324E1:
-INCBIN "baserom.gbc", $324E1, $324E2 - $324E1
-
-LoggedData_0x324E2:
-INCBIN "baserom.gbc", $324E2, $324E5 - $324E2
-
-Unknown_0x324E5:
-INCBIN "baserom.gbc", $324E5, $324E6 - $324E5
-
-LoggedData_0x324E6:
-INCBIN "baserom.gbc", $324E6, $324E9 - $324E6
-
-Unknown_0x324E9:
-INCBIN "baserom.gbc", $324E9, $324EA - $324E9
-
-LoggedData_0x324EA:
-INCBIN "baserom.gbc", $324EA, $324ED - $324EA
-
-Unknown_0x324ED:
-INCBIN "baserom.gbc", $324ED, $324EE - $324ED
-
-LoggedData_0x324EE:
-INCBIN "baserom.gbc", $324EE, $324F1 - $324EE
-
-Unknown_0x324F1:
-INCBIN "baserom.gbc", $324F1, $324F2 - $324F1
-
-LoggedData_0x324F2:
-INCBIN "baserom.gbc", $324F2, $324F5 - $324F2
-
-Unknown_0x324F5:
-INCBIN "baserom.gbc", $324F5, $324F6 - $324F5
-
-LoggedData_0x324F6:
-INCBIN "baserom.gbc", $324F6, $324F9 - $324F6
-
-Unknown_0x324F9:
-INCBIN "baserom.gbc", $324F9, $324FA - $324F9
-
-LoggedData_0x324FA:
-INCBIN "baserom.gbc", $324FA, $324FD - $324FA
-
-Unknown_0x324FD:
-INCBIN "baserom.gbc", $324FD, $324FE - $324FD
-
-LoggedData_0x324FE:
-INCBIN "baserom.gbc", $324FE, $32501 - $324FE
-
-Unknown_0x32501:
-INCBIN "baserom.gbc", $32501, $32502 - $32501
-
-LoggedData_0x32502:
-INCBIN "baserom.gbc", $32502, $32505 - $32502
-
-Unknown_0x32505:
-INCBIN "baserom.gbc", $32505, $32506 - $32505
-
-LoggedData_0x32506:
-INCBIN "baserom.gbc", $32506, $32509 - $32506
-
-Unknown_0x32509:
-INCBIN "baserom.gbc", $32509, $3250A - $32509
-
-LoggedData_0x3250A:
-INCBIN "baserom.gbc", $3250A, $3250D - $3250A
-
-Unknown_0x3250D:
-INCBIN "baserom.gbc", $3250D, $3250E - $3250D
-
-LoggedData_0x3250E:
-INCBIN "baserom.gbc", $3250E, $32511 - $3250E
-
-Unknown_0x32511:
-INCBIN "baserom.gbc", $32511, $32512 - $32511
-
-LoggedData_0x32512:
-INCBIN "baserom.gbc", $32512, $32515 - $32512
-
-Unknown_0x32515:
-INCBIN "baserom.gbc", $32515, $32516 - $32515
-
-LoggedData_0x32516:
-INCBIN "baserom.gbc", $32516, $32519 - $32516
-
-Unknown_0x32519:
-INCBIN "baserom.gbc", $32519, $3251A - $32519
-
-LoggedData_0x3251A:
-INCBIN "baserom.gbc", $3251A, $3251D - $3251A
-
-Unknown_0x3251D:
-INCBIN "baserom.gbc", $3251D, $3251E - $3251D
-
-LoggedData_0x3251E:
-INCBIN "baserom.gbc", $3251E, $32521 - $3251E
-
-Unknown_0x32521:
-INCBIN "baserom.gbc", $32521, $32522 - $32521
-
-LoggedData_0x32522:
-INCBIN "baserom.gbc", $32522, $32525 - $32522
-
-Unknown_0x32525:
-INCBIN "baserom.gbc", $32525, $32526 - $32525
-
-LoggedData_0x32526:
-INCBIN "baserom.gbc", $32526, $32529 - $32526
-
-Unknown_0x32529:
-INCBIN "baserom.gbc", $32529, $3252A - $32529
-
-LoggedData_0x3252A:
-INCBIN "baserom.gbc", $3252A, $3252D - $3252A
-
-Unknown_0x3252D:
-INCBIN "baserom.gbc", $3252D, $3252E - $3252D
-
-LoggedData_0x3252E:
-INCBIN "baserom.gbc", $3252E, $32531 - $3252E
-
-Unknown_0x32531:
-INCBIN "baserom.gbc", $32531, $32532 - $32531
-
-LoggedData_0x32532:
-INCBIN "baserom.gbc", $32532, $32535 - $32532
-
-Unknown_0x32535:
-INCBIN "baserom.gbc", $32535, $32566 - $32535
-
-LoggedData_0x32566:
-INCBIN "baserom.gbc", $32566, $32569 - $32566
-
-Unknown_0x32569:
-INCBIN "baserom.gbc", $32569, $3256A - $32569
-
-LoggedData_0x3256A:
-INCBIN "baserom.gbc", $3256A, $3256D - $3256A
-
-Unknown_0x3256D:
-INCBIN "baserom.gbc", $3256D, $3256E - $3256D
-
-LoggedData_0x3256E:
-INCBIN "baserom.gbc", $3256E, $32571 - $3256E
-
-Unknown_0x32571:
-INCBIN "baserom.gbc", $32571, $32572 - $32571
-
-LoggedData_0x32572:
-INCBIN "baserom.gbc", $32572, $32575 - $32572
-
-Unknown_0x32575:
-INCBIN "baserom.gbc", $32575, $32576 - $32575
-
-LoggedData_0x32576:
-INCBIN "baserom.gbc", $32576, $32579 - $32576
-
-Unknown_0x32579:
-INCBIN "baserom.gbc", $32579, $3257A - $32579
-
-LoggedData_0x3257A:
-INCBIN "baserom.gbc", $3257A, $3257D - $3257A
-
-Unknown_0x3257D:
-INCBIN "baserom.gbc", $3257D, $3257E - $3257D
-
-LoggedData_0x3257E:
-INCBIN "baserom.gbc", $3257E, $32581 - $3257E
-
-Unknown_0x32581:
-INCBIN "baserom.gbc", $32581, $32582 - $32581
-
-LoggedData_0x32582:
-INCBIN "baserom.gbc", $32582, $32585 - $32582
-
-Unknown_0x32585:
-INCBIN "baserom.gbc", $32585, $32586 - $32585
-
-LoggedData_0x32586:
-INCBIN "baserom.gbc", $32586, $32589 - $32586
-
-Unknown_0x32589:
-INCBIN "baserom.gbc", $32589, $3258A - $32589
-
-LoggedData_0x3258A:
-INCBIN "baserom.gbc", $3258A, $3258D - $3258A
-
-Unknown_0x3258D:
-INCBIN "baserom.gbc", $3258D, $3258E - $3258D
-
-LoggedData_0x3258E:
-INCBIN "baserom.gbc", $3258E, $32591 - $3258E
-
-Unknown_0x32591:
-INCBIN "baserom.gbc", $32591, $32592 - $32591
-
-LoggedData_0x32592:
-INCBIN "baserom.gbc", $32592, $32595 - $32592
-
-Unknown_0x32595:
-INCBIN "baserom.gbc", $32595, $32596 - $32595
-
-LoggedData_0x32596:
-INCBIN "baserom.gbc", $32596, $32599 - $32596
-
-Unknown_0x32599:
-INCBIN "baserom.gbc", $32599, $3259A - $32599
-
-LoggedData_0x3259A:
-INCBIN "baserom.gbc", $3259A, $3259D - $3259A
-
-Unknown_0x3259D:
-INCBIN "baserom.gbc", $3259D, $3259E - $3259D
-
-LoggedData_0x3259E:
-INCBIN "baserom.gbc", $3259E, $325A1 - $3259E
-
-Unknown_0x325A1:
-INCBIN "baserom.gbc", $325A1, $325A2 - $325A1
-
-LoggedData_0x325A2:
-INCBIN "baserom.gbc", $325A2, $325A5 - $325A2
-
-Unknown_0x325A5:
-INCBIN "baserom.gbc", $325A5, $325A6 - $325A5
-
-LoggedData_0x325A6:
-INCBIN "baserom.gbc", $325A6, $325A9 - $325A6
-
-Unknown_0x325A9:
-INCBIN "baserom.gbc", $325A9, $325AA - $325A9
-
-LoggedData_0x325AA:
-INCBIN "baserom.gbc", $325AA, $325AD - $325AA
-
-Unknown_0x325AD:
-INCBIN "baserom.gbc", $325AD, $325AE - $325AD
-
-LoggedData_0x325AE:
-INCBIN "baserom.gbc", $325AE, $325B1 - $325AE
-
-Unknown_0x325B1:
-INCBIN "baserom.gbc", $325B1, $325B2 - $325B1
-
-LoggedData_0x325B2:
-INCBIN "baserom.gbc", $325B2, $325B5 - $325B2
-
-Unknown_0x325B5:
-INCBIN "baserom.gbc", $325B5, $325B6 - $325B5
-
-LoggedData_0x325B6:
-INCBIN "baserom.gbc", $325B6, $325B9 - $325B6
-
-Unknown_0x325B9:
-INCBIN "baserom.gbc", $325B9, $325BA - $325B9
-
-LoggedData_0x325BA:
-INCBIN "baserom.gbc", $325BA, $325BD - $325BA
-
-Unknown_0x325BD:
-INCBIN "baserom.gbc", $325BD, $325BE - $325BD
-
-LoggedData_0x325BE:
-INCBIN "baserom.gbc", $325BE, $325C1 - $325BE
-
-Unknown_0x325C1:
-INCBIN "baserom.gbc", $325C1, $325C2 - $325C1
-
-LoggedData_0x325C2:
-INCBIN "baserom.gbc", $325C2, $325C5 - $325C2
-
-Unknown_0x325C5:
-INCBIN "baserom.gbc", $325C5, $325C6 - $325C5
-
-LoggedData_0x325C6:
-INCBIN "baserom.gbc", $325C6, $325C9 - $325C6
-
-Unknown_0x325C9:
-INCBIN "baserom.gbc", $325C9, $325CA - $325C9
-
-LoggedData_0x325CA:
-INCBIN "baserom.gbc", $325CA, $325CD - $325CA
-
-Unknown_0x325CD:
-INCBIN "baserom.gbc", $325CD, $325CE - $325CD
-
-LoggedData_0x325CE:
-INCBIN "baserom.gbc", $325CE, $325D1 - $325CE
-
-Unknown_0x325D1:
-INCBIN "baserom.gbc", $325D1, $325D2 - $325D1
-
-LoggedData_0x325D2:
-INCBIN "baserom.gbc", $325D2, $325D5 - $325D2
-
-Unknown_0x325D5:
-INCBIN "baserom.gbc", $325D5, $325D6 - $325D5
-
-LoggedData_0x325D6:
-INCBIN "baserom.gbc", $325D6, $325D9 - $325D6
-
-Unknown_0x325D9:
-INCBIN "baserom.gbc", $325D9, $325DA - $325D9
-
-LoggedData_0x325DA:
-INCBIN "baserom.gbc", $325DA, $325DD - $325DA
-
-Unknown_0x325DD:
-INCBIN "baserom.gbc", $325DD, $325DE - $325DD
-
-LoggedData_0x325DE:
-INCBIN "baserom.gbc", $325DE, $325E1 - $325DE
-
-Unknown_0x325E1:
-INCBIN "baserom.gbc", $325E1, $325E2 - $325E1
-
-LoggedData_0x325E2:
-INCBIN "baserom.gbc", $325E2, $325E5 - $325E2
-
-Unknown_0x325E5:
-INCBIN "baserom.gbc", $325E5, $325E6 - $325E5
-
-LoggedData_0x325E6:
-INCBIN "baserom.gbc", $325E6, $325E9 - $325E6
-
-Unknown_0x325E9:
-INCBIN "baserom.gbc", $325E9, $325EA - $325E9
-
-LoggedData_0x325EA:
-INCBIN "baserom.gbc", $325EA, $325ED - $325EA
-
-Unknown_0x325ED:
-INCBIN "baserom.gbc", $325ED, $325EE - $325ED
-
-LoggedData_0x325EE:
-INCBIN "baserom.gbc", $325EE, $325F1 - $325EE
-
-Unknown_0x325F1:
-INCBIN "baserom.gbc", $325F1, $325F2 - $325F1
-
-LoggedData_0x325F2:
-INCBIN "baserom.gbc", $325F2, $325F5 - $325F2
-
-Unknown_0x325F5:
-INCBIN "baserom.gbc", $325F5, $325F6 - $325F5
-
-LoggedData_0x325F6:
-INCBIN "baserom.gbc", $325F6, $325F9 - $325F6
-
-Unknown_0x325F9:
-INCBIN "baserom.gbc", $325F9, $325FA - $325F9
-
-LoggedData_0x325FA:
-INCBIN "baserom.gbc", $325FA, $325FD - $325FA
-
-Unknown_0x325FD:
-INCBIN "baserom.gbc", $325FD, $325FE - $325FD
-
-LoggedData_0x325FE:
-INCBIN "baserom.gbc", $325FE, $32601 - $325FE
-
-Unknown_0x32601:
-INCBIN "baserom.gbc", $32601, $32602 - $32601
-
-LoggedData_0x32602:
-INCBIN "baserom.gbc", $32602, $32605 - $32602
-
-Unknown_0x32605:
-INCBIN "baserom.gbc", $32605, $32606 - $32605
-
-LoggedData_0x32606:
-INCBIN "baserom.gbc", $32606, $32609 - $32606
-
-Unknown_0x32609:
-INCBIN "baserom.gbc", $32609, $3260A - $32609
-
-LoggedData_0x3260A:
-INCBIN "baserom.gbc", $3260A, $3260D - $3260A
-
-Unknown_0x3260D:
-INCBIN "baserom.gbc", $3260D, $3260E - $3260D
-
-LoggedData_0x3260E:
-INCBIN "baserom.gbc", $3260E, $32611 - $3260E
-
-Unknown_0x32611:
-INCBIN "baserom.gbc", $32611, $32612 - $32611
-
-LoggedData_0x32612:
-INCBIN "baserom.gbc", $32612, $32615 - $32612
-
-Unknown_0x32615:
-INCBIN "baserom.gbc", $32615, $32616 - $32615
-
-LoggedData_0x32616:
-INCBIN "baserom.gbc", $32616, $32619 - $32616
-
-Unknown_0x32619:
-INCBIN "baserom.gbc", $32619, $3261A - $32619
-
-LoggedData_0x3261A:
-INCBIN "baserom.gbc", $3261A, $3261D - $3261A
-
-Unknown_0x3261D:
-INCBIN "baserom.gbc", $3261D, $3261E - $3261D
-
-LoggedData_0x3261E:
-INCBIN "baserom.gbc", $3261E, $32621 - $3261E
-
-Unknown_0x32621:
-INCBIN "baserom.gbc", $32621, $32622 - $32621
-
-LoggedData_0x32622:
-INCBIN "baserom.gbc", $32622, $32625 - $32622
-
-Unknown_0x32625:
-INCBIN "baserom.gbc", $32625, $32626 - $32625
-
-LoggedData_0x32626:
-INCBIN "baserom.gbc", $32626, $32629 - $32626
-
-Unknown_0x32629:
-INCBIN "baserom.gbc", $32629, $3262A - $32629
-
-LoggedData_0x3262A:
-INCBIN "baserom.gbc", $3262A, $3262D - $3262A
-
-Unknown_0x3262D:
-INCBIN "baserom.gbc", $3262D, $3262E - $3262D
-
-LoggedData_0x3262E:
-INCBIN "baserom.gbc", $3262E, $32631 - $3262E
-
-Unknown_0x32631:
-INCBIN "baserom.gbc", $32631, $32632 - $32631
-
-LoggedData_0x32632:
-INCBIN "baserom.gbc", $32632, $32635 - $32632
-
-Unknown_0x32635:
-INCBIN "baserom.gbc", $32635, $32636 - $32635
-
-LoggedData_0x32636:
-INCBIN "baserom.gbc", $32636, $32639 - $32636
-
-Unknown_0x32639:
-INCBIN "baserom.gbc", $32639, $3263A - $32639
-
-LoggedData_0x3263A:
-INCBIN "baserom.gbc", $3263A, $3263D - $3263A
-
-Unknown_0x3263D:
-INCBIN "baserom.gbc", $3263D, $3263E - $3263D
-
-LoggedData_0x3263E:
-INCBIN "baserom.gbc", $3263E, $32641 - $3263E
-
-Unknown_0x32641:
-INCBIN "baserom.gbc", $32641, $32642 - $32641
-
-LoggedData_0x32642:
-INCBIN "baserom.gbc", $32642, $32645 - $32642
-
-Unknown_0x32645:
-INCBIN "baserom.gbc", $32645, $32646 - $32645
-
-LoggedData_0x32646:
-INCBIN "baserom.gbc", $32646, $32649 - $32646
-
-Unknown_0x32649:
-INCBIN "baserom.gbc", $32649, $3264A - $32649
-
-LoggedData_0x3264A:
-INCBIN "baserom.gbc", $3264A, $3264D - $3264A
-
-Unknown_0x3264D:
-INCBIN "baserom.gbc", $3264D, $3264E - $3264D
-
-LoggedData_0x3264E:
-INCBIN "baserom.gbc", $3264E, $32651 - $3264E
-
-Unknown_0x32651:
-INCBIN "baserom.gbc", $32651, $32652 - $32651
-
-LoggedData_0x32652:
-INCBIN "baserom.gbc", $32652, $32655 - $32652
-
-Unknown_0x32655:
-INCBIN "baserom.gbc", $32655, $32656 - $32655
-
-LoggedData_0x32656:
-INCBIN "baserom.gbc", $32656, $32659 - $32656
-
-Unknown_0x32659:
-INCBIN "baserom.gbc", $32659, $3265A - $32659
-
-LoggedData_0x3265A:
-INCBIN "baserom.gbc", $3265A, $3265D - $3265A
-
-Unknown_0x3265D:
-INCBIN "baserom.gbc", $3265D, $3265E - $3265D
-
-LoggedData_0x3265E:
-INCBIN "baserom.gbc", $3265E, $32661 - $3265E
-
-Unknown_0x32661:
-INCBIN "baserom.gbc", $32661, $32662 - $32661
-
-LoggedData_0x32662:
-INCBIN "baserom.gbc", $32662, $32665 - $32662
-
-Unknown_0x32665:
-INCBIN "baserom.gbc", $32665, $32666 - $32665
-
-LoggedData_0x32666:
-INCBIN "baserom.gbc", $32666, $32669 - $32666
-
-Unknown_0x32669:
-INCBIN "baserom.gbc", $32669, $3266A - $32669
-
-LoggedData_0x3266A:
-INCBIN "baserom.gbc", $3266A, $3266D - $3266A
-
-Unknown_0x3266D:
-INCBIN "baserom.gbc", $3266D, $3266E - $3266D
-
-LoggedData_0x3266E:
-INCBIN "baserom.gbc", $3266E, $32671 - $3266E
-
-Unknown_0x32671:
-INCBIN "baserom.gbc", $32671, $32672 - $32671
-
-LoggedData_0x32672:
-INCBIN "baserom.gbc", $32672, $32675 - $32672
-
-Unknown_0x32675:
-INCBIN "baserom.gbc", $32675, $32676 - $32675
-
-LoggedData_0x32676:
-INCBIN "baserom.gbc", $32676, $32679 - $32676
-
-Unknown_0x32679:
-INCBIN "baserom.gbc", $32679, $3267A - $32679
-
-LoggedData_0x3267A:
-INCBIN "baserom.gbc", $3267A, $3267D - $3267A
-
-Unknown_0x3267D:
-INCBIN "baserom.gbc", $3267D, $3267E - $3267D
-
-LoggedData_0x3267E:
-INCBIN "baserom.gbc", $3267E, $32681 - $3267E
-
-Unknown_0x32681:
-INCBIN "baserom.gbc", $32681, $32682 - $32681
-
-LoggedData_0x32682:
-INCBIN "baserom.gbc", $32682, $32685 - $32682
-
-Unknown_0x32685:
-INCBIN "baserom.gbc", $32685, $32686 - $32685
-
-LoggedData_0x32686:
-INCBIN "baserom.gbc", $32686, $32689 - $32686
-
-Unknown_0x32689:
-INCBIN "baserom.gbc", $32689, $3268A - $32689
-
-LoggedData_0x3268A:
-INCBIN "baserom.gbc", $3268A, $3268D - $3268A
-
-Unknown_0x3268D:
-INCBIN "baserom.gbc", $3268D, $3268E - $3268D
-
-LoggedData_0x3268E:
-INCBIN "baserom.gbc", $3268E, $32691 - $3268E
-
-Unknown_0x32691:
-INCBIN "baserom.gbc", $32691, $32692 - $32691
-
-LoggedData_0x32692:
-INCBIN "baserom.gbc", $32692, $32695 - $32692
-
-Unknown_0x32695:
-INCBIN "baserom.gbc", $32695, $32696 - $32695
-
-LoggedData_0x32696:
-INCBIN "baserom.gbc", $32696, $32699 - $32696
-
-Unknown_0x32699:
-INCBIN "baserom.gbc", $32699, $3269A - $32699
-
-LoggedData_0x3269A:
-INCBIN "baserom.gbc", $3269A, $3269D - $3269A
-
-Unknown_0x3269D:
-INCBIN "baserom.gbc", $3269D, $3269E - $3269D
-
-LoggedData_0x3269E:
-INCBIN "baserom.gbc", $3269E, $326A1 - $3269E
-
-Unknown_0x326A1:
-INCBIN "baserom.gbc", $326A1, $326A2 - $326A1
-
-LoggedData_0x326A2:
-INCBIN "baserom.gbc", $326A2, $326A5 - $326A2
-
-Unknown_0x326A5:
-INCBIN "baserom.gbc", $326A5, $326A6 - $326A5
-
-LoggedData_0x326A6:
-INCBIN "baserom.gbc", $326A6, $326A9 - $326A6
-
-Unknown_0x326A9:
-INCBIN "baserom.gbc", $326A9, $326AA - $326A9
-
-LoggedData_0x326AA:
-INCBIN "baserom.gbc", $326AA, $326AD - $326AA
-
-Unknown_0x326AD:
-INCBIN "baserom.gbc", $326AD, $326AE - $326AD
-
-LoggedData_0x326AE:
-INCBIN "baserom.gbc", $326AE, $326B1 - $326AE
-
-Unknown_0x326B1:
-INCBIN "baserom.gbc", $326B1, $326B2 - $326B1
-
-LoggedData_0x326B2:
-INCBIN "baserom.gbc", $326B2, $326B5 - $326B2
-
-Unknown_0x326B5:
-INCBIN "baserom.gbc", $326B5, $326BE - $326B5
-
-LoggedData_0x326BE:
-INCBIN "baserom.gbc", $326BE, $326C1 - $326BE
-
-Unknown_0x326C1:
-INCBIN "baserom.gbc", $326C1, $326C2 - $326C1
-
-LoggedData_0x326C2:
-INCBIN "baserom.gbc", $326C2, $326C5 - $326C2
-
-Unknown_0x326C5:
-INCBIN "baserom.gbc", $326C5, $326C6 - $326C5
-
-LoggedData_0x326C6:
-INCBIN "baserom.gbc", $326C6, $326C9 - $326C6
-
-Unknown_0x326C9:
-INCBIN "baserom.gbc", $326C9, $326CA - $326C9
-
-LoggedData_0x326CA:
-INCBIN "baserom.gbc", $326CA, $326CD - $326CA
-
-Unknown_0x326CD:
-INCBIN "baserom.gbc", $326CD, $326CE - $326CD
-
-LoggedData_0x326CE:
-INCBIN "baserom.gbc", $326CE, $326D1 - $326CE
-
-Unknown_0x326D1:
-INCBIN "baserom.gbc", $326D1, $326D2 - $326D1
-
-LoggedData_0x326D2:
-INCBIN "baserom.gbc", $326D2, $326D5 - $326D2
-
-Unknown_0x326D5:
-INCBIN "baserom.gbc", $326D5, $326D6 - $326D5
-
-LoggedData_0x326D6:
-INCBIN "baserom.gbc", $326D6, $326D9 - $326D6
-
-Unknown_0x326D9:
-INCBIN "baserom.gbc", $326D9, $326DA - $326D9
-
-LoggedData_0x326DA:
-INCBIN "baserom.gbc", $326DA, $326DD - $326DA
-
-Unknown_0x326DD:
-INCBIN "baserom.gbc", $326DD, $326DE - $326DD
-
-LoggedData_0x326DE:
-INCBIN "baserom.gbc", $326DE, $326E1 - $326DE
-
-Unknown_0x326E1:
-INCBIN "baserom.gbc", $326E1, $326E2 - $326E1
-
-LoggedData_0x326E2:
-INCBIN "baserom.gbc", $326E2, $326E5 - $326E2
-
-Unknown_0x326E5:
-INCBIN "baserom.gbc", $326E5, $326E6 - $326E5
-
-LoggedData_0x326E6:
-INCBIN "baserom.gbc", $326E6, $326E9 - $326E6
-
-Unknown_0x326E9:
-INCBIN "baserom.gbc", $326E9, $326EA - $326E9
-
-LoggedData_0x326EA:
-INCBIN "baserom.gbc", $326EA, $326ED - $326EA
-
-Unknown_0x326ED:
-INCBIN "baserom.gbc", $326ED, $326EE - $326ED
-
-LoggedData_0x326EE:
-INCBIN "baserom.gbc", $326EE, $326F1 - $326EE
-
-Unknown_0x326F1:
-INCBIN "baserom.gbc", $326F1, $326F2 - $326F1
-
-LoggedData_0x326F2:
-INCBIN "baserom.gbc", $326F2, $326F5 - $326F2
-
-Unknown_0x326F5:
-INCBIN "baserom.gbc", $326F5, $326F6 - $326F5
-
-LoggedData_0x326F6:
-INCBIN "baserom.gbc", $326F6, $326F9 - $326F6
-
-Unknown_0x326F9:
-INCBIN "baserom.gbc", $326F9, $326FA - $326F9
-
-LoggedData_0x326FA:
-INCBIN "baserom.gbc", $326FA, $326FD - $326FA
-
-Unknown_0x326FD:
-INCBIN "baserom.gbc", $326FD, $326FE - $326FD
-
-LoggedData_0x326FE:
-INCBIN "baserom.gbc", $326FE, $32701 - $326FE
-
-Unknown_0x32701:
-INCBIN "baserom.gbc", $32701, $32702 - $32701
-
-LoggedData_0x32702:
-INCBIN "baserom.gbc", $32702, $32705 - $32702
-
-Unknown_0x32705:
-INCBIN "baserom.gbc", $32705, $32706 - $32705
-
-LoggedData_0x32706:
-INCBIN "baserom.gbc", $32706, $32709 - $32706
-
-Unknown_0x32709:
-INCBIN "baserom.gbc", $32709, $3270A - $32709
-
-LoggedData_0x3270A:
-INCBIN "baserom.gbc", $3270A, $3270D - $3270A
-
-Unknown_0x3270D:
-INCBIN "baserom.gbc", $3270D, $32716 - $3270D
-
-LoggedData_0x32716:
-INCBIN "baserom.gbc", $32716, $32719 - $32716
-
-Unknown_0x32719:
-INCBIN "baserom.gbc", $32719, $3271A - $32719
-
-LoggedData_0x3271A:
-INCBIN "baserom.gbc", $3271A, $3271D - $3271A
-
-Unknown_0x3271D:
-INCBIN "baserom.gbc", $3271D, $3271E - $3271D
-
-LoggedData_0x3271E:
-INCBIN "baserom.gbc", $3271E, $32721 - $3271E
-
-Unknown_0x32721:
-INCBIN "baserom.gbc", $32721, $32722 - $32721
-
-LoggedData_0x32722:
-INCBIN "baserom.gbc", $32722, $32725 - $32722
-
-Unknown_0x32725:
-INCBIN "baserom.gbc", $32725, $32726 - $32725
+MusicPointers:;(8bytes: pointer low, pointer high, bank, unused, unknown, unknown, unknown, unused)
+INCBIN "baserom.gbc", $31566, $32726 - $31566
 
 LoggedData_0x32726:
 INCBIN "baserom.gbc", $32726, $3285D - $32726
@@ -58626,9 +54972,9 @@ Logged_0x40AF2:
 	ld [hld],a
 	set 4,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$73
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld l,$1F
 	ld a,$4B
 	ld [hld],a
@@ -58651,9 +54997,9 @@ Logged_0x40AF2:
 	cp $03
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$FA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,[$D143]
@@ -58670,9 +55016,9 @@ Logged_0x40AF2:
 	ld a,$02
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$73
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x40B6F:
 	ld l,$16
@@ -58773,9 +55119,9 @@ Logged_0x40C04:
 	bit 1,[hl]
 	jr z,Logged_0x40C16
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$73
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x40C16:
 	jp Logged_0x342D
@@ -58966,9 +55312,9 @@ Unknown_0x40EEF:
 	and $7F
 	jp z,Logged_0x3182
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA88]
 	add a,$2A
 	ld b,a
@@ -59138,9 +55484,9 @@ Logged_0x4101A:
 	xor a
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$66
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x4102A:
@@ -59269,9 +55615,9 @@ Logged_0x410CD:
 	ld a,$18
 	ld [hli],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$75
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$18
 	jp Logged_0x12B5
 
@@ -61001,9 +57347,9 @@ Logged_0x41B8E:
 	bit 1,[hl]
 	jr z,Logged_0x41B9D
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$67
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x41B9D:
 	ld a,[$D11A]
@@ -62238,9 +58584,9 @@ Logged_0x422E2:
 	and $07
 	jr nz,Logged_0x422F1
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$87
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x422F1:
 	ld b,$01
@@ -62307,9 +58653,9 @@ Logged_0x42347:
 	or $08
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x42369:
@@ -62317,9 +58663,9 @@ Logged_0x42369:
 	and $1F
 	jr nz,Logged_0x42378
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x42378:
 	ld bc,$44C0
@@ -62380,9 +58726,9 @@ Logged_0x423B8:
 	ld a,$00
 	ld [$D10A],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$88
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x423E1:
@@ -63111,9 +59457,9 @@ Logged_0x427FE:
 	sbc a,$00
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$63
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$18
 	call Logged_0x12B5
 	ld de,$4F45
@@ -63947,9 +60293,9 @@ Logged_0x42CCD:
 	cp $B8
 	ret nc
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -64954,9 +61300,9 @@ Logged_0x43327:
 	ld a,$2F
 	ld [$D11B],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x43338:
@@ -64974,9 +61320,9 @@ Logged_0x43342:
 	dec [hl]
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$70
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -65196,9 +61542,9 @@ Logged_0x4349C:
 	dec [hl]
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$86
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x434B4:
@@ -65336,9 +61682,9 @@ Logged_0x435A6:
 	res 2,[hl]
 	set 3,[hl]
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x435C2:
 	ld a,$81
@@ -65671,9 +62017,9 @@ Logged_0x4382E:
 	dec [hl]
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$79
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0C
 	ld [$D118],a
 	ld a,[$D11A]
@@ -66403,9 +62749,9 @@ Logged_0x44317:
 	and $7F
 	jp z,Logged_0x3182
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA88]
 	add a,$2A
 	ld b,a
@@ -66495,9 +62841,9 @@ Logged_0x443BF:
 	and $0F
 	jr nz,Logged_0x443CF
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$07
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x443CF:
 	ld a,[$CA97]
@@ -66627,9 +62973,9 @@ Logged_0x4448C:
 	and $1F
 	jr nz,Logged_0x444A3
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$07
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x444A3:
 	ld a,[$CA97]
@@ -67132,9 +63478,9 @@ Logged_0x44783:
 	ld l,$00
 	res 7,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$49
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x3416
 
 Logged_0x4479D:
@@ -68166,9 +64512,9 @@ Unknown_0x44E18:
 	and $7F
 	jp z,Logged_0x3182
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA88]
 	add a,$2A
 	ld b,a
@@ -68218,9 +64564,9 @@ Logged_0x44E86:
 	bit 1,[hl]
 	jr z,Logged_0x44E95
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$67
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x44E95:
 	ld l,$1B
@@ -69407,9 +65753,9 @@ Unknown_0x455A9:
 Logged_0x455AE:
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x30F0
 
 Logged_0x455BA:
@@ -69422,9 +65768,9 @@ Logged_0x455BA:
 	cp d
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$5C
 	ld [hl],a
 	ld de,$4C50
@@ -69432,9 +65778,9 @@ Logged_0x455BA:
 
 Logged_0x455D6:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$2E
 	ld [hl],a
 	ld de,$4C59
@@ -69448,9 +65794,9 @@ Logged_0x455E7:
 	cp d
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$2D
 	ld [hl],a
 	ld de,$4C56
@@ -69466,9 +65812,9 @@ Logged_0x45602:
 	cp d
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$5A
 	ld [hl],a
 	ld de,$4C47
@@ -69476,9 +65822,9 @@ Logged_0x45602:
 
 Logged_0x4561E:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$5C
 	ld [hl],a
 	ld de,$4C50
@@ -69492,9 +65838,9 @@ Logged_0x4562F:
 	cp d
 	ret nc
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$5B
 	ld [hl],a
 	ld de,$4C4A
@@ -70088,9 +66434,9 @@ Unknown_0x4599F:
 	and $03
 	jr nz,Logged_0x459F4
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x459F4:
 	dec [hl]
@@ -70103,9 +66449,9 @@ Logged_0x459F4:
 	ld a,$C3
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld bc,$4ECC
 	jp Logged_0x342D
 	ld hl,$D100
@@ -70155,9 +66501,9 @@ Logged_0x45A5E:
 	ld [hld],a
 	ld [hl],e
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld hl,$D105
@@ -70423,9 +66769,9 @@ Logged_0x45C06:
 	ld a,$23
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$74
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,[$CA8E]
@@ -70501,9 +66847,9 @@ Logged_0x45C83:
 	ld a,$02
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$17
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA88]
 	add a,$2A
 	ld b,a
@@ -70604,9 +66950,9 @@ Logged_0x45D1D:
 	ld a,$32
 	ld [hli],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$64
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x45D32:
@@ -72928,9 +69274,9 @@ Logged_0x46AEB:
 	ld l,$00
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D116
 	ld a,[hl]
 	and a
@@ -72951,9 +69297,9 @@ Logged_0x46B25:
 	ld l,$00
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D116
 	ld a,[hl]
 	and a
@@ -72974,9 +69320,9 @@ Logged_0x46B52:
 	xor a
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x46B63:
 	jp Logged_0x34CE
@@ -73251,9 +69597,9 @@ Logged_0x46D1B:
 	bit 1,[hl]
 	ret z
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$73
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x46D38:
@@ -74235,9 +70581,9 @@ Logged_0x472E3:
 	cp $34
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$68
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D11A]
 	rlca
 	jr c,Logged_0x47301
@@ -74758,9 +71104,9 @@ Logged_0x477B2:
 	ld [hli],a
 	inc [hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$81
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x477DA:
@@ -75274,9 +71620,9 @@ Logged_0x47B19:
 	ld l,$00
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$67
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld hl,$D11F
@@ -75436,9 +71782,9 @@ Logged_0x47C1D:
 	ld a,$D0
 	ld [$D116],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$69
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld bc,$4EDF
 	jp Logged_0x342D
 
@@ -75480,9 +71826,9 @@ Logged_0x47C5F:
 	ld a,$79
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$72
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -75837,9 +72183,9 @@ Logged_0x480E7:
 	and $7F
 	jp z,Logged_0x3182
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA88]
 	add a,$2A
 	ld b,a
@@ -75921,9 +72267,9 @@ Logged_0x48180:
 	cp $22
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D11A]
 	rlca
 	jr c,Logged_0x4819E
@@ -76579,9 +72925,9 @@ Logged_0x48510:
 	and $3F
 	jr nz,Logged_0x4858D
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4858D:
 	srl b
@@ -76729,9 +73075,9 @@ Logged_0x48682:
 	and $3F
 	jr nz,Logged_0x4869B
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4869B:
 	srl b
@@ -76945,9 +73291,9 @@ Logged_0x487DF:
 	cp $24
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D11A]
 	rlca
 	jr c,Logged_0x4880A
@@ -77313,9 +73659,9 @@ Logged_0x48A60:
 	or $0B
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld bc,$4F05
 	call Logged_0x342D
 	ld a,[$CA88]
@@ -77379,9 +73725,9 @@ Logged_0x48AAB:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$83
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x48AE9:
@@ -78487,9 +74833,9 @@ Logged_0x491B6:
 
 Logged_0x491FD:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$77
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld l,$08
 	ld a,[hl]
 	and $80
@@ -78517,9 +74863,9 @@ Logged_0x491FD:
 	or $0B
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$77
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,[$D10F]
@@ -78529,9 +74875,9 @@ Logged_0x491FD:
 	dec a
 	jr nz,Logged_0x4924E
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4924E:
 	ld hl,$D116
@@ -78557,9 +74903,9 @@ Logged_0x49253:
 	dec a
 	jr nz,Logged_0x4927A
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4927A:
 	call Logged_0x30E6
@@ -78610,9 +74956,9 @@ Logged_0x492AC:
 	dec a
 	jr nz,Logged_0x492DC
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x492DC:
 	jp Logged_0x30CA
@@ -78625,9 +74971,9 @@ Logged_0x492DF:
 	dec a
 	jr nz,Logged_0x492F4
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x492F4:
 	jp Logged_0x30BD
@@ -78877,9 +75223,9 @@ Logged_0x49499:
 	jr nz,Logged_0x494AB
 	ld [$CA9B],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$29
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x494AB:
 	ld a,$03
@@ -78938,9 +75284,9 @@ Logged_0x494F5:
 	and $07
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x49518:
@@ -78951,9 +75297,9 @@ Logged_0x49518:
 	and $1F
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld hl,$D11F
@@ -79057,9 +75403,9 @@ Logged_0x495B1:
 	bit 1,[hl]
 	ret z
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$80
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -79127,9 +75473,9 @@ Logged_0x49650:
 	bit 1,[hl]
 	ret z
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x49666:
@@ -79296,9 +75642,9 @@ Logged_0x49751:
 	and a
 	ret z
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$63
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$18
 	jp Logged_0x12B5
 	ld hl,$D11B
@@ -79351,9 +75697,9 @@ Logged_0x497D4:
 	and $07
 	jr nz,Logged_0x497E8
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$78
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	dec [hl]
 	jr z,Logged_0x49806
 
@@ -79397,9 +75743,9 @@ Logged_0x4981F:
 	and $07
 	jr nz,Logged_0x49833
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$78
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	dec [hl]
 	jr z,Logged_0x49806
 
@@ -79561,9 +75907,9 @@ Logged_0x49920:
 
 Logged_0x49936:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld l,$17
 	jp Logged_0x49A85
 
@@ -79576,9 +75922,9 @@ Logged_0x49943:
 	ld l,$1A
 	inc [hl]
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x49957:
@@ -79661,9 +76007,9 @@ Logged_0x499B8:
 	and a
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x499D2:
@@ -79708,9 +76054,9 @@ Logged_0x499F8:
 	and a
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x49A12:
@@ -79735,9 +76081,9 @@ Logged_0x49A2A:
 	ld a,$93
 	ld [$D116],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$89
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D11A
 	inc [hl]
 	bit 7,[hl]
@@ -79827,9 +76173,9 @@ Logged_0x49AB6:
 	jr z,Logged_0x49AC5
 	dec [hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x49AC5:
 	ld l,$00
@@ -80320,9 +76666,9 @@ Logged_0x49D92:
 	ld a,$18
 	ld [hli],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x49DA6:
 	ld a,$81
@@ -80521,9 +76867,9 @@ Logged_0x49EE2:
 	ld a,$34
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x49EFE:
@@ -81659,9 +78005,9 @@ Logged_0x4A6F3:
 	or $06
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x4A711:
@@ -82138,9 +78484,9 @@ Logged_0x4A9EE:
 	res 2,[hl]
 	set 3,[hl]
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4AA0A:
 	ld a,$81
@@ -82520,9 +78866,9 @@ Logged_0x4C8DA:
 	cp $49
 	jr nz,Logged_0x4C92D
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$35
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4C92D:
 	dec [hl]
@@ -82559,10 +78905,10 @@ Logged_0x4C95E:
 Logged_0x4C961:
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$24
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	jp Logged_0x3416
 	ld de,$41BE
 	jr Logged_0x4C982
@@ -83247,9 +79593,9 @@ Logged_0x4CDA8:
 	ld a,$01
 	ld [$D15F],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CF
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x4CDF4:
@@ -83257,9 +79603,9 @@ Logged_0x4CDF4:
 	and $3F
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CE
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$02
@@ -83271,9 +79617,9 @@ Logged_0x4CDF4:
 	and $07
 	jr nz,Logged_0x4CE1B
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4CE1B:
 	inc [hl]
@@ -83403,10 +79749,10 @@ Logged_0x4CEBA:
 	ld [$D151],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$10
 	ld [$D116],a
 	ld a,$02
@@ -83419,10 +79765,10 @@ Logged_0x4CF03:
 	ret nz
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$3A
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 	ld hl,$D116
@@ -83432,9 +79778,9 @@ Logged_0x4CF03:
 	cp $2C
 	jr nz,Logged_0x4CF26
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CE
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4CF26:
 	jp Logged_0x4CFE0
@@ -83460,9 +79806,9 @@ Logged_0x4CF29:
 	dec [hl]
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CE
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -83474,9 +79820,9 @@ Logged_0x4CF29:
 	dec [hl]
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CC
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld de,$6071
 	jp Logged_0x30F0
 
@@ -83760,9 +80106,9 @@ Logged_0x4D17A:
 	cp $0A
 	jr nz,Logged_0x4D194
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$63
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$18
 	jp Logged_0x12B5
 
@@ -83816,10 +80162,10 @@ Logged_0x4D1BE:
 	call Logged_0x30F0
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 Logged_0x4D1F8:
@@ -83830,9 +80176,9 @@ Logged_0x4D1F8:
 	cp $2F
 	jr nz,Unknown_0x4D20F
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CD
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$80
 	jr Logged_0x4D217
 
@@ -83897,9 +80243,9 @@ Logged_0x4D264:
 	or $50
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x4D27A:
@@ -83938,9 +80284,9 @@ Logged_0x4D2AC:
 	or $50
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x4D2C2:
@@ -83981,9 +80327,9 @@ Logged_0x4D2C2:
 	ld [$D14C],a
 	ld [$D116],a
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld de,$60B2
 	jp Logged_0x30F0
 
@@ -84017,9 +80363,9 @@ Logged_0x4D333:
 	or $52
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CB
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x4D349:
@@ -84212,9 +80558,9 @@ Logged_0x4D47B:
 	cp $0A
 	jr nz,Logged_0x4D495
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$63
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$18
 	jp Logged_0x12B5
 
@@ -84295,9 +80641,9 @@ Logged_0x4D50B:
 	cp $13
 	jr nz,Logged_0x4D523
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$D1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld de,$6119
 	jp Logged_0x30F0
 
@@ -84311,9 +80657,9 @@ Logged_0x4D52D:
 	cp $32
 	jr nz,Logged_0x4D53A
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$D0
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x4D53A:
@@ -84330,9 +80676,9 @@ Logged_0x4D540:
 	cp $13
 	jr nz,Logged_0x4D561
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$D0
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld de,$6119
 	jp Logged_0x30F0
 
@@ -84380,9 +80726,9 @@ Logged_0x4D56B:
 	ld [$D14D],a
 	ld [$D116],a
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld de,$60B7
 	jp Logged_0x30F0
 
@@ -84416,9 +80762,9 @@ Logged_0x4D5DC:
 	or $52
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CB
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x4D5F2:
@@ -84496,9 +80842,9 @@ Logged_0x4D5F5:
 	and $0F
 	jr nz,Logged_0x4D67C
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x4D67C:
 	ld a,e
@@ -84607,9 +80953,9 @@ Logged_0x4D73E:
 	jp z,Logged_0x3290
 	dec [hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x4D750:
@@ -84765,9 +81111,9 @@ Logged_0x4D81E:
 
 Logged_0x4D824:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA88]
 	add a,$2A
 	ld b,a
@@ -85090,9 +81436,9 @@ Logged_0x50118:
 	dec a
 	jr nz,Logged_0x50125
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B0
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x50125:
 	ld hl,$D103
@@ -85209,9 +81555,9 @@ Logged_0x501BE:
 	cp $18
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D11A]
 	rlca
 	jr c,Logged_0x501E7
@@ -85242,9 +81588,9 @@ Logged_0x501ED:
 	cp $18
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D11A]
 	rlca
 	jr c,Logged_0x50223
@@ -85275,9 +81621,9 @@ Logged_0x50229:
 	cp $18
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D11A]
 	rlca
 	jr c,Logged_0x50260
@@ -85312,9 +81658,9 @@ Logged_0x5027C:
 	ld a,$93
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -85515,9 +81861,9 @@ Logged_0x503C9:
 
 Logged_0x503D3:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$61
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$18
 	jp Logged_0x12B5
 
@@ -85529,9 +81875,9 @@ Logged_0x503E0:
 	cp $2B
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D11A]
 	rlca
 	jr c,Logged_0x503FD
@@ -85708,9 +82054,9 @@ Logged_0x504EF:
 	and $0F
 	jr nz,Logged_0x504FE
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$AF
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x504FE:
 	ld l,$1A
@@ -85781,9 +82127,9 @@ Logged_0x50564:
 	or $0B
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x30FB
 	ld a,[hld]
 	rlca
@@ -85825,10 +82171,10 @@ Logged_0x505A0:
 	ld [hld],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 	ld a,$81
@@ -85838,9 +82184,9 @@ Logged_0x505A0:
 	cp $4E
 	jr nz,Logged_0x505D3
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x505D3:
 	dec [hl]
@@ -85895,9 +82241,9 @@ Logged_0x505E3:
 	ld a,$35
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -85955,9 +82301,9 @@ Logged_0x50647:
 	cp $A4
 	jr nz,Logged_0x506A1
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x506A1:
 	dec [hl]
@@ -86018,9 +82364,9 @@ Logged_0x506F5:
 	ld a,$05
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$81
 	ld [$D11C],a
 	ld bc,$4180
@@ -86266,9 +82612,9 @@ Logged_0x50898:
 	res 2,[hl]
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -86773,9 +83119,9 @@ Logged_0x50BEB:
 Logged_0x50C08:
 	inc [hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld bc,$4BA5
 	jp Logged_0x3416
 
@@ -86872,9 +83218,9 @@ Unknown_0x50CA4:
 	ld [$D119],a
 	ld [$CAC3],a
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x30F0
 	ld a,$01
 	ld [hli],a
@@ -86898,9 +83244,9 @@ Unknown_0x50CCC:
 
 Logged_0x50CD7:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A4
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$5C
 	ld [hld],a
 	ld a,[hld]
@@ -87074,10 +83420,10 @@ Logged_0x50DE0:
 	call $FF80
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld de,$567F
 	jp Logged_0x30F0
 
@@ -87195,9 +83541,9 @@ Logged_0x50EBF:
 	cp $01
 	jr nz,Logged_0x50ED5
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x50ED5:
 	ld hl,$D103
@@ -87294,9 +83640,9 @@ INCBIN "baserom.gbc", $50F49, $50FAD - $50F49
 	cp $1B
 	jr nz,Logged_0x50FE2
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$5346
 	ld de,$C060
 	ld c,$04
@@ -87308,9 +83654,9 @@ Logged_0x50FE2:
 	dec [hl]
 	jr nz,Logged_0x50FED
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x50FED:
 	ld bc,$4BD0
@@ -87510,9 +83856,9 @@ Logged_0x51125:
 	and $07
 	jr nz,Logged_0x5113B
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x5113B:
 	ld l,$1B
@@ -87552,9 +83898,9 @@ Logged_0x51159:
 	ld a,$17
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$17
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D146
 	ld a,[$D107]
 	cp $41
@@ -87688,9 +84034,9 @@ Logged_0x51241:
 	xor a
 	ld [$D119],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$49
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld bc,$4FB0
 	jp Logged_0x342D
 	call Logged_0x30CA
@@ -87776,9 +84122,9 @@ INCBIN "baserom.gbc", $512E9, $51329 - $512E9
 
 Logged_0x51329:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$61
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$18
 	jp Logged_0x12B5
 
@@ -87816,10 +84162,10 @@ INCBIN "baserom.gbc", $51336, $51356 - $51336
 	ld [$C0E6],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 	ld a,$81
@@ -87835,9 +84181,9 @@ INCBIN "baserom.gbc", $51336, $51356 - $51336
 	ld a,$BF
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$5C81
 	jr Logged_0x513F1
 	ld a,$81
@@ -88048,9 +84394,9 @@ Logged_0x51548:
 
 Logged_0x5154E:
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$D148],a
 	ld l,$1F
@@ -88070,27 +84416,27 @@ Logged_0x5154E:
 	cp $A6
 	jr nz,Logged_0x51588
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0x515A8
 
 Logged_0x51588:
 	cp $88
 	jr nz,Logged_0x51596
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0x515A8
 
 Logged_0x51596:
 	cp $25
 	jr nz,Logged_0x515AB
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld bc,$4F2B
 	call Logged_0x342D
 
@@ -88319,9 +84665,9 @@ Logged_0x516E6:
 
 Unknown_0x516EC:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	bit 6,[hl]
 	jr nz,Unknown_0x516FE
 	ld de,$5780
@@ -88348,9 +84694,9 @@ Logged_0x51704:
 	dec [hl]
 	jp z,Unknown_0x51442
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A8
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x51729:
 	ld hl,$D103
@@ -88455,15 +84801,15 @@ Logged_0x517BD:
 	or $0B
 	ld [hli],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 	ld a,$81
@@ -88484,9 +84830,9 @@ Logged_0x517BD:
 
 Logged_0x5180A:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x51812:
 	ld hl,$5CB1
@@ -88562,9 +84908,9 @@ Logged_0x5186E:
 	and a
 	jr nz,Logged_0x51880
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$AA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x51880:
 	ld l,$15
@@ -88803,9 +85149,9 @@ Logged_0x519E3:
 	xor a
 	ld [$D119],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$BA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x51A03:
@@ -88908,10 +85254,10 @@ Logged_0x51B87:
 	ld [$D146],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld [$CAC3],a
 
@@ -89133,9 +85479,9 @@ Logged_0x51D76:
 	ld [hl],a
 	ld [$D116],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$BB
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D147
 	inc [hl]
 	ld a,[hl]
@@ -89176,23 +85522,23 @@ Logged_0x51DA6:
 	ld [hld],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	jp Logged_0x51E67
 
 Unknown_0x51DCB:
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [hl],a
 	ld l,$03
@@ -89308,9 +85654,9 @@ Unknown_0x51E97:
 	and $5F
 	jr nz,Unknown_0x51EA6
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$37
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x51EA6:
 	ld l,$16
@@ -89346,9 +85692,9 @@ Unknown_0x51ED4:
 	xor a
 	ld [$CA9B],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D117
 	ld a,$04
 	ld [hli],a
@@ -89372,9 +85718,9 @@ Unknown_0x51EFC:
 	cp $01
 	jr nz,Unknown_0x51F12
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$AE
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x51F12:
 	ld hl,$D103
@@ -89697,9 +86043,9 @@ Unknown_0x52105:
 
 Logged_0x52108:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$AD
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D11A]
 	ld b,a
 	ld a,[$D147]
@@ -90350,9 +86696,9 @@ Unknown_0x524E6:
 	ld a,$03
 	ld [$D146],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$BE
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld bc,$4F3E
 	jp Logged_0x342D
 	ld hl,$D11B
@@ -90684,9 +87030,9 @@ Logged_0x540CE:
 	or $34
 	ld [hli],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x54103:
@@ -90706,9 +87052,9 @@ Logged_0x54109:
 
 Logged_0x54119:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[hld]
 	rlca
 	jr c,Logged_0x5412B
@@ -90778,9 +87124,9 @@ Logged_0x54179:
 	cp $10
 	jr nz,Logged_0x54188
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A6
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x54188:
 	dec [hl]
@@ -90904,9 +87250,9 @@ Unknown_0x54239:
 
 Unknown_0x5423F:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[hld]
 	rlca
 	jr c,Unknown_0x54251
@@ -90945,9 +87291,9 @@ Logged_0x54266:
 	xor a
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x54286:
@@ -90958,9 +87304,9 @@ Logged_0x54286:
 	cp $1E
 	jr nz,Logged_0x5429C
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A7
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x5429C:
 	dec [hl]
@@ -90974,10 +87320,10 @@ Logged_0x5429C:
 	jr nz,Logged_0x542B6
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 Logged_0x542B6:
@@ -91050,9 +87396,9 @@ Logged_0x5430B:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A7
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -91148,9 +87494,9 @@ Logged_0x543C4:
 	ld a,$D4
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$81
 	ld [$D11C],a
 	ld bc,$4180
@@ -91196,9 +87542,9 @@ Logged_0x54425:
 	ld a,$41
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x54441:
@@ -91353,15 +87699,15 @@ Unknown_0x54572:
 	ld a,$5A
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$40
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 	call Logged_0x54C07
@@ -91404,9 +87750,9 @@ Logged_0x545AB:
 	ld a,$E0
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x545D3:
@@ -91417,9 +87763,9 @@ Logged_0x545D3:
 	cp $20
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D11A]
 	rlca
 	jr c,Logged_0x545F2
@@ -91628,9 +87974,9 @@ Logged_0x54737:
 	cp b
 	jr nc,Logged_0x54765
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B4
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld de,$5ABC
 	call Logged_0x30F0
 	ld a,$1E
@@ -91670,9 +88016,9 @@ Logged_0x54782:
 	and $07
 	jr nz,Logged_0x54791
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$AB
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x54791:
 	ld hl,$D116
@@ -91792,10 +88138,10 @@ Logged_0x5482A:
 	call Logged_0x3076
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 	call Logged_0x54C07
@@ -91894,9 +88240,9 @@ Logged_0x548BD:
 	ld a,$0B
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$AC
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -92104,15 +88450,15 @@ Unknown_0x54A7F:
 	ld a,$5A
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$40
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 	ld hl,$D11B
@@ -92388,16 +88734,16 @@ Logged_0x54C07:
 
 Logged_0x54C27:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B7
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0x54C39
 
 Logged_0x54C31:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x54C39:
 	ld hl,$4C9F
@@ -92407,9 +88753,9 @@ Logged_0x54C39:
 
 Logged_0x54C44:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B6
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$FF
 	ld [$D146],a
 	ld c,$05
@@ -92421,9 +88767,9 @@ Logged_0x54C44:
 
 Logged_0x54C5F:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B8
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [hl],a
 	ld hl,$4C87
@@ -92452,10 +88798,10 @@ INCBIN "baserom.gbc", $54C87, $54D37 - $54C87
 	ld [$C0E6],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld hl,$D100
 	res 4,[hl]
 	ld l,$1F
@@ -92490,10 +88836,10 @@ INCBIN "baserom.gbc", $54C87, $54D37 - $54C87
 	jr nz,Logged_0x54D96
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$2D
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 
 Logged_0x54D96:
 	dec [hl]
@@ -92517,10 +88863,10 @@ Logged_0x54D96:
 	jr nz,Logged_0x54DC3
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 
 Logged_0x54DC3:
 	dec [hl]
@@ -92592,10 +88938,10 @@ Logged_0x54E1C:
 	ld [hli],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 Logged_0x54E46:
@@ -92623,10 +88969,10 @@ Logged_0x54E5D:
 	ld [hld],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	jp Logged_0x30F0
 
 Logged_0x54E78:
@@ -92812,9 +89158,9 @@ Logged_0x54F8E:
 	ld a,$14
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$BC
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -92840,9 +89186,9 @@ Logged_0x54FAC:
 	ld a,$28
 	ld [hli],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$BD
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x54FCD:
@@ -92869,9 +89215,9 @@ Logged_0x54FD9:
 	and a
 	jr z,Logged_0x55001
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$5B
 	ld [$D11B],a
 	jr Logged_0x55031
@@ -92896,9 +89242,9 @@ Logged_0x55006:
 	and a
 	jr z,Logged_0x5502E
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$5A
 	ld [$D11B],a
 	jr Logged_0x55031
@@ -92915,9 +89261,9 @@ Logged_0x55031:
 	jp nc,Logged_0x30E6
 	set 6,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x30D9
 
 Logged_0x5504D:
@@ -92940,9 +89286,9 @@ Logged_0x5504D:
 	ld hl,$D11A
 	res 6,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x30E6
 	ld a,$81
 	ld [$D11C],a
@@ -93014,9 +89360,9 @@ Logged_0x5504D:
 	ld [hld],a
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -93374,9 +89720,9 @@ Logged_0x55370:
 	ld a,$81
 	ld [$D11C],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$17
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D147
 	dec [hl]
 	ret
@@ -93397,9 +89743,9 @@ Logged_0x553A8:
 	cp $F7
 	jr nz,Logged_0x553BD
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$BF
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x553BD:
 	dec [hl]
@@ -93756,9 +90102,9 @@ Logged_0x556AB:
 
 Logged_0x556DC:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld bc,$4F77
 	call Logged_0x342D
 	ld bc,$4F8A
@@ -93851,9 +90197,9 @@ Logged_0x5575E:
 
 Logged_0x55774:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$02
 	ld [$D147],a
 	ld a,[$D108]
@@ -93894,9 +90240,9 @@ Logged_0x557B1:
 	cp $28
 	jr nz,Logged_0x557C3
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C0
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x557C3:
 	dec [hl]
@@ -93934,9 +90280,9 @@ Logged_0x557ED:
 	ld a,$04
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$83
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x55806:
@@ -93985,10 +90331,10 @@ Logged_0x55834:
 	call $FF80
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$02
 	ld [$D146],a
 	ret
@@ -94515,9 +90861,9 @@ Logged_0x55BB6:
 	dec [hl]
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x55BC6:
@@ -94536,9 +90882,9 @@ Logged_0x55BD8:
 	and $0F
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x55BE7:
@@ -94568,9 +90914,9 @@ Unknown_0x55C04:
 
 Logged_0x55C08:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$85
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x55C11:
@@ -94692,9 +91038,9 @@ Logged_0x55CC3:
 	ld a,$3C
 	ld [hli],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	call Logged_0x3655
@@ -94913,9 +91259,9 @@ Logged_0x55E33:
 	cp $04
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$84
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 LoggedData_0x55E46:
@@ -94977,10 +91323,10 @@ INCBIN "baserom.gbc", $55E46, $55E4E - $55E46
 	ld [$C0E6],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 	ld a,$81
@@ -94998,9 +91344,9 @@ INCBIN "baserom.gbc", $55E46, $55E4E - $55E46
 	ld a,$13
 	ld [hli],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$AA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -95099,9 +91445,9 @@ INCBIN "baserom.gbc", $55E46, $55E4E - $55E46
 	ld a,$5F
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$AA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x55F92:
@@ -95174,9 +91520,9 @@ Logged_0x55FEC:
 	jp c,Logged_0x30D4
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x56005:
@@ -95331,9 +91677,9 @@ Logged_0x560E3:
 	and $1F
 	jr nz,Logged_0x560F2
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x560F2:
 	ld bc,$44C0
@@ -95447,10 +91793,10 @@ Logged_0x56183:
 	set 7,[hl]
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld de,$5E05
 	jp Logged_0x30F0
 	ld a,$81
@@ -95462,9 +91808,9 @@ Logged_0x56183:
 	cp $2B
 	jr nz,Logged_0x561C4
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x561C4:
 	ld bc,$4DA0
@@ -95519,9 +91865,9 @@ Logged_0x561F9:
 	ld a,$16
 	ld [hld],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$81
 	ld [$D11C],a
 	ld hl,$D116
@@ -95556,9 +91902,9 @@ Logged_0x56235:
 	dec [hl]
 	jr nz,Logged_0x56253
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x56253:
 	ld a,[$CA8E]
@@ -95711,9 +92057,9 @@ Logged_0x56326:
 	and $07
 	jr nz,Logged_0x5634E
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x5634E:
 	ld a,$81
@@ -95749,17 +92095,17 @@ Logged_0x5636D:
 	cp $03
 	jr c,Logged_0x56394
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$02
 	jr Logged_0x5639E
 
 Logged_0x56394:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$67
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 
 Logged_0x5639E:
@@ -95903,9 +92249,9 @@ Logged_0x56477:
 
 Logged_0x5647B:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$61
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld b,$18
 	jp Logged_0x12B5
 	ld a,[$CA8E]
@@ -95941,9 +92287,9 @@ Logged_0x564B1:
 	and $1F
 	jr nz,Logged_0x564C0
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x564C0:
 	ld l,$16
@@ -95963,9 +92309,9 @@ Logged_0x564CE:
 	cp $05
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C4
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld bc,$4F9D
 	jp Logged_0x342D
 
@@ -96072,9 +92418,9 @@ Logged_0x56572:
 	and $07
 	jr nz,Logged_0x56587
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x56587:
 	ld l,$1A
@@ -96157,19 +92503,19 @@ Logged_0x56602:
 	cp $11
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$01
 	ld [$C0E6],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld [$D146],a
 	ld [$D147],a
@@ -96218,9 +92564,9 @@ Logged_0x56602:
 	and $0F
 	jr nz,Logged_0x56684
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C6
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x56684:
 	ld hl,$D116
@@ -96245,9 +92591,9 @@ Logged_0x56684:
 
 Logged_0x566A9:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D11A]
 	rlca
 	jr nc,Logged_0x566BD
@@ -96304,9 +92650,9 @@ Logged_0x566D5:
 	ld a,[hli]
 	ld [$CA64],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld l,$1A
 	set 7,[hl]
 	cp $7B
@@ -96399,9 +92745,9 @@ Logged_0x56787:
 	xor a
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C8
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x5679C:
@@ -96643,9 +92989,9 @@ Logged_0x56909:
 	add a,$08
 	ld [$CA64],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$21
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x5691A:
@@ -96675,9 +93021,9 @@ Logged_0x5693A:
 	ld a,$82
 	ld [$CA9B],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$34
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x56951:
@@ -96695,9 +93041,9 @@ Logged_0x56963:
 	ld a,$81
 	ld [$CA9B],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C7
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$D146],a
 	ld hl,$D11A
@@ -96757,9 +93103,9 @@ Logged_0x569C7:
 	cp $1B
 	jp nc,Logged_0x305C
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D11A
 	set 6,[hl]
 	bit 7,[hl]
@@ -96770,9 +93116,9 @@ Logged_0x569E8:
 	cp $DB
 	jp c,Logged_0x3069
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D11A
 	res 6,[hl]
 	bit 7,[hl]
@@ -96973,9 +93319,9 @@ Logged_0x56B47:
 	cp $22
 	jr nz,Logged_0x56B56
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$75
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x56B56:
 	ld hl,$D117
@@ -96987,9 +93333,9 @@ Logged_0x56B56:
 	ld de,$5F93
 	call Logged_0x30F0
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$B7
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0x56B90
 
 Logged_0x56B71:
@@ -97008,9 +93354,9 @@ Logged_0x56B81:
 	and $0F
 	jr nz,Logged_0x56B90
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x56B90:
 	ld bc,$4E40
@@ -97018,9 +93364,9 @@ Logged_0x56B90:
 
 Unknown_0x56B96:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$CA88]
 	add a,$2A
 	ld b,a
@@ -97210,9 +93556,9 @@ Logged_0x56CAA:
 	ld a,$02
 	ld [$D147],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C7
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D145
 	ld a,[hl]
 	cp $03
@@ -97223,10 +93569,10 @@ Logged_0x56CAA:
 	jr nz,Logged_0x56CD5
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 
 Logged_0x56CD5:
 	ld de,$5F9A
@@ -97258,9 +93604,9 @@ Logged_0x56D05:
 	ld a,$01
 	ld [$D146],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x56D13:
@@ -97329,9 +93675,9 @@ Logged_0x56D4B:
 	ld [$FF00+$8E],a
 	call $FF80
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	ld a,$81
@@ -97365,9 +93711,9 @@ Logged_0x56D99:
 	dec [hl]
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x56DC6:
@@ -97605,9 +93951,9 @@ Logged_0x56F2E:
 	ld a,$03
 	ld [$D147],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x57170
 
 Logged_0x56F63:
@@ -97663,9 +94009,9 @@ Unknown_0x56FA3:
 	ld a,$05
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x56FB7:
 	ld l,$03
@@ -97694,9 +94040,9 @@ Logged_0x56FD2:
 	ld a,$EC
 	ld [$D109],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x56FEF:
@@ -97783,9 +94129,9 @@ Unknown_0x57069:
 	ld a,$8F
 	ld [$D11C],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$67
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x5707B:
@@ -97823,16 +94169,16 @@ Logged_0x570B3:
 	ld a,$04
 	ld [$D147],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$67
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x570C1:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x5714D
 	ld de,$D103
 	ld a,[de]
@@ -97926,9 +94272,9 @@ Logged_0x5713F:
 	ld a,$04
 	ld [$D147],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$67
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x5714D:
@@ -98022,9 +94368,9 @@ Logged_0x571B5:
 	xor a
 	ld [$CA9B],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$67
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x571C7:
@@ -99454,9 +95800,9 @@ Unknown_0x61893:
 
 Logged_0x6189D:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x618A5:
 	ld hl,$D11F
@@ -99711,9 +96057,9 @@ Logged_0x61A06:
 	ld l,$00
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61A16:
@@ -99777,9 +96123,9 @@ Logged_0x61A76:
 	ld l,$20
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61A86:
@@ -99843,9 +96189,9 @@ Logged_0x61AE6:
 	ld l,$40
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61AF6:
@@ -99909,9 +96255,9 @@ Unknown_0x61B56:
 	ld l,$60
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61B66:
@@ -99975,9 +96321,9 @@ Logged_0x61BC6:
 	ld l,$80
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61BD6:
@@ -100041,9 +96387,9 @@ Logged_0x61C36:
 	ld l,$A0
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61C46:
@@ -100107,9 +96453,9 @@ Unknown_0x61CA6:
 	ld l,$C0
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61CB6:
@@ -100173,9 +96519,9 @@ Unknown_0x61D16:
 	ld l,$E0
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61D26:
@@ -100193,9 +96539,9 @@ Logged_0x61D28:
 	ld l,$00
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61D41:
@@ -100209,9 +96555,9 @@ Logged_0x61D41:
 	ld l,$20
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61D5A:
@@ -100225,9 +96571,9 @@ Logged_0x61D5A:
 	ld l,$40
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61D73:
@@ -100241,9 +96587,9 @@ Logged_0x61D73:
 	ld l,$60
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61D8C:
@@ -100257,9 +96603,9 @@ Logged_0x61D8C:
 	ld l,$80
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x61DA5:
@@ -100273,9 +96619,9 @@ Unknown_0x61DA5:
 	ld l,$A0
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x61DBE:
@@ -100289,9 +96635,9 @@ Unknown_0x61DBE:
 	ld l,$C0
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x61DD7:
@@ -100305,9 +96651,9 @@ Unknown_0x61DD7:
 	ld l,$E0
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61DF0:
@@ -100331,9 +96677,9 @@ Logged_0x61E04:
 	ld l,$00
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x61E14:
@@ -100357,9 +96703,9 @@ Logged_0x61E28:
 	ld l,$20
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x61E38:
@@ -100383,9 +96729,9 @@ Unknown_0x61E4C:
 	ld l,$40
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x61E5C:
@@ -100409,9 +96755,9 @@ Unknown_0x61E70:
 	ld l,$60
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x61E80:
@@ -100435,9 +96781,9 @@ Unknown_0x61E94:
 	ld l,$80
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x61EA4:
@@ -100461,9 +96807,9 @@ Unknown_0x61EB8:
 	ld l,$A0
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x61EC8:
@@ -100487,9 +96833,9 @@ Unknown_0x61EDC:
 	ld l,$C0
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x61EEC:
@@ -100513,9 +96859,9 @@ Unknown_0x61F00:
 	ld l,$E0
 	set 3,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	xor a
@@ -100621,9 +96967,9 @@ Logged_0x61FBC:
 	xor a
 	ld [$CA9A],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$02
 	ld [$D118],a
 	ld hl,$D11C
@@ -100829,9 +97175,9 @@ Logged_0x6210E:
 	xor a
 	ld [$CA9A],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$02
 	ld [$D118],a
 	ld hl,$D11C
@@ -101073,9 +97419,9 @@ Logged_0x6229C:
 	xor a
 	ld [$CA9A],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$02
 	ld [$D118],a
 	ld hl,$D11C
@@ -101185,9 +97531,9 @@ Logged_0x62361:
 	xor a
 	ld [$CA9A],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$02
 	ld [$D118],a
 	ld hl,$D11C
@@ -101275,9 +97621,9 @@ Logged_0x623D2:
 	xor a
 	ld [$CA9A],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0x6239E
 
 Logged_0x62415:
@@ -101298,9 +97644,9 @@ Logged_0x62415:
 
 Logged_0x62429:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$19
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D108
 	ld a,[hl]
 	and $80
@@ -101430,9 +97776,9 @@ Logged_0x624CB:
 	xor a
 	ld [$CA9A],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0x62497
 
 Logged_0x6250E:
@@ -101453,9 +97799,9 @@ Logged_0x6250E:
 
 Logged_0x62522:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$19
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D108
 	ld a,[hl]
 	and $80
@@ -102501,9 +98847,9 @@ Logged_0x62B19:
 
 Logged_0x62B70:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$17
 	ld [$D11B],a
 
@@ -102633,9 +98979,9 @@ Logged_0x62BFF:
 
 Logged_0x62C56:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$16
 	ld [$D11B],a
 
@@ -102975,9 +99321,9 @@ Logged_0x62E51:
 
 Logged_0x62E57:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D11F
 	ld a,$48
 	ld [hld],a
@@ -104028,9 +100374,9 @@ Logged_0x6337D:
 	or $4A
 	ld [hli],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$08
 	jr Logged_0x633A2
 
@@ -109077,10 +105423,10 @@ Logged_0x803F9:
 	ld [rSVBK],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,[$CEE3]
 	ld [$D01B],a
 	xor a
@@ -109225,10 +105571,10 @@ Logged_0x804F7:
 	call Logged_0x08E6
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	call Logged_0x80B29
 	call Logged_0x80CB1
 	call Logged_0x037D
@@ -109272,10 +105618,10 @@ Logged_0x8055F:
 	call Logged_0x038F
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$02
 	ld [rSVBK],a
 	call Logged_0x037D
@@ -110357,9 +106703,9 @@ Logged_0x80D92:
 	ld hl,wGameSubState
 	inc [hl]
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x80DB1:
@@ -110792,9 +107138,9 @@ Logged_0x81092:
 	ld a,$04
 	call Logged_0x820AF
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$13
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0A
 	ld [$D013],a
 	scf
@@ -110971,14 +107317,14 @@ Logged_0x811A0:
 Logged_0x811B1:
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EB
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$D014],a
 	ld hl,$D013
@@ -111085,9 +107431,9 @@ Logged_0x81267:
 
 Logged_0x81269:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$1A
 	ld [wGameSubState],a
 	scf
@@ -111417,9 +107763,9 @@ Logged_0x814C4:
 	cp b
 	ret c
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$13
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D069]
 	ld [$D06B],a
 	ld [$D100],a
@@ -112060,18 +108406,18 @@ Logged_0x81900:
 
 Logged_0x81923:
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$04
 	ld [wGameSubState],a
 	ret
 
 Logged_0x81931:
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D025]
 	ld b,a
 	xor a
@@ -112611,9 +108957,9 @@ Logged_0x8202C:
 
 Logged_0x82038:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x82041:
@@ -112988,9 +109334,9 @@ Logged_0x82277:
 	and a
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	set 2,a
 	ld [$D053],a
@@ -113051,9 +109397,9 @@ Logged_0x822F1:
 	and $06
 	jr z,Logged_0x8230E
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D050
 	inc [hl]
 
@@ -113174,10 +109520,10 @@ Unknown_0x823BF:
 	call Unknown_0x823E6
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld [$D013],a
 	ld [$D014],a
@@ -113284,9 +109630,9 @@ Logged_0x82471:
 	call Logged_0x82654
 	call Logged_0x826F6
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	scf
 	ret
 
@@ -113528,9 +109874,9 @@ Logged_0x825CF:
 
 Logged_0x825DD:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	scf
 	ret
 
@@ -114224,9 +110570,9 @@ Logged_0x82AAE:
 	ld a,$01
 	ld [$D07F],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x82AD2:
 	call Logged_0x81FEB
@@ -114263,9 +110609,9 @@ Logged_0x82AEA:
 	ld a,$01
 	ld [$D07F],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x82AD2
 
 Logged_0x82B22:
@@ -114353,9 +110699,9 @@ Logged_0x82B88:
 	ld a,$01
 	ld [$D186],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$04
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x82BAA:
@@ -114508,9 +110854,9 @@ Logged_0x82C93:
 	ld hl,$D186
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$04
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x82C22
 
 Logged_0x82CB0:
@@ -116434,10 +112780,10 @@ Logged_0x9A3C9:
 	call Logged_0x037D
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$37
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld [rSCX],a
 	ld [$C085],a
@@ -116755,14 +113101,14 @@ Logged_0x9A625:
 	jr z,Logged_0x9A646
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$08
 	ld [wGameSubState],a
 	ret
@@ -116817,15 +113163,15 @@ Unknown_0x9A68D:
 
 Unknown_0x9A68F:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EB
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$0C
 	ld [wGameSubState],a
 	ret
@@ -116886,9 +113232,9 @@ Logged_0x9A6F4:
 Logged_0x9A6FD:
 	ld [$D059],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$D196],a
 	ld [$D19E],a
@@ -116906,9 +113252,9 @@ Logged_0x9A6FD:
 
 Unknown_0x9A727:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9A730:
@@ -116938,9 +113284,9 @@ Logged_0x9A747:
 
 Logged_0x9A75C:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EB
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0C
 	ld [wGameSubState],a
 	ret
@@ -117599,10 +113945,10 @@ Logged_0x9C01C:
 	call Logged_0x037D
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld hl,$D800
 	ld bc,$0030
@@ -119228,9 +115574,9 @@ Logged_0x9CD16:
 	ld hl,wGameSubState
 	inc [hl]
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9CD23:
@@ -119399,9 +115745,9 @@ Logged_0x9CE0C:
 
 Logged_0x9CE1F:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$12
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 	call Logged_0x0302
@@ -119593,9 +115939,9 @@ Logged_0x9CF71:
 	xor a
 	ld [$D19E],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9CF8D:
@@ -119611,9 +115957,9 @@ Logged_0x9CF92:
 	ld hl,$D19E
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9CFAD:
@@ -119648,9 +115994,9 @@ Logged_0x9CFCE:
 	ld hl,$D191
 	inc [hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9CFE5:
@@ -119675,9 +116021,9 @@ Logged_0x9D001:
 
 Logged_0x9D00A:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D015:
@@ -119735,9 +116081,9 @@ Logged_0x9D05C:
 
 Logged_0x9D068:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$02
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9D071:
@@ -119767,9 +116113,9 @@ Logged_0x9D087:
 
 Logged_0x9D093:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9D09C:
@@ -119815,9 +116161,9 @@ Logged_0x9D0D3:
 	xor a
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$23
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9D0E6:
@@ -119881,9 +116227,9 @@ Logged_0x9D140:
 Logged_0x9D145:
 	call Logged_0x9D133
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D153:
@@ -119958,9 +116304,9 @@ Logged_0x9D1C5:
 	ld hl,$D1AE
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D1E4:
@@ -119972,9 +116318,9 @@ Logged_0x9D1E9:
 	ld hl,$D1AE
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D1FC:
@@ -120002,9 +116348,9 @@ Logged_0x9D21C:
 	and a
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$09
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D22C:
@@ -120032,9 +116378,9 @@ Logged_0x9D249:
 	ld hl,$D1A6
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$35
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D25C:
@@ -120049,9 +116395,9 @@ Logged_0x9D264:
 
 Logged_0x9D269:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D274:
@@ -120115,9 +116461,9 @@ Logged_0x9D2D1:
 	ld hl,$D196
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$73
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D2E4:
@@ -120318,9 +116664,9 @@ Logged_0x9D426:
 
 Logged_0x9D438:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$13
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9D441:
@@ -120372,9 +116718,9 @@ Logged_0x9D48F:
 	cp $5A
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D4A4:
@@ -120519,9 +116865,9 @@ Logged_0x9D58E:
 	cp $3B
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D5A1:
@@ -120533,9 +116879,9 @@ Logged_0x9D5A6:
 	ld hl,$D196
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D5B9:
@@ -120601,9 +116947,9 @@ Logged_0x9D616:
 	ld hl,$D196
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D631:
@@ -120611,9 +116957,9 @@ Logged_0x9D631:
 	cp $05
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$07
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D642:
@@ -120651,9 +116997,9 @@ Logged_0x9D674:
 	ld hl,$D196
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D687:
@@ -120665,9 +117011,9 @@ Logged_0x9D68C:
 	ld hl,$D196
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D69F:
@@ -120800,37 +117146,37 @@ Logged_0x9D749:
 
 Logged_0x9D765:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9D76E:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9D777:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$20
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9D780:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$21
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9D789:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$22
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9D792:
@@ -120916,9 +117262,9 @@ Logged_0x9D80B:
 	ld hl,$D196
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D826:
@@ -121071,9 +117417,9 @@ Logged_0x9D90E:
 	ld hl,$D19E
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$17
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9D929:
@@ -121209,9 +117555,9 @@ Logged_0x9D9F9:
 	cp $B0
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$61
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9DA0E:
@@ -121272,9 +117618,9 @@ Logged_0x9DA65:
 	cp $45
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9DA7C:
@@ -121297,9 +117643,9 @@ Logged_0x9DA8B:
 	and a
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9DAA6:
@@ -121352,9 +117698,9 @@ Logged_0x9DAF0:
 	xor a
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9DB03:
@@ -121418,9 +117764,9 @@ Logged_0x9DB5D:
 	cp $4A
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$13
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9DB71:
@@ -121486,9 +117832,9 @@ Logged_0x9DBC9:
 
 Logged_0x9DBDC:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$28
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9DBE5:
@@ -121596,9 +117942,9 @@ Logged_0x9DCAC:
 
 Logged_0x9DCC1:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9DCCA:
@@ -121623,9 +117969,9 @@ Logged_0x9DCE4:
 	cp $0A
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9DCF5:
@@ -121908,9 +118254,9 @@ Logged_0x9DE9D:
 	cp $01
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9DEAE:
@@ -121918,9 +118264,9 @@ Logged_0x9DEAE:
 	cp $05
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9DEBF:
@@ -122045,9 +118391,9 @@ Logged_0x9DF90:
 	ld a,$04
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9DF9C:
@@ -122115,9 +118461,9 @@ Logged_0x9DFF1:
 	cp $50
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E004:
@@ -122217,9 +118563,9 @@ Logged_0x9E098:
 
 Logged_0x9E0AD:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9E0B6:
@@ -122242,9 +118588,9 @@ Logged_0x9E0C8:
 	ld [$D19E],a
 	ld [$D196],a
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$03
 	ld hl,$D1A6
 	call Logged_0x3B93
@@ -122342,9 +118688,9 @@ Logged_0x9E153:
 
 Logged_0x9E168:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$80
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9E171:
@@ -122416,9 +118762,9 @@ Logged_0x9E1D4:
 	ld hl,$D19E
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E1F4:
@@ -122460,9 +118806,9 @@ Logged_0x9E239:
 	ld a,$06
 	call Logged_0x9CCF9
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$74
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E253:
@@ -122502,9 +118848,9 @@ Logged_0x9E280:
 	cp $50
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E297:
@@ -122589,9 +118935,9 @@ Logged_0x9E31C:
 	ld hl,$D19E
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E333:
@@ -122661,9 +119007,9 @@ Logged_0x9E391:
 	inc a
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C4
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E3A8:
@@ -122712,9 +119058,9 @@ Logged_0x9E3F3:
 	cp $04
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E402:
@@ -122737,9 +119083,9 @@ Logged_0x9E41A:
 	cp $14
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$AC
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E429:
@@ -122801,9 +119147,9 @@ Logged_0x9E483:
 	cp $04
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E494:
@@ -122811,9 +119157,9 @@ Logged_0x9E494:
 	cp $06
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$32
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E4A5:
@@ -122954,9 +119300,9 @@ Logged_0x9E58A:
 	cp $50
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$62
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E5A1:
@@ -123121,9 +119467,9 @@ Logged_0x9E6A7:
 	cp $04
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E6B8:
@@ -123162,9 +119508,9 @@ Logged_0x9E6D7:
 
 Logged_0x9E6E6:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9E6EF:
@@ -123337,9 +119683,9 @@ Logged_0x9E80E:
 	ld hl,$D19E
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$05
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E827:
@@ -123461,9 +119807,9 @@ Logged_0x9E8DC:
 	ld [$D1E0],a
 	ld [$D1E1],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$32
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E905:
@@ -123586,9 +119932,9 @@ Logged_0x9E9DF:
 	cp $4E
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9E9F6:
@@ -123801,9 +120147,9 @@ Logged_0x9EB47:
 	cp $48
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9EB5C:
@@ -123831,9 +120177,9 @@ Logged_0x9EB73:
 	ld hl,$D19E
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9EB8A:
@@ -123863,9 +120209,9 @@ Logged_0x9EBAD:
 	cp $2D
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0x9CD03
 
 Logged_0x9EBBC:
@@ -124086,9 +120432,9 @@ Logged_0x9EDA4:
 	xor a
 	ld [hl],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9EDB7:
@@ -124116,16 +120462,16 @@ Logged_0x9EDCE:
 	cp $09
 	jr nc,Logged_0x9EDE8
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$10
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9EDE8:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$11
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9EDF1:
@@ -124179,23 +120525,23 @@ Logged_0x9EE2A:
 
 Logged_0x9EE3C:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9EE45:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$15
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9EE4E:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$16
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9EE57:
@@ -124429,9 +120775,9 @@ Logged_0x9F1B5:
 	cp $FF
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 LoggedData_0x9F1C4:
@@ -124522,9 +120868,9 @@ Logged_0x9F26B:
 	cp $FF
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F27A:
@@ -124555,9 +120901,9 @@ Logged_0x9F295:
 	xor a
 	ld [de],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$11
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F2A2:
@@ -124625,9 +120971,9 @@ Logged_0x9F30E:
 	cp $FF
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$6D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 LoggedData_0x9F31D:
@@ -124765,9 +121111,9 @@ Logged_0x9F414:
 	cp $FF
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$31
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F423:
@@ -124823,9 +121169,9 @@ Logged_0x9F46F:
 	xor $01
 	ld [$D19F],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F47E:
@@ -124847,9 +121193,9 @@ Logged_0x9F483:
 
 Logged_0x9F493:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$76
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F49C:
@@ -124894,9 +121240,9 @@ Logged_0x9F4D8:
 	xor a
 	ld [de],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$33
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F4EC:
@@ -124914,9 +121260,9 @@ Logged_0x9F4F4:
 	xor a
 	ld [de],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$32
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F508:
@@ -124958,9 +121304,9 @@ Logged_0x9F52E:
 
 Logged_0x9F53E:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F547:
@@ -125015,9 +121361,9 @@ Logged_0x9F587:
 
 Logged_0x9F597:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$40
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F5A0:
@@ -125071,9 +121417,9 @@ Logged_0x9F5F6:
 	cp c
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$BA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x9F600:
 	ld a,b
@@ -125108,9 +121454,9 @@ Logged_0x9F629:
 	cp $FF
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$85
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F638:
@@ -125170,9 +121516,9 @@ Logged_0x9F689:
 
 Logged_0x9F699:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F6A2:
@@ -125264,9 +121610,9 @@ Logged_0x9F722:
 
 Logged_0x9F732:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F73B:
@@ -125403,9 +121749,9 @@ Logged_0x9F80D:
 	xor a
 	ld [de],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$76
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F821:
@@ -125440,9 +121786,9 @@ Logged_0x9F843:
 	xor a
 	ld [de],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F857:
@@ -125506,9 +121852,9 @@ Logged_0x9F8A8:
 
 Logged_0x9F8B8:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$76
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F8C1:
@@ -125526,9 +121872,9 @@ Logged_0x9F8C1:
 
 Logged_0x9F8D1:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$C4
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9F8DA:
@@ -125637,16 +121983,16 @@ Logged_0x9F96A:
 
 Logged_0x9F978:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$11
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0x9F98A
 
 Logged_0x9F982:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x9F98A:
 	ld a,b
@@ -125746,9 +122092,9 @@ Logged_0x9FA1B:
 	xor a
 	ld [de],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$35
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9FA2F:
@@ -125765,9 +122111,9 @@ Logged_0x9FA34:
 	xor a
 	ld [de],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$80
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9FA48:
@@ -125820,9 +122166,9 @@ Logged_0x9FAA0:
 	xor a
 	ld [de],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F6
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9FAB4:
@@ -125857,9 +122203,9 @@ Logged_0x9FAD6:
 	xor a
 	ld [de],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9FAEA:
@@ -125906,9 +122252,9 @@ Logged_0x9FB1F:
 	xor a
 	ld [de],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9FB33:
@@ -125925,9 +122271,9 @@ Logged_0x9FB38:
 	xor a
 	ld [de],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$83
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x9FB4C:
@@ -126630,9 +122976,9 @@ Logged_0xAC14D:
 	xor a
 	ld [bc],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$38
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAC15F:
@@ -126725,9 +123071,9 @@ Logged_0xAC1E9:
 	xor a
 	ld [bc],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAC1FB:
@@ -126751,9 +123097,9 @@ Logged_0xAC207:
 
 Logged_0xAC215:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAC21E:
@@ -127146,9 +123492,9 @@ Logged_0xAC479:
 	cp $FF
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0xAC48E:
@@ -127162,9 +123508,9 @@ Logged_0xAC493:
 	cp $FF
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F4
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAC4A8:
@@ -127225,9 +123571,9 @@ Logged_0xAC4FA:
 	and a
 	jr nz,Logged_0xAC509
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xAC509:
 	inc [hl]
@@ -127250,9 +123596,9 @@ Logged_0xAC515:
 	xor a
 	ld [hl],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$37
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAC528:
@@ -127467,9 +123813,9 @@ Logged_0xAC67E:
 
 Logged_0xAC688:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$D14C],a
 	ret
@@ -127565,9 +123911,9 @@ Logged_0xAC718:
 
 Logged_0xAC722:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 
 Logged_0xAC72C:
@@ -127576,9 +123922,9 @@ Logged_0xAC72C:
 
 Logged_0xAC730:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$11
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$02
 	jr Logged_0xAC72C
 
@@ -127626,9 +123972,9 @@ Logged_0xAC77A:
 	cp $FF
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAC792:
@@ -127662,9 +124008,9 @@ Logged_0xAC7B7:
 	xor $01
 	ld [$D147],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$10
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAC7D0:
@@ -127697,9 +124043,9 @@ Logged_0xAC7FF:
 	cp $FF
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$10
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAC80E:
@@ -128150,10 +124496,10 @@ Logged_0xACB20:
 	call Logged_0x037D
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$02
 	ld [rSVBK],a
 	xor a
@@ -128577,9 +124923,9 @@ Logged_0xACE25:
 
 Logged_0xACE2B:
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$D14C],a
 	ld a,$08
@@ -128600,10 +124946,10 @@ Logged_0xACE3F:
 	ld [hl],a
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$32
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$01
 	ld [$DA02],a
 	ret
@@ -128784,9 +125130,9 @@ Logged_0xACF56:
 	cp $7E
 	jr z,Logged_0xACF6E
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$30
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xACF6E:
 	ld hl,$DA83
@@ -128895,14 +125241,14 @@ Logged_0xAD016:
 Logged_0xAD01D:
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [wGameSubState],a
 	ld hl,wGameState
@@ -129177,9 +125523,9 @@ Logged_0xAD21D:
 	cp $0E
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$CC
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAD016
 
 Logged_0xAD22E:
@@ -129392,10 +125738,10 @@ Logged_0xAD355:
 Logged_0xAD36F:
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$39
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	jp Logged_0xAD335
 
 Logged_0xAD37E:
@@ -129876,10 +126222,10 @@ Logged_0xAD635:
 	ret nz
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$2C
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	jr Logged_0xAD62F
 
 Logged_0xAD64A:
@@ -129998,9 +126344,9 @@ Logged_0xAD783:
 	ld hl,$D186
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAD335
 
 Logged_0xAD7A7:
@@ -130284,10 +126630,10 @@ INCBIN "baserom.gbc", $AD939, $AD9B2 - $AD939
 	call Logged_0x037D
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$02
 	ld [rSVBK],a
 	xor a
@@ -130596,9 +126942,9 @@ Logged_0xADC19:
 
 Logged_0xADC1B:
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$D14C],a
 	ld a,$08
@@ -130829,9 +127175,9 @@ Logged_0xADD7A:
 	ld a,$30
 	call Logged_0xAC8D4
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xADC43
 
 Logged_0xADD8A:
@@ -131149,10 +127495,10 @@ Logged_0xAE025:
 	call Logged_0x3B93
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$31
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$06
 	jr Logged_0xAE009
 
@@ -131277,9 +127623,9 @@ Logged_0xAE134:
 	ld a,$22
 	call Logged_0xAC8D4
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$05
 	jp Logged_0xAE009
 
@@ -131402,9 +127748,9 @@ Logged_0xAE1F5:
 	ld hl,$D1A6
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$04
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAE1CE
 
 Logged_0xAE211:
@@ -131491,9 +127837,9 @@ Logged_0xAE27A:
 	ld hl,$D186
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAE1CE
 
 Logged_0xAE2A2:
@@ -131631,10 +127977,10 @@ Logged_0xAE35A:
 	ret c
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	jp Logged_0xAE1CE
 
 Logged_0xAE36F:
@@ -131907,9 +128253,9 @@ INCBIN "baserom.gbc", $AE50A, $AE515 - $AE50A
 
 Logged_0xAE515:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAE51E:
@@ -132001,9 +128347,9 @@ Logged_0xAE599:
 	cp $14
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$15
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAE1CE
 
 Logged_0xAE5A8:
@@ -132042,9 +128388,9 @@ Logged_0xAE5DC:
 	ld a,$0D
 	call Logged_0xAC8D4
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAE1CE
 
 Logged_0xAE5F0:
@@ -132083,10 +128429,10 @@ Logged_0xAE61D:
 	ret c
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$32
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	jp Logged_0xAE1CE
 
 Logged_0xAE630:
@@ -132156,9 +128502,9 @@ Logged_0xAE68B:
 	cp $0F
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAE1CE
 
 Logged_0xAE69C:
@@ -132230,9 +128576,9 @@ Logged_0xAE6F8:
 	ld a,$15
 	call Logged_0xAC8D4
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$19
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$D894],a
 	ld [$D892],a
@@ -132363,9 +128709,9 @@ Logged_0xAE7D4:
 	ld a,$0D
 	call Logged_0xAC8D4
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D892
 	inc [hl]
 	xor a
@@ -132379,9 +128725,9 @@ Logged_0xAE7F2:
 
 Logged_0xAE7F8:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAE801:
@@ -132472,9 +128818,9 @@ Logged_0xAE871:
 	ld hl,$D186
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAE1CE
 
 Logged_0xAE893:
@@ -132600,9 +128946,9 @@ Logged_0xAE924:
 
 Logged_0xAE948:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xAE950:
 	ld hl,$D8A3
@@ -132613,9 +128959,9 @@ Logged_0xAE956:
 	cp $62
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D8A2
 	inc [hl]
 	ret
@@ -132739,9 +129085,9 @@ Logged_0xAE9EE:
 
 Logged_0xAEA16:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xAEA1E:
 	ld hl,$D8A5
@@ -132752,9 +129098,9 @@ Logged_0xAEA24:
 	cp $62
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D8A4
 	inc [hl]
 	ret
@@ -132829,9 +129175,9 @@ Logged_0xAEA95:
 	ld hl,$D18E
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D8A4
 	inc [hl]
 	ret
@@ -132917,9 +129263,9 @@ Logged_0xAEB0D:
 
 Logged_0xAEB35:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xAEB3D:
 	ld hl,$D8A7
@@ -132930,9 +129276,9 @@ Logged_0xAEB43:
 	cp $62
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D8A6
 	inc [hl]
 	ret
@@ -132970,9 +129316,9 @@ Logged_0xAEB80:
 	ld hl,$D196
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D8A6
 	inc [hl]
 	ret
@@ -133082,9 +129428,9 @@ Logged_0xAEC1F:
 
 Logged_0xAEC3F:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xAEC47:
 	ld hl,$D8A9
@@ -133095,9 +129441,9 @@ Logged_0xAEC4D:
 	cp $62
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D8A8
 	inc [hl]
 	ret
@@ -133165,9 +129511,9 @@ Logged_0xAECB4:
 	ld hl,$D1C6
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D8A8
 	inc [hl]
 	ret
@@ -133210,10 +129556,10 @@ INCBIN "baserom.gbc", $AED06, $AEE58 - $AED06
 	call Logged_0x037D
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$02
 	ld [rSVBK],a
 	xor a
@@ -133886,9 +130232,9 @@ Logged_0xAF476:
 	ld a,$01
 	ld [$D892],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$19
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAF40C
 
 Logged_0xAF48A:
@@ -133898,9 +130244,9 @@ Logged_0xAF48A:
 	ld a,$01
 	ld [$D8C0],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$19
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAF40C
 
 Logged_0xAF49E:
@@ -133945,9 +130291,9 @@ Logged_0xAF4CF:
 	xor a
 	ld [$D1CF],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$15
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAF40C
 
 Logged_0xAF4E7:
@@ -134007,9 +130353,9 @@ Logged_0xAF534:
 	cp $0B
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$06
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xAF40C
 
 Logged_0xAF545:
@@ -134124,9 +130470,9 @@ Logged_0xAF5E7:
 	ld a,$0C
 	call Logged_0xAC8D4
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0xAF5BC
 
 Logged_0xAF5FE:
@@ -134136,9 +130482,9 @@ Logged_0xAF5FE:
 
 Logged_0xAF604:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAF60D:
@@ -134204,9 +130550,9 @@ Logged_0xAF661:
 
 Logged_0xAF667:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xAF670:
@@ -134244,10 +130590,10 @@ Logged_0xAF69A:
 	call Logged_0x3B93
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	call Logged_0xACE60
 	ld a,$0F
 	ld hl,$D1CE
@@ -134445,10 +130791,10 @@ Logged_0xAF7AF:
 Logged_0xAF7EE:
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$38
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	jp Logged_0xAF40C
 
 Logged_0xAF7FD:
@@ -134469,9 +130815,9 @@ Logged_0xAF816:
 	cp $50
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EB
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0xACA09
 	call Logged_0xACA25
 	jp Logged_0xAF40C
@@ -136583,9 +132929,9 @@ Logged_0xB4DC0:
 
 Logged_0xB4DD4:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB4DDD:
@@ -137209,9 +133555,9 @@ Logged_0xB519F:
 	ld hl,$D1C6
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$02
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB51B2:
@@ -137219,9 +133565,9 @@ Logged_0xB51B2:
 	cp $07
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB51C3:
@@ -137251,9 +133597,9 @@ Logged_0xB51E3:
 	ld hl,$D1D6
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$08
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB51F6:
@@ -137285,9 +133631,9 @@ Logged_0xB521B:
 
 Logged_0xB5220:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$19
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB522B:
@@ -137302,9 +133648,9 @@ Logged_0xB522B:
 	ld hl,$D1A6
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB524C:
@@ -137321,9 +133667,9 @@ Logged_0xB5259:
 	ld hl,$D1A6
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB526C:
@@ -137354,9 +133700,9 @@ Logged_0xB5294:
 	ld a,$01
 	ld [$D18F],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB52A4:
@@ -137368,9 +133714,9 @@ Logged_0xB52A4:
 	ld hl,$D196
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB52BE:
@@ -137437,9 +133783,9 @@ Logged_0xB5321:
 	ld a,$01
 	ld [$D12C],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB5331:
@@ -137562,9 +133908,9 @@ Logged_0xB53C4:
 	inc a
 	ld [$D1C9],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB540A:
@@ -137784,16 +134130,16 @@ Logged_0xB5552:
 	cp $08
 	jr z,Logged_0xB5564
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB5564:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$22
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB556F:
@@ -137828,9 +134174,9 @@ Logged_0xB5599:
 
 Logged_0xB559E:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$19
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB55A9:
@@ -137848,9 +134194,9 @@ Logged_0xB55A9:
 	xor a
 	ld [$D18E],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB55CD:
@@ -137885,9 +134231,9 @@ Logged_0xB55EA:
 
 Logged_0xB55FF:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB5608:
@@ -137974,9 +134320,9 @@ Logged_0xB568B:
 	cp $94
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$13
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB56A4:
@@ -138005,9 +134351,9 @@ Logged_0xB56BF:
 	ld a,$23
 	ld [$D18E],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$13
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB56D5:
@@ -138065,9 +134411,9 @@ Logged_0xB5728:
 
 Logged_0xB572D:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0xB5850
 
 Logged_0xB5738:
@@ -138119,9 +134465,9 @@ Logged_0xB5778:
 
 Logged_0xB5786:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$57EC
 	jr Logged_0xB575C
 
@@ -138372,9 +134718,9 @@ Logged_0xB5973:
 	ld hl,$D18E
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$61
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB598C:
@@ -138456,9 +134802,9 @@ Logged_0xB59E5:
 
 Logged_0xB59F9:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB5A02:
@@ -138501,9 +134847,9 @@ Logged_0xB5A37:
 	cp $1B
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$76
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [hl],a
 	ret
@@ -138649,9 +134995,9 @@ Logged_0xB5B1E:
 
 Logged_0xB5B2D:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB5B36:
@@ -138679,9 +135025,9 @@ Logged_0xB5B4E:
 	and a
 	ret nz
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB5B6B:
@@ -138729,9 +135075,9 @@ Logged_0xB5BAA:
 
 Logged_0xB5BAF:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$19
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB5BBA:
@@ -138746,9 +135092,9 @@ Logged_0xB5BBA:
 	ld hl,$D1A6
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB5BDB:
@@ -138765,9 +135111,9 @@ Logged_0xB5BE8:
 	ld hl,$D1A6
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB5BFB:
@@ -138797,9 +135143,9 @@ Logged_0xB5C21:
 	ld a,$01
 	ld [$D18F],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB5C31:
@@ -138811,9 +135157,9 @@ Logged_0xB5C31:
 	ld hl,$D1AE
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB5C4B:
@@ -138918,9 +135264,9 @@ Logged_0xB5CF1:
 	ld hl,$5549
 	call Logged_0xB5868
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$61
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB5D0A:
@@ -139175,9 +135521,9 @@ Logged_0xB5EB7:
 
 Logged_0xB5EBC:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB5EC7:
@@ -139485,9 +135831,9 @@ Logged_0xB6055:
 	xor a
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$76
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB606D:
@@ -139514,9 +135860,9 @@ Logged_0xB608A:
 	cp $01
 	jr nz,Logged_0xB609C
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$76
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xB609C:
 	inc [hl]
@@ -139533,9 +135879,9 @@ Logged_0xB60A5:
 
 Logged_0xB60AA:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$21
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB60B5:
@@ -139632,9 +135978,9 @@ Logged_0xB6606:
 	ld a,$06
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6616:
@@ -139653,9 +135999,9 @@ Logged_0xB6620:
 
 Logged_0xB662A:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6635:
@@ -139700,9 +136046,9 @@ Logged_0xB6675:
 	ld a,$01
 	ld [$D129],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB6683:
@@ -139723,9 +136069,9 @@ Logged_0xB6696:
 	ld a,$01
 	ld [$D127],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB66A4:
@@ -139781,9 +136127,9 @@ Logged_0xB66F6:
 
 Logged_0xB66FB:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$19
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6706:
@@ -139798,9 +136144,9 @@ Logged_0xB6706:
 	ld hl,$D1A6
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6727:
@@ -139817,9 +136163,9 @@ Logged_0xB6734:
 	ld hl,$D1A6
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6747:
@@ -139849,9 +136195,9 @@ Logged_0xB6768:
 
 Logged_0xB676D:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6778:
@@ -139860,9 +136206,9 @@ Logged_0xB6778:
 
 Logged_0xB677D:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$23
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$08
 	ld hl,$D1B6
 	call Logged_0x3B93
@@ -139918,9 +136264,9 @@ Logged_0xB67D6:
 	ld [$D0D5],a
 	call Logged_0xB6879
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$24
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB67EC:
@@ -140103,9 +136449,9 @@ Logged_0xB68F6:
 
 Logged_0xB6908:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$24
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xB6910:
 	ld hl,$D124
@@ -140233,9 +136579,9 @@ Logged_0xB69D8:
 	ld hl,$D196
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB69EB:
@@ -140348,9 +136694,9 @@ Logged_0xB6A90:
 	ld hl,$D1C6
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6AA3:
@@ -140568,9 +136914,9 @@ Logged_0xB6BEB:
 	ld a,$01
 	ld [$D1BF],a
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6BFB:
@@ -140582,9 +136928,9 @@ Logged_0xB6BFB:
 	ld hl,$D1BE
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6C15:
@@ -140654,9 +137000,9 @@ Logged_0xB6C78:
 	ld hl,$55F9
 	call Logged_0xB5868
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$61
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xB6C86:
 	ld a,$1B
@@ -140712,9 +137058,9 @@ Logged_0xB6CD1:
 
 Logged_0xB6CD6:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$20
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6CE1:
@@ -140728,9 +137074,9 @@ Logged_0xB6CE6:
 	ld hl,$D196
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$29
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6CFF:
@@ -140794,9 +137140,9 @@ Logged_0xB6D5A:
 
 Logged_0xB6D62:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$29
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6D6D:
@@ -140898,9 +137244,9 @@ Logged_0xB6E00:
 
 Logged_0xB6E05:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$05
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB6E10:
@@ -140924,9 +137270,9 @@ Logged_0xB6E15:
 
 Logged_0xB6E2C:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB6E35:
@@ -141092,9 +137438,9 @@ Logged_0xB6F11:
 	ld [$D150],a
 	ld hl,$D151
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0xB6F31
 
 Logged_0xB6F23:
@@ -141660,9 +138006,9 @@ Logged_0xB72E8:
 
 Logged_0xB72F8:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xB7300:
 	ld hl,$C083
@@ -141687,9 +138033,9 @@ Logged_0xB7311:
 	dec [hl]
 	dec [hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0xB7304
 
 Logged_0xB7322:
@@ -141711,9 +138057,9 @@ Logged_0xB7334:
 
 Logged_0xB733B:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$63
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xB7343:
 	ld hl,$C085
@@ -141740,9 +138086,9 @@ Logged_0xB735C:
 
 Logged_0xB7363:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$63
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xB736B:
 	ld hl,$C085
@@ -141817,9 +138163,9 @@ Logged_0xB73CE:
 	ld hl,$D18E
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB73E1:
@@ -142110,9 +138456,9 @@ Logged_0xB75D8:
 
 Logged_0xB75DD:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$27
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$D134],a
 	jp Logged_0xB5850
@@ -142379,9 +138725,9 @@ Logged_0xB774C:
 
 Logged_0xB7763:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D147
 	xor a
 	ld [hld],a
@@ -142458,23 +138804,23 @@ Logged_0xB77CE:
 
 Logged_0xB77E8:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB77F1:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$25
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB77FA:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$26
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB7803:
@@ -142558,9 +138904,9 @@ Logged_0xB7877:
 	ld hl,$D1AE
 	call Logged_0x3B93
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$28
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB788A:
@@ -142603,9 +138949,9 @@ Logged_0xB78C4:
 	cp $10
 	ret c
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jp Logged_0xB5850
 
 Logged_0xB78D5:
@@ -142759,9 +139105,9 @@ Logged_0xB79DE:
 	ld hl,$D19E
 	call Logged_0x3B93
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$05
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xB79FA:
@@ -149113,9 +145459,9 @@ Logged_0xD44AB:
 	and $03
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$09
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$CE01
 	ld a,$98
 	ld [hli],a
@@ -149143,9 +145489,9 @@ Logged_0xD44DC:
 	inc a
 	jp z,Logged_0xD45E1
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D523
 	ld a,$42
 	ld [hli],a
@@ -149193,9 +145539,9 @@ Unknown_0xD4507:
 	xor a
 	ld [$CEE5],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,wGameSubState
 	inc [hl]
 	ret
@@ -149283,9 +145629,9 @@ Unknown_0xD45C5:
 
 Unknown_0xD45D9:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$31
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0xD45E1:
 	xor a
@@ -150066,9 +146412,9 @@ Logged_0xDB317:
 	dec [hl]
 	jp nz,Logged_0xDB3A9
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$34
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D51D
 	inc [hl]
 	jr Logged_0xDB3A9
@@ -150080,13 +146426,13 @@ Logged_0xDB338:
 	dec [hl]
 	jr nz,Logged_0xDB3A9
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$61
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$2A
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$06
 	ld [$CEE5],a
 	ld hl,$D51D
@@ -150115,9 +146461,9 @@ Logged_0xDB371:
 	and a
 	jr nz,Logged_0xDB3A9
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$30
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld hl,$D51D
 	inc [hl]
 	jr Logged_0xDB3A9
@@ -150127,9 +146473,9 @@ Logged_0xDB38A:
 	bit 0,a
 	jr z,Logged_0xDB3A9
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D519
 	xor a
 	ld [hli],a
@@ -150165,9 +146511,9 @@ Logged_0xDB3A9:
 
 Logged_0xDB3DB:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0xDB3E4:
@@ -150365,9 +146711,9 @@ Logged_0xDC01E:
 	ld hl,$D523
 	call Logged_0xDC158
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$36
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$87
 	ld [rLCDC],a
 	xor a
@@ -150819,9 +147165,9 @@ Logged_0x158062:
 
 Logged_0x158069:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x158071:
 	ld a,[bc]
@@ -150855,9 +147201,9 @@ Logged_0x158085:
 
 Logged_0x158097:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x15809F:
 	ld a,[bc]
@@ -150961,9 +147307,9 @@ Logged_0x158104:
 
 Logged_0x158108:
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x158111:
@@ -152503,9 +148849,9 @@ Logged_0x160028:
 	call Logged_0x1604B1
 	call Logged_0x03B9
 	ld a,$FF
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$78
 	ld [$CEE5],a
 	ld a,$87
@@ -152530,9 +148876,9 @@ Logged_0x1600D4:
 
 Logged_0x1600EF:
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$15
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ret
 
 Logged_0x1600F8:
@@ -154952,10 +151298,10 @@ Logged_0x1C80A5:
 	call Logged_0x1C9F2E
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$2F
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld [rSCY],a
 	ld [rSCX],a
@@ -155121,9 +151467,9 @@ Logged_0x1C81F0:
 	and a
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$04
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1C821C:
@@ -155153,9 +151499,9 @@ Unknown_0x1C8240:
 	cp $38
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E6
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$DC42],a
 	ld [$DC85],a
@@ -155209,9 +151555,9 @@ Logged_0x1C82AB:
 	and a
 	jr z,Logged_0x1C82CC
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$02
 	ld [$DC6C],a
 	xor a
@@ -155221,9 +151567,9 @@ Logged_0x1C82AB:
 
 Logged_0x1C82CC:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$30
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$DC0F]
 	ld c,a
 	ld a,[$CA05]
@@ -155425,10 +151771,10 @@ Unknown_0x1C8420:
 	ld [$D801],a
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$08
 	ld [wGameSubState],a
 	ret
@@ -155441,9 +151787,9 @@ Logged_0x1C8439:
 	cp $A0
 	jr nz,Logged_0x1C844D
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$30
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1C844D:
 	dec [hl]
@@ -155547,9 +151893,9 @@ Logged_0x1C84F9:
 	and $0F
 	jr nz,Logged_0x1C8516
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$1F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1C8516:
 	inc [hl]
@@ -156001,9 +152347,9 @@ Unknown_0x1C884B:
 	cp $50
 	jr nc,Unknown_0x1C8861
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x1C8861:
@@ -156066,9 +152412,9 @@ Logged_0x1C88B5:
 
 Logged_0x1C88B6:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$DC00],a
 	ld [$DC02],a
@@ -156124,9 +152470,9 @@ Unknown_0x1C8911:
 	and $03
 	jr nz,Unknown_0x1C8926
 	ld a,$02
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1C8926:
 	ld hl,$DC1A
@@ -156141,9 +152487,9 @@ Unknown_0x1C8926:
 
 Unknown_0x1C8933:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Unknown_0x1C8944
 	ld a,$04
 	ld [wGameSubState],a
@@ -156220,10 +152566,10 @@ Logged_0x1C8976:
 	call Logged_0x1C9CF9
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$26
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$87
 	ld [rLCDC],a
 	ld hl,wGameSubState
@@ -156695,16 +153041,16 @@ Logged_0x1C8DB1:
 	cp $14
 	jr nz,Logged_0x1C8E09
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0x1C8E09
 
 Logged_0x1C8E01:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1C8E09:
 	ld a,[$DC7F]
@@ -156880,9 +153226,9 @@ Logged_0x1C8F02:
 	and a
 	ret nz
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$04
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1C8F37:
@@ -157002,9 +153348,9 @@ Logged_0x1C8FD8:
 
 Logged_0x1C8FF2:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E4
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$DC65],a
 	ld [$DC66],a
@@ -157014,9 +153360,9 @@ Logged_0x1C8FF2:
 
 Logged_0x1C9007:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E9
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$DC8C
 	xor a
 	ld c,$08
@@ -157262,9 +153608,9 @@ Logged_0x1C9175:
 	cp $4C
 	jr c,Logged_0x1C91A3
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$DC49],a
 	jr Logged_0x1C91A3
@@ -157432,9 +153778,9 @@ Logged_0x1C9297:
 	cp $4C
 	jr c,Logged_0x1C92BE
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$DC49],a
 	jr Logged_0x1C92BE
@@ -157512,9 +153858,9 @@ Logged_0x1C930B:
 Logged_0x1C9318:
 	inc [hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$ED
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$DC85],a
 	ld [$DC86],a
@@ -157536,18 +153882,18 @@ Logged_0x1C9333:
 	and a
 	jr z,Logged_0x1C9355
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$17
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$03
 	ld [$DC84],a
 	ret
 
 Logged_0x1C9355:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E8
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$05
 	ld [$DC84],a
 	ld a,$02
@@ -157826,9 +154172,9 @@ Logged_0x1C9521:
 	cp $02
 	jr nc,Logged_0x1C955E
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$DC01]
 	ld [$DC00],a
 	cp $06
@@ -157875,25 +154221,25 @@ Logged_0x1C955E:
 	cp $04
 	jr z,Logged_0x1C95A0
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$A1
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1C95A0:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$65
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$05
 	ld [$DC7C],a
 	ret
 
 Logged_0x1C95AE:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EF
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0x1C95DE
 
 Unknown_0x1C95B8:
@@ -157903,16 +154249,16 @@ Unknown_0x1C95B8:
 
 Logged_0x1C95BD:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	jr Logged_0x1C95D5
 
 Logged_0x1C95C7:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$73
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$DC53]
 	ld [$DC47],a
 
@@ -158049,9 +154395,9 @@ Logged_0x1C9654:
 	cp $01
 	jr nz,Unknown_0x1C96AE
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1C96AE:
 	ld a,[$DC8F]
@@ -158105,9 +154451,9 @@ Logged_0x1C9708:
 	and a
 	jr nz,Logged_0x1C9716
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$F0
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1C9716:
 	ld a,[$DC8F]
@@ -158142,9 +154488,9 @@ Logged_0x1C9743:
 	or [hl]
 	jr nz,Logged_0x1C9752
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EE
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1C9752:
 	ld hl,$DC3A
@@ -158217,9 +154563,9 @@ Logged_0x1C97B5:
 	cp $01
 	jr nz,Logged_0x1C97D8
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E5
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1C97D8:
 	ld a,[$DC8F]
@@ -158294,19 +154640,19 @@ Logged_0x1C9838:
 	jr nc,Unknown_0x1C986B
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$2B
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	jr Logged_0x1C9863
 
 Logged_0x1C9852:
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$2B
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$01
 	ld [$DC24],a
 
@@ -158474,10 +154820,10 @@ Logged_0x1C99A4:
 Unknown_0x1C99AF:
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$2A
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 
 Unknown_0x1C99BB:
 	ld a,$07
@@ -158553,10 +154899,10 @@ Logged_0x1C9A28:
 	ret c
 	ld a,$00
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$2A
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld [$DC0A],a
 	ld [$DC85],a
@@ -158601,10 +154947,10 @@ Logged_0x1C9A92:
 	ret z
 	ld a,$FF
 	ld [$FF00+$B3],a
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$00
 	ld [$FF00+$B4],a
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld [$D800],a
 	ld [$D801],a
@@ -158689,9 +155035,9 @@ Unknown_0x1C9B29:
 	cp [hl]
 	jr nc,Unknown_0x1C9B48
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$FA
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$06
 	ld [$DC84],a
 	jr Unknown_0x1C9B4D
@@ -158821,18 +155167,18 @@ Logged_0x1C9C27:
 
 Logged_0x1C9C33:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [wGameSubState],a
 	ret
 
 Logged_0x1C9C40:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E7
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$DC65],a
 	ld [$DC66],a
@@ -160131,9 +156477,9 @@ Logged_0x1E019C:
 	cp $04
 	jr z,Logged_0x1E01CB
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$23
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	jr Logged_0x1E01E6
 
 Logged_0x1E01BC:
@@ -160169,15 +156515,15 @@ Logged_0x1E01CE:
 	ld a,[de]
 	ld [hl],a
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$28
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 
 Logged_0x1E01E6:
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D52B
 	ld a,$28
 	ld [hli],a
@@ -160321,9 +156667,9 @@ Logged_0x1E02A5:
 	cp $02
 	jr nz,Unknown_0x1E02CD
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$28
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$4D
 	ld [hli],a
 	ld a,$18
@@ -160332,9 +156678,9 @@ Logged_0x1E02A5:
 
 Unknown_0x1E02CD:
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$23
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	ld a,$4D
 	ld [hli],a
 	ld a,$58
@@ -160342,9 +156688,9 @@ Unknown_0x1E02CD:
 
 Logged_0x1E02DB:
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D52B
 	ld a,$28
 	ld [hli],a
@@ -160601,9 +156947,9 @@ Logged_0x1E4104:
 	ld a,$20
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E411B:
 	ld a,[$D50A]
@@ -160628,9 +156974,9 @@ Logged_0x1E4134:
 	ld a,$20
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E414B:
 	ld a,[$D50A]
@@ -160658,9 +157004,9 @@ Logged_0x1E4165:
 	ld a,$20
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E417C:
 	ld a,[$D50A]
@@ -160685,9 +157031,9 @@ Logged_0x1E4195:
 	ld a,$20
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E41AC:
 	ld a,[$D50A]
@@ -160716,9 +157062,9 @@ Logged_0x1E41C9:
 	ld a,$20
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E41E0:
 	ld a,[$D50A]
@@ -160745,9 +157091,9 @@ Logged_0x1E41FD:
 	ld a,$10
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E4214:
 	ld hl,$D516
@@ -160769,9 +157115,9 @@ Logged_0x1E4227:
 	ld a,$10
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E423E:
 	ld hl,$D516
@@ -160979,9 +157325,9 @@ Unknown_0x1E43A0:
 	ld a,$1E
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1E43B7:
 	ld hl,$D516
@@ -161004,9 +157350,9 @@ Unknown_0x1E43CB:
 	ld a,$1E
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1E43E2:
 	ld hl,$D516
@@ -161017,9 +157363,9 @@ Unknown_0x1E43E2:
 	cp $4C
 	ret c
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Unknown_0x1E4CE9
 	ld a,$18
 	ld [$D51D],a
@@ -161118,9 +157464,9 @@ Unknown_0x1E4490:
 	ld a,$1E
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1E44A7:
 	ld hl,$D516
@@ -161143,9 +157489,9 @@ Unknown_0x1E44BB:
 	ld a,$1E
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$8C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1E44D2:
 	ld hl,$D516
@@ -161156,9 +157502,9 @@ Unknown_0x1E44D2:
 	cp $4C
 	ret c
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Unknown_0x1E4CE9
 	ld hl,$D50C
 	inc [hl]
@@ -161390,9 +157736,9 @@ Logged_0x1E465E:
 
 Logged_0x1E4676:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$46
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$CEE5],a
 	ret
@@ -161405,9 +157751,9 @@ Logged_0x1E4684:
 	ld a,$20
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E469B:
 	ld hl,$CEE5
@@ -161427,9 +157773,9 @@ Logged_0x1E46AB:
 	ld a,$10
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E46C2:
 	ld a,[$D50A]
@@ -161495,9 +157841,9 @@ Logged_0x1E471C:
 	ld a,$10
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E4733:
 	ld a,[$D50A]
@@ -161563,9 +157909,9 @@ Logged_0x1E478D:
 	ld a,$10
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E47A4:
 	ld a,[$D50A]
@@ -161631,9 +157977,9 @@ Logged_0x1E47FE:
 	ld a,$10
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E4815:
 	ld hl,$D515
@@ -161698,9 +158044,9 @@ Logged_0x1E4871:
 	ld a,$20
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1E4888:
 	ld hl,$CEE5
@@ -162558,9 +158904,9 @@ Logged_0x1E4E0A:
 
 Logged_0x1E4E1A:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$45
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D519
 	xor a
 	ld [hli],a
@@ -162950,9 +159296,9 @@ Logged_0x1EC177:
 	ld a,$0C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1EC1B7:
 	ld a,$7F
@@ -163097,9 +159443,9 @@ Logged_0x1EC2AA:
 
 Logged_0x1EC2BB:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$B3
 	ld [$CA83],a
 	xor a
@@ -163268,9 +159614,9 @@ Logged_0x1EC3BC:
 	ld a,$20
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1EC406:
 	ld a,$7F
@@ -163481,9 +159827,9 @@ Logged_0x1EC540:
 	ld a,$10
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$71
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1EC58A:
 	ld a,$7F
@@ -163722,9 +160068,9 @@ Logged_0x1EC725:
 	ret
 
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$47
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$C4
 	ld [$CA83],a
 	ld a,$FF
@@ -163968,9 +160314,9 @@ Logged_0x1EC90D:
 	ld a,$1C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$3B
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1EC93A:
 	ld a,$7F
@@ -164068,9 +160414,9 @@ Logged_0x1EC9B1:
 
 Logged_0x1EC9EC:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA75],a
 	ld [$CA96],a
@@ -164254,9 +160600,9 @@ Logged_0x1ECB49:
 	and a
 	jr nz,Logged_0x1ECB57
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$24
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1ECB57:
 	ld a,$C9
@@ -164453,9 +160799,9 @@ Logged_0x1ECD00:
 	ld a,$0C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0A
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1ECD17:
 	ld a,$7F
@@ -164815,9 +161161,9 @@ Logged_0x1ECF86:
 
 Logged_0x1ECFCE:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$44
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA67],a
 	ld [$CA68],a
@@ -165004,9 +161350,9 @@ Logged_0x1ED136:
 	ld a,$0C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1ED15C:
 	ld a,$77
@@ -165072,9 +161418,9 @@ Logged_0x1ED1AF:
 	ld a,$0C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1ED1DC:
 	ld a,$77
@@ -165140,9 +161486,9 @@ Logged_0x1ED23F:
 	ld a,$0C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1ED25F:
 	ld a,$77
@@ -165197,9 +161543,9 @@ Logged_0x1ED2A3:
 	ld a,$0C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1ED2CF:
 	ld a,$77
@@ -165530,9 +161876,9 @@ Logged_0x1ED548:
 
 Logged_0x1ED558:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CA75],a
 	ld [$CA96],a
@@ -165795,9 +162141,9 @@ Logged_0x1ED7E5:
 	ld a,$86
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$4C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1ED812:
 	ld a,$77
@@ -165831,9 +162177,9 @@ Logged_0x1ED840:
 
 Logged_0x1ED846:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$48
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$E2
 	ld [$CA83],a
 	xor a
@@ -166005,9 +162351,9 @@ Logged_0x1ED972:
 	ld a,$0C
 	ld [$CEED],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$7D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1ED9AB:
 	ld a,$77
@@ -166232,9 +162578,9 @@ Logged_0x1EDB47:
 
 Logged_0x1EDB5B:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$66
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$01
 	ld [$CA74],a
 	ld a,$EA
@@ -166484,9 +162830,9 @@ Unknown_0x1EDD3C:
 	ld a,$ED
 	ld [$CA83],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$66
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	xor a
 	ld [$CEED],a
 	ld [$CA84],a
@@ -166987,13 +163333,13 @@ Logged_0x1F0087:
 
 Logged_0x1F0099:
 	ld a,$FF
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$00
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$25
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld [$D513],a
 	xor a
@@ -168299,9 +164645,9 @@ Logged_0x1F0A7F:
 
 Logged_0x1F0A98:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1F0AA1:
@@ -168343,9 +164689,9 @@ Logged_0x1F0ABC:
 	ld hl,$D513
 	set 7,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E7
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1F0AE3:
@@ -168407,9 +164753,9 @@ Logged_0x1F0B2C:
 	ld hl,$D513
 	set 7,[hl]
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E3
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1F0B3A:
@@ -170257,9 +166603,9 @@ SECTION "Bank7E", ROMX, BANK[$7E]
 Logged_0x1F8022:
 	call Logged_0x08E6
 	ld a,$00
-	ld [$FF00+$B1],a
+	ld [$FF00+hMusicIDHigh],a
 	ld a,$2E
-	ld [$FF00+$B2],a
+	ld [$FF00+hMusicIDLow],a
 	xor a
 	ld [$D50C],a
 	ld [$CEE5],a
@@ -170802,9 +167148,9 @@ Unknown_0x1F8409:
 
 Unknown_0x1F8419:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0A
 	ld [$D51D],a
 	call Logged_0x1FBCF2
@@ -170874,9 +167220,9 @@ Unknown_0x1F848C:
 	ld a,$06
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$07
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1F84A3:
 	ld hl,$D51D
@@ -170896,9 +167242,9 @@ Unknown_0x1F84B7:
 	cp $4C
 	ret nc
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$17
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x1FB7D8
 	xor a
 	ld [$D51D],a
@@ -170979,9 +167325,9 @@ Unknown_0x1F853A:
 	ld a,$06
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$07
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1F8551:
 	ld hl,$D51D
@@ -171078,9 +167424,9 @@ Unknown_0x1F85EB:
 	ld a,$06
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$07
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Unknown_0x1F8602:
 	ld hl,$D51D
@@ -171104,9 +167450,9 @@ Unknown_0x1F8619:
 	call Logged_0x1FB7D8
 	call Logged_0x1FBBE5
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0E
 	ld [$D51D],a
 	ld hl,$D50C
@@ -171387,9 +167733,9 @@ Unknown_0x1F87E2:
 	ret nc
 	call Logged_0x1FBC4C
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0E
 	ld [$D51D],a
 	ld hl,$D50C
@@ -172457,9 +168803,9 @@ Logged_0x1F8F39:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F8F50:
 	ld a,[$D50A]
@@ -172485,9 +168831,9 @@ Logged_0x1F8F6B:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F8F82:
 	ld hl,$CEE5
@@ -172521,9 +168867,9 @@ Logged_0x1F8FA6:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F8FBD:
 	ld hl,$CEE5
@@ -172555,9 +168901,9 @@ Logged_0x1F8FDC:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F8FF3:
 	ld hl,$D516
@@ -172581,9 +168927,9 @@ Logged_0x1F900A:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9021:
 	ld hl,$CEE5
@@ -172616,9 +168962,9 @@ Logged_0x1F9043:
 	ld a,$0F
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F905A:
 	ld hl,$D516
@@ -172651,9 +168997,9 @@ Logged_0x1F9080:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9097:
 	ld hl,$CEE5
@@ -172685,9 +169031,9 @@ Logged_0x1F90B6:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F90CD:
 	ld hl,$D516
@@ -172710,9 +169056,9 @@ Logged_0x1F90E2:
 	ld a,$0F
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F90F9:
 	ld hl,$CEE5
@@ -172735,9 +169081,9 @@ Logged_0x1F910E:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9125:
 	ld hl,$D516
@@ -172761,9 +169107,9 @@ Logged_0x1F913C:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9153:
 	ld hl,$CEE5
@@ -173451,9 +169797,9 @@ Logged_0x1F9618:
 	call Logged_0x1FB78A
 	call Logged_0x1FB7D8
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$14
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$0A
 	ld [$D51D],a
 	call Logged_0x1FBCF2
@@ -174283,9 +170629,9 @@ Logged_0x1F9AFB:
 	ld a,$1E
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9B12:
 	ld a,[$D520]
@@ -174309,9 +170655,9 @@ Logged_0x1F9B2C:
 	ld a,$1E
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9B43:
 	ld hl,$CEE5
@@ -174636,9 +170982,9 @@ Logged_0x1F9D97:
 	ld a,$06
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$08
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9DAE:
 	ld hl,$D51D
@@ -174701,9 +171047,9 @@ Logged_0x1F9E07:
 	ld a,$06
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$08
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9E1E:
 	ld hl,$D51D
@@ -174756,9 +171102,9 @@ Logged_0x1F9E62:
 	ld a,$06
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$08
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9E79:
 	ld a,[$D552]
@@ -174803,9 +171149,9 @@ Logged_0x1F9EB7:
 	ld a,$06
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$08
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9ECE:
 	ld hl,$D51D
@@ -174932,9 +171278,9 @@ Logged_0x1F9F9E:
 	ld a,$06
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$08
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1F9FB5:
 	ld hl,$D51D
@@ -175052,9 +171398,9 @@ Logged_0x1FA072:
 	ld a,$06
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$08
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FA089:
 	ld hl,$D51D
@@ -175075,9 +171421,9 @@ Logged_0x1FA0A0:
 	cp $50
 	ret nc
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$17
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x1FBD62
 	call Logged_0x1FB78A
 	call Logged_0x1FB7D8
@@ -175319,9 +171665,9 @@ Logged_0x1FA22F:
 	cp $50
 	ret nc
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x1FBD62
 	ld a,$0E
 	ld [$D51D],a
@@ -177090,9 +173436,9 @@ Logged_0x1FAE4D:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FAE64:
 	ld a,[$D50A]
@@ -177118,9 +173464,9 @@ Logged_0x1FAE7F:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FAE96:
 	ld hl,$CEE5
@@ -177154,9 +173500,9 @@ Logged_0x1FAEBA:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FAED1:
 	ld hl,$CEE5
@@ -177188,9 +173534,9 @@ Logged_0x1FAEF0:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FAF07:
 	ld hl,$D516
@@ -177212,9 +173558,9 @@ Logged_0x1FAF19:
 	ld a,$0F
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FAF30:
 	ld hl,$D516
@@ -177244,9 +173590,9 @@ Logged_0x1FAF4E:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FAF65:
 	ld hl,$D516
@@ -177269,9 +173615,9 @@ Logged_0x1FAF7A:
 	ld a,$0F
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FAF91:
 	ld hl,$D516
@@ -177302,9 +173648,9 @@ Logged_0x1FAFB1:
 	ld a,$0F
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0F
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FAFC8:
 	ld hl,$CEE5
@@ -177344,9 +173690,9 @@ Logged_0x1FAFF5:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FB00C:
 	ld hl,$D516
@@ -177370,9 +173716,9 @@ Logged_0x1FB023:
 	ld a,$25
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0E
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FB03A:
 	ld hl,$CEE5
@@ -178150,9 +174496,9 @@ Logged_0x1FB4FA:
 	ld a,$1E
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FB511:
 	ld a,[$D520]
@@ -178176,9 +174522,9 @@ Logged_0x1FB52B:
 	ld a,$1E
 	ld [$D522],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 
 Logged_0x1FB542:
 	ld hl,$CEE5
@@ -178253,9 +174599,9 @@ Logged_0x1FB5A1:
 
 Logged_0x1FB5B8:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EC
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x1FB7B1
 	ld a,[$CEE5]
 	cp $07
@@ -178282,9 +174628,9 @@ Logged_0x1FB5D5:
 
 Logged_0x1FB5EC:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EC
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x1FB7BE
 	ld a,[$CEE5]
 	cp $07
@@ -178311,9 +174657,9 @@ Logged_0x1FB609:
 
 Logged_0x1FB620:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EC
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x1FB7F2
 	ld a,[$CEE5]
 	cp $07
@@ -178340,9 +174686,9 @@ Logged_0x1FB63D:
 
 Logged_0x1FB654:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$EC
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	call Logged_0x1FB7E5
 	ld a,[$CEE5]
 	cp $07
@@ -178512,9 +174858,9 @@ Unknown_0x1FB774:
 	xor a
 	ld [rVBK],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$E2
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Unknown_0x1FB780:
@@ -178652,9 +174998,9 @@ Logged_0x1FB81F:
 
 Logged_0x1FB824:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$05
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,[$D53B]
 	sub b
 	ld [hli],a
@@ -178722,9 +175068,9 @@ Logged_0x1FB84D:
 
 Logged_0x1FB899:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$04
 	ld [$C1A1],a
 	ld a,$78
@@ -178759,9 +175105,9 @@ Logged_0x1FB899:
 
 Logged_0x1FB8E2:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$01
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$04
 	ld [$C1A1],a
 	ld a,$78
@@ -178821,9 +175167,9 @@ Logged_0x1FB942:
 
 Logged_0x1FB94C:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$33
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D519
 	xor a
 	ld [hli],a
@@ -178836,9 +175182,9 @@ Logged_0x1FB94C:
 
 Logged_0x1FB961:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$02
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D519
 	xor a
 	ld [hli],a
@@ -178851,9 +175197,9 @@ Logged_0x1FB961:
 
 Logged_0x1FB976:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$10
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld hl,$D519
 	xor a
 	ld [hli],a
@@ -178928,9 +175274,9 @@ Logged_0x1FB9CA:
 
 Logged_0x1FBA09:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$0D
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$04
 	ld [$C1A1],a
 	ld a,$60
@@ -179011,9 +175357,9 @@ Logged_0x1FBA7F:
 
 Logged_0x1FBA8C:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$15
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$04
 	ld [$C1A1],a
 	ld a,$70
@@ -179046,9 +175392,9 @@ Logged_0x1FBA8C:
 
 Logged_0x1FBAD3:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$15
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$04
 	ld [$C1A1],a
 	ld a,$70
@@ -179123,9 +175469,9 @@ Logged_0x1FBB59:
 
 Logged_0x1FBB66:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$2C
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$04
 	ld [$C1A1],a
 	ld a,$70
@@ -179261,9 +175607,9 @@ Logged_0x1FBC3F:
 
 Logged_0x1FBC4C:
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$03
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ld a,$04
 	ld [$C1A1],a
 	ld a,$78
@@ -179390,9 +175736,9 @@ Logged_0x1FBD0F:
 	ld a,$03
 	ld [hl],a
 	ld a,$01
-	ld [$FF00+$B5],a
+	ld [$FF00+hSFXIDHigh],a
 	ld a,$18
-	ld [$FF00+$B6],a
+	ld [$FF00+hSFXIDLow],a
 	ret
 
 Logged_0x1FBD2A:
