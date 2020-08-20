@@ -47346,7 +47346,7 @@ Logged_0x30315:
 	add hl,hl
 	add hl,hl
 	add hl,hl
-	ld bc,MusicPointers - 8
+	ld bc,SoundPointers - 8
 	add hl,bc
 	ld a,[hli]
 	ld e,a
@@ -49920,8 +49920,575 @@ INCBIN "baserom.gbc", $31526, $31546 - $31526
 LoggedData_0x31546:
 INCBIN "baserom.gbc", $31546, $31566 - $31546
 
-MusicPointers:;(8bytes: pointer low, pointer high, bank, unused, unknown, unknown, unknown, unused)
-INCBIN "baserom.gbc", $31566, $32726 - $31566
+SoundPointers:;(8bytes: pointer low, pointer high, bank, unused, unknown, unknown, unknown, unused)
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_02, $64, $00, $03
+	sound_pointer SoundData_03, $64, $00, $02
+	sound_pointer SoundData_04, $64, $00, $03
+	sound_pointer SoundData_05, $64, $00, $03
+	sound_pointer SoundData_06, $64, $00, $03
+	sound_pointer SoundData_07, $64, $00, $04
+	sound_pointer SoundData_08, $64, $00, $03
+	sound_pointer SoundData_09, $64, $00, $03
+	sound_pointer SoundData_0A, $64, $00, $03
+	sound_pointer SoundData_0B, $64, $00, $03
+	sound_pointer SoundData_0C, $64, $00, $03
+	sound_pointer SoundData_0D, $64, $00, $03
+	sound_pointer SoundData_0E, $64, $00, $04
+	sound_pointer SoundData_0F, $64, $00, $04
+	sound_pointer SoundData_10, $64, $00, $04
+	sound_pointer SoundData_11, $64, $00, $04
+	sound_pointer SoundData_12, $64, $00, $04
+	sound_pointer SoundData_13, $64, $00, $04
+	sound_pointer SoundData_14, $64, $00, $04
+	sound_pointer SoundData_15, $64, $00, $04
+	sound_pointer SoundData_16, $64, $00, $03
+	sound_pointer SoundData_17, $64, $00, $03
+	sound_pointer SoundData_18, $64, $00, $03
+	sound_pointer SoundData_19, $64, $00, $02
+	sound_pointer SoundData_1A, $64, $00, $03
+	sound_pointer SoundData_1B, $64, $00, $03
+	sound_pointer SoundData_1C, $64, $00, $03
+	sound_pointer SoundData_1D, $64, $00, $03
+	sound_pointer SoundData_1E, $64, $00, $03
+	sound_pointer SoundData_1F, $64, $00, $02
+	sound_pointer SoundData_20, $64, $00, $03
+	sound_pointer SoundData_21, $64, $00, $04
+	sound_pointer SoundData_22, $64, $00, $03
+	sound_pointer SoundData_23, $64, $00, $03
+	sound_pointer SoundData_24, $64, $00, $04
+	sound_pointer SoundData_25, $64, $00, $02
+	sound_pointer SoundData_26, $64, $00, $03
+	sound_pointer SoundData_27, $64, $00, $04
+	sound_pointer SoundData_28, $64, $00, $04
+	sound_pointer SoundData_29, $64, $00, $02
+	sound_pointer SoundData_2A, $64, $00, $03
+	sound_pointer SoundData_2B, $64, $00, $04
+	sound_pointer SoundData_2C, $64, $00, $03
+	sound_pointer SoundData_2D, $64, $00, $02
+	sound_pointer SoundData_2E, $64, $00, $02
+	sound_pointer SoundData_2F, $64, $00, $04
+	sound_pointer SoundData_30, $64, $00, $03
+	sound_pointer SoundData_31, $64, $00, $03
+	sound_pointer SoundData_32, $64, $00, $02
+	sound_pointer SoundData_33, $64, $00, $04
+	sound_pointer SoundData_34, $64, $00, $03
+	sound_pointer SoundData_35, $64, $00, $04
+	sound_pointer SoundData_36, $64, $00, $04
+	sound_pointer SoundData_37, $64, $00, $03
+	sound_pointer SoundData_38, $64, $00, $03
+	sound_pointer SoundData_39, $64, $00, $03
+	sound_pointer SoundData_3A, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_101, $DC, $00, $01
+	sound_pointer SoundData_102, $ED, $03, $01
+	sound_pointer SoundData_103, $EC, $00, $01
+	sound_pointer SoundData_104, $E2, $03, $01
+	sound_pointer SoundData_105, $EC, $03, $01
+	sound_pointer SoundData_106, $EC, $03, $01
+	sound_pointer SoundData_107, $EB, $03, $01
+	sound_pointer SoundData_108, $EB, $00, $02
+	sound_pointer SoundData_109, $EB, $00, $01
+	sound_pointer SoundData_10A, $E6, $00, $01
+	sound_pointer SoundData_10B, $E6, $03, $01
+	sound_pointer SoundData_10C, $ED, $00, $01
+	sound_pointer SoundData_10D, $EB, $00, $02
+	sound_pointer SoundData_10E, $E4, $00, $01
+	sound_pointer SoundData_10F, $D2, $00, $01
+	sound_pointer SoundData_110, $E4, $03, $01
+	sound_pointer SoundData_111, $C8, $00, $01
+	sound_pointer SoundData_112, $FF, $00, $01
+	sound_pointer SoundData_113, $ED, $02, $01
+	sound_pointer SoundData_114, $EF, $00, $01
+	sound_pointer SoundData_115, $D2, $00, $01
+	sound_pointer SoundData_116, $EF, $00, $01
+	sound_pointer SoundData_117, $EE, $00, $02
+	sound_pointer SoundData_118, $E6, $03, $01
+	sound_pointer SoundData_119, $EC, $00, $01
+	sound_pointer SoundData_11A, $EF, $02, $01
+	sound_pointer SoundData_11B, $DC, $00, $02
+	sound_pointer SoundData_11C, $C8, $00, $01
+	sound_pointer SoundData_11D, $DC, $00, $01
+	sound_pointer SoundData_11E, $DD, $03, $01
+	sound_pointer SoundData_11F, $E4, $03, $01
+	sound_pointer SoundData_120, $DD, $03, $01
+	sound_pointer SoundData_121, $DC, $03, $01
+	sound_pointer SoundData_122, $E5, $00, $01
+	sound_pointer SoundData_123, $DC, $00, $01
+	sound_pointer SoundData_124, $EC, $00, $01
+	sound_pointer SoundData_125, $F0, $00, $01
+	sound_pointer SoundData_126, $DD, $00, $01
+	sound_pointer SoundData_127, $DC, $03, $01
+	sound_pointer SoundData_128, $E2, $00, $01
+	sound_pointer SoundData_129, $E2, $03, $01
+	sound_pointer SoundData_12A, $E2, $03, $01
+	sound_pointer SoundData_12B, $DC, $00, $01
+	sound_pointer SoundData_12C, $DC, $00, $01
+	sound_pointer SoundData_12D, $DC, $00, $01
+	sound_pointer SoundData_12E, $E8, $00, $01
+	sound_pointer SoundData_12F, $EC, $00, $01
+	sound_pointer SoundData_130, $DC, $00, $01
+	sound_pointer SoundData_131, $FF, $00, $02
+	sound_pointer SoundData_132, $FF, $00, $02
+	sound_pointer SoundData_133, $ED, $00, $01
+	sound_pointer SoundData_134, $ED, $00, $02
+	sound_pointer SoundData_135, $DD, $03, $01
+	sound_pointer SoundData_136, $E4, $03, $01
+	sound_pointer SoundData_137, $DC, $00, $01
+	sound_pointer SoundData_138, $DC, $00, $02
+	sound_pointer SoundData_139, $DC, $00, $01
+	sound_pointer SoundData_13A, $DC, $00, $01
+	sound_pointer SoundData_13B, $E6, $00, $01
+	sound_pointer SoundData_13C, $DC, $00, $01
+	sound_pointer SoundData_13D, $DC, $00, $01
+	sound_pointer SoundData_13E, $DC, $00, $01
+	sound_pointer SoundData_13F, $DC, $00, $02
+	sound_pointer SoundData_140, $EC, $03, $01
+	sound_pointer SoundData_141, $DC, $00, $01
+	sound_pointer SoundData_142, $DC, $00, $01
+	sound_pointer SoundData_143, $DC, $00, $01
+	sound_pointer SoundData_144, $DC, $03, $01
+	sound_pointer SoundData_145, $DC, $00, $03
+	sound_pointer SoundData_146, $DC, $00, $03
+	sound_pointer SoundData_147, $DC, $00, $01
+	sound_pointer SoundData_148, $EF, $00, $02
+	sound_pointer SoundData_149, $DC, $00, $01
+	sound_pointer SoundData_14A, $C8, $00, $01
+	sound_pointer SoundData_14B, $F0, $00, $01
+	sound_pointer SoundData_14C, $EF, $00, $02
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_161, $EF, $03, $01
+	sound_pointer SoundData_162, $ED, $03, $01
+	sound_pointer SoundData_163, $EF, $03, $01
+	sound_pointer SoundData_164, $DC, $00, $01
+	sound_pointer SoundData_165, $DD, $03, $01
+	sound_pointer SoundData_166, $DC, $00, $01
+	sound_pointer SoundData_167, $DC, $00, $01
+	sound_pointer SoundData_168, $DC, $03, $01
+	sound_pointer SoundData_169, $DC, $00, $01
+	sound_pointer SoundData_16A, $DC, $00, $01
+	sound_pointer SoundData_16B, $DC, $00, $01
+	sound_pointer SoundData_16C, $DC, $00, $01
+	sound_pointer SoundData_16D, $DC, $03, $01
+	sound_pointer SoundData_16E, $DC, $03, $01
+	sound_pointer SoundData_16F, $DC, $00, $01
+	sound_pointer SoundData_170, $DC, $00, $01
+	sound_pointer SoundData_171, $DC, $03, $01
+	sound_pointer SoundData_172, $DC, $03, $01
+	sound_pointer SoundData_173, $E3, $03, $01
+	sound_pointer SoundData_174, $DD, $00, $01
+	sound_pointer SoundData_175, $DC, $00, $01
+	sound_pointer SoundData_176, $EB, $03, $01
+	sound_pointer SoundData_177, $DC, $02, $01
+	sound_pointer SoundData_178, $F0, $03, $01
+	sound_pointer SoundData_179, $E3, $03, $01
+	sound_pointer SoundData_17A, $E3, $03, $01
+	sound_pointer SoundData_17B, $E3, $03, $01
+	sound_pointer SoundData_17C, $DC, $00, $02
+	sound_pointer SoundData_17D, $DD, $03, $01
+	sound_pointer SoundData_17E, $EF, $00, $01
+	sound_pointer SoundData_17F, $DC, $00, $01
+	sound_pointer SoundData_180, $DC, $03, $01
+	sound_pointer SoundData_181, $E3, $00, $01
+	sound_pointer SoundData_182, $DC, $00, $02
+	sound_pointer SoundData_183, $DC, $00, $02
+	sound_pointer SoundData_184, $DC, $00, $01
+	sound_pointer SoundData_185, $DC, $02, $01
+	sound_pointer SoundData_186, $DC, $00, $01
+	sound_pointer SoundData_187, $DC, $03, $01
+	sound_pointer SoundData_188, $DC, $00, $02
+	sound_pointer SoundData_189, $E3, $03, $01
+	sound_pointer SoundData_18A, $E3, $00, $02
+	sound_pointer SoundData_18B, $DC, $00, $01
+	sound_pointer SoundData_18C, $E3, $03, $01
+	sound_pointer SoundData_18D, $DC, $00, $01
+	sound_pointer SoundData_18E, $EF, $00, $01
+	sound_pointer SoundData_18F, $DC, $03, $01
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_1A1, $EA, $03, $01
+	sound_pointer SoundData_1A2, $EA, $00, $02
+	sound_pointer SoundData_1A3, $EF, $00, $01
+	sound_pointer SoundData_1A4, $EF, $02, $01
+	sound_pointer SoundData_1A5, $DC, $00, $01
+	sound_pointer SoundData_1A6, $DC, $02, $01
+	sound_pointer SoundData_1A7, $EF, $02, $01
+	sound_pointer SoundData_1A8, $EF, $00, $02
+	sound_pointer SoundData_1A9, $EF, $02, $01
+	sound_pointer SoundData_1AA, $EF, $00, $02
+	sound_pointer SoundData_1AB, $EF, $00, $01
+	sound_pointer SoundData_1AC, $EF, $00, $01
+	sound_pointer SoundData_1AD, $DC, $00, $01
+	sound_pointer SoundData_1AE, $DC, $00, $01
+	sound_pointer SoundData_1AF, $DC, $00, $01
+	sound_pointer SoundData_1B0, $DC, $00, $02
+	sound_pointer SoundData_1B1, $EF, $00, $01
+	sound_pointer SoundData_1B2, $EF, $00, $02
+	sound_pointer SoundData_1B3, $EF, $00, $01
+	sound_pointer SoundData_1B4, $EF, $00, $01
+	sound_pointer SoundData_1B5, $EE, $00, $02
+	sound_pointer SoundData_1B6, $EE, $00, $02
+	sound_pointer SoundData_1B7, $EF, $00, $02
+	sound_pointer SoundData_1B8, $EF, $00, $02
+	sound_pointer SoundData_1B9, $DC, $00, $01
+	sound_pointer SoundData_1BA, $DC, $00, $02
+	sound_pointer SoundData_1BB, $DC, $00, $02
+	sound_pointer SoundData_1BC, $EF, $00, $01
+	sound_pointer SoundData_1BD, $EF, $00, $01
+	sound_pointer SoundData_1BE, $EF, $02, $01
+	sound_pointer SoundData_1BF, $EF, $02, $01
+	sound_pointer SoundData_1C0, $EF, $02, $01
+	sound_pointer SoundData_1C1, $EE, $00, $02
+	sound_pointer SoundData_1C2, $E6, $00, $01
+	sound_pointer SoundData_1C3, $DB, $00, $01
+	sound_pointer SoundData_1C4, $DC, $00, $01
+	sound_pointer SoundData_1C5, $DC, $00, $01
+	sound_pointer SoundData_1C6, $DC, $00, $01
+	sound_pointer SoundData_1C7, $EF, $00, $02
+	sound_pointer SoundData_1C8, $DC, $00, $01
+	sound_pointer SoundData_1C9, $DC, $00, $01
+	sound_pointer SoundData_1CA, $F0, $00, $02
+	sound_pointer SoundData_1CB, $EF, $03, $01
+	sound_pointer SoundData_1CC, $DC, $00, $02
+	sound_pointer SoundData_1CD, $DC, $00, $03
+	sound_pointer SoundData_1CE, $F0, $00, $02
+	sound_pointer SoundData_1CF, $DC, $00, $02
+	sound_pointer SoundData_1D0, $EF, $00, $01
+	sound_pointer SoundData_1D1, $EF, $00, $02
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_1E1, $FF, $00, $01
+	sound_pointer SoundData_1E2, $DC, $00, $01
+	sound_pointer SoundData_1E3, $DC, $00, $01
+	sound_pointer SoundData_1E4, $FB, $00, $01
+	sound_pointer SoundData_1E5, $E6, $00, $02
+	sound_pointer SoundData_1E6, $E3, $01, $01
+	sound_pointer SoundData_1E7, $DC, $00, $01
+	sound_pointer SoundData_1E8, $DC, $00, $01
+	sound_pointer SoundData_1E9, $DC, $00, $01
+	sound_pointer SoundData_1EA, $DC, $00, $01
+	sound_pointer SoundData_1EB, $DC, $00, $02
+	sound_pointer SoundData_1EC, $DC, $02, $01
+	sound_pointer SoundData_1ED, $DC, $03, $01
+	sound_pointer SoundData_1EE, $DC, $00, $01
+	sound_pointer SoundData_1EF, $ED, $00, $01
+	sound_pointer SoundData_1F0, $DC, $00, $01
+	sound_pointer SoundData_1F1, $ED, $00, $01
+	sound_pointer SoundData_1F2, $DC, $00, $01
+	sound_pointer SoundData_1F3, $DC, $03, $01
+	sound_pointer SoundData_1F4, $DC, $00, $01
+	sound_pointer SoundData_1F5, $DC, $03, $01
+	sound_pointer SoundData_1F6, $DC, $03, $01
+	sound_pointer SoundData_1F7, $DC, $03, $01
+	sound_pointer SoundData_1F8, $DC, $03, $01
+	sound_pointer SoundData_1F9, $DC, $03, $01
+	sound_pointer SoundData_1FA, $EF, $00, $03
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_01, $64, $00, $04
+	sound_pointer SoundData_201, $DC, $03, $01
+	sound_pointer SoundData_202, $DC, $00, $01
+	sound_pointer SoundData_203, $DC, $03, $01
+	sound_pointer SoundData_204, $DC, $00, $01
+	sound_pointer SoundData_205, $DC, $00, $02
+	sound_pointer SoundData_206, $ED, $02, $01
+	sound_pointer SoundData_207, $DB, $00, $01
+	sound_pointer SoundData_208, $DC, $00, $01
+	sound_pointer SoundData_209, $DC, $00, $02
+	sound_pointer SoundData_20A, $DC, $03, $01
+	sound_pointer SoundData_20B, $DC, $00, $01
+	sound_pointer SoundData_20C, $DC, $03, $01
+	sound_pointer SoundData_20D, $EC, $00, $01
+	sound_pointer SoundData_20E, $DC, $00, $02
+	sound_pointer SoundData_20F, $DC, $03, $01
+	sound_pointer SoundData_210, $DC, $00, $02
+	sound_pointer SoundData_211, $DC, $03, $01
+	sound_pointer SoundData_212, $DC, $00, $03
+	sound_pointer SoundData_213, $DC, $00, $01
+	sound_pointer SoundData_214, $DC, $03, $01
+	sound_pointer SoundData_215, $DC, $03, $01
+	sound_pointer SoundData_216, $DC, $03, $01
+	sound_pointer SoundData_217, $DC, $00, $02
+	sound_pointer SoundData_218, $DC, $00, $02
+	sound_pointer SoundData_219, $DC, $00, $01
+	sound_pointer SoundData_21A, $DC, $00, $01
+	sound_pointer SoundData_21B, $DC, $00, $02
+	sound_pointer SoundData_21C, $DC, $00, $01
+	sound_pointer SoundData_21D, $DC, $00, $01
+	sound_pointer SoundData_21E, $DC, $00, $02
+	sound_pointer SoundData_21F, $DC, $00, $02
+	sound_pointer SoundData_220, $DC, $00, $02
+	sound_pointer SoundData_221, $DC, $00, $02
+	sound_pointer SoundData_222, $DC, $00, $01
+	sound_pointer SoundData_223, $DC, $00, $01
+	sound_pointer SoundData_224, $DC, $03, $01
+	sound_pointer SoundData_225, $DC, $03, $01
+	sound_pointer SoundData_226, $DC, $03, $01
+	sound_pointer SoundData_227, $DC, $01, $02
+	sound_pointer SoundData_228, $DC, $00, $01
+	sound_pointer SoundData_229, $EF, $03, $01
+	sound_pointer SoundData_22A, $DC, $03, $01
+	sound_pointer SoundData_22B, $DC, $02, $01
+	sound_pointer SoundData_22C, $DC, $00, $02
+	sound_pointer SoundData_22D, $DC, $03, $01
+	sound_pointer SoundData_22E, $DC, $00, $04
+	sound_pointer SoundData_22F, $DC, $03, $01
+	sound_pointer SoundData_230, $DC, $03, $01
+	sound_pointer SoundData_231, $DC, $03, $01
+	sound_pointer SoundData_232, $DC, $00, $01
+	sound_pointer SoundData_233, $DC, $02, $01
+	sound_pointer SoundData_234, $DC, $00, $01
+	sound_pointer SoundData_235, $DC, $00, $01
+	sound_pointer SoundData_236, $EC, $01, $01
+	sound_pointer SoundData_237, $E2, $03, $01
+	sound_pointer SoundData_238, $DC, $03, $01
 
 LoggedData_0x32726:
 INCBIN "baserom.gbc", $32726, $3285D - $32726
@@ -49945,181 +50512,33 @@ LoggedData_0x32A09:
 INCBIN "baserom.gbc", $32A09, $32A97 - $32A09
 
 Unknown_0x32A97:
-INCBIN "baserom.gbc", $32A97, $32A9A - $32A97
+INCBIN "baserom.gbc", $32A97, $32A98 - $32A97
 
-LoggedData_0x32A9A:
-INCBIN "baserom.gbc", $32A9A, $32AA2 - $32A9A
+SoundData_01:;0x32A98
+INCBIN "data/sound/sound01.bin"
 
-Unknown_0x32AA2:
-INCBIN "baserom.gbc", $32AA2, $32AB2 - $32AA2
+SoundData_02:;0x32D27
+INCBIN "data/sound/sound02.bin"
 
-LoggedData_0x32AB2:
-INCBIN "baserom.gbc", $32AB2, $32BF9 - $32AB2
+SoundData_03:;0x32EED
+INCBIN "data/sound/sound03.bin"
 
-Unknown_0x32BF9:
-INCBIN "baserom.gbc", $32BF9, $32BFD - $32BF9
+SoundData_04:;0x332E7
+INCBIN "data/sound/sound04.bin"
 
-LoggedData_0x32BFD:
-INCBIN "baserom.gbc", $32BFD, $32C3A - $32BFD
+SoundData_05:;0x335AF
+INCBIN "data/sound/sound05.bin"
 
-Unknown_0x32C3A:
-INCBIN "baserom.gbc", $32C3A, $32C3B - $32C3A
+SoundData_06:;0x337F9
+INCBIN "data/sound/sound06.bin"
 
-LoggedData_0x32C3B:
-INCBIN "baserom.gbc", $32C3B, $32D26 - $32C3B
+SoundData_07:;0x33B2E
+INCBIN "data/sound/sound07.bin"
 
-Unknown_0x32D26:
-INCBIN "baserom.gbc", $32D26, $32D29 - $32D26
+SoundData_08:;0x33DD5
+INCBIN "data/sound/sound08.bin"
 
-LoggedData_0x32D29:
-INCBIN "baserom.gbc", $32D29, $32D2F - $32D29
-
-Unknown_0x32D2F:
-INCBIN "baserom.gbc", $32D2F, $32D3B - $32D2F
-
-LoggedData_0x32D3B:
-INCBIN "baserom.gbc", $32D3B, $32E14 - $32D3B
-
-Unknown_0x32E14:
-INCBIN "baserom.gbc", $32E14, $32E15 - $32E14
-
-LoggedData_0x32E15:
-INCBIN "baserom.gbc", $32E15, $32EEC - $32E15
-
-Unknown_0x32EEC:
-INCBIN "baserom.gbc", $32EEC, $32EEF - $32EEC
-
-LoggedData_0x32EEF:
-INCBIN "baserom.gbc", $32EEF, $32EF3 - $32EEF
-
-Unknown_0x32EF3:
-INCBIN "baserom.gbc", $32EF3, $32EFB - $32EF3
-
-LoggedData_0x32EFB:
-INCBIN "baserom.gbc", $32EFB, $3307E - $32EFB
-
-Unknown_0x3307E:
-INCBIN "baserom.gbc", $3307E, $330A1 - $3307E
-
-LoggedData_0x330A1:
-INCBIN "baserom.gbc", $330A1, $33241 - $330A1
-
-Unknown_0x33241:
-INCBIN "baserom.gbc", $33241, $33246 - $33241
-
-LoggedData_0x33246:
-INCBIN "baserom.gbc", $33246, $332D9 - $33246
-
-Unknown_0x332D9:
-INCBIN "baserom.gbc", $332D9, $332E9 - $332D9
-
-LoggedData_0x332E9:
-INCBIN "baserom.gbc", $332E9, $332EF - $332E9
-
-Unknown_0x332EF:
-INCBIN "baserom.gbc", $332EF, $332FB - $332EF
-
-LoggedData_0x332FB:
-INCBIN "baserom.gbc", $332FB, $333C7 - $332FB
-
-Unknown_0x333C7:
-INCBIN "baserom.gbc", $333C7, $333C8 - $333C7
-
-LoggedData_0x333C8:
-INCBIN "baserom.gbc", $333C8, $334F3 - $333C8
-
-Unknown_0x334F3:
-INCBIN "baserom.gbc", $334F3, $334F4 - $334F3
-
-LoggedData_0x334F4:
-INCBIN "baserom.gbc", $334F4, $335AE - $334F4
-
-Unknown_0x335AE:
-INCBIN "baserom.gbc", $335AE, $335B1 - $335AE
-
-LoggedData_0x335B1:
-INCBIN "baserom.gbc", $335B1, $335B7 - $335B1
-
-Unknown_0x335B7:
-INCBIN "baserom.gbc", $335B7, $335C3 - $335B7
-
-LoggedData_0x335C3:
-INCBIN "baserom.gbc", $335C3, $336D1 - $335C3
-
-Unknown_0x336D1:
-INCBIN "baserom.gbc", $336D1, $336D2 - $336D1
-
-LoggedData_0x336D2:
-INCBIN "baserom.gbc", $336D2, $3374A - $336D2
-
-Unknown_0x3374A:
-INCBIN "baserom.gbc", $3374A, $3374B - $3374A
-
-LoggedData_0x3374B:
-INCBIN "baserom.gbc", $3374B, $337F8 - $3374B
-
-Unknown_0x337F8:
-INCBIN "baserom.gbc", $337F8, $337FB - $337F8
-
-LoggedData_0x337FB:
-INCBIN "baserom.gbc", $337FB, $33801 - $337FB
-
-Unknown_0x33801:
-INCBIN "baserom.gbc", $33801, $3380D - $33801
-
-LoggedData_0x3380D:
-INCBIN "baserom.gbc", $3380D, $338E3 - $3380D
-
-Unknown_0x338E3:
-INCBIN "baserom.gbc", $338E3, $338E4 - $338E3
-
-LoggedData_0x338E4:
-INCBIN "baserom.gbc", $338E4, $339B4 - $338E4
-
-Unknown_0x339B4:
-INCBIN "baserom.gbc", $339B4, $339B5 - $339B4
-
-LoggedData_0x339B5:
-INCBIN "baserom.gbc", $339B5, $33A5D - $339B5
-
-Unknown_0x33A5D:
-INCBIN "baserom.gbc", $33A5D, $33A5E - $33A5D
-
-LoggedData_0x33A5E:
-INCBIN "baserom.gbc", $33A5E, $33B2D - $33A5E
-
-Unknown_0x33B2D:
-INCBIN "baserom.gbc", $33B2D, $33B30 - $33B2D
-
-LoggedData_0x33B30:
-INCBIN "baserom.gbc", $33B30, $33B38 - $33B30
-
-Unknown_0x33B38:
-INCBIN "baserom.gbc", $33B38, $33B48 - $33B38
-
-LoggedData_0x33B48:
-INCBIN "baserom.gbc", $33B48, $33BBD - $33B48
-
-Unknown_0x33BBD:
-INCBIN "baserom.gbc", $33BBD, $33BBE - $33BBD
-
-LoggedData_0x33BBE:
-INCBIN "baserom.gbc", $33BBE, $33CC4 - $33BBE
-
-Unknown_0x33CC4:
-INCBIN "baserom.gbc", $33CC4, $33CC5 - $33CC4
-
-LoggedData_0x33CC5:
-INCBIN "baserom.gbc", $33CC5, $33DD4 - $33CC5
-
-Unknown_0x33DD4:
-INCBIN "baserom.gbc", $33DD4, $33DD7 - $33DD4
-
-LoggedData_0x33DD7:
-INCBIN "baserom.gbc", $33DD7, $33DDD - $33DD7
-
-Unknown_0x33DDD:
-INCBIN "baserom.gbc", $33DDD, $34000 - $33DDD
+    ds $34000 - $33DE9, $00
 
 SECTION "Bank0D", ROMX, BANK[$0D]
 
@@ -50139,535 +50558,75 @@ LoggedData_0x34259:
 INCBIN "baserom.gbc", $34259, $34384 - $34259
 
 Unknown_0x34384:
-INCBIN "baserom.gbc", $34384, $34393 - $34384
+INCBIN "baserom.gbc", $34384, $34391 - $34384
 
-LoggedData_0x34393:
-INCBIN "baserom.gbc", $34393, $34399 - $34393
+SoundData_09:;0x34391
+INCBIN "data/sound/sound09.bin"
 
-Unknown_0x34399:
-INCBIN "baserom.gbc", $34399, $343A5 - $34399
+SoundData_0A:;0x3481C
+INCBIN "data/sound/sound0A.bin"
 
-LoggedData_0x343A5:
-INCBIN "baserom.gbc", $343A5, $344E8 - $343A5
+SoundData_0B:;0x34A50
+INCBIN "data/sound/sound0B.bin"
 
-Unknown_0x344E8:
-INCBIN "baserom.gbc", $344E8, $344E9 - $344E8
+SoundData_0C:;0x34D69
+INCBIN "data/sound/sound0C.bin"
 
-LoggedData_0x344E9:
-INCBIN "baserom.gbc", $344E9, $3465B - $344E9
+SoundData_0D:;0x35179
+INCBIN "data/sound/sound0D.bin"
 
-Unknown_0x3465B:
-INCBIN "baserom.gbc", $3465B, $3465C - $3465B
+SoundData_0E:;0x3547A
+INCBIN "data/sound/sound0E.bin"
 
-LoggedData_0x3465C:
-INCBIN "baserom.gbc", $3465C, $3481A - $3465C
+SoundData_0F:;0x35718
+INCBIN "data/sound/sound0F.bin"
 
-Unknown_0x3481A:
-INCBIN "baserom.gbc", $3481A, $3481E - $3481A
+SoundData_10:;0x35A63
+INCBIN "data/sound/sound10.bin"
 
-LoggedData_0x3481E:
-INCBIN "baserom.gbc", $3481E, $34824 - $3481E
+SoundData_11:;0x35F44
+INCBIN "data/sound/sound11.bin"
 
-Unknown_0x34824:
-INCBIN "baserom.gbc", $34824, $34830 - $34824
+SoundData_12:;0x364C6
+INCBIN "data/sound/sound12.bin"
 
-LoggedData_0x34830:
-INCBIN "baserom.gbc", $34830, $348FA - $34830
+SoundData_13:;0x367CB
+INCBIN "data/sound/sound13.bin"
 
-Unknown_0x348FA:
-INCBIN "baserom.gbc", $348FA, $348FB - $348FA
+SoundData_14:;0x36997
+INCBIN "data/sound/sound14.bin"
 
-LoggedData_0x348FB:
-INCBIN "baserom.gbc", $348FB, $349D9 - $348FB
+SoundData_15:;0x37450
+INCBIN "data/sound/sound15.bin"
 
-Unknown_0x349D9:
-INCBIN "baserom.gbc", $349D9, $349DA - $349D9
+SoundData_16:;0x375C1
+INCBIN "data/sound/sound16.bin"
 
-LoggedData_0x349DA:
-INCBIN "baserom.gbc", $349DA, $34A4F - $349DA
+SoundData_17:;0x376E0
+INCBIN "data/sound/sound17.bin"
 
-Unknown_0x34A4F:
-INCBIN "baserom.gbc", $34A4F, $34A52 - $34A4F
+SoundData_18:;0x37829
+INCBIN "data/sound/sound18.bin"
 
-LoggedData_0x34A52:
-INCBIN "baserom.gbc", $34A52, $34A58 - $34A52
+SoundData_19:;0x37901
+INCBIN "data/sound/sound19.bin"
 
-Unknown_0x34A58:
-INCBIN "baserom.gbc", $34A58, $34A64 - $34A58
+SoundData_1A:;0x379E5
+INCBIN "data/sound/sound1A.bin"
 
-LoggedData_0x34A64:
-INCBIN "baserom.gbc", $34A64, $34BC6 - $34A64
+SoundData_1B:;0x37B78
+INCBIN "data/sound/sound1B.bin"
 
-Unknown_0x34BC6:
-INCBIN "baserom.gbc", $34BC6, $34BC7 - $34BC6
+SoundData_1C:;0x37CF0
+INCBIN "data/sound/sound1C.bin"
 
-LoggedData_0x34BC7:
-INCBIN "baserom.gbc", $34BC7, $34CCC - $34BC7
+SoundData_1D:;0x37DF8
+INCBIN "data/sound/sound1D.bin"
 
-Unknown_0x34CCC:
-INCBIN "baserom.gbc", $34CCC, $34CCD - $34CCC
+SoundData_1E:;0x37F41
+INCBIN "data/sound/sound1E.bin"
 
-LoggedData_0x34CCD:
-INCBIN "baserom.gbc", $34CCD, $34D68 - $34CCD
-
-Unknown_0x34D68:
-INCBIN "baserom.gbc", $34D68, $34D6B - $34D68
-
-LoggedData_0x34D6B:
-INCBIN "baserom.gbc", $34D6B, $34D71 - $34D6B
-
-Unknown_0x34D71:
-INCBIN "baserom.gbc", $34D71, $34D7D - $34D71
-
-LoggedData_0x34D7D:
-INCBIN "baserom.gbc", $34D7D, $34EC4 - $34D7D
-
-Unknown_0x34EC4:
-INCBIN "baserom.gbc", $34EC4, $34ECA - $34EC4
-
-LoggedData_0x34ECA:
-INCBIN "baserom.gbc", $34ECA, $3500E - $34ECA
-
-Unknown_0x3500E:
-INCBIN "baserom.gbc", $3500E, $3500F - $3500E
-
-LoggedData_0x3500F:
-INCBIN "baserom.gbc", $3500F, $35178 - $3500F
-
-Unknown_0x35178:
-INCBIN "baserom.gbc", $35178, $3517B - $35178
-
-LoggedData_0x3517B:
-INCBIN "baserom.gbc", $3517B, $35181 - $3517B
-
-Unknown_0x35181:
-INCBIN "baserom.gbc", $35181, $3518D - $35181
-
-LoggedData_0x3518D:
-INCBIN "baserom.gbc", $3518D, $3527A - $3518D
-
-Unknown_0x3527A:
-INCBIN "baserom.gbc", $3527A, $35281 - $3527A
-
-LoggedData_0x35281:
-INCBIN "baserom.gbc", $35281, $352FF - $35281
-
-Unknown_0x352FF:
-INCBIN "baserom.gbc", $352FF, $3530B - $352FF
-
-LoggedData_0x3530B:
-INCBIN "baserom.gbc", $3530B, $353F3 - $3530B
-
-Unknown_0x353F3:
-INCBIN "baserom.gbc", $353F3, $35410 - $353F3
-
-LoggedData_0x35410:
-INCBIN "baserom.gbc", $35410, $3546B - $35410
-
-Unknown_0x3546B:
-INCBIN "baserom.gbc", $3546B, $3547C - $3546B
-
-LoggedData_0x3547C:
-INCBIN "baserom.gbc", $3547C, $35484 - $3547C
-
-Unknown_0x35484:
-INCBIN "baserom.gbc", $35484, $35494 - $35484
-
-LoggedData_0x35494:
-INCBIN "baserom.gbc", $35494, $3551B - $35494
-
-Unknown_0x3551B:
-INCBIN "baserom.gbc", $3551B, $35526 - $3551B
-
-LoggedData_0x35526:
-INCBIN "baserom.gbc", $35526, $355AD - $35526
-
-Unknown_0x355AD:
-INCBIN "baserom.gbc", $355AD, $355B8 - $355AD
-
-LoggedData_0x355B8:
-INCBIN "baserom.gbc", $355B8, $35679 - $355B8
-
-Unknown_0x35679:
-INCBIN "baserom.gbc", $35679, $35690 - $35679
-
-LoggedData_0x35690:
-INCBIN "baserom.gbc", $35690, $35701 - $35690
-
-Unknown_0x35701:
-INCBIN "baserom.gbc", $35701, $3571A - $35701
-
-LoggedData_0x3571A:
-INCBIN "baserom.gbc", $3571A, $35722 - $3571A
-
-Unknown_0x35722:
-INCBIN "baserom.gbc", $35722, $35732 - $35722
-
-LoggedData_0x35732:
-INCBIN "baserom.gbc", $35732, $3583B - $35732
-
-Unknown_0x3583B:
-INCBIN "baserom.gbc", $3583B, $35852 - $3583B
-
-LoggedData_0x35852:
-INCBIN "baserom.gbc", $35852, $35937 - $35852
-
-Unknown_0x35937:
-INCBIN "baserom.gbc", $35937, $3594A - $35937
-
-LoggedData_0x3594A:
-INCBIN "baserom.gbc", $3594A, $359D4 - $3594A
-
-Unknown_0x359D4:
-INCBIN "baserom.gbc", $359D4, $359DD - $359D4
-
-LoggedData_0x359DD:
-INCBIN "baserom.gbc", $359DD, $35A4D - $359DD
-
-Unknown_0x35A4D:
-INCBIN "baserom.gbc", $35A4D, $35A65 - $35A4D
-
-LoggedData_0x35A65:
-INCBIN "baserom.gbc", $35A65, $35A6D - $35A65
-
-Unknown_0x35A6D:
-INCBIN "baserom.gbc", $35A6D, $35A7D - $35A6D
-
-LoggedData_0x35A7D:
-INCBIN "baserom.gbc", $35A7D, $35BC0 - $35A7D
-
-Unknown_0x35BC0:
-INCBIN "baserom.gbc", $35BC0, $35BCA - $35BC0
-
-LoggedData_0x35BCA:
-INCBIN "baserom.gbc", $35BCA, $35CE9 - $35BCA
-
-Unknown_0x35CE9:
-INCBIN "baserom.gbc", $35CE9, $35CF4 - $35CE9
-
-LoggedData_0x35CF4:
-INCBIN "baserom.gbc", $35CF4, $35E9A - $35CF4
-
-Unknown_0x35E9A:
-INCBIN "baserom.gbc", $35E9A, $35EB7 - $35E9A
-
-LoggedData_0x35EB7:
-INCBIN "baserom.gbc", $35EB7, $35F30 - $35EB7
-
-Unknown_0x35F30:
-INCBIN "baserom.gbc", $35F30, $35F46 - $35F30
-
-LoggedData_0x35F46:
-INCBIN "baserom.gbc", $35F46, $35F4E - $35F46
-
-Unknown_0x35F4E:
-INCBIN "baserom.gbc", $35F4E, $35F5E - $35F4E
-
-LoggedData_0x35F5E:
-INCBIN "baserom.gbc", $35F5E, $360BA - $35F5E
-
-Unknown_0x360BA:
-INCBIN "baserom.gbc", $360BA, $360D0 - $360BA
-
-LoggedData_0x360D0:
-INCBIN "baserom.gbc", $360D0, $36251 - $360D0
-
-Unknown_0x36251:
-INCBIN "baserom.gbc", $36251, $36266 - $36251
-
-LoggedData_0x36266:
-INCBIN "baserom.gbc", $36266, $3641B - $36266
-
-Unknown_0x3641B:
-INCBIN "baserom.gbc", $3641B, $3641F - $3641B
-
-LoggedData_0x3641F:
-INCBIN "baserom.gbc", $3641F, $364B8 - $3641F
-
-Unknown_0x364B8:
-INCBIN "baserom.gbc", $364B8, $364C8 - $364B8
-
-LoggedData_0x364C8:
-INCBIN "baserom.gbc", $364C8, $364D0 - $364C8
-
-Unknown_0x364D0:
-INCBIN "baserom.gbc", $364D0, $364E0 - $364D0
-
-LoggedData_0x364E0:
-INCBIN "baserom.gbc", $364E0, $365B4 - $364E0
-
-Unknown_0x365B4:
-INCBIN "baserom.gbc", $365B4, $365B5 - $365B4
-
-LoggedData_0x365B5:
-INCBIN "baserom.gbc", $365B5, $3666A - $365B5
-
-Unknown_0x3666A:
-INCBIN "baserom.gbc", $3666A, $3666B - $3666A
-
-LoggedData_0x3666B:
-INCBIN "baserom.gbc", $3666B, $36720 - $3666B
-
-Unknown_0x36720:
-INCBIN "baserom.gbc", $36720, $36721 - $36720
-
-LoggedData_0x36721:
-INCBIN "baserom.gbc", $36721, $367CA - $36721
-
-Unknown_0x367CA:
-INCBIN "baserom.gbc", $367CA, $367CD - $367CA
-
-LoggedData_0x367CD:
-INCBIN "baserom.gbc", $367CD, $367D5 - $367CD
-
-Unknown_0x367D5:
-INCBIN "baserom.gbc", $367D5, $367E5 - $367D5
-
-LoggedData_0x367E5:
-INCBIN "baserom.gbc", $367E5, $36832 - $367E5
-
-Unknown_0x36832:
-INCBIN "baserom.gbc", $36832, $3683F - $36832
-
-LoggedData_0x3683F:
-INCBIN "baserom.gbc", $3683F, $3688A - $3683F
-
-Unknown_0x3688A:
-INCBIN "baserom.gbc", $3688A, $36897 - $3688A
-
-LoggedData_0x36897:
-INCBIN "baserom.gbc", $36897, $368FE - $36897
-
-Unknown_0x368FE:
-INCBIN "baserom.gbc", $368FE, $36909 - $368FE
-
-LoggedData_0x36909:
-INCBIN "baserom.gbc", $36909, $3697D - $36909
-
-Unknown_0x3697D:
-INCBIN "baserom.gbc", $3697D, $36999 - $3697D
-
-LoggedData_0x36999:
-INCBIN "baserom.gbc", $36999, $369A1 - $36999
-
-Unknown_0x369A1:
-INCBIN "baserom.gbc", $369A1, $369B1 - $369A1
-
-LoggedData_0x369B1:
-INCBIN "baserom.gbc", $369B1, $37451 - $369B1
-
-Unknown_0x37451:
-INCBIN "baserom.gbc", $37451, $37452 - $37451
-
-LoggedData_0x37452:
-INCBIN "baserom.gbc", $37452, $374D0 - $37452
-
-Unknown_0x374D0:
-INCBIN "baserom.gbc", $374D0, $374D1 - $374D0
-
-LoggedData_0x374D1:
-INCBIN "baserom.gbc", $374D1, $37533 - $374D1
-
-Unknown_0x37533:
-INCBIN "baserom.gbc", $37533, $37534 - $37533
-
-LoggedData_0x37534:
-INCBIN "baserom.gbc", $37534, $375C0 - $37534
-
-Unknown_0x375C0:
-INCBIN "baserom.gbc", $375C0, $375C3 - $375C0
-
-LoggedData_0x375C3:
-INCBIN "baserom.gbc", $375C3, $375C9 - $375C3
-
-Unknown_0x375C9:
-INCBIN "baserom.gbc", $375C9, $375D5 - $375C9
-
-LoggedData_0x375D5:
-INCBIN "baserom.gbc", $375D5, $375F4 - $375D5
-
-Unknown_0x375F4:
-INCBIN "baserom.gbc", $375F4, $37608 - $375F4
-
-LoggedData_0x37608:
-INCBIN "baserom.gbc", $37608, $3767B - $37608
-
-Unknown_0x3767B:
-INCBIN "baserom.gbc", $3767B, $376B0 - $3767B
-
-LoggedData_0x376B0:
-INCBIN "baserom.gbc", $376B0, $376D0 - $376B0
-
-Unknown_0x376D0:
-INCBIN "baserom.gbc", $376D0, $376E2 - $376D0
-
-LoggedData_0x376E2:
-INCBIN "baserom.gbc", $376E2, $376E8 - $376E2
-
-Unknown_0x376E8:
-INCBIN "baserom.gbc", $376E8, $376F4 - $376E8
-
-LoggedData_0x376F4:
-INCBIN "baserom.gbc", $376F4, $3778A - $376F4
-
-Unknown_0x3778A:
-INCBIN "baserom.gbc", $3778A, $3778B - $3778A
-
-LoggedData_0x3778B:
-INCBIN "baserom.gbc", $3778B, $377C7 - $3778B
-
-Unknown_0x377C7:
-INCBIN "baserom.gbc", $377C7, $377C8 - $377C7
-
-LoggedData_0x377C8:
-INCBIN "baserom.gbc", $377C8, $37828 - $377C8
-
-Unknown_0x37828:
-INCBIN "baserom.gbc", $37828, $3782B - $37828
-
-LoggedData_0x3782B:
-INCBIN "baserom.gbc", $3782B, $37831 - $3782B
-
-Unknown_0x37831:
-INCBIN "baserom.gbc", $37831, $3783D - $37831
-
-LoggedData_0x3783D:
-INCBIN "baserom.gbc", $3783D, $37882 - $3783D
-
-Unknown_0x37882:
-INCBIN "baserom.gbc", $37882, $37883 - $37882
-
-LoggedData_0x37883:
-INCBIN "baserom.gbc", $37883, $37900 - $37883
-
-Unknown_0x37900:
-INCBIN "baserom.gbc", $37900, $37903 - $37900
-
-LoggedData_0x37903:
-INCBIN "baserom.gbc", $37903, $37907 - $37903
-
-Unknown_0x37907:
-INCBIN "baserom.gbc", $37907, $3790F - $37907
-
-LoggedData_0x3790F:
-INCBIN "baserom.gbc", $3790F, $37968 - $3790F
-
-Unknown_0x37968:
-INCBIN "baserom.gbc", $37968, $37969 - $37968
-
-LoggedData_0x37969:
-INCBIN "baserom.gbc", $37969, $379A1 - $37969
-
-Unknown_0x379A1:
-INCBIN "baserom.gbc", $379A1, $379A2 - $379A1
-
-LoggedData_0x379A2:
-INCBIN "baserom.gbc", $379A2, $379E4 - $379A2
-
-Unknown_0x379E4:
-INCBIN "baserom.gbc", $379E4, $379E7 - $379E4
-
-LoggedData_0x379E7:
-INCBIN "baserom.gbc", $379E7, $379ED - $379E7
-
-Unknown_0x379ED:
-INCBIN "baserom.gbc", $379ED, $379F9 - $379ED
-
-LoggedData_0x379F9:
-INCBIN "baserom.gbc", $379F9, $37A16 - $379F9
-
-Unknown_0x37A16:
-INCBIN "baserom.gbc", $37A16, $37A6E - $37A16
-
-LoggedData_0x37A6E:
-INCBIN "baserom.gbc", $37A6E, $37A86 - $37A6E
-
-Unknown_0x37A86:
-INCBIN "baserom.gbc", $37A86, $37ABE - $37A86
-
-LoggedData_0x37ABE:
-INCBIN "baserom.gbc", $37ABE, $37AF4 - $37ABE
-
-Unknown_0x37AF4:
-INCBIN "baserom.gbc", $37AF4, $37B7A - $37AF4
-
-LoggedData_0x37B7A:
-INCBIN "baserom.gbc", $37B7A, $37B80 - $37B7A
-
-Unknown_0x37B80:
-INCBIN "baserom.gbc", $37B80, $37B8C - $37B80
-
-LoggedData_0x37B8C:
-INCBIN "baserom.gbc", $37B8C, $37C01 - $37B8C
-
-Unknown_0x37C01:
-INCBIN "baserom.gbc", $37C01, $37C02 - $37C01
-
-LoggedData_0x37C02:
-INCBIN "baserom.gbc", $37C02, $37C75 - $37C02
-
-Unknown_0x37C75:
-INCBIN "baserom.gbc", $37C75, $37C76 - $37C75
-
-LoggedData_0x37C76:
-INCBIN "baserom.gbc", $37C76, $37CEF - $37C76
-
-Unknown_0x37CEF:
-INCBIN "baserom.gbc", $37CEF, $37CF2 - $37CEF
-
-LoggedData_0x37CF2:
-INCBIN "baserom.gbc", $37CF2, $37CF8 - $37CF2
-
-Unknown_0x37CF8:
-INCBIN "baserom.gbc", $37CF8, $37D04 - $37CF8
-
-LoggedData_0x37D04:
-INCBIN "baserom.gbc", $37D04, $37D62 - $37D04
-
-Unknown_0x37D62:
-INCBIN "baserom.gbc", $37D62, $37D63 - $37D62
-
-LoggedData_0x37D63:
-INCBIN "baserom.gbc", $37D63, $37DA1 - $37D63
-
-Unknown_0x37DA1:
-INCBIN "baserom.gbc", $37DA1, $37DA2 - $37DA1
-
-LoggedData_0x37DA2:
-INCBIN "baserom.gbc", $37DA2, $37DF7 - $37DA2
-
-Unknown_0x37DF7:
-INCBIN "baserom.gbc", $37DF7, $37DFA - $37DF7
-
-LoggedData_0x37DFA:
-INCBIN "baserom.gbc", $37DFA, $37E00 - $37DFA
-
-Unknown_0x37E00:
-INCBIN "baserom.gbc", $37E00, $37E0C - $37E00
-
-LoggedData_0x37E0C:
-INCBIN "baserom.gbc", $37E0C, $37E9D - $37E0C
-
-Unknown_0x37E9D:
-INCBIN "baserom.gbc", $37E9D, $37E9E - $37E9D
-
-LoggedData_0x37E9E:
-INCBIN "baserom.gbc", $37E9E, $37EE4 - $37E9E
-
-Unknown_0x37EE4:
-INCBIN "baserom.gbc", $37EE4, $37EE5 - $37EE4
-
-LoggedData_0x37EE5:
-INCBIN "baserom.gbc", $37EE5, $37F40 - $37EE5
-
-Unknown_0x37F40:
-INCBIN "baserom.gbc", $37F40, $37F43 - $37F40
-
-LoggedData_0x37F43:
-INCBIN "baserom.gbc", $37F43, $37F49 - $37F43
-
-Unknown_0x37F49:
-INCBIN "baserom.gbc", $37F49, $38000 - $37F49
+    ds $38000 - $37F55, $00
 
 SECTION "Bank0E", ROMX, BANK[$0E]
 
@@ -50681,2142 +50640,865 @@ LoggedData_0x3815C:
 INCBIN "baserom.gbc", $3815C, $381C1 - $3815C
 
 Unknown_0x381C1:
-INCBIN "baserom.gbc", $381C1, $381E8 - $381C1
+INCBIN "baserom.gbc", $381C1, $381E6 - $381C1
 
-LoggedData_0x381E8:
-INCBIN "baserom.gbc", $381E8, $381EC - $381E8
+SoundData_1F:;0x381E6
+INCBIN "data/sound/sound1F.bin"
 
-Unknown_0x381EC:
-INCBIN "baserom.gbc", $381EC, $381F4 - $381EC
+SoundData_20:;0x38351
+INCBIN "data/sound/sound20.bin"
 
-LoggedData_0x381F4:
-INCBIN "baserom.gbc", $381F4, $38291 - $381F4
+SoundData_21:;0x386F6
+INCBIN "data/sound/sound21.bin"
 
-Unknown_0x38291:
-INCBIN "baserom.gbc", $38291, $38295 - $38291
+SoundData_22:;0x38951
+INCBIN "data/sound/sound22.bin"
 
-LoggedData_0x38295:
-INCBIN "baserom.gbc", $38295, $382CF - $38295
+SoundData_23:;0x38A63
+INCBIN "data/sound/sound23.bin"
 
-Unknown_0x382CF:
-INCBIN "baserom.gbc", $382CF, $382DD - $382CF
+SoundData_24:;0x38B5E
+INCBIN "data/sound/sound24.bin"
 
-LoggedData_0x382DD:
-INCBIN "baserom.gbc", $382DD, $3833D - $382DD
+SoundData_25:;0x38BD6
+INCBIN "data/sound/sound25.bin"
 
-Unknown_0x3833D:
-INCBIN "baserom.gbc", $3833D, $38353 - $3833D
+SoundData_26:;0x38F13
+INCBIN "data/sound/sound26.bin"
 
-LoggedData_0x38353:
-INCBIN "baserom.gbc", $38353, $38359 - $38353
+SoundData_27:;0x39308
+INCBIN "data/sound/sound27.bin"
 
-Unknown_0x38359:
-INCBIN "baserom.gbc", $38359, $38365 - $38359
+SoundData_28:;0x394CC
+INCBIN "data/sound/sound28.bin"
 
-LoggedData_0x38365:
-INCBIN "baserom.gbc", $38365, $3841A - $38365
+SoundData_29:;0x395E1
+INCBIN "data/sound/sound29.bin"
 
-Unknown_0x3841A:
-INCBIN "baserom.gbc", $3841A, $38469 - $3841A
+SoundData_2A:;0x39641
+INCBIN "data/sound/sound2A.bin"
 
-LoggedData_0x38469:
-INCBIN "baserom.gbc", $38469, $3850B - $38469
+SoundData_2B:;0x396BC
+INCBIN "data/sound/sound2B.bin"
 
-Unknown_0x3850B:
-INCBIN "baserom.gbc", $3850B, $3855B - $3850B
+SoundData_2C:;0x397F2
+INCBIN "data/sound/sound2C.bin"
 
-LoggedData_0x3855B:
-INCBIN "baserom.gbc", $3855B, $38619 - $3855B
+SoundData_2D:;0x398B4
+INCBIN "data/sound/sound2D.bin"
 
-Unknown_0x38619:
-INCBIN "baserom.gbc", $38619, $38651 - $38619
+SoundData_2E:;0x39991
+INCBIN "data/sound/sound2E.bin"
 
-LoggedData_0x38651:
-INCBIN "baserom.gbc", $38651, $386C5 - $38651
+SoundData_2F:;0x39BA8
+INCBIN "data/sound/sound2F.bin"
 
-Unknown_0x386C5:
-INCBIN "baserom.gbc", $386C5, $386F8 - $386C5
+SoundData_30:;0x39D53
+INCBIN "data/sound/sound30.bin"
 
-LoggedData_0x386F8:
-INCBIN "baserom.gbc", $386F8, $38700 - $386F8
+SoundData_31:;0x39DB7
+INCBIN "data/sound/sound31.bin"
 
-Unknown_0x38700:
-INCBIN "baserom.gbc", $38700, $38710 - $38700
+SoundData_32:;0x39F11
+INCBIN "data/sound/sound32.bin"
 
-LoggedData_0x38710:
-INCBIN "baserom.gbc", $38710, $387A7 - $38710
+SoundData_33:;0x3A2EF
+INCBIN "data/sound/sound33.bin"
 
-Unknown_0x387A7:
-INCBIN "baserom.gbc", $387A7, $387B9 - $387A7
+SoundData_34:;0x3A641
+INCBIN "data/sound/sound34.bin"
 
-LoggedData_0x387B9:
-INCBIN "baserom.gbc", $387B9, $38844 - $387B9
+SoundData_35:;0x3AC2B
+INCBIN "data/sound/sound35.bin"
 
-Unknown_0x38844:
-INCBIN "baserom.gbc", $38844, $38857 - $38844
+SoundData_36:;0x3B152
+INCBIN "data/sound/sound36.bin"
 
-LoggedData_0x38857:
-INCBIN "baserom.gbc", $38857, $3893C - $38857
+SoundData_37:;0x3B2A6
+INCBIN "data/sound/sound37.bin"
 
-Unknown_0x3893C:
-INCBIN "baserom.gbc", $3893C, $38953 - $3893C
+SoundData_38:;0x3B48D
+INCBIN "data/sound/sound38.bin"
 
-LoggedData_0x38953:
-INCBIN "baserom.gbc", $38953, $38959 - $38953
+SoundData_39:;0x3B4E5
+INCBIN "data/sound/sound39.bin"
 
-Unknown_0x38959:
-INCBIN "baserom.gbc", $38959, $38965 - $38959
+SoundData_3A:;0x3B834
+INCBIN "data/sound/sound3A.bin"
 
-LoggedData_0x38965:
-INCBIN "baserom.gbc", $38965, $389BC - $38965
+SoundData_101:;0x3B85B
+INCBIN "data/sound/sound101.bin"
 
-Unknown_0x389BC:
-INCBIN "baserom.gbc", $389BC, $389BD - $389BC
+SoundData_102:;0x3B92E
+INCBIN "data/sound/sound102.bin"
 
-LoggedData_0x389BD:
-INCBIN "baserom.gbc", $389BD, $38A08 - $389BD
+SoundData_103:;0x3B93F
+INCBIN "data/sound/sound103.bin"
 
-Unknown_0x38A08:
-INCBIN "baserom.gbc", $38A08, $38A09 - $38A08
+SoundData_104:;0x3B958
+INCBIN "data/sound/sound104.bin"
 
-LoggedData_0x38A09:
-INCBIN "baserom.gbc", $38A09, $38A62 - $38A09
+SoundData_105:;0x3B981
+INCBIN "data/sound/sound105.bin"
 
-Unknown_0x38A62:
-INCBIN "baserom.gbc", $38A62, $38A65 - $38A62
+SoundData_106:;0x3B9BC
+INCBIN "data/sound/sound106.bin"
 
-LoggedData_0x38A65:
-INCBIN "baserom.gbc", $38A65, $38A6B - $38A65
+SoundData_107:;0x3B9D3
+INCBIN "data/sound/sound107.bin"
 
-Unknown_0x38A6B:
-INCBIN "baserom.gbc", $38A6B, $38A77 - $38A6B
+SoundData_108:;0x3B9F7
+INCBIN "data/sound/sound108.bin"
 
-LoggedData_0x38A77:
-INCBIN "baserom.gbc", $38A77, $38B5F - $38A77
+SoundData_109:;0x3BA24
+INCBIN "data/sound/sound109.bin"
 
-Unknown_0x38B5F:
-INCBIN "baserom.gbc", $38B5F, $38B60 - $38B5F
+SoundData_10A:;0x3BA44
+INCBIN "data/sound/sound10A.bin"
 
-LoggedData_0x38B60:
-INCBIN "baserom.gbc", $38B60, $38B93 - $38B60
+SoundData_10B:;0x3BA55
+INCBIN "data/sound/sound10B.bin"
 
-Unknown_0x38B93:
-INCBIN "baserom.gbc", $38B93, $38B9E - $38B93
+SoundData_10C:;0x3BA68
+INCBIN "data/sound/sound10C.bin"
 
-LoggedData_0x38B9E:
-INCBIN "baserom.gbc", $38B9E, $38BC9 - $38B9E
+SoundData_10D:;0x3BAA6
+INCBIN "data/sound/sound10D.bin"
 
-Unknown_0x38BC9:
-INCBIN "baserom.gbc", $38BC9, $38BD8 - $38BC9
+SoundData_10E:;0x3BAC7
+INCBIN "data/sound/sound10E.bin"
 
-LoggedData_0x38BD8:
-INCBIN "baserom.gbc", $38BD8, $38BDC - $38BD8
+SoundData_10F:;0x3BADD
+INCBIN "data/sound/sound10F.bin"
 
-Unknown_0x38BDC:
-INCBIN "baserom.gbc", $38BDC, $38BE4 - $38BDC
+SoundData_110:;0x3BAF2
+INCBIN "data/sound/sound110.bin"
 
-LoggedData_0x38BE4:
-INCBIN "baserom.gbc", $38BE4, $38D83 - $38BE4
+SoundData_111:;0x3BB05
+INCBIN "data/sound/sound111.bin"
 
-Unknown_0x38D83:
-INCBIN "baserom.gbc", $38D83, $38D84 - $38D83
+SoundData_112:;0x3BB38
+INCBIN "data/sound/sound112.bin"
 
-LoggedData_0x38D84:
-INCBIN "baserom.gbc", $38D84, $38E1B - $38D84
+SoundData_113:;0x3BB70
+INCBIN "data/sound/sound113.bin"
 
-Unknown_0x38E1B:
-INCBIN "baserom.gbc", $38E1B, $38E1C - $38E1B
+SoundData_114:;0x3BB83
+INCBIN "data/sound/sound114.bin"
 
-LoggedData_0x38E1C:
-INCBIN "baserom.gbc", $38E1C, $38F12 - $38E1C
+SoundData_115:;0x3BB94
+INCBIN "data/sound/sound115.bin"
 
-Unknown_0x38F12:
-INCBIN "baserom.gbc", $38F12, $38F15 - $38F12
+SoundData_116:;0x3BBA5
+INCBIN "data/sound/sound116.bin"
 
-LoggedData_0x38F15:
-INCBIN "baserom.gbc", $38F15, $38F1B - $38F15
+SoundData_117:;0x3BBCF
+INCBIN "data/sound/sound117.bin"
 
-Unknown_0x38F1B:
-INCBIN "baserom.gbc", $38F1B, $38F27 - $38F1B
+SoundData_118:;0x3BBFD
+INCBIN "data/sound/sound118.bin"
 
-LoggedData_0x38F27:
-INCBIN "baserom.gbc", $38F27, $39054 - $38F27
+SoundData_119:;0x3BC0E
+INCBIN "data/sound/sound119.bin"
 
-Unknown_0x39054:
-INCBIN "baserom.gbc", $39054, $39055 - $39054
+SoundData_11A:;0x3BC21
+INCBIN "data/sound/sound11A.bin"
 
-LoggedData_0x39055:
-INCBIN "baserom.gbc", $39055, $3911D - $39055
+SoundData_11B:;0x3BC85
+INCBIN "data/sound/sound11B.bin"
 
-Unknown_0x3911D:
-INCBIN "baserom.gbc", $3911D, $3911E - $3911D
+SoundData_11C:;0x3BCAA
+INCBIN "data/sound/sound11C.bin"
 
-LoggedData_0x3911E:
-INCBIN "baserom.gbc", $3911E, $3926C - $3911E
+SoundData_11D:;0x3BCBB
+INCBIN "data/sound/sound11D.bin"
 
-Unknown_0x3926C:
-INCBIN "baserom.gbc", $3926C, $3926D - $3926C
+SoundData_11E:;0x3BCCC
+INCBIN "data/sound/sound11E.bin"
 
-LoggedData_0x3926D:
-INCBIN "baserom.gbc", $3926D, $39307 - $3926D
+SoundData_11F:;0x3BCE1
+INCBIN "data/sound/sound11F.bin"
 
-Unknown_0x39307:
-INCBIN "baserom.gbc", $39307, $3930A - $39307
+SoundData_120:;0x3BD04
+INCBIN "data/sound/sound120.bin"
 
-LoggedData_0x3930A:
-INCBIN "baserom.gbc", $3930A, $39312 - $3930A
+SoundData_121:;0x3BD1D
+INCBIN "data/sound/sound121.bin"
 
-Unknown_0x39312:
-INCBIN "baserom.gbc", $39312, $39322 - $39312
+SoundData_122:;0x3BD2F
+INCBIN "data/sound/sound122.bin"
 
-LoggedData_0x39322:
-INCBIN "baserom.gbc", $39322, $39398 - $39322
+SoundData_123:;0x3BD60
+INCBIN "data/sound/sound123.bin"
 
-Unknown_0x39398:
-INCBIN "baserom.gbc", $39398, $39399 - $39398
+SoundData_124:;0x3BDCC
+INCBIN "data/sound/sound124.bin"
 
-LoggedData_0x39399:
-INCBIN "baserom.gbc", $39399, $393EA - $39399
+SoundData_125:;0x3BDEA
+INCBIN "data/sound/sound125.bin"
 
-Unknown_0x393EA:
-INCBIN "baserom.gbc", $393EA, $393EB - $393EA
+SoundData_126:;0x3BE15
+INCBIN "data/sound/sound126.bin"
 
-LoggedData_0x393EB:
-INCBIN "baserom.gbc", $393EB, $3945A - $393EB
+SoundData_127:;0x3BE44
+INCBIN "data/sound/sound127.bin"
 
-Unknown_0x3945A:
-INCBIN "baserom.gbc", $3945A, $3945B - $3945A
+SoundData_128:;0x3BE63
+INCBIN "data/sound/sound128.bin"
 
-LoggedData_0x3945B:
-INCBIN "baserom.gbc", $3945B, $394CB - $3945B
+SoundData_129:;0x3BE7E
+INCBIN "data/sound/sound129.bin"
 
-Unknown_0x394CB:
-INCBIN "baserom.gbc", $394CB, $394CE - $394CB
+SoundData_12A:;0x3BEAF
+INCBIN "data/sound/sound12A.bin"
 
-LoggedData_0x394CE:
-INCBIN "baserom.gbc", $394CE, $394D6 - $394CE
+SoundData_12B:;0x3BFC4
+INCBIN "data/sound/sound12B.bin"
 
-Unknown_0x394D6:
-INCBIN "baserom.gbc", $394D6, $394E6 - $394D6
+SoundData_12C:;0x3BFD5
+INCBIN "data/sound/sound12C.bin"
 
-LoggedData_0x394E6:
-INCBIN "baserom.gbc", $394E6, $39552 - $394E6
+SoundData_12D:;0x3BFEE
+INCBIN "data/sound/sound12D.bin"
 
-Unknown_0x39552:
-INCBIN "baserom.gbc", $39552, $39553 - $39552
-
-LoggedData_0x39553:
-INCBIN "baserom.gbc", $39553, $395DB - $39553
-
-Unknown_0x395DB:
-INCBIN "baserom.gbc", $395DB, $395E3 - $395DB
-
-LoggedData_0x395E3:
-INCBIN "baserom.gbc", $395E3, $395E7 - $395E3
-
-Unknown_0x395E7:
-INCBIN "baserom.gbc", $395E7, $395EF - $395E7
-
-LoggedData_0x395EF:
-INCBIN "baserom.gbc", $395EF, $39642 - $395EF
-
-Unknown_0x39642:
-INCBIN "baserom.gbc", $39642, $39643 - $39642
-
-LoggedData_0x39643:
-INCBIN "baserom.gbc", $39643, $396BD - $39643
-
-Unknown_0x396BD:
-INCBIN "baserom.gbc", $396BD, $396BE - $396BD
-
-LoggedData_0x396BE:
-INCBIN "baserom.gbc", $396BE, $397F3 - $396BE
-
-Unknown_0x397F3:
-INCBIN "baserom.gbc", $397F3, $397F4 - $397F3
-
-LoggedData_0x397F4:
-INCBIN "baserom.gbc", $397F4, $39837 - $397F4
-
-Unknown_0x39837:
-INCBIN "baserom.gbc", $39837, $39856 - $39837
-
-LoggedData_0x39856:
-INCBIN "baserom.gbc", $39856, $39893 - $39856
-
-Unknown_0x39893:
-INCBIN "baserom.gbc", $39893, $398B6 - $39893
-
-LoggedData_0x398B6:
-INCBIN "baserom.gbc", $398B6, $398BA - $398B6
-
-Unknown_0x398BA:
-INCBIN "baserom.gbc", $398BA, $398C2 - $398BA
-
-LoggedData_0x398C2:
-INCBIN "baserom.gbc", $398C2, $3993D - $398C2
-
-Unknown_0x3993D:
-INCBIN "baserom.gbc", $3993D, $3993E - $3993D
-
-LoggedData_0x3993E:
-INCBIN "baserom.gbc", $3993E, $39990 - $3993E
-
-Unknown_0x39990:
-INCBIN "baserom.gbc", $39990, $39993 - $39990
-
-LoggedData_0x39993:
-INCBIN "baserom.gbc", $39993, $39997 - $39993
-
-Unknown_0x39997:
-INCBIN "baserom.gbc", $39997, $3999F - $39997
-
-LoggedData_0x3999F:
-INCBIN "baserom.gbc", $3999F, $399EA - $3999F
-
-Unknown_0x399EA:
-INCBIN "baserom.gbc", $399EA, $39A29 - $399EA
-
-LoggedData_0x39A29:
-INCBIN "baserom.gbc", $39A29, $39A70 - $39A29
-
-Unknown_0x39A70:
-INCBIN "baserom.gbc", $39A70, $39AAD - $39A70
-
-LoggedData_0x39AAD:
-INCBIN "baserom.gbc", $39AAD, $39AF8 - $39AAD
-
-Unknown_0x39AF8:
-INCBIN "baserom.gbc", $39AF8, $39B46 - $39AF8
-
-LoggedData_0x39B46:
-INCBIN "baserom.gbc", $39B46, $39B92 - $39B46
-
-Unknown_0x39B92:
-INCBIN "baserom.gbc", $39B92, $39BAA - $39B92
-
-LoggedData_0x39BAA:
-INCBIN "baserom.gbc", $39BAA, $39BB2 - $39BAA
-
-Unknown_0x39BB2:
-INCBIN "baserom.gbc", $39BB2, $39BC2 - $39BB2
-
-LoggedData_0x39BC2:
-INCBIN "baserom.gbc", $39BC2, $39C1F - $39BC2
-
-Unknown_0x39C1F:
-INCBIN "baserom.gbc", $39C1F, $39C63 - $39C1F
-
-LoggedData_0x39C63:
-INCBIN "baserom.gbc", $39C63, $39C8E - $39C63
-
-Unknown_0x39C8E:
-INCBIN "baserom.gbc", $39C8E, $39CBA - $39C8E
-
-LoggedData_0x39CBA:
-INCBIN "baserom.gbc", $39CBA, $39D11 - $39CBA
-
-Unknown_0x39D11:
-INCBIN "baserom.gbc", $39D11, $39D55 - $39D11
-
-LoggedData_0x39D55:
-INCBIN "baserom.gbc", $39D55, $39D5B - $39D55
-
-Unknown_0x39D5B:
-INCBIN "baserom.gbc", $39D5B, $39D67 - $39D5B
-
-LoggedData_0x39D67:
-INCBIN "baserom.gbc", $39D67, $39D84 - $39D67
-
-Unknown_0x39D84:
-INCBIN "baserom.gbc", $39D84, $39D85 - $39D84
-
-LoggedData_0x39D85:
-INCBIN "baserom.gbc", $39D85, $39DA0 - $39D85
-
-Unknown_0x39DA0:
-INCBIN "baserom.gbc", $39DA0, $39DA1 - $39DA0
-
-LoggedData_0x39DA1:
-INCBIN "baserom.gbc", $39DA1, $39DB6 - $39DA1
-
-Unknown_0x39DB6:
-INCBIN "baserom.gbc", $39DB6, $39DB9 - $39DB6
-
-LoggedData_0x39DB9:
-INCBIN "baserom.gbc", $39DB9, $39DBF - $39DB9
-
-Unknown_0x39DBF:
-INCBIN "baserom.gbc", $39DBF, $39DCB - $39DBF
-
-LoggedData_0x39DCB:
-INCBIN "baserom.gbc", $39DCB, $39E68 - $39DCB
-
-Unknown_0x39E68:
-INCBIN "baserom.gbc", $39E68, $39E69 - $39E68
-
-LoggedData_0x39E69:
-INCBIN "baserom.gbc", $39E69, $39F10 - $39E69
-
-Unknown_0x39F10:
-INCBIN "baserom.gbc", $39F10, $39F13 - $39F10
-
-LoggedData_0x39F13:
-INCBIN "baserom.gbc", $39F13, $39F17 - $39F13
-
-Unknown_0x39F17:
-INCBIN "baserom.gbc", $39F17, $39F1F - $39F17
-
-LoggedData_0x39F1F:
-INCBIN "baserom.gbc", $39F1F, $39F6F - $39F1F
-
-Unknown_0x39F6F:
-INCBIN "baserom.gbc", $39F6F, $39FE5 - $39F6F
-
-LoggedData_0x39FE5:
-INCBIN "baserom.gbc", $39FE5, $3A08B - $39FE5
-
-Unknown_0x3A08B:
-INCBIN "baserom.gbc", $3A08B, $3A170 - $3A08B
-
-LoggedData_0x3A170:
-INCBIN "baserom.gbc", $3A170, $3A1BA - $3A170
-
-Unknown_0x3A1BA:
-INCBIN "baserom.gbc", $3A1BA, $3A24B - $3A1BA
-
-LoggedData_0x3A24B:
-INCBIN "baserom.gbc", $3A24B, $3A2A9 - $3A24B
-
-Unknown_0x3A2A9:
-INCBIN "baserom.gbc", $3A2A9, $3A2F1 - $3A2A9
-
-LoggedData_0x3A2F1:
-INCBIN "baserom.gbc", $3A2F1, $3A2F9 - $3A2F1
-
-Unknown_0x3A2F9:
-INCBIN "baserom.gbc", $3A2F9, $3A309 - $3A2F9
-
-LoggedData_0x3A309:
-INCBIN "baserom.gbc", $3A309, $3A642 - $3A309
-
-Unknown_0x3A642:
-INCBIN "baserom.gbc", $3A642, $3A643 - $3A642
-
-LoggedData_0x3A643:
-INCBIN "baserom.gbc", $3A643, $3A71D - $3A643
-
-Unknown_0x3A71D:
-INCBIN "baserom.gbc", $3A71D, $3A848 - $3A71D
-
-LoggedData_0x3A848:
-INCBIN "baserom.gbc", $3A848, $3A8D7 - $3A848
-
-Unknown_0x3A8D7:
-INCBIN "baserom.gbc", $3A8D7, $3AA0B - $3A8D7
-
-LoggedData_0x3AA0B:
-INCBIN "baserom.gbc", $3AA0B, $3AAA3 - $3AA0B
-
-Unknown_0x3AAA3:
-INCBIN "baserom.gbc", $3AAA3, $3AB6D - $3AAA3
-
-LoggedData_0x3AB6D:
-INCBIN "baserom.gbc", $3AB6D, $3ABDF - $3AB6D
-
-Unknown_0x3ABDF:
-INCBIN "baserom.gbc", $3ABDF, $3AC2D - $3ABDF
-
-LoggedData_0x3AC2D:
-INCBIN "baserom.gbc", $3AC2D, $3AC35 - $3AC2D
-
-Unknown_0x3AC35:
-INCBIN "baserom.gbc", $3AC35, $3AC45 - $3AC35
-
-LoggedData_0x3AC45:
-INCBIN "baserom.gbc", $3AC45, $3ADCC - $3AC45
-
-Unknown_0x3ADCC:
-INCBIN "baserom.gbc", $3ADCC, $3ADCD - $3ADCC
-
-LoggedData_0x3ADCD:
-INCBIN "baserom.gbc", $3ADCD, $3AF7C - $3ADCD
-
-Unknown_0x3AF7C:
-INCBIN "baserom.gbc", $3AF7C, $3AF7D - $3AF7C
-
-LoggedData_0x3AF7D:
-INCBIN "baserom.gbc", $3AF7D, $3B0C0 - $3AF7D
-
-Unknown_0x3B0C0:
-INCBIN "baserom.gbc", $3B0C0, $3B0C1 - $3B0C0
-
-LoggedData_0x3B0C1:
-INCBIN "baserom.gbc", $3B0C1, $3B151 - $3B0C1
-
-Unknown_0x3B151:
-INCBIN "baserom.gbc", $3B151, $3B154 - $3B151
-
-LoggedData_0x3B154:
-INCBIN "baserom.gbc", $3B154, $3B15C - $3B154
-
-Unknown_0x3B15C:
-INCBIN "baserom.gbc", $3B15C, $3B16C - $3B15C
-
-LoggedData_0x3B16C:
-INCBIN "baserom.gbc", $3B16C, $3B1B7 - $3B16C
-
-Unknown_0x3B1B7:
-INCBIN "baserom.gbc", $3B1B7, $3B1DA - $3B1B7
-
-LoggedData_0x3B1DA:
-INCBIN "baserom.gbc", $3B1DA, $3B223 - $3B1DA
-
-Unknown_0x3B223:
-INCBIN "baserom.gbc", $3B223, $3B246 - $3B223
-
-LoggedData_0x3B246:
-INCBIN "baserom.gbc", $3B246, $3B28A - $3B246
-
-Unknown_0x3B28A:
-INCBIN "baserom.gbc", $3B28A, $3B2A8 - $3B28A
-
-LoggedData_0x3B2A8:
-INCBIN "baserom.gbc", $3B2A8, $3B2AE - $3B2A8
-
-Unknown_0x3B2AE:
-INCBIN "baserom.gbc", $3B2AE, $3B2BA - $3B2AE
-
-LoggedData_0x3B2BA:
-INCBIN "baserom.gbc", $3B2BA, $3B336 - $3B2BA
-
-Unknown_0x3B336:
-INCBIN "baserom.gbc", $3B336, $3B337 - $3B336
-
-LoggedData_0x3B337:
-INCBIN "baserom.gbc", $3B337, $3B3B2 - $3B337
-
-Unknown_0x3B3B2:
-INCBIN "baserom.gbc", $3B3B2, $3B3B3 - $3B3B2
-
-LoggedData_0x3B3B3:
-INCBIN "baserom.gbc", $3B3B3, $3B48C - $3B3B3
-
-Unknown_0x3B48C:
-INCBIN "baserom.gbc", $3B48C, $3B48F - $3B48C
-
-LoggedData_0x3B48F:
-INCBIN "baserom.gbc", $3B48F, $3B495 - $3B48F
-
-Unknown_0x3B495:
-INCBIN "baserom.gbc", $3B495, $3B4A1 - $3B495
-
-LoggedData_0x3B4A1:
-INCBIN "baserom.gbc", $3B4A1, $3B4E6 - $3B4A1
-
-Unknown_0x3B4E6:
-INCBIN "baserom.gbc", $3B4E6, $3B4E7 - $3B4E6
-
-LoggedData_0x3B4E7:
-INCBIN "baserom.gbc", $3B4E7, $3B55C - $3B4E7
-
-Unknown_0x3B55C:
-INCBIN "baserom.gbc", $3B55C, $3B60A - $3B55C
-
-LoggedData_0x3B60A:
-INCBIN "baserom.gbc", $3B60A, $3B677 - $3B60A
-
-Unknown_0x3B677:
-INCBIN "baserom.gbc", $3B677, $3B725 - $3B677
-
-LoggedData_0x3B725:
-INCBIN "baserom.gbc", $3B725, $3B74E - $3B725
-
-Unknown_0x3B74E:
-INCBIN "baserom.gbc", $3B74E, $3B7AB - $3B74E
-
-LoggedData_0x3B7AB:
-INCBIN "baserom.gbc", $3B7AB, $3B800 - $3B7AB
-
-Unknown_0x3B800:
-INCBIN "baserom.gbc", $3B800, $3B836 - $3B800
-
-LoggedData_0x3B836:
-INCBIN "baserom.gbc", $3B836, $3B83E - $3B836
-
-Unknown_0x3B83E:
-INCBIN "baserom.gbc", $3B83E, $3B84E - $3B83E
-
-LoggedData_0x3B84E:
-INCBIN "baserom.gbc", $3B84E, $3B85C - $3B84E
-
-Unknown_0x3B85C:
-INCBIN "baserom.gbc", $3B85C, $3B85D - $3B85C
-
-LoggedData_0x3B85D:
-INCBIN "baserom.gbc", $3B85D, $3B92F - $3B85D
-
-Unknown_0x3B92F:
-INCBIN "baserom.gbc", $3B92F, $3B930 - $3B92F
-
-LoggedData_0x3B930:
-INCBIN "baserom.gbc", $3B930, $3B940 - $3B930
-
-Unknown_0x3B940:
-INCBIN "baserom.gbc", $3B940, $3B941 - $3B940
-
-LoggedData_0x3B941:
-INCBIN "baserom.gbc", $3B941, $3B959 - $3B941
-
-Unknown_0x3B959:
-INCBIN "baserom.gbc", $3B959, $3B95A - $3B959
-
-LoggedData_0x3B95A:
-INCBIN "baserom.gbc", $3B95A, $3B982 - $3B95A
-
-Unknown_0x3B982:
-INCBIN "baserom.gbc", $3B982, $3B983 - $3B982
-
-LoggedData_0x3B983:
-INCBIN "baserom.gbc", $3B983, $3B9BD - $3B983
-
-Unknown_0x3B9BD:
-INCBIN "baserom.gbc", $3B9BD, $3B9BE - $3B9BD
-
-LoggedData_0x3B9BE:
-INCBIN "baserom.gbc", $3B9BE, $3B9D4 - $3B9BE
-
-Unknown_0x3B9D4:
-INCBIN "baserom.gbc", $3B9D4, $3B9D5 - $3B9D4
-
-LoggedData_0x3B9D5:
-INCBIN "baserom.gbc", $3B9D5, $3B9F8 - $3B9D5
-
-Unknown_0x3B9F8:
-INCBIN "baserom.gbc", $3B9F8, $3B9F9 - $3B9F8
-
-LoggedData_0x3B9F9:
-INCBIN "baserom.gbc", $3B9F9, $3BA25 - $3B9F9
-
-Unknown_0x3BA25:
-INCBIN "baserom.gbc", $3BA25, $3BA26 - $3BA25
-
-LoggedData_0x3BA26:
-INCBIN "baserom.gbc", $3BA26, $3BA45 - $3BA26
-
-Unknown_0x3BA45:
-INCBIN "baserom.gbc", $3BA45, $3BA46 - $3BA45
-
-LoggedData_0x3BA46:
-INCBIN "baserom.gbc", $3BA46, $3BA56 - $3BA46
-
-Unknown_0x3BA56:
-INCBIN "baserom.gbc", $3BA56, $3BA57 - $3BA56
-
-LoggedData_0x3BA57:
-INCBIN "baserom.gbc", $3BA57, $3BA59 - $3BA57
-
-Unknown_0x3BA59:
-INCBIN "baserom.gbc", $3BA59, $3BA5B - $3BA59
-
-LoggedData_0x3BA5B:
-INCBIN "baserom.gbc", $3BA5B, $3BA69 - $3BA5B
-
-Unknown_0x3BA69:
-INCBIN "baserom.gbc", $3BA69, $3BA6A - $3BA69
-
-LoggedData_0x3BA6A:
-INCBIN "baserom.gbc", $3BA6A, $3BAA7 - $3BA6A
-
-Unknown_0x3BAA7:
-INCBIN "baserom.gbc", $3BAA7, $3BAA8 - $3BAA7
-
-LoggedData_0x3BAA8:
-INCBIN "baserom.gbc", $3BAA8, $3BAC8 - $3BAA8
-
-Unknown_0x3BAC8:
-INCBIN "baserom.gbc", $3BAC8, $3BAC9 - $3BAC8
-
-LoggedData_0x3BAC9:
-INCBIN "baserom.gbc", $3BAC9, $3BADE - $3BAC9
-
-Unknown_0x3BADE:
-INCBIN "baserom.gbc", $3BADE, $3BADF - $3BADE
-
-LoggedData_0x3BADF:
-INCBIN "baserom.gbc", $3BADF, $3BAF3 - $3BADF
-
-Unknown_0x3BAF3:
-INCBIN "baserom.gbc", $3BAF3, $3BAF4 - $3BAF3
-
-LoggedData_0x3BAF4:
-INCBIN "baserom.gbc", $3BAF4, $3BB06 - $3BAF4
-
-Unknown_0x3BB06:
-INCBIN "baserom.gbc", $3BB06, $3BB07 - $3BB06
-
-LoggedData_0x3BB07:
-INCBIN "baserom.gbc", $3BB07, $3BB39 - $3BB07
-
-Unknown_0x3BB39:
-INCBIN "baserom.gbc", $3BB39, $3BB3A - $3BB39
-
-LoggedData_0x3BB3A:
-INCBIN "baserom.gbc", $3BB3A, $3BB71 - $3BB3A
-
-Unknown_0x3BB71:
-INCBIN "baserom.gbc", $3BB71, $3BB72 - $3BB71
-
-LoggedData_0x3BB72:
-INCBIN "baserom.gbc", $3BB72, $3BB84 - $3BB72
-
-Unknown_0x3BB84:
-INCBIN "baserom.gbc", $3BB84, $3BB85 - $3BB84
-
-LoggedData_0x3BB85:
-INCBIN "baserom.gbc", $3BB85, $3BB95 - $3BB85
-
-Unknown_0x3BB95:
-INCBIN "baserom.gbc", $3BB95, $3BB96 - $3BB95
-
-LoggedData_0x3BB96:
-INCBIN "baserom.gbc", $3BB96, $3BBA6 - $3BB96
-
-Unknown_0x3BBA6:
-INCBIN "baserom.gbc", $3BBA6, $3BBA7 - $3BBA6
-
-LoggedData_0x3BBA7:
-INCBIN "baserom.gbc", $3BBA7, $3BBD0 - $3BBA7
-
-Unknown_0x3BBD0:
-INCBIN "baserom.gbc", $3BBD0, $3BBD1 - $3BBD0
-
-LoggedData_0x3BBD1:
-INCBIN "baserom.gbc", $3BBD1, $3BBFE - $3BBD1
-
-Unknown_0x3BBFE:
-INCBIN "baserom.gbc", $3BBFE, $3BBFF - $3BBFE
-
-LoggedData_0x3BBFF:
-INCBIN "baserom.gbc", $3BBFF, $3BC0F - $3BBFF
-
-Unknown_0x3BC0F:
-INCBIN "baserom.gbc", $3BC0F, $3BC10 - $3BC0F
-
-LoggedData_0x3BC10:
-INCBIN "baserom.gbc", $3BC10, $3BC22 - $3BC10
-
-Unknown_0x3BC22:
-INCBIN "baserom.gbc", $3BC22, $3BC23 - $3BC22
-
-LoggedData_0x3BC23:
-INCBIN "baserom.gbc", $3BC23, $3BC86 - $3BC23
-
-Unknown_0x3BC86:
-INCBIN "baserom.gbc", $3BC86, $3BC87 - $3BC86
-
-LoggedData_0x3BC87:
-INCBIN "baserom.gbc", $3BC87, $3BCAB - $3BC87
-
-Unknown_0x3BCAB:
-INCBIN "baserom.gbc", $3BCAB, $3BCAC - $3BCAB
-
-LoggedData_0x3BCAC:
-INCBIN "baserom.gbc", $3BCAC, $3BCBC - $3BCAC
-
-Unknown_0x3BCBC:
-INCBIN "baserom.gbc", $3BCBC, $3BCBD - $3BCBC
-
-LoggedData_0x3BCBD:
-INCBIN "baserom.gbc", $3BCBD, $3BCCD - $3BCBD
-
-Unknown_0x3BCCD:
-INCBIN "baserom.gbc", $3BCCD, $3BCCE - $3BCCD
-
-LoggedData_0x3BCCE:
-INCBIN "baserom.gbc", $3BCCE, $3BCE2 - $3BCCE
-
-Unknown_0x3BCE2:
-INCBIN "baserom.gbc", $3BCE2, $3BCE3 - $3BCE2
-
-LoggedData_0x3BCE3:
-INCBIN "baserom.gbc", $3BCE3, $3BD05 - $3BCE3
-
-Unknown_0x3BD05:
-INCBIN "baserom.gbc", $3BD05, $3BD06 - $3BD05
-
-LoggedData_0x3BD06:
-INCBIN "baserom.gbc", $3BD06, $3BD1E - $3BD06
-
-Unknown_0x3BD1E:
-INCBIN "baserom.gbc", $3BD1E, $3BD1F - $3BD1E
-
-LoggedData_0x3BD1F:
-INCBIN "baserom.gbc", $3BD1F, $3BD30 - $3BD1F
-
-Unknown_0x3BD30:
-INCBIN "baserom.gbc", $3BD30, $3BD31 - $3BD30
-
-LoggedData_0x3BD31:
-INCBIN "baserom.gbc", $3BD31, $3BD61 - $3BD31
-
-Unknown_0x3BD61:
-INCBIN "baserom.gbc", $3BD61, $3BD62 - $3BD61
-
-LoggedData_0x3BD62:
-INCBIN "baserom.gbc", $3BD62, $3BDCD - $3BD62
-
-Unknown_0x3BDCD:
-INCBIN "baserom.gbc", $3BDCD, $3BDCE - $3BDCD
-
-LoggedData_0x3BDCE:
-INCBIN "baserom.gbc", $3BDCE, $3BDEB - $3BDCE
-
-Unknown_0x3BDEB:
-INCBIN "baserom.gbc", $3BDEB, $3BDEC - $3BDEB
-
-LoggedData_0x3BDEC:
-INCBIN "baserom.gbc", $3BDEC, $3BE16 - $3BDEC
-
-Unknown_0x3BE16:
-INCBIN "baserom.gbc", $3BE16, $3BE17 - $3BE16
-
-LoggedData_0x3BE17:
-INCBIN "baserom.gbc", $3BE17, $3BE45 - $3BE17
-
-Unknown_0x3BE45:
-INCBIN "baserom.gbc", $3BE45, $3BE46 - $3BE45
-
-LoggedData_0x3BE46:
-INCBIN "baserom.gbc", $3BE46, $3BE64 - $3BE46
-
-Unknown_0x3BE64:
-INCBIN "baserom.gbc", $3BE64, $3BE65 - $3BE64
-
-LoggedData_0x3BE65:
-INCBIN "baserom.gbc", $3BE65, $3BE7F - $3BE65
-
-Unknown_0x3BE7F:
-INCBIN "baserom.gbc", $3BE7F, $3BE80 - $3BE7F
-
-LoggedData_0x3BE80:
-INCBIN "baserom.gbc", $3BE80, $3BEB0 - $3BE80
-
-Unknown_0x3BEB0:
-INCBIN "baserom.gbc", $3BEB0, $3BEB1 - $3BEB0
-
-LoggedData_0x3BEB1:
-INCBIN "baserom.gbc", $3BEB1, $3BFC5 - $3BEB1
-
-Unknown_0x3BFC5:
-INCBIN "baserom.gbc", $3BFC5, $3BFC6 - $3BFC5
-
-LoggedData_0x3BFC6:
-INCBIN "baserom.gbc", $3BFC6, $3BFD6 - $3BFC6
-
-Unknown_0x3BFD6:
-INCBIN "baserom.gbc", $3BFD6, $3BFD7 - $3BFD6
-
-LoggedData_0x3BFD7:
-INCBIN "baserom.gbc", $3BFD7, $3BFEF - $3BFD7
-
-Unknown_0x3BFEF:
-INCBIN "baserom.gbc", $3BFEF, $3BFF0 - $3BFEF
-
-LoggedData_0x3BFF0:
-INCBIN "baserom.gbc", $3BFF0, $3BFF2 - $3BFF0
-
-Unknown_0x3BFF2:
-INCBIN "baserom.gbc", $3BFF2, $3C000 - $3BFF2
+    ds $3C000 - $3BFF2, $00
 
 SECTION "Bank0F", ROMX, BANK[$0F]
 
 LoggedData_0x3C000:
-INCBIN "baserom.gbc", $3C000, $3C016 - $3C000
+INCBIN "baserom.gbc", $3C000, $3C015 - $3C000
 
-Unknown_0x3C016:
-INCBIN "baserom.gbc", $3C016, $3C017 - $3C016
+SoundData_12E:;0x3C015
+INCBIN "data/sound/sound12E.bin"
 
-LoggedData_0x3C017:
-INCBIN "baserom.gbc", $3C017, $3C02B - $3C017
+SoundData_12F:;0x3C02A
+INCBIN "data/sound/sound12F.bin"
 
-Unknown_0x3C02B:
-INCBIN "baserom.gbc", $3C02B, $3C02C - $3C02B
+SoundData_130:;0x3C03D
+INCBIN "data/sound/sound130.bin"
 
-LoggedData_0x3C02C:
-INCBIN "baserom.gbc", $3C02C, $3C03E - $3C02C
+SoundData_131:;0x3C0AE
+INCBIN "data/sound/sound131.bin"
 
-Unknown_0x3C03E:
-INCBIN "baserom.gbc", $3C03E, $3C03F - $3C03E
+SoundData_132:;0x3C14F
+INCBIN "data/sound/sound132.bin"
 
-LoggedData_0x3C03F:
-INCBIN "baserom.gbc", $3C03F, $3C0AF - $3C03F
+SoundData_133:;0x3C166
+INCBIN "data/sound/sound133.bin"
 
-Unknown_0x3C0AF:
-INCBIN "baserom.gbc", $3C0AF, $3C0B0 - $3C0AF
+SoundData_134:;0x3C1AC
+INCBIN "data/sound/sound134.bin"
 
-LoggedData_0x3C0B0:
-INCBIN "baserom.gbc", $3C0B0, $3C150 - $3C0B0
+SoundData_135:;0x3C1C8
+INCBIN "data/sound/sound135.bin"
 
-Unknown_0x3C150:
-INCBIN "baserom.gbc", $3C150, $3C151 - $3C150
+SoundData_136:;0x3C1EA
+INCBIN "data/sound/sound136.bin"
 
-LoggedData_0x3C151:
-INCBIN "baserom.gbc", $3C151, $3C167 - $3C151
+SoundData_137:;0x3C206
+INCBIN "data/sound/sound137.bin"
 
-Unknown_0x3C167:
-INCBIN "baserom.gbc", $3C167, $3C168 - $3C167
+SoundData_138:;0x3C228
+INCBIN "data/sound/sound138.bin"
 
-LoggedData_0x3C168:
-INCBIN "baserom.gbc", $3C168, $3C1AD - $3C168
+SoundData_139:;0x3C253
+INCBIN "data/sound/sound139.bin"
 
-Unknown_0x3C1AD:
-INCBIN "baserom.gbc", $3C1AD, $3C1AE - $3C1AD
+SoundData_13A:;0x3C296
+INCBIN "data/sound/sound13A.bin"
 
-LoggedData_0x3C1AE:
-INCBIN "baserom.gbc", $3C1AE, $3C1C9 - $3C1AE
+SoundData_13B:;0x3C2AD
+INCBIN "data/sound/sound13B.bin"
 
-Unknown_0x3C1C9:
-INCBIN "baserom.gbc", $3C1C9, $3C1CA - $3C1C9
+SoundData_13C:;0x3C2D4
+INCBIN "data/sound/sound13C.bin"
 
-LoggedData_0x3C1CA:
-INCBIN "baserom.gbc", $3C1CA, $3C1CC - $3C1CA
+SoundData_13D:;0x3C329
+INCBIN "data/sound/sound13D.bin"
 
-Unknown_0x3C1CC:
-INCBIN "baserom.gbc", $3C1CC, $3C1EE - $3C1CC
+SoundData_13E:;0x3C374
+INCBIN "data/sound/sound13E.bin"
 
-LoggedData_0x3C1EE:
-INCBIN "baserom.gbc", $3C1EE, $3C207 - $3C1EE
+SoundData_13F:;0x3C3DC
+INCBIN "data/sound/sound13F.bin"
 
-Unknown_0x3C207:
-INCBIN "baserom.gbc", $3C207, $3C208 - $3C207
+SoundData_140:;0x3C3F1
+INCBIN "data/sound/sound140.bin"
 
-LoggedData_0x3C208:
-INCBIN "baserom.gbc", $3C208, $3C229 - $3C208
+SoundData_141:;0x3C418
+INCBIN "data/sound/sound141.bin"
 
-Unknown_0x3C229:
-INCBIN "baserom.gbc", $3C229, $3C22A - $3C229
+SoundData_142:;0x3C452
+INCBIN "data/sound/sound142.bin"
 
-LoggedData_0x3C22A:
-INCBIN "baserom.gbc", $3C22A, $3C254 - $3C22A
+SoundData_143:;0x3C4A9
+INCBIN "data/sound/sound143.bin"
 
-Unknown_0x3C254:
-INCBIN "baserom.gbc", $3C254, $3C255 - $3C254
+SoundData_144:;0x3C520
+INCBIN "data/sound/sound144.bin"
 
-LoggedData_0x3C255:
-INCBIN "baserom.gbc", $3C255, $3C297 - $3C255
+SoundData_145:;0x3C597
+INCBIN "data/sound/sound145.bin"
 
-Unknown_0x3C297:
-INCBIN "baserom.gbc", $3C297, $3C298 - $3C297
+SoundData_146:;0x3C617
+INCBIN "data/sound/sound146.bin"
 
-LoggedData_0x3C298:
-INCBIN "baserom.gbc", $3C298, $3C2AE - $3C298
+SoundData_147:;0x3C683
+INCBIN "data/sound/sound147.bin"
 
-Unknown_0x3C2AE:
-INCBIN "baserom.gbc", $3C2AE, $3C2AF - $3C2AE
+SoundData_148:;0x3C718
+INCBIN "data/sound/sound148.bin"
 
-LoggedData_0x3C2AF:
-INCBIN "baserom.gbc", $3C2AF, $3C2D5 - $3C2AF
+SoundData_149:;0x3C72D
+INCBIN "data/sound/sound149.bin"
 
-Unknown_0x3C2D5:
-INCBIN "baserom.gbc", $3C2D5, $3C2D6 - $3C2D5
+SoundData_14A:;0x3C741
+INCBIN "data/sound/sound14A.bin"
 
-LoggedData_0x3C2D6:
-INCBIN "baserom.gbc", $3C2D6, $3C32A - $3C2D6
+SoundData_14B:;0x3C77C
+INCBIN "data/sound/sound14B.bin"
 
-Unknown_0x3C32A:
-INCBIN "baserom.gbc", $3C32A, $3C32B - $3C32A
+SoundData_14C:;0x3C7EB
+INCBIN "data/sound/sound14C.bin"
 
-LoggedData_0x3C32B:
-INCBIN "baserom.gbc", $3C32B, $3C375 - $3C32B
+SoundData_161:;0x3C80F
+INCBIN "data/sound/sound161.bin"
 
-Unknown_0x3C375:
-INCBIN "baserom.gbc", $3C375, $3C376 - $3C375
+SoundData_162:;0x3C82A
+INCBIN "data/sound/sound162.bin"
 
-LoggedData_0x3C376:
-INCBIN "baserom.gbc", $3C376, $3C3DD - $3C376
+SoundData_163:;0x3C84C
+INCBIN "data/sound/sound163.bin"
 
-Unknown_0x3C3DD:
-INCBIN "baserom.gbc", $3C3DD, $3C3DE - $3C3DD
+SoundData_164:;0x3C8A1
+INCBIN "data/sound/sound164.bin"
 
-LoggedData_0x3C3DE:
-INCBIN "baserom.gbc", $3C3DE, $3C3F2 - $3C3DE
+SoundData_165:;0x3C8B7
+INCBIN "data/sound/sound165.bin"
 
-Unknown_0x3C3F2:
-INCBIN "baserom.gbc", $3C3F2, $3C3F3 - $3C3F2
+SoundData_166:;0x3C8CC
+INCBIN "data/sound/sound166.bin"
 
-LoggedData_0x3C3F3:
-INCBIN "baserom.gbc", $3C3F3, $3C419 - $3C3F3
+SoundData_167:;0x3C8EB
+INCBIN "data/sound/sound167.bin"
 
-Unknown_0x3C419:
-INCBIN "baserom.gbc", $3C419, $3C41A - $3C419
+SoundData_168:;0x3C906
+INCBIN "data/sound/sound168.bin"
 
-LoggedData_0x3C41A:
-INCBIN "baserom.gbc", $3C41A, $3C42E - $3C41A
+SoundData_169:;0x3C919
+INCBIN "data/sound/sound169.bin"
 
-Unknown_0x3C42E:
-INCBIN "baserom.gbc", $3C42E, $3C454 - $3C42E
+SoundData_16A:;0x3C93B
+INCBIN "data/sound/sound16A.bin"
 
-LoggedData_0x3C454:
-INCBIN "baserom.gbc", $3C454, $3C4AA - $3C454
+SoundData_16B:;0x3C952
+INCBIN "data/sound/sound16B.bin"
 
-Unknown_0x3C4AA:
-INCBIN "baserom.gbc", $3C4AA, $3C4AB - $3C4AA
+SoundData_16C:;0x3C9C0
+INCBIN "data/sound/sound16C.bin"
 
-LoggedData_0x3C4AB:
-INCBIN "baserom.gbc", $3C4AB, $3C521 - $3C4AB
+SoundData_16D:;0x3C9D5
+INCBIN "data/sound/sound16D.bin"
 
-Unknown_0x3C521:
-INCBIN "baserom.gbc", $3C521, $3C522 - $3C521
+SoundData_16E:;0x3C9F3
+INCBIN "data/sound/sound16E.bin"
 
-LoggedData_0x3C522:
-INCBIN "baserom.gbc", $3C522, $3C598 - $3C522
+SoundData_16F:;0x3CA12
+INCBIN "data/sound/sound16F.bin"
 
-Unknown_0x3C598:
-INCBIN "baserom.gbc", $3C598, $3C599 - $3C598
+SoundData_170:;0x3CA2D
+INCBIN "data/sound/sound170.bin"
 
-LoggedData_0x3C599:
-INCBIN "baserom.gbc", $3C599, $3C618 - $3C599
+SoundData_171:;0x3CA46
+INCBIN "data/sound/sound171.bin"
 
-Unknown_0x3C618:
-INCBIN "baserom.gbc", $3C618, $3C619 - $3C618
+SoundData_172:;0x3CA7D
+INCBIN "data/sound/sound172.bin"
 
-LoggedData_0x3C619:
-INCBIN "baserom.gbc", $3C619, $3C684 - $3C619
+SoundData_173:;0x3CA92
+INCBIN "data/sound/sound173.bin"
 
-Unknown_0x3C684:
-INCBIN "baserom.gbc", $3C684, $3C685 - $3C684
+SoundData_174:;0x3CAD0
+INCBIN "data/sound/sound174.bin"
 
-LoggedData_0x3C685:
-INCBIN "baserom.gbc", $3C685, $3C719 - $3C685
+SoundData_175:;0x3CAF1
+INCBIN "data/sound/sound175.bin"
 
-Unknown_0x3C719:
-INCBIN "baserom.gbc", $3C719, $3C71A - $3C719
+SoundData_176:;0x3CB0A
+INCBIN "data/sound/sound176.bin"
 
-LoggedData_0x3C71A:
-INCBIN "baserom.gbc", $3C71A, $3C72E - $3C71A
+SoundData_177:;0x3CB30
+INCBIN "data/sound/sound177.bin"
 
-Unknown_0x3C72E:
-INCBIN "baserom.gbc", $3C72E, $3C72F - $3C72E
+SoundData_178:;0x3CB44
+INCBIN "data/sound/sound178.bin"
 
-LoggedData_0x3C72F:
-INCBIN "baserom.gbc", $3C72F, $3C742 - $3C72F
+SoundData_179:;0x3CB7A
+INCBIN "data/sound/sound179.bin"
 
-Unknown_0x3C742:
-INCBIN "baserom.gbc", $3C742, $3C743 - $3C742
+SoundData_17A:;0x3CB97
+INCBIN "data/sound/sound17A.bin"
 
-LoggedData_0x3C743:
-INCBIN "baserom.gbc", $3C743, $3C77D - $3C743
+SoundData_17B:;0x3CBAE
+INCBIN "data/sound/sound17B.bin"
 
-Unknown_0x3C77D:
-INCBIN "baserom.gbc", $3C77D, $3C77E - $3C77D
+SoundData_17C:;0x3CC84
+INCBIN "data/sound/sound17C.bin"
 
-LoggedData_0x3C77E:
-INCBIN "baserom.gbc", $3C77E, $3C7A0 - $3C77E
+SoundData_17D:;0x3CC9D
+INCBIN "data/sound/sound17D.bin"
 
-Unknown_0x3C7A0:
-INCBIN "baserom.gbc", $3C7A0, $3C7B6 - $3C7A0
+SoundData_17E:;0x3CCB2
+INCBIN "data/sound/sound17E.bin"
 
-LoggedData_0x3C7B6:
-INCBIN "baserom.gbc", $3C7B6, $3C7D2 - $3C7B6
+SoundData_17F:;0x3CCE7
+INCBIN "data/sound/sound17F.bin"
 
-Unknown_0x3C7D2:
-INCBIN "baserom.gbc", $3C7D2, $3C7ED - $3C7D2
+SoundData_180:;0x3CD08
+INCBIN "data/sound/sound180.bin"
 
-LoggedData_0x3C7ED:
-INCBIN "baserom.gbc", $3C7ED, $3C810 - $3C7ED
+SoundData_181:;0x3CD77
+INCBIN "data/sound/sound181.bin"
 
-Unknown_0x3C810:
-INCBIN "baserom.gbc", $3C810, $3C811 - $3C810
+SoundData_182:;0x3CE0A
+INCBIN "data/sound/sound182.bin"
 
-LoggedData_0x3C811:
-INCBIN "baserom.gbc", $3C811, $3C82B - $3C811
+SoundData_183:;0x3CE5A
+INCBIN "data/sound/sound183.bin"
 
-Unknown_0x3C82B:
-INCBIN "baserom.gbc", $3C82B, $3C82C - $3C82B
+SoundData_184:;0x3CE7B
+INCBIN "data/sound/sound184.bin"
 
-LoggedData_0x3C82C:
-INCBIN "baserom.gbc", $3C82C, $3C84D - $3C82C
+SoundData_185:;0x3CE90
+INCBIN "data/sound/sound185.bin"
 
-Unknown_0x3C84D:
-INCBIN "baserom.gbc", $3C84D, $3C84E - $3C84D
+SoundData_186:;0x3CEAD
+INCBIN "data/sound/sound186.bin"
 
-LoggedData_0x3C84E:
-INCBIN "baserom.gbc", $3C84E, $3C8A2 - $3C84E
+SoundData_187:;0x3CEC2
+INCBIN "data/sound/sound187.bin"
 
-Unknown_0x3C8A2:
-INCBIN "baserom.gbc", $3C8A2, $3C8A3 - $3C8A2
+SoundData_188:;0x3CF36
+INCBIN "data/sound/sound188.bin"
 
-LoggedData_0x3C8A3:
-INCBIN "baserom.gbc", $3C8A3, $3C8B8 - $3C8A3
+SoundData_189:;0x3CF57
+INCBIN "data/sound/sound189.bin"
 
-Unknown_0x3C8B8:
-INCBIN "baserom.gbc", $3C8B8, $3C8B9 - $3C8B8
+SoundData_18A:;0x3CFD5
+INCBIN "data/sound/sound18A.bin"
 
-LoggedData_0x3C8B9:
-INCBIN "baserom.gbc", $3C8B9, $3C8CD - $3C8B9
+SoundData_18B:;0x3D000
+INCBIN "data/sound/sound18B.bin"
 
-Unknown_0x3C8CD:
-INCBIN "baserom.gbc", $3C8CD, $3C8CE - $3C8CD
+SoundData_18C:;0x3D02D
+INCBIN "data/sound/sound18C.bin"
 
-LoggedData_0x3C8CE:
-INCBIN "baserom.gbc", $3C8CE, $3C8EC - $3C8CE
+SoundData_18D:;0x3D08C
+INCBIN "data/sound/sound18D.bin"
 
-Unknown_0x3C8EC:
-INCBIN "baserom.gbc", $3C8EC, $3C8ED - $3C8EC
+SoundData_18E:;0x3D0F9
+INCBIN "data/sound/sound18E.bin"
 
-LoggedData_0x3C8ED:
-INCBIN "baserom.gbc", $3C8ED, $3C907 - $3C8ED
+SoundData_18F:;0x3D11E
+INCBIN "data/sound/sound18F.bin"
 
-Unknown_0x3C907:
-INCBIN "baserom.gbc", $3C907, $3C908 - $3C907
+SoundData_1A1:;0x3D163
+INCBIN "data/sound/sound1A1.bin"
 
-LoggedData_0x3C908:
-INCBIN "baserom.gbc", $3C908, $3C91A - $3C908
+SoundData_1A2:;0x3D1B3
+INCBIN "data/sound/sound1A2.bin"
 
-Unknown_0x3C91A:
-INCBIN "baserom.gbc", $3C91A, $3C91B - $3C91A
+SoundData_1A3:;0x3D1C6
+INCBIN "data/sound/sound1A3.bin"
 
-LoggedData_0x3C91B:
-INCBIN "baserom.gbc", $3C91B, $3C93C - $3C91B
+SoundData_1A4:;0x3D1F5
+INCBIN "data/sound/sound1A4.bin"
 
-Unknown_0x3C93C:
-INCBIN "baserom.gbc", $3C93C, $3C93D - $3C93C
+SoundData_1A5:;0x3D206
+INCBIN "data/sound/sound1A5.bin"
 
-LoggedData_0x3C93D:
-INCBIN "baserom.gbc", $3C93D, $3C953 - $3C93D
+SoundData_1A6:;0x3D24B
+INCBIN "data/sound/sound1A6.bin"
 
-Unknown_0x3C953:
-INCBIN "baserom.gbc", $3C953, $3C954 - $3C953
+SoundData_1A7:;0x3D2A8
+INCBIN "data/sound/sound1A7.bin"
 
-LoggedData_0x3C954:
-INCBIN "baserom.gbc", $3C954, $3C9C1 - $3C954
+SoundData_1A8:;0x3D2F2
+INCBIN "data/sound/sound1A8.bin"
 
-Unknown_0x3C9C1:
-INCBIN "baserom.gbc", $3C9C1, $3C9C2 - $3C9C1
+SoundData_1A9:;0x3D355
+INCBIN "data/sound/sound1A9.bin"
 
-LoggedData_0x3C9C2:
-INCBIN "baserom.gbc", $3C9C2, $3C9D6 - $3C9C2
+SoundData_1AA:;0x3D385
+INCBIN "data/sound/sound1AA.bin"
 
-Unknown_0x3C9D6:
-INCBIN "baserom.gbc", $3C9D6, $3C9D7 - $3C9D6
+SoundData_1AB:;0x3D3A9
+INCBIN "data/sound/sound1AB.bin"
 
-LoggedData_0x3C9D7:
-INCBIN "baserom.gbc", $3C9D7, $3C9D9 - $3C9D7
+SoundData_1AC:;0x3D4BA
+INCBIN "data/sound/sound1AC.bin"
 
-Unknown_0x3C9D9:
-INCBIN "baserom.gbc", $3C9D9, $3C9F7 - $3C9D9
+SoundData_1AD:;0x3D4D0
+INCBIN "data/sound/sound1AD.bin"
 
-LoggedData_0x3C9F7:
-INCBIN "baserom.gbc", $3C9F7, $3CA13 - $3C9F7
+SoundData_1AE:;0x3D4E7
+INCBIN "data/sound/sound1AE.bin"
 
-Unknown_0x3CA13:
-INCBIN "baserom.gbc", $3CA13, $3CA14 - $3CA13
+SoundData_1AF:;0x3D4FE
+INCBIN "data/sound/sound1AF.bin"
 
-LoggedData_0x3CA14:
-INCBIN "baserom.gbc", $3CA14, $3CA2E - $3CA14
+SoundData_1B0:;0x3D643
+INCBIN "data/sound/sound1B0.bin"
 
-Unknown_0x3CA2E:
-INCBIN "baserom.gbc", $3CA2E, $3CA2F - $3CA2E
+SoundData_1B1:;0x3D684
+INCBIN "data/sound/sound1B1.bin"
 
-LoggedData_0x3CA2F:
-INCBIN "baserom.gbc", $3CA2F, $3CA47 - $3CA2F
+SoundData_1B2:;0x3D726
+INCBIN "data/sound/sound1B2.bin"
 
-Unknown_0x3CA47:
-INCBIN "baserom.gbc", $3CA47, $3CA48 - $3CA47
+SoundData_1B3:;0x3D75B
+INCBIN "data/sound/sound1B3.bin"
 
-LoggedData_0x3CA48:
-INCBIN "baserom.gbc", $3CA48, $3CA7E - $3CA48
+SoundData_1B4:;0x3D830
+INCBIN "data/sound/sound1B4.bin"
 
-Unknown_0x3CA7E:
-INCBIN "baserom.gbc", $3CA7E, $3CA7F - $3CA7E
+SoundData_1B5:;0x3D86D
+INCBIN "data/sound/sound1B5.bin"
 
-LoggedData_0x3CA7F:
-INCBIN "baserom.gbc", $3CA7F, $3CA93 - $3CA7F
+SoundData_1B6:;0x3D8AC
+INCBIN "data/sound/sound1B6.bin"
 
-Unknown_0x3CA93:
-INCBIN "baserom.gbc", $3CA93, $3CA94 - $3CA93
+SoundData_1B7:;0x3D8EB
+INCBIN "data/sound/sound1B7.bin"
 
-LoggedData_0x3CA94:
-INCBIN "baserom.gbc", $3CA94, $3CAD1 - $3CA94
+SoundData_1B8:;0x3D92A
+INCBIN "data/sound/sound1B8.bin"
 
-Unknown_0x3CAD1:
-INCBIN "baserom.gbc", $3CAD1, $3CAD2 - $3CAD1
+SoundData_1B9:;0x3D94B
+INCBIN "data/sound/sound1B9.bin"
 
-LoggedData_0x3CAD2:
-INCBIN "baserom.gbc", $3CAD2, $3CAF2 - $3CAD2
+SoundData_1BA:;0x3D96D
+INCBIN "data/sound/sound1BA.bin"
 
-Unknown_0x3CAF2:
-INCBIN "baserom.gbc", $3CAF2, $3CAF3 - $3CAF2
+SoundData_1BB:;0x3D9B3
+INCBIN "data/sound/sound1BB.bin"
 
-LoggedData_0x3CAF3:
-INCBIN "baserom.gbc", $3CAF3, $3CB0B - $3CAF3
+SoundData_1BC:;0x3D9EF
+INCBIN "data/sound/sound1BC.bin"
 
-Unknown_0x3CB0B:
-INCBIN "baserom.gbc", $3CB0B, $3CB0C - $3CB0B
+SoundData_1BD:;0x3DA97
+INCBIN "data/sound/sound1BD.bin"
 
-LoggedData_0x3CB0C:
-INCBIN "baserom.gbc", $3CB0C, $3CB31 - $3CB0C
+SoundData_1BE:;0x3DACA
+INCBIN "data/sound/sound1BE.bin"
 
-Unknown_0x3CB31:
-INCBIN "baserom.gbc", $3CB31, $3CB32 - $3CB31
+SoundData_1BF:;0x3DB17
+INCBIN "data/sound/sound1BF.bin"
 
-LoggedData_0x3CB32:
-INCBIN "baserom.gbc", $3CB32, $3CB45 - $3CB32
+SoundData_1C0:;0x3DB76
+INCBIN "data/sound/sound1C0.bin"
 
-Unknown_0x3CB45:
-INCBIN "baserom.gbc", $3CB45, $3CB46 - $3CB45
+SoundData_1C1:;0x3DB96
+INCBIN "data/sound/sound1C1.bin"
 
-LoggedData_0x3CB46:
-INCBIN "baserom.gbc", $3CB46, $3CB7B - $3CB46
+SoundData_1C2:;0x3DBE8
+INCBIN "data/sound/sound1C2.bin"
 
-Unknown_0x3CB7B:
-INCBIN "baserom.gbc", $3CB7B, $3CB7C - $3CB7B
+SoundData_1C3:;0x3DBF9
+INCBIN "data/sound/sound1C3.bin"
 
-LoggedData_0x3CB7C:
-INCBIN "baserom.gbc", $3CB7C, $3CB98 - $3CB7C
+SoundData_1C4:;0x3DC0A
+INCBIN "data/sound/sound1C4.bin"
 
-Unknown_0x3CB98:
-INCBIN "baserom.gbc", $3CB98, $3CB99 - $3CB98
+SoundData_1C5:;0x3DC1D
+INCBIN "data/sound/sound1C5.bin"
 
-LoggedData_0x3CB99:
-INCBIN "baserom.gbc", $3CB99, $3CBAF - $3CB99
+SoundData_1C6:;0x3DC34
+INCBIN "data/sound/sound1C6.bin"
 
-Unknown_0x3CBAF:
-INCBIN "baserom.gbc", $3CBAF, $3CBB0 - $3CBAF
+SoundData_1C7:;0x3DCBC
+INCBIN "data/sound/sound1C7.bin"
 
-LoggedData_0x3CBB0:
-INCBIN "baserom.gbc", $3CBB0, $3CC85 - $3CBB0
+SoundData_1C8:;0x3DDD1
+INCBIN "data/sound/sound1C8.bin"
 
-Unknown_0x3CC85:
-INCBIN "baserom.gbc", $3CC85, $3CC86 - $3CC85
+SoundData_1C9:;0x3DDE4
+INCBIN "data/sound/sound1C9.bin"
 
-LoggedData_0x3CC86:
-INCBIN "baserom.gbc", $3CC86, $3CC9E - $3CC86
+SoundData_1CA:;0x3DE42
+INCBIN "data/sound/sound1CA.bin"
 
-Unknown_0x3CC9E:
-INCBIN "baserom.gbc", $3CC9E, $3CC9F - $3CC9E
+SoundData_1CB:;0x3DE7C
+INCBIN "data/sound/sound1CB.bin"
 
-LoggedData_0x3CC9F:
-INCBIN "baserom.gbc", $3CC9F, $3CCB3 - $3CC9F
+SoundData_1CC:;0x3DF77
+INCBIN "data/sound/sound1CC.bin"
 
-Unknown_0x3CCB3:
-INCBIN "baserom.gbc", $3CCB3, $3CCB4 - $3CCB3
+SoundData_1CD:;0x3E032
+INCBIN "data/sound/sound1CD.bin"
 
-LoggedData_0x3CCB4:
-INCBIN "baserom.gbc", $3CCB4, $3CCE8 - $3CCB4
+SoundData_1CE:;0x3E0C1
+INCBIN "data/sound/sound1CE.bin"
 
-Unknown_0x3CCE8:
-INCBIN "baserom.gbc", $3CCE8, $3CCE9 - $3CCE8
+SoundData_1CF:;0x3E17F
+INCBIN "data/sound/sound1CF.bin"
 
-LoggedData_0x3CCE9:
-INCBIN "baserom.gbc", $3CCE9, $3CD09 - $3CCE9
+SoundData_1D0:;0x3E23A
+INCBIN "data/sound/sound1D0.bin"
 
-Unknown_0x3CD09:
-INCBIN "baserom.gbc", $3CD09, $3CD0A - $3CD09
+SoundData_1D1:;0x3E29E
+INCBIN "data/sound/sound1D1.bin"
 
-LoggedData_0x3CD0A:
-INCBIN "baserom.gbc", $3CD0A, $3CD78 - $3CD0A
+SoundData_1E1:;0x3E2B7
+INCBIN "data/sound/sound1E1.bin"
 
-Unknown_0x3CD78:
-INCBIN "baserom.gbc", $3CD78, $3CD79 - $3CD78
+SoundData_1E2:;0x3E2C8
+INCBIN "data/sound/sound1E2.bin"
 
-LoggedData_0x3CD79:
-INCBIN "baserom.gbc", $3CD79, $3CE0B - $3CD79
+SoundData_1E3:;0x3E2E8
+INCBIN "data/sound/sound1E3.bin"
 
-Unknown_0x3CE0B:
-INCBIN "baserom.gbc", $3CE0B, $3CE0C - $3CE0B
+SoundData_1E4:;0x3E303
+INCBIN "data/sound/sound1E4.bin"
 
-LoggedData_0x3CE0C:
-INCBIN "baserom.gbc", $3CE0C, $3CE5B - $3CE0C
+SoundData_1E5:;0x3E333
+INCBIN "data/sound/sound1E5.bin"
 
-Unknown_0x3CE5B:
-INCBIN "baserom.gbc", $3CE5B, $3CE5C - $3CE5B
+SoundData_1E6:;0x3E356
+INCBIN "data/sound/sound1E6.bin"
 
-LoggedData_0x3CE5C:
-INCBIN "baserom.gbc", $3CE5C, $3CE7C - $3CE5C
+SoundData_1E7:;0x3E376
+INCBIN "data/sound/sound1E7.bin"
 
-Unknown_0x3CE7C:
-INCBIN "baserom.gbc", $3CE7C, $3CE7D - $3CE7C
+SoundData_1E8:;0x3E412
+INCBIN "data/sound/sound1E8.bin"
 
-LoggedData_0x3CE7D:
-INCBIN "baserom.gbc", $3CE7D, $3CE91 - $3CE7D
+SoundData_1E9:;0x3E440
+INCBIN "data/sound/sound1E9.bin"
 
-Unknown_0x3CE91:
-INCBIN "baserom.gbc", $3CE91, $3CE92 - $3CE91
+SoundData_1EA:;0x3E46E
+INCBIN "data/sound/sound1EA.bin"
 
-LoggedData_0x3CE92:
-INCBIN "baserom.gbc", $3CE92, $3CEAE - $3CE92
+SoundData_1EB:;0x3E4BF
+INCBIN "data/sound/sound1EB.bin"
 
-Unknown_0x3CEAE:
-INCBIN "baserom.gbc", $3CEAE, $3CEAF - $3CEAE
+SoundData_1EC:;0x3E4D4
+INCBIN "data/sound/sound1EC.bin"
 
-LoggedData_0x3CEAF:
-INCBIN "baserom.gbc", $3CEAF, $3CEC3 - $3CEAF
+SoundData_1ED:;0x3E506
+INCBIN "data/sound/sound1ED.bin"
 
-Unknown_0x3CEC3:
-INCBIN "baserom.gbc", $3CEC3, $3CEC4 - $3CEC3
+SoundData_1EE:;0x3E558
+INCBIN "data/sound/sound1EE.bin"
 
-LoggedData_0x3CEC4:
-INCBIN "baserom.gbc", $3CEC4, $3CF37 - $3CEC4
+SoundData_1EF:;0x3E57B
+INCBIN "data/sound/sound1EF.bin"
 
-Unknown_0x3CF37:
-INCBIN "baserom.gbc", $3CF37, $3CF38 - $3CF37
+SoundData_1F0:;0x3E5B4
+INCBIN "data/sound/sound1F0.bin"
 
-LoggedData_0x3CF38:
-INCBIN "baserom.gbc", $3CF38, $3CF58 - $3CF38
+SoundData_1F1:;0x3E5C9
+INCBIN "data/sound/sound1F1.bin"
 
-Unknown_0x3CF58:
-INCBIN "baserom.gbc", $3CF58, $3CF59 - $3CF58
+SoundData_1F2:;0x3E5DC
+INCBIN "data/sound/sound1F2.bin"
 
-LoggedData_0x3CF59:
-INCBIN "baserom.gbc", $3CF59, $3CFD6 - $3CF59
+SoundData_1F3:;0x3E5EF
+INCBIN "data/sound/sound1F3.bin"
 
-Unknown_0x3CFD6:
-INCBIN "baserom.gbc", $3CFD6, $3CFD7 - $3CFD6
+SoundData_1F4:;0x3E610
+INCBIN "data/sound/sound1F4.bin"
 
-LoggedData_0x3CFD7:
-INCBIN "baserom.gbc", $3CFD7, $3D001 - $3CFD7
+SoundData_1F5:;0x3E63D
+INCBIN "data/sound/sound1F5.bin"
 
-Unknown_0x3D001:
-INCBIN "baserom.gbc", $3D001, $3D002 - $3D001
+SoundData_1F6:;0x3E654
+INCBIN "data/sound/sound1F6.bin"
 
-LoggedData_0x3D002:
-INCBIN "baserom.gbc", $3D002, $3D02E - $3D002
+SoundData_1F7:;0x3E66B
+INCBIN "data/sound/sound1F7.bin"
 
-Unknown_0x3D02E:
-INCBIN "baserom.gbc", $3D02E, $3D02F - $3D02E
+SoundData_1F8:;0x3E682
+INCBIN "data/sound/sound1F8.bin"
 
-LoggedData_0x3D02F:
-INCBIN "baserom.gbc", $3D02F, $3D08D - $3D02F
+SoundData_1F9:;0x3E6A5
+INCBIN "data/sound/sound1F9.bin"
 
-Unknown_0x3D08D:
-INCBIN "baserom.gbc", $3D08D, $3D08E - $3D08D
+SoundData_1FA:;0x3E73F
+INCBIN "data/sound/sound1FA.bin"
 
-LoggedData_0x3D08E:
-INCBIN "baserom.gbc", $3D08E, $3D0FA - $3D08E
+SoundData_201:;0x3E78C
+INCBIN "data/sound/sound201.bin"
 
-Unknown_0x3D0FA:
-INCBIN "baserom.gbc", $3D0FA, $3D0FB - $3D0FA
+SoundData_202:;0x3E7C1
+INCBIN "data/sound/sound202.bin"
 
-LoggedData_0x3D0FB:
-INCBIN "baserom.gbc", $3D0FB, $3D11F - $3D0FB
+SoundData_203:;0x3E7DA
+INCBIN "data/sound/sound203.bin"
 
-Unknown_0x3D11F:
-INCBIN "baserom.gbc", $3D11F, $3D120 - $3D11F
+SoundData_204:;0x3E839
+INCBIN "data/sound/sound204.bin"
 
-LoggedData_0x3D120:
-INCBIN "baserom.gbc", $3D120, $3D164 - $3D120
+SoundData_205:;0x3E972
+INCBIN "data/sound/sound205.bin"
 
-Unknown_0x3D164:
-INCBIN "baserom.gbc", $3D164, $3D165 - $3D164
+SoundData_206:;0x3E988
+INCBIN "data/sound/sound206.bin"
 
-LoggedData_0x3D165:
-INCBIN "baserom.gbc", $3D165, $3D1B4 - $3D165
+SoundData_207:;0x3E9A1
+INCBIN "data/sound/sound207.bin"
 
-Unknown_0x3D1B4:
-INCBIN "baserom.gbc", $3D1B4, $3D1B5 - $3D1B4
+SoundData_208:;0x3EA09
+INCBIN "data/sound/sound208.bin"
 
-LoggedData_0x3D1B5:
-INCBIN "baserom.gbc", $3D1B5, $3D1C7 - $3D1B5
+SoundData_209:;0x3EA29
+INCBIN "data/sound/sound209.bin"
 
-Unknown_0x3D1C7:
-INCBIN "baserom.gbc", $3D1C7, $3D1C8 - $3D1C7
+SoundData_20A:;0x3EA4D
+INCBIN "data/sound/sound20A.bin"
 
-LoggedData_0x3D1C8:
-INCBIN "baserom.gbc", $3D1C8, $3D1F6 - $3D1C8
+SoundData_20B:;0x3EA5E
+INCBIN "data/sound/sound20B.bin"
 
-Unknown_0x3D1F6:
-INCBIN "baserom.gbc", $3D1F6, $3D1F7 - $3D1F6
+SoundData_20C:;0x3EAC5
+INCBIN "data/sound/sound20C.bin"
 
-LoggedData_0x3D1F7:
-INCBIN "baserom.gbc", $3D1F7, $3D207 - $3D1F7
+SoundData_20D:;0x3EAE2
+INCBIN "data/sound/sound20D.bin"
 
-Unknown_0x3D207:
-INCBIN "baserom.gbc", $3D207, $3D208 - $3D207
+SoundData_20E:;0x3EB57
+INCBIN "data/sound/sound20E.bin"
 
-LoggedData_0x3D208:
-INCBIN "baserom.gbc", $3D208, $3D24C - $3D208
+SoundData_20F:;0x3EB72
+INCBIN "data/sound/sound20F.bin"
 
-Unknown_0x3D24C:
-INCBIN "baserom.gbc", $3D24C, $3D24D - $3D24C
+SoundData_210:;0x3EBA2
+INCBIN "data/sound/sound210.bin"
 
-LoggedData_0x3D24D:
-INCBIN "baserom.gbc", $3D24D, $3D2A9 - $3D24D
+SoundData_211:;0x3EBBA
+INCBIN "data/sound/sound211.bin"
 
-Unknown_0x3D2A9:
-INCBIN "baserom.gbc", $3D2A9, $3D2AA - $3D2A9
+SoundData_212:;0x3EC49
+INCBIN "data/sound/sound212.bin"
 
-LoggedData_0x3D2AA:
-INCBIN "baserom.gbc", $3D2AA, $3D2F3 - $3D2AA
+SoundData_213:;0x3EC70
+INCBIN "data/sound/sound213.bin"
 
-Unknown_0x3D2F3:
-INCBIN "baserom.gbc", $3D2F3, $3D2F4 - $3D2F3
+SoundData_214:;0x3EC86
+INCBIN "data/sound/sound214.bin"
 
-LoggedData_0x3D2F4:
-INCBIN "baserom.gbc", $3D2F4, $3D356 - $3D2F4
+SoundData_215:;0x3EC9C
+INCBIN "data/sound/sound215.bin"
 
-Unknown_0x3D356:
-INCBIN "baserom.gbc", $3D356, $3D357 - $3D356
+SoundData_216:;0x3ECB2
+INCBIN "data/sound/sound216.bin"
 
-LoggedData_0x3D357:
-INCBIN "baserom.gbc", $3D357, $3D386 - $3D357
+SoundData_217:;0x3ECF5
+INCBIN "data/sound/sound217.bin"
 
-Unknown_0x3D386:
-INCBIN "baserom.gbc", $3D386, $3D387 - $3D386
+SoundData_218:;0x3ED32
+INCBIN "data/sound/sound218.bin"
 
-LoggedData_0x3D387:
-INCBIN "baserom.gbc", $3D387, $3D3AA - $3D387
+SoundData_219:;0x3ED7C
+INCBIN "data/sound/sound219.bin"
 
-Unknown_0x3D3AA:
-INCBIN "baserom.gbc", $3D3AA, $3D3AB - $3D3AA
+SoundData_21A:;0x3ED9D
+INCBIN "data/sound/sound21A.bin"
 
-LoggedData_0x3D3AB:
-INCBIN "baserom.gbc", $3D3AB, $3D4BB - $3D3AB
+SoundData_21B:;0x3EEF2
+INCBIN "data/sound/sound21B.bin"
 
-Unknown_0x3D4BB:
-INCBIN "baserom.gbc", $3D4BB, $3D4BC - $3D4BB
+SoundData_21C:;0x3EF2D
+INCBIN "data/sound/sound21C.bin"
 
-LoggedData_0x3D4BC:
-INCBIN "baserom.gbc", $3D4BC, $3D4D1 - $3D4BC
+SoundData_21D:;0x3EF94
+INCBIN "data/sound/sound21D.bin"
 
-Unknown_0x3D4D1:
-INCBIN "baserom.gbc", $3D4D1, $3D4D2 - $3D4D1
+SoundData_21E:;0x3EFCB
+INCBIN "data/sound/sound21E.bin"
 
-LoggedData_0x3D4D2:
-INCBIN "baserom.gbc", $3D4D2, $3D4D4 - $3D4D2
+SoundData_21F:;0x3F009
+INCBIN "data/sound/sound21F.bin"
 
-Unknown_0x3D4D4:
-INCBIN "baserom.gbc", $3D4D4, $3D4EB - $3D4D4
+SoundData_220:;0x3F042
+INCBIN "data/sound/sound220.bin"
 
-LoggedData_0x3D4EB:
-INCBIN "baserom.gbc", $3D4EB, $3D4FA - $3D4EB
+SoundData_221:;0x3F07F
+INCBIN "data/sound/sound221.bin"
 
-Unknown_0x3D4FA:
-INCBIN "baserom.gbc", $3D4FA, $3D500 - $3D4FA
+SoundData_222:;0x3F0A4
+INCBIN "data/sound/sound222.bin"
 
-LoggedData_0x3D500:
-INCBIN "baserom.gbc", $3D500, $3D644 - $3D500
+SoundData_223:;0x3F0CD
+INCBIN "data/sound/sound223.bin"
 
-Unknown_0x3D644:
-INCBIN "baserom.gbc", $3D644, $3D645 - $3D644
+SoundData_224:;0x3F0FE
+INCBIN "data/sound/sound224.bin"
 
-LoggedData_0x3D645:
-INCBIN "baserom.gbc", $3D645, $3D685 - $3D645
+SoundData_225:;0x3F10F
+INCBIN "data/sound/sound225.bin"
 
-Unknown_0x3D685:
-INCBIN "baserom.gbc", $3D685, $3D686 - $3D685
+SoundData_226:;0x3F120
+INCBIN "data/sound/sound226.bin"
 
-LoggedData_0x3D686:
-INCBIN "baserom.gbc", $3D686, $3D727 - $3D686
+SoundData_227:;0x3F154
+INCBIN "data/sound/sound227.bin"
 
-Unknown_0x3D727:
-INCBIN "baserom.gbc", $3D727, $3D728 - $3D727
+SoundData_228:;0x3F1A7
+INCBIN "data/sound/sound228.bin"
 
-LoggedData_0x3D728:
-INCBIN "baserom.gbc", $3D728, $3D75C - $3D728
+SoundData_229:;0x3F1C0
+INCBIN "data/sound/sound229.bin"
 
-Unknown_0x3D75C:
-INCBIN "baserom.gbc", $3D75C, $3D75D - $3D75C
+SoundData_22A:;0x3F1D9
+INCBIN "data/sound/sound22A.bin"
 
-LoggedData_0x3D75D:
-INCBIN "baserom.gbc", $3D75D, $3D831 - $3D75D
+SoundData_22B:;0x3F1EA
+INCBIN "data/sound/sound22B.bin"
 
-Unknown_0x3D831:
-INCBIN "baserom.gbc", $3D831, $3D832 - $3D831
+SoundData_22C:;0x3F20A
+INCBIN "data/sound/sound22C.bin"
 
-LoggedData_0x3D832:
-INCBIN "baserom.gbc", $3D832, $3D847 - $3D832
+SoundData_22D:;0x3F229
+INCBIN "data/sound/sound22D.bin"
 
-Unknown_0x3D847:
-INCBIN "baserom.gbc", $3D847, $3D851 - $3D847
+SoundData_22E:;0x3F2A5
+INCBIN "data/sound/sound22E.bin"
 
-LoggedData_0x3D851:
-INCBIN "baserom.gbc", $3D851, $3D86E - $3D851
+SoundData_22F:;0x3F2C9
+INCBIN "data/sound/sound22F.bin"
 
-Unknown_0x3D86E:
-INCBIN "baserom.gbc", $3D86E, $3D86F - $3D86E
+SoundData_230:;0x3F2DE
+INCBIN "data/sound/sound230.bin"
 
-LoggedData_0x3D86F:
-INCBIN "baserom.gbc", $3D86F, $3D8AD - $3D86F
+SoundData_231:;0x3F2F3
+INCBIN "data/sound/sound231.bin"
 
-Unknown_0x3D8AD:
-INCBIN "baserom.gbc", $3D8AD, $3D8AE - $3D8AD
+SoundData_232:;0x3F308
+INCBIN "data/sound/sound232.bin"
 
-LoggedData_0x3D8AE:
-INCBIN "baserom.gbc", $3D8AE, $3D8B2 - $3D8AE
+SoundData_233:;0x3F31B
+INCBIN "data/sound/sound233.bin"
 
-Unknown_0x3D8B2:
-INCBIN "baserom.gbc", $3D8B2, $3D8F1 - $3D8B2
+SoundData_234:;0x3F32C
+INCBIN "data/sound/sound234.bin"
 
-LoggedData_0x3D8F1:
-INCBIN "baserom.gbc", $3D8F1, $3D92B - $3D8F1
+SoundData_235:;0x3F34D
+INCBIN "data/sound/sound235.bin"
 
-Unknown_0x3D92B:
-INCBIN "baserom.gbc", $3D92B, $3D92C - $3D92B
+SoundData_236:;0x3F362
+INCBIN "data/sound/sound236.bin"
 
-LoggedData_0x3D92C:
-INCBIN "baserom.gbc", $3D92C, $3D94C - $3D92C
+SoundData_237:;0x3F375
+INCBIN "data/sound/sound237.bin"
 
-Unknown_0x3D94C:
-INCBIN "baserom.gbc", $3D94C, $3D94D - $3D94C
+SoundData_238:;0x3F38E
+INCBIN "data/sound/sound238.bin"
 
-LoggedData_0x3D94D:
-INCBIN "baserom.gbc", $3D94D, $3D96E - $3D94D
+    ds $3FE00 - $3F392, $00
 
-Unknown_0x3D96E:
-INCBIN "baserom.gbc", $3D96E, $3D96F - $3D96E
-
-LoggedData_0x3D96F:
-INCBIN "baserom.gbc", $3D96F, $3D9B4 - $3D96F
-
-Unknown_0x3D9B4:
-INCBIN "baserom.gbc", $3D9B4, $3D9B5 - $3D9B4
-
-LoggedData_0x3D9B5:
-INCBIN "baserom.gbc", $3D9B5, $3D9F0 - $3D9B5
-
-Unknown_0x3D9F0:
-INCBIN "baserom.gbc", $3D9F0, $3D9F1 - $3D9F0
-
-LoggedData_0x3D9F1:
-INCBIN "baserom.gbc", $3D9F1, $3DA98 - $3D9F1
-
-Unknown_0x3DA98:
-INCBIN "baserom.gbc", $3DA98, $3DA99 - $3DA98
-
-LoggedData_0x3DA99:
-INCBIN "baserom.gbc", $3DA99, $3DACB - $3DA99
-
-Unknown_0x3DACB:
-INCBIN "baserom.gbc", $3DACB, $3DACC - $3DACB
-
-LoggedData_0x3DACC:
-INCBIN "baserom.gbc", $3DACC, $3DB18 - $3DACC
-
-Unknown_0x3DB18:
-INCBIN "baserom.gbc", $3DB18, $3DB19 - $3DB18
-
-LoggedData_0x3DB19:
-INCBIN "baserom.gbc", $3DB19, $3DB77 - $3DB19
-
-Unknown_0x3DB77:
-INCBIN "baserom.gbc", $3DB77, $3DB78 - $3DB77
-
-LoggedData_0x3DB78:
-INCBIN "baserom.gbc", $3DB78, $3DB97 - $3DB78
-
-Unknown_0x3DB97:
-INCBIN "baserom.gbc", $3DB97, $3DB98 - $3DB97
-
-LoggedData_0x3DB98:
-INCBIN "baserom.gbc", $3DB98, $3DBE9 - $3DB98
-
-Unknown_0x3DBE9:
-INCBIN "baserom.gbc", $3DBE9, $3DBEA - $3DBE9
-
-LoggedData_0x3DBEA:
-INCBIN "baserom.gbc", $3DBEA, $3DBFA - $3DBEA
-
-Unknown_0x3DBFA:
-INCBIN "baserom.gbc", $3DBFA, $3DBFB - $3DBFA
-
-LoggedData_0x3DBFB:
-INCBIN "baserom.gbc", $3DBFB, $3DC0B - $3DBFB
-
-Unknown_0x3DC0B:
-INCBIN "baserom.gbc", $3DC0B, $3DC0C - $3DC0B
-
-LoggedData_0x3DC0C:
-INCBIN "baserom.gbc", $3DC0C, $3DC1E - $3DC0C
-
-Unknown_0x3DC1E:
-INCBIN "baserom.gbc", $3DC1E, $3DC1F - $3DC1E
-
-LoggedData_0x3DC1F:
-INCBIN "baserom.gbc", $3DC1F, $3DC35 - $3DC1F
-
-Unknown_0x3DC35:
-INCBIN "baserom.gbc", $3DC35, $3DC36 - $3DC35
-
-LoggedData_0x3DC36:
-INCBIN "baserom.gbc", $3DC36, $3DCBD - $3DC36
-
-Unknown_0x3DCBD:
-INCBIN "baserom.gbc", $3DCBD, $3DCBE - $3DCBD
-
-LoggedData_0x3DCBE:
-INCBIN "baserom.gbc", $3DCBE, $3DDB0 - $3DCBE
-
-Unknown_0x3DDB0:
-INCBIN "baserom.gbc", $3DDB0, $3DDD3 - $3DDB0
-
-LoggedData_0x3DDD3:
-INCBIN "baserom.gbc", $3DDD3, $3DDD5 - $3DDD3
-
-Unknown_0x3DDD5:
-INCBIN "baserom.gbc", $3DDD5, $3DDE8 - $3DDD5
-
-LoggedData_0x3DDE8:
-INCBIN "baserom.gbc", $3DDE8, $3DE43 - $3DDE8
-
-Unknown_0x3DE43:
-INCBIN "baserom.gbc", $3DE43, $3DE44 - $3DE43
-
-LoggedData_0x3DE44:
-INCBIN "baserom.gbc", $3DE44, $3DE7D - $3DE44
-
-Unknown_0x3DE7D:
-INCBIN "baserom.gbc", $3DE7D, $3DE7E - $3DE7D
-
-LoggedData_0x3DE7E:
-INCBIN "baserom.gbc", $3DE7E, $3DF78 - $3DE7E
-
-Unknown_0x3DF78:
-INCBIN "baserom.gbc", $3DF78, $3DF79 - $3DF78
-
-LoggedData_0x3DF79:
-INCBIN "baserom.gbc", $3DF79, $3DF7D - $3DF79
-
-Unknown_0x3DF7D:
-INCBIN "baserom.gbc", $3DF7D, $3DFBA - $3DF7D
-
-LoggedData_0x3DFBA:
-INCBIN "baserom.gbc", $3DFBA, $3E033 - $3DFBA
-
-Unknown_0x3E033:
-INCBIN "baserom.gbc", $3E033, $3E036 - $3E033
-
-LoggedData_0x3E036:
-INCBIN "baserom.gbc", $3E036, $3E0C2 - $3E036
-
-Unknown_0x3E0C2:
-INCBIN "baserom.gbc", $3E0C2, $3E0C3 - $3E0C2
-
-LoggedData_0x3E0C3:
-INCBIN "baserom.gbc", $3E0C3, $3E180 - $3E0C3
-
-Unknown_0x3E180:
-INCBIN "baserom.gbc", $3E180, $3E181 - $3E180
-
-LoggedData_0x3E181:
-INCBIN "baserom.gbc", $3E181, $3E23B - $3E181
-
-Unknown_0x3E23B:
-INCBIN "baserom.gbc", $3E23B, $3E23C - $3E23B
-
-LoggedData_0x3E23C:
-INCBIN "baserom.gbc", $3E23C, $3E25A - $3E23C
-
-Unknown_0x3E25A:
-INCBIN "baserom.gbc", $3E25A, $3E25B - $3E25A
-
-LoggedData_0x3E25B:
-INCBIN "baserom.gbc", $3E25B, $3E29F - $3E25B
-
-Unknown_0x3E29F:
-INCBIN "baserom.gbc", $3E29F, $3E2A0 - $3E29F
-
-LoggedData_0x3E2A0:
-INCBIN "baserom.gbc", $3E2A0, $3E2B8 - $3E2A0
-
-Unknown_0x3E2B8:
-INCBIN "baserom.gbc", $3E2B8, $3E2B9 - $3E2B8
-
-LoggedData_0x3E2B9:
-INCBIN "baserom.gbc", $3E2B9, $3E2C9 - $3E2B9
-
-Unknown_0x3E2C9:
-INCBIN "baserom.gbc", $3E2C9, $3E2CA - $3E2C9
-
-LoggedData_0x3E2CA:
-INCBIN "baserom.gbc", $3E2CA, $3E2E9 - $3E2CA
-
-Unknown_0x3E2E9:
-INCBIN "baserom.gbc", $3E2E9, $3E2EA - $3E2E9
-
-LoggedData_0x3E2EA:
-INCBIN "baserom.gbc", $3E2EA, $3E304 - $3E2EA
-
-Unknown_0x3E304:
-INCBIN "baserom.gbc", $3E304, $3E305 - $3E304
-
-LoggedData_0x3E305:
-INCBIN "baserom.gbc", $3E305, $3E334 - $3E305
-
-Unknown_0x3E334:
-INCBIN "baserom.gbc", $3E334, $3E335 - $3E334
-
-LoggedData_0x3E335:
-INCBIN "baserom.gbc", $3E335, $3E357 - $3E335
-
-Unknown_0x3E357:
-INCBIN "baserom.gbc", $3E357, $3E358 - $3E357
-
-LoggedData_0x3E358:
-INCBIN "baserom.gbc", $3E358, $3E377 - $3E358
-
-Unknown_0x3E377:
-INCBIN "baserom.gbc", $3E377, $3E378 - $3E377
-
-LoggedData_0x3E378:
-INCBIN "baserom.gbc", $3E378, $3E413 - $3E378
-
-Unknown_0x3E413:
-INCBIN "baserom.gbc", $3E413, $3E414 - $3E413
-
-LoggedData_0x3E414:
-INCBIN "baserom.gbc", $3E414, $3E441 - $3E414
-
-Unknown_0x3E441:
-INCBIN "baserom.gbc", $3E441, $3E442 - $3E441
-
-LoggedData_0x3E442:
-INCBIN "baserom.gbc", $3E442, $3E46F - $3E442
-
-Unknown_0x3E46F:
-INCBIN "baserom.gbc", $3E46F, $3E470 - $3E46F
-
-LoggedData_0x3E470:
-INCBIN "baserom.gbc", $3E470, $3E4C0 - $3E470
-
-Unknown_0x3E4C0:
-INCBIN "baserom.gbc", $3E4C0, $3E4C1 - $3E4C0
-
-LoggedData_0x3E4C1:
-INCBIN "baserom.gbc", $3E4C1, $3E4D5 - $3E4C1
-
-Unknown_0x3E4D5:
-INCBIN "baserom.gbc", $3E4D5, $3E4D6 - $3E4D5
-
-LoggedData_0x3E4D6:
-INCBIN "baserom.gbc", $3E4D6, $3E507 - $3E4D6
-
-Unknown_0x3E507:
-INCBIN "baserom.gbc", $3E507, $3E508 - $3E507
-
-LoggedData_0x3E508:
-INCBIN "baserom.gbc", $3E508, $3E559 - $3E508
-
-Unknown_0x3E559:
-INCBIN "baserom.gbc", $3E559, $3E55A - $3E559
-
-LoggedData_0x3E55A:
-INCBIN "baserom.gbc", $3E55A, $3E57C - $3E55A
-
-Unknown_0x3E57C:
-INCBIN "baserom.gbc", $3E57C, $3E57D - $3E57C
-
-LoggedData_0x3E57D:
-INCBIN "baserom.gbc", $3E57D, $3E5B5 - $3E57D
-
-Unknown_0x3E5B5:
-INCBIN "baserom.gbc", $3E5B5, $3E5B6 - $3E5B5
-
-LoggedData_0x3E5B6:
-INCBIN "baserom.gbc", $3E5B6, $3E5CA - $3E5B6
-
-Unknown_0x3E5CA:
-INCBIN "baserom.gbc", $3E5CA, $3E5CB - $3E5CA
-
-LoggedData_0x3E5CB:
-INCBIN "baserom.gbc", $3E5CB, $3E5DD - $3E5CB
-
-Unknown_0x3E5DD:
-INCBIN "baserom.gbc", $3E5DD, $3E5DE - $3E5DD
-
-LoggedData_0x3E5DE:
-INCBIN "baserom.gbc", $3E5DE, $3E5F0 - $3E5DE
-
-Unknown_0x3E5F0:
-INCBIN "baserom.gbc", $3E5F0, $3E5F1 - $3E5F0
-
-LoggedData_0x3E5F1:
-INCBIN "baserom.gbc", $3E5F1, $3E611 - $3E5F1
-
-Unknown_0x3E611:
-INCBIN "baserom.gbc", $3E611, $3E612 - $3E611
-
-LoggedData_0x3E612:
-INCBIN "baserom.gbc", $3E612, $3E63E - $3E612
-
-Unknown_0x3E63E:
-INCBIN "baserom.gbc", $3E63E, $3E63F - $3E63E
-
-LoggedData_0x3E63F:
-INCBIN "baserom.gbc", $3E63F, $3E655 - $3E63F
-
-Unknown_0x3E655:
-INCBIN "baserom.gbc", $3E655, $3E656 - $3E655
-
-LoggedData_0x3E656:
-INCBIN "baserom.gbc", $3E656, $3E66C - $3E656
-
-Unknown_0x3E66C:
-INCBIN "baserom.gbc", $3E66C, $3E66D - $3E66C
-
-LoggedData_0x3E66D:
-INCBIN "baserom.gbc", $3E66D, $3E683 - $3E66D
-
-Unknown_0x3E683:
-INCBIN "baserom.gbc", $3E683, $3E684 - $3E683
-
-LoggedData_0x3E684:
-INCBIN "baserom.gbc", $3E684, $3E6A6 - $3E684
-
-Unknown_0x3E6A6:
-INCBIN "baserom.gbc", $3E6A6, $3E6A7 - $3E6A6
-
-LoggedData_0x3E6A7:
-INCBIN "baserom.gbc", $3E6A7, $3E740 - $3E6A7
-
-Unknown_0x3E740:
-INCBIN "baserom.gbc", $3E740, $3E741 - $3E740
-
-LoggedData_0x3E741:
-INCBIN "baserom.gbc", $3E741, $3E78D - $3E741
-
-Unknown_0x3E78D:
-INCBIN "baserom.gbc", $3E78D, $3E78E - $3E78D
-
-LoggedData_0x3E78E:
-INCBIN "baserom.gbc", $3E78E, $3E7C2 - $3E78E
-
-Unknown_0x3E7C2:
-INCBIN "baserom.gbc", $3E7C2, $3E7C3 - $3E7C2
-
-LoggedData_0x3E7C3:
-INCBIN "baserom.gbc", $3E7C3, $3E7DB - $3E7C3
-
-Unknown_0x3E7DB:
-INCBIN "baserom.gbc", $3E7DB, $3E7DC - $3E7DB
-
-LoggedData_0x3E7DC:
-INCBIN "baserom.gbc", $3E7DC, $3E83A - $3E7DC
-
-Unknown_0x3E83A:
-INCBIN "baserom.gbc", $3E83A, $3E83B - $3E83A
-
-LoggedData_0x3E83B:
-INCBIN "baserom.gbc", $3E83B, $3E973 - $3E83B
-
-Unknown_0x3E973:
-INCBIN "baserom.gbc", $3E973, $3E974 - $3E973
-
-LoggedData_0x3E974:
-INCBIN "baserom.gbc", $3E974, $3E989 - $3E974
-
-Unknown_0x3E989:
-INCBIN "baserom.gbc", $3E989, $3E98A - $3E989
-
-LoggedData_0x3E98A:
-INCBIN "baserom.gbc", $3E98A, $3E9A2 - $3E98A
-
-Unknown_0x3E9A2:
-INCBIN "baserom.gbc", $3E9A2, $3E9A3 - $3E9A2
-
-LoggedData_0x3E9A3:
-INCBIN "baserom.gbc", $3E9A3, $3EA0A - $3E9A3
-
-Unknown_0x3EA0A:
-INCBIN "baserom.gbc", $3EA0A, $3EA0B - $3EA0A
-
-LoggedData_0x3EA0B:
-INCBIN "baserom.gbc", $3EA0B, $3EA2A - $3EA0B
-
-Unknown_0x3EA2A:
-INCBIN "baserom.gbc", $3EA2A, $3EA2B - $3EA2A
-
-LoggedData_0x3EA2B:
-INCBIN "baserom.gbc", $3EA2B, $3EA4D - $3EA2B
-
-Unknown_0x3EA4D:
-INCBIN "baserom.gbc", $3EA4D, $3EA4F - $3EA4D
-
-LoggedData_0x3EA4F:
-INCBIN "baserom.gbc", $3EA4F, $3EA5F - $3EA4F
-
-Unknown_0x3EA5F:
-INCBIN "baserom.gbc", $3EA5F, $3EA60 - $3EA5F
-
-LoggedData_0x3EA60:
-INCBIN "baserom.gbc", $3EA60, $3EAC6 - $3EA60
-
-Unknown_0x3EAC6:
-INCBIN "baserom.gbc", $3EAC6, $3EAC7 - $3EAC6
-
-LoggedData_0x3EAC7:
-INCBIN "baserom.gbc", $3EAC7, $3EAE3 - $3EAC7
-
-Unknown_0x3EAE3:
-INCBIN "baserom.gbc", $3EAE3, $3EAE4 - $3EAE3
-
-LoggedData_0x3EAE4:
-INCBIN "baserom.gbc", $3EAE4, $3EB58 - $3EAE4
-
-Unknown_0x3EB58:
-INCBIN "baserom.gbc", $3EB58, $3EB59 - $3EB58
-
-LoggedData_0x3EB59:
-INCBIN "baserom.gbc", $3EB59, $3EB73 - $3EB59
-
-Unknown_0x3EB73:
-INCBIN "baserom.gbc", $3EB73, $3EB74 - $3EB73
-
-LoggedData_0x3EB74:
-INCBIN "baserom.gbc", $3EB74, $3EBA3 - $3EB74
-
-Unknown_0x3EBA3:
-INCBIN "baserom.gbc", $3EBA3, $3EBA4 - $3EBA3
-
-LoggedData_0x3EBA4:
-INCBIN "baserom.gbc", $3EBA4, $3EBBA - $3EBA4
-
-Unknown_0x3EBBA:
-INCBIN "baserom.gbc", $3EBBA, $3EBBC - $3EBBA
-
-LoggedData_0x3EBBC:
-INCBIN "baserom.gbc", $3EBBC, $3EC4A - $3EBBC
-
-Unknown_0x3EC4A:
-INCBIN "baserom.gbc", $3EC4A, $3EC4B - $3EC4A
-
-LoggedData_0x3EC4B:
-INCBIN "baserom.gbc", $3EC4B, $3EC71 - $3EC4B
-
-Unknown_0x3EC71:
-INCBIN "baserom.gbc", $3EC71, $3EC72 - $3EC71
-
-LoggedData_0x3EC72:
-INCBIN "baserom.gbc", $3EC72, $3EC86 - $3EC72
-
-Unknown_0x3EC86:
-INCBIN "baserom.gbc", $3EC86, $3EC88 - $3EC86
-
-LoggedData_0x3EC88:
-INCBIN "baserom.gbc", $3EC88, $3EC9C - $3EC88
-
-Unknown_0x3EC9C:
-INCBIN "baserom.gbc", $3EC9C, $3EC9E - $3EC9C
-
-LoggedData_0x3EC9E:
-INCBIN "baserom.gbc", $3EC9E, $3ECB3 - $3EC9E
-
-Unknown_0x3ECB3:
-INCBIN "baserom.gbc", $3ECB3, $3ECB4 - $3ECB3
-
-LoggedData_0x3ECB4:
-INCBIN "baserom.gbc", $3ECB4, $3ECF6 - $3ECB4
-
-Unknown_0x3ECF6:
-INCBIN "baserom.gbc", $3ECF6, $3ECF7 - $3ECF6
-
-LoggedData_0x3ECF7:
-INCBIN "baserom.gbc", $3ECF7, $3ED33 - $3ECF7
-
-Unknown_0x3ED33:
-INCBIN "baserom.gbc", $3ED33, $3ED34 - $3ED33
-
-LoggedData_0x3ED34:
-INCBIN "baserom.gbc", $3ED34, $3ED7D - $3ED34
-
-Unknown_0x3ED7D:
-INCBIN "baserom.gbc", $3ED7D, $3ED7E - $3ED7D
-
-LoggedData_0x3ED7E:
-INCBIN "baserom.gbc", $3ED7E, $3ED9E - $3ED7E
-
-Unknown_0x3ED9E:
-INCBIN "baserom.gbc", $3ED9E, $3ED9F - $3ED9E
-
-LoggedData_0x3ED9F:
-INCBIN "baserom.gbc", $3ED9F, $3EEF3 - $3ED9F
-
-Unknown_0x3EEF3:
-INCBIN "baserom.gbc", $3EEF3, $3EEF4 - $3EEF3
-
-LoggedData_0x3EEF4:
-INCBIN "baserom.gbc", $3EEF4, $3EF2E - $3EEF4
-
-Unknown_0x3EF2E:
-INCBIN "baserom.gbc", $3EF2E, $3EF2F - $3EF2E
-
-LoggedData_0x3EF2F:
-INCBIN "baserom.gbc", $3EF2F, $3EF95 - $3EF2F
-
-Unknown_0x3EF95:
-INCBIN "baserom.gbc", $3EF95, $3EF96 - $3EF95
-
-LoggedData_0x3EF96:
-INCBIN "baserom.gbc", $3EF96, $3EFCC - $3EF96
-
-Unknown_0x3EFCC:
-INCBIN "baserom.gbc", $3EFCC, $3EFCD - $3EFCC
-
-LoggedData_0x3EFCD:
-INCBIN "baserom.gbc", $3EFCD, $3F00A - $3EFCD
-
-Unknown_0x3F00A:
-INCBIN "baserom.gbc", $3F00A, $3F00B - $3F00A
-
-LoggedData_0x3F00B:
-INCBIN "baserom.gbc", $3F00B, $3F043 - $3F00B
-
-Unknown_0x3F043:
-INCBIN "baserom.gbc", $3F043, $3F044 - $3F043
-
-LoggedData_0x3F044:
-INCBIN "baserom.gbc", $3F044, $3F080 - $3F044
-
-Unknown_0x3F080:
-INCBIN "baserom.gbc", $3F080, $3F081 - $3F080
-
-LoggedData_0x3F081:
-INCBIN "baserom.gbc", $3F081, $3F0A5 - $3F081
-
-Unknown_0x3F0A5:
-INCBIN "baserom.gbc", $3F0A5, $3F0A6 - $3F0A5
-
-LoggedData_0x3F0A6:
-INCBIN "baserom.gbc", $3F0A6, $3F0CE - $3F0A6
-
-Unknown_0x3F0CE:
-INCBIN "baserom.gbc", $3F0CE, $3F0CF - $3F0CE
-
-LoggedData_0x3F0CF:
-INCBIN "baserom.gbc", $3F0CF, $3F0FF - $3F0CF
-
-Unknown_0x3F0FF:
-INCBIN "baserom.gbc", $3F0FF, $3F100 - $3F0FF
-
-LoggedData_0x3F100:
-INCBIN "baserom.gbc", $3F100, $3F110 - $3F100
-
-Unknown_0x3F110:
-INCBIN "baserom.gbc", $3F110, $3F111 - $3F110
-
-LoggedData_0x3F111:
-INCBIN "baserom.gbc", $3F111, $3F121 - $3F111
-
-Unknown_0x3F121:
-INCBIN "baserom.gbc", $3F121, $3F122 - $3F121
-
-LoggedData_0x3F122:
-INCBIN "baserom.gbc", $3F122, $3F155 - $3F122
-
-Unknown_0x3F155:
-INCBIN "baserom.gbc", $3F155, $3F156 - $3F155
-
-LoggedData_0x3F156:
-INCBIN "baserom.gbc", $3F156, $3F1A8 - $3F156
-
-Unknown_0x3F1A8:
-INCBIN "baserom.gbc", $3F1A8, $3F1A9 - $3F1A8
-
-LoggedData_0x3F1A9:
-INCBIN "baserom.gbc", $3F1A9, $3F1C1 - $3F1A9
-
-Unknown_0x3F1C1:
-INCBIN "baserom.gbc", $3F1C1, $3F1C2 - $3F1C1
-
-LoggedData_0x3F1C2:
-INCBIN "baserom.gbc", $3F1C2, $3F1DA - $3F1C2
-
-Unknown_0x3F1DA:
-INCBIN "baserom.gbc", $3F1DA, $3F1DB - $3F1DA
-
-LoggedData_0x3F1DB:
-INCBIN "baserom.gbc", $3F1DB, $3F1DD - $3F1DB
-
-Unknown_0x3F1DD:
-INCBIN "baserom.gbc", $3F1DD, $3F1EE - $3F1DD
-
-LoggedData_0x3F1EE:
-INCBIN "baserom.gbc", $3F1EE, $3F20B - $3F1EE
-
-Unknown_0x3F20B:
-INCBIN "baserom.gbc", $3F20B, $3F20C - $3F20B
-
-LoggedData_0x3F20C:
-INCBIN "baserom.gbc", $3F20C, $3F22A - $3F20C
-
-Unknown_0x3F22A:
-INCBIN "baserom.gbc", $3F22A, $3F22B - $3F22A
-
-LoggedData_0x3F22B:
-INCBIN "baserom.gbc", $3F22B, $3F2A6 - $3F22B
-
-Unknown_0x3F2A6:
-INCBIN "baserom.gbc", $3F2A6, $3F2A7 - $3F2A6
-
-LoggedData_0x3F2A7:
-INCBIN "baserom.gbc", $3F2A7, $3F2CA - $3F2A7
-
-Unknown_0x3F2CA:
-INCBIN "baserom.gbc", $3F2CA, $3F2CB - $3F2CA
-
-LoggedData_0x3F2CB:
-INCBIN "baserom.gbc", $3F2CB, $3F2DF - $3F2CB
-
-Unknown_0x3F2DF:
-INCBIN "baserom.gbc", $3F2DF, $3F2E0 - $3F2DF
-
-LoggedData_0x3F2E0:
-INCBIN "baserom.gbc", $3F2E0, $3F2F4 - $3F2E0
-
-Unknown_0x3F2F4:
-INCBIN "baserom.gbc", $3F2F4, $3F2F5 - $3F2F4
-
-LoggedData_0x3F2F5:
-INCBIN "baserom.gbc", $3F2F5, $3F309 - $3F2F5
-
-Unknown_0x3F309:
-INCBIN "baserom.gbc", $3F309, $3F30A - $3F309
-
-LoggedData_0x3F30A:
-INCBIN "baserom.gbc", $3F30A, $3F31C - $3F30A
-
-Unknown_0x3F31C:
-INCBIN "baserom.gbc", $3F31C, $3F31D - $3F31C
-
-LoggedData_0x3F31D:
-INCBIN "baserom.gbc", $3F31D, $3F32D - $3F31D
-
-Unknown_0x3F32D:
-INCBIN "baserom.gbc", $3F32D, $3F32E - $3F32D
-
-LoggedData_0x3F32E:
-INCBIN "baserom.gbc", $3F32E, $3F34D - $3F32E
-
-Unknown_0x3F34D:
-INCBIN "baserom.gbc", $3F34D, $3F34F - $3F34D
-
-LoggedData_0x3F34F:
-INCBIN "baserom.gbc", $3F34F, $3F351 - $3F34F
-
-Unknown_0x3F351:
-INCBIN "baserom.gbc", $3F351, $3F366 - $3F351
-
-LoggedData_0x3F366:
-INCBIN "baserom.gbc", $3F366, $3F376 - $3F366
-
-Unknown_0x3F376:
-INCBIN "baserom.gbc", $3F376, $3F377 - $3F376
-
-LoggedData_0x3F377:
-INCBIN "baserom.gbc", $3F377, $3F38F - $3F377
-
-Unknown_0x3F38F:
-INCBIN "baserom.gbc", $3F38F, $3F390 - $3F38F
-
-LoggedData_0x3F390:
-INCBIN "baserom.gbc", $3F390, $3F392 - $3F390
-
-Unknown_0x3F392:
-INCBIN "baserom.gbc", $3F392, $3FE02 - $3F392
-
-LoggedData_0x3FE02:
-INCBIN "baserom.gbc", $3FE02, $3FE0B - $3FE02
+LoggedData_0x3FE00:
+INCBIN "baserom.gbc", $3FE00, $3FE0B - $3FE00
 
 Unknown_0x3FE0B:
 INCBIN "baserom.gbc", $3FE0B, $3FE0C - $3FE0B

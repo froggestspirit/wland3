@@ -24,3 +24,13 @@ dbw: MACRO
 	dw \1
 ENDM
 
+sound_pointer: MACRO
+	dw \1
+	db BANK(\1)
+	db 0
+	db \2
+	db \3
+	db \4
+	db 0	
+ENDM
+
